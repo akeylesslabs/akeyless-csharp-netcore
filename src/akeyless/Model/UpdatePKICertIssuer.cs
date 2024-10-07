@@ -52,11 +52,13 @@ namespace akeyless.Model
         /// <param name="country">A comma-separated list of countries that will be set in the issued certificate.</param>
         /// <param name="createPrivateCrl">Set this to allow the issuer will expose a CRL endpoint in the Gateway.</param>
         /// <param name="createPublicCrl">Set this to allow the cert issuer will expose a public CRL endpoint.</param>
+        /// <param name="criticalKeyUsage">Mark key usage as critical [true/false] (default to &quot;true&quot;).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="destinationPath">A path in which to save generated certificates.</param>
+        /// <param name="enableAcme">If set, the cert issuer will support the acme protocol.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
-        /// <param name="gwClusterUrl">The GW cluster URL to issue the certificate from, required in Public CA mode or to allow CRLs on private CA.</param>
+        /// <param name="gwClusterUrl">The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME.</param>
         /// <param name="isCa">If set, the basic constraints extension will be added to certificate.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
@@ -78,7 +80,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedUriSans = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string criticalKeyUsage = "true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -110,9 +112,12 @@ namespace akeyless.Model
             this.Country = country;
             this.CreatePrivateCrl = createPrivateCrl;
             this.CreatePublicCrl = createPublicCrl;
+            // use default value if no "criticalKeyUsage" provided
+            this.CriticalKeyUsage = criticalKeyUsage ?? "true";
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.DestinationPath = destinationPath;
+            this.EnableAcme = enableAcme;
             this.ExpirationEventIn = expirationEventIn;
             this.GwClusterUrl = gwClusterUrl;
             this.IsCa = isCa;
@@ -221,6 +226,13 @@ namespace akeyless.Model
         public bool CreatePublicCrl { get; set; }
 
         /// <summary>
+        /// Mark key usage as critical [true/false]
+        /// </summary>
+        /// <value>Mark key usage as critical [true/false]</value>
+        [DataMember(Name = "critical-key-usage", EmitDefaultValue = false)]
+        public string CriticalKeyUsage { get; set; }
+
+        /// <summary>
         /// Protection from accidental deletion of this object [true/false]
         /// </summary>
         /// <value>Protection from accidental deletion of this object [true/false]</value>
@@ -242,6 +254,13 @@ namespace akeyless.Model
         public string DestinationPath { get; set; }
 
         /// <summary>
+        /// If set, the cert issuer will support the acme protocol
+        /// </summary>
+        /// <value>If set, the cert issuer will support the acme protocol</value>
+        [DataMember(Name = "enable-acme", EmitDefaultValue = true)]
+        public bool EnableAcme { get; set; }
+
+        /// <summary>
         /// How many days before the expiration of the certificate would you like to be notified.
         /// </summary>
         /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
@@ -249,9 +268,9 @@ namespace akeyless.Model
         public List<string> ExpirationEventIn { get; set; }
 
         /// <summary>
-        /// The GW cluster URL to issue the certificate from, required in Public CA mode or to allow CRLs on private CA
+        /// The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME
         /// </summary>
-        /// <value>The GW cluster URL to issue the certificate from, required in Public CA mode or to allow CRLs on private CA</value>
+        /// <value>The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME</value>
         [DataMember(Name = "gw-cluster-url", EmitDefaultValue = false)]
         public string GwClusterUrl { get; set; }
 
@@ -422,9 +441,11 @@ namespace akeyless.Model
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  CreatePrivateCrl: ").Append(CreatePrivateCrl).Append("\n");
             sb.Append("  CreatePublicCrl: ").Append(CreatePublicCrl).Append("\n");
+            sb.Append("  CriticalKeyUsage: ").Append(CriticalKeyUsage).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  DestinationPath: ").Append(DestinationPath).Append("\n");
+            sb.Append("  EnableAcme: ").Append(EnableAcme).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GwClusterUrl: ").Append(GwClusterUrl).Append("\n");
             sb.Append("  IsCa: ").Append(IsCa).Append("\n");
@@ -538,6 +559,11 @@ namespace akeyless.Model
                     this.CreatePublicCrl.Equals(input.CreatePublicCrl)
                 ) && 
                 (
+                    this.CriticalKeyUsage == input.CriticalKeyUsage ||
+                    (this.CriticalKeyUsage != null &&
+                    this.CriticalKeyUsage.Equals(input.CriticalKeyUsage))
+                ) && 
+                (
                     this.DeleteProtection == input.DeleteProtection ||
                     (this.DeleteProtection != null &&
                     this.DeleteProtection.Equals(input.DeleteProtection))
@@ -551,6 +577,10 @@ namespace akeyless.Model
                     this.DestinationPath == input.DestinationPath ||
                     (this.DestinationPath != null &&
                     this.DestinationPath.Equals(input.DestinationPath))
+                ) && 
+                (
+                    this.EnableAcme == input.EnableAcme ||
+                    this.EnableAcme.Equals(input.EnableAcme)
                 ) && 
                 (
                     this.ExpirationEventIn == input.ExpirationEventIn ||
@@ -701,6 +731,10 @@ namespace akeyless.Model
                 }
                 hashCode = (hashCode * 59) + this.CreatePrivateCrl.GetHashCode();
                 hashCode = (hashCode * 59) + this.CreatePublicCrl.GetHashCode();
+                if (this.CriticalKeyUsage != null)
+                {
+                    hashCode = (hashCode * 59) + this.CriticalKeyUsage.GetHashCode();
+                }
                 if (this.DeleteProtection != null)
                 {
                     hashCode = (hashCode * 59) + this.DeleteProtection.GetHashCode();
@@ -713,6 +747,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.DestinationPath.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.EnableAcme.GetHashCode();
                 if (this.ExpirationEventIn != null)
                 {
                     hashCode = (hashCode * 59) + this.ExpirationEventIn.GetHashCode();

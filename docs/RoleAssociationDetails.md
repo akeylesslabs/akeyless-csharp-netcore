@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AssocId** | **string** |  | [optional] 
 **AuthMethodName** | **string** |  | [optional] 
 **AuthMethodSubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
+**IsSubclaimsWithOperator** | **bool** |  | [optional] 
 **RoleName** | **string** |  | [optional] 
 **SubClaimsCaseSensitive** | **bool** |  | [optional] 
 

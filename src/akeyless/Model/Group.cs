@@ -41,9 +41,10 @@ namespace akeyless.Model
         /// <param name="groupAlias">groupAlias.</param>
         /// <param name="groupId">groupId.</param>
         /// <param name="groupName">groupName.</param>
+        /// <param name="isSubclaimsWithOperator">isSubclaimsWithOperator.</param>
         /// <param name="modificationDate">modificationDate.</param>
         /// <param name="userAssignments">userAssignments.</param>
-        public Group(string accountId = default(string), DateTime creationDate = default(DateTime), string description = default(string), string groupAlias = default(string), string groupId = default(string), string groupName = default(string), DateTime modificationDate = default(DateTime), List<AccessPermissionAssignment> userAssignments = default(List<AccessPermissionAssignment>))
+        public Group(string accountId = default(string), DateTime creationDate = default(DateTime), string description = default(string), string groupAlias = default(string), string groupId = default(string), string groupName = default(string), bool isSubclaimsWithOperator = default(bool), DateTime modificationDate = default(DateTime), List<AccessPermissionAssignment> userAssignments = default(List<AccessPermissionAssignment>))
         {
             this.AccountId = accountId;
             this.CreationDate = creationDate;
@@ -51,6 +52,7 @@ namespace akeyless.Model
             this.GroupAlias = groupAlias;
             this.GroupId = groupId;
             this.GroupName = groupName;
+            this.IsSubclaimsWithOperator = isSubclaimsWithOperator;
             this.ModificationDate = modificationDate;
             this.UserAssignments = userAssignments;
         }
@@ -92,6 +94,12 @@ namespace akeyless.Model
         public string GroupName { get; set; }
 
         /// <summary>
+        /// Gets or Sets IsSubclaimsWithOperator
+        /// </summary>
+        [DataMember(Name = "is_subclaims_with_operator", EmitDefaultValue = true)]
+        public bool IsSubclaimsWithOperator { get; set; }
+
+        /// <summary>
         /// Gets or Sets ModificationDate
         /// </summary>
         [DataMember(Name = "modification_date", EmitDefaultValue = false)]
@@ -117,6 +125,7 @@ namespace akeyless.Model
             sb.Append("  GroupAlias: ").Append(GroupAlias).Append("\n");
             sb.Append("  GroupId: ").Append(GroupId).Append("\n");
             sb.Append("  GroupName: ").Append(GroupName).Append("\n");
+            sb.Append("  IsSubclaimsWithOperator: ").Append(IsSubclaimsWithOperator).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("  UserAssignments: ").Append(UserAssignments).Append("\n");
             sb.Append("}\n");
@@ -185,6 +194,10 @@ namespace akeyless.Model
                     this.GroupName.Equals(input.GroupName))
                 ) && 
                 (
+                    this.IsSubclaimsWithOperator == input.IsSubclaimsWithOperator ||
+                    this.IsSubclaimsWithOperator.Equals(input.IsSubclaimsWithOperator)
+                ) && 
+                (
                     this.ModificationDate == input.ModificationDate ||
                     (this.ModificationDate != null &&
                     this.ModificationDate.Equals(input.ModificationDate))
@@ -230,6 +243,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.GroupName.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsSubclaimsWithOperator.GetHashCode();
                 if (this.ModificationDate != null)
                 {
                     hashCode = (hashCode * 59) + this.ModificationDate.GetHashCode();

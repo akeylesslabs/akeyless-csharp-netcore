@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AssocId** | **string** |  | [optional] 
 **AuthMethodSubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
 **IsSubClaimsCaseSensitive** | **bool** |  | [optional] 
+**IsSubclaimsWithOperator** | **bool** |  | [optional] 
 **RoleName** | **string** |  | [optional] 
 **Rules** | [**Rules**](Rules.md) |  | [optional] 
 

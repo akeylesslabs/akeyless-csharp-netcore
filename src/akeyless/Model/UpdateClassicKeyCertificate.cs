@@ -41,11 +41,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateClassicKeyCertificate" /> class.
         /// </summary>
         /// <param name="certFileData">PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates..</param>
+        /// <param name="certificateFormat">certificateFormat.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">ClassicKey name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateClassicKeyCertificate(string certFileData = default(string), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
+        public UpdateClassicKeyCertificate(string certFileData = default(string), string certificateFormat = default(string), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -54,6 +55,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.CertFileData = certFileData;
+            this.CertificateFormat = certificateFormat;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
@@ -65,6 +67,12 @@ namespace akeyless.Model
         /// <value>PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates.</value>
         [DataMember(Name = "cert-file-data", EmitDefaultValue = false)]
         public string CertFileData { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateFormat
+        /// </summary>
+        [DataMember(Name = "certificate-format", EmitDefaultValue = false)]
+        public string CertificateFormat { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -103,6 +111,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateClassicKeyCertificate {\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
+            sb.Append("  CertificateFormat: ").Append(CertificateFormat).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -148,6 +157,11 @@ namespace akeyless.Model
                     this.CertFileData.Equals(input.CertFileData))
                 ) && 
                 (
+                    this.CertificateFormat == input.CertificateFormat ||
+                    (this.CertificateFormat != null &&
+                    this.CertificateFormat.Equals(input.CertificateFormat))
+                ) && 
+                (
                     this.Json == input.Json ||
                     this.Json.Equals(input.Json)
                 ) && 
@@ -180,6 +194,10 @@ namespace akeyless.Model
                 if (this.CertFileData != null)
                 {
                     hashCode = (hashCode * 59) + this.CertFileData.GetHashCode();
+                }
+                if (this.CertificateFormat != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateFormat.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Json.GetHashCode();
                 if (this.Name != null)

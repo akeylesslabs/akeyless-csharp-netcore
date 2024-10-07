@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
         /// <param name="certFileData">PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates..</param>
+        /// <param name="certificateFormat">certificateFormat.</param>
         /// <param name="changeEvent">Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
@@ -83,7 +84,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless Web Access Bastion (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string providerType = default(string), string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = "default_metadata", List<string> expirationEventIn = default(List<string>), string hostProvider = default(string), bool json = false, string maxVersions = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
+        public UpdateItem(string providerType = default(string), string accessibility = "regular", List<string> addTag = default(List<string>), string certFileData = default(string), string certificateFormat = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = "default_metadata", List<string> expirationEventIn = default(List<string>), string hostProvider = default(string), bool json = false, string maxVersions = default(string), string name = default(string), string newMetadata = "default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = "false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -96,6 +97,7 @@ namespace akeyless.Model
             this.Accessibility = accessibility ?? "regular";
             this.AddTag = addTag;
             this.CertFileData = certFileData;
+            this.CertificateFormat = certificateFormat;
             this.ChangeEvent = changeEvent;
             this.DeleteProtection = deleteProtection;
             // use default value if no "description" provided
@@ -165,6 +167,12 @@ namespace akeyless.Model
         /// <value>PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates.</value>
         [DataMember(Name = "cert-file-data", EmitDefaultValue = false)]
         public string CertFileData { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateFormat
+        /// </summary>
+        [DataMember(Name = "certificate-format", EmitDefaultValue = false)]
+        public string CertificateFormat { get; set; }
 
         /// <summary>
         /// Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret)
@@ -451,6 +459,7 @@ namespace akeyless.Model
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
             sb.Append("  CertFileData: ").Append(CertFileData).Append("\n");
+            sb.Append("  CertificateFormat: ").Append(CertificateFormat).Append("\n");
             sb.Append("  ChangeEvent: ").Append(ChangeEvent).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
@@ -545,6 +554,11 @@ namespace akeyless.Model
                     this.CertFileData == input.CertFileData ||
                     (this.CertFileData != null &&
                     this.CertFileData.Equals(input.CertFileData))
+                ) && 
+                (
+                    this.CertificateFormat == input.CertificateFormat ||
+                    (this.CertificateFormat != null &&
+                    this.CertificateFormat.Equals(input.CertificateFormat))
                 ) && 
                 (
                     this.ChangeEvent == input.ChangeEvent ||
@@ -766,6 +780,10 @@ namespace akeyless.Model
                 if (this.CertFileData != null)
                 {
                     hashCode = (hashCode * 59) + this.CertFileData.GetHashCode();
+                }
+                if (this.CertificateFormat != null)
+                {
+                    hashCode = (hashCode * 59) + this.CertificateFormat.GetHashCode();
                 }
                 if (this.ChangeEvent != null)
                 {

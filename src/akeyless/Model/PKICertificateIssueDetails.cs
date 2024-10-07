@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PKICertificateIssueDetails" /> class.
         /// </summary>
+        /// <param name="acmeEnabled">acmeEnabled.</param>
         /// <param name="allowAnyName">allowAnyName.</param>
         /// <param name="allowCopyExtFromCsr">allowCopyExtFromCsr.</param>
         /// <param name="allowSubdomains">allowSubdomains.</param>
@@ -58,6 +59,7 @@ namespace akeyless.Model
         /// <param name="keyType">keyType.</param>
         /// <param name="keyUsageList">keyUsageList.</param>
         /// <param name="locality">locality.</param>
+        /// <param name="nonCriticalKeyUsage">nonCriticalKeyUsage.</param>
         /// <param name="notBeforeDuration">A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years..</param>
         /// <param name="organizationList">organizationList.</param>
         /// <param name="organizationUnitList">organizationUnitList.</param>
@@ -67,8 +69,9 @@ namespace akeyless.Model
         /// <param name="requireCn">requireCn.</param>
         /// <param name="serverFlag">serverFlag.</param>
         /// <param name="streetAddress">streetAddress.</param>
-        public PKICertificateIssueDetails(bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedUriSans = default(List<string>), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string destinationPath = default(string), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long notBeforeDuration = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
+        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedUriSans = default(List<string>), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string destinationPath = default(string), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
         {
+            this.AcmeEnabled = acmeEnabled;
             this.AllowAnyName = allowAnyName;
             this.AllowCopyExtFromCsr = allowCopyExtFromCsr;
             this.AllowSubdomains = allowSubdomains;
@@ -92,6 +95,7 @@ namespace akeyless.Model
             this.KeyType = keyType;
             this.KeyUsageList = keyUsageList;
             this.Locality = locality;
+            this.NonCriticalKeyUsage = nonCriticalKeyUsage;
             this.NotBeforeDuration = notBeforeDuration;
             this.OrganizationList = organizationList;
             this.OrganizationUnitList = organizationUnitList;
@@ -102,6 +106,12 @@ namespace akeyless.Model
             this.ServerFlag = serverFlag;
             this.StreetAddress = streetAddress;
         }
+
+        /// <summary>
+        /// Gets or Sets AcmeEnabled
+        /// </summary>
+        [DataMember(Name = "acme_enabled", EmitDefaultValue = true)]
+        public bool AcmeEnabled { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowAnyName
@@ -245,6 +255,12 @@ namespace akeyless.Model
         public List<string> Locality { get; set; }
 
         /// <summary>
+        /// Gets or Sets NonCriticalKeyUsage
+        /// </summary>
+        [DataMember(Name = "non_critical_key_usage", EmitDefaultValue = true)]
+        public bool NonCriticalKeyUsage { get; set; }
+
+        /// <summary>
         /// A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
         /// </summary>
         /// <value>A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.</value>
@@ -308,6 +324,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class PKICertificateIssueDetails {\n");
+            sb.Append("  AcmeEnabled: ").Append(AcmeEnabled).Append("\n");
             sb.Append("  AllowAnyName: ").Append(AllowAnyName).Append("\n");
             sb.Append("  AllowCopyExtFromCsr: ").Append(AllowCopyExtFromCsr).Append("\n");
             sb.Append("  AllowSubdomains: ").Append(AllowSubdomains).Append("\n");
@@ -331,6 +348,7 @@ namespace akeyless.Model
             sb.Append("  KeyType: ").Append(KeyType).Append("\n");
             sb.Append("  KeyUsageList: ").Append(KeyUsageList).Append("\n");
             sb.Append("  Locality: ").Append(Locality).Append("\n");
+            sb.Append("  NonCriticalKeyUsage: ").Append(NonCriticalKeyUsage).Append("\n");
             sb.Append("  NotBeforeDuration: ").Append(NotBeforeDuration).Append("\n");
             sb.Append("  OrganizationList: ").Append(OrganizationList).Append("\n");
             sb.Append("  OrganizationUnitList: ").Append(OrganizationUnitList).Append("\n");
@@ -375,6 +393,10 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.AcmeEnabled == input.AcmeEnabled ||
+                    this.AcmeEnabled.Equals(input.AcmeEnabled)
+                ) && 
                 (
                     this.AllowAnyName == input.AllowAnyName ||
                     this.AllowAnyName.Equals(input.AllowAnyName)
@@ -486,6 +508,10 @@ namespace akeyless.Model
                     this.Locality.SequenceEqual(input.Locality)
                 ) && 
                 (
+                    this.NonCriticalKeyUsage == input.NonCriticalKeyUsage ||
+                    this.NonCriticalKeyUsage.Equals(input.NonCriticalKeyUsage)
+                ) && 
+                (
                     this.NotBeforeDuration == input.NotBeforeDuration ||
                     this.NotBeforeDuration.Equals(input.NotBeforeDuration)
                 ) && 
@@ -542,6 +568,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.AcmeEnabled.GetHashCode();
                 hashCode = (hashCode * 59) + this.AllowAnyName.GetHashCode();
                 hashCode = (hashCode * 59) + this.AllowCopyExtFromCsr.GetHashCode();
                 hashCode = (hashCode * 59) + this.AllowSubdomains.GetHashCode();
@@ -598,6 +625,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Locality.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.NonCriticalKeyUsage.GetHashCode();
                 hashCode = (hashCode * 59) + this.NotBeforeDuration.GetHashCode();
                 if (this.OrganizationList != null)
                 {

@@ -38,13 +38,15 @@ namespace akeyless.Model
         /// <param name="assocId">assocId.</param>
         /// <param name="authMethodName">authMethodName.</param>
         /// <param name="authMethodSubClaims">authMethodSubClaims.</param>
+        /// <param name="isSubclaimsWithOperator">isSubclaimsWithOperator.</param>
         /// <param name="roleName">roleName.</param>
         /// <param name="subClaimsCaseSensitive">subClaimsCaseSensitive.</param>
-        public RoleAssociationDetails(string assocId = default(string), string authMethodName = default(string), Dictionary<string, List<string>> authMethodSubClaims = default(Dictionary<string, List<string>>), string roleName = default(string), bool subClaimsCaseSensitive = default(bool))
+        public RoleAssociationDetails(string assocId = default(string), string authMethodName = default(string), Dictionary<string, List<string>> authMethodSubClaims = default(Dictionary<string, List<string>>), bool isSubclaimsWithOperator = default(bool), string roleName = default(string), bool subClaimsCaseSensitive = default(bool))
         {
             this.AssocId = assocId;
             this.AuthMethodName = authMethodName;
             this.AuthMethodSubClaims = authMethodSubClaims;
+            this.IsSubclaimsWithOperator = isSubclaimsWithOperator;
             this.RoleName = roleName;
             this.SubClaimsCaseSensitive = subClaimsCaseSensitive;
         }
@@ -66,6 +68,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "auth_method_sub_claims", EmitDefaultValue = false)]
         public Dictionary<string, List<string>> AuthMethodSubClaims { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsSubclaimsWithOperator
+        /// </summary>
+        [DataMember(Name = "is_subclaims_with_operator", EmitDefaultValue = true)]
+        public bool IsSubclaimsWithOperator { get; set; }
 
         /// <summary>
         /// Gets or Sets RoleName
@@ -90,6 +98,7 @@ namespace akeyless.Model
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  AuthMethodName: ").Append(AuthMethodName).Append("\n");
             sb.Append("  AuthMethodSubClaims: ").Append(AuthMethodSubClaims).Append("\n");
+            sb.Append("  IsSubclaimsWithOperator: ").Append(IsSubclaimsWithOperator).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  SubClaimsCaseSensitive: ").Append(SubClaimsCaseSensitive).Append("\n");
             sb.Append("}\n");
@@ -144,6 +153,10 @@ namespace akeyless.Model
                     this.AuthMethodSubClaims.SequenceEqual(input.AuthMethodSubClaims)
                 ) && 
                 (
+                    this.IsSubclaimsWithOperator == input.IsSubclaimsWithOperator ||
+                    this.IsSubclaimsWithOperator.Equals(input.IsSubclaimsWithOperator)
+                ) && 
+                (
                     this.RoleName == input.RoleName ||
                     (this.RoleName != null &&
                     this.RoleName.Equals(input.RoleName))
@@ -175,6 +188,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.AuthMethodSubClaims.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsSubclaimsWithOperator.GetHashCode();
                 if (this.RoleName != null)
                 {
                     hashCode = (hashCode * 59) + this.RoleName.GetHashCode();

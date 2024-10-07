@@ -37,6 +37,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**AuthMethodUpdateOauth2**](V2Api.md#authmethodupdateoauth2) | **POST** /auth-method-update-oauth2 |  |
 | [**AuthMethodUpdateSAML**](V2Api.md#authmethodupdatesaml) | **POST** /auth-method-update-saml |  |
 | [**AuthMethodUpdateUniversalIdentity**](V2Api.md#authmethodupdateuniversalidentity) | **POST** /auth-method-update-universal-identity |  |
+| [**ChangeAdminAccountPassword**](V2Api.md#changeadminaccountpassword) | **POST** /change-admin-account-password |  |
 | [**Configure**](V2Api.md#configure) | **POST** /configure |  |
 | [**Connect**](V2Api.md#connect) | **POST** /connect |  |
 | [**CreateAWSTarget**](V2Api.md#createawstarget) | **POST** /create-aws-target |  |
@@ -94,6 +95,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateWindowsTarget**](V2Api.md#createwindowstarget) | **POST** /create-windows-target |  |
 | [**CreateZeroSSLTarget**](V2Api.md#createzerossltarget) | **POST** /create-zerossl-target |  |
 | [**CreateldapTarget**](V2Api.md#createldaptarget) | **POST** /create-ldap-target |  |
+| [**DeactivateAcmeAccount**](V2Api.md#deactivateacmeaccount) | **POST** /deactivate-acme-account |  |
 | [**Decrypt**](V2Api.md#decrypt) | **POST** /decrypt |  |
 | [**DecryptBatch**](V2Api.md#decryptbatch) | **POST** /decrypt-batch |  |
 | [**DecryptGPG**](V2Api.md#decryptgpg) | **POST** /decrypt-gpg |  |
@@ -306,6 +308,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayUpdateRemoteAccessRdpRecordings**](V2Api.md#gatewayupdateremoteaccessrdprecordings) | **POST** /gateway-update-remote-access-rdp-recording |  |
 | [**GatewayUpdateTlsCert**](V2Api.md#gatewayupdatetlscert) | **POST** /gateway-update-tls-cert |  |
 | [**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds |  |
+| [**GenerateAcmeEab**](V2Api.md#generateacmeeab) | **POST** /generate-acme-eab |  |
 | [**GenerateCsr**](V2Api.md#generatecsr) | **POST** /generate-csr |  |
 | [**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo |  |
 | [**GetAccountSettings**](V2Api.md#getaccountsettings) | **POST** /get-account-settings |  |
@@ -352,6 +355,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**KmipRenewServerCertificate**](V2Api.md#kmiprenewservercertificate) | **POST** /kmip-renew-environment |  |
 | [**KmipServerSetup**](V2Api.md#kmipserversetup) | **POST** /kmip-create-environment |  |
 | [**KmipSetServerState**](V2Api.md#kmipsetserverstate) | **POST** /kmip-set-environment-state |  |
+| [**ListAcmeAccounts**](V2Api.md#listacmeaccounts) | **POST** /list-acme-accounts |  |
 | [**ListAuthMethods**](V2Api.md#listauthmethods) | **POST** /list-auth-methods |  |
 | [**ListGateways**](V2Api.md#listgateways) | **POST** /list-gateways |  |
 | [**ListGroups**](V2Api.md#listgroups) | **POST** /list-group |  |
@@ -3458,6 +3462,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | authMethodUpdateUniversalIdentityResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="changeadminaccountpassword"></a>
+# **ChangeAdminAccountPassword**
+> Object ChangeAdminAccountPassword (ChangeAdminAccountPassword body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ChangeAdminAccountPasswordExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ChangeAdminAccountPassword(); // ChangeAdminAccountPassword | 
+
+            try
+            {
+                Object result = apiInstance.ChangeAdminAccountPassword(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ChangeAdminAccountPassword: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ChangeAdminAccountPasswordWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.ChangeAdminAccountPasswordWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ChangeAdminAccountPasswordWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ChangeAdminAccountPassword**](ChangeAdminAccountPassword.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | changeAdminAccountPasswordResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -8474,6 +8566,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createldapTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="deactivateacmeaccount"></a>
+# **DeactivateAcmeAccount**
+> Object DeactivateAcmeAccount (DeactivateAcmeAccount body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DeactivateAcmeAccountExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new DeactivateAcmeAccount(); // DeactivateAcmeAccount | 
+
+            try
+            {
+                Object result = apiInstance.DeactivateAcmeAccount(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DeactivateAcmeAccount: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeactivateAcmeAccountWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.DeactivateAcmeAccountWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DeactivateAcmeAccountWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**DeactivateAcmeAccount**](DeactivateAcmeAccount.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | deactivateAcmeAccountResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -27114,6 +27294,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="generateacmeeab"></a>
+# **GenerateAcmeEab**
+> GenerateAcmeEabOutput GenerateAcmeEab (GenerateAcmeEab body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GenerateAcmeEabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new GenerateAcmeEab(); // GenerateAcmeEab | 
+
+            try
+            {
+                GenerateAcmeEabOutput result = apiInstance.GenerateAcmeEab(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GenerateAcmeEab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GenerateAcmeEabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GenerateAcmeEabOutput> response = apiInstance.GenerateAcmeEabWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GenerateAcmeEabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GenerateAcmeEab**](GenerateAcmeEab.md) |  |  |
+
+### Return type
+
+[**GenerateAcmeEabOutput**](GenerateAcmeEabOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | generateAcmeEabResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="generatecsr"></a>
 # **GenerateCsr**
 > GenerateCsrOutput GenerateCsr (GenerateCsr body)
@@ -31153,6 +31421,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | kmipSetServerStateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="listacmeaccounts"></a>
+# **ListAcmeAccounts**
+> ListAcmeAccountsOutput ListAcmeAccounts (ListAcmeAccounts body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ListAcmeAccountsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ListAcmeAccounts(); // ListAcmeAccounts | 
+
+            try
+            {
+                ListAcmeAccountsOutput result = apiInstance.ListAcmeAccounts(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ListAcmeAccounts: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListAcmeAccountsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ListAcmeAccountsOutput> response = apiInstance.ListAcmeAccountsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ListAcmeAccountsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ListAcmeAccounts**](ListAcmeAccounts.md) |  |  |
+
+### Return type
+
+[**ListAcmeAccountsOutput**](ListAcmeAccountsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | listAcmeAccountsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

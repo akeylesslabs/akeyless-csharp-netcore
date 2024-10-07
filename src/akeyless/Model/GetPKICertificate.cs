@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="certIssuerName">The name of the PKI certificate issuer (required).</param>
         /// <param name="commonName">The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken).</param>
         /// <param name="csrDataBase64">Certificate Signing Request contents encoded in base64 to generate the certificate with.</param>
-        /// <param name="extendedKeyUsage">A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;..</param>
+        /// <param name="extendedKeyUsage">A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;. If critical is present the extension will be marked as critical.</param>
         /// <param name="extraExtensions">A json string that defines the requested extra extensions for the certificate.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyDataBase64">PKI key file contents. If this option is used, the certificate will be printed to stdout.</param>
@@ -102,9 +102,9 @@ namespace akeyless.Model
         public string CsrDataBase64 { get; set; }
 
         /// <summary>
-        /// A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;.
+        /// A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;. If critical is present the extension will be marked as critical
         /// </summary>
-        /// <value>A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;.</value>
+        /// <value>A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: &#39;clientauth&#39;, &#39;serverauth&#39;. If critical is present the extension will be marked as critical</value>
         [DataMember(Name = "extended-key-usage", EmitDefaultValue = false)]
         public string ExtendedKeyUsage { get; set; }
 

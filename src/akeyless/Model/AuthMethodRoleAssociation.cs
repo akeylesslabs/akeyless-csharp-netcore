@@ -39,14 +39,16 @@ namespace akeyless.Model
         /// <param name="assocId">assocId.</param>
         /// <param name="authMethodSubClaims">authMethodSubClaims.</param>
         /// <param name="isSubClaimsCaseSensitive">isSubClaimsCaseSensitive.</param>
+        /// <param name="isSubclaimsWithOperator">isSubclaimsWithOperator.</param>
         /// <param name="roleName">roleName.</param>
         /// <param name="rules">rules.</param>
-        public AuthMethodRoleAssociation(List<string> allowedOps = default(List<string>), string assocId = default(string), Dictionary<string, List<string>> authMethodSubClaims = default(Dictionary<string, List<string>>), bool isSubClaimsCaseSensitive = default(bool), string roleName = default(string), Rules rules = default(Rules))
+        public AuthMethodRoleAssociation(List<string> allowedOps = default(List<string>), string assocId = default(string), Dictionary<string, List<string>> authMethodSubClaims = default(Dictionary<string, List<string>>), bool isSubClaimsCaseSensitive = default(bool), bool isSubclaimsWithOperator = default(bool), string roleName = default(string), Rules rules = default(Rules))
         {
             this.AllowedOps = allowedOps;
             this.AssocId = assocId;
             this.AuthMethodSubClaims = authMethodSubClaims;
             this.IsSubClaimsCaseSensitive = isSubClaimsCaseSensitive;
+            this.IsSubclaimsWithOperator = isSubclaimsWithOperator;
             this.RoleName = roleName;
             this.Rules = rules;
         }
@@ -76,6 +78,12 @@ namespace akeyless.Model
         public bool IsSubClaimsCaseSensitive { get; set; }
 
         /// <summary>
+        /// Gets or Sets IsSubclaimsWithOperator
+        /// </summary>
+        [DataMember(Name = "is_subclaims_with_operator", EmitDefaultValue = true)]
+        public bool IsSubclaimsWithOperator { get; set; }
+
+        /// <summary>
         /// Gets or Sets RoleName
         /// </summary>
         [DataMember(Name = "role_name", EmitDefaultValue = false)]
@@ -99,6 +107,7 @@ namespace akeyless.Model
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  AuthMethodSubClaims: ").Append(AuthMethodSubClaims).Append("\n");
             sb.Append("  IsSubClaimsCaseSensitive: ").Append(IsSubClaimsCaseSensitive).Append("\n");
+            sb.Append("  IsSubclaimsWithOperator: ").Append(IsSubclaimsWithOperator).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  Rules: ").Append(Rules).Append("\n");
             sb.Append("}\n");
@@ -158,6 +167,10 @@ namespace akeyless.Model
                     this.IsSubClaimsCaseSensitive.Equals(input.IsSubClaimsCaseSensitive)
                 ) && 
                 (
+                    this.IsSubclaimsWithOperator == input.IsSubclaimsWithOperator ||
+                    this.IsSubclaimsWithOperator.Equals(input.IsSubclaimsWithOperator)
+                ) && 
+                (
                     this.RoleName == input.RoleName ||
                     (this.RoleName != null &&
                     this.RoleName.Equals(input.RoleName))
@@ -191,6 +204,7 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.AuthMethodSubClaims.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IsSubClaimsCaseSensitive.GetHashCode();
+                hashCode = (hashCode * 59) + this.IsSubclaimsWithOperator.GetHashCode();
                 if (this.RoleName != null)
                 {
                     hashCode = (hashCode * 59) + this.RoleName.GetHashCode();
