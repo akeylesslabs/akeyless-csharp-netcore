@@ -6,7 +6,7 @@ importPasswords is a command that import passwords
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | **string** | for personal password manager | [optional] [default to "personal"]
-**Format** | **string** | Password format type [LastPass/Chrome/Firefox] | [optional] [default to "LastPass"]
+**Format** | **string** | Password format type [LastPass/Chrome/Firefox/1password/keeper/bitwarden/dashlane] | [optional] [default to "LastPass"]
 **ImportPath** | **string** | File path | 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **ProtectionKey** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 

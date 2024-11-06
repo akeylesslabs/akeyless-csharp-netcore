@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="allowedDomains">A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list).</param>
         /// <param name="allowedExtraExtensions">A json string containing the allowed extra extensions for the pki cert issuer.</param>
         /// <param name="allowedUriSans">A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list).</param>
+        /// <param name="autoRenew">Automatically renew certificates before expiration.</param>
         /// <param name="caTarget">The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode.</param>
         /// <param name="clientFlag">If set, certificates will be flagged for client auth use.</param>
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
@@ -72,6 +73,7 @@ namespace akeyless.Model
         /// <param name="postalCode">A comma-separated list of postal codes that will be set in the issued certificate.</param>
         /// <param name="protectCertificates">Whether to protect generated certificates from deletion.</param>
         /// <param name="province">A comma-separated list of provinces that will be set in the issued certificate.</param>
+        /// <param name="scheduledRenew">Number of days before expiration to renew certificates.</param>
         /// <param name="serverFlag">If set, certificates will be flagged for server auth use.</param>
         /// <param name="signerKeyName">A key to sign the certificate with, required in Private CA mode (required) (default to &quot;dummy_signer_key&quot;).</param>
         /// <param name="streetAddress">A comma-separated list of street addresses that will be set in the issued certificate.</param>
@@ -79,7 +81,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedUriSans = default(string), string caTarget = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string criticalKeyUsage = "true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), string caTarget = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string criticalKeyUsage = "true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), bool json = false, string keyUsage = "DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = "dummy_signer_key", string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -105,6 +107,7 @@ namespace akeyless.Model
             this.AllowedDomains = allowedDomains;
             this.AllowedExtraExtensions = allowedExtraExtensions;
             this.AllowedUriSans = allowedUriSans;
+            this.AutoRenew = autoRenew;
             this.CaTarget = caTarget;
             this.ClientFlag = clientFlag;
             this.CodeSigningFlag = codeSigningFlag;
@@ -132,6 +135,7 @@ namespace akeyless.Model
             this.PostalCode = postalCode;
             this.ProtectCertificates = protectCertificates;
             this.Province = province;
+            this.ScheduledRenew = scheduledRenew;
             this.ServerFlag = serverFlag;
             this.StreetAddress = streetAddress;
             this.Tag = tag;
@@ -180,6 +184,13 @@ namespace akeyless.Model
         /// <value>A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list)</value>
         [DataMember(Name = "allowed-uri-sans", EmitDefaultValue = false)]
         public string AllowedUriSans { get; set; }
+
+        /// <summary>
+        /// Automatically renew certificates before expiration
+        /// </summary>
+        /// <value>Automatically renew certificates before expiration</value>
+        [DataMember(Name = "auto-renew", EmitDefaultValue = true)]
+        public bool AutoRenew { get; set; }
 
         /// <summary>
         /// The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode
@@ -364,6 +375,13 @@ namespace akeyless.Model
         public string Province { get; set; }
 
         /// <summary>
+        /// Number of days before expiration to renew certificates
+        /// </summary>
+        /// <value>Number of days before expiration to renew certificates</value>
+        [DataMember(Name = "scheduled-renew", EmitDefaultValue = false)]
+        public long ScheduledRenew { get; set; }
+
+        /// <summary>
         /// If set, certificates will be flagged for server auth use
         /// </summary>
         /// <value>If set, certificates will be flagged for server auth use</value>
@@ -426,6 +444,7 @@ namespace akeyless.Model
             sb.Append("  AllowedDomains: ").Append(AllowedDomains).Append("\n");
             sb.Append("  AllowedExtraExtensions: ").Append(AllowedExtraExtensions).Append("\n");
             sb.Append("  AllowedUriSans: ").Append(AllowedUriSans).Append("\n");
+            sb.Append("  AutoRenew: ").Append(AutoRenew).Append("\n");
             sb.Append("  CaTarget: ").Append(CaTarget).Append("\n");
             sb.Append("  ClientFlag: ").Append(ClientFlag).Append("\n");
             sb.Append("  CodeSigningFlag: ").Append(CodeSigningFlag).Append("\n");
@@ -452,6 +471,7 @@ namespace akeyless.Model
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
             sb.Append("  ProtectCertificates: ").Append(ProtectCertificates).Append("\n");
             sb.Append("  Province: ").Append(Province).Append("\n");
+            sb.Append("  ScheduledRenew: ").Append(ScheduledRenew).Append("\n");
             sb.Append("  ServerFlag: ").Append(ServerFlag).Append("\n");
             sb.Append("  SignerKeyName: ").Append(SignerKeyName).Append("\n");
             sb.Append("  StreetAddress: ").Append(StreetAddress).Append("\n");
@@ -520,6 +540,10 @@ namespace akeyless.Model
                     this.AllowedUriSans == input.AllowedUriSans ||
                     (this.AllowedUriSans != null &&
                     this.AllowedUriSans.Equals(input.AllowedUriSans))
+                ) && 
+                (
+                    this.AutoRenew == input.AutoRenew ||
+                    this.AutoRenew.Equals(input.AutoRenew)
                 ) && 
                 (
                     this.CaTarget == input.CaTarget ||
@@ -643,6 +667,10 @@ namespace akeyless.Model
                     this.Province.Equals(input.Province))
                 ) && 
                 (
+                    this.ScheduledRenew == input.ScheduledRenew ||
+                    this.ScheduledRenew.Equals(input.ScheduledRenew)
+                ) && 
+                (
                     this.ServerFlag == input.ServerFlag ||
                     this.ServerFlag.Equals(input.ServerFlag)
                 ) && 
@@ -703,6 +731,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.AllowedUriSans.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.AutoRenew.GetHashCode();
                 if (this.CaTarget != null)
                 {
                     hashCode = (hashCode * 59) + this.CaTarget.GetHashCode();
@@ -777,6 +806,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Province.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ScheduledRenew.GetHashCode();
                 hashCode = (hashCode * 59) + this.ServerFlag.GetHashCode();
                 if (this.SignerKeyName != null)
                 {

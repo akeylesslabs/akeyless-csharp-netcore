@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AuthMethodsEventSourceLocations** | **List&lt;string&gt;** | Auth Method Event sources | [optional] 
 **AuthToken** | **string** | Base64 encoded Token string for authentication type Token | [optional] 
-**AuthType** | **string** | The Webhook authentication type [user-pass, token, certificate] | [optional] [default to "user-pass"]
+**AuthType** | **string** | The Webhook authentication type [user-pass, bearer-token, certificate] | [optional] [default to "user-pass"]
 **ClientCertData** | **string** | Base64 encoded PEM certificate, relevant for certificate auth-type | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **Enable** | **string** | Enable/Disable Event Forwarder [true/false] | [optional] [default to "true"]
-**EventTypes** | **List&lt;string&gt;** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated] | [optional] 
+**EventTypes** | **List&lt;string&gt;** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report] | [optional] 
 **GatewaysEventSourceLocations** | **List&lt;string&gt;** | Event sources | 
 **ItemsEventSourceLocations** | **List&lt;string&gt;** | Items Event sources | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

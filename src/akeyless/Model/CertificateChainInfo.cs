@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CertificateChainInfo" /> class.
         /// </summary>
+        /// <param name="autoRenewCertificate">autoRenewCertificate.</param>
         /// <param name="certificateChain">certificateChain.</param>
         /// <param name="certificateFormat">certificateFormat.</param>
         /// <param name="certificateHasPrivateKey">certificateHasPrivateKey.</param>
@@ -43,9 +44,12 @@ namespace akeyless.Model
         /// <param name="certificateIssuerName">certificateIssuerName.</param>
         /// <param name="certificatePem">certificatePem.</param>
         /// <param name="certificateStatus">certificateStatus.</param>
+        /// <param name="errorMessage">errorMessage.</param>
         /// <param name="expirationEvents">expirationEvents.</param>
-        public CertificateChainInfo(List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), bool certificateHasPrivateKey = default(bool), string certificateIssuerGwClusterUrl = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>))
+        /// <param name="renewBeforeExpirationInDays">renewBeforeExpirationInDays.</param>
+        public CertificateChainInfo(bool autoRenewCertificate = default(bool), List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), bool certificateHasPrivateKey = default(bool), string certificateIssuerGwClusterUrl = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), string errorMessage = default(string), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long renewBeforeExpirationInDays = default(long))
         {
+            this.AutoRenewCertificate = autoRenewCertificate;
             this.CertificateChain = certificateChain;
             this.CertificateFormat = certificateFormat;
             this.CertificateHasPrivateKey = certificateHasPrivateKey;
@@ -54,8 +58,16 @@ namespace akeyless.Model
             this.CertificateIssuerName = certificateIssuerName;
             this.CertificatePem = certificatePem;
             this.CertificateStatus = certificateStatus;
+            this.ErrorMessage = errorMessage;
             this.ExpirationEvents = expirationEvents;
+            this.RenewBeforeExpirationInDays = renewBeforeExpirationInDays;
         }
+
+        /// <summary>
+        /// Gets or Sets AutoRenewCertificate
+        /// </summary>
+        [DataMember(Name = "auto_renew_certificate", EmitDefaultValue = true)]
+        public bool AutoRenewCertificate { get; set; }
 
         /// <summary>
         /// Gets or Sets CertificateChain
@@ -106,10 +118,22 @@ namespace akeyless.Model
         public string CertificateStatus { get; set; }
 
         /// <summary>
+        /// Gets or Sets ErrorMessage
+        /// </summary>
+        [DataMember(Name = "error_message", EmitDefaultValue = false)]
+        public string ErrorMessage { get; set; }
+
+        /// <summary>
         /// Gets or Sets ExpirationEvents
         /// </summary>
         [DataMember(Name = "expiration_events", EmitDefaultValue = false)]
         public List<CertificateExpirationEvent> ExpirationEvents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RenewBeforeExpirationInDays
+        /// </summary>
+        [DataMember(Name = "renew_before_expiration_in_days", EmitDefaultValue = false)]
+        public long RenewBeforeExpirationInDays { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -119,6 +143,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CertificateChainInfo {\n");
+            sb.Append("  AutoRenewCertificate: ").Append(AutoRenewCertificate).Append("\n");
             sb.Append("  CertificateChain: ").Append(CertificateChain).Append("\n");
             sb.Append("  CertificateFormat: ").Append(CertificateFormat).Append("\n");
             sb.Append("  CertificateHasPrivateKey: ").Append(CertificateHasPrivateKey).Append("\n");
@@ -127,7 +152,9 @@ namespace akeyless.Model
             sb.Append("  CertificateIssuerName: ").Append(CertificateIssuerName).Append("\n");
             sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
             sb.Append("  CertificateStatus: ").Append(CertificateStatus).Append("\n");
+            sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
             sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
+            sb.Append("  RenewBeforeExpirationInDays: ").Append(RenewBeforeExpirationInDays).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,6 +190,10 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.AutoRenewCertificate == input.AutoRenewCertificate ||
+                    this.AutoRenewCertificate.Equals(input.AutoRenewCertificate)
+                ) && 
                 (
                     this.CertificateChain == input.CertificateChain ||
                     this.CertificateChain != null &&
@@ -203,10 +234,19 @@ namespace akeyless.Model
                     this.CertificateStatus.Equals(input.CertificateStatus))
                 ) && 
                 (
+                    this.ErrorMessage == input.ErrorMessage ||
+                    (this.ErrorMessage != null &&
+                    this.ErrorMessage.Equals(input.ErrorMessage))
+                ) && 
+                (
                     this.ExpirationEvents == input.ExpirationEvents ||
                     this.ExpirationEvents != null &&
                     input.ExpirationEvents != null &&
                     this.ExpirationEvents.SequenceEqual(input.ExpirationEvents)
+                ) && 
+                (
+                    this.RenewBeforeExpirationInDays == input.RenewBeforeExpirationInDays ||
+                    this.RenewBeforeExpirationInDays.Equals(input.RenewBeforeExpirationInDays)
                 );
         }
 
@@ -219,6 +259,7 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.AutoRenewCertificate.GetHashCode();
                 if (this.CertificateChain != null)
                 {
                     hashCode = (hashCode * 59) + this.CertificateChain.GetHashCode();
@@ -245,10 +286,15 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.CertificateStatus.GetHashCode();
                 }
+                if (this.ErrorMessage != null)
+                {
+                    hashCode = (hashCode * 59) + this.ErrorMessage.GetHashCode();
+                }
                 if (this.ExpirationEvents != null)
                 {
                     hashCode = (hashCode * 59) + this.ExpirationEvents.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.RenewBeforeExpirationInDays.GetHashCode();
                 return hashCode;
             }
         }

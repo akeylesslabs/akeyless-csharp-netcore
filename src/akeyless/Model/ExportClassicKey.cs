@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ExportClassicKey" /> class.
         /// </summary>
+        /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="exportPublicKey">Use this option to output only public key (default to false).</param>
         /// <param name="ignoreCache">Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI (default to &quot;false&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -47,7 +48,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">Classic key version.</param>
-        public ExportClassicKey(bool exportPublicKey = false, string ignoreCache = "false", bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
+        public ExportClassicKey(string accessibility = "regular", bool exportPublicKey = false, string ignoreCache = "false", bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -55,6 +56,8 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for ExportClassicKey and cannot be null");
             }
             this.Name = name;
+            // use default value if no "accessibility" provided
+            this.Accessibility = accessibility ?? "regular";
             this.ExportPublicKey = exportPublicKey;
             // use default value if no "ignoreCache" provided
             this.IgnoreCache = ignoreCache ?? "false";
@@ -63,6 +66,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this._Version = version;
         }
+
+        /// <summary>
+        /// for personal password manager
+        /// </summary>
+        /// <value>for personal password manager</value>
+        [DataMember(Name = "accessibility", EmitDefaultValue = false)]
+        public string Accessibility { get; set; }
 
         /// <summary>
         /// Use this option to output only public key
@@ -121,6 +131,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ExportClassicKey {\n");
+            sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  ExportPublicKey: ").Append(ExportPublicKey).Append("\n");
             sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -164,6 +175,11 @@ namespace akeyless.Model
             }
             return 
                 (
+                    this.Accessibility == input.Accessibility ||
+                    (this.Accessibility != null &&
+                    this.Accessibility.Equals(input.Accessibility))
+                ) && 
+                (
                     this.ExportPublicKey == input.ExportPublicKey ||
                     this.ExportPublicKey.Equals(input.ExportPublicKey)
                 ) && 
@@ -206,6 +222,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Accessibility != null)
+                {
+                    hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.ExportPublicKey.GetHashCode();
                 if (this.IgnoreCache != null)
                 {

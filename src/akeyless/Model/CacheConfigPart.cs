@@ -36,14 +36,16 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CacheConfigPart" /> class.
         /// </summary>
         /// <param name="cacheEnable">cacheEnable.</param>
+        /// <param name="cacheEncryptionKey">cacheEncryptionKey.</param>
         /// <param name="cacheTtl">cacheTtl.</param>
         /// <param name="newProactiveCacheEnable">newProactiveCacheEnable.</param>
         /// <param name="proactiveCacheDumpInterval">proactiveCacheDumpInterval.</param>
         /// <param name="proactiveCacheEnable">proactiveCacheEnable.</param>
         /// <param name="proactiveCacheMinimumFetchingTime">proactiveCacheMinimumFetchingTime.</param>
-        public CacheConfigPart(bool cacheEnable = default(bool), string cacheTtl = default(string), bool newProactiveCacheEnable = default(bool), string proactiveCacheDumpInterval = default(string), bool proactiveCacheEnable = default(bool), string proactiveCacheMinimumFetchingTime = default(string))
+        public CacheConfigPart(bool cacheEnable = default(bool), string cacheEncryptionKey = default(string), string cacheTtl = default(string), bool newProactiveCacheEnable = default(bool), string proactiveCacheDumpInterval = default(string), bool proactiveCacheEnable = default(bool), string proactiveCacheMinimumFetchingTime = default(string))
         {
             this.CacheEnable = cacheEnable;
+            this.CacheEncryptionKey = cacheEncryptionKey;
             this.CacheTtl = cacheTtl;
             this.NewProactiveCacheEnable = newProactiveCacheEnable;
             this.ProactiveCacheDumpInterval = proactiveCacheDumpInterval;
@@ -56,6 +58,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "cache_enable", EmitDefaultValue = true)]
         public bool CacheEnable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CacheEncryptionKey
+        /// </summary>
+        [DataMember(Name = "cache_encryption_key", EmitDefaultValue = false)]
+        public string CacheEncryptionKey { get; set; }
 
         /// <summary>
         /// Gets or Sets CacheTtl
@@ -96,6 +104,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CacheConfigPart {\n");
             sb.Append("  CacheEnable: ").Append(CacheEnable).Append("\n");
+            sb.Append("  CacheEncryptionKey: ").Append(CacheEncryptionKey).Append("\n");
             sb.Append("  CacheTtl: ").Append(CacheTtl).Append("\n");
             sb.Append("  NewProactiveCacheEnable: ").Append(NewProactiveCacheEnable).Append("\n");
             sb.Append("  ProactiveCacheDumpInterval: ").Append(ProactiveCacheDumpInterval).Append("\n");
@@ -141,6 +150,11 @@ namespace akeyless.Model
                     this.CacheEnable.Equals(input.CacheEnable)
                 ) && 
                 (
+                    this.CacheEncryptionKey == input.CacheEncryptionKey ||
+                    (this.CacheEncryptionKey != null &&
+                    this.CacheEncryptionKey.Equals(input.CacheEncryptionKey))
+                ) && 
+                (
                     this.CacheTtl == input.CacheTtl ||
                     (this.CacheTtl != null &&
                     this.CacheTtl.Equals(input.CacheTtl))
@@ -175,6 +189,10 @@ namespace akeyless.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.CacheEnable.GetHashCode();
+                if (this.CacheEncryptionKey != null)
+                {
+                    hashCode = (hashCode * 59) + this.CacheEncryptionKey.GetHashCode();
+                }
                 if (this.CacheTtl != null)
                 {
                     hashCode = (hashCode * 59) + this.CacheTtl.GetHashCode();

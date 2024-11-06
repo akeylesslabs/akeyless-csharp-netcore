@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="huaweiAccessRules">huaweiAccessRules.</param>
         /// <param name="jwtTtl">jwtTtl.</param>
         /// <param name="k8sAccessRules">k8sAccessRules.</param>
+        /// <param name="kerberosAccessRules">kerberosAccessRules.</param>
         /// <param name="ldapAccessRules">ldapAccessRules.</param>
         /// <param name="oauth2AccessRules">oauth2AccessRules.</param>
         /// <param name="ociAccessRules">ociAccessRules.</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="samlAccessRules">samlAccessRules.</param>
         /// <param name="subClaimsDelimiters">subClaimsDelimiters.</param>
         /// <param name="universalIdentityAccessRules">universalIdentityAccessRules.</param>
-        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), List<string> auditLogsClaims = default(List<string>), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
+        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), List<string> auditLogsClaims = default(List<string>), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), KerberosAccessRules kerberosAccessRules = default(KerberosAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
         {
             this.AccessExpires = accessExpires;
             this.AccessIdAlias = accessIdAlias;
@@ -76,6 +77,7 @@ namespace akeyless.Model
             this.HuaweiAccessRules = huaweiAccessRules;
             this.JwtTtl = jwtTtl;
             this.K8sAccessRules = k8sAccessRules;
+            this.KerberosAccessRules = kerberosAccessRules;
             this.LdapAccessRules = ldapAccessRules;
             this.Oauth2AccessRules = oauth2AccessRules;
             this.OciAccessRules = ociAccessRules;
@@ -180,6 +182,12 @@ namespace akeyless.Model
         public KubernetesAccessRules K8sAccessRules { get; set; }
 
         /// <summary>
+        /// Gets or Sets KerberosAccessRules
+        /// </summary>
+        [DataMember(Name = "kerberos_access_rules", EmitDefaultValue = false)]
+        public KerberosAccessRules KerberosAccessRules { get; set; }
+
+        /// <summary>
         /// Gets or Sets LdapAccessRules
         /// </summary>
         [DataMember(Name = "ldap_access_rules", EmitDefaultValue = false)]
@@ -257,6 +265,7 @@ namespace akeyless.Model
             sb.Append("  HuaweiAccessRules: ").Append(HuaweiAccessRules).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  K8sAccessRules: ").Append(K8sAccessRules).Append("\n");
+            sb.Append("  KerberosAccessRules: ").Append(KerberosAccessRules).Append("\n");
             sb.Append("  LdapAccessRules: ").Append(LdapAccessRules).Append("\n");
             sb.Append("  Oauth2AccessRules: ").Append(Oauth2AccessRules).Append("\n");
             sb.Append("  OciAccessRules: ").Append(OciAccessRules).Append("\n");
@@ -375,6 +384,11 @@ namespace akeyless.Model
                     this.K8sAccessRules.Equals(input.K8sAccessRules))
                 ) && 
                 (
+                    this.KerberosAccessRules == input.KerberosAccessRules ||
+                    (this.KerberosAccessRules != null &&
+                    this.KerberosAccessRules.Equals(input.KerberosAccessRules))
+                ) && 
+                (
                     this.LdapAccessRules == input.LdapAccessRules ||
                     (this.LdapAccessRules != null &&
                     this.LdapAccessRules.Equals(input.LdapAccessRules))
@@ -482,6 +496,10 @@ namespace akeyless.Model
                 if (this.K8sAccessRules != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sAccessRules.GetHashCode();
+                }
+                if (this.KerberosAccessRules != null)
+                {
+                    hashCode = (hashCode * 59) + this.KerberosAccessRules.GetHashCode();
                 }
                 if (this.LdapAccessRules != null)
                 {

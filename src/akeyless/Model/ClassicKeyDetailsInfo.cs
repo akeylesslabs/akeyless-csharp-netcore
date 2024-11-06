@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="classicKeyAttributes">classicKeyAttributes.</param>
         /// <param name="classicKeyId">classicKeyId.</param>
+        /// <param name="credentialId">credentialId.</param>
         /// <param name="gwClusterId">gwClusterId.</param>
         /// <param name="hasCertificate">hasCertificate.</param>
         /// <param name="isProvidedByUser">isProvidedByUser.</param>
@@ -48,10 +49,13 @@ namespace akeyless.Model
         /// <param name="targetAliasHelper">targetAliasHelper.</param>
         /// <param name="targetTypes">targetTypes.</param>
         /// <param name="targets">targets.</param>
-        public ClassicKeyDetailsInfo(Dictionary<string, List<string>> classicKeyAttributes = default(Dictionary<string, List<string>>), string classicKeyId = default(string), long gwClusterId = default(long), bool hasCertificate = default(bool), bool isProvidedByUser = default(bool), bool isUnexportable = default(bool), string keyState = default(string), string keyType = default(string), string lastError = default(string), string publicKey = default(string), string targetAliasHelper = default(string), List<string> targetTypes = default(List<string>), List<ClassicKeyTargetInfo> targets = default(List<ClassicKeyTargetInfo>))
+        /// <param name="username">username.</param>
+        /// <param name="websites">websites.</param>
+        public ClassicKeyDetailsInfo(Dictionary<string, List<string>> classicKeyAttributes = default(Dictionary<string, List<string>>), string classicKeyId = default(string), string credentialId = default(string), long gwClusterId = default(long), bool hasCertificate = default(bool), bool isProvidedByUser = default(bool), bool isUnexportable = default(bool), string keyState = default(string), string keyType = default(string), string lastError = default(string), string publicKey = default(string), string targetAliasHelper = default(string), List<string> targetTypes = default(List<string>), List<ClassicKeyTargetInfo> targets = default(List<ClassicKeyTargetInfo>), string username = default(string), List<string> websites = default(List<string>))
         {
             this.ClassicKeyAttributes = classicKeyAttributes;
             this.ClassicKeyId = classicKeyId;
+            this.CredentialId = credentialId;
             this.GwClusterId = gwClusterId;
             this.HasCertificate = hasCertificate;
             this.IsProvidedByUser = isProvidedByUser;
@@ -63,6 +67,8 @@ namespace akeyless.Model
             this.TargetAliasHelper = targetAliasHelper;
             this.TargetTypes = targetTypes;
             this.Targets = targets;
+            this.Username = username;
+            this.Websites = websites;
         }
 
         /// <summary>
@@ -76,6 +82,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "classic_key_id", EmitDefaultValue = false)]
         public string ClassicKeyId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CredentialId
+        /// </summary>
+        [DataMember(Name = "credential_id", EmitDefaultValue = false)]
+        public string CredentialId { get; set; }
 
         /// <summary>
         /// Gets or Sets GwClusterId
@@ -145,6 +157,18 @@ namespace akeyless.Model
         public List<ClassicKeyTargetInfo> Targets { get; set; }
 
         /// <summary>
+        /// Gets or Sets Username
+        /// </summary>
+        [DataMember(Name = "username", EmitDefaultValue = false)]
+        public string Username { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Websites
+        /// </summary>
+        [DataMember(Name = "websites", EmitDefaultValue = false)]
+        public List<string> Websites { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -154,6 +178,7 @@ namespace akeyless.Model
             sb.Append("class ClassicKeyDetailsInfo {\n");
             sb.Append("  ClassicKeyAttributes: ").Append(ClassicKeyAttributes).Append("\n");
             sb.Append("  ClassicKeyId: ").Append(ClassicKeyId).Append("\n");
+            sb.Append("  CredentialId: ").Append(CredentialId).Append("\n");
             sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
             sb.Append("  HasCertificate: ").Append(HasCertificate).Append("\n");
             sb.Append("  IsProvidedByUser: ").Append(IsProvidedByUser).Append("\n");
@@ -165,6 +190,8 @@ namespace akeyless.Model
             sb.Append("  TargetAliasHelper: ").Append(TargetAliasHelper).Append("\n");
             sb.Append("  TargetTypes: ").Append(TargetTypes).Append("\n");
             sb.Append("  Targets: ").Append(Targets).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
+            sb.Append("  Websites: ").Append(Websites).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -210,6 +237,11 @@ namespace akeyless.Model
                     this.ClassicKeyId == input.ClassicKeyId ||
                     (this.ClassicKeyId != null &&
                     this.ClassicKeyId.Equals(input.ClassicKeyId))
+                ) && 
+                (
+                    this.CredentialId == input.CredentialId ||
+                    (this.CredentialId != null &&
+                    this.CredentialId.Equals(input.CredentialId))
                 ) && 
                 (
                     this.GwClusterId == input.GwClusterId ||
@@ -263,6 +295,17 @@ namespace akeyless.Model
                     this.Targets != null &&
                     input.Targets != null &&
                     this.Targets.SequenceEqual(input.Targets)
+                ) && 
+                (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
+                ) && 
+                (
+                    this.Websites == input.Websites ||
+                    this.Websites != null &&
+                    input.Websites != null &&
+                    this.Websites.SequenceEqual(input.Websites)
                 );
         }
 
@@ -282,6 +325,10 @@ namespace akeyless.Model
                 if (this.ClassicKeyId != null)
                 {
                     hashCode = (hashCode * 59) + this.ClassicKeyId.GetHashCode();
+                }
+                if (this.CredentialId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CredentialId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.GwClusterId.GetHashCode();
                 hashCode = (hashCode * 59) + this.HasCertificate.GetHashCode();
@@ -314,6 +361,14 @@ namespace akeyless.Model
                 if (this.Targets != null)
                 {
                     hashCode = (hashCode * 59) + this.Targets.GetHashCode();
+                }
+                if (this.Username != null)
+                {
+                    hashCode = (hashCode * 59) + this.Username.GetHashCode();
+                }
+                if (this.Websites != null)
+                {
+                    hashCode = (hashCode * 59) + this.Websites.GetHashCode();
                 }
                 return hashCode;
             }

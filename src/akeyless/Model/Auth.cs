@@ -44,20 +44,25 @@ namespace akeyless.Model
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
         /// <param name="debug">debug.</param>
+        /// <param name="disablePafxfast">Disable the FAST negotiation in the Kerberos authentication method.</param>
+        /// <param name="gatewaySpn">The service principal name of the gateway as registered in LDAP (i.e., HTTP/gateway).</param>
         /// <param name="gatewayUrl">Gateway URL relevant only for access-type&#x3D;k8s/oauth2/saml/oidc.</param>
         /// <param name="gcpAudience">GCP JWT audience (default to &quot;akeyless.io&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwt">The Json Web Token (relevant only for access-type&#x3D;jwt/oidc).</param>
         /// <param name="k8sAuthConfigName">The K8S Auth config name (relevant only for access-type&#x3D;k8s).</param>
         /// <param name="k8sServiceAccountToken">The K8S service account token. (relevant only for access-type&#x3D;k8s).</param>
+        /// <param name="kerberosUsername">TThe username for the entry within the keytab to authenticate via Kerberos.</param>
         /// <param name="keyData">Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert).</param>
+        /// <param name="keytabData">Base64-encoded content of a valid keytab file, containing the service account&#39;s entry..</param>
+        /// <param name="krb5ConfData">Base64-encoded content of a valid krb5.conf file, specifying the settings and parameters required for Kerberos authentication..</param>
         /// <param name="ldapPassword">LDAP password (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="ldapUsername">LDAP username (relevant only for access-type&#x3D;ldap).</param>
         /// <param name="ociAuthType">The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) (default to &quot;apikey&quot;).</param>
         /// <param name="ociGroupOcid">A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci).</param>
         /// <param name="uidToken">The universal_identity token (relevant only for access-type&#x3D;universal_identity).</param>
         /// <param name="useRemoteBrowser">Returns a link to complete the authentication remotely (relevant only for access-type&#x3D;saml/oidc).</param>
-        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string gatewayUrl = default(string), string gcpAudience = "akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string keyData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string ociAuthType = "apikey", List<string> ociGroupOcid = default(List<string>), string uidToken = default(string), bool useRemoteBrowser = default(bool))
+        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = "access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string disablePafxfast = default(string), string gatewaySpn = default(string), string gatewayUrl = default(string), string gcpAudience = "akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string kerberosUsername = default(string), string keyData = default(string), string keytabData = default(string), string krb5ConfData = default(string), string ldapPassword = default(string), string ldapUsername = default(string), string ociAuthType = "apikey", List<string> ociGroupOcid = default(List<string>), string uidToken = default(string), bool useRemoteBrowser = default(bool))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -69,6 +74,8 @@ namespace akeyless.Model
             this.CertData = certData;
             this.CloudId = cloudId;
             this.Debug = debug;
+            this.DisablePafxfast = disablePafxfast;
+            this.GatewaySpn = gatewaySpn;
             this.GatewayUrl = gatewayUrl;
             // use default value if no "gcpAudience" provided
             this.GcpAudience = gcpAudience ?? "akeyless.io";
@@ -76,7 +83,10 @@ namespace akeyless.Model
             this.Jwt = jwt;
             this.K8sAuthConfigName = k8sAuthConfigName;
             this.K8sServiceAccountToken = k8sServiceAccountToken;
+            this.KerberosUsername = kerberosUsername;
             this.KeyData = keyData;
+            this.KeytabData = keytabData;
+            this.Krb5ConfData = krb5ConfData;
             this.LdapPassword = ldapPassword;
             this.LdapUsername = ldapUsername;
             // use default value if no "ociAuthType" provided
@@ -149,6 +159,20 @@ namespace akeyless.Model
         public bool Debug { get; set; }
 
         /// <summary>
+        /// Disable the FAST negotiation in the Kerberos authentication method
+        /// </summary>
+        /// <value>Disable the FAST negotiation in the Kerberos authentication method</value>
+        [DataMember(Name = "disable-pafxfast", EmitDefaultValue = false)]
+        public string DisablePafxfast { get; set; }
+
+        /// <summary>
+        /// The service principal name of the gateway as registered in LDAP (i.e., HTTP/gateway)
+        /// </summary>
+        /// <value>The service principal name of the gateway as registered in LDAP (i.e., HTTP/gateway)</value>
+        [DataMember(Name = "gateway-spn", EmitDefaultValue = false)]
+        public string GatewaySpn { get; set; }
+
+        /// <summary>
         /// Gateway URL relevant only for access-type&#x3D;k8s/oauth2/saml/oidc
         /// </summary>
         /// <value>Gateway URL relevant only for access-type&#x3D;k8s/oauth2/saml/oidc</value>
@@ -191,11 +215,32 @@ namespace akeyless.Model
         public string K8sServiceAccountToken { get; set; }
 
         /// <summary>
+        /// TThe username for the entry within the keytab to authenticate via Kerberos
+        /// </summary>
+        /// <value>TThe username for the entry within the keytab to authenticate via Kerberos</value>
+        [DataMember(Name = "kerberos-username", EmitDefaultValue = false)]
+        public string KerberosUsername { get; set; }
+
+        /// <summary>
         /// Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert)
         /// </summary>
         /// <value>Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert)</value>
         [DataMember(Name = "key-data", EmitDefaultValue = false)]
         public string KeyData { get; set; }
+
+        /// <summary>
+        /// Base64-encoded content of a valid keytab file, containing the service account&#39;s entry.
+        /// </summary>
+        /// <value>Base64-encoded content of a valid keytab file, containing the service account&#39;s entry.</value>
+        [DataMember(Name = "keytab-data", EmitDefaultValue = false)]
+        public string KeytabData { get; set; }
+
+        /// <summary>
+        /// Base64-encoded content of a valid krb5.conf file, specifying the settings and parameters required for Kerberos authentication.
+        /// </summary>
+        /// <value>Base64-encoded content of a valid krb5.conf file, specifying the settings and parameters required for Kerberos authentication.</value>
+        [DataMember(Name = "krb5-conf-data", EmitDefaultValue = false)]
+        public string Krb5ConfData { get; set; }
 
         /// <summary>
         /// LDAP password (relevant only for access-type&#x3D;ldap)
@@ -256,13 +301,18 @@ namespace akeyless.Model
             sb.Append("  CertData: ").Append(CertData).Append("\n");
             sb.Append("  CloudId: ").Append(CloudId).Append("\n");
             sb.Append("  Debug: ").Append(Debug).Append("\n");
+            sb.Append("  DisablePafxfast: ").Append(DisablePafxfast).Append("\n");
+            sb.Append("  GatewaySpn: ").Append(GatewaySpn).Append("\n");
             sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  GcpAudience: ").Append(GcpAudience).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Jwt: ").Append(Jwt).Append("\n");
             sb.Append("  K8sAuthConfigName: ").Append(K8sAuthConfigName).Append("\n");
             sb.Append("  K8sServiceAccountToken: ").Append(K8sServiceAccountToken).Append("\n");
+            sb.Append("  KerberosUsername: ").Append(KerberosUsername).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
+            sb.Append("  KeytabData: ").Append(KeytabData).Append("\n");
+            sb.Append("  Krb5ConfData: ").Append(Krb5ConfData).Append("\n");
             sb.Append("  LdapPassword: ").Append(LdapPassword).Append("\n");
             sb.Append("  LdapUsername: ").Append(LdapUsername).Append("\n");
             sb.Append("  OciAuthType: ").Append(OciAuthType).Append("\n");
@@ -349,6 +399,16 @@ namespace akeyless.Model
                     this.Debug.Equals(input.Debug)
                 ) && 
                 (
+                    this.DisablePafxfast == input.DisablePafxfast ||
+                    (this.DisablePafxfast != null &&
+                    this.DisablePafxfast.Equals(input.DisablePafxfast))
+                ) && 
+                (
+                    this.GatewaySpn == input.GatewaySpn ||
+                    (this.GatewaySpn != null &&
+                    this.GatewaySpn.Equals(input.GatewaySpn))
+                ) && 
+                (
                     this.GatewayUrl == input.GatewayUrl ||
                     (this.GatewayUrl != null &&
                     this.GatewayUrl.Equals(input.GatewayUrl))
@@ -378,9 +438,24 @@ namespace akeyless.Model
                     this.K8sServiceAccountToken.Equals(input.K8sServiceAccountToken))
                 ) && 
                 (
+                    this.KerberosUsername == input.KerberosUsername ||
+                    (this.KerberosUsername != null &&
+                    this.KerberosUsername.Equals(input.KerberosUsername))
+                ) && 
+                (
                     this.KeyData == input.KeyData ||
                     (this.KeyData != null &&
                     this.KeyData.Equals(input.KeyData))
+                ) && 
+                (
+                    this.KeytabData == input.KeytabData ||
+                    (this.KeytabData != null &&
+                    this.KeytabData.Equals(input.KeytabData))
+                ) && 
+                (
+                    this.Krb5ConfData == input.Krb5ConfData ||
+                    (this.Krb5ConfData != null &&
+                    this.Krb5ConfData.Equals(input.Krb5ConfData))
                 ) && 
                 (
                     this.LdapPassword == input.LdapPassword ||
@@ -456,6 +531,14 @@ namespace akeyless.Model
                     hashCode = (hashCode * 59) + this.CloudId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Debug.GetHashCode();
+                if (this.DisablePafxfast != null)
+                {
+                    hashCode = (hashCode * 59) + this.DisablePafxfast.GetHashCode();
+                }
+                if (this.GatewaySpn != null)
+                {
+                    hashCode = (hashCode * 59) + this.GatewaySpn.GetHashCode();
+                }
                 if (this.GatewayUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.GatewayUrl.GetHashCode();
@@ -477,9 +560,21 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.K8sServiceAccountToken.GetHashCode();
                 }
+                if (this.KerberosUsername != null)
+                {
+                    hashCode = (hashCode * 59) + this.KerberosUsername.GetHashCode();
+                }
                 if (this.KeyData != null)
                 {
                     hashCode = (hashCode * 59) + this.KeyData.GetHashCode();
+                }
+                if (this.KeytabData != null)
+                {
+                    hashCode = (hashCode * 59) + this.KeytabData.GetHashCode();
+                }
+                if (this.Krb5ConfData != null)
+                {
+                    hashCode = (hashCode * 59) + this.Krb5ConfData.GetHashCode();
                 }
                 if (this.LdapPassword != null)
                 {

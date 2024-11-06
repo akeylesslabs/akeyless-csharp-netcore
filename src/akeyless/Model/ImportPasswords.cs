@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ImportPasswords" /> class.
         /// </summary>
         /// <param name="accessibility">for personal password manager (default to &quot;personal&quot;).</param>
-        /// <param name="format">Password format type [LastPass/Chrome/Firefox] (default to &quot;LastPass&quot;).</param>
+        /// <param name="format">Password format type [LastPass/Chrome/Firefox/1password/keeper/bitwarden/dashlane] (default to &quot;LastPass&quot;).</param>
         /// <param name="importPath">File path (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -78,9 +78,9 @@ namespace akeyless.Model
         public string Accessibility { get; set; }
 
         /// <summary>
-        /// Password format type [LastPass/Chrome/Firefox]
+        /// Password format type [LastPass/Chrome/Firefox/1password/keeper/bitwarden/dashlane]
         /// </summary>
-        /// <value>Password format type [LastPass/Chrome/Firefox]</value>
+        /// <value>Password format type [LastPass/Chrome/Firefox/1password/keeper/bitwarden/dashlane]</value>
         [DataMember(Name = "format", EmitDefaultValue = false)]
         public string Format { get; set; }
 

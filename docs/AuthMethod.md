@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AccountId** | **string** |  | [optional] 
 **AssociatedGwIds** | **List&lt;long&gt;** |  | [optional] 
 **AuthMethodAccessId** | **string** |  | [optional] 
+**AuthMethodAdditionalData** | [**AuthMethodAdditionalData**](AuthMethodAdditionalData.md) |  | [optional] 
 **AuthMethodName** | **string** |  | [optional] 
 **AuthMethodRolesAssoc** | [**List&lt;AuthMethodRoleAssociation&gt;**](AuthMethodRoleAssociation.md) |  | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 

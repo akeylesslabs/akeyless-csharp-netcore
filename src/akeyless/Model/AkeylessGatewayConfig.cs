@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// <param name="configProtectionKeyName">configProtectionKeyName.</param>
         /// <param name="general">general.</param>
         /// <param name="k8sAuths">k8sAuths.</param>
+        /// <param name="kerberos">kerberos.</param>
         /// <param name="kmipClients">kmipClients.</param>
         /// <param name="ldap">ldap.</param>
         /// <param name="leadership">leadership.</param>
@@ -51,7 +52,7 @@ namespace akeyless.Model
         /// <param name="rotators">rotators.</param>
         /// <param name="saml">saml.</param>
         /// <param name="version">version.</param>
-        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), K8SAuthsConfigPart k8sAuths = default(K8SAuthsConfigPart), KMIPConfigPart kmipClients = default(KMIPConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), GatewayMessageQueueInfo messageQueueInfo = default(GatewayMessageQueueInfo), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), int version = default(int))
+        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), K8SAuthsConfigPart k8sAuths = default(K8SAuthsConfigPart), KerberosConfigPart kerberos = default(KerberosConfigPart), KMIPConfigPart kmipClients = default(KMIPConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), GatewayMessageQueueInfo messageQueueInfo = default(GatewayMessageQueueInfo), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), int version = default(int))
         {
             this.Admins = admins;
             this.Cache = cache;
@@ -59,6 +60,7 @@ namespace akeyless.Model
             this.ConfigProtectionKeyName = configProtectionKeyName;
             this.General = general;
             this.K8sAuths = k8sAuths;
+            this.Kerberos = kerberos;
             this.KmipClients = kmipClients;
             this.Ldap = ldap;
             this.Leadership = leadership;
@@ -106,6 +108,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "k8s_auths", EmitDefaultValue = false)]
         public K8SAuthsConfigPart K8sAuths { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Kerberos
+        /// </summary>
+        [DataMember(Name = "kerberos", EmitDefaultValue = false)]
+        public KerberosConfigPart Kerberos { get; set; }
 
         /// <summary>
         /// Gets or Sets KmipClients
@@ -181,6 +189,7 @@ namespace akeyless.Model
             sb.Append("  ConfigProtectionKeyName: ").Append(ConfigProtectionKeyName).Append("\n");
             sb.Append("  General: ").Append(General).Append("\n");
             sb.Append("  K8sAuths: ").Append(K8sAuths).Append("\n");
+            sb.Append("  Kerberos: ").Append(Kerberos).Append("\n");
             sb.Append("  KmipClients: ").Append(KmipClients).Append("\n");
             sb.Append("  Ldap: ").Append(Ldap).Append("\n");
             sb.Append("  Leadership: ").Append(Leadership).Append("\n");
@@ -255,6 +264,11 @@ namespace akeyless.Model
                     this.K8sAuths == input.K8sAuths ||
                     (this.K8sAuths != null &&
                     this.K8sAuths.Equals(input.K8sAuths))
+                ) && 
+                (
+                    this.Kerberos == input.Kerberos ||
+                    (this.Kerberos != null &&
+                    this.Kerberos.Equals(input.Kerberos))
                 ) && 
                 (
                     this.KmipClients == input.KmipClients ||
@@ -339,6 +353,10 @@ namespace akeyless.Model
                 if (this.K8sAuths != null)
                 {
                     hashCode = (hashCode * 59) + this.K8sAuths.GetHashCode();
+                }
+                if (this.Kerberos != null)
+                {
+                    hashCode = (hashCode * 59) + this.Kerberos.GetHashCode();
                 }
                 if (this.KmipClients != null)
                 {

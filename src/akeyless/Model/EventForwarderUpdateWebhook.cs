@@ -42,11 +42,11 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="authMethodsEventSourceLocations">Auth Method Event sources.</param>
         /// <param name="authToken">Base64 encoded Token string for authentication type Token.</param>
-        /// <param name="authType">The Webhook authentication type [user-pass, token, certificate] (default to &quot;user-pass&quot;).</param>
+        /// <param name="authType">The Webhook authentication type [user-pass, bearer-token, certificate] (default to &quot;user-pass&quot;).</param>
         /// <param name="clientCertData">Base64 encoded PEM certificate, relevant for certificate auth-type.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="enable">Enable/Disable Event Forwarder [true/false] (default to &quot;true&quot;).</param>
-        /// <param name="eventTypes">List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated].</param>
+        /// <param name="eventTypes">List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report].</param>
         /// <param name="gatewaysEventSourceLocations">Event sources (required).</param>
         /// <param name="itemsEventSourceLocations">Items Event sources.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -115,9 +115,9 @@ namespace akeyless.Model
         public string AuthToken { get; set; }
 
         /// <summary>
-        /// The Webhook authentication type [user-pass, token, certificate]
+        /// The Webhook authentication type [user-pass, bearer-token, certificate]
         /// </summary>
-        /// <value>The Webhook authentication type [user-pass, token, certificate]</value>
+        /// <value>The Webhook authentication type [user-pass, bearer-token, certificate]</value>
         [DataMember(Name = "auth-type", EmitDefaultValue = false)]
         public string AuthType { get; set; }
 
@@ -143,9 +143,9 @@ namespace akeyless.Model
         public string Enable { get; set; }
 
         /// <summary>
-        /// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated]
+        /// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report]
         /// </summary>
-        /// <value>List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated]</value>
+        /// <value>List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report]</value>
         [DataMember(Name = "event-types", EmitDefaultValue = false)]
         public List<string> EventTypes { get; set; }
 

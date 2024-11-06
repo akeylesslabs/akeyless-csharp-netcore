@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// <param name="allowedDomainsList">allowedDomainsList.</param>
         /// <param name="allowedExtraExtensions">allowedExtraExtensions.</param>
         /// <param name="allowedUriSans">allowedUriSans.</param>
+        /// <param name="autoRenewCertificate">autoRenewCertificate.</param>
         /// <param name="basicConstraintsValidForNonCa">basicConstraintsValidForNonCa.</param>
         /// <param name="certificateAuthorityMode">certificateAuthorityMode.</param>
         /// <param name="clientFlag">clientFlag.</param>
@@ -66,10 +67,11 @@ namespace akeyless.Model
         /// <param name="postalCode">postalCode.</param>
         /// <param name="protectGeneratedCertificates">ProtectGeneratedCertificates dictates whether the created certificates should be protected from deletion.</param>
         /// <param name="province">province.</param>
+        /// <param name="renewBeforeExpirationInDays">renewBeforeExpirationInDays.</param>
         /// <param name="requireCn">requireCn.</param>
         /// <param name="serverFlag">serverFlag.</param>
         /// <param name="streetAddress">streetAddress.</param>
-        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedUriSans = default(List<string>), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string destinationPath = default(string), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
+        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedUriSans = default(List<string>), bool autoRenewCertificate = default(bool), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string destinationPath = default(string), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), long renewBeforeExpirationInDays = default(long), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
         {
             this.AcmeEnabled = acmeEnabled;
             this.AllowAnyName = allowAnyName;
@@ -78,6 +80,7 @@ namespace akeyless.Model
             this.AllowedDomainsList = allowedDomainsList;
             this.AllowedExtraExtensions = allowedExtraExtensions;
             this.AllowedUriSans = allowedUriSans;
+            this.AutoRenewCertificate = autoRenewCertificate;
             this.BasicConstraintsValidForNonCa = basicConstraintsValidForNonCa;
             this.CertificateAuthorityMode = certificateAuthorityMode;
             this.ClientFlag = clientFlag;
@@ -102,6 +105,7 @@ namespace akeyless.Model
             this.PostalCode = postalCode;
             this.ProtectGeneratedCertificates = protectGeneratedCertificates;
             this.Province = province;
+            this.RenewBeforeExpirationInDays = renewBeforeExpirationInDays;
             this.RequireCn = requireCn;
             this.ServerFlag = serverFlag;
             this.StreetAddress = streetAddress;
@@ -148,6 +152,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "allowed_uri_sans", EmitDefaultValue = false)]
         public List<string> AllowedUriSans { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AutoRenewCertificate
+        /// </summary>
+        [DataMember(Name = "auto_renew_certificate", EmitDefaultValue = true)]
+        public bool AutoRenewCertificate { get; set; }
 
         /// <summary>
         /// Gets or Sets BasicConstraintsValidForNonCa
@@ -299,6 +309,12 @@ namespace akeyless.Model
         public List<string> Province { get; set; }
 
         /// <summary>
+        /// Gets or Sets RenewBeforeExpirationInDays
+        /// </summary>
+        [DataMember(Name = "renew_before_expiration_in_days", EmitDefaultValue = false)]
+        public long RenewBeforeExpirationInDays { get; set; }
+
+        /// <summary>
         /// Gets or Sets RequireCn
         /// </summary>
         [DataMember(Name = "require_cn", EmitDefaultValue = true)]
@@ -331,6 +347,7 @@ namespace akeyless.Model
             sb.Append("  AllowedDomainsList: ").Append(AllowedDomainsList).Append("\n");
             sb.Append("  AllowedExtraExtensions: ").Append(AllowedExtraExtensions).Append("\n");
             sb.Append("  AllowedUriSans: ").Append(AllowedUriSans).Append("\n");
+            sb.Append("  AutoRenewCertificate: ").Append(AutoRenewCertificate).Append("\n");
             sb.Append("  BasicConstraintsValidForNonCa: ").Append(BasicConstraintsValidForNonCa).Append("\n");
             sb.Append("  CertificateAuthorityMode: ").Append(CertificateAuthorityMode).Append("\n");
             sb.Append("  ClientFlag: ").Append(ClientFlag).Append("\n");
@@ -355,6 +372,7 @@ namespace akeyless.Model
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
             sb.Append("  ProtectGeneratedCertificates: ").Append(ProtectGeneratedCertificates).Append("\n");
             sb.Append("  Province: ").Append(Province).Append("\n");
+            sb.Append("  RenewBeforeExpirationInDays: ").Append(RenewBeforeExpirationInDays).Append("\n");
             sb.Append("  RequireCn: ").Append(RequireCn).Append("\n");
             sb.Append("  ServerFlag: ").Append(ServerFlag).Append("\n");
             sb.Append("  StreetAddress: ").Append(StreetAddress).Append("\n");
@@ -426,6 +444,10 @@ namespace akeyless.Model
                     this.AllowedUriSans != null &&
                     input.AllowedUriSans != null &&
                     this.AllowedUriSans.SequenceEqual(input.AllowedUriSans)
+                ) && 
+                (
+                    this.AutoRenewCertificate == input.AutoRenewCertificate ||
+                    this.AutoRenewCertificate.Equals(input.AutoRenewCertificate)
                 ) && 
                 (
                     this.BasicConstraintsValidForNonCa == input.BasicConstraintsValidForNonCa ||
@@ -544,6 +566,10 @@ namespace akeyless.Model
                     this.Province.SequenceEqual(input.Province)
                 ) && 
                 (
+                    this.RenewBeforeExpirationInDays == input.RenewBeforeExpirationInDays ||
+                    this.RenewBeforeExpirationInDays.Equals(input.RenewBeforeExpirationInDays)
+                ) && 
+                (
                     this.RequireCn == input.RequireCn ||
                     this.RequireCn.Equals(input.RequireCn)
                 ) && 
@@ -584,6 +610,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.AllowedUriSans.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.AutoRenewCertificate.GetHashCode();
                 hashCode = (hashCode * 59) + this.BasicConstraintsValidForNonCa.GetHashCode();
                 if (this.CertificateAuthorityMode != null)
                 {
@@ -644,6 +671,7 @@ namespace akeyless.Model
                 {
                     hashCode = (hashCode * 59) + this.Province.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.RenewBeforeExpirationInDays.GetHashCode();
                 hashCode = (hashCode * 59) + this.RequireCn.GetHashCode();
                 hashCode = (hashCode * 59) + this.ServerFlag.GetHashCode();
                 if (this.StreetAddress != null)

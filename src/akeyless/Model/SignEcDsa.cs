@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SignEcDsa" /> class.
         /// </summary>
+        /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="displayId">The display id of the EC key to use for the signing process.</param>
         /// <param name="itemId">The item id of the EC key to use for the signing process.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -49,7 +50,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="version">The version of the key to use for signing.</param>
-        public SignEcDsa(string displayId = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string message = default(string), bool prehashed = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
+        public SignEcDsa(string accessibility = "regular", string displayId = default(string), long itemId = default(long), bool json = false, string keyName = default(string), string message = default(string), bool prehashed = default(bool), string token = default(string), string uidToken = default(string), int version = default(int))
         {
             // to ensure "message" is required (not null)
             if (message == null)
@@ -57,6 +58,8 @@ namespace akeyless.Model
                 throw new ArgumentNullException("message is a required property for SignEcDsa and cannot be null");
             }
             this.Message = message;
+            // use default value if no "accessibility" provided
+            this.Accessibility = accessibility ?? "regular";
             this.DisplayId = displayId;
             this.ItemId = itemId;
             this.Json = json;
@@ -66,6 +69,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this._Version = version;
         }
+
+        /// <summary>
+        /// for personal password manager
+        /// </summary>
+        /// <value>for personal password manager</value>
+        [DataMember(Name = "accessibility", EmitDefaultValue = false)]
+        public string Accessibility { get; set; }
 
         /// <summary>
         /// The display id of the EC key to use for the signing process
@@ -138,6 +148,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SignEcDsa {\n");
+            sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -182,6 +193,11 @@ namespace akeyless.Model
                 return false;
             }
             return 
+                (
+                    this.Accessibility == input.Accessibility ||
+                    (this.Accessibility != null &&
+                    this.Accessibility.Equals(input.Accessibility))
+                ) && 
                 (
                     this.DisplayId == input.DisplayId ||
                     (this.DisplayId != null &&
@@ -234,6 +250,10 @@ namespace akeyless.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Accessibility != null)
+                {
+                    hashCode = (hashCode * 59) + this.Accessibility.GetHashCode();
+                }
                 if (this.DisplayId != null)
                 {
                     hashCode = (hashCode * 59) + this.DisplayId.GetHashCode();

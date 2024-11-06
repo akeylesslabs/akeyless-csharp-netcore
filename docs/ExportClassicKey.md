@@ -5,6 +5,7 @@ ExportClassicKey is a command that returns the classic key material
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Accessibility** | **string** | for personal password manager | [optional] [default to "regular"]
 **ExportPublicKey** | **bool** | Use this option to output only public key | [optional] [default to false]
 **IgnoreCache** | **string** | Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

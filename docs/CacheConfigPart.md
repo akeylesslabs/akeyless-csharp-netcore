@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CacheEnable** | **bool** |  | [optional] 
+**CacheEncryptionKey** | **string** |  | [optional] 
 **CacheTtl** | **string** |  | [optional] 
 **NewProactiveCacheEnable** | **bool** |  | [optional] 
 **ProactiveCacheDumpInterval** | **string** |  | [optional] 

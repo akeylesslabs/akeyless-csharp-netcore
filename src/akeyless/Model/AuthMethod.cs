@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// <param name="accountId">accountId.</param>
         /// <param name="associatedGwIds">associatedGwIds.</param>
         /// <param name="authMethodAccessId">authMethodAccessId.</param>
+        /// <param name="authMethodAdditionalData">authMethodAdditionalData.</param>
         /// <param name="authMethodName">authMethodName.</param>
         /// <param name="authMethodRolesAssoc">authMethodRolesAssoc.</param>
         /// <param name="clientPermissions">clientPermissions.</param>
@@ -49,7 +50,7 @@ namespace akeyless.Model
         /// <param name="description">description.</param>
         /// <param name="isApproved">isApproved.</param>
         /// <param name="modificationDate">modificationDate.</param>
-        public AuthMethod(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool deleteProtection = default(bool), string description = default(string), bool isApproved = default(bool), DateTime modificationDate = default(DateTime))
+        public AuthMethod(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), AuthMethodAdditionalData authMethodAdditionalData = default(AuthMethodAdditionalData), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool deleteProtection = default(bool), string description = default(string), bool isApproved = default(bool), DateTime modificationDate = default(DateTime))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
@@ -57,6 +58,7 @@ namespace akeyless.Model
             this.AccountId = accountId;
             this.AssociatedGwIds = associatedGwIds;
             this.AuthMethodAccessId = authMethodAccessId;
+            this.AuthMethodAdditionalData = authMethodAdditionalData;
             this.AuthMethodName = authMethodName;
             this.AuthMethodRolesAssoc = authMethodRolesAssoc;
             this.ClientPermissions = clientPermissions;
@@ -102,6 +104,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "auth_method_access_id", EmitDefaultValue = false)]
         public string AuthMethodAccessId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AuthMethodAdditionalData
+        /// </summary>
+        [DataMember(Name = "auth_method_additional_data", EmitDefaultValue = false)]
+        public AuthMethodAdditionalData AuthMethodAdditionalData { get; set; }
 
         /// <summary>
         /// Gets or Sets AuthMethodName
@@ -165,6 +173,7 @@ namespace akeyless.Model
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  AssociatedGwIds: ").Append(AssociatedGwIds).Append("\n");
             sb.Append("  AuthMethodAccessId: ").Append(AuthMethodAccessId).Append("\n");
+            sb.Append("  AuthMethodAdditionalData: ").Append(AuthMethodAdditionalData).Append("\n");
             sb.Append("  AuthMethodName: ").Append(AuthMethodName).Append("\n");
             sb.Append("  AuthMethodRolesAssoc: ").Append(AuthMethodRolesAssoc).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
@@ -240,6 +249,11 @@ namespace akeyless.Model
                     this.AuthMethodAccessId.Equals(input.AuthMethodAccessId))
                 ) && 
                 (
+                    this.AuthMethodAdditionalData == input.AuthMethodAdditionalData ||
+                    (this.AuthMethodAdditionalData != null &&
+                    this.AuthMethodAdditionalData.Equals(input.AuthMethodAdditionalData))
+                ) && 
+                (
                     this.AuthMethodName == input.AuthMethodName ||
                     (this.AuthMethodName != null &&
                     this.AuthMethodName.Equals(input.AuthMethodName))
@@ -313,6 +327,10 @@ namespace akeyless.Model
                 if (this.AuthMethodAccessId != null)
                 {
                     hashCode = (hashCode * 59) + this.AuthMethodAccessId.GetHashCode();
+                }
+                if (this.AuthMethodAdditionalData != null)
+                {
+                    hashCode = (hashCode * 59) + this.AuthMethodAdditionalData.GetHashCode();
                 }
                 if (this.AuthMethodName != null)
                 {

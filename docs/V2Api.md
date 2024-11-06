@@ -15,6 +15,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**AuthMethodCreateEmail**](V2Api.md#authmethodcreateemail) | **POST** /auth-method-create-email |  |
 | [**AuthMethodCreateGcp**](V2Api.md#authmethodcreategcp) | **POST** /auth-method-create-gcp |  |
 | [**AuthMethodCreateK8s**](V2Api.md#authmethodcreatek8s) | **POST** /auth-method-create-k8s |  |
+| [**AuthMethodCreateKerberos**](V2Api.md#authmethodcreatekerberos) | **POST** /auth-method-create-kerberos |  |
 | [**AuthMethodCreateLdap**](V2Api.md#authmethodcreateldap) | **POST** /auth-method-create-ldap |  |
 | [**AuthMethodCreateOCI**](V2Api.md#authmethodcreateoci) | **POST** /auth-method-create-oci |  |
 | [**AuthMethodCreateOIDC**](V2Api.md#authmethodcreateoidc) | **POST** /auth-method-create-oidc |  |
@@ -31,6 +32,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**AuthMethodUpdateEmail**](V2Api.md#authmethodupdateemail) | **POST** /auth-method-update-email |  |
 | [**AuthMethodUpdateGcp**](V2Api.md#authmethodupdategcp) | **POST** /auth-method-update-gcp |  |
 | [**AuthMethodUpdateK8s**](V2Api.md#authmethodupdatek8s) | **POST** /auth-method-update-k8s |  |
+| [**AuthMethodUpdateKerberos**](V2Api.md#authmethodupdatekerberos) | **POST** /auth-method-update-kerberos |  |
 | [**AuthMethodUpdateLdap**](V2Api.md#authmethodupdateldap) | **POST** /auth-method-update-ldap |  |
 | [**AuthMethodUpdateOCI**](V2Api.md#authmethodupdateoci) | **POST** /auth-method-update-oci |  |
 | [**AuthMethodUpdateOIDC**](V2Api.md#authmethodupdateoidc) | **POST** /auth-method-update-oidc |  |
@@ -80,6 +82,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateNativeK8STarget**](V2Api.md#createnativek8starget) | **POST** /create-k8s-target |  |
 | [**CreateOidcApp**](V2Api.md#createoidcapp) | **POST** /create-oidc-app |  |
 | [**CreatePKICertIssuer**](V2Api.md#createpkicertissuer) | **POST** /create-pki-cert-issuer |  |
+| [**CreatePasskey**](V2Api.md#createpasskey) | **POST** /create-passkey |  |
 | [**CreatePingTarget**](V2Api.md#createpingtarget) | **POST** /create-ping-target |  |
 | [**CreateRabbitMQTarget**](V2Api.md#createrabbitmqtarget) | **POST** /create-rabbitmq-target |  |
 | [**CreateRole**](V2Api.md#createrole) | **POST** /create-role |  |
@@ -355,6 +358,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**KmipRenewServerCertificate**](V2Api.md#kmiprenewservercertificate) | **POST** /kmip-renew-environment |  |
 | [**KmipServerSetup**](V2Api.md#kmipserversetup) | **POST** /kmip-create-environment |  |
 | [**KmipSetServerState**](V2Api.md#kmipsetserverstate) | **POST** /kmip-set-environment-state |  |
+| [**KubeconfigGenerate**](V2Api.md#kubeconfiggenerate) | **POST** /kubeconfig-generate |  |
 | [**ListAcmeAccounts**](V2Api.md#listacmeaccounts) | **POST** /list-acme-accounts |  |
 | [**ListAuthMethods**](V2Api.md#listauthmethods) | **POST** /list-auth-methods |  |
 | [**ListGateways**](V2Api.md#listgateways) | **POST** /list-gateways |  |
@@ -362,6 +366,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**ListItems**](V2Api.md#listitems) | **POST** /list-items |  |
 | [**ListRoles**](V2Api.md#listroles) | **POST** /list-roles |  |
 | [**ListSRABastions**](V2Api.md#listsrabastions) | **POST** /list-sra-bastions |  |
+| [**ListSRASessions**](V2Api.md#listsrasessions) | **POST** /list-sra-sessions |  |
 | [**ListSharedItems**](V2Api.md#listshareditems) | **POST** /list-shared-items |  |
 | [**ListTargets**](V2Api.md#listtargets) | **POST** /list-targets |  |
 | [**MoveObjects**](V2Api.md#moveobjects) | **POST** /move-objects |  |
@@ -370,6 +375,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RefreshKey**](V2Api.md#refreshkey) | **POST** /refresh-key |  |
 | [**RenewCertificate**](V2Api.md#renewcertificate) | **POST** /renew-certificate |  |
 | [**RequestAccess**](V2Api.md#requestaccess) | **POST** /request-access |  |
+| [**ResetAccessKey**](V2Api.md#resetaccesskey) | **POST** /reset-access-key |  |
 | [**ReverseRBAC**](V2Api.md#reverserbac) | **POST** /reverse-rbac |  |
 | [**RevokeCertificate**](V2Api.md#revokecertificate) | **POST** /revoke-certificate |  |
 | [**RevokeCreds**](V2Api.md#revokecreds) | **POST** /revoke-creds |  |
@@ -1530,6 +1536,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="authmethodcreatekerberos"></a>
+# **AuthMethodCreateKerberos**
+> AuthMethodCreateOutput AuthMethodCreateKerberos (AuthMethodCreateKerberos body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class AuthMethodCreateKerberosExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new AuthMethodCreateKerberos(); // AuthMethodCreateKerberos | 
+
+            try
+            {
+                AuthMethodCreateOutput result = apiInstance.AuthMethodCreateKerberos(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.AuthMethodCreateKerberos: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AuthMethodCreateKerberosWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AuthMethodCreateOutput> response = apiInstance.AuthMethodCreateKerberosWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AuthMethodCreateKerberosWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**AuthMethodCreateKerberos**](AuthMethodCreateKerberos.md) |  |  |
+
+### Return type
+
+[**AuthMethodCreateOutput**](AuthMethodCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="authmethodcreateldap"></a>
 # **AuthMethodCreateLdap**
 > AuthMethodCreateOutput AuthMethodCreateLdap (AuthMethodCreateLdap body)
@@ -2053,7 +2147,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | authMethodCreateUniversalIdentityResponse wraps response body. |  -  |
+| **201** |  |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2934,6 +3028,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | authMethodUpdateK8sResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="authmethodupdatekerberos"></a>
+# **AuthMethodUpdateKerberos**
+> AuthMethodCreateOutput AuthMethodUpdateKerberos (AuthMethodUpdateKerberos body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class AuthMethodUpdateKerberosExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new AuthMethodUpdateKerberos(); // AuthMethodUpdateKerberos | 
+
+            try
+            {
+                AuthMethodCreateOutput result = apiInstance.AuthMethodUpdateKerberos(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.AuthMethodUpdateKerberos: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AuthMethodUpdateKerberosWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AuthMethodCreateOutput> response = apiInstance.AuthMethodUpdateKerberosWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AuthMethodUpdateKerberosWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**AuthMethodUpdateKerberos**](AuthMethodUpdateKerberos.md) |  |  |
+
+### Return type
+
+[**AuthMethodCreateOutput**](AuthMethodCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** |  |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -7246,6 +7428,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createPKICertIssuerResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="createpasskey"></a>
+# **CreatePasskey**
+> CreatePasskeyOutput CreatePasskey (CreatePasskey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreatePasskeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new CreatePasskey(); // CreatePasskey | 
+
+            try
+            {
+                CreatePasskeyOutput result = apiInstance.CreatePasskey(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreatePasskey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreatePasskeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreatePasskeyOutput> response = apiInstance.CreatePasskeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreatePasskeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**CreatePasskey**](CreatePasskey.md) |  |  |
+
+### Return type
+
+[**CreatePasskeyOutput**](CreatePasskeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | CreatePasskeyResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -26953,7 +27223,7 @@ No authorization required
 
 <a name="gatewayupdateremoteaccess"></a>
 # **GatewayUpdateRemoteAccess**
-> Object GatewayUpdateRemoteAccess ()
+> Object GatewayUpdateRemoteAccess (GatewayUpdateRemoteAccess body)
 
 
 
@@ -26974,10 +27244,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
+            var body = new GatewayUpdateRemoteAccess(); // GatewayUpdateRemoteAccess | 
 
             try
             {
-                Object result = apiInstance.GatewayUpdateRemoteAccess();
+                Object result = apiInstance.GatewayUpdateRemoteAccess(body);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -26997,7 +27268,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Object> response = apiInstance.GatewayUpdateRemoteAccessWithHttpInfo();
+    ApiResponse<Object> response = apiInstance.GatewayUpdateRemoteAccessWithHttpInfo(body);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -27011,7 +27282,11 @@ catch (ApiException e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**GatewayUpdateRemoteAccess**](GatewayUpdateRemoteAccess.md) |  |  |
+
 ### Return type
 
 **Object**
@@ -27022,7 +27297,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -31425,6 +31700,89 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="kubeconfiggenerate"></a>
+# **KubeconfigGenerate**
+> KubeconfigGenerateOutput KubeconfigGenerate ()
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KubeconfigGenerateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+
+            try
+            {
+                KubeconfigGenerateOutput result = apiInstance.KubeconfigGenerate();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KubeconfigGenerate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the KubeconfigGenerateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KubeconfigGenerateOutput> response = apiInstance.KubeconfigGenerateWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KubeconfigGenerateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+[**KubeconfigGenerateOutput**](KubeconfigGenerateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kubeconfigGenerateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="listacmeaccounts"></a>
 # **ListAcmeAccounts**
 > ListAcmeAccountsOutput ListAcmeAccounts (ListAcmeAccounts body)
@@ -32037,6 +32395,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | listSRABastionsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="listsrasessions"></a>
+# **ListSRASessions**
+> ListSraSessionsOutput ListSRASessions (ListSRASessions body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ListSRASessionsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ListSRASessions(); // ListSRASessions | 
+
+            try
+            {
+                ListSraSessionsOutput result = apiInstance.ListSRASessions(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ListSRASessions: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListSRASessionsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ListSraSessionsOutput> response = apiInstance.ListSRASessionsWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ListSRASessionsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ListSRASessions**](ListSRASessions.md) |  |  |
+
+### Return type
+
+[**ListSraSessionsOutput**](ListSraSessionsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | listSRASessionsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -32737,6 +33183,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | requestAccessResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="resetaccesskey"></a>
+# **ResetAccessKey**
+> ResetAuthMethodAccessKeyOutput ResetAccessKey (ResetAccessKey body)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ResetAccessKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var body = new ResetAccessKey(); // ResetAccessKey | 
+
+            try
+            {
+                ResetAuthMethodAccessKeyOutput result = apiInstance.ResetAccessKey(body);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ResetAccessKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ResetAccessKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ResetAuthMethodAccessKeyOutput> response = apiInstance.ResetAccessKeyWithHttpInfo(body);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ResetAccessKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **body** | [**ResetAccessKey**](ResetAccessKey.md) |  |  |
+
+### Return type
+
+[**ResetAuthMethodAccessKeyOutput**](ResetAuthMethodAccessKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | resetAccessKeyResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
