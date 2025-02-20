@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **EnableTlsCurl** | **bool** |  | [optional] 
 **EnableTlsHvp** | **bool** |  | [optional] 
 **GwClusterUrl** | **string** |  | [optional] 
+**HvpRouteVersion** | **long** |  | [optional] 
 **NotifyOnStatusChange** | **bool** |  | [optional] 
 **TcpPort** | **string** |  | [optional] 
 **TlsCert** | **string** |  | [optional] 

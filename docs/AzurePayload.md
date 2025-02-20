@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_Client** | **string** |  | [optional] 
+**VarClient** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **Secret** | **string** |  | [optional] 
 **Tenant** | **string** |  | [optional] 

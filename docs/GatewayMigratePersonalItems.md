@@ -5,11 +5,11 @@ gatewayMigratePersonalItems is a command that migrate personal items from extern
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_1passwordEmail** | **string** | 1Password user email to connect to the API | [optional] 
-**_1passwordPassword** | **string** | 1Password user password to connect to the API | [optional] 
-**_1passwordSecretKey** | **string** | 1Password user secret key to connect to the API | [optional] 
-**_1passwordUrl** | **string** | 1Password api container url | [optional] 
-**_1passwordVaults** | **List&lt;string&gt;** | 1Password list of vault to get the items from | [optional] 
+**Var1passwordEmail** | **string** | 1Password user email to connect to the API | [optional] 
+**Var1passwordPassword** | **string** | 1Password user password to connect to the API | [optional] 
+**Var1passwordSecretKey** | **string** | 1Password user secret key to connect to the API | [optional] 
+**Var1passwordUrl** | **string** | 1Password api container url | [optional] 
+**Var1passwordVaults** | **List&lt;string&gt;** | 1Password list of vault to get the items from | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **ProtectionKey** | **string** | The name of a key that used to encrypt the secret value | [optional] 
 **TargetLocation** | **string** | Target location in your Akeyless personal folder for migrated secrets | [optional] 

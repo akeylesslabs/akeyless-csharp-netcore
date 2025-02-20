@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AuthMethodSubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
 **IsSubClaimsCaseSensitive** | **bool** |  | [optional] 
 **IsSubclaimsWithOperator** | **bool** |  | [optional] 
+**RoleId** | **long** |  | [optional] 
 **RoleName** | **string** |  | [optional] 
 **Rules** | [**Rules**](Rules.md) |  | [optional] 
 

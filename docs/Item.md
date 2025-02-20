@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **RotationInterval** | **long** |  | [optional] 
 **SharedBy** | [**RuleAssigner**](RuleAssigner.md) |  | [optional] 
 **TargetVersions** | [**List&lt;TargetItemVersion&gt;**](TargetItemVersion.md) |  | [optional] 
+**UscSyncAssociatedItems** | [**List&lt;ItemUSCSyncAssociation&gt;**](ItemUSCSyncAssociation.md) | for USC item, hold rotated-secrets that are associated to him for rotated-secret, holds the associated USCs | [optional] 
 **WithCustomerFragment** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

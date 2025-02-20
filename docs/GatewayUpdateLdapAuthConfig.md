@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **LdapCaCert** | **string** | LDAP CA Certificate (base64 encoded) | [optional] 
 **LdapEnable** | **string** | Enable Ldap [true/false] | [optional] 
 **LdapUrl** | **string** | LDAP Server URL, e.g. ldap://planetexpress.com:389 | [optional] 
-**LdapAnonymousSearch** | **bool** | Ldap Anonymous Search | [optional] 
 **SigningKeyData** | **string** | The private key (base64 encoded), associated with the public key defined in the Ldap auth | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

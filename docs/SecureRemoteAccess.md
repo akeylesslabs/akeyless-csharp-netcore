@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **BlockConcurrentConnections** | **bool** |  | [optional] 
 **BlockConcurrentConnectionsLevel** | **string** |  | [optional] 
 **Category** | **string** |  | [optional] 
+**ConnectionDelaySeconds** | **long** |  | [optional] 
 **DashboardUrl** | **string** |  | [optional] 
 **DbName** | **string** |  | [optional] 
 **Domain** | **string** |  | [optional] 

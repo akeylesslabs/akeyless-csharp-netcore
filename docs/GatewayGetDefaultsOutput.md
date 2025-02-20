@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateAccessId** | **string** |  | [optional] 
 **DefaultProtectionKeyId** | **string** |  | [optional] 
+**HvpRouteVersion** | **long** |  | [optional] 
 **NotifyOnStatusChange** | **bool** |  | [optional] 
 **OidcAccessId** | **string** |  | [optional] 
 **SamlAccessId** | **string** |  | [optional] 

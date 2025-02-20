@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **LockDefaultKey** | **bool** | LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty | [optional] 
 **PasswordExpirationInfo** | [**PasswordExpirationInfo**](PasswordExpirationInfo.md) |  | [optional] 
 **PasswordPolicy** | [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
+**PasswordScore** | [**PasswordScoreSetting**](PasswordScoreSetting.md) |  | [optional] 
 **ProtectItemsByDefault** | **bool** |  | [optional] 
 **RotationSecretMaxInterval** | [**RotationSecretMaxInterval**](RotationSecretMaxInterval.md) |  | [optional] 
 **SharingPolicy** | [**SharingPolicyInfo**](SharingPolicyInfo.md) |  | [optional] 

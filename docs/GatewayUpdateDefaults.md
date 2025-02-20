@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertAccessId** | **string** | Default Certificate access id for UI login | [optional] [default to "use-existing"]
 **EventOnStatusChange** | **string** | Trigger an event when Gateway status is changed [true/false] | [optional] 
+**HvpRouteVersion** | **long** | Hvp route version to use [1/2] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of the gateway default encryption key | [optional] [default to "Default"]
 **OidcAccessId** | **string** | Default OIDC access id for UI login | [optional] [default to "use-existing"]

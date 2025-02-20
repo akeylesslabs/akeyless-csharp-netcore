@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **DefaultSecretLocation** | **string** |  | [optional] 
 **DisplayName** | **string** |  | [optional] 
 **Id** | **long** |  | [optional] 
+**IsKerberosAuthEnabled** | **bool** |  | [optional] 
+**IsLdapAuthEnabled** | **bool** |  | [optional] 
 **ServerlessType** | **string** |  | [optional] 
 **Status** | **string** |  | [optional] 
 **StatusDescription** | **string** |  | [optional] 

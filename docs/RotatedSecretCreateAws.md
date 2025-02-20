@@ -24,7 +24,8 @@ Name | Type | Description | Notes
 **RotatorType** | **string** | The rotator type. options: [target/api-key] | 
 **SecureAccessAwsAccountId** | **string** | The AWS account id | [optional] 
 **SecureAccessAwsNativeCli** | **bool** | The AWS native cli | [optional] 
-**SecureAccessBastionIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessBastionIssuer** | **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
+**SecureAccessCertificateIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | 

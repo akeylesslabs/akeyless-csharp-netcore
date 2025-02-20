@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Ttl** | **long** | he requested Time To Live for the certificate, in seconds | 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UriSans** | **string** | The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list) | [optional] 
-**_Version** | **int** | classic key version | 
+**VarVersion** | **int** | classic key version | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
+**MaxPathLen** | **long** | The maximum path length for the generated certificate. -1, means unlimited | [optional] [default to -1]
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | PKI certificate issuer name | 
 **NewName** | **string** | New item name | [optional] 
@@ -41,7 +42,7 @@ Name | Type | Description | Notes
 **RmTag** | **List&lt;string&gt;** | List of the existent tags that will be removed from this item | [optional] 
 **ScheduledRenew** | **long** | Number of days before expiration to renew certificates | [optional] 
 **ServerFlag** | **bool** | If set, certificates will be flagged for server auth use | [optional] 
-**SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [default to "dummy_signer_key"]
+**SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [optional] 
 **StreetAddress** | **string** | A comma-separated list of street addresses that will be set in the issued certificate | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **string** | The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs | 

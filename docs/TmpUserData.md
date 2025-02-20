@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreationDate** | **DateTime** |  | [optional] 
 **CustomTtl** | **long** |  | [optional] 
 **DynamicSecretType** | **string** |  | [optional] 
+**EncryptedSecret** | **string** |  | [optional] 
 **Host** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **SubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 

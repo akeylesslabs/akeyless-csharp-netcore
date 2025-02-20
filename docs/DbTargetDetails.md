@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **DbServerName** | **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
 **DbTenantId** | **string** |  | [optional] 
 **DbUserName** | **string** |  | [optional] 
+**OracleWalletDetails** | [**WalletDetails**](WalletDetails.md) |  | [optional] 
 **SfAccount** | **string** |  | [optional] 
 **SslConnectionCertificate** | **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 
 **SslConnectionMode** | **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 

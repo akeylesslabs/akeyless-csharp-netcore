@@ -42,10 +42,10 @@ Name | Type | Description | Notes
 **UsageEventEnable** | **string** | Enable event for objects that have not been used or changed [true/false] | [optional] 
 **UsageEventInterval** | **long** | Interval by days for unused objects. Default and minimum interval is 90 days | [optional] 
 **UsageEventObjectType** | **string** | Usage event is supported for auth method or secrets-and-keys [auth/item] | [optional] 
+**UseCapitalLetters** | **string** | Password must contain capital letters [true/false] | [optional] 
 **UseLowerLetters** | **string** | Password must contain lower case letters [true/false] | [optional] 
 **UseNumbers** | **string** | Password must contain numbers [true/false] | [optional] 
 **UseSpecialCharacters** | **string** | Password must contain special characters [true/false] | [optional] 
-**UseCapitalLetters** | **string** | Password must contain capital letters [true/false] | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

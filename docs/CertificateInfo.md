@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **Subject** | [**Name**](Name.md) |  | [optional] 
 **SubjectPublicKey** | **string** |  | [optional] 
 **Uris** | **List&lt;string&gt;** |  | [optional] 
-**_Version** | **long** |  | [optional] 
+**VarVersion** | **long** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

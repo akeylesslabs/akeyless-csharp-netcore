@@ -10,10 +10,13 @@ Name | Type | Description | Notes
 **BoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Auth Method description | [optional] 
+**EnableMfa** | **string** | Enable MFA for this authentication method [True / False] | [optional] 
+**ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the auth method would you like to be notified. | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
+**MfaType** | **string** | Enable two-factor-authentication via [email/auth app] | [optional] [default to "email"]
 **Name** | **string** | Auth Method name | 
 **NewName** | **string** | Auth Method new name | [optional] 
 **ProductType** | **List&lt;string&gt;** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 

@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
+**MaxPathLen** | **long** | The maximum path length for the generated certificate. -1, means unlimited | [optional] [default to -1]
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | PKI certificate issuer name | 
 **NotEnforceHostnames** | **bool** | If set, any names are allowed for CN and SANs in the certificate and not only a valid host name | [optional] 
@@ -39,7 +40,7 @@ Name | Type | Description | Notes
 **Province** | **string** | A comma-separated list of provinces that will be set in the issued certificate | [optional] 
 **ScheduledRenew** | **long** | Number of days before expiration to renew certificates | [optional] 
 **ServerFlag** | **bool** | If set, certificates will be flagged for server auth use | [optional] 
-**SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [default to "dummy_signer_key"]
+**SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [optional] 
 **StreetAddress** | **string** | A comma-separated list of street addresses that will be set in the issued certificate | [optional] 
 **Tag** | **List&lt;string&gt;** | List of the tags attached to this key | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

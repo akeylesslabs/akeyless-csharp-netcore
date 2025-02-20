@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ExtraExtensions** | **string** | A json string that defines the requested extra extensions for the certificate | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyDataBase64** | **string** | PKI key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
+**MaxPathLen** | **long** | The maximum path length for the generated certificate. -1, means unlimited unless the signing certificate has a maximum path length set | [optional] [default to -1]
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **string** | Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

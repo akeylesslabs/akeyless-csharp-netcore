@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AdminEmail** | **string** | Admin user email | 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
+**FixedUserClaimKeyname** | **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from | [optional] [default to "ext_email"]
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
 **GroupEmail** | **string** | A group email, relevant only for group access-mode | [optional] 
 **GroupRole** | **string** |  | [optional] 
@@ -20,8 +21,8 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessUrl** | **string** | Destination URL to inject secrets | [optional] 
 **SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to true]
-**SecureAccessWebBrowsing** | **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
-**SecureAccessWebProxy** | **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebBrowsing** | **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SecureAccessWebProxy** | **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Name of existing target to use in dynamic secret creation | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

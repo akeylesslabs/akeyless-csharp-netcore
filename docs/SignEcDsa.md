@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Prehashed** | **bool** | Markes that the message is already hashed | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**_Version** | **int** | The version of the key to use for signing | [optional] 
+**VarVersion** | **int** | The version of the key to use for signing | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

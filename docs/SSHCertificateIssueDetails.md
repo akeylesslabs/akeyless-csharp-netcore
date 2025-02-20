@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **CertType** | **int** |  | [optional] 
 **CriticalOptions** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **Extensions** | **Dictionary&lt;string, string&gt;** |  | [optional] 
+**ExternallyProvidedUserSubClaimKey** | **string** | ExternallyProvidedUserSubClaimKey is the claim key name where the user name should be taken from | [optional] 
+**IsExternallyProvidedUser** | **bool** | IsExternallyProvidedUser is true if allow users should be taken from claims and not from AllowedUsers | [optional] 
 **Principals** | **List&lt;string&gt;** |  | [optional] 
 **StaticKeyId** | **string** | In case it is empty, the key ID will be combination of user identifiers and a random string | [optional] 
 

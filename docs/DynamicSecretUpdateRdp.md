@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AllowUserExtendSession** | **long** | AllowUserExtendSession | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
+**FixedUserClaimKeyname** | **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for fixed-user-only&#x3D;true) | [optional] [default to "ext_username"]
 **FixedUserOnly** | **string** | Allow access using externally (IdP) provided username [true/false] | [optional] [default to "false"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
@@ -20,6 +21,7 @@ Name | Type | Description | Notes
 **RdpHostPort** | **string** | Port | [optional] [default to "22"]
 **RdpUserGroups** | **string** | Groups | [optional] 
 **SecureAccessAllowExternalUser** | **bool** | Allow providing external user for a domain users | [optional] [default to false]
+**SecureAccessDelay** | **long** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | **List&lt;string&gt;** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdGatewayServer** | **string** | RD Gateway server | [optional] 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ConnectionType** | **string** |  | [optional] 
 **EndTime** | **DateTime** |  | [optional] 
 **ErrorMsg** | **string** |  | [optional] 
-**GatewayName** | **string** |  | [optional] 
+**GatewayInfo** | [**GatewayNameInfo**](GatewayNameInfo.md) |  | [optional] 
 **InstanceId** | **string** |  | [optional] 
 **SecretName** | **string** |  | [optional] 
 **SessionId** | **string** |  | [optional] 
