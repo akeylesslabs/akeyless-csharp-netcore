@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Admins** | [**AdminsConfigPart**](AdminsConfigPart.md) |  | [optional] 
+**CaCertificates** | [**CaCertificatesConfigPart**](CaCertificatesConfigPart.md) |  | [optional] 
 **Cache** | [**CacheConfigPart**](CacheConfigPart.md) |  | [optional] 
 **Cf** | [**CFConfigPart**](CFConfigPart.md) |  | [optional] 
 **ConfigProtectionKeyName** | **string** |  | [optional] 

@@ -49382,7 +49382,7 @@ No authorization required
 
 <a id="usccreate"></a>
 # **UscCreate**
-> UscCreateSecretOutput UscCreate (UscUpdate uscUpdate)
+> UscCreateSecretOutput UscCreate (UscCreate uscCreate)
 
 
 
@@ -49403,11 +49403,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
-            var uscUpdate = new UscUpdate(); // UscUpdate | 
+            var uscCreate = new UscCreate(); // UscCreate | 
 
             try
             {
-                UscCreateSecretOutput result = apiInstance.UscCreate(uscUpdate);
+                UscCreateSecretOutput result = apiInstance.UscCreate(uscCreate);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -49427,7 +49427,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<UscCreateSecretOutput> response = apiInstance.UscCreateWithHttpInfo(uscUpdate);
+    ApiResponse<UscCreateSecretOutput> response = apiInstance.UscCreateWithHttpInfo(uscCreate);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -49444,7 +49444,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **uscUpdate** | [**UscUpdate**](UscUpdate.md) |  |  |
+| **uscCreate** | [**UscCreate**](UscCreate.md) |  |  |
 
 ### Return type
 
@@ -49734,7 +49734,7 @@ No authorization required
 
 <a id="uscupdate"></a>
 # **UscUpdate**
-> UscUpdateSecretOutput UscUpdate ()
+> UscUpdateSecretOutput UscUpdate (UscUpdate uscUpdate)
 
 
 
@@ -49755,10 +49755,11 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.akeyless.io";
             var apiInstance = new V2Api(config);
+            var uscUpdate = new UscUpdate(); // UscUpdate | 
 
             try
             {
-                UscUpdateSecretOutput result = apiInstance.UscUpdate();
+                UscUpdateSecretOutput result = apiInstance.UscUpdate(uscUpdate);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -49778,7 +49779,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<UscUpdateSecretOutput> response = apiInstance.UscUpdateWithHttpInfo();
+    ApiResponse<UscUpdateSecretOutput> response = apiInstance.UscUpdateWithHttpInfo(uscUpdate);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -49792,7 +49793,11 @@ catch (ApiException e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **uscUpdate** | [**UscUpdate**](UscUpdate.md) |  |  |
+
 ### Return type
 
 [**UscUpdateSecretOutput**](UscUpdateSecretOutput.md)
@@ -49803,7 +49808,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

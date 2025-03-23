@@ -6,6 +6,7 @@ WindowsTargetDetails
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificate** | **string** |  | [optional] 
+**ConnectionType** | **string** |  | [optional] 
 **DomainName** | **string** |  | [optional] 
 **Hostname** | **string** |  | [optional] 
 **Password** | **string** |  | [optional] 

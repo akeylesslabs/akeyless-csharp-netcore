@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | **string** | Azure client/application id | [optional] 
 **ClientSecret** | **string** | Azure client secret | [optional] 
+**ConnectionType** | **string** | Type of connection [credentials/cloud-identity] | [optional] [default to "credentials"]
 **Description** | **string** | Description of the object | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 

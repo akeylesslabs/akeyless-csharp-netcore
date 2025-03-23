@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionIssuer** | **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessGateway** | **string** |  | [optional] 
 **SecureAccessHost** | **List&lt;string&gt;** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpUser** | **string** | Remote Desktop Username | [optional] 
 **SecureAccessSshCreds** | **string** | Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key] | [optional] 

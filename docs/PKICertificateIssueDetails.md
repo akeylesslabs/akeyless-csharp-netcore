@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AllowSubdomains** | **bool** |  | [optional] 
 **AllowedDomainsList** | **List&lt;string&gt;** |  | [optional] 
 **AllowedExtraExtensions** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
+**AllowedIpSans** | **List&lt;string&gt;** |  | [optional] 
 **AllowedUriSans** | **List&lt;string&gt;** |  | [optional] 
 **AutoRenewCertificate** | **bool** |  | [optional] 
 **BasicConstraintsValidForNonCa** | **bool** |  | [optional] 

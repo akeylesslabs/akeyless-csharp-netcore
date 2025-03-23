@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionSsh** | **string** | Deprecated. use secure-access-ssh | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessEnforceHostsRestriction** | **bool** | Enable this flag to enforce connections only to the hosts listed in - -secure-access-host | [optional] 
+**SecureAccessGateway** | **string** |  | [optional] 
 **SecureAccessHost** | **List&lt;string&gt;** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessSsh** | **string** | Bastion&#39;s SSH server. E.g. my.sra-server:22 | [optional] 
 **SecureAccessSshCredsUser** | **string** | SSH username to connect to target server, must be in &#39;Allowed Users&#39; list | [optional] 

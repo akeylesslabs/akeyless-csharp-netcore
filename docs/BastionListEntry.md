@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **AllowedAccessIds** | **List&lt;string&gt;** |  | [optional] 
 **AllowedUrls** | **List&lt;string&gt;** |  | [optional] 
 **AllowedUrlsPerInstance** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
+**BastionSshPort** | **long** |  | [optional] 
+**BastionUrlsPerType** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **ClusterName** | **string** |  | [optional] 
 **DisplayName** | **string** |  | [optional] 
 **HasGatewayIdentity** | **bool** |  | [optional] 

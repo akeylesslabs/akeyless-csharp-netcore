@@ -4,14 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DBDefinedConnectionType** | **string** |  | [optional] 
 **AzureClientId** | **string** | (Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureClientSecret** | **string** | (Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureTenantId** | **string** | (Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **CloudServiceProvider** | **string** | (Optional) Cloud service provider (currently only supports Azure) | [optional] 
 **ClusterMode** | **bool** | Cluster Mode | [optional] 
 **Comment** | **string** | Deprecated - use description | [optional] 
-**ConnectionType** | **string** | Type of connection to mssql/oracle database [credentials/cloud-identity/wallet] | [default to "credentials"]
+**ConnectionType** | **string** | Type of connection to mssql database [credentials/cloud-identity/wallet/parent-target] | [default to "credentials"]
 **DbName** | **string** |  | [optional] 
 **DbServerCertificates** | **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
@@ -34,6 +33,7 @@ Name | Type | Description | Notes
 **OracleWalletLoginType** | **string** | Oracle Wallet login type (password/mtls) | [optional] 
 **OracleWalletP12FileData** | **string** | Oracle wallet p12 file data in base64 | [optional] 
 **OracleWalletSsoFileData** | **string** | Oracle wallet sso file data in base64 | [optional] 
+**ParentTargetName** | **string** | Name of the parent target, relevant only when connection-type is parent-target | [optional] 
 **Port** | **string** |  | [optional] 
 **Pwd** | **string** |  | [optional] 
 **SnowflakeAccount** | **string** |  | [optional] 

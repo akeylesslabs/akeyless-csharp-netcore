@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AssociatedGwIds** | **List&lt;long&gt;** |  | [optional] 
 **AuthMethodAccessId** | **string** |  | [optional] 
 **AuthMethodAdditionalData** | [**AuthMethodAdditionalData**](AuthMethodAdditionalData.md) |  | [optional] 
+**AuthMethodId** | **long** |  | [optional] 
 **AuthMethodName** | **string** |  | [optional] 
 **AuthMethodRolesAssoc** | [**List&lt;AuthMethodRoleAssociation&gt;**](AuthMethodRoleAssociation.md) |  | [optional] 
 **ClientPermissions** | **List&lt;string&gt;** |  | [optional] 

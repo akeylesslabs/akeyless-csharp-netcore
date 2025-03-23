@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AllowSubdomains** | **bool** | If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains | [optional] 
 **AllowedDomains** | **string** | A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list) | [optional] 
 **AllowedExtraExtensions** | **string** | A json string containing the allowed extra extensions for the pki cert issuer | [optional] 
+**AllowedIpSans** | **string** | A list of the allowed CIDRs for ips that clients can request to be included in the certificate as part of the IP Subject Alternative Names (in a comma-delimited list) | [optional] 
 **AllowedUriSans** | **string** | A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list) | [optional] 
 **AutoRenew** | **bool** | Automatically renew certificates before expiration | [optional] 
 **ClientFlag** | **bool** | If set, certificates will be flagged for client auth use | [optional] 
