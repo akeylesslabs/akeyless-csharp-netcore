@@ -274,6 +274,7 @@ docs/DescribePermissions.md
 docs/DescribePermissionsOutput.md
 docs/DescribeSubClaims.md
 docs/DescribeSubClaimsOutput.md
+docs/DesktopAppConf.md
 docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DockerhubTargetDetails.md
@@ -391,7 +392,6 @@ docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
 docs/GKETargetDetails.md
-docs/GatewayBasicInfo.md
 docs/GatewayCreateAllowedAccess.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
@@ -456,6 +456,7 @@ docs/GatewayDeleteK8SAuthConfigOutput.md
 docs/GatewayDeleteMigration.md
 docs/GatewayDeleteProducer.md
 docs/GatewayDeleteProducerOutput.md
+docs/GatewayDetailsForItemReplyObj.md
 docs/GatewayDownloadCustomerFragments.md
 docs/GatewayDownloadCustomerFragmentsOutput.md
 docs/GatewayGetAllowedAccess.md
@@ -571,6 +572,7 @@ docs/GatewayUpdateProducerSnowflakeOutput.md
 docs/GatewayUpdateProducerVenafi.md
 docs/GatewayUpdateProducerVenafiOutput.md
 docs/GatewayUpdateRemoteAccess.md
+docs/GatewayUpdateRemoteAccessDesktopApp.md
 docs/GatewayUpdateRemoteAccessRdpRecordings.md
 docs/GatewayUpdateTlsCert.md
 docs/GatewayUpdateTlsCertOutput.md
@@ -869,6 +871,7 @@ docs/SignRsaSsaPss.md
 docs/SignRsaSsaPssOutput.md
 docs/SmInfo.md
 docs/SplunkLogForwardingConfig.md
+docs/SraDesktopAppConf.md
 docs/SraInfo.md
 docs/SraSessionEntryOut.md
 docs/SshBastionConf.md
@@ -1095,9 +1098,10 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/CaCertificatesConfigPartTests.cs
-src/akeyless.Test/Model/CertificateStoreTests.cs
-src/akeyless.Test/Model/DefaultHomePageTests.cs
+src/akeyless.Test/Model/DesktopAppConfTests.cs
+src/akeyless.Test/Model/GatewayDetailsForItemReplyObjTests.cs
+src/akeyless.Test/Model/GatewayUpdateRemoteAccessDesktopAppTests.cs
+src/akeyless.Test/Model/SraDesktopAppConfTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1388,6 +1392,7 @@ src/akeyless/Model/DescribePermissions.cs
 src/akeyless/Model/DescribePermissionsOutput.cs
 src/akeyless/Model/DescribeSubClaims.cs
 src/akeyless/Model/DescribeSubClaimsOutput.cs
+src/akeyless/Model/DesktopAppConf.cs
 src/akeyless/Model/Detokenize.cs
 src/akeyless/Model/DetokenizeOutput.cs
 src/akeyless/Model/DockerhubTargetDetails.cs
@@ -1505,7 +1510,6 @@ src/akeyless/Model/GCPAccessRules.cs
 src/akeyless/Model/GCPPayload.cs
 src/akeyless/Model/GCPSecretsMigration.cs
 src/akeyless/Model/GKETargetDetails.cs
-src/akeyless/Model/GatewayBasicInfo.cs
 src/akeyless/Model/GatewayCreateAllowedAccess.cs
 src/akeyless/Model/GatewayCreateK8SAuthConfig.cs
 src/akeyless/Model/GatewayCreateK8SAuthConfigOutput.cs
@@ -1570,6 +1574,7 @@ src/akeyless/Model/GatewayDeleteK8SAuthConfigOutput.cs
 src/akeyless/Model/GatewayDeleteMigration.cs
 src/akeyless/Model/GatewayDeleteProducer.cs
 src/akeyless/Model/GatewayDeleteProducerOutput.cs
+src/akeyless/Model/GatewayDetailsForItemReplyObj.cs
 src/akeyless/Model/GatewayDownloadCustomerFragments.cs
 src/akeyless/Model/GatewayDownloadCustomerFragmentsOutput.cs
 src/akeyless/Model/GatewayGetAllowedAccess.cs
@@ -1685,6 +1690,7 @@ src/akeyless/Model/GatewayUpdateProducerSnowflakeOutput.cs
 src/akeyless/Model/GatewayUpdateProducerVenafi.cs
 src/akeyless/Model/GatewayUpdateProducerVenafiOutput.cs
 src/akeyless/Model/GatewayUpdateRemoteAccess.cs
+src/akeyless/Model/GatewayUpdateRemoteAccessDesktopApp.cs
 src/akeyless/Model/GatewayUpdateRemoteAccessRdpRecordings.cs
 src/akeyless/Model/GatewayUpdateTlsCert.cs
 src/akeyless/Model/GatewayUpdateTlsCertOutput.cs
@@ -1983,6 +1989,7 @@ src/akeyless/Model/SignRsaSsaPss.cs
 src/akeyless/Model/SignRsaSsaPssOutput.cs
 src/akeyless/Model/SmInfo.cs
 src/akeyless/Model/SplunkLogForwardingConfig.cs
+src/akeyless/Model/SraDesktopAppConf.cs
 src/akeyless/Model/SraInfo.cs
 src/akeyless/Model/SraSessionEntryOut.cs
 src/akeyless/Model/SshBastionConf.cs

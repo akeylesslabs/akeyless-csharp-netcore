@@ -35,16 +35,16 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BastionConfigReplyObj" /> class.
         /// </summary>
-        /// <param name="apiGatewayUrl">apiGatewayUrl.</param>
         /// <param name="clusterId">clusterId.</param>
+        /// <param name="desktopApp">desktopApp.</param>
         /// <param name="gatorClusterId">gatorClusterId.</param>
         /// <param name="global">global.</param>
         /// <param name="sshBastion">sshBastion.</param>
         /// <param name="webBastion">webBastion.</param>
-        public BastionConfigReplyObj(string apiGatewayUrl = default(string), string clusterId = default(string), long gatorClusterId = default(long), BastionGlobalConf global = default(BastionGlobalConf), SshBastionConf sshBastion = default(SshBastionConf), WebBastionConf webBastion = default(WebBastionConf))
+        public BastionConfigReplyObj(string clusterId = default(string), SraDesktopAppConf desktopApp = default(SraDesktopAppConf), long gatorClusterId = default(long), BastionGlobalConf global = default(BastionGlobalConf), SshBastionConf sshBastion = default(SshBastionConf), WebBastionConf webBastion = default(WebBastionConf))
         {
-            this.ApiGatewayUrl = apiGatewayUrl;
             this.ClusterId = clusterId;
+            this.DesktopApp = desktopApp;
             this.GatorClusterId = gatorClusterId;
             this.Global = global;
             this.SshBastion = sshBastion;
@@ -52,16 +52,16 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets ApiGatewayUrl
-        /// </summary>
-        [DataMember(Name = "api_gateway_url", EmitDefaultValue = false)]
-        public string ApiGatewayUrl { get; set; }
-
-        /// <summary>
         /// Gets or Sets ClusterId
         /// </summary>
         [DataMember(Name = "cluster_id", EmitDefaultValue = false)]
         public string ClusterId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DesktopApp
+        /// </summary>
+        [DataMember(Name = "desktop_app", EmitDefaultValue = false)]
+        public SraDesktopAppConf DesktopApp { get; set; }
 
         /// <summary>
         /// Gets or Sets GatorClusterId
@@ -95,8 +95,8 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BastionConfigReplyObj {\n");
-            sb.Append("  ApiGatewayUrl: ").Append(ApiGatewayUrl).Append("\n");
             sb.Append("  ClusterId: ").Append(ClusterId).Append("\n");
+            sb.Append("  DesktopApp: ").Append(DesktopApp).Append("\n");
             sb.Append("  GatorClusterId: ").Append(GatorClusterId).Append("\n");
             sb.Append("  Global: ").Append(Global).Append("\n");
             sb.Append("  SshBastion: ").Append(SshBastion).Append("\n");

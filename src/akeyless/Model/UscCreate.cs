@@ -44,13 +44,14 @@ namespace akeyless.Model
         /// <param name="description">Description of the universal secrets.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="varNamespace">The namespace (relevant for Hashi vault target).</param>
+        /// <param name="objectType">objectType.</param>
         /// <param name="secretName">Name for the new universal secrets (required).</param>
         /// <param name="tags">Tags for the universal secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
-        public UscCreate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string secretName = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscName = default(string), string value = default(string))
+        public UscCreate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string secretName = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscName = default(string), string value = default(string))
         {
             // to ensure "secretName" is required (not null)
             if (secretName == null)
@@ -74,6 +75,7 @@ namespace akeyless.Model
             this.Description = description;
             this.Json = json;
             this.Namespace = varNamespace;
+            this.ObjectType = objectType;
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
@@ -106,6 +108,12 @@ namespace akeyless.Model
         /// <value>The namespace (relevant for Hashi vault target)</value>
         [DataMember(Name = "namespace", EmitDefaultValue = false)]
         public string Namespace { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ObjectType
+        /// </summary>
+        [DataMember(Name = "object-type", EmitDefaultValue = false)]
+        public string ObjectType { get; set; }
 
         /// <summary>
         /// Name for the new universal secrets
@@ -161,6 +169,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
+            sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
             sb.Append("  SecretName: ").Append(SecretName).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

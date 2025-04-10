@@ -57,7 +57,7 @@ namespace akeyless.Model
         /// <param name="target">The target.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="useSshAgent">Enable ssh-agent.</param>
+        /// <param name="useSshAgent">Deprecated.</param>
         /// <param name="viaBastion">Deprecated. Use via-sra.</param>
         /// <param name="viaSra">The jump box server.</param>
         public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = default(string), string bastionCtrlProto = default(string), string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string gatewayUrl = default(string), string identityFile = default(string), bool json = false, string justification = default(string), string name = default(string), string sraCtrlPath = default(string), string sraCtrlPort = @"9900", string sraCtrlProto = @"http", string sraCtrlSubdomain = default(string), string sshCommand = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = false, string target = default(string), string token = default(string), string uidToken = default(string), bool useSshAgent = default(bool), string viaBastion = default(string), string viaSra = default(string))
@@ -244,9 +244,9 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Enable ssh-agent
+        /// Deprecated
         /// </summary>
-        /// <value>Enable ssh-agent</value>
+        /// <value>Deprecated</value>
         [DataMember(Name = "use-ssh-agent", EmitDefaultValue = true)]
         public bool UseSshAgent { get; set; }
 

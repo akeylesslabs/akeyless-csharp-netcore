@@ -56,6 +56,8 @@ namespace akeyless.Model
         /// <param name="rdpHostPort">Port (default to &quot;22&quot;).</param>
         /// <param name="rdpUserGroups">Groups.</param>
         /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users (default to false).</param>
+        /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
+        /// <param name="secureAccessCertificateIssuer">Path to the SSH Certificate Issuer for your Akeyless Secure Access.</param>
         /// <param name="secureAccessDelay">The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
@@ -68,7 +70,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="warnUserBeforeExpiration">WarnBeforeUserExpiration.</param>
-        public DynamicSecretUpdateRdp(long allowUserExtendSession = default(long), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"ext_username", string fixedUserOnly = @"false", bool json = false, string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = @"22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = false, long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m", long warnUserBeforeExpiration = default(long))
+        public DynamicSecretUpdateRdp(long allowUserExtendSession = default(long), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"ext_username", string fixedUserOnly = @"false", bool json = false, string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = @"22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m", long warnUserBeforeExpiration = default(long))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -94,6 +96,8 @@ namespace akeyless.Model
             this.RdpHostPort = rdpHostPort ?? @"22";
             this.RdpUserGroups = rdpUserGroups;
             this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
+            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
+            this.SecureAccessCertificateIssuer = secureAccessCertificateIssuer;
             this.SecureAccessDelay = secureAccessDelay;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
@@ -222,6 +226,20 @@ namespace akeyless.Model
         public bool SecureAccessAllowExternalUser { get; set; }
 
         /// <summary>
+        /// Deprecated. use secure-access-certificate-issuer
+        /// </summary>
+        /// <value>Deprecated. use secure-access-certificate-issuer</value>
+        [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
+        public string SecureAccessBastionIssuer { get; set; }
+
+        /// <summary>
+        /// Path to the SSH Certificate Issuer for your Akeyless Secure Access
+        /// </summary>
+        /// <value>Path to the SSH Certificate Issuer for your Akeyless Secure Access</value>
+        [DataMember(Name = "secure-access-certificate-issuer", EmitDefaultValue = false)]
+        public string SecureAccessCertificateIssuer { get; set; }
+
+        /// <summary>
         /// The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds
         /// </summary>
         /// <value>The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds</value>
@@ -329,6 +347,8 @@ namespace akeyless.Model
             sb.Append("  RdpHostPort: ").Append(RdpHostPort).Append("\n");
             sb.Append("  RdpUserGroups: ").Append(RdpUserGroups).Append("\n");
             sb.Append("  SecureAccessAllowExternalUser: ").Append(SecureAccessAllowExternalUser).Append("\n");
+            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
+            sb.Append("  SecureAccessCertificateIssuer: ").Append(SecureAccessCertificateIssuer).Append("\n");
             sb.Append("  SecureAccessDelay: ").Append(SecureAccessDelay).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");

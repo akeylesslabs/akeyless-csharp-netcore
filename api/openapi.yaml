@@ -8289,6 +8289,34 @@ paths:
             field.
       tags:
       - v2
+  /gateway-update-remote-access-desktop-app:
+    post:
+      operationId: gatewayUpdateRemoteAccessDesktopApp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayUpdateRemoteAccessDesktopApp'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayUpdateRemoteAccessDesktopAppOutput'
+          description: gatewayUpdateRemoteAccessDesktopAppResponse wraps response
+            body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /gateway-update-remote-access-rdp-recording:
     post:
       operationId: gatewayUpdateRemoteAccessRdpRecordings
@@ -17139,6 +17167,12 @@ components:
           schema:
             $ref: '#/components/schemas/gatewayUpdateProducerVenafiOutput'
       description: gatewayUpdateProducerVenafiResponse wraps response body.
+    gatewayUpdateRemoteAccessDesktopAppResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/gatewayUpdateRemoteAccessDesktopAppOutput'
+      description: gatewayUpdateRemoteAccessDesktopAppResponse wraps response body.
     gatewayUpdateRemoteAccessRdpRecordingsResponse:
       content:
         application/json:
@@ -21568,6 +21602,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     BastionConfigReplyObj:
       example:
+        desktop_app:
+          default_cert_issuer_id: 0
+          secure_web_proxy_url: secure_web_proxy_url
+          secure_web_access_url: secure_web_access_url
         cluster_id: cluster_id
         web_bastion:
           guacamole:
@@ -21588,7 +21626,6 @@ components:
               storage_account: storage_account
               client_id: client_id
               storage_container_name: storage_container_name
-        api_gateway_url: api_gateway_url
         global:
           allowed_bastion_urls:
           - allowed_bastion_urls
@@ -21672,14 +21709,13 @@ components:
             api_token: api_token
             api_password: api_password
             enabled: true
-        gator_cluster_id: 0
+        gator_cluster_id: 6
       properties:
-        api_gateway_url:
-          type: string
-          x-go-name: ApiGatewayURL
         cluster_id:
           type: string
           x-go-name: ClusterId
+        desktop_app:
+          $ref: '#/components/schemas/SraDesktopAppConf'
         gator_cluster_id:
           format: int64
           type: integer
@@ -23367,7 +23403,7 @@ components:
           type: string
           x-go-name: UIDToken
         use-ssh-agent:
-          description: Enable ssh-agent
+          description: Deprecated
           type: boolean
           x-go-name: UseSshAgent
         via-bastion:
@@ -24115,8 +24151,10 @@ components:
         target-to-associate: target-to-associate
         delete_protection: delete_protection
         name: name
+        use-prefix-as-filter: "false"
         description: description
         json: false
+        usc-prefix: usc-prefix
         k8s-namespace: k8s-namespace
         azure-kv-name: azure-kv-name
         uid-token: uid-token
@@ -24169,6 +24207,16 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        usc-prefix:
+          description: Prefix for all secrets created in AWS Secrets Manager
+          type: string
+          x-go-name: USCPrefix
+        use-prefix-as-filter:
+          default: "false"
+          description: "Whether to filter the USC secret list using the specified\
+            \ usc-prefix [true/false]"
+          type: string
+          x-go-name: UsePrefixAsFilterStr
       required:
       - name
       - target-to-associate
@@ -24433,6 +24481,7 @@ components:
           gw_cluster_id: 3
           native: true
           enable: true
+          is_desktop_app: true
           host:
           - host
           - host
@@ -25735,6 +25784,28 @@ components:
         operation.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    DesktopAppConf:
+      example:
+        default_cert_issuer_id: 4
+        secure_web_proxy_url: secure_web_proxy_url
+        default_cert_issuer_name: default_cert_issuer_name
+        secure_web_access_url: secure_web_access_url
+      properties:
+        default_cert_issuer_id:
+          format: int64
+          type: integer
+          x-go-name: DefaultCertIssuerId
+        default_cert_issuer_name:
+          type: string
+          x-go-name: DefaultCertIssuerName
+        secure_web_access_url:
+          type: string
+          x-go-name: SecureWebAccessUrl
+        secure_web_proxy_url:
+          type: string
+          x-go-name: SecureWebProxyUrl
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     DiscoveryType:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
@@ -26060,6 +26131,7 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           last_retrieved: 2000-01-23T04:56:07.000+00:00
           name: name
+          thumbprint: thumbprint
           description: description
           expiration: 2000-01-23T04:56:07.000+00:00
           location: ""
@@ -26072,6 +26144,7 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           last_retrieved: 2000-01-23T04:56:07.000+00:00
           name: name
+          thumbprint: thumbprint
           description: description
           expiration: 2000-01-23T04:56:07.000+00:00
           location: ""
@@ -26392,27 +26465,25 @@ components:
     GWSRoleScope:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
-    GatewayBasicInfo:
+    GatewayDetailsForItemReplyObj:
       example:
         cluster_url: cluster_url
+        desktop_app:
+          default_cert_issuer_id: 4
+          secure_web_proxy_url: secure_web_proxy_url
+          default_cert_issuer_name: default_cert_issuer_name
+          secure_web_access_url: secure_web_access_url
         cluster_name: cluster_name
-        cluster_id: 4
-        cluster_display_name: cluster_display_name
         is_cluster_available: true
       properties:
-        cluster_display_name:
-          type: string
-          x-go-name: ClusterDisplayName
-        cluster_id:
-          format: int64
-          type: integer
-          x-go-name: ClusterId
         cluster_name:
           type: string
           x-go-name: ClusterName
         cluster_url:
           type: string
           x-go-name: ClusterUrl
+        desktop_app:
+          $ref: '#/components/schemas/DesktopAppConf'
         is_cluster_available:
           type: boolean
           x-go-name: IsAvailable
@@ -28462,14 +28533,20 @@ components:
         last_rotation_date: 2000-01-23T04:56:07.000+00:00
         gateway_details:
         - cluster_url: cluster_url
+          desktop_app:
+            default_cert_issuer_id: 4
+            secure_web_proxy_url: secure_web_proxy_url
+            default_cert_issuer_name: default_cert_issuer_name
+            secure_web_access_url: secure_web_access_url
           cluster_name: cluster_name
-          cluster_id: 4
-          cluster_display_name: cluster_display_name
           is_cluster_available: true
         - cluster_url: cluster_url
+          desktop_app:
+            default_cert_issuer_id: 4
+            secure_web_proxy_url: secure_web_proxy_url
+            default_cert_issuer_name: default_cert_issuer_name
+            secure_web_access_url: secure_web_access_url
           cluster_name: cluster_name
-          cluster_id: 4
-          cluster_display_name: cluster_display_name
           is_cluster_available: true
         customer_fragment_id: customer_fragment_id
         is_access_request_enabled: true
@@ -28608,6 +28685,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -29139,7 +29217,7 @@ components:
           x-go-name: DisplayId
         gateway_details:
           items:
-            $ref: '#/components/schemas/GatewayBasicInfo'
+            $ref: '#/components/schemas/GatewayDetailsForItemReplyObj'
           type: array
           x-go-name: GatewayDetails
         is_access_request_enabled:
@@ -29390,6 +29468,7 @@ components:
           gw_cluster_id: 3
           native: true
           enable: true
+          is_desktop_app: true
           host:
           - host
           - host
@@ -32454,14 +32533,20 @@ components:
           last_rotation_date: 2000-01-23T04:56:07.000+00:00
           gateway_details:
           - cluster_url: cluster_url
+            desktop_app:
+              default_cert_issuer_id: 4
+              secure_web_proxy_url: secure_web_proxy_url
+              default_cert_issuer_name: default_cert_issuer_name
+              secure_web_access_url: secure_web_access_url
             cluster_name: cluster_name
-            cluster_id: 4
-            cluster_display_name: cluster_display_name
             is_cluster_available: true
           - cluster_url: cluster_url
+            desktop_app:
+              default_cert_issuer_id: 4
+              secure_web_proxy_url: secure_web_proxy_url
+              default_cert_issuer_name: default_cert_issuer_name
+              secure_web_access_url: secure_web_access_url
             cluster_name: cluster_name
-            cluster_id: 4
-            cluster_display_name: cluster_display_name
             is_cluster_available: true
           customer_fragment_id: customer_fragment_id
           is_access_request_enabled: true
@@ -32600,6 +32685,7 @@ components:
               gw_cluster_id: 3
               native: true
               enable: true
+              is_desktop_app: true
               host:
               - host
               - host
@@ -33297,14 +33383,20 @@ components:
           last_rotation_date: 2000-01-23T04:56:07.000+00:00
           gateway_details:
           - cluster_url: cluster_url
+            desktop_app:
+              default_cert_issuer_id: 4
+              secure_web_proxy_url: secure_web_proxy_url
+              default_cert_issuer_name: default_cert_issuer_name
+              secure_web_access_url: secure_web_access_url
             cluster_name: cluster_name
-            cluster_id: 4
-            cluster_display_name: cluster_display_name
             is_cluster_available: true
           - cluster_url: cluster_url
+            desktop_app:
+              default_cert_issuer_id: 4
+              secure_web_proxy_url: secure_web_proxy_url
+              default_cert_issuer_name: default_cert_issuer_name
+              secure_web_access_url: secure_web_access_url
             cluster_name: cluster_name
-            cluster_id: 4
-            cluster_display_name: cluster_display_name
             is_cluster_available: true
           customer_fragment_id: customer_fragment_id
           is_access_request_enabled: true
@@ -33443,6 +33535,7 @@ components:
               gw_cluster_id: 3
               native: true
               enable: true
+              is_desktop_app: true
               host:
               - host
               - host
@@ -34162,14 +34255,20 @@ components:
           last_rotation_date: 2000-01-23T04:56:07.000+00:00
           gateway_details:
           - cluster_url: cluster_url
+            desktop_app:
+              default_cert_issuer_id: 4
+              secure_web_proxy_url: secure_web_proxy_url
+              default_cert_issuer_name: default_cert_issuer_name
+              secure_web_access_url: secure_web_access_url
             cluster_name: cluster_name
-            cluster_id: 4
-            cluster_display_name: cluster_display_name
             is_cluster_available: true
           - cluster_url: cluster_url
+            desktop_app:
+              default_cert_issuer_id: 4
+              secure_web_proxy_url: secure_web_proxy_url
+              default_cert_issuer_name: default_cert_issuer_name
+              secure_web_access_url: secure_web_access_url
             cluster_name: cluster_name
-            cluster_id: 4
-            cluster_display_name: cluster_display_name
             is_cluster_available: true
           customer_fragment_id: customer_fragment_id
           is_access_request_enabled: true
@@ -34308,6 +34407,7 @@ components:
               gw_cluster_id: 3
               native: true
               enable: true
+              is_desktop_app: true
               host:
               - host
               - host
@@ -35005,14 +35105,20 @@ components:
           last_rotation_date: 2000-01-23T04:56:07.000+00:00
           gateway_details:
           - cluster_url: cluster_url
+            desktop_app:
+              default_cert_issuer_id: 4
+              secure_web_proxy_url: secure_web_proxy_url
+              default_cert_issuer_name: default_cert_issuer_name
+              secure_web_access_url: secure_web_access_url
             cluster_name: cluster_name
-            cluster_id: 4
-            cluster_display_name: cluster_display_name
             is_cluster_available: true
           - cluster_url: cluster_url
+            desktop_app:
+              default_cert_issuer_id: 4
+              secure_web_proxy_url: secure_web_proxy_url
+              default_cert_issuer_name: default_cert_issuer_name
+              secure_web_access_url: secure_web_access_url
             cluster_name: cluster_name
-            cluster_id: 4
-            cluster_display_name: cluster_display_name
             is_cluster_available: true
           customer_fragment_id: customer_fragment_id
           is_access_request_enabled: true
@@ -35151,6 +35257,7 @@ components:
               gw_cluster_id: 3
               native: true
               enable: true
+              is_desktop_app: true
               host:
               - host
               - host
@@ -37354,6 +37461,9 @@ components:
       title: An ObjectIdentifier represents an ASN.1 OBJECT IDENTIFIER.
       type: array
       x-go-package: encoding/asn1
+    ObjectType:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/external-secrets-manager/base
     ObjectVersionSettingsOutput:
       example:
         item-type: item-type
@@ -39245,6 +39355,7 @@ components:
         created: 2000-01-23T04:56:07.000+00:00
         last_retrieved: 2000-01-23T04:56:07.000+00:00
         name: name
+        thumbprint: thumbprint
         description: description
         expiration: 2000-01-23T04:56:07.000+00:00
         location: ""
@@ -39285,6 +39396,9 @@ components:
             type: string
           type: object
           x-go-name: Tags
+        thumbprint:
+          type: string
+          x-go-name: Thumbprint
         type:
           type: string
           x-go-name: Type
@@ -39374,6 +39488,7 @@ components:
         gw_cluster_id: 3
         native: true
         enable: true
+        is_desktop_app: true
         host:
         - host
         - host
@@ -39468,6 +39583,9 @@ components:
         is_cli:
           type: boolean
           x-go-name: AccessCliCategory
+        is_desktop_app:
+          type: boolean
+          x-go-name: AccessDesktopAppCategory
         is_web:
           type: boolean
           x-go-name: AccessWebCategory
@@ -39778,6 +39896,24 @@ components:
     SraClientType:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    SraDesktopAppConf:
+      example:
+        default_cert_issuer_id: 0
+        secure_web_proxy_url: secure_web_proxy_url
+        secure_web_access_url: secure_web_access_url
+      properties:
+        default_cert_issuer_id:
+          format: int64
+          type: integer
+          x-go-name: DefaultCertIssuerId
+        secure_web_access_url:
+          type: string
+          x-go-name: SecureWebAccessUrl
+        secure_web_proxy_url:
+          type: string
+          x-go-name: SecureWebProxyUrl
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     SraInfo:
       example:
         user_type: user_type
@@ -41382,6 +41518,7 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           last_retrieved: 2000-01-23T04:56:07.000+00:00
           name: name
+          thumbprint: thumbprint
           description: description
           expiration: 2000-01-23T04:56:07.000+00:00
           location: ""
@@ -41394,6 +41531,7 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           last_retrieved: 2000-01-23T04:56:07.000+00:00
           name: name
+          thumbprint: thumbprint
           description: description
           expiration: 2000-01-23T04:56:07.000+00:00
           location: ""
@@ -54073,6 +54211,15 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -54848,6 +54995,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -55478,6 +55626,15 @@ components:
           description: Allow providing external user for a domain users
           type: boolean
           x-go-name: SecureAccessAllowProvidingExternalUser
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -57852,6 +58009,15 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -58643,6 +58809,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -59289,6 +59456,15 @@ components:
           description: Allow providing external user for a domain users
           type: boolean
           x-go-name: SecureAccessAllowProvidingExternalUser
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -62079,6 +62255,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -62588,6 +62765,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -63066,6 +63244,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -63504,6 +63683,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -63932,6 +64112,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -64372,6 +64553,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -64790,6 +64972,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -65254,6 +65437,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -65687,6 +65871,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -66127,6 +66312,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -66582,6 +66768,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -67054,6 +67241,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -67288,6 +67476,15 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -67547,6 +67744,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -68019,6 +68217,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -68508,6 +68707,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -68993,6 +69193,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -69494,6 +69695,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -69965,6 +70167,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -70467,6 +70670,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -70944,6 +71148,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -71406,6 +71611,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -71642,6 +71848,15 @@ components:
           description: Allow providing external user for a domain users
           type: boolean
           x-go-name: SecureAccessAllowProvidingExternalUser
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -71890,6 +72105,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -72331,6 +72547,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -72780,6 +72997,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -73215,6 +73433,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -73697,6 +73916,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -77273,6 +77493,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -77786,6 +78007,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -78268,6 +78490,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -78710,6 +78933,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -79142,6 +79366,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -79586,6 +79811,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -80008,6 +80234,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -80476,6 +80703,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -80913,6 +81141,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -81357,6 +81586,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -81816,6 +82046,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -82286,6 +82517,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -82524,6 +82756,15 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -82783,6 +83024,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -83259,6 +83501,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -83752,6 +83995,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -84241,6 +84485,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -84746,6 +84991,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -85221,6 +85467,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -85727,6 +85974,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -86208,6 +86456,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -86674,6 +86923,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -86914,6 +87164,15 @@ components:
           description: Allow providing external user for a domain users
           type: boolean
           x-go-name: SecureAccessAllowProvidingExternalUser
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -87162,6 +87421,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -87607,6 +87867,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -88060,6 +88321,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -88499,6 +88761,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -88985,6 +89248,7 @@ components:
             gw_cluster_id: 3
             native: true
             enable: true
+            is_desktop_app: true
             host:
             - host
             - host
@@ -89211,6 +89475,38 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateRemoteAccessDesktopApp:
+      description: gatewayUpdateRemoteAccessDesktopApp is a command that update remote
+        access desktop app config
+      properties:
+        desktop-app-secure-web-access-url:
+          type: string
+          x-go-name: SecureWebAccessUrl
+        desktop-app-secure-web-proxy:
+          type: string
+          x-go-name: SecureWebProxyUrl
+        desktop-app-ssh-cert-issuer:
+          type: string
+          x-go-name: DefaultCertIssuer
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    gatewayUpdateRemoteAccessDesktopAppOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayUpdateRemoteAccessOutput:
@@ -93041,6 +93337,15 @@ components:
           description: "The rotator type. options: [target/ldap]"
           type: string
           x-go-name: RotatorType
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-enable:
           description: "Enable/Disable secure remote access [true/false]"
           type: string
@@ -94258,6 +94563,11 @@ components:
           description: Override the SSH username as indicated in SSH Certificate Issuer
           type: string
           x-go-name: SecureAccessSSHUser
+        secure-access-target-type:
+          default: "false"
+          description: Specify target type. Options are ssh or rdp
+          type: string
+          x-go-name: SecureAccessTargetType
         tags:
           description: Add tags attached to this object
           items:
@@ -94374,6 +94684,15 @@ components:
           description: Allow providing external user for a domain users
           type: boolean
           x-go-name: SecureAccessAllowProvidingExternalUser
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-enable:
           description: "Enable/Disable secure remote access [true/false]"
           type: string
@@ -95576,6 +95895,15 @@ components:
             (1-365)
           type: string
           x-go-name: RotationInterval
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-enable:
           description: "Enable/Disable secure remote access [true/false]"
           type: string
@@ -96851,6 +97179,11 @@ components:
           description: Override the SSH username as indicated in SSH Certificate Issuer
           type: string
           x-go-name: SecureAccessSSHUser
+        secure-access-target-type:
+          default: "false"
+          description: Specify target type. Options are ssh or rdp
+          type: string
+          x-go-name: SecureAccessTargetType
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string
@@ -96978,6 +97311,15 @@ components:
           description: Allow providing external user for a domain users
           type: boolean
           x-go-name: SecureAccessAllowProvidingExternalUser
+        secure-access-bastion-issuer:
+          description: Deprecated. use secure-access-certificate-issuer
+          type: string
+          x-go-name: SecureAccessBastionIssuer
+        secure-access-certificate-issuer:
+          description: Path to the SSH Certificate Issuer for your Akeyless Secure
+            Access
+          type: string
+          x-go-name: SecureAccessCertIssuer
         secure-access-enable:
           description: "Enable/Disable secure remote access [true/false]"
           type: string
@@ -107846,6 +108188,9 @@ components:
           description: The namespace (relevant for Hashi vault target)
           type: string
           x-go-name: Namespace
+        object-type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/external-secrets-manager/base
         secret-name:
           description: Name for the new universal secrets
           type: string
@@ -107965,6 +108310,9 @@ components:
           description: Set output format to JSON
           type: boolean
           x-go-name: Json
+        object-type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/external-secrets-manager/base
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string

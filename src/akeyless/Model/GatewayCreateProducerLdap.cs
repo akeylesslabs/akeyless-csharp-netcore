@@ -54,6 +54,8 @@ namespace akeyless.Model
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
+        /// <param name="secureAccessCertificateIssuer">Path to the SSH Certificate Issuer for your Akeyless Secure Access.</param>
         /// <param name="secureAccessDelay">The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
@@ -68,7 +70,7 @@ namespace akeyless.Model
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerLdap(string providerType = default(string), string bindDn = default(string), string bindDnPassword = default(string), string deleteProtection = default(string), string externalUsername = @"false", string fixedUserClaimKeyname = @"ext_username", string groupDn = default(string), string hostProvider = default(string), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerLdap(string providerType = default(string), string bindDn = default(string), string bindDnPassword = default(string), string deleteProtection = default(string), string externalUsername = @"false", string fixedUserClaimKeyname = @"ext_username", string groupDn = default(string), string hostProvider = default(string), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -91,6 +93,8 @@ namespace akeyless.Model
             this.LdapUrl = ldapUrl;
             this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
+            this.SecureAccessCertificateIssuer = secureAccessCertificateIssuer;
             this.SecureAccessDelay = secureAccessDelay;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
@@ -204,6 +208,20 @@ namespace akeyless.Model
         /// <value>Dynamic producer encryption key</value>
         [DataMember(Name = "producer-encryption-key-name", EmitDefaultValue = false)]
         public string ProducerEncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// Deprecated. use secure-access-certificate-issuer
+        /// </summary>
+        /// <value>Deprecated. use secure-access-certificate-issuer</value>
+        [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
+        public string SecureAccessBastionIssuer { get; set; }
+
+        /// <summary>
+        /// Path to the SSH Certificate Issuer for your Akeyless Secure Access
+        /// </summary>
+        /// <value>Path to the SSH Certificate Issuer for your Akeyless Secure Access</value>
+        [DataMember(Name = "secure-access-certificate-issuer", EmitDefaultValue = false)]
+        public string SecureAccessCertificateIssuer { get; set; }
 
         /// <summary>
         /// The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds
@@ -325,6 +343,8 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
+            sb.Append("  SecureAccessCertificateIssuer: ").Append(SecureAccessCertificateIssuer).Append("\n");
             sb.Append("  SecureAccessDelay: ").Append(SecureAccessDelay).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");

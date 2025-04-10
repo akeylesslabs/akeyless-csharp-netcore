@@ -56,6 +56,7 @@ namespace akeyless.Model
         /// <param name="host">host.</param>
         /// <param name="hostProviderType">hostProviderType.</param>
         /// <param name="isCli">isCli.</param>
+        /// <param name="isDesktopApp">isDesktopApp.</param>
         /// <param name="isWeb">isWeb.</param>
         /// <param name="isolated">isolated.</param>
         /// <param name="native">native.</param>
@@ -73,7 +74,7 @@ namespace akeyless.Model
         /// <param name="url">url.</param>
         /// <param name="useInternalBastion">useInternalBastion.</param>
         /// <param name="webProxy">webProxy.</param>
-        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), bool blockConcurrentConnections = default(bool), string blockConcurrentConnectionsLevel = default(string), string category = default(string), long connectionDelaySeconds = default(long), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), bool enforceHostsRestriction = default(bool), long gwClusterId = default(long), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), ItemSraStatus statusInfo = default(ItemSraStatus), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
+        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), bool blockConcurrentConnections = default(bool), string blockConcurrentConnectionsLevel = default(string), string category = default(string), long connectionDelaySeconds = default(long), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), bool enforceHostsRestriction = default(bool), long gwClusterId = default(long), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isDesktopApp = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), ItemSraStatus statusInfo = default(ItemSraStatus), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
         {
             this.AccountId = accountId;
             this.AllowPortForwarding = allowPortForwarding;
@@ -96,6 +97,7 @@ namespace akeyless.Model
             this.Host = host;
             this.HostProviderType = hostProviderType;
             this.IsCli = isCli;
+            this.IsDesktopApp = isDesktopApp;
             this.IsWeb = isWeb;
             this.Isolated = isolated;
             this.Native = native;
@@ -242,6 +244,12 @@ namespace akeyless.Model
         public bool IsCli { get; set; }
 
         /// <summary>
+        /// Gets or Sets IsDesktopApp
+        /// </summary>
+        [DataMember(Name = "is_desktop_app", EmitDefaultValue = true)]
+        public bool IsDesktopApp { get; set; }
+
+        /// <summary>
         /// Gets or Sets IsWeb
         /// </summary>
         [DataMember(Name = "is_web", EmitDefaultValue = true)]
@@ -372,6 +380,7 @@ namespace akeyless.Model
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  HostProviderType: ").Append(HostProviderType).Append("\n");
             sb.Append("  IsCli: ").Append(IsCli).Append("\n");
+            sb.Append("  IsDesktopApp: ").Append(IsDesktopApp).Append("\n");
             sb.Append("  IsWeb: ").Append(IsWeb).Append("\n");
             sb.Append("  Isolated: ").Append(Isolated).Append("\n");
             sb.Append("  Native: ").Append(Native).Append("\n");

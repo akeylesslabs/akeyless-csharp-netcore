@@ -58,6 +58,8 @@ namespace akeyless.Model
         /// <param name="rotatorType">The rotator type. options: [target/password] (required).</param>
         /// <param name="samePassword">Rotate same password for each host from the Linked Target (relevant only for Linked Target).</param>
         /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users (default to false).</param>
+        /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
+        /// <param name="secureAccessCertificateIssuer">Path to the SSH Certificate Issuer for your Akeyless Secure Access.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdpDomain">Default domain name server. i.e. microsoft.com.</param>
@@ -66,7 +68,7 @@ namespace akeyless.Model
         /// <param name="targetName">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotatedSecretCreateWindows(string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = @"false", string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
+        public RotatedSecretCreateWindows(string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = @"false", string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -104,6 +106,8 @@ namespace akeyless.Model
             this.RotationInterval = rotationInterval;
             this.SamePassword = samePassword;
             this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
+            this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
+            this.SecureAccessCertificateIssuer = secureAccessCertificateIssuer;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
@@ -240,6 +244,20 @@ namespace akeyless.Model
         public bool SecureAccessAllowExternalUser { get; set; }
 
         /// <summary>
+        /// Deprecated. use secure-access-certificate-issuer
+        /// </summary>
+        /// <value>Deprecated. use secure-access-certificate-issuer</value>
+        [DataMember(Name = "secure-access-bastion-issuer", EmitDefaultValue = false)]
+        public string SecureAccessBastionIssuer { get; set; }
+
+        /// <summary>
+        /// Path to the SSH Certificate Issuer for your Akeyless Secure Access
+        /// </summary>
+        /// <value>Path to the SSH Certificate Issuer for your Akeyless Secure Access</value>
+        [DataMember(Name = "secure-access-certificate-issuer", EmitDefaultValue = false)]
+        public string SecureAccessCertificateIssuer { get; set; }
+
+        /// <summary>
         /// Enable/Disable secure remote access [true/false]
         /// </summary>
         /// <value>Enable/Disable secure remote access [true/false]</value>
@@ -321,6 +339,8 @@ namespace akeyless.Model
             sb.Append("  RotatorType: ").Append(RotatorType).Append("\n");
             sb.Append("  SamePassword: ").Append(SamePassword).Append("\n");
             sb.Append("  SecureAccessAllowExternalUser: ").Append(SecureAccessAllowExternalUser).Append("\n");
+            sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
+            sb.Append("  SecureAccessCertificateIssuer: ").Append(SecureAccessCertificateIssuer).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");

@@ -309,6 +309,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GatewayUpdateProducerSnowflake**](V2Api.md#gatewayupdateproducersnowflake) | **POST** /gateway-update-producer-snowflake |  |
 | [**GatewayUpdateProducerVenafi**](V2Api.md#gatewayupdateproducervenafi) | **POST** /gateway-update-producer-certificate-automation |  |
 | [**GatewayUpdateRemoteAccess**](V2Api.md#gatewayupdateremoteaccess) | **POST** /gateway-update-remote-access |  |
+| [**GatewayUpdateRemoteAccessDesktopApp**](V2Api.md#gatewayupdateremoteaccessdesktopapp) | **POST** /gateway-update-remote-access-desktop-app |  |
 | [**GatewayUpdateRemoteAccessRdpRecordings**](V2Api.md#gatewayupdateremoteaccessrdprecordings) | **POST** /gateway-update-remote-access-rdp-recording |  |
 | [**GatewayUpdateTlsCert**](V2Api.md#gatewayupdatetlscert) | **POST** /gateway-update-tls-cert |  |
 | [**GatewayUpdateTmpUsers**](V2Api.md#gatewayupdatetmpusers) | **POST** /gateway-update-producer-tmp-creds |  |
@@ -27399,6 +27400,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | gatewayUpdateRemoteAccessResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="gatewayupdateremoteaccessdesktopapp"></a>
+# **GatewayUpdateRemoteAccessDesktopApp**
+> Object GatewayUpdateRemoteAccessDesktopApp (GatewayUpdateRemoteAccessDesktopApp gatewayUpdateRemoteAccessDesktopApp)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GatewayUpdateRemoteAccessDesktopAppExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var gatewayUpdateRemoteAccessDesktopApp = new GatewayUpdateRemoteAccessDesktopApp(); // GatewayUpdateRemoteAccessDesktopApp | 
+
+            try
+            {
+                Object result = apiInstance.GatewayUpdateRemoteAccessDesktopApp(gatewayUpdateRemoteAccessDesktopApp);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GatewayUpdateRemoteAccessDesktopApp: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GatewayUpdateRemoteAccessDesktopAppWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.GatewayUpdateRemoteAccessDesktopAppWithHttpInfo(gatewayUpdateRemoteAccessDesktopApp);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GatewayUpdateRemoteAccessDesktopAppWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **gatewayUpdateRemoteAccessDesktopApp** | [**GatewayUpdateRemoteAccessDesktopApp**](GatewayUpdateRemoteAccessDesktopApp.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | gatewayUpdateRemoteAccessDesktopAppResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

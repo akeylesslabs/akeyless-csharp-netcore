@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the universal secrets | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | **string** | The namespace (relevant for Hashi vault target) | [optional] 
+**ObjectType** | **string** |  | [optional] 
 **SecretName** | **string** | Name for the new universal secrets | 
 **Tags** | **Dictionary&lt;string, string&gt;** | Tags for the universal secrets | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

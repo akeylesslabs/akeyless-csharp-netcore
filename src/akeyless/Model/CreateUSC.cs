@@ -50,7 +50,9 @@ namespace akeyless.Model
         /// <param name="targetToAssociate">Target Universal Secrets Connector to connect (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string k8sNamespace = default(string), string name = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="uscPrefix">Prefix for all secrets created in AWS Secrets Manager.</param>
+        /// <param name="usePrefixAsFilter">Whether to filter the USC secret list using the specified usc-prefix [true/false] (default to &quot;false&quot;).</param>
+        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string k8sNamespace = default(string), string name = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string usePrefixAsFilter = @"false")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,6 +74,9 @@ namespace akeyless.Model
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UscPrefix = uscPrefix;
+            // use default value if no "usePrefixAsFilter" provided
+            this.UsePrefixAsFilter = usePrefixAsFilter ?? @"false";
         }
 
         /// <summary>
@@ -145,6 +150,20 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Prefix for all secrets created in AWS Secrets Manager
+        /// </summary>
+        /// <value>Prefix for all secrets created in AWS Secrets Manager</value>
+        [DataMember(Name = "usc-prefix", EmitDefaultValue = false)]
+        public string UscPrefix { get; set; }
+
+        /// <summary>
+        /// Whether to filter the USC secret list using the specified usc-prefix [true/false]
+        /// </summary>
+        /// <value>Whether to filter the USC secret list using the specified usc-prefix [true/false]</value>
+        [DataMember(Name = "use-prefix-as-filter", EmitDefaultValue = false)]
+        public string UsePrefixAsFilter { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -162,6 +181,8 @@ namespace akeyless.Model
             sb.Append("  TargetToAssociate: ").Append(TargetToAssociate).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UscPrefix: ").Append(UscPrefix).Append("\n");
+            sb.Append("  UsePrefixAsFilter: ").Append(UsePrefixAsFilter).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

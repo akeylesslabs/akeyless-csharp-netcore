@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **SecretId** | **string** |  | [optional] 
 **Status** | **bool** |  | [optional] 
 **Tags** | **Dictionary&lt;string, string&gt;** |  | [optional] 
+**Thumbprint** | **string** |  | [optional] 
 **Type** | **string** |  | [optional] 
 **VarVersion** | **long** |  | [optional] 
 

@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **SecureAccessRdpDomain** | **string** | Default domain name server. i.e. microsoft.com | [optional] 
 **SecureAccessRdpUser** | **string** | Override the RDP Domain username | [optional] 
 **SecureAccessSshUser** | **string** | Override the SSH username as indicated in SSH Certificate Issuer | [optional] 
+**SecureAccessTargetType** | **string** | Specify target type. Options are ssh or rdp | [optional] [default to "false"]
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

@@ -44,9 +44,10 @@ namespace akeyless.Model
         /// <param name="secretId">secretId.</param>
         /// <param name="status">status.</param>
         /// <param name="tags">tags.</param>
+        /// <param name="thumbprint">thumbprint.</param>
         /// <param name="type">type.</param>
         /// <param name="varVersion">varVersion.</param>
-        public SecretInfo(DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string type = default(string), long varVersion = default(long))
+        public SecretInfo(DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long))
         {
             this.Created = created;
             this.Description = description;
@@ -57,6 +58,7 @@ namespace akeyless.Model
             this.SecretId = secretId;
             this.Status = status;
             this.Tags = tags;
+            this.Thumbprint = thumbprint;
             this.Type = type;
             this.VarVersion = varVersion;
         }
@@ -116,6 +118,12 @@ namespace akeyless.Model
         public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
+        /// Gets or Sets Thumbprint
+        /// </summary>
+        [DataMember(Name = "thumbprint", EmitDefaultValue = false)]
+        public string Thumbprint { get; set; }
+
+        /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "type", EmitDefaultValue = false)]
@@ -144,6 +152,7 @@ namespace akeyless.Model
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  Thumbprint: ").Append(Thumbprint).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");

@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **Target** | **string** | The target | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UseSshAgent** | **bool** | Enable ssh-agent | [optional] 
+**UseSshAgent** | **bool** | Deprecated | [optional] 
 **ViaBastion** | **string** | Deprecated. Use via-sra | [optional] 
 **ViaSra** | **string** | The jump box server | [optional] 
 

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | **bool** |  | [optional] 
 **DeletionDate** | **DateTime** |  | [optional] 
 **DisplayId** | **string** |  | [optional] 
-**GatewayDetails** | [**List&lt;GatewayBasicInfo&gt;**](GatewayBasicInfo.md) |  | [optional] 
+**GatewayDetails** | [**List&lt;GatewayDetailsForItemReplyObj&gt;**](GatewayDetailsForItemReplyObj.md) |  | [optional] 
 **IsAccessRequestEnabled** | **bool** |  | [optional] 
 **IsEnabled** | **bool** |  | [optional] 
 **ItemAccessibility** | **long** |  | [optional] 

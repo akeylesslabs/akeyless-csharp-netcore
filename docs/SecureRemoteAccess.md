@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **Host** | **List&lt;string&gt;** |  | [optional] 
 **HostProviderType** | **string** |  | [optional] 
 **IsCli** | **bool** |  | [optional] 
+**IsDesktopApp** | **bool** |  | [optional] 
 **IsWeb** | **bool** |  | [optional] 
 **Isolated** | **bool** |  | [optional] 
 **Native** | **bool** |  | [optional] 
