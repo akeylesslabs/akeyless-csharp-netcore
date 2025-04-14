@@ -738,6 +738,7 @@ docs/Name.md
 docs/NativeK8sTargetDetails.md
 docs/NextAutoRotationEvent.md
 docs/NotiForwarder.md
+docs/NullString.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OCIAccessRules.md
@@ -1098,10 +1099,7 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/DesktopAppConfTests.cs
-src/akeyless.Test/Model/GatewayDetailsForItemReplyObjTests.cs
-src/akeyless.Test/Model/GatewayUpdateRemoteAccessDesktopAppTests.cs
-src/akeyless.Test/Model/SraDesktopAppConfTests.cs
+src/akeyless.Test/Model/NullStringTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1856,6 +1854,7 @@ src/akeyless/Model/Name.cs
 src/akeyless/Model/NativeK8sTargetDetails.cs
 src/akeyless/Model/NextAutoRotationEvent.cs
 src/akeyless/Model/NotiForwarder.cs
+src/akeyless/Model/NullString.cs
 src/akeyless/Model/OAuth2AccessRules.cs
 src/akeyless/Model/OAuth2CustomClaim.cs
 src/akeyless/Model/OCIAccessRules.cs
