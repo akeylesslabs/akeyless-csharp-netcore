@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **CustomPayload** | **string** | Secret payload to be sent with rotation request | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] [default to "default_metadata"]
+**EnablePasswordPolicy** | **string** | Enable password policy | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -37,6 +38,10 @@ Name | Type | Description | Notes
 **TimeoutSec** | **long** | Maximum allowed time in seconds for the custom rotator to return the results | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseCapitalLetters** | **string** | Password must contain capital letters [true/false] | [optional] 
+**UseLowerLetters** | **string** | Password must contain lower case letters [true/false] | [optional] 
+**UseNumbers** | **string** | Password must contain numbers [true/false] | [optional] 
+**UseSpecialCharacters** | **string** | Password must contain special characters [true/false] | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

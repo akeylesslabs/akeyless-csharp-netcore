@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AzureUsername** | **string** |  | [optional] 
 **ConnectionType** | **string** |  | [optional] 
 **ExpirationDate** | **DateTime** |  | [optional] 
+**GraceRotatedSecretKey** | **string** |  | [optional] 
 **UseGwCloudIdentity** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

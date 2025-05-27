@@ -766,7 +766,6 @@ docs/RawCreds.md
 docs/RefreshKey.md
 docs/RefreshKeyOutput.md
 docs/RegexpTokenizerInfo.md
-docs/RemoteSecretInfo.md
 docs/RenewCertificate.md
 docs/RenewCertificateOutput.md
 docs/RequestAccess.md
@@ -1072,6 +1071,7 @@ docs/UscGet.md
 docs/UscGetSecretOutput.md
 docs/UscList.md
 docs/UscListSecretsOutput.md
+docs/UscSyncInfo.md
 docs/UscUpdate.md
 docs/UscUpdateSecretOutput.md
 docs/V2Api.md
@@ -1099,7 +1099,7 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/NullStringTests.cs
+src/akeyless.Test/Model/UscSyncInfoTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1882,7 +1882,6 @@ src/akeyless/Model/RawCreds.cs
 src/akeyless/Model/RefreshKey.cs
 src/akeyless/Model/RefreshKeyOutput.cs
 src/akeyless/Model/RegexpTokenizerInfo.cs
-src/akeyless/Model/RemoteSecretInfo.cs
 src/akeyless/Model/RenewCertificate.cs
 src/akeyless/Model/RenewCertificateOutput.cs
 src/akeyless/Model/RequestAccess.cs
@@ -2188,6 +2187,7 @@ src/akeyless/Model/UscGet.cs
 src/akeyless/Model/UscGetSecretOutput.cs
 src/akeyless/Model/UscList.cs
 src/akeyless/Model/UscListSecretsOutput.cs
+src/akeyless/Model/UscSyncInfo.cs
 src/akeyless/Model/UscUpdate.cs
 src/akeyless/Model/UscUpdateSecretOutput.cs
 src/akeyless/Model/ValidateToken.cs

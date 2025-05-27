@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**FilterSecretValue** | **string** | JQ expression to filter or transform the secret value | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Rotated secret name | 
 **Namespace** | **string** | Vault namespace, releavnt only for Hashicorp Vault Target | [optional] 

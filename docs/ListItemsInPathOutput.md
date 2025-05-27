@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Folders** | **List&lt;string&gt;** |  | [optional] 
+**HasNext** | **bool** |  | [optional] 
 **Items** | [**List&lt;Item&gt;**](Item.md) |  | [optional] 
 **NextPage** | **string** |  | [optional] 
 

@@ -6,11 +6,15 @@ RotatedSecretDetailsInfo The rotated secret rotator info
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeletePreviousVersionInDays** | **int** |  | [optional] 
+**EnableCustomPasswordPolicy** | **bool** |  | [optional] 
 **GraceRotation** | **bool** |  | [optional] 
+**GraceRotationHour** | **int** |  | [optional] 
+**GraceRotationInterval** | **int** |  | [optional] 
 **GwClusterId** | **long** |  | [optional] 
 **LastRotationError** | **string** |  | [optional] 
 **ManagedByAkeyless** | **bool** |  | [optional] 
 **MaxVersions** | **long** |  | [optional] 
+**NextAutoRotateType** | **string** |  | [optional] 
 **NumberOfVersionsToSave** | **int** |  | [optional] 
 **RotationHour** | **int** |  | [optional] 
 **RotationIntervalMin** | **bool** |  | [optional] 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**HasNext** | **bool** |  | [optional] 
 **Items** | [**List&lt;Item&gt;**](Item.md) |  | [optional] 
 **NextPage** | **string** |  | [optional] 
 
