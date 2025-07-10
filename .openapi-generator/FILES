@@ -4,6 +4,7 @@ akeyless.sln
 api/openapi.yaml
 appveyor.yml
 docs/APIKeyAccessRules.md
+docs/AWSGatewayCloudIdentityExternalIdOpt.md
 docs/AWSIAMAccessRules.md
 docs/AWSPayload.md
 docs/AWSSecretsMigration.md
@@ -93,6 +94,7 @@ docs/CertAccessRules.md
 docs/CertificateAnalyticAggregation.md
 docs/CertificateChainInfo.md
 docs/CertificateExpirationEvent.md
+docs/CertificateExpirationEventsSettings.md
 docs/CertificateInfo.md
 docs/CertificateIssueInfo.md
 docs/CertificateStore.md
@@ -810,6 +812,7 @@ docs/RotatedSecretCreateSsh.md
 docs/RotatedSecretCreateWindows.md
 docs/RotatedSecretDelete.md
 docs/RotatedSecretDeleteSync.md
+docs/RotatedSecretDeleteSyncOutput.md
 docs/RotatedSecretDetailsInfo.md
 docs/RotatedSecretGetValue.md
 docs/RotatedSecretList.md
@@ -845,6 +848,7 @@ docs/SSHCertificateIssueDetails.md
 docs/SSHTargetDetails.md
 docs/SalesforceTargetDetails.md
 docs/SecretInfo.md
+docs/SecretSyncOutput.md
 docs/SectigoTargetDetails.md
 docs/SecureRemoteAccess.md
 docs/ServerInventoryMigration.md
@@ -878,7 +882,10 @@ docs/SshBastionConf.md
 docs/SshBastionSessionTermination.md
 docs/StaticCredsAuth.md
 docs/StaticCredsAuthOutput.md
+docs/StaticSecretDeleteSync.md
+docs/StaticSecretDeleteSyncOutput.md
 docs/StaticSecretDetailsInfo.md
+docs/StaticSecretSync.md
 docs/SumologicLogForwardingConfig.md
 docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
@@ -1099,7 +1106,13 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/UscSyncInfoTests.cs
+src/akeyless.Test/Model/AWSGatewayCloudIdentityExternalIdOptTests.cs
+src/akeyless.Test/Model/CertificateExpirationEventsSettingsTests.cs
+src/akeyless.Test/Model/RotatedSecretDeleteSyncOutputTests.cs
+src/akeyless.Test/Model/SecretSyncOutputTests.cs
+src/akeyless.Test/Model/StaticSecretDeleteSyncOutputTests.cs
+src/akeyless.Test/Model/StaticSecretDeleteSyncTests.cs
+src/akeyless.Test/Model/StaticSecretSyncTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1119,6 +1132,7 @@ src/akeyless/Client/OpenAPIDateConverter.cs
 src/akeyless/Client/RequestOptions.cs
 src/akeyless/Client/RetryConfiguration.cs
 src/akeyless/Model/APIKeyAccessRules.cs
+src/akeyless/Model/AWSGatewayCloudIdentityExternalIdOpt.cs
 src/akeyless/Model/AWSIAMAccessRules.cs
 src/akeyless/Model/AWSPayload.cs
 src/akeyless/Model/AWSSecretsMigration.cs
@@ -1209,6 +1223,7 @@ src/akeyless/Model/CertAccessRules.cs
 src/akeyless/Model/CertificateAnalyticAggregation.cs
 src/akeyless/Model/CertificateChainInfo.cs
 src/akeyless/Model/CertificateExpirationEvent.cs
+src/akeyless/Model/CertificateExpirationEventsSettings.cs
 src/akeyless/Model/CertificateInfo.cs
 src/akeyless/Model/CertificateIssueInfo.cs
 src/akeyless/Model/CertificateStore.cs
@@ -1926,6 +1941,7 @@ src/akeyless/Model/RotatedSecretCreateSsh.cs
 src/akeyless/Model/RotatedSecretCreateWindows.cs
 src/akeyless/Model/RotatedSecretDelete.cs
 src/akeyless/Model/RotatedSecretDeleteSync.cs
+src/akeyless/Model/RotatedSecretDeleteSyncOutput.cs
 src/akeyless/Model/RotatedSecretDetailsInfo.cs
 src/akeyless/Model/RotatedSecretGetValue.cs
 src/akeyless/Model/RotatedSecretList.cs
@@ -1961,6 +1977,7 @@ src/akeyless/Model/SSHCertificateIssueDetails.cs
 src/akeyless/Model/SSHTargetDetails.cs
 src/akeyless/Model/SalesforceTargetDetails.cs
 src/akeyless/Model/SecretInfo.cs
+src/akeyless/Model/SecretSyncOutput.cs
 src/akeyless/Model/SectigoTargetDetails.cs
 src/akeyless/Model/SecureRemoteAccess.cs
 src/akeyless/Model/ServerInventoryMigration.cs
@@ -1994,7 +2011,10 @@ src/akeyless/Model/SshBastionConf.cs
 src/akeyless/Model/SshBastionSessionTermination.cs
 src/akeyless/Model/StaticCredsAuth.cs
 src/akeyless/Model/StaticCredsAuthOutput.cs
+src/akeyless/Model/StaticSecretDeleteSync.cs
+src/akeyless/Model/StaticSecretDeleteSyncOutput.cs
 src/akeyless/Model/StaticSecretDetailsInfo.cs
+src/akeyless/Model/StaticSecretSync.cs
 src/akeyless/Model/SumologicLogForwardingConfig.cs
 src/akeyless/Model/SyslogLogForwardingConfig.cs
 src/akeyless/Model/SystemAccessCredentialsReplyObj.cs

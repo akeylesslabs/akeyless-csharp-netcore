@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AccessKeyId** | **string** | AWS access key ID | 
 **Comment** | **string** | Deprecated - use description | [optional] 
 **Description** | **string** | Description of the object | [optional] 
+**GenerateExternalId** | **bool** | A unique auto-generated value used in your AWS account when configuring your AWS IAM role to securely delegate access to Akeyless. Relevant only when using GW cloud ID | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Target name | 
 **NewName** | **string** | New target name | [optional] 
 **Region** | **string** | AWS region | [optional] [default to "us-east-2"]
+**RoleArn** | **string** | AWS IAM role identifier that Gateway will assume in your AWS account, relevant only when using external ID | [optional] 
 **SessionToken** | **string** | Required only for temporary security credentials retrieved using STS | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

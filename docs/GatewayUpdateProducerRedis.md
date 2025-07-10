@@ -6,6 +6,7 @@ gatewayUpdateProducerRedis is a command that updates redis producer [Deprecated:
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AclRules** | **string** | A JSON array list of redis ACL rules to attach to the created user. For available rules see the ACL CAT command https://redis.io/commands/acl-cat By default the user will have permissions to read all keys &#39;[\&quot;~*\&quot;, \&quot;+@read\&quot;]&#39; | [optional] 
+**CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Host** | **string** | Redis Host | [optional] [default to "127.0.0.1"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

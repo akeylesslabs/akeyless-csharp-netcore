@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AllowedClientsIps** | [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AllowedGatewaysIps** | [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AuthUsageEvent** | [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
+**CertificateExpirationEvents** | [**CertificateExpirationEventsSettings**](CertificateExpirationEventsSettings.md) |  | [optional] 
 **DataProtectionSection** | [**DataProtectionSection**](DataProtectionSection.md) |  | [optional] 
 **DefaultHomePage** | [**DefaultHomePage**](DefaultHomePage.md) |  | [optional] 
 **DynamicSecretMaxTtl** | [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 

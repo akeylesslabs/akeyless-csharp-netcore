@@ -5,6 +5,7 @@ gatewayUpdateProducerMySQL is a command that updates mysql producer [Deprecated:
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DbServerCertificates** | **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 

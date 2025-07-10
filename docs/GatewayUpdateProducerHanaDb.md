@@ -5,6 +5,7 @@ gatewayUpdateProducerHanaDb is a command that updates hanadb producer [Deprecate
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **HanaDbname** | **string** | HanaDb Name | [optional] 
 **HanadbCreateStatements** | **string** | HanaDb Creation statements | [optional] 

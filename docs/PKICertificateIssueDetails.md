@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **CreatePrivateCrl** | **bool** |  | [optional] 
 **CreatePublicCrl** | **bool** |  | [optional] 
 **DestinationPath** | **string** | DestinationPath is the destination to save generated certificates | [optional] 
+**DisableWildcards** | **bool** |  | [optional] 
 **EnforceHostnames** | **bool** |  | [optional] 
 **ExpirationEvents** | [**List&lt;CertificateExpirationEvent&gt;**](CertificateExpirationEvent.md) | ExpirationNotification holds a list of expiration notices that should be sent in case a certificate is about to expire, this value is being propagated to the Certificate resources that are created | [optional] 
 **GwClusterId** | **long** |  | [optional] 

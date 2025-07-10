@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **CassandraPassword** | **string** | Cassandra superuser password | [optional] 
 **CassandraPort** | **string** | Cassandra port | [optional] [default to "9042"]
 **CassandraUsername** | **string** | Cassandra superuser username | [optional] 
+**CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 

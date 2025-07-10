@@ -6,6 +6,7 @@ gatewayUpdateProducerRdp is a command that updates rdp producer [Deprecated: Use
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowUserExtendSession** | **long** | AllowUserExtendSession | [optional] 
+**CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **FixedUserClaimKeyname** | **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for fixed-user-only&#x3D;true) | [optional] [default to "ext_username"]
 **FixedUserOnly** | **string** | Allow access using externally (IdP) provided username [true/false] | [optional] [default to "false"]

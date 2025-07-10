@@ -12,7 +12,7 @@
     <Description>A library generated from a OpenAPI doc</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>akeyless</RootNamespace>
-    <Version>5.0.4</Version>
+    <Version>5.0.5</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\akeyless.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/akeylesslabs/akeyless-csharp-netcore.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -24,7 +24,7 @@
   <ItemGroup>
     <PackageReference Include="JsonSubTypes" Version="2.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="RestSharp" Version="112.0.0" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
     <PackageReference Include="Polly" Version="8.1.0" />
   </ItemGroup>
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClusterId** | **long** |  | [optional] 
 **ClusterName** | **string** |  | [optional] 
 **ClusterUrl** | **string** |  | [optional] 
 **DesktopApp** | [**DesktopAppConf**](DesktopAppConf.md) |  | [optional] 

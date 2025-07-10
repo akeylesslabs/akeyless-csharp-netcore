@@ -5,6 +5,7 @@ gatewayCreateProducerNativeK8S is a command that creates k8s producer [Deprecate
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAllowedNamespaces** | **string** | Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 

@@ -438,6 +438,8 @@ All URIs are relative to *https://api.akeyless.io*
 | [**SignPKICertWithClassicKey**](V2Api.md#signpkicertwithclassickey) | **POST** /sign-pki-cert-with-classic-key |  |
 | [**SignRsaSsaPss**](V2Api.md#signrsassapss) | **POST** /sign-rsassa-pss |  |
 | [**StaticCredsAuth**](V2Api.md#staticcredsauth) | **POST** /static-creds-auth |  |
+| [**StaticSecretDeleteSync**](V2Api.md#staticsecretdeletesync) | **POST** /static-secret-delete-sync |  |
+| [**StaticSecretSync**](V2Api.md#staticsecretsync) | **POST** /static-secret-sync |  |
 | [**TargetCreateArtifactory**](V2Api.md#targetcreateartifactory) | **POST** /target-create-artifactory |  |
 | [**TargetCreateAws**](V2Api.md#targetcreateaws) | **POST** /target-create-aws |  |
 | [**TargetCreateAzure**](V2Api.md#targetcreateazure) | **POST** /target-create-azure |  |
@@ -35831,7 +35833,7 @@ No authorization required
 
 <a id="rotatedsecretdeletesync"></a>
 # **RotatedSecretDeleteSync**
-> Object RotatedSecretDeleteSync (RotatedSecretDeleteSync rotatedSecretDeleteSync)
+> RotatedSecretDeleteSyncOutput RotatedSecretDeleteSync (RotatedSecretDeleteSync rotatedSecretDeleteSync)
 
 
 
@@ -35856,7 +35858,7 @@ namespace Example
 
             try
             {
-                Object result = apiInstance.RotatedSecretDeleteSync(rotatedSecretDeleteSync);
+                RotatedSecretDeleteSyncOutput result = apiInstance.RotatedSecretDeleteSync(rotatedSecretDeleteSync);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -35876,7 +35878,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Object> response = apiInstance.RotatedSecretDeleteSyncWithHttpInfo(rotatedSecretDeleteSync);
+    ApiResponse<RotatedSecretDeleteSyncOutput> response = apiInstance.RotatedSecretDeleteSyncWithHttpInfo(rotatedSecretDeleteSync);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -35897,7 +35899,7 @@ catch (ApiException e)
 
 ### Return type
 
-**Object**
+[**RotatedSecretDeleteSyncOutput**](RotatedSecretDeleteSyncOutput.md)
 
 ### Authorization
 
@@ -38729,6 +38731,182 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | staticCredsAuthResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="staticsecretdeletesync"></a>
+# **StaticSecretDeleteSync**
+> StaticSecretDeleteSyncOutput StaticSecretDeleteSync (StaticSecretDeleteSync staticSecretDeleteSync)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class StaticSecretDeleteSyncExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var staticSecretDeleteSync = new StaticSecretDeleteSync(); // StaticSecretDeleteSync | 
+
+            try
+            {
+                StaticSecretDeleteSyncOutput result = apiInstance.StaticSecretDeleteSync(staticSecretDeleteSync);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.StaticSecretDeleteSync: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the StaticSecretDeleteSyncWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<StaticSecretDeleteSyncOutput> response = apiInstance.StaticSecretDeleteSyncWithHttpInfo(staticSecretDeleteSync);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.StaticSecretDeleteSyncWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **staticSecretDeleteSync** | [**StaticSecretDeleteSync**](StaticSecretDeleteSync.md) |  |  |
+
+### Return type
+
+[**StaticSecretDeleteSyncOutput**](StaticSecretDeleteSyncOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | staticSecretDeleteSyncResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="staticsecretsync"></a>
+# **StaticSecretSync**
+> SecretSyncOutput StaticSecretSync (StaticSecretSync staticSecretSync)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class StaticSecretSyncExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var staticSecretSync = new StaticSecretSync(); // StaticSecretSync | 
+
+            try
+            {
+                SecretSyncOutput result = apiInstance.StaticSecretSync(staticSecretSync);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.StaticSecretSync: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the StaticSecretSyncWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<SecretSyncOutput> response = apiInstance.StaticSecretSyncWithHttpInfo(staticSecretSync);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.StaticSecretSyncWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **staticSecretSync** | [**StaticSecretSync**](StaticSecretSync.md) |  |  |
+
+### Return type
+
+[**SecretSyncOutput**](SecretSyncOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | staticSecretSyncResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

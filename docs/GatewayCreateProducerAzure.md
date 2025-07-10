@@ -6,9 +6,11 @@ gatewayCreateProducerAzure is a command that creates azure dynamic secret [Depre
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppObjId** | **string** | Azure App Object Id | [optional] 
+**AzureAdministrativeUnit** | **string** | Azure AD administrative unit (relevant only when azure-user-portal-access&#x3D;true) | [optional] 
 **AzureClientId** | **string** | Azure Client ID | [optional] 
 **AzureClientSecret** | **string** | Azure Client Secret | [optional] 
 **AzureTenantId** | **string** | Azure Tenant ID | [optional] 
+**CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **FixedUserClaimKeyname** | **string** | FixedUserClaimKeyname | [optional] [default to "false"]
 **FixedUserOnly** | **bool** | Fixed user | [optional] [default to false]

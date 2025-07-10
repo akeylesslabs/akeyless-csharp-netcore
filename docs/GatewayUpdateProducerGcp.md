@@ -5,6 +5,7 @@ gatewayUpdateProducerGcp is a command that updates a GCP producer [Deprecated: U
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **GcpCredType** | **string** |  | [optional] 
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
