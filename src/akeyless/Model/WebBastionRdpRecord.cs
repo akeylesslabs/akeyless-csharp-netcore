@@ -37,11 +37,17 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="aws">aws.</param>
         /// <param name="azure">azure.</param>
+        /// <param name="compress">compress.</param>
+        /// <param name="encryptionKey">encryptionKey.</param>
+        /// <param name="recordingQuality">recordingQuality.</param>
         /// <param name="storageType">storageType.</param>
-        public WebBastionRdpRecord(AwsStorage aws = default(AwsStorage), AzureStorage azure = default(AzureStorage), string storageType = default(string))
+        public WebBastionRdpRecord(AwsStorage aws = default(AwsStorage), AzureStorage azure = default(AzureStorage), bool compress = default(bool), string encryptionKey = default(string), string recordingQuality = default(string), string storageType = default(string))
         {
             this.Aws = aws;
             this.Azure = azure;
+            this.Compress = compress;
+            this.EncryptionKey = encryptionKey;
+            this.RecordingQuality = recordingQuality;
             this.StorageType = storageType;
         }
 
@@ -56,6 +62,24 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "azure", EmitDefaultValue = false)]
         public AzureStorage Azure { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Compress
+        /// </summary>
+        [DataMember(Name = "compress", EmitDefaultValue = true)]
+        public bool Compress { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EncryptionKey
+        /// </summary>
+        [DataMember(Name = "encryption_key", EmitDefaultValue = false)]
+        public string EncryptionKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RecordingQuality
+        /// </summary>
+        [DataMember(Name = "recording_quality", EmitDefaultValue = false)]
+        public string RecordingQuality { get; set; }
 
         /// <summary>
         /// Gets or Sets StorageType
@@ -73,6 +97,9 @@ namespace akeyless.Model
             sb.Append("class WebBastionRdpRecord {\n");
             sb.Append("  Aws: ").Append(Aws).Append("\n");
             sb.Append("  Azure: ").Append(Azure).Append("\n");
+            sb.Append("  Compress: ").Append(Compress).Append("\n");
+            sb.Append("  EncryptionKey: ").Append(EncryptionKey).Append("\n");
+            sb.Append("  RecordingQuality: ").Append(RecordingQuality).Append("\n");
             sb.Append("  StorageType: ").Append(StorageType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | **string** | Key of the api credentials to the Godaddy account | 
 **Comment** | **string** | Deprecated - use description | [optional] 
+**CustomerId** | **string** | Customer ID (ShopperId) required for renewal of imported certificates | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **ImapFqdn** | **string** | ImapFQDN of the IMAP service, FQDN or IPv4 address. Must be FQDN if the IMAP is using TLS | 
 **ImapPassword** | **string** | ImapPassword to access the IMAP service | 

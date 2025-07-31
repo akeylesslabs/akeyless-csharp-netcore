@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ImapUser** | **string** |  | [optional] 
 **Key** | **string** |  | [optional] 
 **Secret** | **string** |  | [optional] 
+**ShopperId** | **string** | Optional, used to find the certificate ID in GoDaddy&#39;s API | [optional] 
 **Timeout** | **long** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] 
 **ValidationEmail** | **string** |  | [optional] 
 

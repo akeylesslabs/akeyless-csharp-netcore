@@ -41,9 +41,10 @@ namespace akeyless.Model
         /// <param name="imapUser">imapUser.</param>
         /// <param name="key">key.</param>
         /// <param name="secret">secret.</param>
+        /// <param name="shopperId">Optional, used to find the certificate ID in GoDaddy&#39;s API.</param>
         /// <param name="timeout">A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years..</param>
         /// <param name="validationEmail">validationEmail.</param>
-        public GodaddyTargetDetails(string imapFqdn = default(string), string imapPassword = default(string), string imapPort = default(string), string imapUser = default(string), string key = default(string), string secret = default(string), long timeout = default(long), string validationEmail = default(string))
+        public GodaddyTargetDetails(string imapFqdn = default(string), string imapPassword = default(string), string imapPort = default(string), string imapUser = default(string), string key = default(string), string secret = default(string), string shopperId = default(string), long timeout = default(long), string validationEmail = default(string))
         {
             this.ImapFqdn = imapFqdn;
             this.ImapPassword = imapPassword;
@@ -51,6 +52,7 @@ namespace akeyless.Model
             this.ImapUser = imapUser;
             this.Key = key;
             this.Secret = secret;
+            this.ShopperId = shopperId;
             this.Timeout = timeout;
             this.ValidationEmail = validationEmail;
         }
@@ -92,6 +94,13 @@ namespace akeyless.Model
         public string Secret { get; set; }
 
         /// <summary>
+        /// Optional, used to find the certificate ID in GoDaddy&#39;s API
+        /// </summary>
+        /// <value>Optional, used to find the certificate ID in GoDaddy&#39;s API</value>
+        [DataMember(Name = "shopper_id", EmitDefaultValue = false)]
+        public string ShopperId { get; set; }
+
+        /// <summary>
         /// A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
         /// </summary>
         /// <value>A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.</value>
@@ -118,6 +127,7 @@ namespace akeyless.Model
             sb.Append("  ImapUser: ").Append(ImapUser).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Secret: ").Append(Secret).Append("\n");
+            sb.Append("  ShopperId: ").Append(ShopperId).Append("\n");
             sb.Append("  Timeout: ").Append(Timeout).Append("\n");
             sb.Append("  ValidationEmail: ").Append(ValidationEmail).Append("\n");
             sb.Append("}\n");

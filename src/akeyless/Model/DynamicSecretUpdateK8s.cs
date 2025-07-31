@@ -52,6 +52,7 @@ namespace akeyless.Model
         /// <param name="k8sNamespace">K8S Namespace where the ServiceAccount exists..</param>
         /// <param name="k8sPredefinedRoleName">The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
         /// <param name="k8sPredefinedRoleType">Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
+        /// <param name="k8sRolebindingYamlData">Content of the yaml in a Base64 format..</param>
         /// <param name="k8sRolebindingYamlDef">Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
         /// <param name="k8sServiceAccount">K8S ServiceAccount to extract token from..</param>
         /// <param name="k8sServiceAccountType">K8S ServiceAccount type [fixed, dynamic]..</param>
@@ -74,7 +75,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwServiceAccount">Use the GW&#39;s service account.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateK8s(string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string k8sAllowedNamespaces = default(string), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterName = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sPredefinedRoleName = default(string), string k8sPredefinedRoleType = default(string), string k8sRolebindingYamlDef = default(string), string k8sServiceAccount = default(string), string k8sServiceAccountType = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool), string userTtl = @"60m")
+        public DynamicSecretUpdateK8s(string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string k8sAllowedNamespaces = default(string), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterName = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sPredefinedRoleName = default(string), string k8sPredefinedRoleType = default(string), string k8sRolebindingYamlData = default(string), string k8sRolebindingYamlDef = default(string), string k8sServiceAccount = default(string), string k8sServiceAccountType = default(string), string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -94,6 +95,7 @@ namespace akeyless.Model
             this.K8sNamespace = k8sNamespace;
             this.K8sPredefinedRoleName = k8sPredefinedRoleName;
             this.K8sPredefinedRoleType = k8sPredefinedRoleType;
+            this.K8sRolebindingYamlData = k8sRolebindingYamlData;
             this.K8sRolebindingYamlDef = k8sRolebindingYamlDef;
             this.K8sServiceAccount = k8sServiceAccount;
             this.K8sServiceAccountType = k8sServiceAccountType;
@@ -201,6 +203,13 @@ namespace akeyless.Model
         /// <value>Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type&#x3D;dynamic)</value>
         [DataMember(Name = "k8s-predefined-role-type", EmitDefaultValue = false)]
         public string K8sPredefinedRoleType { get; set; }
+
+        /// <summary>
+        /// Content of the yaml in a Base64 format.
+        /// </summary>
+        /// <value>Content of the yaml in a Base64 format.</value>
+        [DataMember(Name = "k8s-rolebinding-yaml-data", EmitDefaultValue = false)]
+        public string K8sRolebindingYamlData { get; set; }
 
         /// <summary>
         /// Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type&#x3D;dynamic)
@@ -376,6 +385,7 @@ namespace akeyless.Model
             sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
             sb.Append("  K8sPredefinedRoleName: ").Append(K8sPredefinedRoleName).Append("\n");
             sb.Append("  K8sPredefinedRoleType: ").Append(K8sPredefinedRoleType).Append("\n");
+            sb.Append("  K8sRolebindingYamlData: ").Append(K8sRolebindingYamlData).Append("\n");
             sb.Append("  K8sRolebindingYamlDef: ").Append(K8sRolebindingYamlDef).Append("\n");
             sb.Append("  K8sServiceAccount: ").Append(K8sServiceAccount).Append("\n");
             sb.Append("  K8sServiceAccountType: ").Append(K8sServiceAccountType).Append("\n");

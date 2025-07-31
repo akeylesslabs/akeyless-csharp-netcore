@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateGodaddyTarget" /> class.
         /// </summary>
         /// <param name="apiKey">Key of the api credentials to the Godaddy account (required).</param>
+        /// <param name="customerId">Customer ID (ShopperId) required for renewal of imported certificates.</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="imapFqdn">ImapFQDN of the IMAP service, FQDN or IPv4 address. Must be FQDN if the IMAP is using TLS (required).</param>
         /// <param name="imapPassword">ImapPassword to access the IMAP service (required).</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="timeout">Timeout waiting for certificate validation in Duration format (1h - 1 Hour, 20m - 20 Minutes, 33m3s - 33 Minutes and 3 Seconds), maximum 1h. (default to &quot;5m&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateGodaddyTarget(string apiKey = default(string), string description = default(string), string imapFqdn = default(string), string imapPassword = default(string), string imapPort = @"993", string imapUsername = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string secret = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
+        public CreateGodaddyTarget(string apiKey = default(string), string customerId = default(string), string description = default(string), string imapFqdn = default(string), string imapPassword = default(string), string imapPort = @"993", string imapUsername = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string secret = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
         {
             // to ensure "apiKey" is required (not null)
             if (apiKey == null)
@@ -92,6 +93,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("secret is a required property for CreateGodaddyTarget and cannot be null");
             }
             this.Secret = secret;
+            this.CustomerId = customerId;
             this.Description = description;
             // use default value if no "imapPort" provided
             this.ImapPort = imapPort ?? @"993";
@@ -110,6 +112,13 @@ namespace akeyless.Model
         /// <value>Key of the api credentials to the Godaddy account</value>
         [DataMember(Name = "api-key", IsRequired = true, EmitDefaultValue = true)]
         public string ApiKey { get; set; }
+
+        /// <summary>
+        /// Customer ID (ShopperId) required for renewal of imported certificates
+        /// </summary>
+        /// <value>Customer ID (ShopperId) required for renewal of imported certificates</value>
+        [DataMember(Name = "customer_id", EmitDefaultValue = false)]
+        public string CustomerId { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -211,6 +220,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateGodaddyTarget {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
+            sb.Append("  CustomerId: ").Append(CustomerId).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ImapFqdn: ").Append(ImapFqdn).Append("\n");
             sb.Append("  ImapPassword: ").Append(ImapPassword).Append("\n");

@@ -47,10 +47,13 @@ namespace akeyless.Model
         /// <param name="azureStorageTenantId">Azure tenant id. For more information refer to https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="rdpSessionRecording">Enable recording of rdp session [true/false].</param>
+        /// <param name="rdpSessionRecordingCompress">Whether to compress recording files before upload.</param>
+        /// <param name="rdpSessionRecordingEncryptionKey">If provided, this key will be used to encrypt uploaded recordings..</param>
+        /// <param name="rdpSessionRecordingQuality">RDP session recording quality [low/medium/high].</param>
         /// <param name="rdpSessionStorage">Rdp session recording storage destination [local/aws/azure].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateRemoteAccessRdpRecordings(string awsStorageAccessKeyId = default(string), string awsStorageBucketName = default(string), string awsStorageBucketPrefix = default(string), string awsStorageRegion = default(string), string awsStorageSecretAccessKey = default(string), string azureStorageAccountName = default(string), string azureStorageClientId = default(string), string azureStorageClientSecret = default(string), string azureStorageContainerName = default(string), string azureStorageTenantId = default(string), bool json = false, string rdpSessionRecording = default(string), string rdpSessionStorage = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateRemoteAccessRdpRecordings(string awsStorageAccessKeyId = default(string), string awsStorageBucketName = default(string), string awsStorageBucketPrefix = default(string), string awsStorageRegion = default(string), string awsStorageSecretAccessKey = default(string), string azureStorageAccountName = default(string), string azureStorageClientId = default(string), string azureStorageClientSecret = default(string), string azureStorageContainerName = default(string), string azureStorageTenantId = default(string), bool json = false, string rdpSessionRecording = default(string), bool rdpSessionRecordingCompress = default(bool), string rdpSessionRecordingEncryptionKey = default(string), string rdpSessionRecordingQuality = default(string), string rdpSessionStorage = default(string), string token = default(string), string uidToken = default(string))
         {
             this.AwsStorageAccessKeyId = awsStorageAccessKeyId;
             this.AwsStorageBucketName = awsStorageBucketName;
@@ -64,6 +67,9 @@ namespace akeyless.Model
             this.AzureStorageTenantId = azureStorageTenantId;
             this.Json = json;
             this.RdpSessionRecording = rdpSessionRecording;
+            this.RdpSessionRecordingCompress = rdpSessionRecordingCompress;
+            this.RdpSessionRecordingEncryptionKey = rdpSessionRecordingEncryptionKey;
+            this.RdpSessionRecordingQuality = rdpSessionRecordingQuality;
             this.RdpSessionStorage = rdpSessionStorage;
             this.Token = token;
             this.UidToken = uidToken;
@@ -154,6 +160,27 @@ namespace akeyless.Model
         public string RdpSessionRecording { get; set; }
 
         /// <summary>
+        /// Whether to compress recording files before upload
+        /// </summary>
+        /// <value>Whether to compress recording files before upload</value>
+        [DataMember(Name = "rdp-session-recording-compress", EmitDefaultValue = true)]
+        public bool RdpSessionRecordingCompress { get; set; }
+
+        /// <summary>
+        /// If provided, this key will be used to encrypt uploaded recordings.
+        /// </summary>
+        /// <value>If provided, this key will be used to encrypt uploaded recordings.</value>
+        [DataMember(Name = "rdp-session-recording-encryption-key", EmitDefaultValue = false)]
+        public string RdpSessionRecordingEncryptionKey { get; set; }
+
+        /// <summary>
+        /// RDP session recording quality [low/medium/high]
+        /// </summary>
+        /// <value>RDP session recording quality [low/medium/high]</value>
+        [DataMember(Name = "rdp-session-recording-quality", EmitDefaultValue = false)]
+        public string RdpSessionRecordingQuality { get; set; }
+
+        /// <summary>
         /// Rdp session recording storage destination [local/aws/azure]
         /// </summary>
         /// <value>Rdp session recording storage destination [local/aws/azure]</value>
@@ -194,6 +221,9 @@ namespace akeyless.Model
             sb.Append("  AzureStorageTenantId: ").Append(AzureStorageTenantId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  RdpSessionRecording: ").Append(RdpSessionRecording).Append("\n");
+            sb.Append("  RdpSessionRecordingCompress: ").Append(RdpSessionRecordingCompress).Append("\n");
+            sb.Append("  RdpSessionRecordingEncryptionKey: ").Append(RdpSessionRecordingEncryptionKey).Append("\n");
+            sb.Append("  RdpSessionRecordingQuality: ").Append(RdpSessionRecordingQuality).Append("\n");
             sb.Append("  RdpSessionStorage: ").Append(RdpSessionStorage).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
