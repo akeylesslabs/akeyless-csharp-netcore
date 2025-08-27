@@ -581,6 +581,7 @@ docs/GatewayUpdateTlsCertOutput.md
 docs/GatewayUpdateTmpUsers.md
 docs/GatewaysListResponse.md
 docs/GcpTargetDetails.md
+docs/GeminiTargetDetails.md
 docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
 docs/GenerateAcmeEab.md
@@ -750,6 +751,7 @@ docs/ObjectVersionSettingsOutput.md
 docs/OidcClientInfo.md
 docs/OnePasswordMigration.md
 docs/OnePasswordPayload.md
+docs/OpenAITargetDetails.md
 docs/PKICertificateIssueDetails.md
 docs/PasswordBreachInfo.md
 docs/PasswordExpirationInfo.md
@@ -898,6 +900,7 @@ docs/TargetCreateDB.md
 docs/TargetCreateDockerhub.md
 docs/TargetCreateEks.md
 docs/TargetCreateGcp.md
+docs/TargetCreateGemini.md
 docs/TargetCreateGithub.md
 docs/TargetCreateGitlab.md
 docs/TargetCreateGke.md
@@ -908,6 +911,7 @@ docs/TargetCreateHashiVault.md
 docs/TargetCreateK8s.md
 docs/TargetCreateLdap.md
 docs/TargetCreateLinked.md
+docs/TargetCreateOpenAI.md
 docs/TargetCreateOutput.md
 docs/TargetCreatePing.md
 docs/TargetCreateRabbitMq.md
@@ -932,6 +936,7 @@ docs/TargetUpdateDB.md
 docs/TargetUpdateDockerhub.md
 docs/TargetUpdateEks.md
 docs/TargetUpdateGcp.md
+docs/TargetUpdateGemini.md
 docs/TargetUpdateGithub.md
 docs/TargetUpdateGitlab.md
 docs/TargetUpdateGke.md
@@ -942,6 +947,7 @@ docs/TargetUpdateHashiVault.md
 docs/TargetUpdateK8s.md
 docs/TargetUpdateLdap.md
 docs/TargetUpdateLinked.md
+docs/TargetUpdateOpenAI.md
 docs/TargetUpdateOutput.md
 docs/TargetUpdatePing.md
 docs/TargetUpdateRabbitMq.md
@@ -1106,6 +1112,12 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
+src/akeyless.Test/Model/GeminiTargetDetailsTests.cs
+src/akeyless.Test/Model/OpenAITargetDetailsTests.cs
+src/akeyless.Test/Model/TargetCreateGeminiTests.cs
+src/akeyless.Test/Model/TargetCreateOpenAITests.cs
+src/akeyless.Test/Model/TargetUpdateGeminiTests.cs
+src/akeyless.Test/Model/TargetUpdateOpenAITests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1703,6 +1715,7 @@ src/akeyless/Model/GatewayUpdateTlsCertOutput.cs
 src/akeyless/Model/GatewayUpdateTmpUsers.cs
 src/akeyless/Model/GatewaysListResponse.cs
 src/akeyless/Model/GcpTargetDetails.cs
+src/akeyless/Model/GeminiTargetDetails.cs
 src/akeyless/Model/GenCustomerFragment.cs
 src/akeyless/Model/GeneralConfigPart.cs
 src/akeyless/Model/GenerateAcmeEab.cs
@@ -1872,6 +1885,7 @@ src/akeyless/Model/ObjectVersionSettingsOutput.cs
 src/akeyless/Model/OidcClientInfo.cs
 src/akeyless/Model/OnePasswordMigration.cs
 src/akeyless/Model/OnePasswordPayload.cs
+src/akeyless/Model/OpenAITargetDetails.cs
 src/akeyless/Model/PKICertificateIssueDetails.cs
 src/akeyless/Model/PasswordBreachInfo.cs
 src/akeyless/Model/PasswordExpirationInfo.cs
@@ -2020,6 +2034,7 @@ src/akeyless/Model/TargetCreateDB.cs
 src/akeyless/Model/TargetCreateDockerhub.cs
 src/akeyless/Model/TargetCreateEks.cs
 src/akeyless/Model/TargetCreateGcp.cs
+src/akeyless/Model/TargetCreateGemini.cs
 src/akeyless/Model/TargetCreateGithub.cs
 src/akeyless/Model/TargetCreateGitlab.cs
 src/akeyless/Model/TargetCreateGke.cs
@@ -2030,6 +2045,7 @@ src/akeyless/Model/TargetCreateHashiVault.cs
 src/akeyless/Model/TargetCreateK8s.cs
 src/akeyless/Model/TargetCreateLdap.cs
 src/akeyless/Model/TargetCreateLinked.cs
+src/akeyless/Model/TargetCreateOpenAI.cs
 src/akeyless/Model/TargetCreateOutput.cs
 src/akeyless/Model/TargetCreatePing.cs
 src/akeyless/Model/TargetCreateRabbitMq.cs
@@ -2054,6 +2070,7 @@ src/akeyless/Model/TargetUpdateDB.cs
 src/akeyless/Model/TargetUpdateDockerhub.cs
 src/akeyless/Model/TargetUpdateEks.cs
 src/akeyless/Model/TargetUpdateGcp.cs
+src/akeyless/Model/TargetUpdateGemini.cs
 src/akeyless/Model/TargetUpdateGithub.cs
 src/akeyless/Model/TargetUpdateGitlab.cs
 src/akeyless/Model/TargetUpdateGke.cs
@@ -2064,6 +2081,7 @@ src/akeyless/Model/TargetUpdateHashiVault.cs
 src/akeyless/Model/TargetUpdateK8s.cs
 src/akeyless/Model/TargetUpdateLdap.cs
 src/akeyless/Model/TargetUpdateLinked.cs
+src/akeyless/Model/TargetUpdateOpenAI.cs
 src/akeyless/Model/TargetUpdateOutput.cs
 src/akeyless/Model/TargetUpdatePing.cs
 src/akeyless/Model/TargetUpdateRabbitMq.cs

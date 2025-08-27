@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**SplunkEnableBatch** | **string** |  | [optional] 
 **SplunkEnableTls** | **bool** |  | [optional] 
 **SplunkIndex** | **string** |  | [optional] 
 **SplunkSource** | **string** |  | [optional] 

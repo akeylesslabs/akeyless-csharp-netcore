@@ -51,6 +51,7 @@ namespace akeyless.Model
         /// <param name="emailAddresses">A comma-separated list of email addresses alternative names.</param>
         /// <param name="exportPrivateKey">The flag to indicate if the private key should be exported (default to false).</param>
         /// <param name="generateKey">Generate a new classic key for the csr.</param>
+        /// <param name="hashAlgorithm">Specifies the hash algorithm used for the encryption key&#39;s operations, available options: SHA256, SHA384, SHA512 (default to &quot;SHA256&quot;).</param>
         /// <param name="ipAddresses">A comma-separated list of ip addresses alternative names.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyType">The type of the key to generate (classic-key/dfc) (required) (default to &quot;classic-key&quot;).</param>
@@ -61,7 +62,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">A comma-separated list of uri alternative names.</param>
-        public GenerateCsr(string alg = default(string), string altNames = default(string), string certificateType = default(string), string city = default(string), string commonName = default(string), string country = default(string), bool critical = default(bool), string dep = default(string), string emailAddresses = default(string), bool exportPrivateKey = false, bool generateKey = default(bool), string ipAddresses = default(string), bool json = false, string keyType = @"classic-key", string name = default(string), string org = default(string), long splitLevel = 3, string state = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
+        public GenerateCsr(string alg = default(string), string altNames = default(string), string certificateType = default(string), string city = default(string), string commonName = default(string), string country = default(string), bool critical = default(bool), string dep = default(string), string emailAddresses = default(string), bool exportPrivateKey = false, bool generateKey = default(bool), string hashAlgorithm = @"SHA256", string ipAddresses = default(string), bool json = false, string keyType = @"classic-key", string name = default(string), string org = default(string), long splitLevel = 3, string state = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "commonName" is required (not null)
             if (commonName == null)
@@ -91,6 +92,8 @@ namespace akeyless.Model
             this.EmailAddresses = emailAddresses;
             this.ExportPrivateKey = exportPrivateKey;
             this.GenerateKey = generateKey;
+            // use default value if no "hashAlgorithm" provided
+            this.HashAlgorithm = hashAlgorithm ?? @"SHA256";
             this.IpAddresses = ipAddresses;
             this.Json = json;
             this.Org = org;
@@ -176,6 +179,13 @@ namespace akeyless.Model
         /// <value>Generate a new classic key for the csr</value>
         [DataMember(Name = "generate-key", EmitDefaultValue = true)]
         public bool GenerateKey { get; set; }
+
+        /// <summary>
+        /// Specifies the hash algorithm used for the encryption key&#39;s operations, available options: SHA256, SHA384, SHA512
+        /// </summary>
+        /// <value>Specifies the hash algorithm used for the encryption key&#39;s operations, available options: SHA256, SHA384, SHA512</value>
+        [DataMember(Name = "hash-algorithm", EmitDefaultValue = false)]
+        public string HashAlgorithm { get; set; }
 
         /// <summary>
         /// A comma-separated list of ip addresses alternative names
@@ -266,6 +276,7 @@ namespace akeyless.Model
             sb.Append("  EmailAddresses: ").Append(EmailAddresses).Append("\n");
             sb.Append("  ExportPrivateKey: ").Append(ExportPrivateKey).Append("\n");
             sb.Append("  GenerateKey: ").Append(GenerateKey).Append("\n");
+            sb.Append("  HashAlgorithm: ").Append(HashAlgorithm).Append("\n");
             sb.Append("  IpAddresses: ").Append(IpAddresses).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyType: ").Append(KeyType).Append("\n");

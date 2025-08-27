@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Country** | **string** |  | [optional] 
 **CsrCnfBase64** | **string** |  | [optional] 
 **DigestAlgo** | **string** |  | [optional] 
+**HashAlgorithm** | **string** |  | [optional] 
 **Locality** | **string** |  | [optional] 
 **Organization** | **string** |  | [optional] 
 **Province** | **string** |  | [optional] 

@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SplunkLogForwardingConfig" /> class.
         /// </summary>
+        /// <param name="splunkEnableBatch">splunkEnableBatch.</param>
         /// <param name="splunkEnableTls">splunkEnableTls.</param>
         /// <param name="splunkIndex">splunkIndex.</param>
         /// <param name="splunkSource">splunkSource.</param>
@@ -42,8 +43,9 @@ namespace akeyless.Model
         /// <param name="splunkTlsCertificate">splunkTlsCertificate.</param>
         /// <param name="splunkToken">splunkToken.</param>
         /// <param name="splunkUrl">splunkUrl.</param>
-        public SplunkLogForwardingConfig(bool splunkEnableTls = default(bool), string splunkIndex = default(string), string splunkSource = default(string), string splunkSourcetype = default(string), string splunkTlsCertificate = default(string), string splunkToken = default(string), string splunkUrl = default(string))
+        public SplunkLogForwardingConfig(string splunkEnableBatch = default(string), bool splunkEnableTls = default(bool), string splunkIndex = default(string), string splunkSource = default(string), string splunkSourcetype = default(string), string splunkTlsCertificate = default(string), string splunkToken = default(string), string splunkUrl = default(string))
         {
+            this.SplunkEnableBatch = splunkEnableBatch;
             this.SplunkEnableTls = splunkEnableTls;
             this.SplunkIndex = splunkIndex;
             this.SplunkSource = splunkSource;
@@ -52,6 +54,12 @@ namespace akeyless.Model
             this.SplunkToken = splunkToken;
             this.SplunkUrl = splunkUrl;
         }
+
+        /// <summary>
+        /// Gets or Sets SplunkEnableBatch
+        /// </summary>
+        [DataMember(Name = "splunk_enable_batch", EmitDefaultValue = false)]
+        public string SplunkEnableBatch { get; set; }
 
         /// <summary>
         /// Gets or Sets SplunkEnableTls
@@ -103,6 +111,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SplunkLogForwardingConfig {\n");
+            sb.Append("  SplunkEnableBatch: ").Append(SplunkEnableBatch).Append("\n");
             sb.Append("  SplunkEnableTls: ").Append(SplunkEnableTls).Append("\n");
             sb.Append("  SplunkIndex: ").Append(SplunkIndex).Append("\n");
             sb.Append("  SplunkSource: ").Append(SplunkSource).Append("\n");

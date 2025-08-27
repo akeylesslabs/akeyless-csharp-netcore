@@ -6,6 +6,7 @@ gwUpdateRemoteAccessSessionLogsAzureAnalytics is a command that updates session 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enable** | **string** | Enable Log Forwarding [true/false] | [optional] [default to "true"]
+**EnableBatch** | **string** | Enable batch forwarding [true/false] | [optional] [default to "true"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **OutputFormat** | **string** | Logs format [text/json] | [optional] [default to "text"]
 **PullInterval** | **string** | Pull interval in seconds | [optional] [default to "10"]

@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GwUpdateRemoteAccessSessionLogsAzureAnalytics" /> class.
         /// </summary>
         /// <param name="enable">Enable Log Forwarding [true/false] (default to &quot;true&quot;).</param>
+        /// <param name="enableBatch">Enable batch forwarding [true/false] (default to &quot;true&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="outputFormat">Logs format [text/json] (default to &quot;text&quot;).</param>
         /// <param name="pullInterval">Pull interval in seconds (default to &quot;10&quot;).</param>
@@ -43,10 +44,12 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="workspaceId">Azure workspace id.</param>
         /// <param name="workspaceKey">Azure workspace key.</param>
-        public GwUpdateRemoteAccessSessionLogsAzureAnalytics(string enable = @"true", bool json = false, string outputFormat = @"text", string pullInterval = @"10", string token = default(string), string uidToken = default(string), string workspaceId = default(string), string workspaceKey = default(string))
+        public GwUpdateRemoteAccessSessionLogsAzureAnalytics(string enable = @"true", string enableBatch = @"true", bool json = false, string outputFormat = @"text", string pullInterval = @"10", string token = default(string), string uidToken = default(string), string workspaceId = default(string), string workspaceKey = default(string))
         {
             // use default value if no "enable" provided
             this.Enable = enable ?? @"true";
+            // use default value if no "enableBatch" provided
+            this.EnableBatch = enableBatch ?? @"true";
             this.Json = json;
             // use default value if no "outputFormat" provided
             this.OutputFormat = outputFormat ?? @"text";
@@ -64,6 +67,13 @@ namespace akeyless.Model
         /// <value>Enable Log Forwarding [true/false]</value>
         [DataMember(Name = "enable", EmitDefaultValue = false)]
         public string Enable { get; set; }
+
+        /// <summary>
+        /// Enable batch forwarding [true/false]
+        /// </summary>
+        /// <value>Enable batch forwarding [true/false]</value>
+        [DataMember(Name = "enable-batch", EmitDefaultValue = false)]
+        public string EnableBatch { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -123,6 +133,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GwUpdateRemoteAccessSessionLogsAzureAnalytics {\n");
             sb.Append("  Enable: ").Append(Enable).Append("\n");
+            sb.Append("  EnableBatch: ").Append(EnableBatch).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  OutputFormat: ").Append(OutputFormat).Append("\n");
             sb.Append("  PullInterval: ").Append(PullInterval).Append("\n");

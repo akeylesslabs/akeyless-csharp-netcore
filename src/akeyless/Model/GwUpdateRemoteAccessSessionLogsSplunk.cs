@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GwUpdateRemoteAccessSessionLogsSplunk" /> class.
         /// </summary>
         /// <param name="enable">Enable Log Forwarding [true/false] (default to &quot;true&quot;).</param>
+        /// <param name="enableBatch">Enable batch forwarding [true/false] (default to &quot;true&quot;).</param>
         /// <param name="enableTls">Enable tls.</param>
         /// <param name="index">Splunk index.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -48,10 +49,12 @@ namespace akeyless.Model
         /// <param name="tlsCertificate">Splunk tls certificate (default to &quot;use-existing&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GwUpdateRemoteAccessSessionLogsSplunk(string enable = @"true", bool enableTls = default(bool), string index = default(string), bool json = false, string outputFormat = @"text", string pullInterval = @"10", string source = @"use-existing", string sourceType = @"use-existing", string splunkToken = default(string), string splunkUrl = default(string), string tlsCertificate = @"use-existing", string token = default(string), string uidToken = default(string))
+        public GwUpdateRemoteAccessSessionLogsSplunk(string enable = @"true", string enableBatch = @"true", bool enableTls = default(bool), string index = default(string), bool json = false, string outputFormat = @"text", string pullInterval = @"10", string source = @"use-existing", string sourceType = @"use-existing", string splunkToken = default(string), string splunkUrl = default(string), string tlsCertificate = @"use-existing", string token = default(string), string uidToken = default(string))
         {
             // use default value if no "enable" provided
             this.Enable = enable ?? @"true";
+            // use default value if no "enableBatch" provided
+            this.EnableBatch = enableBatch ?? @"true";
             this.EnableTls = enableTls;
             this.Index = index;
             this.Json = json;
@@ -77,6 +80,13 @@ namespace akeyless.Model
         /// <value>Enable Log Forwarding [true/false]</value>
         [DataMember(Name = "enable", EmitDefaultValue = false)]
         public string Enable { get; set; }
+
+        /// <summary>
+        /// Enable batch forwarding [true/false]
+        /// </summary>
+        /// <value>Enable batch forwarding [true/false]</value>
+        [DataMember(Name = "enable-batch", EmitDefaultValue = false)]
+        public string EnableBatch { get; set; }
 
         /// <summary>
         /// Enable tls
@@ -171,6 +181,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GwUpdateRemoteAccessSessionLogsSplunk {\n");
             sb.Append("  Enable: ").Append(Enable).Append("\n");
+            sb.Append("  EnableBatch: ").Append(EnableBatch).Append("\n");
             sb.Append("  EnableTls: ").Append(EnableTls).Append("\n");
             sb.Append("  Index: ").Append(Index).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

@@ -447,6 +447,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreateDockerhub**](V2Api.md#targetcreatedockerhub) | **POST** /target-create-dockerhub |  |
 | [**TargetCreateEks**](V2Api.md#targetcreateeks) | **POST** /target-create-eks |  |
 | [**TargetCreateGcp**](V2Api.md#targetcreategcp) | **POST** /target-create-gcp |  |
+| [**TargetCreateGemini**](V2Api.md#targetcreategemini) | **POST** /target-create-gemini |  |
 | [**TargetCreateGithub**](V2Api.md#targetcreategithub) | **POST** /target-create-github |  |
 | [**TargetCreateGitlab**](V2Api.md#targetcreategitlab) | **POST** /target-create-gitlab |  |
 | [**TargetCreateGke**](V2Api.md#targetcreategke) | **POST** /target-create-gke |  |
@@ -457,6 +458,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreateK8s**](V2Api.md#targetcreatek8s) | **POST** /target-create-k8s |  |
 | [**TargetCreateLdap**](V2Api.md#targetcreateldap) | **POST** /target-create-ldap |  |
 | [**TargetCreateLinked**](V2Api.md#targetcreatelinked) | **POST** /target-create-linked |  |
+| [**TargetCreateOpenAI**](V2Api.md#targetcreateopenai) | **POST** /target-create-openai |  |
 | [**TargetCreatePing**](V2Api.md#targetcreateping) | **POST** /target-create-ping |  |
 | [**TargetCreateRabbitMq**](V2Api.md#targetcreaterabbitmq) | **POST** /target-create-rabbitmq |  |
 | [**TargetCreateSalesforce**](V2Api.md#targetcreatesalesforce) | **POST** /target-create-salesforce |  |
@@ -476,6 +478,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdateDockerhub**](V2Api.md#targetupdatedockerhub) | **POST** /target-update-dockerhub |  |
 | [**TargetUpdateEks**](V2Api.md#targetupdateeks) | **POST** /target-update-eks |  |
 | [**TargetUpdateGcp**](V2Api.md#targetupdategcp) | **POST** /target-update-gcp |  |
+| [**TargetUpdateGemini**](V2Api.md#targetupdategemini) | **POST** /target-update-gemini |  |
 | [**TargetUpdateGithub**](V2Api.md#targetupdategithub) | **POST** /target-update-github |  |
 | [**TargetUpdateGitlab**](V2Api.md#targetupdategitlab) | **POST** /target-update-gitlab |  |
 | [**TargetUpdateGke**](V2Api.md#targetupdategke) | **POST** /target-update-gke |  |
@@ -486,6 +489,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdateK8s**](V2Api.md#targetupdatek8s) | **POST** /target-update-k8s |  |
 | [**TargetUpdateLdap**](V2Api.md#targetupdateldap) | **POST** /target-update-ldap |  |
 | [**TargetUpdateLinked**](V2Api.md#targetupdatelinked) | **POST** /target-update-linked |  |
+| [**TargetUpdateOpenAI**](V2Api.md#targetupdateopenai) | **POST** /target-update-openai |  |
 | [**TargetUpdatePing**](V2Api.md#targetupdateping) | **POST** /target-update-ping |  |
 | [**TargetUpdateRabbitMq**](V2Api.md#targetupdaterabbitmq) | **POST** /target-update-rabbitmq |  |
 | [**TargetUpdateSalesforce**](V2Api.md#targetupdatesalesforce) | **POST** /target-update-salesforce |  |
@@ -39527,6 +39531,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetcreategemini"></a>
+# **TargetCreateGemini**
+> TargetCreateOutput TargetCreateGemini (TargetCreateGemini targetCreateGemini)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateGeminiExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateGemini = new TargetCreateGemini(); // TargetCreateGemini | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateGemini(targetCreateGemini);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateGemini: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateGeminiWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateGeminiWithHttpInfo(targetCreateGemini);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateGeminiWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateGemini** | [**TargetCreateGemini**](TargetCreateGemini.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateGeminiResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetcreategithub"></a>
 # **TargetCreateGithub**
 > TargetCreateOutput TargetCreateGithub (TargetCreateGithub targetCreateGithub)
@@ -40403,6 +40495,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetCreateLinkedResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetcreateopenai"></a>
+# **TargetCreateOpenAI**
+> TargetCreateOutput TargetCreateOpenAI (TargetCreateOpenAI targetCreateOpenAI)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateOpenAIExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateOpenAI = new TargetCreateOpenAI(); // TargetCreateOpenAI | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateOpenAI(targetCreateOpenAI);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateOpenAI: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateOpenAIWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateOpenAIWithHttpInfo(targetCreateOpenAI);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateOpenAIWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateOpenAI** | [**TargetCreateOpenAI**](TargetCreateOpenAI.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateOpenAIResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -42079,6 +42259,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetupdategemini"></a>
+# **TargetUpdateGemini**
+> TargetUpdateOutput TargetUpdateGemini (TargetUpdateGemini targetUpdateGemini)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateGeminiExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateGemini = new TargetUpdateGemini(); // TargetUpdateGemini | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateGemini(targetUpdateGemini);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateGemini: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateGeminiWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateGeminiWithHttpInfo(targetUpdateGemini);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateGeminiWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateGemini** | [**TargetUpdateGemini**](TargetUpdateGemini.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateGeminiResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetupdategithub"></a>
 # **TargetUpdateGithub**
 > TargetUpdateOutput TargetUpdateGithub (TargetUpdateGithub targetUpdateGithub)
@@ -42955,6 +43223,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateLinkedResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdateopenai"></a>
+# **TargetUpdateOpenAI**
+> TargetUpdateOutput TargetUpdateOpenAI (TargetUpdateOpenAI targetUpdateOpenAI)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateOpenAIExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateOpenAI = new TargetUpdateOpenAI(); // TargetUpdateOpenAI | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateOpenAI(targetUpdateOpenAI);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateOpenAI: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateOpenAIWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateOpenAIWithHttpInfo(targetUpdateOpenAI);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateOpenAIWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateOpenAI** | [**TargetUpdateOpenAI**](TargetUpdateOpenAI.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateOpenAIResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

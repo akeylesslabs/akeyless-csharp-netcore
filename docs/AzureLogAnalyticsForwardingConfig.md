@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AzureEnableBatch** | **string** |  | [optional] 
 **AzureWorkspaceId** | **string** |  | [optional] 
 **AzureWorkspaceKey** | **string** |  | [optional] 
 

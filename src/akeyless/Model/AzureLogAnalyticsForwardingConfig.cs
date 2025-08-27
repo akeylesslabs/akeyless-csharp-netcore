@@ -35,13 +35,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AzureLogAnalyticsForwardingConfig" /> class.
         /// </summary>
+        /// <param name="azureEnableBatch">azureEnableBatch.</param>
         /// <param name="azureWorkspaceId">azureWorkspaceId.</param>
         /// <param name="azureWorkspaceKey">azureWorkspaceKey.</param>
-        public AzureLogAnalyticsForwardingConfig(string azureWorkspaceId = default(string), string azureWorkspaceKey = default(string))
+        public AzureLogAnalyticsForwardingConfig(string azureEnableBatch = default(string), string azureWorkspaceId = default(string), string azureWorkspaceKey = default(string))
         {
+            this.AzureEnableBatch = azureEnableBatch;
             this.AzureWorkspaceId = azureWorkspaceId;
             this.AzureWorkspaceKey = azureWorkspaceKey;
         }
+
+        /// <summary>
+        /// Gets or Sets AzureEnableBatch
+        /// </summary>
+        [DataMember(Name = "azure_enable_batch", EmitDefaultValue = false)]
+        public string AzureEnableBatch { get; set; }
 
         /// <summary>
         /// Gets or Sets AzureWorkspaceId
@@ -63,6 +71,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AzureLogAnalyticsForwardingConfig {\n");
+            sb.Append("  AzureEnableBatch: ").Append(AzureEnableBatch).Append("\n");
             sb.Append("  AzureWorkspaceId: ").Append(AzureWorkspaceId).Append("\n");
             sb.Append("  AzureWorkspaceKey: ").Append(AzureWorkspaceKey).Append("\n");
             sb.Append("}\n");

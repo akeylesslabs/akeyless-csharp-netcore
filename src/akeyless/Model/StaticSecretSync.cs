@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="StaticSecretSync" /> class.
         /// </summary>
+        /// <param name="filterSecretValue">JQ expression to filter or transform the secret value.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Static secret name (required).</param>
         /// <param name="varNamespace">Vault namespace, releavnt only for Hashicorp Vault Target.</param>
@@ -47,7 +48,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Universal Secret Connector name, If not provided all attached USC&#39;s will be synced.</param>
-        public StaticSecretSync(bool json = false, string name = default(string), string varNamespace = default(string), string remoteSecretName = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public StaticSecretSync(string filterSecretValue = default(string), bool json = false, string name = default(string), string varNamespace = default(string), string remoteSecretName = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -55,6 +56,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for StaticSecretSync and cannot be null");
             }
             this.Name = name;
+            this.FilterSecretValue = filterSecretValue;
             this.Json = json;
             this.Namespace = varNamespace;
             this.RemoteSecretName = remoteSecretName;
@@ -62,6 +64,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.UscName = uscName;
         }
+
+        /// <summary>
+        /// JQ expression to filter or transform the secret value
+        /// </summary>
+        /// <value>JQ expression to filter or transform the secret value</value>
+        [DataMember(Name = "filter-secret-value", EmitDefaultValue = false)]
+        public string FilterSecretValue { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -120,6 +129,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class StaticSecretSync {\n");
+            sb.Append("  FilterSecretValue: ").Append(FilterSecretValue).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");

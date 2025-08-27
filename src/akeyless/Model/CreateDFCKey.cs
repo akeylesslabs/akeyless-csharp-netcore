@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="autoRotate">Whether to automatically rotate every rotation_interval days, or disable existing automatic rotation [true/false].</param>
         /// <param name="certificateCommonName">Common name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateCountry">Country name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
-        /// <param name="certificateDigestAlgo">Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI..</param>
+        /// <param name="certificateDigestAlgo">Digest algorithm to be used for the certificate key signing..</param>
         /// <param name="certificateFormat">certificateFormat.</param>
         /// <param name="certificateLocality">Locality for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
         /// <param name="certificateOrganization">Organization name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
@@ -56,6 +56,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="generateSelfSignedCertificate">Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided..</param>
+        /// <param name="hashAlgorithm">Specifies the hash algorithm used for the encryption key&#39;s operations, available options: [SHA256, SHA384, SHA512] (default to &quot;SHA256&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">DFCKey name (required).</param>
@@ -65,7 +66,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this DFC key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateDFCKey(string alg = default(string), string autoRotate = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateFormat = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool generateSelfSignedCertificate = default(bool), bool json = false, string metadata = default(string), string name = default(string), List<string> rotationEventIn = default(List<string>), string rotationInterval = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateDFCKey(string alg = default(string), string autoRotate = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateFormat = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool generateSelfSignedCertificate = default(bool), string hashAlgorithm = @"SHA256", bool json = false, string metadata = default(string), string name = default(string), List<string> rotationEventIn = default(List<string>), string rotationInterval = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -94,6 +95,8 @@ namespace akeyless.Model
             this.Description = description;
             this.ExpirationEventIn = expirationEventIn;
             this.GenerateSelfSignedCertificate = generateSelfSignedCertificate;
+            // use default value if no "hashAlgorithm" provided
+            this.HashAlgorithm = hashAlgorithm ?? @"SHA256";
             this.Json = json;
             this.Metadata = metadata;
             this.RotationEventIn = rotationEventIn;
@@ -133,9 +136,9 @@ namespace akeyless.Model
         public string CertificateCountry { get; set; }
 
         /// <summary>
-        /// Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI.
+        /// Digest algorithm to be used for the certificate key signing.
         /// </summary>
-        /// <value>Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI.</value>
+        /// <value>Digest algorithm to be used for the certificate key signing.</value>
         [DataMember(Name = "certificate-digest-algo", EmitDefaultValue = false)]
         public string CertificateDigestAlgo { get; set; }
 
@@ -214,6 +217,13 @@ namespace akeyless.Model
         /// <value>Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided.</value>
         [DataMember(Name = "generate-self-signed-certificate", EmitDefaultValue = true)]
         public bool GenerateSelfSignedCertificate { get; set; }
+
+        /// <summary>
+        /// Specifies the hash algorithm used for the encryption key&#39;s operations, available options: [SHA256, SHA384, SHA512]
+        /// </summary>
+        /// <value>Specifies the hash algorithm used for the encryption key&#39;s operations, available options: [SHA256, SHA384, SHA512]</value>
+        [DataMember(Name = "hash-algorithm", EmitDefaultValue = false)]
+        public string HashAlgorithm { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -302,6 +312,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GenerateSelfSignedCertificate: ").Append(GenerateSelfSignedCertificate).Append("\n");
+            sb.Append("  HashAlgorithm: ").Append(HashAlgorithm).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");

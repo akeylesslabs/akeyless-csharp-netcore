@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **EmailAddresses** | **string** | A comma-separated list of email addresses alternative names | [optional] 
 **ExportPrivateKey** | **bool** | The flag to indicate if the private key should be exported | [optional] [default to false]
 **GenerateKey** | **bool** | Generate a new classic key for the csr | [optional] 
+**HashAlgorithm** | **string** | Specifies the hash algorithm used for the encryption key&#39;s operations, available options: SHA256, SHA384, SHA512 | [optional] [default to "SHA256"]
 **IpAddresses** | **string** | A comma-separated list of ip addresses alternative names | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyType** | **string** | The type of the key to generate (classic-key/dfc) | [default to "classic-key"]
