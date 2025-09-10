@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// <param name="accountId">Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
+        /// <param name="certChallenge">Certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
         /// <param name="debug">debug.</param>
@@ -61,10 +62,11 @@ namespace akeyless.Model
         /// <param name="ociAuthType">The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) (default to &quot;apikey&quot;).</param>
         /// <param name="ociGroupOcid">A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci).</param>
         /// <param name="otp">otp.</param>
+        /// <param name="signedCertChallenge">Signed certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="uidToken">The universal_identity token (relevant only for access-type&#x3D;universal_identity).</param>
         /// <param name="useRemoteBrowser">Returns a link to complete the authentication remotely (relevant only for access-type&#x3D;saml/oidc).</param>
         /// <param name="username">LDAP username (relevant only for access-type&#x3D;ldap).</param>
-        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = @"access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string disablePafxfast = default(string), string gatewaySpn = default(string), string gatewayUrl = default(string), string gcpAudience = @"akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string kerberosToken = default(string), string kerberosUsername = default(string), string keyData = default(string), string keytabData = default(string), string krb5ConfData = default(string), string ldapPassword = default(string), string ociAuthType = @"apikey", List<string> ociGroupOcid = default(List<string>), string otp = default(string), string uidToken = default(string), bool useRemoteBrowser = default(bool), string username = default(string))
+        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = @"access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string certChallenge = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string disablePafxfast = default(string), string gatewaySpn = default(string), string gatewayUrl = default(string), string gcpAudience = @"akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string kerberosToken = default(string), string kerberosUsername = default(string), string keyData = default(string), string keytabData = default(string), string krb5ConfData = default(string), string ldapPassword = default(string), string ociAuthType = @"apikey", List<string> ociGroupOcid = default(List<string>), string otp = default(string), string signedCertChallenge = default(string), string uidToken = default(string), bool useRemoteBrowser = default(bool), string username = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -73,6 +75,7 @@ namespace akeyless.Model
             this.AccountId = accountId;
             this.AdminEmail = adminEmail;
             this.AdminPassword = adminPassword;
+            this.CertChallenge = certChallenge;
             this.CertData = certData;
             this.CloudId = cloudId;
             this.Debug = debug;
@@ -95,6 +98,7 @@ namespace akeyless.Model
             this.OciAuthType = ociAuthType ?? @"apikey";
             this.OciGroupOcid = ociGroupOcid;
             this.Otp = otp;
+            this.SignedCertChallenge = signedCertChallenge;
             this.UidToken = uidToken;
             this.UseRemoteBrowser = useRemoteBrowser;
             this.Username = username;
@@ -141,6 +145,13 @@ namespace akeyless.Model
         /// <value>Password (relevant only for access-type&#x3D;password)</value>
         [DataMember(Name = "admin-password", EmitDefaultValue = false)]
         public string AdminPassword { get; set; }
+
+        /// <summary>
+        /// Certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert)
+        /// </summary>
+        /// <value>Certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert)</value>
+        [DataMember(Name = "cert-challenge", EmitDefaultValue = false)]
+        public string CertChallenge { get; set; }
 
         /// <summary>
         /// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert)
@@ -281,6 +292,13 @@ namespace akeyless.Model
         public string Otp { get; set; }
 
         /// <summary>
+        /// Signed certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert)
+        /// </summary>
+        /// <value>Signed certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert)</value>
+        [DataMember(Name = "signed-cert-challenge", EmitDefaultValue = false)]
+        public string SignedCertChallenge { get; set; }
+
+        /// <summary>
         /// The universal_identity token (relevant only for access-type&#x3D;universal_identity)
         /// </summary>
         /// <value>The universal_identity token (relevant only for access-type&#x3D;universal_identity)</value>
@@ -315,6 +333,7 @@ namespace akeyless.Model
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  AdminEmail: ").Append(AdminEmail).Append("\n");
             sb.Append("  AdminPassword: ").Append(AdminPassword).Append("\n");
+            sb.Append("  CertChallenge: ").Append(CertChallenge).Append("\n");
             sb.Append("  CertData: ").Append(CertData).Append("\n");
             sb.Append("  CloudId: ").Append(CloudId).Append("\n");
             sb.Append("  Debug: ").Append(Debug).Append("\n");
@@ -335,6 +354,7 @@ namespace akeyless.Model
             sb.Append("  OciAuthType: ").Append(OciAuthType).Append("\n");
             sb.Append("  OciGroupOcid: ").Append(OciGroupOcid).Append("\n");
             sb.Append("  Otp: ").Append(Otp).Append("\n");
+            sb.Append("  SignedCertChallenge: ").Append(SignedCertChallenge).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UseRemoteBrowser: ").Append(UseRemoteBrowser).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");

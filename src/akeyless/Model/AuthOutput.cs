@@ -37,11 +37,13 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="completeAuthLink">completeAuthLink.</param>
         /// <param name="creds">creds.</param>
+        /// <param name="expiration">expiration.</param>
         /// <param name="token">token.</param>
-        public AuthOutput(string completeAuthLink = default(string), SystemAccessCredentialsReplyObj creds = default(SystemAccessCredentialsReplyObj), string token = default(string))
+        public AuthOutput(string completeAuthLink = default(string), SystemAccessCredentialsReplyObj creds = default(SystemAccessCredentialsReplyObj), string expiration = default(string), string token = default(string))
         {
             this.CompleteAuthLink = completeAuthLink;
             this.Creds = creds;
+            this.Expiration = expiration;
             this.Token = token;
         }
 
@@ -56,6 +58,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "creds", EmitDefaultValue = false)]
         public SystemAccessCredentialsReplyObj Creds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Expiration
+        /// </summary>
+        [DataMember(Name = "expiration", EmitDefaultValue = false)]
+        public string Expiration { get; set; }
 
         /// <summary>
         /// Gets or Sets Token
@@ -73,6 +81,7 @@ namespace akeyless.Model
             sb.Append("class AuthOutput {\n");
             sb.Append("  CompleteAuthLink: ").Append(CompleteAuthLink).Append("\n");
             sb.Append("  Creds: ").Append(Creds).Append("\n");
+            sb.Append("  Expiration: ").Append(Expiration).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

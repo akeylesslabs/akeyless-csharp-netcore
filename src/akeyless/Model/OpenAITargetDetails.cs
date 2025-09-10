@@ -37,15 +37,15 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="apiKey">apiKey.</param>
         /// <param name="apiKeyId">apiKeyId.</param>
-        /// <param name="baseUrl">baseUrl.</param>
         /// <param name="model">model.</param>
+        /// <param name="openaiUrl">openaiUrl.</param>
         /// <param name="organizationId">organizationId.</param>
-        public OpenAITargetDetails(string apiKey = default(string), string apiKeyId = default(string), string baseUrl = default(string), string model = default(string), string organizationId = default(string))
+        public OpenAITargetDetails(string apiKey = default(string), string apiKeyId = default(string), string model = default(string), string openaiUrl = default(string), string organizationId = default(string))
         {
             this.ApiKey = apiKey;
             this.ApiKeyId = apiKeyId;
-            this.BaseUrl = baseUrl;
             this.Model = model;
+            this.OpenaiUrl = openaiUrl;
             this.OrganizationId = organizationId;
         }
 
@@ -62,16 +62,16 @@ namespace akeyless.Model
         public string ApiKeyId { get; set; }
 
         /// <summary>
-        /// Gets or Sets BaseUrl
-        /// </summary>
-        [DataMember(Name = "base_url", EmitDefaultValue = false)]
-        public string BaseUrl { get; set; }
-
-        /// <summary>
         /// Gets or Sets Model
         /// </summary>
         [DataMember(Name = "model", EmitDefaultValue = false)]
         public string Model { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OpenaiUrl
+        /// </summary>
+        [DataMember(Name = "openai_url", EmitDefaultValue = false)]
+        public string OpenaiUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets OrganizationId
@@ -89,8 +89,8 @@ namespace akeyless.Model
             sb.Append("class OpenAITargetDetails {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  ApiKeyId: ").Append(ApiKeyId).Append("\n");
-            sb.Append("  BaseUrl: ").Append(BaseUrl).Append("\n");
             sb.Append("  Model: ").Append(Model).Append("\n");
+            sb.Append("  OpenaiUrl: ").Append(OpenaiUrl).Append("\n");
             sb.Append("  OrganizationId: ").Append(OrganizationId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

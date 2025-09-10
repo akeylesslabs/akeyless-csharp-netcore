@@ -36,12 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GeminiTargetDetails" /> class.
         /// </summary>
         /// <param name="apiKey">apiKey.</param>
-        /// <param name="baseUrl">baseUrl.</param>
+        /// <param name="geminiUrl">geminiUrl.</param>
         /// <param name="model">model.</param>
-        public GeminiTargetDetails(string apiKey = default(string), string baseUrl = default(string), string model = default(string))
+        public GeminiTargetDetails(string apiKey = default(string), string geminiUrl = default(string), string model = default(string))
         {
             this.ApiKey = apiKey;
-            this.BaseUrl = baseUrl;
+            this.GeminiUrl = geminiUrl;
             this.Model = model;
         }
 
@@ -52,10 +52,10 @@ namespace akeyless.Model
         public string ApiKey { get; set; }
 
         /// <summary>
-        /// Gets or Sets BaseUrl
+        /// Gets or Sets GeminiUrl
         /// </summary>
-        [DataMember(Name = "base_url", EmitDefaultValue = false)]
-        public string BaseUrl { get; set; }
+        [DataMember(Name = "gemini_url", EmitDefaultValue = false)]
+        public string GeminiUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets Model
@@ -72,7 +72,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GeminiTargetDetails {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
-            sb.Append("  BaseUrl: ").Append(BaseUrl).Append("\n");
+            sb.Append("  GeminiUrl: ").Append(GeminiUrl).Append("\n");
             sb.Append("  Model: ").Append(Model).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

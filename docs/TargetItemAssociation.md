@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AssocId** | **string** |  | [optional] 
 **Attributes** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **ClusterId** | **long** |  | [optional] 
+**ItemId** | **long** |  | [optional] 
 **ItemName** | **string** |  | [optional] 
 **ItemType** | **string** |  | [optional] 
 **Relationship** | **string** |  | [optional] 

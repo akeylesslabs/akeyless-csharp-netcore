@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | **string** |  | [optional] 
 **AuthMethodAccessId** | **string** |  | [optional] 
+**AuthMethodId** | **long** |  | [optional] 
 **AuthMethodName** | **string** |  | [optional] 
 **AuthMethodSubClaims** | **Dictionary&lt;string, List&lt;string&gt;&gt;** |  | [optional] 
 **IsSubclaimsWithOperator** | **bool** |  | [optional] 

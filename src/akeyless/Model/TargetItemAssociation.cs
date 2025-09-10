@@ -38,14 +38,16 @@ namespace akeyless.Model
         /// <param name="assocId">assocId.</param>
         /// <param name="attributes">attributes.</param>
         /// <param name="clusterId">clusterId.</param>
+        /// <param name="itemId">itemId.</param>
         /// <param name="itemName">itemName.</param>
         /// <param name="itemType">itemType.</param>
         /// <param name="relationship">relationship.</param>
-        public TargetItemAssociation(string assocId = default(string), Dictionary<string, string> attributes = default(Dictionary<string, string>), long clusterId = default(long), string itemName = default(string), string itemType = default(string), string relationship = default(string))
+        public TargetItemAssociation(string assocId = default(string), Dictionary<string, string> attributes = default(Dictionary<string, string>), long clusterId = default(long), long itemId = default(long), string itemName = default(string), string itemType = default(string), string relationship = default(string))
         {
             this.AssocId = assocId;
             this.Attributes = attributes;
             this.ClusterId = clusterId;
+            this.ItemId = itemId;
             this.ItemName = itemName;
             this.ItemType = itemType;
             this.Relationship = relationship;
@@ -68,6 +70,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "cluster_id", EmitDefaultValue = false)]
         public long ClusterId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ItemId
+        /// </summary>
+        [DataMember(Name = "item_id", EmitDefaultValue = false)]
+        public long ItemId { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemName
@@ -98,6 +106,7 @@ namespace akeyless.Model
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  ClusterId: ").Append(ClusterId).Append("\n");
+            sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  ItemName: ").Append(ItemName).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  Relationship: ").Append(Relationship).Append("\n");

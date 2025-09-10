@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **GwAnalyticsAccess** | **string** | Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Role name | 
+**ReverseRbacAccess** | **string** | Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;. | [optional] 
 **SraReportsAccess** | **string** | Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported. | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

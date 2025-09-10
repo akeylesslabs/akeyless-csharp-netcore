@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | **string** |  | [optional] 
 **ApiKeyId** | **string** |  | [optional] 
-**BaseUrl** | **string** |  | [optional] 
 **Model** | **string** |  | [optional] 
+**OpenaiUrl** | **string** |  | [optional] 
 **OrganizationId** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -39,18 +39,20 @@ namespace akeyless.Model
         /// <param name="capabilities">The approved/denied capabilities in the path.</param>
         /// <param name="cb">cb.</param>
         /// <param name="isLimitAccess">flag that indicate that this rule is allowed to be access RemainingAccess of times..</param>
+        /// <param name="itemId">The item id this rule directly refers to (when applicable).</param>
         /// <param name="numberOfAccessUsed">numberOfAccessUsed.</param>
         /// <param name="numberOfAllowedAccess">numberOfAllowedAccess.</param>
         /// <param name="path">The path the rule refers to.</param>
         /// <param name="startTime">startTime.</param>
         /// <param name="ttl">ttl.</param>
         /// <param name="type">type.</param>
-        public PathRule(List<RuleAssigner> assigners = default(List<RuleAssigner>), List<string> capabilities = default(List<string>), int cb = default(int), bool isLimitAccess = default(bool), long numberOfAccessUsed = default(long), long numberOfAllowedAccess = default(long), string path = default(string), long startTime = default(long), long ttl = default(long), string type = default(string))
+        public PathRule(List<RuleAssigner> assigners = default(List<RuleAssigner>), List<string> capabilities = default(List<string>), int cb = default(int), bool isLimitAccess = default(bool), long itemId = default(long), long numberOfAccessUsed = default(long), long numberOfAllowedAccess = default(long), string path = default(string), long startTime = default(long), long ttl = default(long), string type = default(string))
         {
             this.Assigners = assigners;
             this.Capabilities = capabilities;
             this.Cb = cb;
             this.IsLimitAccess = isLimitAccess;
+            this.ItemId = itemId;
             this.NumberOfAccessUsed = numberOfAccessUsed;
             this.NumberOfAllowedAccess = numberOfAllowedAccess;
             this.Path = path;
@@ -84,6 +86,13 @@ namespace akeyless.Model
         /// <value>flag that indicate that this rule is allowed to be access RemainingAccess of times.</value>
         [DataMember(Name = "is_limit_access", EmitDefaultValue = true)]
         public bool IsLimitAccess { get; set; }
+
+        /// <summary>
+        /// The item id this rule directly refers to (when applicable)
+        /// </summary>
+        /// <value>The item id this rule directly refers to (when applicable)</value>
+        [DataMember(Name = "item_id", EmitDefaultValue = false)]
+        public long ItemId { get; set; }
 
         /// <summary>
         /// Gets or Sets NumberOfAccessUsed
@@ -134,6 +143,7 @@ namespace akeyless.Model
             sb.Append("  Capabilities: ").Append(Capabilities).Append("\n");
             sb.Append("  Cb: ").Append(Cb).Append("\n");
             sb.Append("  IsLimitAccess: ").Append(IsLimitAccess).Append("\n");
+            sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  NumberOfAccessUsed: ").Append(NumberOfAccessUsed).Append("\n");
             sb.Append("  NumberOfAllowedAccess: ").Append(NumberOfAllowedAccess).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");

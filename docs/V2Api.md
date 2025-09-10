@@ -320,6 +320,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GetAccountSettings**](V2Api.md#getaccountsettings) | **POST** /get-account-settings |  |
 | [**GetAnalyticsData**](V2Api.md#getanalyticsdata) | **POST** /get-analytics-data |  |
 | [**GetAuthMethod**](V2Api.md#getauthmethod) | **POST** /get-auth-method |  |
+| [**GetCertChallenge**](V2Api.md#getcertchallenge) | **POST** /get-cert-challenge |  |
 | [**GetCertificateValue**](V2Api.md#getcertificatevalue) | **POST** /get-certificate-value |  |
 | [**GetDynamicSecretValue**](V2Api.md#getdynamicsecretvalue) | **POST** /get-dynamic-secret-value |  |
 | [**GetEventForwarder**](V2Api.md#geteventforwarder) | **POST** /get-event-forwarder |  |
@@ -28365,6 +28366,95 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | getAuthMethodResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getcertchallenge"></a>
+# **GetCertChallenge**
+> GetCertChallengeOutput GetCertChallenge (GetCertChallenge getCertChallenge)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GetCertChallengeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var getCertChallenge = new GetCertChallenge(); // GetCertChallenge | 
+
+            try
+            {
+                GetCertChallengeOutput result = apiInstance.GetCertChallenge(getCertChallenge);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GetCertChallenge: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetCertChallengeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GetCertChallengeOutput> response = apiInstance.GetCertChallengeWithHttpInfo(getCertChallenge);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetCertChallengeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **getCertChallenge** | [**GetCertChallenge**](GetCertChallenge.md) |  |  |
+
+### Return type
+
+[**GetCertChallengeOutput**](GetCertChallengeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | getCertChallengeResponse wraps response body. |  -  |
+| **400** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

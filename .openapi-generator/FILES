@@ -594,6 +594,8 @@ docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAnalyticsData.md
 docs/GetAuthMethod.md
+docs/GetCertChallenge.md
+docs/GetCertChallengeOutput.md
 docs/GetCertificateValue.md
 docs/GetCertificateValueOutput.md
 docs/GetDynamicSecretValue.md
@@ -1112,12 +1114,8 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/GeminiTargetDetailsTests.cs
-src/akeyless.Test/Model/OpenAITargetDetailsTests.cs
-src/akeyless.Test/Model/TargetCreateGeminiTests.cs
-src/akeyless.Test/Model/TargetCreateOpenAITests.cs
-src/akeyless.Test/Model/TargetUpdateGeminiTests.cs
-src/akeyless.Test/Model/TargetUpdateOpenAITests.cs
+src/akeyless.Test/Model/GetCertChallengeOutputTests.cs
+src/akeyless.Test/Model/GetCertChallengeTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1728,6 +1726,8 @@ src/akeyless/Model/GetAccountSettings.cs
 src/akeyless/Model/GetAccountSettingsCommandOutput.cs
 src/akeyless/Model/GetAnalyticsData.cs
 src/akeyless/Model/GetAuthMethod.cs
+src/akeyless/Model/GetCertChallenge.cs
+src/akeyless/Model/GetCertChallengeOutput.cs
 src/akeyless/Model/GetCertificateValue.cs
 src/akeyless/Model/GetCertificateValueOutput.cs
 src/akeyless/Model/GetDynamicSecretValue.cs

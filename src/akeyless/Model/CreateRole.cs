@@ -50,11 +50,12 @@ namespace akeyless.Model
         /// <param name="gwAnalyticsAccess">Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Role name (required).</param>
+        /// <param name="reverseRbacAccess">Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;..</param>
         /// <param name="sraReportsAccess">Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="usageReportsAccess">Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
-        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string deleteProtection = default(string), string description = default(string), string eventCenterAccess = default(string), string eventForwardersAccess = default(string), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
+        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string deleteProtection = default(string), string description = default(string), string eventCenterAccess = default(string), string eventForwardersAccess = default(string), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string reverseRbacAccess = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -71,6 +72,7 @@ namespace akeyless.Model
             this.EventForwardersAccess = eventForwardersAccess;
             this.GwAnalyticsAccess = gwAnalyticsAccess;
             this.Json = json;
+            this.ReverseRbacAccess = reverseRbacAccess;
             this.SraReportsAccess = sraReportsAccess;
             this.Token = token;
             this.UidToken = uidToken;
@@ -148,6 +150,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;.
+        /// </summary>
+        /// <value>Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;.</value>
+        [DataMember(Name = "reverse-rbac-access", EmitDefaultValue = false)]
+        public string ReverseRbacAccess { get; set; }
+
+        /// <summary>
         /// Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported.
         /// </summary>
         /// <value>Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported.</value>
@@ -193,6 +202,7 @@ namespace akeyless.Model
             sb.Append("  GwAnalyticsAccess: ").Append(GwAnalyticsAccess).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ReverseRbacAccess: ").Append(ReverseRbacAccess).Append("\n");
             sb.Append("  SraReportsAccess: ").Append(SraReportsAccess).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

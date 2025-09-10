@@ -51,11 +51,12 @@ namespace akeyless.Model
         /// <param name="name">Role name (required).</param>
         /// <param name="newComment">Deprecated - use description (default to &quot;default_comment&quot;).</param>
         /// <param name="newName">New Role name.</param>
+        /// <param name="reverseRbacAccess">Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;..</param>
         /// <param name="sraReportsAccess">Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="usageReportsAccess">Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
-        public UpdateRole(string analyticsAccess = default(string), string auditAccess = default(string), string deleteProtection = default(string), string description = @"default_comment", string eventCenterAccess = default(string), string eventForwarderAccess = default(string), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string newComment = @"default_comment", string newName = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
+        public UpdateRole(string analyticsAccess = default(string), string auditAccess = default(string), string deleteProtection = default(string), string description = @"default_comment", string eventCenterAccess = default(string), string eventForwarderAccess = default(string), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string newComment = @"default_comment", string newName = default(string), string reverseRbacAccess = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -75,6 +76,7 @@ namespace akeyless.Model
             // use default value if no "newComment" provided
             this.NewComment = newComment ?? @"default_comment";
             this.NewName = newName;
+            this.ReverseRbacAccess = reverseRbacAccess;
             this.SraReportsAccess = sraReportsAccess;
             this.Token = token;
             this.UidToken = uidToken;
@@ -159,6 +161,13 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;.
+        /// </summary>
+        /// <value>Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;.</value>
+        [DataMember(Name = "reverse-rbac-access", EmitDefaultValue = false)]
+        public string ReverseRbacAccess { get; set; }
+
+        /// <summary>
         /// Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported.
         /// </summary>
         /// <value>Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported.</value>
@@ -205,6 +214,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewComment: ").Append(NewComment).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  ReverseRbacAccess: ").Append(ReverseRbacAccess).Append("\n");
             sb.Append("  SraReportsAccess: ").Append(SraReportsAccess).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

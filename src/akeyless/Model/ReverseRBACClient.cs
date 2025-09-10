@@ -36,10 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ReverseRBACClient" /> class.
         /// </summary>
         /// <param name="assocs">assocs.</param>
+        /// <param name="authMethodId">authMethodId.</param>
         /// <param name="authMethodName">authMethodName.</param>
-        public ReverseRBACClient(List<AuthMethodRoleAssociation> assocs = default(List<AuthMethodRoleAssociation>), string authMethodName = default(string))
+        public ReverseRBACClient(List<AuthMethodRoleAssociation> assocs = default(List<AuthMethodRoleAssociation>), long authMethodId = default(long), string authMethodName = default(string))
         {
             this.Assocs = assocs;
+            this.AuthMethodId = authMethodId;
             this.AuthMethodName = authMethodName;
         }
 
@@ -48,6 +50,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "assocs", EmitDefaultValue = false)]
         public List<AuthMethodRoleAssociation> Assocs { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AuthMethodId
+        /// </summary>
+        [DataMember(Name = "auth_method_id", EmitDefaultValue = false)]
+        public long AuthMethodId { get; set; }
 
         /// <summary>
         /// Gets or Sets AuthMethodName
@@ -64,6 +72,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ReverseRBACClient {\n");
             sb.Append("  Assocs: ").Append(Assocs).Append("\n");
+            sb.Append("  AuthMethodId: ").Append(AuthMethodId).Append("\n");
             sb.Append("  AuthMethodName: ").Append(AuthMethodName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
