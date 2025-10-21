@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BinaryValue** | **bool** |  | [optional] 
+**EncryptionKey** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **Metadata** | **Object** |  | [optional] 
 **Name** | **string** |  | [optional] 

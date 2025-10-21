@@ -36,13 +36,15 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="EsmGetSecretOutput" /> class.
         /// </summary>
         /// <param name="binaryValue">binaryValue.</param>
+        /// <param name="encryptionKey">encryptionKey.</param>
         /// <param name="id">id.</param>
         /// <param name="metadata">metadata.</param>
         /// <param name="name">name.</param>
         /// <param name="value">value.</param>
-        public EsmGetSecretOutput(bool binaryValue = default(bool), string id = default(string), Object metadata = default(Object), string name = default(string), string value = default(string))
+        public EsmGetSecretOutput(bool binaryValue = default(bool), string encryptionKey = default(string), string id = default(string), Object metadata = default(Object), string name = default(string), string value = default(string))
         {
             this.BinaryValue = binaryValue;
+            this.EncryptionKey = encryptionKey;
             this.Id = id;
             this.Metadata = metadata;
             this.Name = name;
@@ -54,6 +56,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "binary_value", EmitDefaultValue = true)]
         public bool BinaryValue { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EncryptionKey
+        /// </summary>
+        [DataMember(Name = "encryption_key", EmitDefaultValue = false)]
+        public string EncryptionKey { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -88,6 +96,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class EsmGetSecretOutput {\n");
             sb.Append("  BinaryValue: ").Append(BinaryValue).Append("\n");
+            sb.Append("  EncryptionKey: ").Append(EncryptionKey).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");

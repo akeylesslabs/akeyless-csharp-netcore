@@ -56,13 +56,14 @@ namespace akeyless.Model
         /// <param name="protectionKey">protectionKey.</param>
         /// <param name="runnerType">runnerType.</param>
         /// <param name="slackNotiForwarderPublicDetails">slackNotiForwarderPublicDetails.</param>
+        /// <param name="teamsNotiForwarderPublicDetails">teamsNotiForwarderPublicDetails.</param>
         /// <param name="timespanInSeconds">timespanInSeconds.</param>
         /// <param name="toEmails">toEmails.</param>
         /// <param name="userEmail">userEmail.</param>
         /// <param name="username">Auth - User Password.</param>
         /// <param name="webhookNotiForwarderPublicDetails">webhookNotiForwarderPublicDetails.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public NotiForwarder(string authType = default(string), string clientId = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), string endpoint = default(string), List<string> eventTypes = default(List<string>), long gatewayClusterId = default(long), bool includeError = default(bool), bool isEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), long notiForwarderId = default(long), string notiForwarderName = default(string), string notiForwarderType = default(string), List<ItemVersion> notiForwarderVersions = default(List<ItemVersion>), string overrideUrl = default(string), List<string> paths = default(List<string>), string protectionKey = default(string), string runnerType = default(string), Object slackNotiForwarderPublicDetails = default(Object), long timespanInSeconds = default(long), List<EmailEntry> toEmails = default(List<EmailEntry>), string userEmail = default(string), string username = default(string), WebHookNotiForwarderPublicDetails webhookNotiForwarderPublicDetails = default(WebHookNotiForwarderPublicDetails), bool withCustomerFragment = default(bool))
+        public NotiForwarder(string authType = default(string), string clientId = default(string), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), string endpoint = default(string), List<string> eventTypes = default(List<string>), long gatewayClusterId = default(long), bool includeError = default(bool), bool isEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), long notiForwarderId = default(long), string notiForwarderName = default(string), string notiForwarderType = default(string), List<ItemVersion> notiForwarderVersions = default(List<ItemVersion>), string overrideUrl = default(string), List<string> paths = default(List<string>), string protectionKey = default(string), string runnerType = default(string), Object slackNotiForwarderPublicDetails = default(Object), Object teamsNotiForwarderPublicDetails = default(Object), long timespanInSeconds = default(long), List<EmailEntry> toEmails = default(List<EmailEntry>), string userEmail = default(string), string username = default(string), WebHookNotiForwarderPublicDetails webhookNotiForwarderPublicDetails = default(WebHookNotiForwarderPublicDetails), bool withCustomerFragment = default(bool))
         {
             this.AuthType = authType;
             this.ClientId = clientId;
@@ -85,6 +86,7 @@ namespace akeyless.Model
             this.ProtectionKey = protectionKey;
             this.RunnerType = runnerType;
             this.SlackNotiForwarderPublicDetails = slackNotiForwarderPublicDetails;
+            this.TeamsNotiForwarderPublicDetails = teamsNotiForwarderPublicDetails;
             this.TimespanInSeconds = timespanInSeconds;
             this.ToEmails = toEmails;
             this.UserEmail = userEmail;
@@ -221,6 +223,12 @@ namespace akeyless.Model
         public Object SlackNotiForwarderPublicDetails { get; set; }
 
         /// <summary>
+        /// Gets or Sets TeamsNotiForwarderPublicDetails
+        /// </summary>
+        [DataMember(Name = "teams_noti_forwarder_public_details", EmitDefaultValue = false)]
+        public Object TeamsNotiForwarderPublicDetails { get; set; }
+
+        /// <summary>
         /// Gets or Sets TimespanInSeconds
         /// </summary>
         [DataMember(Name = "timespan_in_seconds", EmitDefaultValue = false)]
@@ -286,6 +294,7 @@ namespace akeyless.Model
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  RunnerType: ").Append(RunnerType).Append("\n");
             sb.Append("  SlackNotiForwarderPublicDetails: ").Append(SlackNotiForwarderPublicDetails).Append("\n");
+            sb.Append("  TeamsNotiForwarderPublicDetails: ").Append(TeamsNotiForwarderPublicDetails).Append("\n");
             sb.Append("  TimespanInSeconds: ").Append(TimespanInSeconds).Append("\n");
             sb.Append("  ToEmails: ").Append(ToEmails).Append("\n");
             sb.Append("  UserEmail: ").Append(UserEmail).Append("\n");

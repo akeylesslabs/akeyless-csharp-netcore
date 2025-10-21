@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Created** | **DateTime** |  | [optional] 
 **Description** | **string** |  | [optional] 
 **Expiration** | **DateTime** |  | [optional] 
+**KeyId** | **string** |  | [optional] 
 **LastRetrieved** | **DateTime** |  | [optional] 
 **Location** | **Object** |  | [optional] 
 **Name** | **string** |  | [optional] 

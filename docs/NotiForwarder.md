@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **ProtectionKey** | **string** |  | [optional] 
 **RunnerType** | **string** |  | [optional] 
 **SlackNotiForwarderPublicDetails** | **Object** |  | [optional] 
+**TeamsNotiForwarderPublicDetails** | **Object** |  | [optional] 
 **TimespanInSeconds** | **long** |  | [optional] 
 **ToEmails** | [**List&lt;EmailEntry&gt;**](EmailEntry.md) |  | [optional] 
 **UserEmail** | **string** |  | [optional] 

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Tags** | **Dictionary&lt;string, string&gt;** | Tags for the universal secrets | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UscEncryptionKey** | **string** | Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used) | [optional] 
 **UscName** | **string** | Name of the Universal Secrets Connector item | 
 **Value** | **string** | Value of the universal secrets item, either text or base64 encoded binary | 
 

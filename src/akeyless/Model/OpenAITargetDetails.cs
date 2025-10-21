@@ -37,16 +37,16 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="apiKey">apiKey.</param>
         /// <param name="apiKeyId">apiKeyId.</param>
-        /// <param name="model">model.</param>
         /// <param name="openaiUrl">openaiUrl.</param>
         /// <param name="organizationId">organizationId.</param>
-        public OpenAITargetDetails(string apiKey = default(string), string apiKeyId = default(string), string model = default(string), string openaiUrl = default(string), string organizationId = default(string))
+        /// <param name="projectId">projectId.</param>
+        public OpenAITargetDetails(string apiKey = default(string), string apiKeyId = default(string), string openaiUrl = default(string), string organizationId = default(string), string projectId = default(string))
         {
             this.ApiKey = apiKey;
             this.ApiKeyId = apiKeyId;
-            this.Model = model;
             this.OpenaiUrl = openaiUrl;
             this.OrganizationId = organizationId;
+            this.ProjectId = projectId;
         }
 
         /// <summary>
@@ -62,12 +62,6 @@ namespace akeyless.Model
         public string ApiKeyId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Model
-        /// </summary>
-        [DataMember(Name = "model", EmitDefaultValue = false)]
-        public string Model { get; set; }
-
-        /// <summary>
         /// Gets or Sets OpenaiUrl
         /// </summary>
         [DataMember(Name = "openai_url", EmitDefaultValue = false)]
@@ -80,6 +74,12 @@ namespace akeyless.Model
         public string OrganizationId { get; set; }
 
         /// <summary>
+        /// Gets or Sets ProjectId
+        /// </summary>
+        [DataMember(Name = "project_id", EmitDefaultValue = false)]
+        public string ProjectId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -89,9 +89,9 @@ namespace akeyless.Model
             sb.Append("class OpenAITargetDetails {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  ApiKeyId: ").Append(ApiKeyId).Append("\n");
-            sb.Append("  Model: ").Append(Model).Append("\n");
             sb.Append("  OpenaiUrl: ").Append(OpenaiUrl).Append("\n");
             sb.Append("  OrganizationId: ").Append(OrganizationId).Append("\n");
+            sb.Append("  ProjectId: ").Append(ProjectId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

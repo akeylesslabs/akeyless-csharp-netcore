@@ -145,6 +145,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretCreateMongoDb**](V2Api.md#dynamicsecretcreatemongodb) | **POST** /dynamic-secret-create-mongodb |  |
 | [**DynamicSecretCreateMsSql**](V2Api.md#dynamicsecretcreatemssql) | **POST** /dynamic-secret-create-mssql |  |
 | [**DynamicSecretCreateMySql**](V2Api.md#dynamicsecretcreatemysql) | **POST** /dynamic-secret-create-mysql |  |
+| [**DynamicSecretCreateOpenAI**](V2Api.md#dynamicsecretcreateopenai) | **POST** /dynamic-secret-create-openai |  |
 | [**DynamicSecretCreateOracleDb**](V2Api.md#dynamicsecretcreateoracledb) | **POST** /dynamic-secret-create-oracle |  |
 | [**DynamicSecretCreatePing**](V2Api.md#dynamicsecretcreateping) | **POST** /dynamic-secret-create-ping |  |
 | [**DynamicSecretCreatePostgreSql**](V2Api.md#dynamicsecretcreatepostgresql) | **POST** /dynamic-secret-create-postgresql |  |
@@ -179,6 +180,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretUpdateMongoDb**](V2Api.md#dynamicsecretupdatemongodb) | **POST** /dynamic-secret-update-mongo |  |
 | [**DynamicSecretUpdateMsSql**](V2Api.md#dynamicsecretupdatemssql) | **POST** /dynamic-secret-update-mssql |  |
 | [**DynamicSecretUpdateMySql**](V2Api.md#dynamicsecretupdatemysql) | **POST** /dynamic-secret-update-mysql |  |
+| [**DynamicSecretUpdateOpenAI**](V2Api.md#dynamicsecretupdateopenai) | **POST** /dynamic-secret-update-openai |  |
 | [**DynamicSecretUpdateOracleDb**](V2Api.md#dynamicsecretupdateoracledb) | **POST** /dynamic-secret-update-oracle |  |
 | [**DynamicSecretUpdatePing**](V2Api.md#dynamicsecretupdateping) | **POST** /dynamic-secret-update-ping |  |
 | [**DynamicSecretUpdatePostgreSql**](V2Api.md#dynamicsecretupdatepostgresql) | **POST** /dynamic-secret-update-postgresql |  |
@@ -201,12 +203,14 @@ All URIs are relative to *https://api.akeyless.io*
 | [**EventForwarderCreateEmail**](V2Api.md#eventforwardercreateemail) | **POST** /event-forwarder-create-email |  |
 | [**EventForwarderCreateServiceNow**](V2Api.md#eventforwardercreateservicenow) | **POST** /event-forwarder-create-servicenow |  |
 | [**EventForwarderCreateSlack**](V2Api.md#eventforwardercreateslack) | **POST** /event-forwarder-create-slack |  |
+| [**EventForwarderCreateTeams**](V2Api.md#eventforwardercreateteams) | **POST** /event-forwarder-create-teams |  |
 | [**EventForwarderCreateWebhook**](V2Api.md#eventforwardercreatewebhook) | **POST** /event-forwarder-create-webhook |  |
 | [**EventForwarderDelete**](V2Api.md#eventforwarderdelete) | **POST** /event-forwarder-delete |  |
 | [**EventForwarderGet**](V2Api.md#eventforwarderget) | **POST** /event-forwarder-get |  |
 | [**EventForwarderUpdateEmail**](V2Api.md#eventforwarderupdateemail) | **POST** /event-forwarder-update-email |  |
 | [**EventForwarderUpdateServiceNow**](V2Api.md#eventforwarderupdateservicenow) | **POST** /event-forwarder-update-servicenow |  |
 | [**EventForwarderUpdateSlack**](V2Api.md#eventforwarderupdateslack) | **POST** /event-forwarder-update-slack |  |
+| [**EventForwarderUpdateTeams**](V2Api.md#eventforwarderupdateteams) | **POST** /event-forwarder-update-teams |  |
 | [**EventForwarderUpdateWebhook**](V2Api.md#eventforwarderupdatewebhook) | **POST** /event-forwarder-update-webhook |  |
 | [**ExportClassicKey**](V2Api.md#exportclassickey) | **POST** /export-classic-key |  |
 | [**GatewayCreateAllowedAccess**](V2Api.md#gatewaycreateallowedaccess) | **POST** /gateway-create-allowed-access |  |
@@ -12991,6 +12995,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="dynamicsecretcreateopenai"></a>
+# **DynamicSecretCreateOpenAI**
+> DynamicSecretCreateOutput DynamicSecretCreateOpenAI (DynamicSecretCreateOpenAI dynamicSecretCreateOpenAI)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DynamicSecretCreateOpenAIExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var dynamicSecretCreateOpenAI = new DynamicSecretCreateOpenAI(); // DynamicSecretCreateOpenAI | 
+
+            try
+            {
+                DynamicSecretCreateOutput result = apiInstance.DynamicSecretCreateOpenAI(dynamicSecretCreateOpenAI);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DynamicSecretCreateOpenAI: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DynamicSecretCreateOpenAIWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DynamicSecretCreateOutput> response = apiInstance.DynamicSecretCreateOpenAIWithHttpInfo(dynamicSecretCreateOpenAI);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DynamicSecretCreateOpenAIWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **dynamicSecretCreateOpenAI** | [**DynamicSecretCreateOpenAI**](DynamicSecretCreateOpenAI.md) |  |  |
+
+### Return type
+
+[**DynamicSecretCreateOutput**](DynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | dynamicSecretCreateOpenAIResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="dynamicsecretcreateoracledb"></a>
 # **DynamicSecretCreateOracleDb**
 > DynamicSecretCreateOutput DynamicSecretCreateOracleDb (DynamicSecretCreateOracleDb dynamicSecretCreateOracleDb)
@@ -15975,6 +16067,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="dynamicsecretupdateopenai"></a>
+# **DynamicSecretUpdateOpenAI**
+> DynamicSecretUpdateOutput DynamicSecretUpdateOpenAI (DynamicSecretUpdateOpenAI dynamicSecretUpdateOpenAI)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DynamicSecretUpdateOpenAIExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var dynamicSecretUpdateOpenAI = new DynamicSecretUpdateOpenAI(); // DynamicSecretUpdateOpenAI | 
+
+            try
+            {
+                DynamicSecretUpdateOutput result = apiInstance.DynamicSecretUpdateOpenAI(dynamicSecretUpdateOpenAI);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DynamicSecretUpdateOpenAI: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DynamicSecretUpdateOpenAIWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DynamicSecretUpdateOutput> response = apiInstance.DynamicSecretUpdateOpenAIWithHttpInfo(dynamicSecretUpdateOpenAI);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DynamicSecretUpdateOpenAIWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **dynamicSecretUpdateOpenAI** | [**DynamicSecretUpdateOpenAI**](DynamicSecretUpdateOpenAI.md) |  |  |
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](DynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | dynamicSecretUpdateOpenAIResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="dynamicsecretupdateoracledb"></a>
 # **DynamicSecretUpdateOracleDb**
 > DynamicSecretUpdateOutput DynamicSecretUpdateOracleDb (DynamicSecretUpdateOracleDb dynamicSecretUpdateOracleDb)
@@ -17911,6 +18091,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="eventforwardercreateteams"></a>
+# **EventForwarderCreateTeams**
+> EventForwarderCreateUpdateOutput EventForwarderCreateTeams (EventForwarderCreateTeams eventForwarderCreateTeams)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class EventForwarderCreateTeamsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var eventForwarderCreateTeams = new EventForwarderCreateTeams(); // EventForwarderCreateTeams | 
+
+            try
+            {
+                EventForwarderCreateUpdateOutput result = apiInstance.EventForwarderCreateTeams(eventForwarderCreateTeams);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.EventForwarderCreateTeams: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the EventForwarderCreateTeamsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EventForwarderCreateUpdateOutput> response = apiInstance.EventForwarderCreateTeamsWithHttpInfo(eventForwarderCreateTeams);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.EventForwarderCreateTeamsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **eventForwarderCreateTeams** | [**EventForwarderCreateTeams**](EventForwarderCreateTeams.md) |  |  |
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](EventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="eventforwardercreatewebhook"></a>
 # **EventForwarderCreateWebhook**
 > EventForwarderCreateUpdateOutput EventForwarderCreateWebhook (EventForwarderCreateWebhook eventForwarderCreateWebhook)
@@ -18435,6 +18703,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | eventForwarderUpdateSlackResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="eventforwarderupdateteams"></a>
+# **EventForwarderUpdateTeams**
+> EventForwarderCreateUpdateOutput EventForwarderUpdateTeams (EventForwarderUpdateTeams eventForwarderUpdateTeams)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class EventForwarderUpdateTeamsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var eventForwarderUpdateTeams = new EventForwarderUpdateTeams(); // EventForwarderUpdateTeams | 
+
+            try
+            {
+                EventForwarderCreateUpdateOutput result = apiInstance.EventForwarderUpdateTeams(eventForwarderUpdateTeams);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.EventForwarderUpdateTeams: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the EventForwarderUpdateTeamsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EventForwarderCreateUpdateOutput> response = apiInstance.EventForwarderUpdateTeamsWithHttpInfo(eventForwarderUpdateTeams);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.EventForwarderUpdateTeamsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **eventForwarderUpdateTeams** | [**EventForwarderUpdateTeams**](EventForwarderUpdateTeams.md) |  |  |
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](EventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | eventForwarderUpdateTeamsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

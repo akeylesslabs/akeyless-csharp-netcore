@@ -49,9 +49,10 @@ namespace akeyless.Model
         /// <param name="tags">Tags for the universal secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="uscEncryptionKey">Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used).</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
-        public UscUpdate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string pfxPassword = default(string), string secretId = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscName = default(string), string value = default(string))
+        public UscUpdate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string pfxPassword = default(string), string secretId = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
         {
             // to ensure "secretId" is required (not null)
             if (secretId == null)
@@ -79,6 +80,7 @@ namespace akeyless.Model
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UscEncryptionKey = uscEncryptionKey;
         }
 
         /// <summary>
@@ -145,6 +147,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used)
+        /// </summary>
+        /// <value>Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used)</value>
+        [DataMember(Name = "usc-encryption-key", EmitDefaultValue = false)]
+        public string UscEncryptionKey { get; set; }
+
+        /// <summary>
         /// Name of the Universal Secrets Connector item
         /// </summary>
         /// <value>Name of the Universal Secrets Connector item</value>
@@ -175,6 +184,7 @@ namespace akeyless.Model
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UscEncryptionKey: ").Append(UscEncryptionKey).Append("\n");
             sb.Append("  UscName: ").Append(UscName).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
