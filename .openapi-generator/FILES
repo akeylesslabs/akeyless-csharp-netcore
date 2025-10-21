@@ -1118,10 +1118,6 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/DynamicSecretCreateOpenAITests.cs
-src/akeyless.Test/Model/DynamicSecretUpdateOpenAITests.cs
-src/akeyless.Test/Model/EventForwarderCreateTeamsTests.cs
-src/akeyless.Test/Model/EventForwarderUpdateTeamsTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs

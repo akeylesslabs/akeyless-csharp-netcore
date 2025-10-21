@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "akeyless", "src\akeyless\akeyless.csproj", "{1DD9CF60-C234-4CF5-99C9-5EEDC6248B4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "akeyless", "src\akeyless\akeyless.csproj", "{066EACD0-38B6-42B3-B911-D2DBDB2987B1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "akeyless.Test", "src\akeyless.Test\akeyless.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1DD9CF60-C234-4CF5-99C9-5EEDC6248B4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DD9CF60-C234-4CF5-99C9-5EEDC6248B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1DD9CF60-C234-4CF5-99C9-5EEDC6248B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1DD9CF60-C234-4CF5-99C9-5EEDC6248B4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{066EACD0-38B6-42B3-B911-D2DBDB2987B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{066EACD0-38B6-42B3-B911-D2DBDB2987B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{066EACD0-38B6-42B3-B911-D2DBDB2987B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{066EACD0-38B6-42B3-B911-D2DBDB2987B1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU
