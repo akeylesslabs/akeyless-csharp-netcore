@@ -40,11 +40,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateMigration" /> class.
         /// </summary>
-        /// <param name="var1passwordEmail">1Password user email to connect to the API.</param>
-        /// <param name="var1passwordPassword">1Password user password to connect to the API.</param>
-        /// <param name="var1passwordSecretKey">1Password user secret key to connect to the API.</param>
-        /// <param name="var1passwordUrl">1Password api container url.</param>
-        /// <param name="var1passwordVaults">1Password list of vault to get the items from.</param>
         /// <param name="serviceAccountKeyDecoded">serviceAccountKeyDecoded.</param>
         /// <param name="adAutoRotate">Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration).</param>
         /// <param name="adComputerBaseDn">Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration).</param>
@@ -105,7 +100,7 @@ namespace akeyless.Model
         /// <param name="targetLocation">Target location in Akeyless for imported secrets (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateMigration(string var1passwordEmail = default(string), string var1passwordPassword = default(string), string var1passwordSecretKey = default(string), string var1passwordUrl = default(string), List<string> var1passwordVaults = default(List<string>), string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "siTargetName" is required (not null)
             if (siTargetName == null)
@@ -125,11 +120,6 @@ namespace akeyless.Model
                 throw new ArgumentNullException("targetLocation is a required property for GatewayUpdateMigration and cannot be null");
             }
             this.TargetLocation = targetLocation;
-            this.Var1passwordEmail = var1passwordEmail;
-            this.Var1passwordPassword = var1passwordPassword;
-            this.Var1passwordSecretKey = var1passwordSecretKey;
-            this.Var1passwordUrl = var1passwordUrl;
-            this.Var1passwordVaults = var1passwordVaults;
             this.ServiceAccountKeyDecoded = serviceAccountKeyDecoded;
             this.AdAutoRotate = adAutoRotate;
             this.AdComputerBaseDn = adComputerBaseDn;
@@ -197,41 +187,6 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
         }
-
-        /// <summary>
-        /// 1Password user email to connect to the API
-        /// </summary>
-        /// <value>1Password user email to connect to the API</value>
-        [DataMember(Name = "1password-email", EmitDefaultValue = false)]
-        public string Var1passwordEmail { get; set; }
-
-        /// <summary>
-        /// 1Password user password to connect to the API
-        /// </summary>
-        /// <value>1Password user password to connect to the API</value>
-        [DataMember(Name = "1password-password", EmitDefaultValue = false)]
-        public string Var1passwordPassword { get; set; }
-
-        /// <summary>
-        /// 1Password user secret key to connect to the API
-        /// </summary>
-        /// <value>1Password user secret key to connect to the API</value>
-        [DataMember(Name = "1password-secret-key", EmitDefaultValue = false)]
-        public string Var1passwordSecretKey { get; set; }
-
-        /// <summary>
-        /// 1Password api container url
-        /// </summary>
-        /// <value>1Password api container url</value>
-        [DataMember(Name = "1password-url", EmitDefaultValue = false)]
-        public string Var1passwordUrl { get; set; }
-
-        /// <summary>
-        /// 1Password list of vault to get the items from
-        /// </summary>
-        /// <value>1Password list of vault to get the items from</value>
-        [DataMember(Name = "1password-vaults", EmitDefaultValue = false)]
-        public List<string> Var1passwordVaults { get; set; }
 
         /// <summary>
         /// Gets or Sets ServiceAccountKeyDecoded
@@ -660,11 +615,6 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateMigration {\n");
-            sb.Append("  Var1passwordEmail: ").Append(Var1passwordEmail).Append("\n");
-            sb.Append("  Var1passwordPassword: ").Append(Var1passwordPassword).Append("\n");
-            sb.Append("  Var1passwordSecretKey: ").Append(Var1passwordSecretKey).Append("\n");
-            sb.Append("  Var1passwordUrl: ").Append(Var1passwordUrl).Append("\n");
-            sb.Append("  Var1passwordVaults: ").Append(Var1passwordVaults).Append("\n");
             sb.Append("  ServiceAccountKeyDecoded: ").Append(ServiceAccountKeyDecoded).Append("\n");
             sb.Append("  AdAutoRotate: ").Append(AdAutoRotate).Append("\n");
             sb.Append("  AdComputerBaseDn: ").Append(AdComputerBaseDn).Append("\n");

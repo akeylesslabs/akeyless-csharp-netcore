@@ -5,11 +5,6 @@ gatewayCreateMigration is a command that create migration
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Var1passwordEmail** | **string** | 1Password user email to connect to the API | [optional] 
-**Var1passwordPassword** | **string** | 1Password user password to connect to the API | [optional] 
-**Var1passwordSecretKey** | **string** | 1Password user secret key to connect to the API | [optional] 
-**Var1passwordUrl** | **string** | 1Password api container url | [optional] 
-**Var1passwordVaults** | **List&lt;string&gt;** | 1Password list of vault to get the items from | [optional] 
 **ServiceAccountKeyDecoded** | **string** |  | [optional] 
 **AdAutoRotate** | **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
 **AdComputerBaseDn** | **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
@@ -67,7 +62,7 @@ Name | Type | Description | Notes
 **SiUsersPathTemplate** | **string** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) | 
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/1password/active_directory) | [optional] 
+**Type** | **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

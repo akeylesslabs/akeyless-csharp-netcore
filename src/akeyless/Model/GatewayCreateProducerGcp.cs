@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="gcpCredType">gcpCredType.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpKeyAlgo">Service account key algorithm, e.g. KEY_ALG_RSA_1024.</param>
+        /// <param name="gcpProjectId">GCP Project ID override for dynamic secret operations (tmp service accounts).</param>
         /// <param name="gcpSaEmail">The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed).</param>
         /// <param name="gcpTokenScopes">Access token scopes list, e.g. scope1,scope2.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerGcp(string customUsernameTemplate = default(string), string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), bool json = false, string name = default(string), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string serviceAccountType = @"fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerGcp(string customUsernameTemplate = default(string), string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpProjectId = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), bool json = false, string name = default(string), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string serviceAccountType = @"fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -76,6 +77,7 @@ namespace akeyless.Model
             this.GcpCredType = gcpCredType;
             this.GcpKey = gcpKey;
             this.GcpKeyAlgo = gcpKeyAlgo;
+            this.GcpProjectId = gcpProjectId;
             this.GcpSaEmail = gcpSaEmail;
             this.GcpTokenScopes = gcpTokenScopes;
             this.Json = json;
@@ -122,6 +124,13 @@ namespace akeyless.Model
         /// <value>Service account key algorithm, e.g. KEY_ALG_RSA_1024</value>
         [DataMember(Name = "gcp-key-algo", EmitDefaultValue = false)]
         public string GcpKeyAlgo { get; set; }
+
+        /// <summary>
+        /// GCP Project ID override for dynamic secret operations (tmp service accounts)
+        /// </summary>
+        /// <value>GCP Project ID override for dynamic secret operations (tmp service accounts)</value>
+        [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
+        public string GcpProjectId { get; set; }
 
         /// <summary>
         /// The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed)
@@ -220,6 +229,7 @@ namespace akeyless.Model
             sb.Append("  GcpCredType: ").Append(GcpCredType).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpKeyAlgo: ").Append(GcpKeyAlgo).Append("\n");
+            sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
             sb.Append("  GcpSaEmail: ").Append(GcpSaEmail).Append("\n");
             sb.Append("  GcpTokenScopes: ").Append(GcpTokenScopes).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
