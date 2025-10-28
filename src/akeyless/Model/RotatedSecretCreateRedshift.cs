@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="targetName">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotatedSecretCreateRedshift(string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = @"false", string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string secureAccessDbName = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
+        public RotatedSecretCreateRedshift(string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = @"false", string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string secureAccessDbName = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -88,6 +89,7 @@ namespace akeyless.Model
             this.AutoRotate = autoRotate;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Key = key;
             this.MaxVersions = maxVersions;
@@ -134,6 +136,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -280,6 +289,7 @@ namespace akeyless.Model
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");

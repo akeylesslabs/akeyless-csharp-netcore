@@ -53,6 +53,7 @@ namespace akeyless.Model
         /// <param name="isAccessRequestEnabled">isAccessRequestEnabled.</param>
         /// <param name="isEnabled">isEnabled.</param>
         /// <param name="itemAccessibility">itemAccessibility.</param>
+        /// <param name="itemCustomFieldsDetails">itemCustomFieldsDetails.</param>
         /// <param name="itemGeneralInfo">itemGeneralInfo.</param>
         /// <param name="itemId">itemId.</param>
         /// <param name="itemMetadata">itemMetadata.</param>
@@ -77,7 +78,7 @@ namespace akeyless.Model
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="uscSyncAssociatedItems">for USC item, hold rotated-secrets that are associated to him for rotated-secret, holds the associated USCs.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Item(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), string accessRequestStatus = default(string), bool autoRotate = default(bool), BastionsList bastionDetails = default(BastionsList), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), List<GatewayDetailsForItemReplyObj> gatewayDetails = default(List<GatewayDetailsForItemReplyObj>), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), DateTime lastRotationDate = default(DateTime), int lastVersion = default(int), LinkedDetails linkedDetails = default(LinkedDetails), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), List<ItemUSCSyncAssociation> uscSyncAssociatedItems = default(List<ItemUSCSyncAssociation>), bool withCustomerFragment = default(bool))
+        public Item(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), string accessRequestStatus = default(string), bool autoRotate = default(bool), BastionsList bastionDetails = default(BastionsList), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), List<GatewayDetailsForItemReplyObj> gatewayDetails = default(List<GatewayDetailsForItemReplyObj>), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), List<ItemCustomFieldsDetails> itemCustomFieldsDetails = default(List<ItemCustomFieldsDetails>), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), DateTime lastRotationDate = default(DateTime), int lastVersion = default(int), LinkedDetails linkedDetails = default(LinkedDetails), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), List<ItemUSCSyncAssociation> uscSyncAssociatedItems = default(List<ItemUSCSyncAssociation>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
@@ -97,6 +98,7 @@ namespace akeyless.Model
             this.IsAccessRequestEnabled = isAccessRequestEnabled;
             this.IsEnabled = isEnabled;
             this.ItemAccessibility = itemAccessibility;
+            this.ItemCustomFieldsDetails = itemCustomFieldsDetails;
             this.ItemGeneralInfo = itemGeneralInfo;
             this.ItemId = itemId;
             this.ItemMetadata = itemMetadata;
@@ -230,6 +232,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "item_accessibility", EmitDefaultValue = false)]
         public long ItemAccessibility { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ItemCustomFieldsDetails
+        /// </summary>
+        [DataMember(Name = "item_custom_fields_details", EmitDefaultValue = false)]
+        public List<ItemCustomFieldsDetails> ItemCustomFieldsDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemGeneralInfo
@@ -403,6 +411,7 @@ namespace akeyless.Model
             sb.Append("  IsAccessRequestEnabled: ").Append(IsAccessRequestEnabled).Append("\n");
             sb.Append("  IsEnabled: ").Append(IsEnabled).Append("\n");
             sb.Append("  ItemAccessibility: ").Append(ItemAccessibility).Append("\n");
+            sb.Append("  ItemCustomFieldsDetails: ").Append(ItemCustomFieldsDetails).Append("\n");
             sb.Append("  ItemGeneralInfo: ").Append(ItemGeneralInfo).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  ItemMetadata: ").Append(ItemMetadata).Append("\n");

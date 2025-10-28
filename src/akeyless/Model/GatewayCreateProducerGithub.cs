@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="installationId">GitHub application installation id.</param>
         /// <param name="installationOrganization">Optional, mutually exclusive with installation id, GitHub organization name.</param>
         /// <param name="installationRepository">Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39;.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="tags">Add tags attached to this object.</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="tokenRepositories">Optional - installation token&#39;s allowed repositories.</param>
         /// <param name="tokenTtl">Token TTL (default to &quot;60m&quot;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayCreateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = @"https://api.github.com/", long installationId = default(long), string installationOrganization = default(string), string installationRepository = default(string), bool json = false, string name = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string tokenTtl = @"60m", string uidToken = default(string))
+        public GatewayCreateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = @"https://api.github.com/", long installationId = default(long), string installationOrganization = default(string), string installationRepository = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string tokenTtl = @"60m", string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.InstallationId = installationId;
             this.InstallationOrganization = installationOrganization;
             this.InstallationRepository = installationRepository;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Tags = tags;
             this.TargetName = targetName;
@@ -131,6 +133,13 @@ namespace akeyless.Model
         /// <value>Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39;</value>
         [DataMember(Name = "installation-repository", EmitDefaultValue = false)]
         public string InstallationRepository { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -210,6 +219,7 @@ namespace akeyless.Model
             sb.Append("  InstallationId: ").Append(InstallationId).Append("\n");
             sb.Append("  InstallationOrganization: ").Append(InstallationOrganization).Append("\n");
             sb.Append("  InstallationRepository: ").Append(InstallationRepository).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");

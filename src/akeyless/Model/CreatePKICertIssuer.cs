@@ -63,6 +63,7 @@ namespace akeyless.Model
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="gwClusterUrl">The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME.</param>
         /// <param name="isCa">If set, the basic constraints extension will be added to certificate.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyUsage">key-usage (default to &quot;DigitalSignature,KeyAgreement,KeyEncipherment&quot;).</param>
         /// <param name="locality">A comma-separated list of localities that will be set in the issued certificate.</param>
@@ -84,7 +85,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedIpSans = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), string caTarget = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string criticalKeyUsage = @"true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool disableWildcards = default(bool), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), bool json = false, string keyUsage = @"DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), long maxPathLen = -1, string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedIpSans = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), string caTarget = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string criticalKeyUsage = @"true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool disableWildcards = default(bool), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyUsage = @"DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), long maxPathLen = -1, string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -122,6 +123,7 @@ namespace akeyless.Model
             this.ExpirationEventIn = expirationEventIn;
             this.GwClusterUrl = gwClusterUrl;
             this.IsCa = isCa;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             // use default value if no "keyUsage" provided
             this.KeyUsage = keyUsage ?? @"DigitalSignature,KeyAgreement,KeyEncipherment";
@@ -306,6 +308,13 @@ namespace akeyless.Model
         public bool IsCa { get; set; }
 
         /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
@@ -483,6 +492,7 @@ namespace akeyless.Model
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GwClusterUrl: ").Append(GwClusterUrl).Append("\n");
             sb.Append("  IsCa: ").Append(IsCa).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyUsage: ").Append(KeyUsage).Append("\n");
             sb.Append("  Locality: ").Append(Locality).Append("\n");

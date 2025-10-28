@@ -37,12 +37,10 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="apiKey">apiKey.</param>
         /// <param name="geminiUrl">geminiUrl.</param>
-        /// <param name="model">model.</param>
-        public GeminiTargetDetails(string apiKey = default(string), string geminiUrl = default(string), string model = default(string))
+        public GeminiTargetDetails(string apiKey = default(string), string geminiUrl = default(string))
         {
             this.ApiKey = apiKey;
             this.GeminiUrl = geminiUrl;
-            this.Model = model;
         }
 
         /// <summary>
@@ -58,12 +56,6 @@ namespace akeyless.Model
         public string GeminiUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets Model
-        /// </summary>
-        [DataMember(Name = "model", EmitDefaultValue = false)]
-        public string Model { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -73,7 +65,6 @@ namespace akeyless.Model
             sb.Append("class GeminiTargetDetails {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  GeminiUrl: ").Append(GeminiUrl).Append("\n");
-            sb.Append("  Model: ").Append(Model).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

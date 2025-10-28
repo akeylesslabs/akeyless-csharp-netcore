@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **HanadbPort** | **string** | HanaDb Port | [optional] [default to "443"]
 **HanadbRevocationStatements** | **string** | HanaDb Revocation statements | [optional] 
 **HanadbUsername** | **string** | HanaDb Username | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 

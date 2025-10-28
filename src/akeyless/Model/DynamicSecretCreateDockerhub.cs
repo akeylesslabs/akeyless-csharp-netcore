@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="dockerhubPassword">DockerhubPassword is either the user&#39;s password access token to manage the repository.</param>
         /// <param name="dockerhubTokenScopes">Access token scopes list (comma-separated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot;.</param>
         /// <param name="dockerhubUsername">DockerhubUsername is the name of the user in dockerhub.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateDockerhub(string deleteProtection = default(string), string description = default(string), string dockerhubPassword = default(string), string dockerhubTokenScopes = default(string), string dockerhubUsername = default(string), bool json = false, string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public DynamicSecretCreateDockerhub(string deleteProtection = default(string), string description = default(string), string dockerhubPassword = default(string), string dockerhubTokenScopes = default(string), string dockerhubUsername = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.DockerhubPassword = dockerhubPassword;
             this.DockerhubTokenScopes = dockerhubTokenScopes;
             this.DockerhubUsername = dockerhubUsername;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.Tags = tags;
@@ -110,6 +112,13 @@ namespace akeyless.Model
         /// <value>DockerhubUsername is the name of the user in dockerhub</value>
         [DataMember(Name = "dockerhub-username", EmitDefaultValue = false)]
         public string DockerhubUsername { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -180,6 +189,7 @@ namespace akeyless.Model
             sb.Append("  DockerhubPassword: ").Append(DockerhubPassword).Append("\n");
             sb.Append("  DockerhubTokenScopes: ").Append(DockerhubTokenScopes).Append("\n");
             sb.Append("  DockerhubUsername: ").Append(DockerhubUsername).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");

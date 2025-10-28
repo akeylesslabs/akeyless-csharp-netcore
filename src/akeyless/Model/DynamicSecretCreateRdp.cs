@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="fixedUserClaimKeyname">For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for fixed-user-only&#x3D;true) (default to &quot;ext_username&quot;).</param>
         /// <param name="fixedUserOnly">Allow access using externally (IdP) provided username [true/false] (default to &quot;false&quot;).</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
@@ -70,7 +71,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="warnUserBeforeExpiration">WarnBeforeUserExpiration.</param>
-        public DynamicSecretCreateRdp(long allowUserExtendSession = default(long), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"ext_username", string fixedUserOnly = @"false", bool json = false, string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = @"22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m", long warnUserBeforeExpiration = default(long))
+        public DynamicSecretCreateRdp(long allowUserExtendSession = default(long), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"ext_username", string fixedUserOnly = @"false", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = @"22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m", long warnUserBeforeExpiration = default(long))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -86,6 +87,7 @@ namespace akeyless.Model
             this.FixedUserClaimKeyname = fixedUserClaimKeyname ?? @"ext_username";
             // use default value if no "fixedUserOnly" provided
             this.FixedUserOnly = fixedUserOnly ?? @"false";
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -154,6 +156,13 @@ namespace akeyless.Model
         /// <value>Allow access using externally (IdP) provided username [true/false]</value>
         [DataMember(Name = "fixed-user-only", EmitDefaultValue = false)]
         public string FixedUserOnly { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -337,6 +346,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");

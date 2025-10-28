@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="derCertificateFormat">The certificate will be displayed in DER format (default to false).</param>
         /// <param name="displayId">The display id of the item.</param>
         /// <param name="gatewayDetails">Indicate if the item should return with clusters details (url, etc) (default to false).</param>
+        /// <param name="itemCustomFieldsDetails">Include all item custom fields details (default to false).</param>
         /// <param name="itemId">Item id of the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Item name (required).</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="showVersions">Include all item versions in reply (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DescribeItem(string accessibility = @"regular", bool bastionDetails = false, bool derCertificateFormat = false, string displayId = default(string), bool gatewayDetails = false, long itemId = default(long), bool json = false, string name = default(string), bool servicesDetails = false, bool showVersions = false, string token = default(string), string uidToken = default(string))
+        public DescribeItem(string accessibility = @"regular", bool bastionDetails = false, bool derCertificateFormat = false, string displayId = default(string), bool gatewayDetails = false, bool itemCustomFieldsDetails = false, long itemId = default(long), bool json = false, string name = default(string), bool servicesDetails = false, bool showVersions = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.DerCertificateFormat = derCertificateFormat;
             this.DisplayId = displayId;
             this.GatewayDetails = gatewayDetails;
+            this.ItemCustomFieldsDetails = itemCustomFieldsDetails;
             this.ItemId = itemId;
             this.Json = json;
             this.ServicesDetails = servicesDetails;
@@ -108,6 +110,13 @@ namespace akeyless.Model
         /// <value>Indicate if the item should return with clusters details (url, etc)</value>
         [DataMember(Name = "gateway-details", EmitDefaultValue = true)]
         public bool GatewayDetails { get; set; }
+
+        /// <summary>
+        /// Include all item custom fields details
+        /// </summary>
+        /// <value>Include all item custom fields details</value>
+        [DataMember(Name = "item-custom-fields-details", EmitDefaultValue = true)]
+        public bool ItemCustomFieldsDetails { get; set; }
 
         /// <summary>
         /// Item id of the item
@@ -171,6 +180,7 @@ namespace akeyless.Model
             sb.Append("  DerCertificateFormat: ").Append(DerCertificateFormat).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  GatewayDetails: ").Append(GatewayDetails).Append("\n");
+            sb.Append("  ItemCustomFieldsDetails: ").Append(ItemCustomFieldsDetails).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");

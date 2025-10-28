@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the object | [optional] 
 **Format** | **string** | Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;) | [optional] [default to "text"]
 **InjectUrl** | **List&lt;string&gt;** | For Password Management use, reflect the website context | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Metadata** | **string** | Deprecated - use description | [optional] 

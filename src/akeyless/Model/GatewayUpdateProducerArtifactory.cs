@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="baseUrl">Base URL.</param>
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerArtifactory(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string baseUrl = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerArtifactory(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string baseUrl = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "artifactoryTokenAudience" is required (not null)
             if (artifactoryTokenAudience == null)
@@ -81,6 +82,7 @@ namespace akeyless.Model
             this.BaseUrl = baseUrl;
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DeleteProtection = deleteProtection;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -140,6 +142,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -219,6 +228,7 @@ namespace akeyless.Model
             sb.Append("  BaseUrl: ").Append(BaseUrl).Append("\n");
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

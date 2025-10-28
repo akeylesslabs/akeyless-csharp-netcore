@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **MongodbAtlasApiPrivateKey** | **string** | MongoDB Atlas private key | [optional] 
 **MongodbAtlasApiPublicKey** | **string** | MongoDB Atlas public key | [optional] 

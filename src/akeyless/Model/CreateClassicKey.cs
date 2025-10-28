@@ -58,6 +58,7 @@ namespace akeyless.Model
         /// <param name="generateSelfSignedCertificate">Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided..</param>
         /// <param name="gpgAlg">gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519].</param>
         /// <param name="hashAlgorithm">Specifies the hash algorithm used for the encryption key&#39;s operations, available options: [SHA256, SHA384, SHA512] (default to &quot;SHA256&quot;).</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyData">Base64-encoded classic key value.</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -68,7 +69,7 @@ namespace akeyless.Model
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateClassicKey(string alg = default(string), string autoRotate = default(string), string certFileData = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateFormat = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool generateSelfSignedCertificate = default(bool), string gpgAlg = default(string), string hashAlgorithm = @"SHA256", bool json = false, string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> rotationEventIn = default(List<string>), string rotationInterval = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateClassicKey(string alg = default(string), string autoRotate = default(string), string certFileData = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateFormat = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool generateSelfSignedCertificate = default(bool), string gpgAlg = default(string), string hashAlgorithm = @"SHA256", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyData = default(string), string metadata = default(string), string name = default(string), string protectionKeyName = default(string), List<string> rotationEventIn = default(List<string>), string rotationInterval = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -100,6 +101,7 @@ namespace akeyless.Model
             this.GpgAlg = gpgAlg;
             // use default value if no "hashAlgorithm" provided
             this.HashAlgorithm = hashAlgorithm ?? @"SHA256";
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.KeyData = keyData;
             this.Metadata = metadata;
@@ -237,6 +239,13 @@ namespace akeyless.Model
         public string HashAlgorithm { get; set; }
 
         /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
@@ -332,6 +341,7 @@ namespace akeyless.Model
             sb.Append("  GenerateSelfSignedCertificate: ").Append(GenerateSelfSignedCertificate).Append("\n");
             sb.Append("  GpgAlg: ").Append(GpgAlg).Append("\n");
             sb.Append("  HashAlgorithm: ").Append(HashAlgorithm).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");

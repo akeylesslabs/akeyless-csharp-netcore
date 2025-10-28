@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="format">CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with - -certificate-data or - -key-data, otherwise format is derived from the file extension..</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key to use to encrypt the certificate&#39;s key (if empty, the account default protectionKey key will be used).</param>
         /// <param name="keyData">Content of the certificate&#39;s private key in a Base64 format..</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateCertificate(string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), string format = default(string), bool json = false, string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateCertificate(string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), string format = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string keyData = default(string), string metadata = default(string), string name = default(string), List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.Description = description;
             this.ExpirationEventIn = expirationEventIn;
             this.Format = format;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Key = key;
             this.KeyData = keyData;
@@ -109,6 +111,13 @@ namespace akeyless.Model
         /// <value>CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12. Required when passing inline certificate content with - -certificate-data or - -key-data, otherwise format is derived from the file extension.</value>
         [DataMember(Name = "format", EmitDefaultValue = false)]
         public string Format { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -179,6 +188,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  Format: ").Append(Format).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");

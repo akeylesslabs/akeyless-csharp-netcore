@@ -43,7 +43,6 @@ namespace akeyless.Model
         /// <param name="azureKvName">Azure Key Vault name (Relevant only for Azure targets).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the External Secrets Manager.</param>
-        /// <param name="gcpProjectId">GCP Project ID (Relevant only for GCP targets).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sNamespace">K8s namespace (Relevant to Kubernetes targets).</param>
         /// <param name="name">External Secrets Manager name (required).</param>
@@ -51,7 +50,7 @@ namespace akeyless.Model
         /// <param name="targetToAssociate">Target External Secrets Manager to connect (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateESM(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string gcpProjectId = default(string), bool json = false, string k8sNamespace = default(string), string name = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string))
+        public CreateESM(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string k8sNamespace = default(string), string name = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -68,7 +67,6 @@ namespace akeyless.Model
             this.AzureKvName = azureKvName;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
-            this.GcpProjectId = gcpProjectId;
             this.Json = json;
             this.K8sNamespace = k8sNamespace;
             this.Tags = tags;
@@ -96,13 +94,6 @@ namespace akeyless.Model
         /// <value>Description of the External Secrets Manager</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
-
-        /// <summary>
-        /// GCP Project ID (Relevant only for GCP targets)
-        /// </summary>
-        /// <value>GCP Project ID (Relevant only for GCP targets)</value>
-        [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
-        public string GcpProjectId { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -164,7 +155,6 @@ namespace akeyless.Model
             sb.Append("  AzureKvName: ").Append(AzureKvName).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");

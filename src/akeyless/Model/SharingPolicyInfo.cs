@@ -35,13 +35,22 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SharingPolicyInfo" /> class.
         /// </summary>
+        /// <param name="allowedEmailDomains">AllowedEmailDomains limits email sharing to these domains. By default all domains are allowed..</param>
         /// <param name="defaultShareLinkTtl">defaultShareLinkTtl.</param>
         /// <param name="enable">enable.</param>
-        public SharingPolicyInfo(long defaultShareLinkTtl = default(long), bool enable = default(bool))
+        public SharingPolicyInfo(List<string> allowedEmailDomains = default(List<string>), long defaultShareLinkTtl = default(long), bool enable = default(bool))
         {
+            this.AllowedEmailDomains = allowedEmailDomains;
             this.DefaultShareLinkTtl = defaultShareLinkTtl;
             this.Enable = enable;
         }
+
+        /// <summary>
+        /// AllowedEmailDomains limits email sharing to these domains. By default all domains are allowed.
+        /// </summary>
+        /// <value>AllowedEmailDomains limits email sharing to these domains. By default all domains are allowed.</value>
+        [DataMember(Name = "allowed_email_domains", EmitDefaultValue = false)]
+        public List<string> AllowedEmailDomains { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultShareLinkTtl
@@ -63,6 +72,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SharingPolicyInfo {\n");
+            sb.Append("  AllowedEmailDomains: ").Append(AllowedEmailDomains).Append("\n");
             sb.Append("  DefaultShareLinkTtl: ").Append(DefaultShareLinkTtl).Append("\n");
             sb.Append("  Enable: ").Append(Enable).Append("\n");
             sb.Append("}\n");

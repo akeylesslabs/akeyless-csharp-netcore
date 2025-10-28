@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="eksClusterName">EKS cluster name.</param>
         /// <param name="eksRegion">Region (default to &quot;us-east-2&quot;).</param>
         /// <param name="eksSecretAccessKey">Secret Access Key.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
@@ -65,7 +66,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;15m&quot;).</param>
-        public DynamicSecretUpdateEks(string deleteProtection = default(string), string description = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = @"us-east-2", string eksSecretAccessKey = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"15m")
+        public DynamicSecretUpdateEks(string deleteProtection = default(string), string description = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = @"us-east-2", string eksSecretAccessKey = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"15m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -83,6 +84,7 @@ namespace akeyless.Model
             // use default value if no "eksRegion" provided
             this.EksRegion = eksRegion ?? @"us-east-2";
             this.EksSecretAccessKey = eksSecretAccessKey;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -163,6 +165,13 @@ namespace akeyless.Model
         /// <value>Secret Access Key</value>
         [DataMember(Name = "eks-secret-access-key", EmitDefaultValue = false)]
         public string EksSecretAccessKey { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -293,6 +302,7 @@ namespace akeyless.Model
             sb.Append("  EksClusterName: ").Append(EksClusterName).Append("\n");
             sb.Append("  EksRegion: ").Append(EksRegion).Append("\n");
             sb.Append("  EksSecretAccessKey: ").Append(EksSecretAccessKey).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

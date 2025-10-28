@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="gkeClusterEndpoint">GKE cluster URL endpoint.</param>
         /// <param name="gkeClusterName">GKE cluster name.</param>
         /// <param name="gkeServiceAccountEmail">GKE service account email.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
@@ -62,7 +63,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerGke(string deleteProtection = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerGke(string deleteProtection = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -76,6 +77,7 @@ namespace akeyless.Model
             this.GkeClusterEndpoint = gkeClusterEndpoint;
             this.GkeClusterName = gkeClusterName;
             this.GkeServiceAccountEmail = gkeServiceAccountEmail;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -135,6 +137,13 @@ namespace akeyless.Model
         /// <value>GKE service account email</value>
         [DataMember(Name = "gke-service-account-email", EmitDefaultValue = false)]
         public string GkeServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -262,6 +271,7 @@ namespace akeyless.Model
             sb.Append("  GkeClusterEndpoint: ").Append(GkeClusterEndpoint).Append("\n");
             sb.Append("  GkeClusterName: ").Append(GkeClusterName).Append("\n");
             sb.Append("  GkeServiceAccountEmail: ").Append(GkeServiceAccountEmail).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

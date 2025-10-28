@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="oracleHost">Oracle Host (default to &quot;127.0.0.1&quot;).</param>
@@ -66,7 +67,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateOracleDb(string customUsernameTemplate = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string name = default(string), string oracleHost = @"127.0.0.1", string oraclePassword = default(string), string oraclePort = @"1521", string oracleRevocationStatements = default(string), string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = @"false", List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public DynamicSecretCreateOracleDb(string customUsernameTemplate = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string oracleHost = @"127.0.0.1", string oraclePassword = default(string), string oraclePort = @"1521", string oracleRevocationStatements = default(string), string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = @"false", List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -79,6 +80,7 @@ namespace akeyless.Model
             this.DbServerName = dbServerName;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             // use default value if no "oracleHost" provided
             this.OracleHost = oracleHost ?? @"127.0.0.1";
@@ -139,6 +141,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -300,6 +309,7 @@ namespace akeyless.Model
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  OracleHost: ").Append(OracleHost).Append("\n");

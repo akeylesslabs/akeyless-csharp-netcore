@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="enablePasswordPolicy">Enable password policy.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -78,7 +79,7 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Password must contain lower case letters [true/false].</param>
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
-        public RotatedSecretUpdateCustom(List<string> addTag = default(List<string>), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = @"default_metadata", string enablePasswordPolicy = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = @"false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, long timeoutSec = default(long), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public RotatedSecretUpdateCustom(List<string> addTag = default(List<string>), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = @"default_metadata", string enablePasswordPolicy = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = @"false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, long timeoutSec = default(long), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -95,6 +96,7 @@ namespace akeyless.Model
             // use default value if no "description" provided
             this.Description = description ?? @"default_metadata";
             this.EnablePasswordPolicy = enablePasswordPolicy;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
@@ -176,6 +178,13 @@ namespace akeyless.Model
         /// <value>Enable password policy</value>
         [DataMember(Name = "enable-password-policy", EmitDefaultValue = false)]
         public string EnablePasswordPolicy { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -409,6 +418,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EnablePasswordPolicy: ").Append(EnablePasswordPolicy).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");

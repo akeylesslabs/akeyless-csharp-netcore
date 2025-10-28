@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="gitlabUrl">Gitlab base url (default to &quot;https://gitlab.com/&quot;).</param>
         /// <param name="groupName">Gitlab group name, required for access-type&#x3D;group.</param>
         /// <param name="installationOrganization">Gitlab project name, required for access-type&#x3D;project.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Access Token TTL.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DynamicSecretUpdateGitlab(string deleteProtection = default(string), string description = default(string), string gitlabAccessToken = default(string), string gitlabAccessType = default(string), string gitlabCertificate = default(string), string gitlabRole = default(string), string gitlabTokenScopes = default(string), string gitlabUrl = @"https://gitlab.com/", string groupName = default(string), string installationOrganization = default(string), bool json = false, string name = default(string), string newName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public DynamicSecretUpdateGitlab(string deleteProtection = default(string), string description = default(string), string gitlabAccessToken = default(string), string gitlabAccessType = default(string), string gitlabCertificate = default(string), string gitlabRole = default(string), string gitlabTokenScopes = default(string), string gitlabUrl = @"https://gitlab.com/", string groupName = default(string), string installationOrganization = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "gitlabAccessType" is required (not null)
             if (gitlabAccessType == null)
@@ -87,6 +88,7 @@ namespace akeyless.Model
             this.GitlabUrl = gitlabUrl ?? @"https://gitlab.com/";
             this.GroupName = groupName;
             this.InstallationOrganization = installationOrganization;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
             this.Tags = tags;
@@ -167,6 +169,13 @@ namespace akeyless.Model
         public string InstallationOrganization { get; set; }
 
         /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
@@ -240,6 +249,7 @@ namespace akeyless.Model
             sb.Append("  GitlabUrl: ").Append(GitlabUrl).Append("\n");
             sb.Append("  GroupName: ").Append(GroupName).Append("\n");
             sb.Append("  InstallationOrganization: ").Append(InstallationOrganization).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

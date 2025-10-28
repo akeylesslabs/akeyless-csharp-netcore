@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Admins** | **string** |  | [optional] 
+**AiInsights** | **string** |  | [optional] 
 **Cache** | **string** |  | [optional] 
 **CustomerFragements** | **string** |  | [optional] 
 **General** | **string** |  | [optional] 

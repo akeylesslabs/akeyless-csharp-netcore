@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the object | [optional] 
 **FixedUserClaimKeyname** | **string** | FixedUserClaimKeyname | [optional] [default to "false"]
 **FixedUserOnly** | **bool** | Fixed user | [optional] [default to false]
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | **string** | Dynamic secret name | [optional] 

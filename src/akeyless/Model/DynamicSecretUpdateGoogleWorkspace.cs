@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="groupEmail">A group email, relevant only for group access-mode.</param>
         /// <param name="groupRole">groupRole.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
@@ -64,7 +65,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateGoogleWorkspace(string accessMode = default(string), string adminEmail = default(string), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"ext_email", string gcpKey = default(string), string groupEmail = default(string), string groupRole = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleName = default(string), string roleScope = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public DynamicSecretUpdateGoogleWorkspace(string accessMode = default(string), string adminEmail = default(string), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"ext_email", string gcpKey = default(string), string groupEmail = default(string), string groupRole = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleName = default(string), string roleScope = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "accessMode" is required (not null)
             if (accessMode == null)
@@ -91,6 +92,7 @@ namespace akeyless.Model
             this.GcpKey = gcpKey;
             this.GroupEmail = groupEmail;
             this.GroupRole = groupRole;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -162,6 +164,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "group-role", EmitDefaultValue = false)]
         public string GroupRole { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -290,6 +299,7 @@ namespace akeyless.Model
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GroupEmail: ").Append(GroupEmail).Append("\n");
             sb.Append("  GroupRole: ").Append(GroupRole).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

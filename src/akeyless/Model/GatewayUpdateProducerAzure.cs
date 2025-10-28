@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="fixedUserClaimKeyname">FixedUserClaimKeyname (default to &quot;false&quot;).</param>
         /// <param name="fixedUserOnly">Fixed user (default to false).</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
@@ -69,7 +70,7 @@ namespace akeyless.Model
         /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerAzure(string appObjId = default(string), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, bool json = false, string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerAzure(string appObjId = default(string), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -87,6 +88,7 @@ namespace akeyless.Model
             // use default value if no "fixedUserClaimKeyname" provided
             this.FixedUserClaimKeyname = fixedUserClaimKeyname ?? @"false";
             this.FixedUserOnly = fixedUserOnly;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
             this.PasswordLength = passwordLength;
@@ -171,6 +173,13 @@ namespace akeyless.Model
         /// <value>Fixed user</value>
         [DataMember(Name = "fixed-user-only", EmitDefaultValue = true)]
         public bool FixedUserOnly { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -329,6 +338,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

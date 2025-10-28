@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **AzureKvName** | **string** | Azure Key Vault name (Relevant only for Azure targets) | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the External Secrets Manager | [optional] 
-**GcpProjectId** | **string** | GCP Project ID (Relevant only for GCP targets) | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **K8sNamespace** | **string** | K8s namespace (Relevant to Kubernetes targets) | [optional] 
 **Name** | **string** | External Secrets Manager name | 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **MysqlDbname** | **string** | MySQL DB Name | [optional] 
 **MysqlHost** | **string** | MySQL Host | [optional] [default to "127.0.0.1"]

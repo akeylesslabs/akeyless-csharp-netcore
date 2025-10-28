@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
 **GroupEmail** | **string** | A group email, relevant only for group access-mode | [optional] 
 **GroupRole** | **string** |  | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 

@@ -54,6 +54,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="enableAdminRotation">Automatic admin credentials rotation (default to false).</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
@@ -76,7 +77,7 @@ namespace akeyless.Model
         /// <param name="transitiveTagKeys">String of transitive tag keys space separated, relevant only for Assumed Role.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsExternalId = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAdminRotation = false, bool json = false, string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string region = @"us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sessionTags = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string transitiveTagKeys = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public DynamicSecretUpdateAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsExternalId = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAdminRotation = false, Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string region = @"us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sessionTags = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string transitiveTagKeys = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -98,6 +99,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.EnableAdminRotation = enableAdminRotation;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
             this.PasswordLength = passwordLength;
@@ -219,6 +221,13 @@ namespace akeyless.Model
         /// <value>Automatic admin credentials rotation</value>
         [DataMember(Name = "enable-admin-rotation", EmitDefaultValue = true)]
         public bool EnableAdminRotation { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -396,6 +405,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EnableAdminRotation: ").Append(EnableAdminRotation).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="graceRotation">Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false].</param>
         /// <param name="graceRotationHour">The Hour of the grace rotation in UTC.</param>
         /// <param name="graceRotationInterval">The number of days to wait before deleting the old key (must be bigger than rotation-interval).</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
@@ -69,7 +70,7 @@ namespace akeyless.Model
         /// <param name="targetName">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotatedSecretCreateAws(string apiId = default(string), string apiKey = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string awsRegion = @"us-east-2", string deleteProtection = default(string), string description = default(string), string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = @"false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
+        public RotatedSecretCreateAws(string apiId = default(string), string apiKey = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string awsRegion = @"us-east-2", string deleteProtection = default(string), string description = default(string), string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = @"false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -101,6 +102,7 @@ namespace akeyless.Model
             this.GraceRotation = graceRotation;
             this.GraceRotationHour = graceRotationHour;
             this.GraceRotationInterval = graceRotationInterval;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Key = key;
             this.MaxVersions = maxVersions;
@@ -189,6 +191,13 @@ namespace akeyless.Model
         /// <value>The number of days to wait before deleting the old key (must be bigger than rotation-interval)</value>
         [DataMember(Name = "grace-rotation-interval", EmitDefaultValue = false)]
         public string GraceRotationInterval { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -341,6 +350,7 @@ namespace akeyless.Model
             sb.Append("  GraceRotation: ").Append(GraceRotation).Append("\n");
             sb.Append("  GraceRotationHour: ").Append(GraceRotationHour).Append("\n");
             sb.Append("  GraceRotationInterval: ").Append(GraceRotationInterval).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");

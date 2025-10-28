@@ -46,11 +46,10 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
-        /// <param name="model">Default model to use with Gemini.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetCreateGemini(string apiKey = default(string), string description = default(string), string geminiUrl = @"https://generativelanguage.googleapis.com", bool json = false, string key = default(string), string maxVersions = default(string), string model = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
+        public TargetCreateGemini(string apiKey = default(string), string description = default(string), string geminiUrl = @"https://generativelanguage.googleapis.com", bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -65,7 +64,6 @@ namespace akeyless.Model
             this.Json = json;
             this.Key = key;
             this.MaxVersions = maxVersions;
-            this.Model = model;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -113,13 +111,6 @@ namespace akeyless.Model
         public string MaxVersions { get; set; }
 
         /// <summary>
-        /// Default model to use with Gemini
-        /// </summary>
-        /// <value>Default model to use with Gemini</value>
-        [DataMember(Name = "model", EmitDefaultValue = false)]
-        public string Model { get; set; }
-
-        /// <summary>
         /// Target name
         /// </summary>
         /// <value>Target name</value>
@@ -154,7 +145,6 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
-            sb.Append("  Model: ").Append(Model).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

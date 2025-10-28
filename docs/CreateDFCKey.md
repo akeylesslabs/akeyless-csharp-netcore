@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GenerateSelfSignedCertificate** | **bool** | Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided. | [optional] 
 **HashAlgorithm** | **string** | Specifies the hash algorithm used for the encryption key&#39;s operations, available options: [SHA256, SHA384, SHA512] | [optional] [default to "SHA256"]
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | DFCKey name | 

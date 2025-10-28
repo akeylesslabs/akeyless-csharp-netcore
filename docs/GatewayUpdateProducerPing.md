@@ -6,6 +6,7 @@ gatewayUpdateProducerPing is a command that updates Ping producer [Deprecated: U
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | **string** | Dynamic secret New name | [optional] 

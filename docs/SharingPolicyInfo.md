@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowedEmailDomains** | **List&lt;string&gt;** | AllowedEmailDomains limits email sharing to these domains. By default all domains are allowed. | [optional] 
 **DefaultShareLinkTtl** | **long** |  | [optional] 
 **Enable** | **bool** |  | [optional] 
 

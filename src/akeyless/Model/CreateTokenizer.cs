@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="encodingTemplate">The Encoding output template to use in regexp vaultless tokenization.</param>
         /// <param name="encryptionKeyName">AES key name to use in vaultless tokenization.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Tokenizer name (required).</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="tokenizerType">Tokenizer type (required) (default to &quot;vaultless&quot;).</param>
         /// <param name="tweakType">The tweak type to use in vaultless tokenization [Supplied, Generated, Internal, Masking].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateTokenizer(string alphabet = default(string), string decodingTemplate = default(string), string deleteProtection = default(string), string description = default(string), string encodingTemplate = default(string), string encryptionKeyName = default(string), bool json = false, string metadata = default(string), string name = default(string), string pattern = default(string), List<string> tag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = @"vaultless", string tweakType = default(string), string uidToken = default(string))
+        public CreateTokenizer(string alphabet = default(string), string decodingTemplate = default(string), string deleteProtection = default(string), string description = default(string), string encodingTemplate = default(string), string encryptionKeyName = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string metadata = default(string), string name = default(string), string pattern = default(string), List<string> tag = default(List<string>), string templateType = default(string), string token = default(string), string tokenizerType = @"vaultless", string tweakType = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -82,6 +83,7 @@ namespace akeyless.Model
             this.Description = description;
             this.EncodingTemplate = encodingTemplate;
             this.EncryptionKeyName = encryptionKeyName;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Metadata = metadata;
             this.Pattern = pattern;
@@ -132,6 +134,13 @@ namespace akeyless.Model
         /// <value>AES key name to use in vaultless tokenization</value>
         [DataMember(Name = "encryption-key-name", EmitDefaultValue = false)]
         public string EncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -217,6 +226,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EncodingTemplate: ").Append(EncodingTemplate).Append("\n");
             sb.Append("  EncryptionKeyName: ").Append(EncryptionKeyName).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");

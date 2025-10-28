@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="dbName">Database name.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyAlgo">keyAlgo.</param>
         /// <param name="name">Dynamic secret name (required).</param>
@@ -61,7 +62,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayUpdateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string authMode = @"password", string customUsernameTemplate = default(string), string dbName = default(string), string deleteProtection = default(string), bool json = false, string keyAlgo = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"24h", string warehouse = default(string))
+        public GatewayUpdateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string authMode = @"password", string customUsernameTemplate = default(string), string dbName = default(string), string deleteProtection = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyAlgo = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -77,6 +78,7 @@ namespace akeyless.Model
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DbName = dbName;
             this.DeleteProtection = deleteProtection;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.KeyAlgo = keyAlgo;
             this.NewName = newName;
@@ -141,6 +143,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -254,6 +263,7 @@ namespace akeyless.Model
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyAlgo: ").Append(KeyAlgo).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");

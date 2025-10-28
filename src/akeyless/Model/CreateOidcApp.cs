@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="audience">A comma separated list of allowed audiences.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the OIDC application (if empty, the account default protectionKey key will be used).</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateOidcApp(string accessibility = @"regular", string audience = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string permissionAssignment = default(string), bool varPublic = default(bool), string redirectUris = default(string), string scopes = @"openid", List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateOidcApp(string accessibility = @"regular", string audience = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string metadata = default(string), string name = default(string), string permissionAssignment = default(string), bool varPublic = default(bool), string redirectUris = default(string), string scopes = @"openid", List<string> tags = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -68,6 +69,7 @@ namespace akeyless.Model
             this.Audience = audience;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Key = key;
             this.Metadata = metadata;
@@ -108,6 +110,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -198,6 +207,7 @@ namespace akeyless.Model
             sb.Append("  Audience: ").Append(Audience).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");

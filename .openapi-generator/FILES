@@ -11,6 +11,13 @@ docs/AWSSecretsMigration.md
 docs/AWSTargetDetails.md
 docs/AccessOrGroupPermissionAssignment.md
 docs/AccessPermissionAssignment.md
+docs/AccountCustomFieldCreate.md
+docs/AccountCustomFieldCreateOutput.md
+docs/AccountCustomFieldDelete.md
+docs/AccountCustomFieldGet.md
+docs/AccountCustomFieldGetOutput.md
+docs/AccountCustomFieldList.md
+docs/AccountCustomFieldUpdate.md
 docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
 docs/AcmeAccount.md
@@ -18,6 +25,8 @@ docs/ActiveDirectoryMigration.md
 docs/ActiveDirectoryPayload.md
 docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
+docs/AiInsightsConfigPart.md
+docs/AiInsightsSetting.md
 docs/AkeylessGatewayConfig.md
 docs/AliasDetails.md
 docs/AliasDetailsOutput.md
@@ -654,6 +663,7 @@ docs/ImportPasswords.md
 docs/ImportPasswordsOutput.md
 docs/ImporterInfo.md
 docs/Item.md
+docs/ItemCustomFieldsDetails.md
 docs/ItemGeneralInfo.md
 docs/ItemSraStatus.md
 docs/ItemTargetAssociation.md
@@ -748,6 +758,7 @@ docs/NativeK8sTargetDetails.md
 docs/NextAutoRotationEvent.md
 docs/NotiForwarder.md
 docs/NullString.md
+docs/NullTime.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OCIAccessRules.md
@@ -1118,6 +1129,17 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
+src/akeyless.Test/Model/AccountCustomFieldCreateOutputTests.cs
+src/akeyless.Test/Model/AccountCustomFieldCreateTests.cs
+src/akeyless.Test/Model/AccountCustomFieldDeleteTests.cs
+src/akeyless.Test/Model/AccountCustomFieldGetOutputTests.cs
+src/akeyless.Test/Model/AccountCustomFieldGetTests.cs
+src/akeyless.Test/Model/AccountCustomFieldListTests.cs
+src/akeyless.Test/Model/AccountCustomFieldUpdateTests.cs
+src/akeyless.Test/Model/AiInsightsConfigPartTests.cs
+src/akeyless.Test/Model/AiInsightsSettingTests.cs
+src/akeyless.Test/Model/ItemCustomFieldsDetailsTests.cs
+src/akeyless.Test/Model/NullTimeTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1145,6 +1167,13 @@ src/akeyless/Model/AWSTargetDetails.cs
 src/akeyless/Model/AbstractOpenAPISchema.cs
 src/akeyless/Model/AccessOrGroupPermissionAssignment.cs
 src/akeyless/Model/AccessPermissionAssignment.cs
+src/akeyless/Model/AccountCustomFieldCreate.cs
+src/akeyless/Model/AccountCustomFieldCreateOutput.cs
+src/akeyless/Model/AccountCustomFieldDelete.cs
+src/akeyless/Model/AccountCustomFieldGet.cs
+src/akeyless/Model/AccountCustomFieldGetOutput.cs
+src/akeyless/Model/AccountCustomFieldList.cs
+src/akeyless/Model/AccountCustomFieldUpdate.cs
 src/akeyless/Model/AccountGeneralSettings.cs
 src/akeyless/Model/AccountObjectVersionSettingsOutput.cs
 src/akeyless/Model/AcmeAccount.cs
@@ -1152,6 +1181,8 @@ src/akeyless/Model/ActiveDirectoryMigration.cs
 src/akeyless/Model/ActiveDirectoryPayload.cs
 src/akeyless/Model/AddGatewayAllowedAccessId.cs
 src/akeyless/Model/AdminsConfigPart.cs
+src/akeyless/Model/AiInsightsConfigPart.cs
+src/akeyless/Model/AiInsightsSetting.cs
 src/akeyless/Model/AkeylessGatewayConfig.cs
 src/akeyless/Model/AliasDetails.cs
 src/akeyless/Model/AliasDetailsOutput.cs
@@ -1788,6 +1819,7 @@ src/akeyless/Model/ImportPasswords.cs
 src/akeyless/Model/ImportPasswordsOutput.cs
 src/akeyless/Model/ImporterInfo.cs
 src/akeyless/Model/Item.cs
+src/akeyless/Model/ItemCustomFieldsDetails.cs
 src/akeyless/Model/ItemGeneralInfo.cs
 src/akeyless/Model/ItemSraStatus.cs
 src/akeyless/Model/ItemTargetAssociation.cs
@@ -1882,6 +1914,7 @@ src/akeyless/Model/NativeK8sTargetDetails.cs
 src/akeyless/Model/NextAutoRotationEvent.cs
 src/akeyless/Model/NotiForwarder.cs
 src/akeyless/Model/NullString.cs
+src/akeyless/Model/NullTime.cs
 src/akeyless/Model/OAuth2AccessRules.cs
 src/akeyless/Model/OAuth2CustomClaim.cs
 src/akeyless/Model/OCIAccessRules.cs

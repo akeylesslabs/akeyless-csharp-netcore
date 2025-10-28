@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ConfigHash" /> class.
         /// </summary>
         /// <param name="admins">admins.</param>
+        /// <param name="aiInsights">aiInsights.</param>
         /// <param name="cache">cache.</param>
         /// <param name="customerFragements">customerFragements.</param>
         /// <param name="general">general.</param>
@@ -52,9 +53,10 @@ namespace akeyless.Model
         /// <param name="rotators">rotators.</param>
         /// <param name="saml">saml.</param>
         /// <param name="universalIdentity">universalIdentity.</param>
-        public ConfigHash(string admins = default(string), string cache = default(string), string customerFragements = default(string), string general = default(string), string k8sAuths = default(string), string kmip = default(string), string ldap = default(string), string leadership = default(string), string logForwarding = default(string), string mQueue = default(string), string migrationStatus = default(string), string migrations = default(string), Object producers = default(Object), string producersStatus = default(string), Object rotators = default(Object), string saml = default(string), string universalIdentity = default(string))
+        public ConfigHash(string admins = default(string), string aiInsights = default(string), string cache = default(string), string customerFragements = default(string), string general = default(string), string k8sAuths = default(string), string kmip = default(string), string ldap = default(string), string leadership = default(string), string logForwarding = default(string), string mQueue = default(string), string migrationStatus = default(string), string migrations = default(string), Object producers = default(Object), string producersStatus = default(string), Object rotators = default(Object), string saml = default(string), string universalIdentity = default(string))
         {
             this.Admins = admins;
+            this.AiInsights = aiInsights;
             this.Cache = cache;
             this.CustomerFragements = customerFragements;
             this.General = general;
@@ -78,6 +80,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "admins", EmitDefaultValue = false)]
         public string Admins { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AiInsights
+        /// </summary>
+        [DataMember(Name = "ai_insights", EmitDefaultValue = false)]
+        public string AiInsights { get; set; }
 
         /// <summary>
         /// Gets or Sets Cache
@@ -184,6 +192,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ConfigHash {\n");
             sb.Append("  Admins: ").Append(Admins).Append("\n");
+            sb.Append("  AiInsights: ").Append(AiInsights).Append("\n");
             sb.Append("  Cache: ").Append(Cache).Append("\n");
             sb.Append("  CustomerFragements: ").Append(CustomerFragements).Append("\n");
             sb.Append("  General: ").Append(General).Append("\n");

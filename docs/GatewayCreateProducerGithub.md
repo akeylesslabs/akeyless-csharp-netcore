@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **InstallationId** | **long** | GitHub application installation id | [optional] 
 **InstallationOrganization** | **string** | Optional, mutually exclusive with installation id, GitHub organization name | [optional] 
 **InstallationRepository** | **string** | Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39; | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 

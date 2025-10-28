@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **FixedUserClaimKeyname** | **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username&#x3D;true) | [optional] [default to "ext_username"]
 **GroupDn** | **string** | Group DN which the temporary user should be added | [optional] 
 **HostProvider** | **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **LdapCaCert** | **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | [optional] 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DerCertificateFormat** | **bool** | The certificate will be displayed in DER format | [optional] [default to false]
 **DisplayId** | **string** | The display id of the item | [optional] 
 **GatewayDetails** | **bool** | Indicate if the item should return with clusters details (url, etc) | [optional] [default to false]
+**ItemCustomFieldsDetails** | **bool** | Include all item custom fields details | [optional] [default to false]
 **ItemId** | **long** | Item id of the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Item name | 

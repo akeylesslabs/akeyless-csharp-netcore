@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="varIn">PKCS#12 input file (private key and certificate only) (required).</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Name of key to be created (required).</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UploadPKCS12(string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), string varIn = default(string), bool json = false, string metadata = default(string), string name = default(string), string passphrase = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public UploadPKCS12(string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), string varIn = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string metadata = default(string), string name = default(string), string passphrase = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "varIn" is required (not null)
             if (varIn == null)
@@ -75,6 +76,7 @@ namespace akeyless.Model
             this.CustomerFrgId = customerFrgId;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Metadata = metadata;
             this.SplitLevel = splitLevel;
@@ -110,6 +112,13 @@ namespace akeyless.Model
         /// <value>PKCS#12 input file (private key and certificate only)</value>
         [DataMember(Name = "in", IsRequired = true, EmitDefaultValue = true)]
         public string In { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -179,6 +188,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  In: ").Append(In).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");

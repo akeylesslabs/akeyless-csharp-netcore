@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DbName** | **string** | Database name | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyAlgo** | **string** |  | [optional] 
 **Name** | **string** | Dynamic secret name | 

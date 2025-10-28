@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountDefaultKeyItemId** | **long** | AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key | [optional] 
 **AccountDefaultKeyName** | **string** | AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will. | [optional] 
+**AiInsights** | [**AiInsightsSetting**](AiInsightsSetting.md) |  | [optional] 
 **AllowedClientsIps** | [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AllowedGatewaysIps** | [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AuthUsageEvent** | [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 

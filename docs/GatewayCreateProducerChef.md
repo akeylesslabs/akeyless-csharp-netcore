@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ChefServerUsername** | **string** | Server username | [optional] 
 **CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 

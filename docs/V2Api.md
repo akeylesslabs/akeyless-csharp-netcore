@@ -4,6 +4,11 @@ All URIs are relative to *https://api.akeyless.io*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**AccountCustomFieldCreate**](V2Api.md#accountcustomfieldcreate) | **POST** /account-custom-field-create | Create a new custom field. |
+| [**AccountCustomFieldDelete**](V2Api.md#accountcustomfielddelete) | **POST** /account-custom-field-delete | Delete a custom field. |
+| [**AccountCustomFieldGet**](V2Api.md#accountcustomfieldget) | **POST** /account-custom-field-get | Get an account custom field by ID. |
+| [**AccountCustomFieldList**](V2Api.md#accountcustomfieldlist) | **POST** /account-custom-field-list | List all account custom fields. |
+| [**AccountCustomFieldUpdate**](V2Api.md#accountcustomfieldupdate) | **POST** /account-custom-field-update | Update a custom field. |
 | [**AliasDetails**](V2Api.md#aliasdetails) | **POST** /alias-details |  |
 | [**AssocRoleAuthMethod**](V2Api.md#assocroleauthmethod) | **POST** /assoc-role-am |  |
 | [**AssocTargetItem**](V2Api.md#assoctargetitem) | **POST** /assoc-target-item |  |
@@ -584,6 +589,458 @@ All URIs are relative to *https://api.akeyless.io*
 | [**VerifyPKCS1**](V2Api.md#verifypkcs1) | **POST** /verify-pkcs1 |  |
 | [**VerifyPKICertWithClassicKey**](V2Api.md#verifypkicertwithclassickey) | **POST** /verify-pki-cert-with-classic-key |  |
 | [**VerifyRsaSsaPss**](V2Api.md#verifyrsassapss) | **POST** /verify-rsassa-pss |  |
+
+<a id="accountcustomfieldcreate"></a>
+# **AccountCustomFieldCreate**
+> AccountCustomFieldCreateOutput AccountCustomFieldCreate (AccountCustomFieldCreate accountCustomFieldCreate)
+
+Create a new custom field.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class AccountCustomFieldCreateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var accountCustomFieldCreate = new AccountCustomFieldCreate(); // AccountCustomFieldCreate | 
+
+            try
+            {
+                // Create a new custom field.
+                AccountCustomFieldCreateOutput result = apiInstance.AccountCustomFieldCreate(accountCustomFieldCreate);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.AccountCustomFieldCreate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AccountCustomFieldCreateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a new custom field.
+    ApiResponse<AccountCustomFieldCreateOutput> response = apiInstance.AccountCustomFieldCreateWithHttpInfo(accountCustomFieldCreate);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AccountCustomFieldCreateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **accountCustomFieldCreate** | [**AccountCustomFieldCreate**](AccountCustomFieldCreate.md) |  |  |
+
+### Return type
+
+[**AccountCustomFieldCreateOutput**](AccountCustomFieldCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | accountCustomFieldCreateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="accountcustomfielddelete"></a>
+# **AccountCustomFieldDelete**
+> Object AccountCustomFieldDelete (AccountCustomFieldDelete accountCustomFieldDelete)
+
+Delete a custom field.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class AccountCustomFieldDeleteExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var accountCustomFieldDelete = new AccountCustomFieldDelete(); // AccountCustomFieldDelete | 
+
+            try
+            {
+                // Delete a custom field.
+                Object result = apiInstance.AccountCustomFieldDelete(accountCustomFieldDelete);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.AccountCustomFieldDelete: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AccountCustomFieldDeleteWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a custom field.
+    ApiResponse<Object> response = apiInstance.AccountCustomFieldDeleteWithHttpInfo(accountCustomFieldDelete);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AccountCustomFieldDeleteWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **accountCustomFieldDelete** | [**AccountCustomFieldDelete**](AccountCustomFieldDelete.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | accountCustomFieldDeleteResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="accountcustomfieldget"></a>
+# **AccountCustomFieldGet**
+> AccountCustomFieldGetOutput AccountCustomFieldGet (AccountCustomFieldGet accountCustomFieldGet)
+
+Get an account custom field by ID.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class AccountCustomFieldGetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var accountCustomFieldGet = new AccountCustomFieldGet(); // AccountCustomFieldGet | 
+
+            try
+            {
+                // Get an account custom field by ID.
+                AccountCustomFieldGetOutput result = apiInstance.AccountCustomFieldGet(accountCustomFieldGet);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.AccountCustomFieldGet: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AccountCustomFieldGetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get an account custom field by ID.
+    ApiResponse<AccountCustomFieldGetOutput> response = apiInstance.AccountCustomFieldGetWithHttpInfo(accountCustomFieldGet);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AccountCustomFieldGetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **accountCustomFieldGet** | [**AccountCustomFieldGet**](AccountCustomFieldGet.md) |  |  |
+
+### Return type
+
+[**AccountCustomFieldGetOutput**](AccountCustomFieldGetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | accountCustomFieldGetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="accountcustomfieldlist"></a>
+# **AccountCustomFieldList**
+> Object AccountCustomFieldList (AccountCustomFieldList accountCustomFieldList)
+
+List all account custom fields.
+
+Returns a list of all custom fields configured for the account, optionally filtered by object and object type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class AccountCustomFieldListExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var accountCustomFieldList = new AccountCustomFieldList(); // AccountCustomFieldList | 
+
+            try
+            {
+                // List all account custom fields.
+                Object result = apiInstance.AccountCustomFieldList(accountCustomFieldList);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.AccountCustomFieldList: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AccountCustomFieldListWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List all account custom fields.
+    ApiResponse<Object> response = apiInstance.AccountCustomFieldListWithHttpInfo(accountCustomFieldList);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AccountCustomFieldListWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **accountCustomFieldList** | [**AccountCustomFieldList**](AccountCustomFieldList.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | accountCustomFieldListResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="accountcustomfieldupdate"></a>
+# **AccountCustomFieldUpdate**
+> Object AccountCustomFieldUpdate (AccountCustomFieldUpdate accountCustomFieldUpdate)
+
+Update a custom field.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class AccountCustomFieldUpdateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var accountCustomFieldUpdate = new AccountCustomFieldUpdate(); // AccountCustomFieldUpdate | 
+
+            try
+            {
+                // Update a custom field.
+                Object result = apiInstance.AccountCustomFieldUpdate(accountCustomFieldUpdate);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.AccountCustomFieldUpdate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AccountCustomFieldUpdateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update a custom field.
+    ApiResponse<Object> response = apiInstance.AccountCustomFieldUpdateWithHttpInfo(accountCustomFieldUpdate);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AccountCustomFieldUpdateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **accountCustomFieldUpdate** | [**AccountCustomFieldUpdate**](AccountCustomFieldUpdate.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | accountCustomFieldUpdateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="aliasdetails"></a>
 # **AliasDetails**

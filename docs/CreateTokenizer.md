@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the object | [optional] 
 **EncodingTemplate** | **string** | The Encoding output template to use in regexp vaultless tokenization | [optional] 
 **EncryptionKeyName** | **string** | AES key name to use in vaultless tokenization | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Tokenizer name | 

@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerPing" /> class.
         /// </summary>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret New name.</param>
@@ -66,7 +67,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">The time from dynamic secret creation to expiration. (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerPing(string deleteProtection = default(string), bool json = false, string name = default(string), string newName = default(string), string pingAdministrativePort = @"9999", string pingAtmId = default(string), string pingAuthorizationPort = @"9031", string pingCertSubjectDn = default(string), string pingClientAuthenticationType = @"CLIENT_SECRET", string pingEnforceReplayPrevention = @"false", List<string> pingGrantTypes = default(List<string>), string pingIssuerDn = default(string), string pingJwks = default(string), string pingJwksUrl = default(string), string pingPassword = default(string), string pingPrivilegedUser = default(string), List<string> pingRedirectUris = default(List<string>), List<string> pingRestrictedScopes = default(List<string>), string pingSigningAlgo = default(string), string pingUrl = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerPing(string deleteProtection = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string pingAdministrativePort = @"9999", string pingAtmId = default(string), string pingAuthorizationPort = @"9031", string pingCertSubjectDn = default(string), string pingClientAuthenticationType = @"CLIENT_SECRET", string pingEnforceReplayPrevention = @"false", List<string> pingGrantTypes = default(List<string>), string pingIssuerDn = default(string), string pingJwks = default(string), string pingJwksUrl = default(string), string pingPassword = default(string), string pingPrivilegedUser = default(string), List<string> pingRedirectUris = default(List<string>), List<string> pingRestrictedScopes = default(List<string>), string pingSigningAlgo = default(string), string pingUrl = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -75,6 +76,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.DeleteProtection = deleteProtection;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
             // use default value if no "pingAdministrativePort" provided
@@ -112,6 +114,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -297,6 +306,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerPing {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

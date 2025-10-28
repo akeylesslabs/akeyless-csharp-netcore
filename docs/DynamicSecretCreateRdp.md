@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the object | [optional] 
 **FixedUserClaimKeyname** | **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for fixed-user-only&#x3D;true) | [optional] [default to "ext_username"]
 **FixedUserOnly** | **string** | Allow access using externally (IdP) provided username [true/false] | [optional] [default to "false"]
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 

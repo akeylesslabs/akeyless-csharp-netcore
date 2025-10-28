@@ -46,9 +46,9 @@ namespace akeyless.Model
         /// <param name="gcpCredType">gcpCredType.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="gcpKeyAlgo">Service account key algorithm, e.g. KEY_ALG_RSA_1024.</param>
-        /// <param name="gcpProjectId">GCP Project ID override for dynamic secret operations (tmp service accounts).</param>
         /// <param name="gcpSaEmail">The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed).</param>
         /// <param name="gcpTokenScopes">Access token scopes list, e.g. scope1,scope2.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
@@ -60,7 +60,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateGcp(string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpProjectId = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string serviceAccountType = @"fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public DynamicSecretUpdateGcp(string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string serviceAccountType = @"fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -80,9 +80,9 @@ namespace akeyless.Model
             this.GcpCredType = gcpCredType;
             this.GcpKey = gcpKey;
             this.GcpKeyAlgo = gcpKeyAlgo;
-            this.GcpProjectId = gcpProjectId;
             this.GcpSaEmail = gcpSaEmail;
             this.GcpTokenScopes = gcpTokenScopes;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
@@ -137,13 +137,6 @@ namespace akeyless.Model
         public string GcpKeyAlgo { get; set; }
 
         /// <summary>
-        /// GCP Project ID override for dynamic secret operations (tmp service accounts)
-        /// </summary>
-        /// <value>GCP Project ID override for dynamic secret operations (tmp service accounts)</value>
-        [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
-        public string GcpProjectId { get; set; }
-
-        /// <summary>
         /// The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed)
         /// </summary>
         /// <value>The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed)</value>
@@ -156,6 +149,13 @@ namespace akeyless.Model
         /// <value>Access token scopes list, e.g. scope1,scope2</value>
         [DataMember(Name = "gcp-token-scopes", EmitDefaultValue = false)]
         public string GcpTokenScopes { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -248,9 +248,9 @@ namespace akeyless.Model
             sb.Append("  GcpCredType: ").Append(GcpCredType).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpKeyAlgo: ").Append(GcpKeyAlgo).Append("\n");
-            sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
             sb.Append("  GcpSaEmail: ").Append(GcpSaEmail).Append("\n");
             sb.Append("  GcpTokenScopes: ").Append(GcpTokenScopes).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

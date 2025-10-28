@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **EnableAdminRotation** | **bool** | Automatic admin credentials rotation | [optional] [default to false]
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | **string** | Dynamic secret name | [optional] 

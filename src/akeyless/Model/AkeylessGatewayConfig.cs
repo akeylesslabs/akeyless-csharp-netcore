@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AkeylessGatewayConfig" /> class.
         /// </summary>
         /// <param name="admins">admins.</param>
+        /// <param name="aiInsights">aiInsights.</param>
         /// <param name="caCertificates">caCertificates.</param>
         /// <param name="cache">cache.</param>
         /// <param name="cf">cf.</param>
@@ -53,9 +54,10 @@ namespace akeyless.Model
         /// <param name="rotators">rotators.</param>
         /// <param name="saml">saml.</param>
         /// <param name="varVersion">varVersion.</param>
-        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), CaCertificatesConfigPart caCertificates = default(CaCertificatesConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), K8SAuthsConfigPart k8sAuths = default(K8SAuthsConfigPart), KerberosConfigPart kerberos = default(KerberosConfigPart), KMIPConfigPart kmipClients = default(KMIPConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), GatewayMessageQueueInfo messageQueueInfo = default(GatewayMessageQueueInfo), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), int varVersion = default(int))
+        public AkeylessGatewayConfig(AdminsConfigPart admins = default(AdminsConfigPart), AiInsightsConfigPart aiInsights = default(AiInsightsConfigPart), CaCertificatesConfigPart caCertificates = default(CaCertificatesConfigPart), CacheConfigPart cache = default(CacheConfigPart), CFConfigPart cf = default(CFConfigPart), string configProtectionKeyName = default(string), GeneralConfigPart general = default(GeneralConfigPart), K8SAuthsConfigPart k8sAuths = default(K8SAuthsConfigPart), KerberosConfigPart kerberos = default(KerberosConfigPart), KMIPConfigPart kmipClients = default(KMIPConfigPart), LdapConfigPart ldap = default(LdapConfigPart), LeadershipConfigPart leadership = default(LeadershipConfigPart), LogForwardingConfigPart logForwarding = default(LogForwardingConfigPart), GatewayMessageQueueInfo messageQueueInfo = default(GatewayMessageQueueInfo), MigrationsConfigPart migrations = default(MigrationsConfigPart), ProducersConfigPart producers = default(ProducersConfigPart), RotatorsConfigPart rotators = default(RotatorsConfigPart), DefaultConfigPart saml = default(DefaultConfigPart), int varVersion = default(int))
         {
             this.Admins = admins;
+            this.AiInsights = aiInsights;
             this.CaCertificates = caCertificates;
             this.Cache = cache;
             this.Cf = cf;
@@ -80,6 +82,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "admins", EmitDefaultValue = false)]
         public AdminsConfigPart Admins { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AiInsights
+        /// </summary>
+        [DataMember(Name = "ai_insights", EmitDefaultValue = false)]
+        public AiInsightsConfigPart AiInsights { get; set; }
 
         /// <summary>
         /// Gets or Sets CaCertificates
@@ -192,6 +200,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AkeylessGatewayConfig {\n");
             sb.Append("  Admins: ").Append(Admins).Append("\n");
+            sb.Append("  AiInsights: ").Append(AiInsights).Append("\n");
             sb.Append("  CaCertificates: ").Append(CaCertificates).Append("\n");
             sb.Append("  Cache: ").Append(Cache).Append("\n");
             sb.Append("  Cf: ").Append(Cf).Append("\n");

@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="externalUsername">Externally provided username [true/false] (default to &quot;false&quot;).</param>
         /// <param name="fixedUserClaimKeyname">For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username&#x3D;true).</param>
         /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">SSH certificate issuer name (required).</param>
@@ -70,7 +71,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateSSHCertIssuer(string providerType = default(string), List<string> addTag = default(List<string>), string allowedUsers = @"-", string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string externalUsername = @"false", string fixedUserClaimKeyname = default(string), string hostProvider = default(string), bool json = false, string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessApi = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSsh = default(string), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessUseInternalSshAccess = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
+        public UpdateSSHCertIssuer(string providerType = default(string), List<string> addTag = default(List<string>), string allowedUsers = @"-", string deleteProtection = default(string), string description = default(string), Dictionary<string, string> extensions = default(Dictionary<string, string>), string externalUsername = @"false", string fixedUserClaimKeyname = default(string), string hostProvider = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string metadata = default(string), string name = default(string), string newName = default(string), string principals = default(string), List<string> rmTag = default(List<string>), string secureAccessApi = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionSsh = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessSsh = default(string), string secureAccessSshCredsUser = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessUseInternalSshAccess = default(bool), string signerKeyName = default(string), string token = default(string), long ttl = default(long), string uidToken = default(string))
         {
             // to ensure "allowedUsers" is required (not null)
             if (allowedUsers == null)
@@ -100,6 +101,7 @@ namespace akeyless.Model
             this.ExternalUsername = externalUsername ?? @"false";
             this.FixedUserClaimKeyname = fixedUserClaimKeyname;
             this.HostProvider = hostProvider;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Metadata = metadata;
             this.NewName = newName;
@@ -181,6 +183,13 @@ namespace akeyless.Model
         /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -345,6 +354,7 @@ namespace akeyless.Model
             sb.Append("  ExternalUsername: ").Append(ExternalUsername).Append("\n");
             sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
             sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");

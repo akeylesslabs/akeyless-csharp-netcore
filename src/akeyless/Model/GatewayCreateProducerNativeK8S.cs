@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sAllowedNamespaces">Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic).</param>
         /// <param name="k8sClusterCaCert">K8S cluster CA certificate.</param>
@@ -73,7 +74,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwServiceAccount">Use the GW&#39;s service account.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerNativeK8S(string customUsernameTemplate = default(string), string deleteProtection = default(string), bool json = false, string k8sAllowedNamespaces = default(string), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterName = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sPredefinedRoleName = default(string), string k8sPredefinedRoleType = default(string), string k8sRolebindingYamlData = default(string), string k8sRolebindingYamlDef = default(string), string k8sServiceAccount = default(string), string k8sServiceAccountType = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool), string userTtl = @"60m")
+        public GatewayCreateProducerNativeK8S(string customUsernameTemplate = default(string), string deleteProtection = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sAllowedNamespaces = default(string), string k8sClusterCaCert = default(string), string k8sClusterEndpoint = default(string), string k8sClusterName = default(string), string k8sClusterToken = default(string), string k8sNamespace = default(string), string k8sPredefinedRoleName = default(string), string k8sPredefinedRoleType = default(string), string k8sRolebindingYamlData = default(string), string k8sRolebindingYamlDef = default(string), string k8sServiceAccount = default(string), string k8sServiceAccountType = default(string), string name = default(string), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), bool useGwServiceAccount = default(bool), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -83,6 +84,7 @@ namespace akeyless.Model
             this.Name = name;
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DeleteProtection = deleteProtection;
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.K8sAllowedNamespaces = k8sAllowedNamespaces;
             this.K8sClusterCaCert = k8sClusterCaCert;
@@ -129,6 +131,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -357,6 +366,7 @@ namespace akeyless.Model
             sb.Append("class GatewayCreateProducerNativeK8S {\n");
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  K8sAllowedNamespaces: ").Append(K8sAllowedNamespaces).Append("\n");
             sb.Append("  K8sClusterCaCert: ").Append(K8sClusterCaCert).Append("\n");

@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accountDefaultKeyItemId">AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key.</param>
         /// <param name="accountDefaultKeyName">AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will..</param>
+        /// <param name="aiInsights">aiInsights.</param>
         /// <param name="allowedClientsIps">allowedClientsIps.</param>
         /// <param name="allowedGatewaysIps">allowedGatewaysIps.</param>
         /// <param name="authUsageEvent">authUsageEvent.</param>
@@ -56,10 +57,11 @@ namespace akeyless.Model
         /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="rotationSecretMaxInterval">rotationSecretMaxInterval.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), CertificateExpirationEventsSettings certificateExpirationEvents = default(CertificateExpirationEventsSettings), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DefaultHomePage defaultHomePage = default(DefaultHomePage), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), bool hidePersonalFolder = default(bool), bool hideStaticPassword = default(bool), string invalidCharacters = default(string), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), PasswordScoreSetting passwordScore = default(PasswordScoreSetting), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AiInsightsSetting aiInsights = default(AiInsightsSetting), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), CertificateExpirationEventsSettings certificateExpirationEvents = default(CertificateExpirationEventsSettings), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DefaultHomePage defaultHomePage = default(DefaultHomePage), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), bool hidePersonalFolder = default(bool), bool hideStaticPassword = default(bool), string invalidCharacters = default(string), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), PasswordScoreSetting passwordScore = default(PasswordScoreSetting), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.AccountDefaultKeyItemId = accountDefaultKeyItemId;
             this.AccountDefaultKeyName = accountDefaultKeyName;
+            this.AiInsights = aiInsights;
             this.AllowedClientsIps = allowedClientsIps;
             this.AllowedGatewaysIps = allowedGatewaysIps;
             this.AuthUsageEvent = authUsageEvent;
@@ -94,6 +96,12 @@ namespace akeyless.Model
         /// <value>AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.</value>
         [DataMember(Name = "account_default_key_name", EmitDefaultValue = false)]
         public string AccountDefaultKeyName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AiInsights
+        /// </summary>
+        [DataMember(Name = "ai_insights", EmitDefaultValue = false)]
+        public AiInsightsSetting AiInsights { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedClientsIps
@@ -221,6 +229,7 @@ namespace akeyless.Model
             sb.Append("class AccountGeneralSettings {\n");
             sb.Append("  AccountDefaultKeyItemId: ").Append(AccountDefaultKeyItemId).Append("\n");
             sb.Append("  AccountDefaultKeyName: ").Append(AccountDefaultKeyName).Append("\n");
+            sb.Append("  AiInsights: ").Append(AiInsights).Append("\n");
             sb.Append("  AllowedClientsIps: ").Append(AllowedClientsIps).Append("\n");
             sb.Append("  AllowedGatewaysIps: ").Append(AllowedGatewaysIps).Append("\n");
             sb.Append("  AuthUsageEvent: ").Append(AuthUsageEvent).Append("\n");

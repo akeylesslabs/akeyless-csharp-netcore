@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **GitlabUrl** | **string** | Gitlab base url | [optional] [default to "https://gitlab.com/"]
 **GroupName** | **string** | Gitlab group name, required for access-type&#x3D;group | [optional] 
 **InstallationOrganization** | **string** | Gitlab project name, required for access-type&#x3D;project | [optional] 
+**ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | **string** | Dynamic secret name | [optional] 

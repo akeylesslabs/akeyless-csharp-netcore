@@ -57,6 +57,7 @@ namespace akeyless.Model
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="generateSelfSignedCertificate">Whether to generate a self signed certificate with the key. If set, - -certificate-ttl must be provided..</param>
         /// <param name="hashAlgorithm">Specifies the hash algorithm used for the encryption key&#39;s operations, available options: [SHA256, SHA384, SHA512] (default to &quot;SHA256&quot;).</param>
+        /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">DFCKey name (required).</param>
@@ -66,7 +67,7 @@ namespace akeyless.Model
         /// <param name="tag">List of the tags attached to this DFC key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreateDFCKey(string alg = default(string), string autoRotate = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateFormat = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool generateSelfSignedCertificate = default(bool), string hashAlgorithm = @"SHA256", bool json = false, string metadata = default(string), string name = default(string), List<string> rotationEventIn = default(List<string>), string rotationInterval = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
+        public CreateDFCKey(string alg = default(string), string autoRotate = default(string), string certificateCommonName = default(string), string certificateCountry = default(string), string certificateDigestAlgo = default(string), string certificateFormat = default(string), string certificateLocality = default(string), string certificateOrganization = default(string), string certificateProvince = default(string), long certificateTtl = default(long), string confFileData = default(string), string customerFrgId = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool generateSelfSignedCertificate = default(bool), string hashAlgorithm = @"SHA256", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string metadata = default(string), string name = default(string), List<string> rotationEventIn = default(List<string>), string rotationInterval = default(string), long splitLevel = 3, List<string> tag = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             // to ensure "alg" is required (not null)
             if (alg == null)
@@ -97,6 +98,7 @@ namespace akeyless.Model
             this.GenerateSelfSignedCertificate = generateSelfSignedCertificate;
             // use default value if no "hashAlgorithm" provided
             this.HashAlgorithm = hashAlgorithm ?? @"SHA256";
+            this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Metadata = metadata;
             this.RotationEventIn = rotationEventIn;
@@ -226,6 +228,13 @@ namespace akeyless.Model
         public string HashAlgorithm { get; set; }
 
         /// <summary>
+        /// Additional custom fields to associate with the item
+        /// </summary>
+        /// <value>Additional custom fields to associate with the item</value>
+        [DataMember(Name = "item-custom-fields", EmitDefaultValue = false)]
+        public Dictionary<string, string> ItemCustomFields { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
@@ -313,6 +322,7 @@ namespace akeyless.Model
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GenerateSelfSignedCertificate: ").Append(GenerateSelfSignedCertificate).Append("\n");
             sb.Append("  HashAlgorithm: ").Append(HashAlgorithm).Append("\n");
+            sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
