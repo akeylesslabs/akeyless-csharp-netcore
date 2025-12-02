@@ -1141,11 +1141,6 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/AllowedClientTypeTests.cs
-src/akeyless.Test/Model/NotiForwarderDetailsInputTests.cs
-src/akeyless.Test/Model/SlackNotiForwarderDetailsTests.cs
-src/akeyless.Test/Model/TeamsNotiForwarderDetailsTests.cs
-src/akeyless.Test/Model/WebhookNotiForwarderDetailsTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
