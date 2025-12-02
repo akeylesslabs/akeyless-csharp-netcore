@@ -53,7 +53,9 @@ namespace akeyless.Model
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
         /// <param name="country">A comma-separated list of countries that will be set in the issued certificate.</param>
         /// <param name="createPrivateCrl">Set this to allow the issuer will expose a CRL endpoint in the Gateway.</param>
+        /// <param name="createPrivateOcsp">createPrivateOcsp.</param>
         /// <param name="createPublicCrl">Set this to allow the cert issuer will expose a public CRL endpoint.</param>
+        /// <param name="createPublicOcsp">createPublicOcsp.</param>
         /// <param name="criticalKeyUsage">Mark key usage as critical [true/false] (default to &quot;true&quot;).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
@@ -73,6 +75,7 @@ namespace akeyless.Model
         /// <param name="newName">New item name.</param>
         /// <param name="notEnforceHostnames">If set, any names are allowed for CN and SANs in the certificate and not only a valid host name.</param>
         /// <param name="notRequireCn">If set, clients can request certificates without a CN.</param>
+        /// <param name="ocspTtl">ocspTtl.</param>
         /// <param name="organizationalUnits">A comma-separated list of organizational units (OU) that will be set in the issued certificate.</param>
         /// <param name="organizations">A comma-separated list of organizations (O) that will be set in the issued certificate.</param>
         /// <param name="postalCode">A comma-separated list of postal codes that will be set in the issued certificate.</param>
@@ -86,7 +89,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedIpSans = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string criticalKeyUsage = @"true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool disableWildcards = default(bool), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyUsage = @"DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), long maxPathLen = -1, string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedIpSans = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string criticalKeyUsage = @"true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool disableWildcards = default(bool), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyUsage = @"DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), long maxPathLen = -1, string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string ocspTtl = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -113,7 +116,9 @@ namespace akeyless.Model
             this.CodeSigningFlag = codeSigningFlag;
             this.Country = country;
             this.CreatePrivateCrl = createPrivateCrl;
+            this.CreatePrivateOcsp = createPrivateOcsp;
             this.CreatePublicCrl = createPublicCrl;
+            this.CreatePublicOcsp = createPublicOcsp;
             // use default value if no "criticalKeyUsage" provided
             this.CriticalKeyUsage = criticalKeyUsage ?? @"true";
             this.DeleteProtection = deleteProtection;
@@ -134,6 +139,7 @@ namespace akeyless.Model
             this.NewName = newName;
             this.NotEnforceHostnames = notEnforceHostnames;
             this.NotRequireCn = notRequireCn;
+            this.OcspTtl = ocspTtl;
             this.OrganizationalUnits = organizationalUnits;
             this.Organizations = organizations;
             this.PostalCode = postalCode;
@@ -240,11 +246,23 @@ namespace akeyless.Model
         public bool CreatePrivateCrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets CreatePrivateOcsp
+        /// </summary>
+        [DataMember(Name = "create-private-ocsp", EmitDefaultValue = true)]
+        public bool CreatePrivateOcsp { get; set; }
+
+        /// <summary>
         /// Set this to allow the cert issuer will expose a public CRL endpoint
         /// </summary>
         /// <value>Set this to allow the cert issuer will expose a public CRL endpoint</value>
         [DataMember(Name = "create-public-crl", EmitDefaultValue = true)]
         public bool CreatePublicCrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatePublicOcsp
+        /// </summary>
+        [DataMember(Name = "create-public-ocsp", EmitDefaultValue = true)]
+        public bool CreatePublicOcsp { get; set; }
 
         /// <summary>
         /// Mark key usage as critical [true/false]
@@ -380,6 +398,12 @@ namespace akeyless.Model
         public bool NotRequireCn { get; set; }
 
         /// <summary>
+        /// Gets or Sets OcspTtl
+        /// </summary>
+        [DataMember(Name = "ocsp-ttl", EmitDefaultValue = false)]
+        public string OcspTtl { get; set; }
+
+        /// <summary>
         /// A comma-separated list of organizational units (OU) that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of organizational units (OU) that will be set in the issued certificate</value>
@@ -491,7 +515,9 @@ namespace akeyless.Model
             sb.Append("  CodeSigningFlag: ").Append(CodeSigningFlag).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  CreatePrivateCrl: ").Append(CreatePrivateCrl).Append("\n");
+            sb.Append("  CreatePrivateOcsp: ").Append(CreatePrivateOcsp).Append("\n");
             sb.Append("  CreatePublicCrl: ").Append(CreatePublicCrl).Append("\n");
+            sb.Append("  CreatePublicOcsp: ").Append(CreatePublicOcsp).Append("\n");
             sb.Append("  CriticalKeyUsage: ").Append(CriticalKeyUsage).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
@@ -511,6 +537,7 @@ namespace akeyless.Model
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  NotEnforceHostnames: ").Append(NotEnforceHostnames).Append("\n");
             sb.Append("  NotRequireCn: ").Append(NotRequireCn).Append("\n");
+            sb.Append("  OcspTtl: ").Append(OcspTtl).Append("\n");
             sb.Append("  OrganizationalUnits: ").Append(OrganizationalUnits).Append("\n");
             sb.Append("  Organizations: ").Append(Organizations).Append("\n");
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");

@@ -55,6 +55,7 @@ namespace akeyless.Model
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="roleName">Name of the admin role to assign to the user, relevant only for role access-mode.</param>
         /// <param name="roleScope">roleScope.</param>
+        /// <param name="secureAccessDelay">The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
@@ -65,7 +66,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateGoogleWorkspace(string accessMode = default(string), string adminEmail = default(string), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"ext_email", string gcpKey = default(string), string groupEmail = default(string), string groupRole = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleName = default(string), string roleScope = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public DynamicSecretUpdateGoogleWorkspace(string accessMode = default(string), string adminEmail = default(string), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"ext_email", string gcpKey = default(string), string groupEmail = default(string), string groupRole = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleName = default(string), string roleScope = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "accessMode" is required (not null)
             if (accessMode == null)
@@ -98,6 +99,7 @@ namespace akeyless.Model
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RoleName = roleName;
             this.RoleScope = roleScope;
+            this.SecureAccessDelay = secureAccessDelay;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessUrl = secureAccessUrl;
             this.SecureAccessWeb = secureAccessWeb;
@@ -214,6 +216,13 @@ namespace akeyless.Model
         public string RoleScope { get; set; }
 
         /// <summary>
+        /// The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds
+        /// </summary>
+        /// <value>The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds</value>
+        [DataMember(Name = "secure-access-delay", EmitDefaultValue = false)]
+        public long SecureAccessDelay { get; set; }
+
+        /// <summary>
         /// Enable/Disable secure remote access [true/false]
         /// </summary>
         /// <value>Enable/Disable secure remote access [true/false]</value>
@@ -306,6 +315,7 @@ namespace akeyless.Model
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  RoleName: ").Append(RoleName).Append("\n");
             sb.Append("  RoleScope: ").Append(RoleScope).Append("\n");
+            sb.Append("  SecureAccessDelay: ").Append(SecureAccessDelay).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");

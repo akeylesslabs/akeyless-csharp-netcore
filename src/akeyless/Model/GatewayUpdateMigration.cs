@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="serviceAccountKeyDecoded">serviceAccountKeyDecoded.</param>
         /// <param name="adAutoRotate">Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration).</param>
         /// <param name="adComputerBaseDn">Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration).</param>
+        /// <param name="adDiscoverIisApp">Enable/Disable discovery of IIS application from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) (default to &quot;false&quot;).</param>
         /// <param name="adDiscoverServices">Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) (default to &quot;false&quot;).</param>
         /// <param name="adDiscoveryTypes">Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration).</param>
         /// <param name="adDomainName">Active Directory Domain Name (Relevant only for Active Directory migration).</param>
@@ -100,7 +101,7 @@ namespace akeyless.Model
         /// <param name="targetLocation">Target location in Akeyless for imported secrets (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "siTargetName" is required (not null)
             if (siTargetName == null)
@@ -123,6 +124,8 @@ namespace akeyless.Model
             this.ServiceAccountKeyDecoded = serviceAccountKeyDecoded;
             this.AdAutoRotate = adAutoRotate;
             this.AdComputerBaseDn = adComputerBaseDn;
+            // use default value if no "adDiscoverIisApp" provided
+            this.AdDiscoverIisApp = adDiscoverIisApp ?? @"false";
             // use default value if no "adDiscoverServices" provided
             this.AdDiscoverServices = adDiscoverServices ?? @"false";
             this.AdDiscoveryTypes = adDiscoveryTypes;
@@ -207,6 +210,13 @@ namespace akeyless.Model
         /// <value>Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration)</value>
         [DataMember(Name = "ad-computer-base-dn", EmitDefaultValue = false)]
         public string AdComputerBaseDn { get; set; }
+
+        /// <summary>
+        /// Enable/Disable discovery of IIS application from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)
+        /// </summary>
+        /// <value>Enable/Disable discovery of IIS application from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)</value>
+        [DataMember(Name = "ad-discover-iis-app", EmitDefaultValue = false)]
+        public string AdDiscoverIisApp { get; set; }
 
         /// <summary>
         /// Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)
@@ -618,6 +628,7 @@ namespace akeyless.Model
             sb.Append("  ServiceAccountKeyDecoded: ").Append(ServiceAccountKeyDecoded).Append("\n");
             sb.Append("  AdAutoRotate: ").Append(AdAutoRotate).Append("\n");
             sb.Append("  AdComputerBaseDn: ").Append(AdComputerBaseDn).Append("\n");
+            sb.Append("  AdDiscoverIisApp: ").Append(AdDiscoverIisApp).Append("\n");
             sb.Append("  AdDiscoverServices: ").Append(AdDiscoverServices).Append("\n");
             sb.Append("  AdDiscoveryTypes: ").Append(AdDiscoveryTypes).Append("\n");
             sb.Append("  AdDomainName: ").Append(AdDomainName).Append("\n");

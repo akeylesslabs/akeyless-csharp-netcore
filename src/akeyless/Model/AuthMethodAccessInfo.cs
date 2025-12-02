@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessExpires">accessExpires.</param>
         /// <param name="accessIdAlias">for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself.</param>
+        /// <param name="allowedClientType">allowedClientType.</param>
         /// <param name="apiKeyAccessRules">apiKeyAccessRules.</param>
         /// <param name="auditLogsClaims">auditLogsClaims.</param>
         /// <param name="awsIamAccessRules">awsIamAccessRules.</param>
@@ -60,10 +61,11 @@ namespace akeyless.Model
         /// <param name="samlAccessRules">samlAccessRules.</param>
         /// <param name="subClaimsDelimiters">subClaimsDelimiters.</param>
         /// <param name="universalIdentityAccessRules">universalIdentityAccessRules.</param>
-        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), List<string> auditLogsClaims = default(List<string>), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), KerberosAccessRules kerberosAccessRules = default(KerberosAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
+        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), List<string> allowedClientType = default(List<string>), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), List<string> auditLogsClaims = default(List<string>), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), KerberosAccessRules kerberosAccessRules = default(KerberosAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
         {
             this.AccessExpires = accessExpires;
             this.AccessIdAlias = accessIdAlias;
+            this.AllowedClientType = allowedClientType;
             this.ApiKeyAccessRules = apiKeyAccessRules;
             this.AuditLogsClaims = auditLogsClaims;
             this.AwsIamAccessRules = awsIamAccessRules;
@@ -101,6 +103,12 @@ namespace akeyless.Model
         /// <value>for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself</value>
         [DataMember(Name = "access_id_alias", EmitDefaultValue = false)]
         public string AccessIdAlias { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedClientType
+        /// </summary>
+        [DataMember(Name = "allowed_client_type", EmitDefaultValue = false)]
+        public List<string> AllowedClientType { get; set; }
 
         /// <summary>
         /// Gets or Sets ApiKeyAccessRules
@@ -252,6 +260,7 @@ namespace akeyless.Model
             sb.Append("class AuthMethodAccessInfo {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
             sb.Append("  AccessIdAlias: ").Append(AccessIdAlias).Append("\n");
+            sb.Append("  AllowedClientType: ").Append(AllowedClientType).Append("\n");
             sb.Append("  ApiKeyAccessRules: ").Append(ApiKeyAccessRules).Append("\n");
             sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  AwsIamAccessRules: ").Append(AwsIamAccessRules).Append("\n");

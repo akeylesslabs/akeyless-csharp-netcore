@@ -54,6 +54,7 @@ namespace akeyless.Model
         /// <param name="mongodbName">MongoDB Name.</param>
         /// <param name="mongodbPassword">MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters.</param>
         /// <param name="mongodbRoles">MongoDB Roles (default to &quot;[]&quot;).</param>
+        /// <param name="mongodbScopes">MongoDB Scopes (Atlas only).</param>
         /// <param name="mongodbServerUri">MongoDB server URI.</param>
         /// <param name="mongodbUriOptions">MongoDB server URI options.</param>
         /// <param name="mongodbUsername">MongoDB server username.</param>
@@ -73,7 +74,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateMongoDb(string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = @"[]", string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public DynamicSecretUpdateMongoDb(string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), string mongodbName = default(string), string mongodbPassword = default(string), string mongodbRoles = @"[]", string mongodbScopes = default(string), string mongodbServerUri = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -96,6 +97,7 @@ namespace akeyless.Model
             this.MongodbPassword = mongodbPassword;
             // use default value if no "mongodbRoles" provided
             this.MongodbRoles = mongodbRoles ?? @"[]";
+            this.MongodbScopes = mongodbScopes;
             this.MongodbServerUri = mongodbServerUri;
             this.MongodbUriOptions = mongodbUriOptions;
             this.MongodbUsername = mongodbUsername;
@@ -214,6 +216,13 @@ namespace akeyless.Model
         /// <value>MongoDB Roles</value>
         [DataMember(Name = "mongodb-roles", EmitDefaultValue = false)]
         public string MongodbRoles { get; set; }
+
+        /// <summary>
+        /// MongoDB Scopes (Atlas only)
+        /// </summary>
+        /// <value>MongoDB Scopes (Atlas only)</value>
+        [DataMember(Name = "mongodb-scopes", EmitDefaultValue = false)]
+        public string MongodbScopes { get; set; }
 
         /// <summary>
         /// MongoDB server URI
@@ -370,6 +379,7 @@ namespace akeyless.Model
             sb.Append("  MongodbName: ").Append(MongodbName).Append("\n");
             sb.Append("  MongodbPassword: ").Append(MongodbPassword).Append("\n");
             sb.Append("  MongodbRoles: ").Append(MongodbRoles).Append("\n");
+            sb.Append("  MongodbScopes: ").Append(MongodbScopes).Append("\n");
             sb.Append("  MongodbServerUri: ").Append(MongodbServerUri).Append("\n");
             sb.Append("  MongodbUriOptions: ").Append(MongodbUriOptions).Append("\n");
             sb.Append("  MongodbUsername: ").Append(MongodbUsername).Append("\n");

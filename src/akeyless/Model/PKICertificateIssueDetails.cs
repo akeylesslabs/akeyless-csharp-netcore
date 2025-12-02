@@ -50,7 +50,9 @@ namespace akeyless.Model
         /// <param name="codeSigningFlag">codeSigningFlag.</param>
         /// <param name="country">country.</param>
         /// <param name="createPrivateCrl">createPrivateCrl.</param>
+        /// <param name="createPrivateOcsp">CreatePrivateOcsp enables exposing an OCSP endpoint on the Gateway and embedding its URL in the AIA extension of issued certificates..</param>
         /// <param name="createPublicCrl">createPublicCrl.</param>
+        /// <param name="createPublicOcsp">CreatePublicOcsp enables exposing a public OCSP endpoint on the Gateway and embedding its URL in the AIA extension of issued certificates..</param>
         /// <param name="destinationPath">DestinationPath is the destination to save generated certificates.</param>
         /// <param name="disableWildcards">disableWildcards.</param>
         /// <param name="enforceHostnames">enforceHostnames.</param>
@@ -65,6 +67,7 @@ namespace akeyless.Model
         /// <param name="maxPathLen">maxPathLen.</param>
         /// <param name="nonCriticalKeyUsage">nonCriticalKeyUsage.</param>
         /// <param name="notBeforeDuration">A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years..</param>
+        /// <param name="ocspNextUpdate">OcspNextUpdate defines the desired NextUpdate window for OCSP responses. Value is in seconds; 0 means not set. Minimum enforced is 10 minutes..</param>
         /// <param name="organizationList">organizationList.</param>
         /// <param name="organizationUnitList">organizationUnitList.</param>
         /// <param name="pkiIssuerType">pkiIssuerType.</param>
@@ -75,7 +78,7 @@ namespace akeyless.Model
         /// <param name="requireCn">requireCn.</param>
         /// <param name="serverFlag">serverFlag.</param>
         /// <param name="streetAddress">streetAddress.</param>
-        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedIpSans = default(List<string>), List<string> allowedUriSans = default(List<string>), bool autoRenewCertificate = default(bool), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPublicCrl = default(bool), string destinationPath = default(string), bool disableWildcards = default(bool), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long maxPathLen = default(long), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), string pkiIssuerType = default(string), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), long renewBeforeExpirationInDays = default(long), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
+        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedIpSans = default(List<string>), List<string> allowedUriSans = default(List<string>), bool autoRenewCertificate = default(bool), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string destinationPath = default(string), bool disableWildcards = default(bool), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long maxPathLen = default(long), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), long ocspNextUpdate = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), string pkiIssuerType = default(string), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), long renewBeforeExpirationInDays = default(long), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
         {
             this.AcmeEnabled = acmeEnabled;
             this.AllowAnyName = allowAnyName;
@@ -92,7 +95,9 @@ namespace akeyless.Model
             this.CodeSigningFlag = codeSigningFlag;
             this.Country = country;
             this.CreatePrivateCrl = createPrivateCrl;
+            this.CreatePrivateOcsp = createPrivateOcsp;
             this.CreatePublicCrl = createPublicCrl;
+            this.CreatePublicOcsp = createPublicOcsp;
             this.DestinationPath = destinationPath;
             this.DisableWildcards = disableWildcards;
             this.EnforceHostnames = enforceHostnames;
@@ -107,6 +112,7 @@ namespace akeyless.Model
             this.MaxPathLen = maxPathLen;
             this.NonCriticalKeyUsage = nonCriticalKeyUsage;
             this.NotBeforeDuration = notBeforeDuration;
+            this.OcspNextUpdate = ocspNextUpdate;
             this.OrganizationList = organizationList;
             this.OrganizationUnitList = organizationUnitList;
             this.PkiIssuerType = pkiIssuerType;
@@ -210,10 +216,24 @@ namespace akeyless.Model
         public bool CreatePrivateCrl { get; set; }
 
         /// <summary>
+        /// CreatePrivateOcsp enables exposing an OCSP endpoint on the Gateway and embedding its URL in the AIA extension of issued certificates.
+        /// </summary>
+        /// <value>CreatePrivateOcsp enables exposing an OCSP endpoint on the Gateway and embedding its URL in the AIA extension of issued certificates.</value>
+        [DataMember(Name = "create_private_ocsp", EmitDefaultValue = true)]
+        public bool CreatePrivateOcsp { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatePublicCrl
         /// </summary>
         [DataMember(Name = "create_public_crl", EmitDefaultValue = true)]
         public bool CreatePublicCrl { get; set; }
+
+        /// <summary>
+        /// CreatePublicOcsp enables exposing a public OCSP endpoint on the Gateway and embedding its URL in the AIA extension of issued certificates.
+        /// </summary>
+        /// <value>CreatePublicOcsp enables exposing a public OCSP endpoint on the Gateway and embedding its URL in the AIA extension of issued certificates.</value>
+        [DataMember(Name = "create_public_ocsp", EmitDefaultValue = true)]
+        public bool CreatePublicOcsp { get; set; }
 
         /// <summary>
         /// DestinationPath is the destination to save generated certificates
@@ -304,6 +324,13 @@ namespace akeyless.Model
         public long NotBeforeDuration { get; set; }
 
         /// <summary>
+        /// OcspNextUpdate defines the desired NextUpdate window for OCSP responses. Value is in seconds; 0 means not set. Minimum enforced is 10 minutes.
+        /// </summary>
+        /// <value>OcspNextUpdate defines the desired NextUpdate window for OCSP responses. Value is in seconds; 0 means not set. Minimum enforced is 10 minutes.</value>
+        [DataMember(Name = "ocsp_next_update", EmitDefaultValue = false)]
+        public long OcspNextUpdate { get; set; }
+
+        /// <summary>
         /// Gets or Sets OrganizationList
         /// </summary>
         [DataMember(Name = "organization_list", EmitDefaultValue = false)]
@@ -387,7 +414,9 @@ namespace akeyless.Model
             sb.Append("  CodeSigningFlag: ").Append(CodeSigningFlag).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  CreatePrivateCrl: ").Append(CreatePrivateCrl).Append("\n");
+            sb.Append("  CreatePrivateOcsp: ").Append(CreatePrivateOcsp).Append("\n");
             sb.Append("  CreatePublicCrl: ").Append(CreatePublicCrl).Append("\n");
+            sb.Append("  CreatePublicOcsp: ").Append(CreatePublicOcsp).Append("\n");
             sb.Append("  DestinationPath: ").Append(DestinationPath).Append("\n");
             sb.Append("  DisableWildcards: ").Append(DisableWildcards).Append("\n");
             sb.Append("  EnforceHostnames: ").Append(EnforceHostnames).Append("\n");
@@ -402,6 +431,7 @@ namespace akeyless.Model
             sb.Append("  MaxPathLen: ").Append(MaxPathLen).Append("\n");
             sb.Append("  NonCriticalKeyUsage: ").Append(NonCriticalKeyUsage).Append("\n");
             sb.Append("  NotBeforeDuration: ").Append(NotBeforeDuration).Append("\n");
+            sb.Append("  OcspNextUpdate: ").Append(OcspNextUpdate).Append("\n");
             sb.Append("  OrganizationList: ").Append(OrganizationList).Append("\n");
             sb.Append("  OrganizationUnitList: ").Append(OrganizationUnitList).Append("\n");
             sb.Append("  PkiIssuerType: ").Append(PkiIssuerType).Append("\n");

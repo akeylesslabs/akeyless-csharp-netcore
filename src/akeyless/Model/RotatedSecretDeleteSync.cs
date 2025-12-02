@@ -42,10 +42,11 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Rotated secret name (required).</param>
+        /// <param name="remoteSecretName">Remote Secret Name to disambiguate when multiple syncs exist under the same USC.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Universal Secret Connector name (required).</param>
-        public RotatedSecretDeleteSync(bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public RotatedSecretDeleteSync(bool json = false, string name = default(string), string remoteSecretName = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -60,6 +61,7 @@ namespace akeyless.Model
             }
             this.UscName = uscName;
             this.Json = json;
+            this.RemoteSecretName = remoteSecretName;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -77,6 +79,13 @@ namespace akeyless.Model
         /// <value>Rotated secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Remote Secret Name to disambiguate when multiple syncs exist under the same USC
+        /// </summary>
+        /// <value>Remote Secret Name to disambiguate when multiple syncs exist under the same USC</value>
+        [DataMember(Name = "remote-secret-name", EmitDefaultValue = false)]
+        public string RemoteSecretName { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -109,6 +118,7 @@ namespace akeyless.Model
             sb.Append("class RotatedSecretDeleteSync {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RemoteSecretName: ").Append(RemoteSecretName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UscName: ").Append(UscName).Append("\n");

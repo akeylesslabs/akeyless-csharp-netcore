@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** | Address | [optional] 
+**AllowedClientType** | **List&lt;string&gt;** |  | [optional] 
 **AllowedEmailDomains** | **List&lt;string&gt;** | Limits email sharing to the specified domains. Relevant only when item sharing is enabled. By default, all domains are allowed. | [optional] 
 **BoundIps** | **List&lt;string&gt;** | A default list of comma-separated CIDR block that are allowed to authenticate. | [optional] 
 **City** | **string** | City | [optional] 
@@ -32,6 +33,7 @@ Name | Type | Description | Notes
 **JwtTtlDefault** | **long** | Default ttl | [optional] 
 **JwtTtlMax** | **long** | Maximum ttl | [optional] 
 **JwtTtlMin** | **long** | Minimum ttl | [optional] 
+**LockAllowedClientType** | **string** |  | [optional] 
 **LockBoundIps** | **string** | Lock bound-ips setting globally in the account. | [optional] 
 **LockDefaultKey** | **string** | Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false] | [optional] 
 **LockGwBoundIps** | **string** | Lock gw-bound-ips setting in the account. | [optional] 

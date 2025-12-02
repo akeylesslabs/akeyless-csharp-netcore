@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AutoRotateIntervalInDays** | **int** |  | [optional] 
 **AutoRotateRotationHour** | **int** |  | [optional] 
 **ComputerBaseDn** | **string** |  | [optional] 
+**DiscoverIisApps** | **bool** |  | [optional] 
 **DiscoverLocalUsers** | **bool** | Deprecated | [optional] 
 **DiscoverServices** | **bool** |  | [optional] 
 **DiscoveryTypes** | **List&lt;string&gt;** |  | [optional] 

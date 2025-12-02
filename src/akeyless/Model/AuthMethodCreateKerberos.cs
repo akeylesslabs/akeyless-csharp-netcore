@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AuthMethodCreateKerberos" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
+        /// <param name="allowedClientType">allowedClientType.</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="bindDn">bindDn.</param>
         /// <param name="bindDnPassword">bindDnPassword.</param>
@@ -70,7 +71,7 @@ namespace akeyless.Model
         /// <param name="uniqueIdentifier">A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities..</param>
         /// <param name="userAttribute">userAttribute.</param>
         /// <param name="userDn">userDn.</param>
-        public AuthMethodCreateKerberos(long accessExpires = 0, List<string> auditLogsClaims = default(List<string>), string bindDn = default(string), string bindDnPassword = default(string), List<string> boundIps = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string groupAttr = default(string), string groupDn = default(string), string groupFilter = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string keytabFileData = default(string), string keytabFilePath = default(string), string krb5ConfData = default(string), string krb5ConfPath = default(string), bool ldapAnonymousSearch = default(bool), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string userAttribute = default(string), string userDn = default(string))
+        public AuthMethodCreateKerberos(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), string bindDn = default(string), string bindDnPassword = default(string), List<string> boundIps = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string groupAttr = default(string), string groupDn = default(string), string groupFilter = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string keytabFileData = default(string), string keytabFilePath = default(string), string krb5ConfData = default(string), string krb5ConfPath = default(string), bool ldapAnonymousSearch = default(bool), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string userAttribute = default(string), string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -79,6 +80,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AccessExpires = accessExpires;
+            this.AllowedClientType = allowedClientType;
             this.AuditLogsClaims = auditLogsClaims;
             this.BindDn = bindDn;
             this.BindDnPassword = bindDnPassword;
@@ -115,6 +117,12 @@ namespace akeyless.Model
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
         [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedClientType
+        /// </summary>
+        [DataMember(Name = "allowed-client-type", EmitDefaultValue = false)]
+        public List<string> AllowedClientType { get; set; }
 
         /// <summary>
         /// Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;
@@ -314,6 +322,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AuthMethodCreateKerberos {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
+            sb.Append("  AllowedClientType: ").Append(AllowedClientType).Append("\n");
             sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BindDn: ").Append(BindDn).Append("\n");
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");

@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **MongodbName** | **string** | MongoDB Name | [optional] 
 **MongodbPassword** | **string** | MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters | [optional] 
 **MongodbRoles** | **string** | MongoDB Roles | [optional] [default to "[]"]
+**MongodbScopes** | **string** | MongoDB Scopes (Atlas only) | [optional] 
 **MongodbServerUri** | **string** | MongoDB server URI | [optional] 
 **MongodbUriOptions** | **string** | MongoDB server URI options | [optional] 
 **MongodbUsername** | **string** | MongoDB server username | [optional] 

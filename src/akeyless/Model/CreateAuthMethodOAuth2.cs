@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateAuthMethodOAuth2" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
+        /// <param name="allowedClientType">allowedClientType.</param>
         /// <param name="audience">The audience in the JWT.</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundClientIds">The clients ids that the access is restricted to.</param>
@@ -64,7 +65,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public CreateAuthMethodOAuth2(long accessExpires = 0, string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), string cert = default(string), string certFileData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksUri = default(string), long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public CreateAuthMethodOAuth2(long accessExpires = 0, List<string> allowedClientType = default(List<string>), string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), string cert = default(string), string certFileData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksUri = default(string), long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -79,6 +80,7 @@ namespace akeyless.Model
             }
             this.UniqueIdentifier = uniqueIdentifier;
             this.AccessExpires = accessExpires;
+            this.AllowedClientType = allowedClientType;
             this.Audience = audience;
             this.AuditLogsClaims = auditLogsClaims;
             this.BoundClientIds = boundClientIds;
@@ -108,6 +110,12 @@ namespace akeyless.Model
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
         [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedClientType
+        /// </summary>
+        [DataMember(Name = "allowed-client-type", EmitDefaultValue = false)]
+        public List<string> AllowedClientType { get; set; }
 
         /// <summary>
         /// The audience in the JWT
@@ -279,6 +287,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateAuthMethodOAuth2 {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
+            sb.Append("  AllowedClientType: ").Append(AllowedClientType).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
             sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundClientIds: ").Append(BoundClientIds).Append("\n");

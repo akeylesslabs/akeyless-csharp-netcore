@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateAuthMethodAWSIAM" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
+        /// <param name="allowedClientType">allowedClientType.</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundArn">A list of full arns that the access is restricted to.</param>
         /// <param name="boundAwsAccountId">A list of AWS account-IDs that the access is restricted to (required).</param>
@@ -64,7 +65,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities..</param>
-        public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> auditLogsClaims = default(List<string>), List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string stsUrl = @"https://sts.amazonaws.com", string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public UpdateAuthMethodAWSIAM(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string stsUrl = @"https://sts.amazonaws.com", string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "boundAwsAccountId" is required (not null)
             if (boundAwsAccountId == null)
@@ -79,6 +80,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AccessExpires = accessExpires;
+            this.AllowedClientType = allowedClientType;
             this.AuditLogsClaims = auditLogsClaims;
             this.BoundArn = boundArn;
             this.BoundIps = boundIps;
@@ -109,6 +111,12 @@ namespace akeyless.Model
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
         [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedClientType
+        /// </summary>
+        [DataMember(Name = "allowed-client-type", EmitDefaultValue = false)]
+        public List<string> AllowedClientType { get; set; }
 
         /// <summary>
         /// Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;
@@ -280,6 +288,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateAuthMethodAWSIAM {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
+            sb.Append("  AllowedClientType: ").Append(AllowedClientType).Append("\n");
             sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundArn: ").Append(BoundArn).Append("\n");
             sb.Append("  BoundAwsAccountId: ").Append(BoundAwsAccountId).Append("\n");

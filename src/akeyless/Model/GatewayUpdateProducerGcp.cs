@@ -40,27 +40,35 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerGcp" /> class.
         /// </summary>
+        /// <param name="accessType">accessType.</param>
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
+        /// <param name="fixedUserClaimKeyname">For externally provided users, denotes the key-name of IdP claim to extract the username from (Relevant only when - -access-type&#x3D;external) (default to &quot;ext_email&quot;).</param>
         /// <param name="gcpCredType">gcpCredType.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
-        /// <param name="gcpKeyAlgo">Service account key algorithm, e.g. KEY_ALG_RSA_1024.</param>
-        /// <param name="gcpProjectId">GCP Project ID override for dynamic secret operations (tmp service accounts).</param>
-        /// <param name="gcpSaEmail">The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed).</param>
-        /// <param name="gcpTokenScopes">Access token scopes list, e.g. scope1,scope2.</param>
+        /// <param name="gcpKeyAlgo">Service account key algorithm, e.g. KEY_ALG_RSA_1024 (Relevant only when - -access-type&#x3D;sa and - -gcp-cred-type&#x3D;key).</param>
+        /// <param name="gcpProjectId">GCP Project ID override for dynamic secret operations.</param>
+        /// <param name="gcpSaEmail">The email of the fixed service account to generate keys or tokens for (Relevant only when - -access-type&#x3D;sa and - -service-account-type&#x3D;fixed).</param>
+        /// <param name="gcpTokenScopes">Access token scopes list, e.g. scope1,scope2 (Relevant only when - -access-type&#x3D;sa; required when - -gcp-cred-type&#x3D;token).</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="roleBinding">Role binding definitions in json format.</param>
-        /// <param name="serviceAccountType">The type of the gcp dynamic secret. Options[fixed, dynamic] (required) (default to &quot;fixed&quot;).</param>
+        /// <param name="roleBinding">Role binding definitions in JSON format (Relevant only when - -access-type&#x3D;sa and - -service-account-type&#x3D;dynamic).</param>
+        /// <param name="roleNames">Comma-separated list of GCP roles to assign to the user (Relevant only when - -access-type&#x3D;external).</param>
+        /// <param name="secureAccessDelay">The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds.</param>
+        /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
+        /// <param name="serviceAccountType">The type of the GCP service account. Options [fixed, dynamic] (Relevant only when - -access-type&#x3D;sa) (default to &quot;fixed&quot;).</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerGcp(string customUsernameTemplate = default(string), string deleteProtection = default(string), string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpProjectId = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string serviceAccountType = @"fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerGcp(string accessType = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = @"ext_email", string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpProjectId = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string roleNames = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string serviceAccountType = @"fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -68,14 +76,11 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for GatewayUpdateProducerGcp and cannot be null");
             }
             this.Name = name;
-            // to ensure "serviceAccountType" is required (not null)
-            if (serviceAccountType == null)
-            {
-                throw new ArgumentNullException("serviceAccountType is a required property for GatewayUpdateProducerGcp and cannot be null");
-            }
-            this.ServiceAccountType = serviceAccountType;
+            this.AccessType = accessType;
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DeleteProtection = deleteProtection;
+            // use default value if no "fixedUserClaimKeyname" provided
+            this.FixedUserClaimKeyname = fixedUserClaimKeyname ?? @"ext_email";
             this.GcpCredType = gcpCredType;
             this.GcpKey = gcpKey;
             this.GcpKeyAlgo = gcpKeyAlgo;
@@ -87,6 +92,14 @@ namespace akeyless.Model
             this.NewName = newName;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RoleBinding = roleBinding;
+            this.RoleNames = roleNames;
+            this.SecureAccessDelay = secureAccessDelay;
+            this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessUrl = secureAccessUrl;
+            this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.SecureAccessWebProxy = secureAccessWebProxy;
+            // use default value if no "serviceAccountType" provided
+            this.ServiceAccountType = serviceAccountType ?? @"fixed";
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -94,6 +107,12 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? @"60m";
         }
+
+        /// <summary>
+        /// Gets or Sets AccessType
+        /// </summary>
+        [DataMember(Name = "access-type", EmitDefaultValue = false)]
+        public string AccessType { get; set; }
 
         /// <summary>
         /// Customize how temporary usernames are generated using go template
@@ -110,6 +129,13 @@ namespace akeyless.Model
         public string DeleteProtection { get; set; }
 
         /// <summary>
+        /// For externally provided users, denotes the key-name of IdP claim to extract the username from (Relevant only when - -access-type&#x3D;external)
+        /// </summary>
+        /// <value>For externally provided users, denotes the key-name of IdP claim to extract the username from (Relevant only when - -access-type&#x3D;external)</value>
+        [DataMember(Name = "fixed-user-claim-keyname", EmitDefaultValue = false)]
+        public string FixedUserClaimKeyname { get; set; }
+
+        /// <summary>
         /// Gets or Sets GcpCredType
         /// </summary>
         [DataMember(Name = "gcp-cred-type", EmitDefaultValue = false)]
@@ -123,30 +149,30 @@ namespace akeyless.Model
         public string GcpKey { get; set; }
 
         /// <summary>
-        /// Service account key algorithm, e.g. KEY_ALG_RSA_1024
+        /// Service account key algorithm, e.g. KEY_ALG_RSA_1024 (Relevant only when - -access-type&#x3D;sa and - -gcp-cred-type&#x3D;key)
         /// </summary>
-        /// <value>Service account key algorithm, e.g. KEY_ALG_RSA_1024</value>
+        /// <value>Service account key algorithm, e.g. KEY_ALG_RSA_1024 (Relevant only when - -access-type&#x3D;sa and - -gcp-cred-type&#x3D;key)</value>
         [DataMember(Name = "gcp-key-algo", EmitDefaultValue = false)]
         public string GcpKeyAlgo { get; set; }
 
         /// <summary>
-        /// GCP Project ID override for dynamic secret operations (tmp service accounts)
+        /// GCP Project ID override for dynamic secret operations
         /// </summary>
-        /// <value>GCP Project ID override for dynamic secret operations (tmp service accounts)</value>
+        /// <value>GCP Project ID override for dynamic secret operations</value>
         [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
         public string GcpProjectId { get; set; }
 
         /// <summary>
-        /// The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed)
+        /// The email of the fixed service account to generate keys or tokens for (Relevant only when - -access-type&#x3D;sa and - -service-account-type&#x3D;fixed)
         /// </summary>
-        /// <value>The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed)</value>
+        /// <value>The email of the fixed service account to generate keys or tokens for (Relevant only when - -access-type&#x3D;sa and - -service-account-type&#x3D;fixed)</value>
         [DataMember(Name = "gcp-sa-email", EmitDefaultValue = false)]
         public string GcpSaEmail { get; set; }
 
         /// <summary>
-        /// Access token scopes list, e.g. scope1,scope2
+        /// Access token scopes list, e.g. scope1,scope2 (Relevant only when - -access-type&#x3D;sa; required when - -gcp-cred-type&#x3D;token)
         /// </summary>
-        /// <value>Access token scopes list, e.g. scope1,scope2</value>
+        /// <value>Access token scopes list, e.g. scope1,scope2 (Relevant only when - -access-type&#x3D;sa; required when - -gcp-cred-type&#x3D;token)</value>
         [DataMember(Name = "gcp-token-scopes", EmitDefaultValue = false)]
         public string GcpTokenScopes { get; set; }
 
@@ -186,17 +212,59 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// Role binding definitions in json format
+        /// Role binding definitions in JSON format (Relevant only when - -access-type&#x3D;sa and - -service-account-type&#x3D;dynamic)
         /// </summary>
-        /// <value>Role binding definitions in json format</value>
+        /// <value>Role binding definitions in JSON format (Relevant only when - -access-type&#x3D;sa and - -service-account-type&#x3D;dynamic)</value>
         [DataMember(Name = "role-binding", EmitDefaultValue = false)]
         public string RoleBinding { get; set; }
 
         /// <summary>
-        /// The type of the gcp dynamic secret. Options[fixed, dynamic]
+        /// Comma-separated list of GCP roles to assign to the user (Relevant only when - -access-type&#x3D;external)
         /// </summary>
-        /// <value>The type of the gcp dynamic secret. Options[fixed, dynamic]</value>
-        [DataMember(Name = "service-account-type", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>Comma-separated list of GCP roles to assign to the user (Relevant only when - -access-type&#x3D;external)</value>
+        [DataMember(Name = "role-names", EmitDefaultValue = false)]
+        public string RoleNames { get; set; }
+
+        /// <summary>
+        /// The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds
+        /// </summary>
+        /// <value>The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds</value>
+        [DataMember(Name = "secure-access-delay", EmitDefaultValue = false)]
+        public long SecureAccessDelay { get; set; }
+
+        /// <summary>
+        /// Enable/Disable secure remote access [true/false]
+        /// </summary>
+        /// <value>Enable/Disable secure remote access [true/false]</value>
+        [DataMember(Name = "secure-access-enable", EmitDefaultValue = false)]
+        public string SecureAccessEnable { get; set; }
+
+        /// <summary>
+        /// Destination URL to inject secrets
+        /// </summary>
+        /// <value>Destination URL to inject secrets</value>
+        [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
+        public string SecureAccessUrl { get; set; }
+
+        /// <summary>
+        /// Secure browser via Akeyless&#39;s Secure Remote Access (SRA)
+        /// </summary>
+        /// <value>Secure browser via Akeyless&#39;s Secure Remote Access (SRA)</value>
+        [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
+        public bool SecureAccessWebBrowsing { get; set; }
+
+        /// <summary>
+        /// Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA)
+        /// </summary>
+        /// <value>Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA)</value>
+        [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
+        public bool SecureAccessWebProxy { get; set; }
+
+        /// <summary>
+        /// The type of the GCP service account. Options [fixed, dynamic] (Relevant only when - -access-type&#x3D;sa)
+        /// </summary>
+        /// <value>The type of the GCP service account. Options [fixed, dynamic] (Relevant only when - -access-type&#x3D;sa)</value>
+        [DataMember(Name = "service-account-type", EmitDefaultValue = false)]
         public string ServiceAccountType { get; set; }
 
         /// <summary>
@@ -242,8 +310,10 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerGcp {\n");
+            sb.Append("  AccessType: ").Append(AccessType).Append("\n");
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
             sb.Append("  GcpCredType: ").Append(GcpCredType).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpKeyAlgo: ").Append(GcpKeyAlgo).Append("\n");
@@ -256,6 +326,12 @@ namespace akeyless.Model
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  RoleBinding: ").Append(RoleBinding).Append("\n");
+            sb.Append("  RoleNames: ").Append(RoleNames).Append("\n");
+            sb.Append("  SecureAccessDelay: ").Append(SecureAccessDelay).Append("\n");
+            sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
+            sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  ServiceAccountType: ").Append(ServiceAccountType).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");

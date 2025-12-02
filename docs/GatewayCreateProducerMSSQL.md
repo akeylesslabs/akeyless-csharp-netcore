@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
+**MssqlAllowedDbNames** | **string** | CSV of allowed DB names for runtime selection when getting the secret value. Empty &#x3D;&gt; use target DB only; \&quot;*\&quot; &#x3D;&gt; any DB allowed; One or more names &#x3D;&gt; user must choose from this list | [optional] 
 **MssqlCreateStatements** | **string** | MSSQL Creation statements | [optional] 
 **MssqlDbname** | **string** | MSSQL Name | [optional] 
 **MssqlHost** | **string** | MSSQL Host | [optional] [default to "127.0.0.1"]

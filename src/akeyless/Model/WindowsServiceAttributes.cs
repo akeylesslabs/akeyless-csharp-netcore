@@ -36,12 +36,16 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="WindowsServiceAttributes" /> class.
         /// </summary>
         /// <param name="connectionType">connectionType.</param>
+        /// <param name="iisAppPool">IISAppPool marks this entry as an IIS Application Pool rather than a Windows Service.</param>
         /// <param name="port">port.</param>
+        /// <param name="skipRestart">SkipRestart allows skipping recycle/start of the IIS App Pool after credential update.</param>
         /// <param name="useTls">useTls.</param>
-        public WindowsServiceAttributes(string connectionType = default(string), string port = default(string), bool useTls = default(bool))
+        public WindowsServiceAttributes(string connectionType = default(string), bool iisAppPool = default(bool), string port = default(string), bool skipRestart = default(bool), bool useTls = default(bool))
         {
             this.ConnectionType = connectionType;
+            this.IisAppPool = iisAppPool;
             this.Port = port;
+            this.SkipRestart = skipRestart;
             this.UseTls = useTls;
         }
 
@@ -52,10 +56,24 @@ namespace akeyless.Model
         public string ConnectionType { get; set; }
 
         /// <summary>
+        /// IISAppPool marks this entry as an IIS Application Pool rather than a Windows Service
+        /// </summary>
+        /// <value>IISAppPool marks this entry as an IIS Application Pool rather than a Windows Service</value>
+        [DataMember(Name = "iis_app_pool", EmitDefaultValue = true)]
+        public bool IisAppPool { get; set; }
+
+        /// <summary>
         /// Gets or Sets Port
         /// </summary>
         [DataMember(Name = "port", EmitDefaultValue = false)]
         public string Port { get; set; }
+
+        /// <summary>
+        /// SkipRestart allows skipping recycle/start of the IIS App Pool after credential update
+        /// </summary>
+        /// <value>SkipRestart allows skipping recycle/start of the IIS App Pool after credential update</value>
+        [DataMember(Name = "skip_restart", EmitDefaultValue = true)]
+        public bool SkipRestart { get; set; }
 
         /// <summary>
         /// Gets or Sets UseTls
@@ -72,7 +90,9 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class WindowsServiceAttributes {\n");
             sb.Append("  ConnectionType: ").Append(ConnectionType).Append("\n");
+            sb.Append("  IisAppPool: ").Append(IisAppPool).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
+            sb.Append("  SkipRestart: ").Append(SkipRestart).Append("\n");
             sb.Append("  UseTls: ").Append(UseTls).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

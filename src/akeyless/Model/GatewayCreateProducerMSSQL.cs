@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="mssqlAllowedDbNames">CSV of allowed DB names for runtime selection when getting the secret value. Empty &#x3D;&gt; use target DB only; \&quot;*\&quot; &#x3D;&gt; any DB allowed; One or more names &#x3D;&gt; user must choose from this list.</param>
         /// <param name="mssqlCreateStatements">MSSQL Creation statements.</param>
         /// <param name="mssqlDbname">MSSQL Name.</param>
         /// <param name="mssqlHost">MSSQL Host (default to &quot;127.0.0.1&quot;).</param>
@@ -67,7 +68,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerMSSQL(string customUsernameTemplate = default(string), string deleteProtection = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string mssqlCreateStatements = default(string), string mssqlDbname = default(string), string mssqlHost = @"127.0.0.1", string mssqlPassword = default(string), string mssqlPort = @"1433", string mssqlRevocationStatements = default(string), string mssqlUsername = default(string), string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerMSSQL(string customUsernameTemplate = default(string), string deleteProtection = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string mssqlAllowedDbNames = default(string), string mssqlCreateStatements = default(string), string mssqlDbname = default(string), string mssqlHost = @"127.0.0.1", string mssqlPassword = default(string), string mssqlPort = @"1433", string mssqlRevocationStatements = default(string), string mssqlUsername = default(string), string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -79,6 +80,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
+            this.MssqlAllowedDbNames = mssqlAllowedDbNames;
             this.MssqlCreateStatements = mssqlCreateStatements;
             this.MssqlDbname = mssqlDbname;
             // use default value if no "mssqlHost" provided
@@ -133,6 +135,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// CSV of allowed DB names for runtime selection when getting the secret value. Empty &#x3D;&gt; use target DB only; \&quot;*\&quot; &#x3D;&gt; any DB allowed; One or more names &#x3D;&gt; user must choose from this list
+        /// </summary>
+        /// <value>CSV of allowed DB names for runtime selection when getting the secret value. Empty &#x3D;&gt; use target DB only; \&quot;*\&quot; &#x3D;&gt; any DB allowed; One or more names &#x3D;&gt; user must choose from this list</value>
+        [DataMember(Name = "mssql-allowed-db-names", EmitDefaultValue = false)]
+        public string MssqlAllowedDbNames { get; set; }
 
         /// <summary>
         /// MSSQL Creation statements
@@ -307,6 +316,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  MssqlAllowedDbNames: ").Append(MssqlAllowedDbNames).Append("\n");
             sb.Append("  MssqlCreateStatements: ").Append(MssqlCreateStatements).Append("\n");
             sb.Append("  MssqlDbname: ").Append(MssqlDbname).Append("\n");
             sb.Append("  MssqlHost: ").Append(MssqlHost).Append("\n");

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Args** | **List&lt;string&gt;** | Optional arguments as key&#x3D;value pairs or JSON strings, e.g - \\\&quot;- -args&#x3D;csr&#x3D;base64_encoded_csr - -args&#x3D;common_name&#x3D;bar\\\&quot; or args&#x3D;&#39;{\\\&quot;csr\\\&quot;:\\\&quot;base64_encoded_csr\\\&quot;}. It is possible to combine both formats.&#39; | [optional] 
+**Dbname** | **string** | DBName: Optional override DB name (works only if DS allows it. only relevant for MSSQL) | [optional] 
 **Host** | **string** | Host | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 

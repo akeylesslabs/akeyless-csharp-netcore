@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateAccountSettings" /> class.
         /// </summary>
         /// <param name="address">Address.</param>
+        /// <param name="allowedClientType">allowedClientType.</param>
         /// <param name="allowedEmailDomains">Limits email sharing to the specified domains. Relevant only when item sharing is enabled. By default, all domains are allowed..</param>
         /// <param name="boundIps">A default list of comma-separated CIDR block that are allowed to authenticate..</param>
         /// <param name="city">City.</param>
@@ -63,6 +64,7 @@ namespace akeyless.Model
         /// <param name="jwtTtlDefault">Default ttl.</param>
         /// <param name="jwtTtlMax">Maximum ttl.</param>
         /// <param name="jwtTtlMin">Minimum ttl.</param>
+        /// <param name="lockAllowedClientType">lockAllowedClientType.</param>
         /// <param name="lockBoundIps">Lock bound-ips setting globally in the account..</param>
         /// <param name="lockDefaultKey">Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false].</param>
         /// <param name="lockGwBoundIps">Lock gw-bound-ips setting in the account..</param>
@@ -83,9 +85,10 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Password must contain lower case letters [true/false].</param>
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
-        public UpdateAccountSettings(string address = default(string), List<string> allowedEmailDomains = default(List<string>), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), List<string> defaultCertificateExpirationNotificationDays = default(List<string>), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableAiInsights = default(string), string enableDefaultCertificateExpirationEvent = default(string), string enableItemSharing = default(string), string enablePasswordExpiration = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string hidePersonalFolder = default(string), string hideStaticPassword = default(string), string invalidCharacters = @"notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), string passwordExpirationDays = default(string), string passwordExpirationNotificationDays = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public UpdateAccountSettings(string address = default(string), List<string> allowedClientType = default(List<string>), List<string> allowedEmailDomains = default(List<string>), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), List<string> defaultCertificateExpirationNotificationDays = default(List<string>), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableAiInsights = default(string), string enableDefaultCertificateExpirationEvent = default(string), string enableItemSharing = default(string), string enablePasswordExpiration = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string hidePersonalFolder = default(string), string hideStaticPassword = default(string), string invalidCharacters = @"notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockAllowedClientType = default(string), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), string passwordExpirationDays = default(string), string passwordExpirationNotificationDays = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             this.Address = address;
+            this.AllowedClientType = allowedClientType;
             this.AllowedEmailDomains = allowedEmailDomains;
             this.BoundIps = boundIps;
             this.City = city;
@@ -114,6 +117,7 @@ namespace akeyless.Model
             this.JwtTtlDefault = jwtTtlDefault;
             this.JwtTtlMax = jwtTtlMax;
             this.JwtTtlMin = jwtTtlMin;
+            this.LockAllowedClientType = lockAllowedClientType;
             this.LockBoundIps = lockBoundIps;
             this.LockDefaultKey = lockDefaultKey;
             this.LockGwBoundIps = lockGwBoundIps;
@@ -142,6 +146,12 @@ namespace akeyless.Model
         /// <value>Address</value>
         [DataMember(Name = "address", EmitDefaultValue = false)]
         public string Address { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedClientType
+        /// </summary>
+        [DataMember(Name = "allowed-client-type", EmitDefaultValue = false)]
+        public List<string> AllowedClientType { get; set; }
 
         /// <summary>
         /// Limits email sharing to the specified domains. Relevant only when item sharing is enabled. By default, all domains are allowed.
@@ -333,6 +343,12 @@ namespace akeyless.Model
         public long JwtTtlMin { get; set; }
 
         /// <summary>
+        /// Gets or Sets LockAllowedClientType
+        /// </summary>
+        [DataMember(Name = "lock-allowed-client-type", EmitDefaultValue = false)]
+        public string LockAllowedClientType { get; set; }
+
+        /// <summary>
         /// Lock bound-ips setting globally in the account.
         /// </summary>
         /// <value>Lock bound-ips setting globally in the account.</value>
@@ -481,6 +497,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateAccountSettings {\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  AllowedClientType: ").Append(AllowedClientType).Append("\n");
             sb.Append("  AllowedEmailDomains: ").Append(AllowedEmailDomains).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
@@ -508,6 +525,7 @@ namespace akeyless.Model
             sb.Append("  JwtTtlDefault: ").Append(JwtTtlDefault).Append("\n");
             sb.Append("  JwtTtlMax: ").Append(JwtTtlMax).Append("\n");
             sb.Append("  JwtTtlMin: ").Append(JwtTtlMin).Append("\n");
+            sb.Append("  LockAllowedClientType: ").Append(LockAllowedClientType).Append("\n");
             sb.Append("  LockBoundIps: ").Append(LockBoundIps).Append("\n");
             sb.Append("  LockDefaultKey: ").Append(LockDefaultKey).Append("\n");
             sb.Append("  LockGwBoundIps: ").Append(LockGwBoundIps).Append("\n");

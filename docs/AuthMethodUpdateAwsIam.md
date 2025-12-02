@@ -6,6 +6,7 @@ authMethodUpdateAwsIam is a command that Updates a new Auth Method that will be 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | **long** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AllowedClientType** | **List&lt;string&gt;** |  | [optional] 
 **AuditLogsClaims** | **List&lt;string&gt;** | Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot; | [optional] 
 **BoundArn** | **List&lt;string&gt;** | A list of full arns that the access is restricted to | [optional] 
 **BoundAwsAccountId** | **List&lt;string&gt;** | A list of AWS account-IDs that the access is restricted to | 

@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <param name="autoRotateIntervalInDays">autoRotateIntervalInDays.</param>
         /// <param name="autoRotateRotationHour">autoRotateRotationHour.</param>
         /// <param name="computerBaseDn">computerBaseDn.</param>
+        /// <param name="discoverIisApps">discoverIisApps.</param>
         /// <param name="discoverLocalUsers">Deprecated.</param>
         /// <param name="discoverServices">discoverServices.</param>
         /// <param name="discoveryTypes">discoveryTypes.</param>
@@ -57,13 +58,14 @@ namespace akeyless.Model
         /// <param name="userGroups">userGroups.</param>
         /// <param name="winrmOverHttp">winrmOverHttp.</param>
         /// <param name="winrmPort">winrmPort.</param>
-        public ActiveDirectoryPayload(long activeDirectoryTargetId = default(long), bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), string computerBaseDn = default(string), bool discoverLocalUsers = default(bool), bool discoverServices = default(bool), List<string> discoveryTypes = default(List<string>), string domainName = default(string), string domainServerTargetsPathTemplate = default(string), string domainUsersRotatedSecretsPathTemplate = default(string), bool enableRdpSra = default(bool), Dictionary<string, bool> localUsersIgnoreList = default(Dictionary<string, bool>), string localUsersRotatedSecretsPathTemplate = default(string), string osFilter = default(string), string sshPort = default(string), string targetFormat = default(string), string targetsType = default(string), string userBaseDn = default(string), List<string> userGroups = default(List<string>), bool winrmOverHttp = default(bool), string winrmPort = default(string))
+        public ActiveDirectoryPayload(long activeDirectoryTargetId = default(long), bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), string computerBaseDn = default(string), bool discoverIisApps = default(bool), bool discoverLocalUsers = default(bool), bool discoverServices = default(bool), List<string> discoveryTypes = default(List<string>), string domainName = default(string), string domainServerTargetsPathTemplate = default(string), string domainUsersRotatedSecretsPathTemplate = default(string), bool enableRdpSra = default(bool), Dictionary<string, bool> localUsersIgnoreList = default(Dictionary<string, bool>), string localUsersRotatedSecretsPathTemplate = default(string), string osFilter = default(string), string sshPort = default(string), string targetFormat = default(string), string targetsType = default(string), string userBaseDn = default(string), List<string> userGroups = default(List<string>), bool winrmOverHttp = default(bool), string winrmPort = default(string))
         {
             this.ActiveDirectoryTargetId = activeDirectoryTargetId;
             this.AutoRotate = autoRotate;
             this.AutoRotateIntervalInDays = autoRotateIntervalInDays;
             this.AutoRotateRotationHour = autoRotateRotationHour;
             this.ComputerBaseDn = computerBaseDn;
+            this.DiscoverIisApps = discoverIisApps;
             this.DiscoverLocalUsers = discoverLocalUsers;
             this.DiscoverServices = discoverServices;
             this.DiscoveryTypes = discoveryTypes;
@@ -112,6 +114,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "computer_base_dn", EmitDefaultValue = false)]
         public string ComputerBaseDn { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DiscoverIisApps
+        /// </summary>
+        [DataMember(Name = "discover_iis_apps", EmitDefaultValue = true)]
+        public bool DiscoverIisApps { get; set; }
 
         /// <summary>
         /// Deprecated
@@ -229,6 +237,7 @@ namespace akeyless.Model
             sb.Append("  AutoRotateIntervalInDays: ").Append(AutoRotateIntervalInDays).Append("\n");
             sb.Append("  AutoRotateRotationHour: ").Append(AutoRotateRotationHour).Append("\n");
             sb.Append("  ComputerBaseDn: ").Append(ComputerBaseDn).Append("\n");
+            sb.Append("  DiscoverIisApps: ").Append(DiscoverIisApps).Append("\n");
             sb.Append("  DiscoverLocalUsers: ").Append(DiscoverLocalUsers).Append("\n");
             sb.Append("  DiscoverServices: ").Append(DiscoverServices).Append("\n");
             sb.Append("  DiscoveryTypes: ").Append(DiscoveryTypes).Append("\n");

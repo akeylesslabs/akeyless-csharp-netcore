@@ -49,10 +49,12 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="keyDataBase64">Private key file contents encoded using base64.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
+        /// <param name="publicKeyRemotePath">The path to the public key that will be rotated on the server.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
         /// <param name="rotatedPassword">rotated-username password (relevant only for rotator-type&#x3D;password).</param>
@@ -74,7 +76,7 @@ namespace akeyless.Model
         /// <param name="secureAccessTargetType">Specify target type. Options are ssh or rdp (default to &quot;false&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotatedSecretUpdateSsh(List<string> addTag = default(List<string>), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = @"false", string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshUser = default(string), string secureAccessTargetType = @"false", string token = default(string), string uidToken = default(string))
+        public RotatedSecretUpdateSsh(List<string> addTag = default(List<string>), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string keyDataBase64 = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), string publicKeyRemotePath = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = @"false", string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshUser = default(string), string secureAccessTargetType = @"false", string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -99,9 +101,11 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.KeyDataBase64 = keyDataBase64;
             this.MaxVersions = maxVersions;
             this.NewName = newName;
             this.PasswordLength = passwordLength;
+            this.PublicKeyRemotePath = publicKeyRemotePath;
             this.RmTag = rmTag;
             // use default value if no "rotateAfterDisconnect" provided
             this.RotateAfterDisconnect = rotateAfterDisconnect ?? @"false";
@@ -190,6 +194,13 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Private key file contents encoded using base64
+        /// </summary>
+        /// <value>Private key file contents encoded using base64</value>
+        [DataMember(Name = "key-data-base64", EmitDefaultValue = false)]
+        public string KeyDataBase64 { get; set; }
+
+        /// <summary>
         /// Set the maximum number of versions, limited by the account settings defaults.
         /// </summary>
         /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
@@ -216,6 +227,13 @@ namespace akeyless.Model
         /// <value>The length of the password to be generated</value>
         [DataMember(Name = "password-length", EmitDefaultValue = false)]
         public string PasswordLength { get; set; }
+
+        /// <summary>
+        /// The path to the public key that will be rotated on the server
+        /// </summary>
+        /// <value>The path to the public key that will be rotated on the server</value>
+        [DataMember(Name = "public-key-remote-path", EmitDefaultValue = false)]
+        public string PublicKeyRemotePath { get; set; }
 
         /// <summary>
         /// List of the existent tags that will be removed from this item
@@ -381,10 +399,12 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  KeyDataBase64: ").Append(KeyDataBase64).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
+            sb.Append("  PublicKeyRemotePath: ").Append(PublicKeyRemotePath).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
             sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
             sb.Append("  RotatedPassword: ").Append(RotatedPassword).Append("\n");

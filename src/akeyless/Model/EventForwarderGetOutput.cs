@@ -36,9 +36,11 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="EventForwarderGetOutput" /> class.
         /// </summary>
         /// <param name="eventForwarder">eventForwarder.</param>
-        public EventForwarderGetOutput(NotiForwarder eventForwarder = default(NotiForwarder))
+        /// <param name="eventForwarderDetails">eventForwarderDetails.</param>
+        public EventForwarderGetOutput(NotiForwarder eventForwarder = default(NotiForwarder), NotiForwarderDetailsInput eventForwarderDetails = default(NotiForwarderDetailsInput))
         {
             this.EventForwarder = eventForwarder;
+            this.EventForwarderDetails = eventForwarderDetails;
         }
 
         /// <summary>
@@ -46,6 +48,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "event_forwarder", EmitDefaultValue = false)]
         public NotiForwarder EventForwarder { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EventForwarderDetails
+        /// </summary>
+        [DataMember(Name = "event_forwarder_details", EmitDefaultValue = false)]
+        public NotiForwarderDetailsInput EventForwarderDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -56,6 +64,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class EventForwarderGetOutput {\n");
             sb.Append("  EventForwarder: ").Append(EventForwarder).Append("\n");
+            sb.Append("  EventForwarderDetails: ").Append(EventForwarderDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

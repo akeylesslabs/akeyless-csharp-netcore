@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Static secret name | 
+**RemoteSecretName** | **string** | Remote Secret Name to disambiguate when multiple syncs exist under the same USC | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscName** | **string** | Universal Secret Connector name | 

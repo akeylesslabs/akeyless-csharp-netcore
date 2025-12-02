@@ -13,10 +13,12 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**KeyDataBase64** | **string** | Private key file contents encoded using base64 | [optional] 
 **MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **NewName** | **string** | New item name | [optional] 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
+**PublicKeyRemotePath** | **string** | The path to the public key that will be rotated on the server | [optional] 
 **RmTag** | **List&lt;string&gt;** | List of the existent tags that will be removed from this item | [optional] 
 **RotateAfterDisconnect** | **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
 **RotatedPassword** | **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 

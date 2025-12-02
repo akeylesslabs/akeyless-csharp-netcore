@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AuthMethodUpdateOIDC" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
+        /// <param name="allowedClientType">allowedClientType.</param>
         /// <param name="allowedRedirectUri">Allowed redirect URIs after the authentication.</param>
         /// <param name="audience">Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application.</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
@@ -64,7 +65,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OIDC, OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public AuthMethodUpdateOIDC(long accessExpires = 0, List<string> allowedRedirectUri = default(List<string>), string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public AuthMethodUpdateOIDC(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> allowedRedirectUri = default(List<string>), string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -79,6 +80,7 @@ namespace akeyless.Model
             }
             this.UniqueIdentifier = uniqueIdentifier;
             this.AccessExpires = accessExpires;
+            this.AllowedClientType = allowedClientType;
             this.AllowedRedirectUri = allowedRedirectUri;
             this.Audience = audience;
             this.AuditLogsClaims = auditLogsClaims;
@@ -108,6 +110,12 @@ namespace akeyless.Model
         /// <value>Access expiration date in Unix timestamp (select 0 for access without expiry date)</value>
         [DataMember(Name = "access-expires", EmitDefaultValue = false)]
         public long AccessExpires { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedClientType
+        /// </summary>
+        [DataMember(Name = "allowed-client-type", EmitDefaultValue = false)]
+        public List<string> AllowedClientType { get; set; }
 
         /// <summary>
         /// Allowed redirect URIs after the authentication
@@ -279,6 +287,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AuthMethodUpdateOIDC {\n");
             sb.Append("  AccessExpires: ").Append(AccessExpires).Append("\n");
+            sb.Append("  AllowedClientType: ").Append(AllowedClientType).Append("\n");
             sb.Append("  AllowedRedirectUri: ").Append(AllowedRedirectUri).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
             sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
