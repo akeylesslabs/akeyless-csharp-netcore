@@ -35,7 +35,9 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayUpdateRemoteAccess" /> class.
         /// </summary>
+        /// <param name="allowedSshUrl">Specify a valid SSH-URL to tunnel to SSH session (default to &quot;use-existing&quot;).</param>
         /// <param name="allowedUrls">List of valid URLs to redirect from the Portal back to the remote access server (in a comma-delimited list) (default to &quot;use-existing&quot;).</param>
+        /// <param name="defaultSessionTtlMinutes">Default session TTL in minutes (default to &quot;use-existing&quot;).</param>
         /// <param name="hideSessionRecording">Specifies whether to show/hide if the session is currently recorded [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="kexalgs">Decide which algorithm will be used as part of the SSH initial hand-shake process (default to &quot;use-existing&quot;).</param>
@@ -45,10 +47,14 @@ namespace akeyless.Model
         /// <param name="sshTargetConfiguration">Specify the usernameSubClaim that exists inside the IDP JWT, e.g. email (default to &quot;use-existing&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateRemoteAccess(string allowedUrls = @"use-existing", string hideSessionRecording = default(string), bool json = false, string kexalgs = @"use-existing", string keyboardLayout = @"use-existing", string legacySshAlgorithm = default(string), string rdpTargetConfiguration = @"use-existing", string sshTargetConfiguration = @"use-existing", string token = default(string), string uidToken = default(string))
+        public GatewayUpdateRemoteAccess(string allowedSshUrl = @"use-existing", string allowedUrls = @"use-existing", string defaultSessionTtlMinutes = @"use-existing", string hideSessionRecording = default(string), bool json = false, string kexalgs = @"use-existing", string keyboardLayout = @"use-existing", string legacySshAlgorithm = default(string), string rdpTargetConfiguration = @"use-existing", string sshTargetConfiguration = @"use-existing", string token = default(string), string uidToken = default(string))
         {
+            // use default value if no "allowedSshUrl" provided
+            this.AllowedSshUrl = allowedSshUrl ?? @"use-existing";
             // use default value if no "allowedUrls" provided
             this.AllowedUrls = allowedUrls ?? @"use-existing";
+            // use default value if no "defaultSessionTtlMinutes" provided
+            this.DefaultSessionTtlMinutes = defaultSessionTtlMinutes ?? @"use-existing";
             this.HideSessionRecording = hideSessionRecording;
             this.Json = json;
             // use default value if no "kexalgs" provided
@@ -65,11 +71,25 @@ namespace akeyless.Model
         }
 
         /// <summary>
+        /// Specify a valid SSH-URL to tunnel to SSH session
+        /// </summary>
+        /// <value>Specify a valid SSH-URL to tunnel to SSH session</value>
+        [DataMember(Name = "allowed-ssh-url", EmitDefaultValue = false)]
+        public string AllowedSshUrl { get; set; }
+
+        /// <summary>
         /// List of valid URLs to redirect from the Portal back to the remote access server (in a comma-delimited list)
         /// </summary>
         /// <value>List of valid URLs to redirect from the Portal back to the remote access server (in a comma-delimited list)</value>
         [DataMember(Name = "allowed-urls", EmitDefaultValue = false)]
         public string AllowedUrls { get; set; }
+
+        /// <summary>
+        /// Default session TTL in minutes
+        /// </summary>
+        /// <value>Default session TTL in minutes</value>
+        [DataMember(Name = "default-session-ttl-minutes", EmitDefaultValue = false)]
+        public string DefaultSessionTtlMinutes { get; set; }
 
         /// <summary>
         /// Specifies whether to show/hide if the session is currently recorded [true/false]
@@ -142,7 +162,9 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateRemoteAccess {\n");
+            sb.Append("  AllowedSshUrl: ").Append(AllowedSshUrl).Append("\n");
             sb.Append("  AllowedUrls: ").Append(AllowedUrls).Append("\n");
+            sb.Append("  DefaultSessionTtlMinutes: ").Append(DefaultSessionTtlMinutes).Append("\n");
             sb.Append("  HideSessionRecording: ").Append(HideSessionRecording).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Kexalgs: ").Append(Kexalgs).Append("\n");

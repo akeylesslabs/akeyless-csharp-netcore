@@ -36,12 +36,16 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="BastionGlobalConf" /> class.
         /// </summary>
         /// <param name="allowedBastionUrls">allowedBastionUrls.</param>
+        /// <param name="allowedSshUrl">allowedSshUrl.</param>
+        /// <param name="defaultSessionTtlMinutes">defaultSessionTtlMinutes.</param>
         /// <param name="legacySigningAlg">legacySigningAlg.</param>
         /// <param name="rdpUsernameSubClaim">rdpUsernameSubClaim.</param>
         /// <param name="sshUsernameSubClaim">sshUsernameSubClaim.</param>
-        public BastionGlobalConf(List<string> allowedBastionUrls = default(List<string>), bool legacySigningAlg = default(bool), string rdpUsernameSubClaim = default(string), string sshUsernameSubClaim = default(string))
+        public BastionGlobalConf(List<string> allowedBastionUrls = default(List<string>), string allowedSshUrl = default(string), long defaultSessionTtlMinutes = default(long), bool legacySigningAlg = default(bool), string rdpUsernameSubClaim = default(string), string sshUsernameSubClaim = default(string))
         {
             this.AllowedBastionUrls = allowedBastionUrls;
+            this.AllowedSshUrl = allowedSshUrl;
+            this.DefaultSessionTtlMinutes = defaultSessionTtlMinutes;
             this.LegacySigningAlg = legacySigningAlg;
             this.RdpUsernameSubClaim = rdpUsernameSubClaim;
             this.SshUsernameSubClaim = sshUsernameSubClaim;
@@ -52,6 +56,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "allowed_bastion_urls", EmitDefaultValue = false)]
         public List<string> AllowedBastionUrls { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowedSshUrl
+        /// </summary>
+        [DataMember(Name = "allowed_ssh_url", EmitDefaultValue = false)]
+        public string AllowedSshUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DefaultSessionTtlMinutes
+        /// </summary>
+        [DataMember(Name = "default_session_ttl_minutes", EmitDefaultValue = false)]
+        public long DefaultSessionTtlMinutes { get; set; }
 
         /// <summary>
         /// Gets or Sets LegacySigningAlg
@@ -80,6 +96,8 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class BastionGlobalConf {\n");
             sb.Append("  AllowedBastionUrls: ").Append(AllowedBastionUrls).Append("\n");
+            sb.Append("  AllowedSshUrl: ").Append(AllowedSshUrl).Append("\n");
+            sb.Append("  DefaultSessionTtlMinutes: ").Append(DefaultSessionTtlMinutes).Append("\n");
             sb.Append("  LegacySigningAlg: ").Append(LegacySigningAlg).Append("\n");
             sb.Append("  RdpUsernameSubClaim: ").Append(RdpUsernameSubClaim).Append("\n");
             sb.Append("  SshUsernameSubClaim: ").Append(SshUsernameSubClaim).Append("\n");

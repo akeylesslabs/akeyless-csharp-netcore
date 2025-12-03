@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowedBastionUrls** | **List&lt;string&gt;** |  | [optional] 
+**AllowedSshUrl** | **string** |  | [optional] 
+**DefaultSessionTtlMinutes** | **long** |  | [optional] 
 **LegacySigningAlg** | **bool** |  | [optional] 
 **RdpUsernameSubClaim** | **string** |  | [optional] 
 **SshUsernameSubClaim** | **string** |  | [optional] 
