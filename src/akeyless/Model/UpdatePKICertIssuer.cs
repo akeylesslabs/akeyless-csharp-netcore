@@ -53,9 +53,9 @@ namespace akeyless.Model
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
         /// <param name="country">A comma-separated list of countries that will be set in the issued certificate.</param>
         /// <param name="createPrivateCrl">Set this to allow the issuer will expose a CRL endpoint in the Gateway.</param>
-        /// <param name="createPrivateOcsp">createPrivateOcsp.</param>
+        /// <param name="createPrivateOcsp">Set this to enable an OCSP endpoint in the Gateway and include its URL in AIA.</param>
         /// <param name="createPublicCrl">Set this to allow the cert issuer will expose a public CRL endpoint.</param>
-        /// <param name="createPublicOcsp">createPublicOcsp.</param>
+        /// <param name="createPublicOcsp">Set this to enable a public OCSP endpoint and include its URL in AIA (served by UAM and includes account id).</param>
         /// <param name="criticalKeyUsage">Mark key usage as critical [true/false] (default to &quot;true&quot;).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
@@ -75,7 +75,7 @@ namespace akeyless.Model
         /// <param name="newName">New item name.</param>
         /// <param name="notEnforceHostnames">If set, any names are allowed for CN and SANs in the certificate and not only a valid host name.</param>
         /// <param name="notRequireCn">If set, clients can request certificates without a CN.</param>
-        /// <param name="ocspTtl">ocspTtl.</param>
+        /// <param name="ocspTtl">OCSP NextUpdate window for OCSP responses (min 10m). Supports s,m,h,d suffix..</param>
         /// <param name="organizationalUnits">A comma-separated list of organizational units (OU) that will be set in the issued certificate.</param>
         /// <param name="organizations">A comma-separated list of organizations (O) that will be set in the issued certificate.</param>
         /// <param name="postalCode">A comma-separated list of postal codes that will be set in the issued certificate.</param>
@@ -246,8 +246,9 @@ namespace akeyless.Model
         public bool CreatePrivateCrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatePrivateOcsp
+        /// Set this to enable an OCSP endpoint in the Gateway and include its URL in AIA
         /// </summary>
+        /// <value>Set this to enable an OCSP endpoint in the Gateway and include its URL in AIA</value>
         [DataMember(Name = "create-private-ocsp", EmitDefaultValue = true)]
         public bool CreatePrivateOcsp { get; set; }
 
@@ -259,8 +260,9 @@ namespace akeyless.Model
         public bool CreatePublicCrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatePublicOcsp
+        /// Set this to enable a public OCSP endpoint and include its URL in AIA (served by UAM and includes account id)
         /// </summary>
+        /// <value>Set this to enable a public OCSP endpoint and include its URL in AIA (served by UAM and includes account id)</value>
         [DataMember(Name = "create-public-ocsp", EmitDefaultValue = true)]
         public bool CreatePublicOcsp { get; set; }
 
@@ -398,8 +400,9 @@ namespace akeyless.Model
         public bool NotRequireCn { get; set; }
 
         /// <summary>
-        /// Gets or Sets OcspTtl
+        /// OCSP NextUpdate window for OCSP responses (min 10m). Supports s,m,h,d suffix.
         /// </summary>
+        /// <value>OCSP NextUpdate window for OCSP responses (min 10m). Supports s,m,h,d suffix.</value>
         [DataMember(Name = "ocsp-ttl", EmitDefaultValue = false)]
         public string OcspTtl { get; set; }
 

@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AuthMethodUpdateOIDC" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
-        /// <param name="allowedClientType">allowedClientType.</param>
+        /// <param name="allowedClientType">limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension].</param>
         /// <param name="allowedRedirectUri">Allowed redirect URIs after the authentication.</param>
         /// <param name="audience">Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application.</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
@@ -112,8 +112,9 @@ namespace akeyless.Model
         public long AccessExpires { get; set; }
 
         /// <summary>
-        /// Gets or Sets AllowedClientType
+        /// limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]
         /// </summary>
+        /// <value>limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]</value>
         [DataMember(Name = "allowed-client-type", EmitDefaultValue = false)]
         public List<string> AllowedClientType { get; set; }
 

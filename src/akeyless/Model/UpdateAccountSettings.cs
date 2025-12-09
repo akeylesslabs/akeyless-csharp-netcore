@@ -36,7 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateAccountSettings" /> class.
         /// </summary>
         /// <param name="address">Address.</param>
-        /// <param name="allowedClientType">allowedClientType.</param>
+        /// <param name="allowedClientType">A default list of client types that are allowed to authenticate [cli,ui,gateway-admin,sdk,mobile,extension]..</param>
         /// <param name="allowedEmailDomains">Limits email sharing to the specified domains. Relevant only when item sharing is enabled. By default, all domains are allowed..</param>
         /// <param name="boundIps">A default list of comma-separated CIDR block that are allowed to authenticate..</param>
         /// <param name="city">City.</param>
@@ -64,7 +64,7 @@ namespace akeyless.Model
         /// <param name="jwtTtlDefault">Default ttl.</param>
         /// <param name="jwtTtlMax">Maximum ttl.</param>
         /// <param name="jwtTtlMin">Minimum ttl.</param>
-        /// <param name="lockAllowedClientType">lockAllowedClientType.</param>
+        /// <param name="lockAllowedClientType">Lock allowed-client-type setting in the account [true/false]..</param>
         /// <param name="lockBoundIps">Lock bound-ips setting globally in the account..</param>
         /// <param name="lockDefaultKey">Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false].</param>
         /// <param name="lockGwBoundIps">Lock gw-bound-ips setting in the account..</param>
@@ -148,8 +148,9 @@ namespace akeyless.Model
         public string Address { get; set; }
 
         /// <summary>
-        /// Gets or Sets AllowedClientType
+        /// A default list of client types that are allowed to authenticate [cli,ui,gateway-admin,sdk,mobile,extension].
         /// </summary>
+        /// <value>A default list of client types that are allowed to authenticate [cli,ui,gateway-admin,sdk,mobile,extension].</value>
         [DataMember(Name = "allowed-client-type", EmitDefaultValue = false)]
         public List<string> AllowedClientType { get; set; }
 
@@ -343,8 +344,9 @@ namespace akeyless.Model
         public long JwtTtlMin { get; set; }
 
         /// <summary>
-        /// Gets or Sets LockAllowedClientType
+        /// Lock allowed-client-type setting in the account [true/false].
         /// </summary>
+        /// <value>Lock allowed-client-type setting in the account [true/false].</value>
         [DataMember(Name = "lock-allowed-client-type", EmitDefaultValue = false)]
         public string LockAllowedClientType { get; set; }
 

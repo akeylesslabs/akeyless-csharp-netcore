@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateAuthMethodCert" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
-        /// <param name="allowedClientType">allowedClientType.</param>
+        /// <param name="allowedClientType">limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension].</param>
         /// <param name="allowedCors">Comma separated list of allowed CORS domains to be validated as part of the authentication flow..</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundCommonNames">A list of names. At least one must exist in the Common Name. Supports globbing..</param>
@@ -112,8 +112,9 @@ namespace akeyless.Model
         public long AccessExpires { get; set; }
 
         /// <summary>
-        /// Gets or Sets AllowedClientType
+        /// limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]
         /// </summary>
+        /// <value>limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]</value>
         [DataMember(Name = "allowed-client-type", EmitDefaultValue = false)]
         public List<string> AllowedClientType { get; set; }
 

@@ -41,7 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateAuthMethodHuawei" /> class.
         /// </summary>
         /// <param name="accessExpires">Access expiration date in Unix timestamp (select 0 for access without expiry date) (default to 0).</param>
-        /// <param name="allowedClientType">allowedClientType.</param>
+        /// <param name="allowedClientType">limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension].</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="authUrl">sts URL (default to &quot;https://iam.myhwclouds.com:443/v3&quot;).</param>
         /// <param name="boundDomainId">A list of domain IDs that the access is restricted to.</param>
@@ -102,8 +102,9 @@ namespace akeyless.Model
         public long AccessExpires { get; set; }
 
         /// <summary>
-        /// Gets or Sets AllowedClientType
+        /// limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]
         /// </summary>
+        /// <value>limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]</value>
         [DataMember(Name = "allowed-client-type", EmitDefaultValue = false)]
         public List<string> AllowedClientType { get; set; }
 

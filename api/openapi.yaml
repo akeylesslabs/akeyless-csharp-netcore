@@ -24843,6 +24843,8 @@ components:
           type: boolean
           x-go-name: CreatePrivateCrl
         create-private-ocsp:
+          description: Set this to enable an OCSP endpoint in the Gateway and include
+            its URL in AIA
           type: boolean
           x-go-name: CreatePrivateOcsp
         create-public-crl:
@@ -24851,6 +24853,8 @@ components:
           type: boolean
           x-go-name: CreatePublicCrl
         create-public-ocsp:
+          description: Set this to enable a public OCSP endpoint and include its URL
+            in AIA (served by UAM and includes account id)
           type: boolean
           x-go-name: CreatePublicOcsp
         critical-key-usage:
@@ -24941,6 +24945,8 @@ components:
           type: boolean
           x-go-name: NotRequireCN
         ocsp-ttl:
+          description: "OCSP NextUpdate window for OCSP responses (min 10m). Supports\
+            \ s,m,h,d suffix."
           type: string
           x-go-name: OcspNextUpdate
         organizational-units:
@@ -43332,6 +43338,8 @@ components:
           type: boolean
           x-go-name: CreatePrivateCrl
         create-private-ocsp:
+          description: Set this to enable an OCSP endpoint in the Gateway and include
+            its URL in AIA
           type: boolean
           x-go-name: CreatePrivateOcsp
         create-public-crl:
@@ -43340,6 +43348,8 @@ components:
           type: boolean
           x-go-name: CreatePublicCrl
         create-public-ocsp:
+          description: Set this to enable a public OCSP endpoint and include its URL
+            in AIA (served by UAM and includes account id)
           type: boolean
           x-go-name: CreatePublicOcsp
         critical-key-usage:
@@ -43434,6 +43444,8 @@ components:
           type: boolean
           x-go-name: NotRequireCN
         ocsp-ttl:
+          description: "OCSP NextUpdate window for OCSP responses (min 10m). Supports\
+            \ s,m,h,d suffix."
           type: string
           x-go-name: OcspNextUpdate
         organizational-units:
@@ -44520,6 +44532,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -44613,6 +44626,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -44760,6 +44774,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -44939,6 +44954,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -45101,6 +45117,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -45209,6 +45226,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -45364,6 +45382,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -45492,6 +45511,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -45640,6 +45660,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -45758,6 +45779,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -45863,6 +45885,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -46013,6 +46036,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -46190,6 +46214,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -46317,6 +46342,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -46516,6 +46542,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -46614,6 +46641,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -46765,6 +46793,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -46948,6 +46977,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -47112,6 +47142,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -47219,6 +47250,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -47378,6 +47410,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -47509,6 +47542,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -47660,6 +47694,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -47781,6 +47816,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -47890,6 +47926,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -48044,6 +48081,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -48217,6 +48255,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -48348,6 +48387,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -48826,6 +48866,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -48919,6 +48960,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -49075,6 +49117,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -49263,6 +49306,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -49434,6 +49478,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -49551,6 +49596,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -49715,6 +49761,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -49858,6 +49905,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -49999,6 +50047,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -50130,6 +50179,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -50295,6 +50345,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -50409,6 +50460,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -50585,6 +50637,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -50721,6 +50774,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -109419,6 +109473,8 @@ components:
           type: string
           x-go-name: Address
         allowed-client-type:
+          description: "A default list of client types that are allowed to authenticate\
+            \ [cli,ui,gateway-admin,sdk,mobile,extension]."
           items:
             type: string
           type: array
@@ -109561,6 +109617,7 @@ components:
           type: integer
           x-go-name: JwtTtlMin
         lock-allowed-client-type:
+          description: "Lock allowed-client-type setting in the account [true/false]."
           type: string
           x-go-name: AllowedClientTypeLock
         lock-bound-ips:
@@ -109804,6 +109861,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -109901,6 +109959,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -110055,6 +110114,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -110241,6 +110301,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -110417,6 +110478,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -110579,6 +110641,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -110719,6 +110782,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -110849,6 +110913,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -111012,6 +111077,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -111130,6 +111196,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -111296,6 +111363,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
@@ -111430,6 +111498,7 @@ components:
           type: integer
           x-go-name: AccessExpires
         allowed-client-type:
+          description: "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]"
           items:
             type: string
           type: array
