@@ -59,7 +59,7 @@ namespace akeyless.Model
         /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
         /// <param name="rotatorCustomCmd">Custom rotation command.</param>
-        /// <param name="rotatorType">The rotator type. options: [target/password] (required).</param>
+        /// <param name="rotatorType">The rotator type. options: [target/password/key] (required).</param>
         /// <param name="samePassword">Rotate same password for each host from the Linked Target (relevant only for Linked Target).</param>
         /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users (default to false).</param>
         /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
@@ -264,9 +264,9 @@ namespace akeyless.Model
         public string RotatorCustomCmd { get; set; }
 
         /// <summary>
-        /// The rotator type. options: [target/password]
+        /// The rotator type. options: [target/password/key]
         /// </summary>
-        /// <value>The rotator type. options: [target/password]</value>
+        /// <value>The rotator type. options: [target/password/key]</value>
         [DataMember(Name = "rotator-type", IsRequired = true, EmitDefaultValue = true)]
         public string RotatorType { get; set; }
 

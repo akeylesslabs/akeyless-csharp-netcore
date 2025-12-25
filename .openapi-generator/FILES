@@ -830,6 +830,7 @@ docs/RotatedSecretCreateLdap.md
 docs/RotatedSecretCreateMongodb.md
 docs/RotatedSecretCreateMssql.md
 docs/RotatedSecretCreateMysql.md
+docs/RotatedSecretCreateOpenAI.md
 docs/RotatedSecretCreateOracledb.md
 docs/RotatedSecretCreateOutput.md
 docs/RotatedSecretCreatePostgresql.md
@@ -857,6 +858,7 @@ docs/RotatedSecretUpdateLdap.md
 docs/RotatedSecretUpdateMongodb.md
 docs/RotatedSecretUpdateMssql.md
 docs/RotatedSecretUpdateMysql.md
+docs/RotatedSecretUpdateOpenAI.md
 docs/RotatedSecretUpdateOracledb.md
 docs/RotatedSecretUpdateOutput.md
 docs/RotatedSecretUpdatePostgresql.md
@@ -1141,6 +1143,8 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
+src/akeyless.Test/Model/RotatedSecretCreateOpenAITests.cs
+src/akeyless.Test/Model/RotatedSecretUpdateOpenAITests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1987,6 +1991,7 @@ src/akeyless/Model/RotatedSecretCreateLdap.cs
 src/akeyless/Model/RotatedSecretCreateMongodb.cs
 src/akeyless/Model/RotatedSecretCreateMssql.cs
 src/akeyless/Model/RotatedSecretCreateMysql.cs
+src/akeyless/Model/RotatedSecretCreateOpenAI.cs
 src/akeyless/Model/RotatedSecretCreateOracledb.cs
 src/akeyless/Model/RotatedSecretCreateOutput.cs
 src/akeyless/Model/RotatedSecretCreatePostgresql.cs
@@ -2014,6 +2019,7 @@ src/akeyless/Model/RotatedSecretUpdateLdap.cs
 src/akeyless/Model/RotatedSecretUpdateMongodb.cs
 src/akeyless/Model/RotatedSecretUpdateMssql.cs
 src/akeyless/Model/RotatedSecretUpdateMysql.cs
+src/akeyless/Model/RotatedSecretUpdateOpenAI.cs
 src/akeyless/Model/RotatedSecretUpdateOracledb.cs
 src/akeyless/Model/RotatedSecretUpdateOutput.cs
 src/akeyless/Model/RotatedSecretUpdatePostgresql.cs

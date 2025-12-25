@@ -37,13 +37,15 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="assocId">assocId.</param>
         /// <param name="attributes">attributes.</param>
+        /// <param name="deleteRemote">deleteRemote.</param>
         /// <param name="itemId">itemId.</param>
         /// <param name="itemName">itemName.</param>
         /// <param name="itemType">itemType.</param>
-        public ItemUSCSyncAssociation(string assocId = default(string), UscSyncInfo attributes = default(UscSyncInfo), long itemId = default(long), string itemName = default(string), string itemType = default(string))
+        public ItemUSCSyncAssociation(string assocId = default(string), UscSyncInfo attributes = default(UscSyncInfo), bool deleteRemote = default(bool), long itemId = default(long), string itemName = default(string), string itemType = default(string))
         {
             this.AssocId = assocId;
             this.Attributes = attributes;
+            this.DeleteRemote = deleteRemote;
             this.ItemId = itemId;
             this.ItemName = itemName;
             this.ItemType = itemType;
@@ -60,6 +62,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "attributes", EmitDefaultValue = false)]
         public UscSyncInfo Attributes { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeleteRemote
+        /// </summary>
+        [DataMember(Name = "delete_remote", EmitDefaultValue = true)]
+        public bool DeleteRemote { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemId
@@ -89,6 +97,7 @@ namespace akeyless.Model
             sb.Append("class ItemUSCSyncAssociation {\n");
             sb.Append("  AssocId: ").Append(AssocId).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("  DeleteRemote: ").Append(DeleteRemote).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  ItemName: ").Append(ItemName).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteRemote** | **bool** |  | [optional] 
 **JqSecretFilter** | **string** |  | [optional] 
 **LastError** | **string** |  | [optional] 
 **Namespace** | **string** |  | [optional] 

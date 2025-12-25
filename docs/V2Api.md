@@ -411,6 +411,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretCreateMongodb**](V2Api.md#rotatedsecretcreatemongodb) | **POST** /rotated-secret-create-mongodb |  |
 | [**RotatedSecretCreateMssql**](V2Api.md#rotatedsecretcreatemssql) | **POST** /rotated-secret-create-mssql |  |
 | [**RotatedSecretCreateMysql**](V2Api.md#rotatedsecretcreatemysql) | **POST** /rotated-secret-create-mysql |  |
+| [**RotatedSecretCreateOpenAI**](V2Api.md#rotatedsecretcreateopenai) | **POST** /rotated-secret-create-openai |  |
 | [**RotatedSecretCreateOracledb**](V2Api.md#rotatedsecretcreateoracledb) | **POST** /rotated-secret-create-oracledb |  |
 | [**RotatedSecretCreatePostgresql**](V2Api.md#rotatedsecretcreatepostgresql) | **POST** /rotated-secret-create-postgresql |  |
 | [**RotatedSecretCreateRedis**](V2Api.md#rotatedsecretcreateredis) | **POST** /rotated-secret-create-redis |  |
@@ -434,6 +435,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretUpdateMongodb**](V2Api.md#rotatedsecretupdatemongodb) | **POST** /rotated-secret-update-mongodb |  |
 | [**RotatedSecretUpdateMssql**](V2Api.md#rotatedsecretupdatemssql) | **POST** /rotated-secret-update-mssql |  |
 | [**RotatedSecretUpdateMysql**](V2Api.md#rotatedsecretupdatemysql) | **POST** /rotated-secret-update-mysql |  |
+| [**RotatedSecretUpdateOpenAI**](V2Api.md#rotatedsecretupdateopenai) | **POST** /rotated-secret-update-openai |  |
 | [**RotatedSecretUpdateOracledb**](V2Api.md#rotatedsecretupdateoracledb) | **POST** /rotated-secret-update-oracledb |  |
 | [**RotatedSecretUpdatePostgresql**](V2Api.md#rotatedsecretupdatepostgresql) | **POST** /rotated-secret-update-postgresql |  |
 | [**RotatedSecretUpdateRedis**](V2Api.md#rotatedsecretupdateredis) | **POST** /rotated-secret-update-redis |  |
@@ -36390,6 +36392,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="rotatedsecretcreateopenai"></a>
+# **RotatedSecretCreateOpenAI**
+> RotatedSecretCreateOutput RotatedSecretCreateOpenAI (RotatedSecretCreateOpenAI rotatedSecretCreateOpenAI)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretCreateOpenAIExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretCreateOpenAI = new RotatedSecretCreateOpenAI(); // RotatedSecretCreateOpenAI | 
+
+            try
+            {
+                RotatedSecretCreateOutput result = apiInstance.RotatedSecretCreateOpenAI(rotatedSecretCreateOpenAI);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretCreateOpenAI: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretCreateOpenAIWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretCreateOutput> response = apiInstance.RotatedSecretCreateOpenAIWithHttpInfo(rotatedSecretCreateOpenAI);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretCreateOpenAIWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretCreateOpenAI** | [**RotatedSecretCreateOpenAI**](RotatedSecretCreateOpenAI.md) |  |  |
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | rotatedSecretCreateOpenAIResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="rotatedsecretcreateoracledb"></a>
 # **RotatedSecretCreateOracledb**
 > RotatedSecretCreateOutput RotatedSecretCreateOracledb (RotatedSecretCreateOracledb rotatedSecretCreateOracledb)
@@ -38410,6 +38500,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | rotatedSecretUpdateMysqlResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="rotatedsecretupdateopenai"></a>
+# **RotatedSecretUpdateOpenAI**
+> RotatedSecretUpdateOutput RotatedSecretUpdateOpenAI (RotatedSecretUpdateOpenAI rotatedSecretUpdateOpenAI)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretUpdateOpenAIExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretUpdateOpenAI = new RotatedSecretUpdateOpenAI(); // RotatedSecretUpdateOpenAI | 
+
+            try
+            {
+                RotatedSecretUpdateOutput result = apiInstance.RotatedSecretUpdateOpenAI(rotatedSecretUpdateOpenAI);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretUpdateOpenAI: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretUpdateOpenAIWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretUpdateOutput> response = apiInstance.RotatedSecretUpdateOpenAIWithHttpInfo(rotatedSecretUpdateOpenAI);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretUpdateOpenAIWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretUpdateOpenAI** | [**RotatedSecretUpdateOpenAI**](RotatedSecretUpdateOpenAI.md) |  |  |
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | rotatedSecretUpdateOpenAIResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

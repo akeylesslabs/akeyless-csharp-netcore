@@ -38,6 +38,7 @@ namespace akeyless.Model
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
         /// <param name="advancedFilter">Filter by item name/username/website or part of it.</param>
         /// <param name="autoPagination">Retrieve all items using pagination, when disabled retrieving only first 1000 items (default to &quot;enabled&quot;).</param>
+        /// <param name="currentFolder">List only items in the current folder (excludes subfolders) (default to false).</param>
         /// <param name="filter">Filter by item name or part of it.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="minimalView">Show only basic information of the items.</param>
@@ -50,13 +51,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret, classic-key].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListItems(string accessibility = @"regular", string advancedFilter = default(string), string autoPagination = @"enabled", string filter = default(string), bool json = false, bool minimalView = default(bool), long modifiedAfter = default(long), string paginationToken = default(string), string path = default(string), bool sraOnly = false, List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public ListItems(string accessibility = @"regular", string advancedFilter = default(string), string autoPagination = @"enabled", bool currentFolder = false, string filter = default(string), bool json = false, bool minimalView = default(bool), long modifiedAfter = default(long), string paginationToken = default(string), string path = default(string), bool sraOnly = false, List<string> subTypes = default(List<string>), string tag = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             // use default value if no "accessibility" provided
             this.Accessibility = accessibility ?? @"regular";
             this.AdvancedFilter = advancedFilter;
             // use default value if no "autoPagination" provided
             this.AutoPagination = autoPagination ?? @"enabled";
+            this.CurrentFolder = currentFolder;
             this.Filter = filter;
             this.Json = json;
             this.MinimalView = minimalView;
@@ -91,6 +93,13 @@ namespace akeyless.Model
         /// <value>Retrieve all items using pagination, when disabled retrieving only first 1000 items</value>
         [DataMember(Name = "auto-pagination", EmitDefaultValue = false)]
         public string AutoPagination { get; set; }
+
+        /// <summary>
+        /// List only items in the current folder (excludes subfolders)
+        /// </summary>
+        /// <value>List only items in the current folder (excludes subfolders)</value>
+        [DataMember(Name = "current-folder", EmitDefaultValue = true)]
+        public bool CurrentFolder { get; set; }
 
         /// <summary>
         /// Filter by item name or part of it
@@ -186,6 +195,7 @@ namespace akeyless.Model
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
             sb.Append("  AdvancedFilter: ").Append(AdvancedFilter).Append("\n");
             sb.Append("  AutoPagination: ").Append(AutoPagination).Append("\n");
+            sb.Append("  CurrentFolder: ").Append(CurrentFolder).Append("\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  MinimalView: ").Append(MinimalView).Append("\n");

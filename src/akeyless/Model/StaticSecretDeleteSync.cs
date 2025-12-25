@@ -40,13 +40,14 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="StaticSecretDeleteSync" /> class.
         /// </summary>
+        /// <param name="deleteFromUsc">Delete the secret from the remote target USC as well (default to false).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Static secret name (required).</param>
         /// <param name="remoteSecretName">Remote Secret Name to disambiguate when multiple syncs exist under the same USC.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Universal Secret Connector name (required).</param>
-        public StaticSecretDeleteSync(bool json = false, string name = default(string), string remoteSecretName = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public StaticSecretDeleteSync(bool deleteFromUsc = false, bool json = false, string name = default(string), string remoteSecretName = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -60,11 +61,19 @@ namespace akeyless.Model
                 throw new ArgumentNullException("uscName is a required property for StaticSecretDeleteSync and cannot be null");
             }
             this.UscName = uscName;
+            this.DeleteFromUsc = deleteFromUsc;
             this.Json = json;
             this.RemoteSecretName = remoteSecretName;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Delete the secret from the remote target USC as well
+        /// </summary>
+        /// <value>Delete the secret from the remote target USC as well</value>
+        [DataMember(Name = "delete-from-usc", EmitDefaultValue = true)]
+        public bool DeleteFromUsc { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -116,6 +125,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class StaticSecretDeleteSync {\n");
+            sb.Append("  DeleteFromUsc: ").Append(DeleteFromUsc).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  RemoteSecretName: ").Append(RemoteSecretName).Append("\n");

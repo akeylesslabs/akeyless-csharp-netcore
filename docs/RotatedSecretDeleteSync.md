@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteFromUsc** | **bool** | Delete the secret from the remote target USC as well | [optional] [default to false]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Rotated secret name | 
 **RemoteSecretName** | **string** | Remote Secret Name to disambiguate when multiple syncs exist under the same USC | [optional] 

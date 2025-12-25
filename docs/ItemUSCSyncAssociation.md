@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | **string** |  | [optional] 
 **Attributes** | [**UscSyncInfo**](UscSyncInfo.md) |  | [optional] 
+**DeleteRemote** | **bool** |  | [optional] 
 **ItemId** | **long** |  | [optional] 
 **ItemName** | **string** |  | [optional] 
 **ItemType** | **string** |  | [optional] 

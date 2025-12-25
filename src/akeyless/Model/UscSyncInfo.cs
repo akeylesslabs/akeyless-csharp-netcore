@@ -35,19 +35,27 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UscSyncInfo" /> class.
         /// </summary>
+        /// <param name="deleteRemote">deleteRemote.</param>
         /// <param name="jqSecretFilter">jqSecretFilter.</param>
         /// <param name="lastError">lastError.</param>
         /// <param name="varNamespace">varNamespace.</param>
         /// <param name="secretId">secretId.</param>
         /// <param name="secretName">secretName.</param>
-        public UscSyncInfo(string jqSecretFilter = default(string), string lastError = default(string), string varNamespace = default(string), string secretId = default(string), string secretName = default(string))
+        public UscSyncInfo(bool deleteRemote = default(bool), string jqSecretFilter = default(string), string lastError = default(string), string varNamespace = default(string), string secretId = default(string), string secretName = default(string))
         {
+            this.DeleteRemote = deleteRemote;
             this.JqSecretFilter = jqSecretFilter;
             this.LastError = lastError;
             this.Namespace = varNamespace;
             this.SecretId = secretId;
             this.SecretName = secretName;
         }
+
+        /// <summary>
+        /// Gets or Sets DeleteRemote
+        /// </summary>
+        [DataMember(Name = "delete_remote", EmitDefaultValue = true)]
+        public bool DeleteRemote { get; set; }
 
         /// <summary>
         /// Gets or Sets JqSecretFilter
@@ -87,6 +95,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UscSyncInfo {\n");
+            sb.Append("  DeleteRemote: ").Append(DeleteRemote).Append("\n");
             sb.Append("  JqSecretFilter: ").Append(JqSecretFilter).Append("\n");
             sb.Append("  LastError: ").Append(LastError).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
