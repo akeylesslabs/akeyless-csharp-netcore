@@ -41,18 +41,18 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateRole" /> class.
         /// </summary>
         /// <param name="analyticsAccess">Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
-        /// <param name="auditAccess">Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods..</param>
+        /// <param name="auditAccess">Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_comment&quot;).</param>
-        /// <param name="eventCenterAccess">Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported.</param>
+        /// <param name="eventCenterAccess">Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported.</param>
         /// <param name="eventForwarderAccess">Allow this role to manage Event Forwarders. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
-        /// <param name="gwAnalyticsAccess">Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
+        /// <param name="gwAnalyticsAccess">Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Role name (required).</param>
         /// <param name="newComment">Deprecated - use description (default to &quot;default_comment&quot;).</param>
         /// <param name="newName">New Role name.</param>
-        /// <param name="reverseRbacAccess">Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;..</param>
-        /// <param name="sraReportsAccess">Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported..</param>
+        /// <param name="reverseRbacAccess">Allow this role to view Reverse RBAC. Supported values: &#39;scoped&#39;, &#39;all&#39;..</param>
+        /// <param name="sraReportsAccess">Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="usageReportsAccess">Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
@@ -91,9 +91,9 @@ namespace akeyless.Model
         public string AnalyticsAccess { get; set; }
 
         /// <summary>
-        /// Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
+        /// Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
         /// </summary>
-        /// <value>Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.</value>
+        /// <value>Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.</value>
         [DataMember(Name = "audit-access", EmitDefaultValue = false)]
         public string AuditAccess { get; set; }
 
@@ -112,9 +112,9 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported
+        /// Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported
         /// </summary>
-        /// <value>Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported</value>
+        /// <value>Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported</value>
         [DataMember(Name = "event-center-access", EmitDefaultValue = false)]
         public string EventCenterAccess { get; set; }
 
@@ -126,9 +126,9 @@ namespace akeyless.Model
         public string EventForwarderAccess { get; set; }
 
         /// <summary>
-        /// Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.
+        /// Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.
         /// </summary>
-        /// <value>Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.</value>
+        /// <value>Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.</value>
         [DataMember(Name = "gw-analytics-access", EmitDefaultValue = false)]
         public string GwAnalyticsAccess { get; set; }
 
@@ -161,16 +161,16 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
-        /// Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;.
+        /// Allow this role to view Reverse RBAC. Supported values: &#39;scoped&#39;, &#39;all&#39;.
         /// </summary>
-        /// <value>Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;.</value>
+        /// <value>Allow this role to view Reverse RBAC. Supported values: &#39;scoped&#39;, &#39;all&#39;.</value>
         [DataMember(Name = "reverse-rbac-access", EmitDefaultValue = false)]
         public string ReverseRbacAccess { get; set; }
 
         /// <summary>
-        /// Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported.
+        /// Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported.
         /// </summary>
-        /// <value>Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported.</value>
+        /// <value>Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported.</value>
         [DataMember(Name = "sra-reports-access", EmitDefaultValue = false)]
         public string SraReportsAccess { get; set; }
 

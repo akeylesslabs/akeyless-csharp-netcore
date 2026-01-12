@@ -71,11 +71,13 @@ namespace akeyless.Model
         /// <param name="azureKvName">Azure Key Vault Name (relevant only for Azure Key Vault migration).</param>
         /// <param name="azureSecret">Azure Key Vault secret (relevant only for Azure Key Vault migration).</param>
         /// <param name="azureTenantId">Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration).</param>
+        /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="gcpKey">Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration).</param>
         /// <param name="hashiJson">Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false] (default to &quot;true&quot;).</param>
         /// <param name="hashiNs">HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration).</param>
         /// <param name="hashiToken">HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration).</param>
         /// <param name="hashiUrl">HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration).</param>
+        /// <param name="hosts">A comma separated list of IPs, CIDR ranges, or DNS names to scan (required).</param>
         /// <param name="id">Migration ID (Can be retrieved with gateway-list-migration command).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sCaCertificate">For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method).</param>
@@ -89,6 +91,7 @@ namespace akeyless.Model
         /// <param name="k8sUsername">For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method).</param>
         /// <param name="name">Migration name.</param>
         /// <param name="newName">New migration name.</param>
+        /// <param name="portRanges">A comma separated list of port ranges Examples: \&quot;80,443\&quot; or \&quot;80,443,8080-8090\&quot; or \&quot;443\&quot; (default to &quot;443&quot;).</param>
         /// <param name="protectionKey">The name of the key that protects the classic key value (if empty, the account default key will be used).</param>
         /// <param name="siAutoRotate">Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -si-rotation-interval and - -si-rotation-hour parameters (Relevant only for Server Inventory migration).</param>
         /// <param name="siRotationHour">The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration).</param>
@@ -101,8 +104,14 @@ namespace akeyless.Model
         /// <param name="targetLocation">Target location in Akeyless for imported secrets (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string gcpKey = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), List<string> expirationEventIn = default(List<string>), string gcpKey = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string hosts = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string portRanges = @"443", string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
         {
+            // to ensure "hosts" is required (not null)
+            if (hosts == null)
+            {
+                throw new ArgumentNullException("hosts is a required property for GatewayUpdateMigration and cannot be null");
+            }
+            this.Hosts = hosts;
             // to ensure "siTargetName" is required (not null)
             if (siTargetName == null)
             {
@@ -160,6 +169,7 @@ namespace akeyless.Model
             this.AzureKvName = azureKvName;
             this.AzureSecret = azureSecret;
             this.AzureTenantId = azureTenantId;
+            this.ExpirationEventIn = expirationEventIn;
             this.GcpKey = gcpKey;
             // use default value if no "hashiJson" provided
             this.HashiJson = hashiJson ?? @"true";
@@ -179,6 +189,8 @@ namespace akeyless.Model
             this.K8sUsername = k8sUsername;
             this.Name = name;
             this.NewName = newName;
+            // use default value if no "portRanges" provided
+            this.PortRanges = portRanges ?? @"443";
             this.ProtectionKey = protectionKey;
             this.SiAutoRotate = siAutoRotate;
             this.SiRotationHour = siRotationHour;
@@ -408,6 +420,13 @@ namespace akeyless.Model
         public string AzureTenantId { get; set; }
 
         /// <summary>
+        /// How many days before the expiration of the certificate would you like to be notified.
+        /// </summary>
+        /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
+        [DataMember(Name = "expiration-event-in", EmitDefaultValue = false)]
+        public List<string> ExpirationEventIn { get; set; }
+
+        /// <summary>
         /// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration)
         /// </summary>
         /// <value>Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration)</value>
@@ -441,6 +460,13 @@ namespace akeyless.Model
         /// <value>HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration)</value>
         [DataMember(Name = "hashi-url", EmitDefaultValue = false)]
         public string HashiUrl { get; set; }
+
+        /// <summary>
+        /// A comma separated list of IPs, CIDR ranges, or DNS names to scan
+        /// </summary>
+        /// <value>A comma separated list of IPs, CIDR ranges, or DNS names to scan</value>
+        [DataMember(Name = "hosts", IsRequired = true, EmitDefaultValue = true)]
+        public string Hosts { get; set; }
 
         /// <summary>
         /// Migration ID (Can be retrieved with gateway-list-migration command)
@@ -532,6 +558,13 @@ namespace akeyless.Model
         /// <value>New migration name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
+
+        /// <summary>
+        /// A comma separated list of port ranges Examples: \&quot;80,443\&quot; or \&quot;80,443,8080-8090\&quot; or \&quot;443\&quot;
+        /// </summary>
+        /// <value>A comma separated list of port ranges Examples: \&quot;80,443\&quot; or \&quot;80,443,8080-8090\&quot; or \&quot;443\&quot;</value>
+        [DataMember(Name = "port-ranges", EmitDefaultValue = false)]
+        public string PortRanges { get; set; }
 
         /// <summary>
         /// The name of the key that protects the classic key value (if empty, the account default key will be used)
@@ -656,11 +689,13 @@ namespace akeyless.Model
             sb.Append("  AzureKvName: ").Append(AzureKvName).Append("\n");
             sb.Append("  AzureSecret: ").Append(AzureSecret).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
+            sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  HashiJson: ").Append(HashiJson).Append("\n");
             sb.Append("  HashiNs: ").Append(HashiNs).Append("\n");
             sb.Append("  HashiToken: ").Append(HashiToken).Append("\n");
             sb.Append("  HashiUrl: ").Append(HashiUrl).Append("\n");
+            sb.Append("  Hosts: ").Append(Hosts).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  K8sCaCertificate: ").Append(K8sCaCertificate).Append("\n");
@@ -674,6 +709,7 @@ namespace akeyless.Model
             sb.Append("  K8sUsername: ").Append(K8sUsername).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  PortRanges: ").Append(PortRanges).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  SiAutoRotate: ").Append(SiAutoRotate).Append("\n");
             sb.Append("  SiRotationHour: ").Append(SiRotationHour).Append("\n");

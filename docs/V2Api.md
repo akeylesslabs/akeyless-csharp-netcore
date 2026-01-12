@@ -45,6 +45,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**AuthMethodUpdateSAML**](V2Api.md#authmethodupdatesaml) | **POST** /auth-method-update-saml |  |
 | [**AuthMethodUpdateUniversalIdentity**](V2Api.md#authmethodupdateuniversalidentity) | **POST** /auth-method-update-universal-identity |  |
 | [**CalcPasswordSecurityInfo**](V2Api.md#calcpasswordsecurityinfo) | **POST** /calc-password-security-info |  |
+| [**CertificateDiscovery**](V2Api.md#certificatediscovery) | **POST** /certificate-discovery |  |
 | [**ChangeAdminAccountPassword**](V2Api.md#changeadminaccountpassword) | **POST** /change-admin-account-password |  |
 | [**Configure**](V2Api.md#configure) | **POST** /configure |  |
 | [**Connect**](V2Api.md#connect) | **POST** /connect |  |
@@ -4213,6 +4214,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | calcPasswordSecurityInfoResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="certificatediscovery"></a>
+# **CertificateDiscovery**
+> CertificateDiscoveryOutput CertificateDiscovery (CertificateDiscovery certificateDiscovery)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CertificateDiscoveryExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var certificateDiscovery = new CertificateDiscovery(); // CertificateDiscovery | 
+
+            try
+            {
+                CertificateDiscoveryOutput result = apiInstance.CertificateDiscovery(certificateDiscovery);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CertificateDiscovery: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CertificateDiscoveryWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CertificateDiscoveryOutput> response = apiInstance.CertificateDiscoveryWithHttpInfo(certificateDiscovery);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CertificateDiscoveryWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **certificateDiscovery** | [**CertificateDiscovery**](CertificateDiscovery.md) |  |  |
+
+### Return type
+
+[**CertificateDiscoveryOutput**](CertificateDiscoveryOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | CertificateDiscoveryResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

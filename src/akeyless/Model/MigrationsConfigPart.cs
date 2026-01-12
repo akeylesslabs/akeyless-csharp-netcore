@@ -38,17 +38,19 @@ namespace akeyless.Model
         /// <param name="activeDirectoryMigrations">activeDirectoryMigrations.</param>
         /// <param name="awsSecretsMigrations">awsSecretsMigrations.</param>
         /// <param name="azureKvMigrations">azureKvMigrations.</param>
+        /// <param name="certificateMigrations">certificateMigrations.</param>
         /// <param name="gcpSecretsMigrations">gcpSecretsMigrations.</param>
         /// <param name="hashiMigrations">hashiMigrations.</param>
         /// <param name="k8sMigrations">k8sMigrations.</param>
         /// <param name="mockMigrations">mockMigrations.</param>
         /// <param name="onePasswordMigrations">onePasswordMigrations.</param>
         /// <param name="serverInventoryMigrations">serverInventoryMigrations.</param>
-        public MigrationsConfigPart(List<ActiveDirectoryMigration> activeDirectoryMigrations = default(List<ActiveDirectoryMigration>), List<AWSSecretsMigration> awsSecretsMigrations = default(List<AWSSecretsMigration>), List<AzureKeyVaultMigration> azureKvMigrations = default(List<AzureKeyVaultMigration>), List<GCPSecretsMigration> gcpSecretsMigrations = default(List<GCPSecretsMigration>), List<HashiMigration> hashiMigrations = default(List<HashiMigration>), List<K8SMigration> k8sMigrations = default(List<K8SMigration>), List<MockMigration> mockMigrations = default(List<MockMigration>), List<OnePasswordMigration> onePasswordMigrations = default(List<OnePasswordMigration>), List<ServerInventoryMigration> serverInventoryMigrations = default(List<ServerInventoryMigration>))
+        public MigrationsConfigPart(List<ActiveDirectoryMigration> activeDirectoryMigrations = default(List<ActiveDirectoryMigration>), List<AWSSecretsMigration> awsSecretsMigrations = default(List<AWSSecretsMigration>), List<AzureKeyVaultMigration> azureKvMigrations = default(List<AzureKeyVaultMigration>), List<CertificateMigration> certificateMigrations = default(List<CertificateMigration>), List<GCPSecretsMigration> gcpSecretsMigrations = default(List<GCPSecretsMigration>), List<HashiMigration> hashiMigrations = default(List<HashiMigration>), List<K8SMigration> k8sMigrations = default(List<K8SMigration>), List<MockMigration> mockMigrations = default(List<MockMigration>), List<OnePasswordMigration> onePasswordMigrations = default(List<OnePasswordMigration>), List<ServerInventoryMigration> serverInventoryMigrations = default(List<ServerInventoryMigration>))
         {
             this.ActiveDirectoryMigrations = activeDirectoryMigrations;
             this.AwsSecretsMigrations = awsSecretsMigrations;
             this.AzureKvMigrations = azureKvMigrations;
+            this.CertificateMigrations = certificateMigrations;
             this.GcpSecretsMigrations = gcpSecretsMigrations;
             this.HashiMigrations = hashiMigrations;
             this.K8sMigrations = k8sMigrations;
@@ -74,6 +76,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "azure_kv_migrations", EmitDefaultValue = false)]
         public List<AzureKeyVaultMigration> AzureKvMigrations { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificateMigrations
+        /// </summary>
+        [DataMember(Name = "certificate_migrations", EmitDefaultValue = false)]
+        public List<CertificateMigration> CertificateMigrations { get; set; }
 
         /// <summary>
         /// Gets or Sets GcpSecretsMigrations
@@ -122,6 +130,7 @@ namespace akeyless.Model
             sb.Append("  ActiveDirectoryMigrations: ").Append(ActiveDirectoryMigrations).Append("\n");
             sb.Append("  AwsSecretsMigrations: ").Append(AwsSecretsMigrations).Append("\n");
             sb.Append("  AzureKvMigrations: ").Append(AzureKvMigrations).Append("\n");
+            sb.Append("  CertificateMigrations: ").Append(CertificateMigrations).Append("\n");
             sb.Append("  GcpSecretsMigrations: ").Append(GcpSecretsMigrations).Append("\n");
             sb.Append("  HashiMigrations: ").Append(HashiMigrations).Append("\n");
             sb.Append("  K8sMigrations: ").Append(K8sMigrations).Append("\n");

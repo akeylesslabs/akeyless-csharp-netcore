@@ -1133,6 +1133,33 @@ paths:
             field.
       tags:
       - v2
+  /certificate-discovery:
+    post:
+      operationId: CertificateDiscovery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificateDiscovery'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateDiscoveryOutput'
+          description: CertificateDiscoveryResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /change-admin-account-password:
     post:
       operationId: changeAdminAccountPassword
@@ -15968,6 +15995,12 @@ components:
       required: true
       x-go-name: Body
   responses:
+    CertificateDiscoveryResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CertificateDiscoveryOutput'
+      description: CertificateDiscoveryResponse wraps response body.
     CreateClassicKeyResponse:
       content:
         application/json:
@@ -20226,7 +20259,7 @@ components:
           ldap_bind_dn: ldap_bind_dn
           ldap_url: ldap_url
           ldap_user_attr: ldap_user_attr
-        version: 8
+        version: 3
         producers:
           producers:
           - init: true
@@ -20316,15 +20349,15 @@ components:
               new_name: new_name
               status: status
             payload:
-              auto_rotate_rotation_hour: 4
+              auto_rotate_rotation_hour: 9
               auto_rotate: true
               enable_rdp_sra: true
               server_targets_path_template: server_targets_path_template
               users_ignore_list:
                 key: true
-              migration_target_id: 5
+              migration_target_id: 6
               users_rotated_secrets_path_template: users_rotated_secrets_path_template
-              auto_rotate_interval_in_days: 1
+              auto_rotate_interval_in_days: 9
               user_groups:
               - user_groups
               - user_groups
@@ -20338,15 +20371,15 @@ components:
               new_name: new_name
               status: status
             payload:
-              auto_rotate_rotation_hour: 4
+              auto_rotate_rotation_hour: 9
               auto_rotate: true
               enable_rdp_sra: true
               server_targets_path_template: server_targets_path_template
               users_ignore_list:
                 key: true
-              migration_target_id: 5
+              migration_target_id: 6
               users_rotated_secrets_path_template: users_rotated_secrets_path_template
-              auto_rotate_interval_in_days: 1
+              auto_rotate_interval_in_days: 9
               user_groups:
               - user_groups
               - user_groups
@@ -20391,13 +20424,13 @@ components:
               status: status
             payload:
               client_key:
-              - 7
-              - 7
+              - 5
+              - 5
               server: server
               password: password
               client_cert:
-              - 6
-              - 6
+              - 4
+              - 4
               namespace: namespace
               ca:
               - 1
@@ -20416,13 +20449,13 @@ components:
               status: status
             payload:
               client_key:
-              - 7
-              - 7
+              - 5
+              - 5
               server: server
               password: password
               client_cert:
-              - 6
-              - 6
+              - 4
+              - 4
               namespace: namespace
               ca:
               - 1
@@ -20430,6 +20463,53 @@ components:
               skip_system: true
               token: token
               username: username
+          certificate_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
+              folder: folder
+              max_dial_timeout: 1
+              max_scan_duration: 6
+              max_workers: 7
+              targets:
+              - host: host
+                portRanges: portRanges
+              - host: host
+                portRanges: portRanges
+              port_ranges: port_ranges
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
+              folder: folder
+              max_dial_timeout: 1
+              max_scan_duration: 6
+              max_workers: 7
+              targets:
+              - host: host
+                portRanges: portRanges
+              - host: host
+                portRanges: portRanges
+              port_ranges: port_ranges
           aws_secrets_migrations:
           - general:
               prefix: prefix
@@ -20799,12 +20879,12 @@ components:
           rotators:
           - rotation_interval: 9
             name: name
-            id: 9
+            id: 8
             last_error: last_error
             type: type
           - rotation_interval: 9
             name: name
-            id: 9
+            id: 8
             last_error: last_error
             type: type
       properties:
@@ -23425,6 +23505,96 @@ components:
           x-go-name: RenewBeforeExpirationInDays
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    CertificateDiscovery:
+      description: CertificateDiscovery is a command that discovery certificates
+      example:
+        port-ranges: "443"
+        target-location: target-location
+        debug: false
+        protection-key: protection-key
+        hosts: hosts
+        json: false
+        expiration-event-in:
+        - expiration-event-in
+        - expiration-event-in
+        uid-token: uid-token
+        token: token
+      properties:
+        debug:
+          default: false
+          description: Debug mode
+          type: boolean
+          x-go-name: Debug
+        expiration-event-in:
+          description: How many days before the expiration of the certificate would
+            you like to be notified.
+          items:
+            type: string
+          type: array
+          x-go-name: ExpirationEventsInDays
+        hosts:
+          description: "A comma separated list of IPs, CIDR ranges, or DNS names to\
+            \ discovery"
+          type: string
+          x-go-name: Hosts
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        port-ranges:
+          default: "443"
+          description: |-
+            A comma separated list of port ranges
+            Examples: "80,443" or "80,443,8080-8090" or "443"
+          type: string
+          x-go-name: PortRanges
+        protection-key:
+          description: The name of the key that protects the certificate value
+          type: string
+          x-go-name: ProtectionKey
+        target-location:
+          description: The folder where the results will be saved
+          type: string
+          x-go-name: TargetFolder
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - hosts
+      - target-location
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    CertificateDiscoveryOutput:
+      example:
+        results:
+          CountSubdomains: 5
+          CountHosts: 1
+          CountFailed: 6
+          CountExisting: 0
+          Error: Error
+          CountNew: 5
+          FailedTargets:
+          - port: 2
+            host: host
+            error: error
+          - port: 2
+            host: host
+            error: error
+          ItemNames:
+          - ItemNames
+          - ItemNames
+      properties:
+        results:
+          $ref: '#/components/schemas/ScanResults'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     CertificateExpirationEvent:
       example:
         seconds_before: 1
@@ -23768,6 +23938,97 @@ components:
         ssh_cert_issuer_details:
           $ref: '#/components/schemas/SSHCertificateIssueDetails'
       title: CertificateIssueInfo defines Certificate Issuer info.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    CertificateMigration:
+      example:
+        general:
+          prefix: prefix
+          name: name
+          id: id
+          type: type
+          protection_key: protection_key
+          last_migration: last_migration
+          new_name: new_name
+          status: status
+        payload:
+          expiration_events:
+          - seconds_before: 1
+          - seconds_before: 1
+          folder: folder
+          max_dial_timeout: 1
+          max_scan_duration: 6
+          max_workers: 7
+          targets:
+          - host: host
+            portRanges: portRanges
+          - host: host
+            portRanges: portRanges
+          port_ranges: port_ranges
+      properties:
+        general:
+          $ref: '#/components/schemas/MigrationGeneral'
+        payload:
+          $ref: '#/components/schemas/CertificatePayload'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    CertificatePayload:
+      example:
+        expiration_events:
+        - seconds_before: 1
+        - seconds_before: 1
+        folder: folder
+        max_dial_timeout: 1
+        max_scan_duration: 6
+        max_workers: 7
+        targets:
+        - host: host
+          portRanges: portRanges
+        - host: host
+          portRanges: portRanges
+        port_ranges: port_ranges
+      properties:
+        expiration_events:
+          items:
+            $ref: '#/components/schemas/CertificateExpirationEvent'
+          type: array
+          x-go-name: ExpirationEvents
+        folder:
+          type: string
+          x-go-name: Folder
+        max_dial_timeout:
+          format: int64
+          type: integer
+          x-go-name: MaxDialTimeout
+        max_scan_duration:
+          format: int64
+          type: integer
+          x-go-name: MaxScanDuration
+        max_workers:
+          format: int64
+          type: integer
+          x-go-name: MaxWorkers
+        port_ranges:
+          type: string
+          x-go-name: PortRanges
+        targets:
+          items:
+            $ref: '#/components/schemas/CertificateScanTarget'
+          type: array
+          x-go-name: Targets
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    CertificateScanTarget:
+      example:
+        host: host
+        portRanges: portRanges
+      properties:
+        host:
+          type: string
+          x-go-name: Host
+        portRanges:
+          type: string
+          x-go-name: PortRanges
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     CertificateStatus:
@@ -31858,13 +32119,13 @@ components:
           status: status
         payload:
           client_key:
-          - 7
-          - 7
+          - 5
+          - 5
           server: server
           password: password
           client_cert:
-          - 6
-          - 6
+          - 4
+          - 4
           namespace: namespace
           ca:
           - 1
@@ -31882,13 +32143,13 @@ components:
     K8SPayload:
       example:
         client_key:
-        - 7
-        - 7
+        - 5
+        - 5
         server: server
         password: password
         client_cert:
-        - 6
-        - 6
+        - 4
+        - 4
         namespace: namespace
         ca:
         - 1
@@ -38356,15 +38617,15 @@ components:
             new_name: new_name
             status: status
           payload:
-            auto_rotate_rotation_hour: 4
+            auto_rotate_rotation_hour: 9
             auto_rotate: true
             enable_rdp_sra: true
             server_targets_path_template: server_targets_path_template
             users_ignore_list:
               key: true
-            migration_target_id: 5
+            migration_target_id: 6
             users_rotated_secrets_path_template: users_rotated_secrets_path_template
-            auto_rotate_interval_in_days: 1
+            auto_rotate_interval_in_days: 9
             user_groups:
             - user_groups
             - user_groups
@@ -38378,15 +38639,15 @@ components:
             new_name: new_name
             status: status
           payload:
-            auto_rotate_rotation_hour: 4
+            auto_rotate_rotation_hour: 9
             auto_rotate: true
             enable_rdp_sra: true
             server_targets_path_template: server_targets_path_template
             users_ignore_list:
               key: true
-            migration_target_id: 5
+            migration_target_id: 6
             users_rotated_secrets_path_template: users_rotated_secrets_path_template
-            auto_rotate_interval_in_days: 1
+            auto_rotate_interval_in_days: 9
             user_groups:
             - user_groups
             - user_groups
@@ -38431,13 +38692,13 @@ components:
             status: status
           payload:
             client_key:
-            - 7
-            - 7
+            - 5
+            - 5
             server: server
             password: password
             client_cert:
-            - 6
-            - 6
+            - 4
+            - 4
             namespace: namespace
             ca:
             - 1
@@ -38456,13 +38717,13 @@ components:
             status: status
           payload:
             client_key:
-            - 7
-            - 7
+            - 5
+            - 5
             server: server
             password: password
             client_cert:
-            - 6
-            - 6
+            - 4
+            - 4
             namespace: namespace
             ca:
             - 1
@@ -38470,6 +38731,53 @@ components:
             skip_system: true
             token: token
             username: username
+        certificate_migrations:
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            type: type
+            protection_key: protection_key
+            last_migration: last_migration
+            new_name: new_name
+            status: status
+          payload:
+            expiration_events:
+            - seconds_before: 1
+            - seconds_before: 1
+            folder: folder
+            max_dial_timeout: 1
+            max_scan_duration: 6
+            max_workers: 7
+            targets:
+            - host: host
+              portRanges: portRanges
+            - host: host
+              portRanges: portRanges
+            port_ranges: port_ranges
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            type: type
+            protection_key: protection_key
+            last_migration: last_migration
+            new_name: new_name
+            status: status
+          payload:
+            expiration_events:
+            - seconds_before: 1
+            - seconds_before: 1
+            folder: folder
+            max_dial_timeout: 1
+            max_scan_duration: 6
+            max_workers: 7
+            targets:
+            - host: host
+              portRanges: portRanges
+            - host: host
+              portRanges: portRanges
+            port_ranges: port_ranges
         aws_secrets_migrations:
         - general:
             prefix: prefix
@@ -38675,6 +38983,11 @@ components:
             $ref: '#/components/schemas/AzureKeyVaultMigration'
           type: array
           x-go-name: AzureKVMigrations
+        certificate_migrations:
+          items:
+            $ref: '#/components/schemas/CertificateMigration'
+          type: array
+          x-go-name: CertificateMigrations
         gcp_secrets_migrations:
           items:
             $ref: '#/components/schemas/GCPSecretsMigration'
@@ -41055,7 +41368,7 @@ components:
       example:
         rotation_interval: 9
         name: name
-        id: 9
+        id: 8
         last_error: last_error
         type: type
       properties:
@@ -41091,12 +41404,12 @@ components:
         rotators:
         - rotation_interval: 9
           name: name
-          id: 9
+          id: 8
           last_error: last_error
           type: type
         - rotation_interval: 9
           name: name
-          id: 9
+          id: 8
           last_error: last_error
           type: type
       properties:
@@ -41419,6 +41732,54 @@ components:
           x-go-name: Username
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    ScanResults:
+      description: ScanResults contains detailed results from a certificate scan
+      example:
+        CountSubdomains: 5
+        CountHosts: 1
+        CountFailed: 6
+        CountExisting: 0
+        Error: Error
+        CountNew: 5
+        FailedTargets:
+        - port: 2
+          host: host
+          error: error
+        - port: 2
+          host: host
+          error: error
+        ItemNames:
+        - ItemNames
+        - ItemNames
+      properties:
+        CountExisting:
+          format: int64
+          type: integer
+        CountFailed:
+          format: int64
+          type: integer
+        CountHosts:
+          format: int64
+          type: integer
+        CountNew:
+          format: int64
+          type: integer
+        CountSubdomains:
+          format: int64
+          type: integer
+        Error:
+          type: string
+          x-go-type: error
+        FailedTargets:
+          items:
+            $ref: '#/components/schemas/TargetError'
+          type: array
+        ItemNames:
+          items:
+            type: string
+          type: array
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/certificate/certificate_discovery/scanner/results
     SecretInfo:
       example:
         secret_id: secret_id
@@ -41748,15 +42109,15 @@ components:
           new_name: new_name
           status: status
         payload:
-          auto_rotate_rotation_hour: 4
+          auto_rotate_rotation_hour: 9
           auto_rotate: true
           enable_rdp_sra: true
           server_targets_path_template: server_targets_path_template
           users_ignore_list:
             key: true
-          migration_target_id: 5
+          migration_target_id: 6
           users_rotated_secrets_path_template: users_rotated_secrets_path_template
-          auto_rotate_interval_in_days: 1
+          auto_rotate_interval_in_days: 9
           user_groups:
           - user_groups
           - user_groups
@@ -41769,15 +42130,15 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     ServerInventoryPayload:
       example:
-        auto_rotate_rotation_hour: 4
+        auto_rotate_rotation_hour: 9
         auto_rotate: true
         enable_rdp_sra: true
         server_targets_path_template: server_targets_path_template
         users_ignore_list:
           key: true
-        migration_target_id: 5
+        migration_target_id: 6
         users_rotated_secrets_path_template: users_rotated_secrets_path_template
-        auto_rotate_interval_in_days: 1
+        auto_rotate_interval_in_days: 9
         user_groups:
         - user_groups
         - user_groups
@@ -42593,6 +42954,25 @@ components:
     TargetAuthType:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    TargetError:
+      description: TargetError represents a failed target scan
+      example:
+        port: 2
+        host: host
+        error: error
+      properties:
+        error:
+          type: string
+          x-go-name: Error
+        host:
+          type: string
+          x-go-name: Host
+        port:
+          format: int64
+          type: integer
+          x-go-name: Port
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/certificate/certificate_discovery/scanner/results
     TargetFormatType:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
@@ -53062,7 +53442,7 @@ components:
           x-go-name: AnalyticsAccess
         audit-access:
           description: |-
-            Allow this role to view audit logs. Currently only 'none', 'own' and 'all'
+            Allow this role to view audit logs. Currently only 'none', 'own', 'scoped' and 'all'
             values are supported, allowing associated auth methods to view audit
             logs produced by the same auth methods.
           type: string
@@ -53081,7 +53461,7 @@ components:
           x-go-name: Description
         event-center-access:
           description: |-
-            Allow this role to view Event Center. Currently only 'none', 'own' and 'all'
+            Allow this role to view Event Center. Currently only 'none', 'scoped' and 'all'
             values are supported
           type: string
           x-go-name: EventCenterAccess
@@ -53098,7 +53478,7 @@ components:
           x-go-name: EventForwardersName
         gw-analytics-access:
           description: |-
-            Allow this role to view gw analytics. Currently only 'none', 'own', 'all'
+            Allow this role to view gw analytics. Currently only 'none', 'scoped', 'all'
             values are supported, allowing associated auth methods to view reports
             produced by the same auth methods.
           type: string
@@ -53113,13 +53493,13 @@ components:
           type: string
           x-go-name: RoleName
         reverse-rbac-access:
-          description: "Allow this role to view Reverse RBAC. Supported values: 'own',\
+          description: "Allow this role to view Reverse RBAC. Supported values: 'scoped',\
             \ 'all'."
           type: string
           x-go-name: ReverseRbacAccess
         sra-reports-access:
           description: |-
-            Allow this role to view SRA Clusters. Currently only 'none', 'own',
+            Allow this role to view SRA Clusters. Currently only 'none', 'scoped',
             'all' values are supported.
           type: string
           x-go-name: SRAReportsAccess
@@ -65915,6 +66295,13 @@ components:
             Vault migration)
           type: string
           x-go-name: AzureTenant
+        expiration-event-in:
+          description: How many days before the expiration of the certificate would
+            you like to be notified.
+          items:
+            type: string
+          type: array
+          x-go-name: ExpirationEventsInDays
         gcp-key:
           description: "Base64-encoded GCP Service Account private key text with sufficient\
             \ permissions to Secrets Manager, Minimum required permission is Secret\
@@ -65949,6 +66336,11 @@ components:
             \ only for HasiCorp Vault migration)"
           type: string
           x-go-name: HashiUrl
+        hosts:
+          description: "A comma separated list of IPs, CIDR ranges, or DNS names to\
+            \ scan"
+          type: string
+          x-go-name: Hosts
         json:
           default: false
           description: Set output format to JSON
@@ -66017,6 +66409,13 @@ components:
           description: Migration name
           type: string
           x-go-name: MigrationName
+        port-ranges:
+          default: "443"
+          description: |-
+            A comma separated list of port ranges
+            Examples: "80,443" or "80,443,8080-8090" or "443"
+          type: string
+          x-go-name: PortRanges
         protection-key:
           description: "The name of the key that protects the classic key value (if\
             \ empty, the account default key will be used)"
@@ -66080,7 +66479,7 @@ components:
           type: string
           x-go-name: Profile
         type:
-          description: Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory)
+          description: Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory/server_inventory/certificate)
           type: string
           x-go-name: MigrationType
         uid-token:
@@ -66089,6 +66488,7 @@ components:
           type: string
           x-go-name: UIDToken
       required:
+      - hosts
       - name
       - si-target-name
       - si-users-path-template
@@ -80056,15 +80456,15 @@ components:
               new_name: new_name
               status: status
             payload:
-              auto_rotate_rotation_hour: 4
+              auto_rotate_rotation_hour: 9
               auto_rotate: true
               enable_rdp_sra: true
               server_targets_path_template: server_targets_path_template
               users_ignore_list:
                 key: true
-              migration_target_id: 5
+              migration_target_id: 6
               users_rotated_secrets_path_template: users_rotated_secrets_path_template
-              auto_rotate_interval_in_days: 1
+              auto_rotate_interval_in_days: 9
               user_groups:
               - user_groups
               - user_groups
@@ -80078,15 +80478,15 @@ components:
               new_name: new_name
               status: status
             payload:
-              auto_rotate_rotation_hour: 4
+              auto_rotate_rotation_hour: 9
               auto_rotate: true
               enable_rdp_sra: true
               server_targets_path_template: server_targets_path_template
               users_ignore_list:
                 key: true
-              migration_target_id: 5
+              migration_target_id: 6
               users_rotated_secrets_path_template: users_rotated_secrets_path_template
-              auto_rotate_interval_in_days: 1
+              auto_rotate_interval_in_days: 9
               user_groups:
               - user_groups
               - user_groups
@@ -80131,13 +80531,13 @@ components:
               status: status
             payload:
               client_key:
-              - 7
-              - 7
+              - 5
+              - 5
               server: server
               password: password
               client_cert:
-              - 6
-              - 6
+              - 4
+              - 4
               namespace: namespace
               ca:
               - 1
@@ -80156,13 +80556,13 @@ components:
               status: status
             payload:
               client_key:
-              - 7
-              - 7
+              - 5
+              - 5
               server: server
               password: password
               client_cert:
-              - 6
-              - 6
+              - 4
+              - 4
               namespace: namespace
               ca:
               - 1
@@ -80170,6 +80570,53 @@ components:
               skip_system: true
               token: token
               username: username
+          certificate_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
+              folder: folder
+              max_dial_timeout: 1
+              max_scan_duration: 6
+              max_workers: 7
+              targets:
+              - host: host
+                portRanges: portRanges
+              - host: host
+                portRanges: portRanges
+              port_ranges: port_ranges
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
+              folder: folder
+              max_dial_timeout: 1
+              max_scan_duration: 6
+              max_workers: 7
+              targets:
+              - host: host
+                portRanges: portRanges
+              - host: host
+                portRanges: portRanges
+              port_ranges: port_ranges
           aws_secrets_migrations:
           - general:
               prefix: prefix
@@ -80411,15 +80858,15 @@ components:
               new_name: new_name
               status: status
             payload:
-              auto_rotate_rotation_hour: 4
+              auto_rotate_rotation_hour: 9
               auto_rotate: true
               enable_rdp_sra: true
               server_targets_path_template: server_targets_path_template
               users_ignore_list:
                 key: true
-              migration_target_id: 5
+              migration_target_id: 6
               users_rotated_secrets_path_template: users_rotated_secrets_path_template
-              auto_rotate_interval_in_days: 1
+              auto_rotate_interval_in_days: 9
               user_groups:
               - user_groups
               - user_groups
@@ -80433,15 +80880,15 @@ components:
               new_name: new_name
               status: status
             payload:
-              auto_rotate_rotation_hour: 4
+              auto_rotate_rotation_hour: 9
               auto_rotate: true
               enable_rdp_sra: true
               server_targets_path_template: server_targets_path_template
               users_ignore_list:
                 key: true
-              migration_target_id: 5
+              migration_target_id: 6
               users_rotated_secrets_path_template: users_rotated_secrets_path_template
-              auto_rotate_interval_in_days: 1
+              auto_rotate_interval_in_days: 9
               user_groups:
               - user_groups
               - user_groups
@@ -80486,13 +80933,13 @@ components:
               status: status
             payload:
               client_key:
-              - 7
-              - 7
+              - 5
+              - 5
               server: server
               password: password
               client_cert:
-              - 6
-              - 6
+              - 4
+              - 4
               namespace: namespace
               ca:
               - 1
@@ -80511,13 +80958,13 @@ components:
               status: status
             payload:
               client_key:
-              - 7
-              - 7
+              - 5
+              - 5
               server: server
               password: password
               client_cert:
-              - 6
-              - 6
+              - 4
+              - 4
               namespace: namespace
               ca:
               - 1
@@ -80525,6 +80972,53 @@ components:
               skip_system: true
               token: token
               username: username
+          certificate_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
+              folder: folder
+              max_dial_timeout: 1
+              max_scan_duration: 6
+              max_workers: 7
+              targets:
+              - host: host
+                portRanges: portRanges
+              - host: host
+                portRanges: portRanges
+              port_ranges: port_ranges
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
+              folder: folder
+              max_dial_timeout: 1
+              max_scan_duration: 6
+              max_workers: 7
+              targets:
+              - host: host
+                portRanges: portRanges
+              - host: host
+                portRanges: portRanges
+              port_ranges: port_ranges
           aws_secrets_migrations:
           - general:
               prefix: prefix
@@ -82294,6 +82788,13 @@ components:
             Vault migration)
           type: string
           x-go-name: AzureTenant
+        expiration-event-in:
+          description: How many days before the expiration of the certificate would
+            you like to be notified.
+          items:
+            type: string
+          type: array
+          x-go-name: ExpirationEventsInDays
         gcp-key:
           description: "Base64-encoded GCP Service Account private key text with sufficient\
             \ permissions to Secrets Manager, Minimum required permission is Secret\
@@ -82328,6 +82829,11 @@ components:
             \ only for HasiCorp Vault migration)"
           type: string
           x-go-name: HashiUrl
+        hosts:
+          description: "A comma separated list of IPs, CIDR ranges, or DNS names to\
+            \ scan"
+          type: string
+          x-go-name: Hosts
         id:
           description: Migration ID (Can be retrieved with gateway-list-migration
             command)
@@ -82405,6 +82911,13 @@ components:
           description: New migration name
           type: string
           x-go-name: NewMigrationNameV2
+        port-ranges:
+          default: "443"
+          description: |-
+            A comma separated list of port ranges
+            Examples: "80,443" or "80,443,8080-8090" or "443"
+          type: string
+          x-go-name: PortRanges
         protection-key:
           description: "The name of the key that protects the classic key value (if\
             \ empty, the account default key will be used)"
@@ -82473,6 +82986,7 @@ components:
           type: string
           x-go-name: UIDToken
       required:
+      - hosts
       - si-target-name
       - si-users-path-template
       - target-location
@@ -114323,7 +114837,7 @@ components:
           x-go-name: AnalyticsAccess
         audit-access:
           description: |-
-            Allow this role to view audit logs. Currently only 'none', 'own' and 'all'
+            Allow this role to view audit logs. Currently only 'none', 'own', 'scoped' and 'all'
             values are supported, allowing associated auth methods to view audit
             logs produced by the same auth methods.
           type: string
@@ -114339,7 +114853,7 @@ components:
           x-go-name: Description
         event-center-access:
           description: |-
-            Allow this role to view Event Center. Currently only 'none', 'own' and 'all'
+            Allow this role to view Event Center. Currently only 'none', 'scoped' and 'all'
             values are supported
           type: string
           x-go-name: EventCenterAccess
@@ -114350,7 +114864,7 @@ components:
           x-go-name: EventForwardersAccess
         gw-analytics-access:
           description: |-
-            Allow this role to view gw analytics. Currently only 'none', 'own', 'all'
+            Allow this role to view gw analytics. Currently only 'none', 'scoped', 'all'
             values are supported, allowing associated auth methods to view reports
             produced by the same auth methods.
           type: string
@@ -114374,13 +114888,13 @@ components:
           type: string
           x-go-name: NewName
         reverse-rbac-access:
-          description: "Allow this role to view Reverse RBAC. Supported values: 'own',\
+          description: "Allow this role to view Reverse RBAC. Supported values: 'scoped',\
             \ 'all'."
           type: string
           x-go-name: ReverseRbacAccess
         sra-reports-access:
           description: |-
-            Allow this role to view SRA Clusters. Currently only 'none', 'own',
+            Allow this role to view SRA Clusters. Currently only 'none', 'scoped',
             'all' values are supported.
           type: string
           x-go-name: SRAReportsAccess
@@ -115862,6 +116376,11 @@ components:
       description: uscDelete is a command that deletes a secret from a Universal Secrets
         Connector
       properties:
+        force-delete:
+          description: Force delete objects that are soft deleted by default (relavent
+            only for Azure target)
+          type: boolean
+          x-go-name: ForceDelete
         json:
           default: false
           description: Set output format to JSON

@@ -40,13 +40,14 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UscDelete" /> class.
         /// </summary>
+        /// <param name="forceDelete">Force delete objects that are soft deleted by default (relavent only for Azure target).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="varNamespace">The namespace (relevant for Hashi vault target).</param>
         /// <param name="secretId">The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
-        public UscDelete(bool json = false, string varNamespace = default(string), string secretId = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public UscDelete(bool forceDelete = default(bool), bool json = false, string varNamespace = default(string), string secretId = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "secretId" is required (not null)
             if (secretId == null)
@@ -60,11 +61,19 @@ namespace akeyless.Model
                 throw new ArgumentNullException("uscName is a required property for UscDelete and cannot be null");
             }
             this.UscName = uscName;
+            this.ForceDelete = forceDelete;
             this.Json = json;
             this.Namespace = varNamespace;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Force delete objects that are soft deleted by default (relavent only for Azure target)
+        /// </summary>
+        /// <value>Force delete objects that are soft deleted by default (relavent only for Azure target)</value>
+        [DataMember(Name = "force-delete", EmitDefaultValue = true)]
+        public bool ForceDelete { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -116,6 +125,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UscDelete {\n");
+            sb.Append("  ForceDelete: ").Append(ForceDelete).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
