@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the Universal Secrets Connector | [optional] 
 **GcpProjectId** | **string** | GCP Project ID (Relevant only for GCP targets) | [optional] 
+**GcpSmRegions** | **string** | GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets. | [optional] 
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **K8sNamespace** | **string** | K8s namespace (Relevant to Kubernetes targets) | [optional] 

@@ -1150,13 +1150,6 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/CertificateDiscoveryOutputTests.cs
-src/akeyless.Test/Model/CertificateDiscoveryTests.cs
-src/akeyless.Test/Model/CertificateMigrationTests.cs
-src/akeyless.Test/Model/CertificatePayloadTests.cs
-src/akeyless.Test/Model/CertificateScanTargetTests.cs
-src/akeyless.Test/Model/ScanResultsTests.cs
-src/akeyless.Test/Model/TargetErrorTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs

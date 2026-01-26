@@ -36,13 +36,15 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayUpdateTlsCert" /> class.
         /// </summary>
         /// <param name="certData">TLS Certificate (base64 encoded).</param>
+        /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyData">TLS Private Key (base64 encoded).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateTlsCert(string certData = default(string), bool json = false, string keyData = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateTlsCert(string certData = default(string), List<string> expirationEventIn = default(List<string>), bool json = false, string keyData = default(string), string token = default(string), string uidToken = default(string))
         {
             this.CertData = certData;
+            this.ExpirationEventIn = expirationEventIn;
             this.Json = json;
             this.KeyData = keyData;
             this.Token = token;
@@ -55,6 +57,13 @@ namespace akeyless.Model
         /// <value>TLS Certificate (base64 encoded)</value>
         [DataMember(Name = "cert-data", EmitDefaultValue = false)]
         public string CertData { get; set; }
+
+        /// <summary>
+        /// How many days before the expiration of the certificate would you like to be notified.
+        /// </summary>
+        /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
+        [DataMember(Name = "expiration-event-in", EmitDefaultValue = false)]
+        public List<string> ExpirationEventIn { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -93,6 +102,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateTlsCert {\n");
             sb.Append("  CertData: ").Append(CertData).Append("\n");
+            sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyData: ").Append(KeyData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

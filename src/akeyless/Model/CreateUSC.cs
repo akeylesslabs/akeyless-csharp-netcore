@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the Universal Secrets Connector.</param>
         /// <param name="gcpProjectId">GCP Project ID (Relevant only for GCP targets).</param>
+        /// <param name="gcpSmRegions">GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets..</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sNamespace">K8s namespace (Relevant to Kubernetes targets).</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscPrefix">Prefix for all secrets created in AWS Secrets Manager.</param>
         /// <param name="usePrefixAsFilter">Whether to filter the USC secret list using the specified usc-prefix [true/false] (default to &quot;false&quot;).</param>
-        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string gcpProjectId = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sNamespace = default(string), string name = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string usePrefixAsFilter = @"false")
+        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string gcpProjectId = default(string), string gcpSmRegions = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sNamespace = default(string), string name = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string usePrefixAsFilter = @"false")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.GcpProjectId = gcpProjectId;
+            this.GcpSmRegions = gcpSmRegions;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.K8sNamespace = k8sNamespace;
@@ -110,6 +112,13 @@ namespace akeyless.Model
         /// <value>GCP Project ID (Relevant only for GCP targets)</value>
         [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
         public string GcpProjectId { get; set; }
+
+        /// <summary>
+        /// GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets.
+        /// </summary>
+        /// <value>GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets.</value>
+        [DataMember(Name = "gcp-sm-regions", EmitDefaultValue = false)]
+        public string GcpSmRegions { get; set; }
 
         /// <summary>
         /// Additional custom fields to associate with the item
@@ -193,6 +202,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
+            sb.Append("  GcpSmRegions: ").Append(GcpSmRegions).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");

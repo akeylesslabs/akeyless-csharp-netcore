@@ -17,6 +17,9 @@ Name | Type | Description | Notes
 **NotifyOnStatusChange** | **bool** |  | [optional] 
 **TcpPort** | **string** |  | [optional] 
 **TlsCert** | **string** |  | [optional] 
+**TlsCertCommonName** | **string** |  | [optional] 
+**TlsCertExpirationDate** | **DateTime** |  | [optional] 
+**TlsCertExpirationEvents** | [**List&lt;CertificateExpirationEvent&gt;**](CertificateExpirationEvent.md) |  | [optional] 
 **TlsKey** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

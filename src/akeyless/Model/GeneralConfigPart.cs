@@ -48,8 +48,11 @@ namespace akeyless.Model
         /// <param name="notifyOnStatusChange">notifyOnStatusChange.</param>
         /// <param name="tcpPort">tcpPort.</param>
         /// <param name="tlsCert">tlsCert.</param>
+        /// <param name="tlsCertCommonName">tlsCertCommonName.</param>
+        /// <param name="tlsCertExpirationDate">tlsCertExpirationDate.</param>
+        /// <param name="tlsCertExpirationEvents">tlsCertExpirationEvents.</param>
         /// <param name="tlsKey">tlsKey.</param>
-        public GeneralConfigPart(string akeylessUrl = default(string), string apiTokenTtl = default(string), string displayName = default(string), bool enableSniProxy = default(bool), bool enableTls = default(bool), bool enableTlsConfigure = default(bool), bool enableTlsCurl = default(bool), bool enableTlsHvp = default(bool), string gwClusterUrl = default(string), long hvpRouteVersion = default(long), bool notifyOnStatusChange = default(bool), string tcpPort = default(string), string tlsCert = default(string), string tlsKey = default(string))
+        public GeneralConfigPart(string akeylessUrl = default(string), string apiTokenTtl = default(string), string displayName = default(string), bool enableSniProxy = default(bool), bool enableTls = default(bool), bool enableTlsConfigure = default(bool), bool enableTlsCurl = default(bool), bool enableTlsHvp = default(bool), string gwClusterUrl = default(string), long hvpRouteVersion = default(long), bool notifyOnStatusChange = default(bool), string tcpPort = default(string), string tlsCert = default(string), string tlsCertCommonName = default(string), DateTime tlsCertExpirationDate = default(DateTime), List<CertificateExpirationEvent> tlsCertExpirationEvents = default(List<CertificateExpirationEvent>), string tlsKey = default(string))
         {
             this.AkeylessUrl = akeylessUrl;
             this.ApiTokenTtl = apiTokenTtl;
@@ -64,6 +67,9 @@ namespace akeyless.Model
             this.NotifyOnStatusChange = notifyOnStatusChange;
             this.TcpPort = tcpPort;
             this.TlsCert = tlsCert;
+            this.TlsCertCommonName = tlsCertCommonName;
+            this.TlsCertExpirationDate = tlsCertExpirationDate;
+            this.TlsCertExpirationEvents = tlsCertExpirationEvents;
             this.TlsKey = tlsKey;
         }
 
@@ -147,6 +153,24 @@ namespace akeyless.Model
         public string TlsCert { get; set; }
 
         /// <summary>
+        /// Gets or Sets TlsCertCommonName
+        /// </summary>
+        [DataMember(Name = "tls_cert_common_name", EmitDefaultValue = false)]
+        public string TlsCertCommonName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TlsCertExpirationDate
+        /// </summary>
+        [DataMember(Name = "tls_cert_expiration_date", EmitDefaultValue = false)]
+        public DateTime TlsCertExpirationDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TlsCertExpirationEvents
+        /// </summary>
+        [DataMember(Name = "tls_cert_expiration_events", EmitDefaultValue = false)]
+        public List<CertificateExpirationEvent> TlsCertExpirationEvents { get; set; }
+
+        /// <summary>
         /// Gets or Sets TlsKey
         /// </summary>
         [DataMember(Name = "tls_key", EmitDefaultValue = false)]
@@ -173,6 +197,9 @@ namespace akeyless.Model
             sb.Append("  NotifyOnStatusChange: ").Append(NotifyOnStatusChange).Append("\n");
             sb.Append("  TcpPort: ").Append(TcpPort).Append("\n");
             sb.Append("  TlsCert: ").Append(TlsCert).Append("\n");
+            sb.Append("  TlsCertCommonName: ").Append(TlsCertCommonName).Append("\n");
+            sb.Append("  TlsCertExpirationDate: ").Append(TlsCertExpirationDate).Append("\n");
+            sb.Append("  TlsCertExpirationEvents: ").Append(TlsCertExpirationEvents).Append("\n");
             sb.Append("  TlsKey: ").Append(TlsKey).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

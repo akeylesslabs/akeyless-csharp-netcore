@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **LastRetrieved** | **DateTime** |  | [optional] 
 **Location** | **Object** |  | [optional] 
 **Name** | **string** |  | [optional] 
+**Region** | **string** |  | [optional] 
 **SecretId** | **string** |  | [optional] 
 **Status** | **bool** |  | [optional] 
 **Tags** | **Dictionary&lt;string, string&gt;** |  | [optional] 

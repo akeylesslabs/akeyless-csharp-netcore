@@ -20279,14 +20279,19 @@ components:
           api_token_ttl: api_token_ttl
           enable_tls: true
           enable_tls_curl: true
+          tls_cert_expiration_events:
+          - seconds_before: 1
+          - seconds_before: 1
           tls_key: tls_key
           enable_tls_configure: true
           tls_cert: tls_cert
           akeyless_url: akeyless_url
           display_name: display_name
+          tls_cert_expiration_date: 2000-01-23T04:56:07.000+00:00
           gw_cluster_url: gw_cluster_url
           enable_tls_hvp: true
           notify_on_status_change: true
+          tls_cert_common_name: tls_cert_common_name
           enable_sni_proxy: true
           hvp_route_version: 1
         ldap:
@@ -20701,11 +20706,17 @@ components:
               gcp_credentials_json: gcp_credentials_json
         ca_certificates:
           certificate_store:
-          - certificate_pem: certificate_pem
+          - expiration_events:
+            - seconds_before: 1
+            - seconds_before: 1
+            certificate_pem: certificate_pem
             name: name
             common_name: common_name
             expiration_date: 2000-01-23T04:56:07.000+00:00
-          - certificate_pem: certificate_pem
+          - expiration_events:
+            - seconds_before: 1
+            - seconds_before: 1
+            certificate_pem: certificate_pem
             name: name
             common_name: common_name
             expiration_date: 2000-01-23T04:56:07.000+00:00
@@ -23039,11 +23050,17 @@ components:
     CaCertificatesConfigPart:
       example:
         certificate_store:
-        - certificate_pem: certificate_pem
+        - expiration_events:
+          - seconds_before: 1
+          - seconds_before: 1
+          certificate_pem: certificate_pem
           name: name
           common_name: common_name
           expiration_date: 2000-01-23T04:56:07.000+00:00
-        - certificate_pem: certificate_pem
+        - expiration_events:
+          - seconds_before: 1
+          - seconds_before: 1
+          certificate_pem: certificate_pem
           name: name
           common_name: common_name
           expiration_date: 2000-01-23T04:56:07.000+00:00
@@ -24036,6 +24053,9 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     CertificateStore:
       example:
+        expiration_events:
+        - seconds_before: 1
+        - seconds_before: 1
         certificate_pem: certificate_pem
         name: name
         common_name: common_name
@@ -24051,6 +24071,11 @@ components:
           format: date-time
           type: string
           x-go-name: ExpirationDate
+        expiration_events:
+          items:
+            $ref: '#/components/schemas/CertificateExpirationEvent'
+          type: array
+          x-go-name: ExpirationEvents
         name:
           type: string
           x-go-name: Name
@@ -25503,6 +25528,7 @@ components:
       description: CreateUSC is a command that creates a Universal Secrets Connector
       example:
         target-to-associate: target-to-associate
+        gcp-sm-regions: gcp-sm-regions
         use-prefix-as-filter: "false"
         description: description
         usc-prefix: usc-prefix
@@ -25536,6 +25562,12 @@ components:
           description: GCP Project ID (Relevant only for GCP targets)
           type: string
           x-go-name: GcpProjectId
+        gcp-sm-regions:
+          description: |-
+            GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions.
+            Required when listing with object-type=regional-secrets.
+          type: string
+          x-go-name: GcpSmRegions
         item-custom-fields:
           additionalProperties:
             type: string
@@ -27607,6 +27639,7 @@ components:
           name: name
           expiration: 2000-01-23T04:56:07.000+00:00
           location: ""
+          region: region
           status: true
         - secret_id: secret_id
           key_id: key_id
@@ -27621,6 +27654,7 @@ components:
           name: name
           expiration: 2000-01-23T04:56:07.000+00:00
           location: ""
+          region: region
           status: true
       properties:
         secrets_list:
@@ -28278,6 +28312,9 @@ components:
       description: gatewayUpdateTlsCert is a command that updates Gateway TLS certificate
       example:
         json: false
+        expiration-event-in:
+        - expiration-event-in
+        - expiration-event-in
         cert-data: cert-data
         key-data: key-data
         uid-token: uid-token
@@ -28287,6 +28324,13 @@ components:
           description: TLS Certificate (base64 encoded)
           type: string
           x-go-name: CertData
+        expiration-event-in:
+          description: How many days before the expiration of the certificate would
+            you like to be notified.
+          items:
+            type: string
+          type: array
+          x-go-name: ExpirationEventsInDays
         json:
           default: false
           description: Set output format to JSON
@@ -28437,14 +28481,19 @@ components:
         api_token_ttl: api_token_ttl
         enable_tls: true
         enable_tls_curl: true
+        tls_cert_expiration_events:
+        - seconds_before: 1
+        - seconds_before: 1
         tls_key: tls_key
         enable_tls_configure: true
         tls_cert: tls_cert
         akeyless_url: akeyless_url
         display_name: display_name
+        tls_cert_expiration_date: 2000-01-23T04:56:07.000+00:00
         gw_cluster_url: gw_cluster_url
         enable_tls_hvp: true
         notify_on_status_change: true
+        tls_cert_common_name: tls_cert_common_name
         enable_sni_proxy: true
         hvp_route_version: 1
       properties:
@@ -28494,6 +28543,18 @@ components:
         tls_cert:
           type: string
           x-go-name: TLSCert
+        tls_cert_common_name:
+          type: string
+          x-go-name: TlsCertCommonName
+        tls_cert_expiration_date:
+          format: date-time
+          type: string
+          x-go-name: TlsCertExpirationDate
+        tls_cert_expiration_events:
+          items:
+            $ref: '#/components/schemas/CertificateExpirationEvent'
+          type: array
+          x-go-name: TlsCertExpirationEvents
         tls_key:
           type: string
           x-go-name: TLSKey
@@ -28956,8 +29017,8 @@ components:
         extended-key-usage:
           description: "A comma-separated list of extended key usage requests which\
             \ will be used for certificate issuance. Supported values: 'clientauth',\
-            \ 'serverauth'. If critical is present the extension will be marked as\
-            \ critical"
+            \ 'serverauth', 'codesigning'. If critical is present the extension will\
+            \ be marked as critical"
           type: string
           x-go-name: ExtKeyUsage
         extra-extensions:
@@ -41795,6 +41856,7 @@ components:
         name: name
         expiration: 2000-01-23T04:56:07.000+00:00
         location: ""
+        region: region
         status: true
       properties:
         created:
@@ -41820,6 +41882,9 @@ components:
         name:
           type: string
           x-go-name: Name
+        region:
+          type: string
+          x-go-name: Region
         secret_id:
           type: string
           x-go-name: SecretId
@@ -44130,6 +44195,7 @@ components:
           name: name
           expiration: 2000-01-23T04:56:07.000+00:00
           location: ""
+          region: region
           status: true
         - secret_id: secret_id
           key_id: key_id
@@ -44144,6 +44210,7 @@ components:
           name: name
           expiration: 2000-01-23T04:56:07.000+00:00
           location: ""
+          region: region
           status: true
       properties:
         secrets_list:
@@ -97080,8 +97147,8 @@ components:
         extended-key-usage:
           description: "A comma-separated list of extended key usage requests which\
             \ will be used for certificate issuance. Supported values: 'clientauth',\
-            \ 'serverauth'. If critical is present the extension will be marked as\
-            \ critical"
+            \ 'serverauth', 'codesigning'. If critical is present the extension will\
+            \ be marked as critical"
           type: string
           x-go-name: ExtKeyUsage
         extra-extensions:
@@ -113961,6 +114028,12 @@ components:
             type: string
           type: array
           x-go-name: ExpirationEventsInDays
+        gcp-sm-regions:
+          description: |-
+            GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions.
+            USC with GCP targets only.
+          type: string
+          x-go-name: GcpSmRegions
         host-provider:
           description: "Host provider type [explicit/target], Default Host provider\
             \ is explicit, Relevant only for Secure Remote Access of ssh cert issuer,\
@@ -116333,6 +116406,12 @@ components:
             \ the pfx certificate (Relevant only for Azure KV certificates)"
           type: string
           x-go-name: PfxPassword
+        region:
+          description: |-
+            Optional, create secret in a specific region (GCP only).
+            If empty, a global secret will be created (provider default).
+          type: string
+          x-go-name: Region
         secret-name:
           description: Name for the new universal secrets
           type: string

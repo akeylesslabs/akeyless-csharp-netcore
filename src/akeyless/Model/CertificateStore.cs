@@ -38,12 +38,14 @@ namespace akeyless.Model
         /// <param name="certificatePem">certificatePem.</param>
         /// <param name="commonName">commonName.</param>
         /// <param name="expirationDate">expirationDate.</param>
+        /// <param name="expirationEvents">expirationEvents.</param>
         /// <param name="name">name.</param>
-        public CertificateStore(string certificatePem = default(string), string commonName = default(string), DateTime expirationDate = default(DateTime), string name = default(string))
+        public CertificateStore(string certificatePem = default(string), string commonName = default(string), DateTime expirationDate = default(DateTime), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string name = default(string))
         {
             this.CertificatePem = certificatePem;
             this.CommonName = commonName;
             this.ExpirationDate = expirationDate;
+            this.ExpirationEvents = expirationEvents;
             this.Name = name;
         }
 
@@ -66,6 +68,12 @@ namespace akeyless.Model
         public DateTime ExpirationDate { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExpirationEvents
+        /// </summary>
+        [DataMember(Name = "expiration_events", EmitDefaultValue = false)]
+        public List<CertificateExpirationEvent> ExpirationEvents { get; set; }
+
+        /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false)]
@@ -82,6 +90,7 @@ namespace akeyless.Model
             sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
             sb.Append("  CommonName: ").Append(CommonName).Append("\n");
             sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
+            sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
