@@ -388,6 +388,11 @@ All URIs are relative to *https://api.akeyless.io*
 | [**ListSharedItems**](V2Api.md#listshareditems) | **POST** /list-shared-items |  |
 | [**ListTargets**](V2Api.md#listtargets) | **POST** /list-targets |  |
 | [**MoveObjects**](V2Api.md#moveobjects) | **POST** /move-objects |  |
+| [**PoliciesDelete**](V2Api.md#policiesdelete) | **POST** /policy-delete |  |
+| [**PoliciesGet**](V2Api.md#policiesget) | **POST** /policy-get |  |
+| [**PoliciesList**](V2Api.md#policieslist) | **POST** /policy-list |  |
+| [**PolicyCreateKeys**](V2Api.md#policycreatekeys) | **POST** /policy-create-keys |  |
+| [**PolicyUpdateKeys**](V2Api.md#policyupdatekeys) | **POST** /policy-update-keys |  |
 | [**ProvisionCertificate**](V2Api.md#provisioncertificate) | **POST** /provision-certificate |  |
 | [**RawCreds**](V2Api.md#rawcreds) | **POST** /raw-creds |  |
 | [**RefreshKey**](V2Api.md#refreshkey) | **POST** /refresh-key |  |
@@ -418,6 +423,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretCreateRedis**](V2Api.md#rotatedsecretcreateredis) | **POST** /rotated-secret-create-redis |  |
 | [**RotatedSecretCreateRedshift**](V2Api.md#rotatedsecretcreateredshift) | **POST** /rotated-secret-create-redshift |  |
 | [**RotatedSecretCreateSnowflake**](V2Api.md#rotatedsecretcreatesnowflake) | **POST** /rotated-secret-create-snowflake |  |
+| [**RotatedSecretCreateSplunk**](V2Api.md#rotatedsecretcreatesplunk) | **POST** /rotated-secret-create-splunk |  |
 | [**RotatedSecretCreateSsh**](V2Api.md#rotatedsecretcreatessh) | **POST** /rotated-secret-create-ssh |  |
 | [**RotatedSecretCreateWindows**](V2Api.md#rotatedsecretcreatewindows) | **POST** /rotated-secret-create-windows |  |
 | [**RotatedSecretDelete**](V2Api.md#rotatedsecretdelete) | **POST** /rotated-secret-delete |  |
@@ -442,6 +448,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretUpdateRedis**](V2Api.md#rotatedsecretupdateredis) | **POST** /rotated-secret-update-redis |  |
 | [**RotatedSecretUpdateRedshift**](V2Api.md#rotatedsecretupdateredshift) | **POST** /rotated-secret-update-redshift |  |
 | [**RotatedSecretUpdateSnowflake**](V2Api.md#rotatedsecretupdatesnowflake) | **POST** /rotated-secret-update-snowflake |  |
+| [**RotatedSecretUpdateSplunk**](V2Api.md#rotatedsecretupdatesplunk) | **POST** /rotated-secret-update-splunk |  |
 | [**RotatedSecretUpdateSsh**](V2Api.md#rotatedsecretupdatessh) | **POST** /rotated-secret-update-ssh |  |
 | [**RotatedSecretUpdateWindows**](V2Api.md#rotatedsecretupdatewindows) | **POST** /rotated-secret-update-windows |  |
 | [**SetItemState**](V2Api.md#setitemstate) | **POST** /set-item-state |  |
@@ -474,12 +481,14 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreateHashiVault**](V2Api.md#targetcreatehashivault) | **POST** /target-create-hashi-vault |  |
 | [**TargetCreateK8s**](V2Api.md#targetcreatek8s) | **POST** /target-create-k8s |  |
 | [**TargetCreateLdap**](V2Api.md#targetcreateldap) | **POST** /target-create-ldap |  |
+| [**TargetCreateLetsEncrypt**](V2Api.md#targetcreateletsencrypt) | **POST** /target-create-lets-encrypt |  |
 | [**TargetCreateLinked**](V2Api.md#targetcreatelinked) | **POST** /target-create-linked |  |
 | [**TargetCreateOpenAI**](V2Api.md#targetcreateopenai) | **POST** /target-create-openai |  |
 | [**TargetCreatePing**](V2Api.md#targetcreateping) | **POST** /target-create-ping |  |
 | [**TargetCreateRabbitMq**](V2Api.md#targetcreaterabbitmq) | **POST** /target-create-rabbitmq |  |
 | [**TargetCreateSalesforce**](V2Api.md#targetcreatesalesforce) | **POST** /target-create-salesforce |  |
 | [**TargetCreateSectigo**](V2Api.md#targetcreatesectigo) | **POST** /target-create-sectigo |  |
+| [**TargetCreateSplunk**](V2Api.md#targetcreatesplunk) | **POST** /target-create-splunk |  |
 | [**TargetCreateSsh**](V2Api.md#targetcreatessh) | **POST** /target-create-ssh |  |
 | [**TargetCreateWeb**](V2Api.md#targetcreateweb) | **POST** /target-create-web |  |
 | [**TargetCreateWindows**](V2Api.md#targetcreatewindows) | **POST** /target-create-windows |  |
@@ -505,6 +514,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdateHashiVault**](V2Api.md#targetupdatehashivault) | **POST** /target-update-hashi-vault |  |
 | [**TargetUpdateK8s**](V2Api.md#targetupdatek8s) | **POST** /target-update-k8s |  |
 | [**TargetUpdateLdap**](V2Api.md#targetupdateldap) | **POST** /target-update-ldap |  |
+| [**TargetUpdateLetsEncrypt**](V2Api.md#targetupdateletsencrypt) | **POST** /target-update-lets-encrypt |  |
 | [**TargetUpdateLinked**](V2Api.md#targetupdatelinked) | **POST** /target-update-linked |  |
 | [**TargetUpdateOpenAI**](V2Api.md#targetupdateopenai) | **POST** /target-update-openai |  |
 | [**TargetUpdatePing**](V2Api.md#targetupdateping) | **POST** /target-update-ping |  |
@@ -34374,6 +34384,446 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="policiesdelete"></a>
+# **PoliciesDelete**
+> Object PoliciesDelete (PoliciesDelete policiesDelete)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class PoliciesDeleteExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var policiesDelete = new PoliciesDelete(); // PoliciesDelete | 
+
+            try
+            {
+                Object result = apiInstance.PoliciesDelete(policiesDelete);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.PoliciesDelete: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the PoliciesDeleteWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.PoliciesDeleteWithHttpInfo(policiesDelete);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.PoliciesDeleteWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **policiesDelete** | [**PoliciesDelete**](PoliciesDelete.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="policiesget"></a>
+# **PoliciesGet**
+> PoliciesGetOutput PoliciesGet (PoliciesGet policiesGet)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class PoliciesGetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var policiesGet = new PoliciesGet(); // PoliciesGet | 
+
+            try
+            {
+                PoliciesGetOutput result = apiInstance.PoliciesGet(policiesGet);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.PoliciesGet: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the PoliciesGetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<PoliciesGetOutput> response = apiInstance.PoliciesGetWithHttpInfo(policiesGet);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.PoliciesGetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **policiesGet** | [**PoliciesGet**](PoliciesGet.md) |  |  |
+
+### Return type
+
+[**PoliciesGetOutput**](PoliciesGetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="policieslist"></a>
+# **PoliciesList**
+> PoliciesListOutput PoliciesList (PoliciesList policiesList)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class PoliciesListExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var policiesList = new PoliciesList(); // PoliciesList | 
+
+            try
+            {
+                PoliciesListOutput result = apiInstance.PoliciesList(policiesList);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.PoliciesList: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the PoliciesListWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<PoliciesListOutput> response = apiInstance.PoliciesListWithHttpInfo(policiesList);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.PoliciesListWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **policiesList** | [**PoliciesList**](PoliciesList.md) |  |  |
+
+### Return type
+
+[**PoliciesListOutput**](PoliciesListOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="policycreatekeys"></a>
+# **PolicyCreateKeys**
+> PoliciesCreateOutput PolicyCreateKeys (PolicyCreateKeys policyCreateKeys)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class PolicyCreateKeysExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var policyCreateKeys = new PolicyCreateKeys(); // PolicyCreateKeys | 
+
+            try
+            {
+                PoliciesCreateOutput result = apiInstance.PolicyCreateKeys(policyCreateKeys);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.PolicyCreateKeys: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the PolicyCreateKeysWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<PoliciesCreateOutput> response = apiInstance.PolicyCreateKeysWithHttpInfo(policyCreateKeys);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.PolicyCreateKeysWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **policyCreateKeys** | [**PolicyCreateKeys**](PolicyCreateKeys.md) |  |  |
+
+### Return type
+
+[**PoliciesCreateOutput**](PoliciesCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="policyupdatekeys"></a>
+# **PolicyUpdateKeys**
+> Object PolicyUpdateKeys (PolicyUpdateKeys policyUpdateKeys)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class PolicyUpdateKeysExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var policyUpdateKeys = new PolicyUpdateKeys(); // PolicyUpdateKeys | 
+
+            try
+            {
+                Object result = apiInstance.PolicyUpdateKeys(policyUpdateKeys);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.PolicyUpdateKeys: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the PolicyUpdateKeysWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.PolicyUpdateKeysWithHttpInfo(policyUpdateKeys);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.PolicyUpdateKeysWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **policyUpdateKeys** | [**PolicyUpdateKeys**](PolicyUpdateKeys.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="provisioncertificate"></a>
 # **ProvisionCertificate**
 > ProvisionCertificateOutput ProvisionCertificate (ProvisionCertificate provisionCertificate)
@@ -37009,6 +37459,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="rotatedsecretcreatesplunk"></a>
+# **RotatedSecretCreateSplunk**
+> RotatedSecretCreateOutput RotatedSecretCreateSplunk (RotatedSecretCreateSplunk rotatedSecretCreateSplunk)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretCreateSplunkExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretCreateSplunk = new RotatedSecretCreateSplunk(); // RotatedSecretCreateSplunk | 
+
+            try
+            {
+                RotatedSecretCreateOutput result = apiInstance.RotatedSecretCreateSplunk(rotatedSecretCreateSplunk);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretCreateSplunk: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretCreateSplunkWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretCreateOutput> response = apiInstance.RotatedSecretCreateSplunkWithHttpInfo(rotatedSecretCreateSplunk);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretCreateSplunkWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretCreateSplunk** | [**RotatedSecretCreateSplunk**](RotatedSecretCreateSplunk.md) |  |  |
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | rotatedSecretCreateSplunkResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="rotatedsecretcreatessh"></a>
 # **RotatedSecretCreateSsh**
 > RotatedSecretCreateOutput RotatedSecretCreateSsh (RotatedSecretCreateSsh rotatedSecretCreateSsh)
@@ -39117,6 +39655,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | rotatedSecretUpdateSnowflakeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="rotatedsecretupdatesplunk"></a>
+# **RotatedSecretUpdateSplunk**
+> RotatedSecretUpdateOutput RotatedSecretUpdateSplunk (RotatedSecretUpdateSplunk rotatedSecretUpdateSplunk)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretUpdateSplunkExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretUpdateSplunk = new RotatedSecretUpdateSplunk(); // RotatedSecretUpdateSplunk | 
+
+            try
+            {
+                RotatedSecretUpdateOutput result = apiInstance.RotatedSecretUpdateSplunk(rotatedSecretUpdateSplunk);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretUpdateSplunk: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretUpdateSplunkWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretUpdateOutput> response = apiInstance.RotatedSecretUpdateSplunkWithHttpInfo(rotatedSecretUpdateSplunk);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretUpdateSplunkWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretUpdateSplunk** | [**RotatedSecretUpdateSplunk**](RotatedSecretUpdateSplunk.md) |  |  |
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | rotatedSecretUpdateSplunkResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -41937,6 +42563,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetcreateletsencrypt"></a>
+# **TargetCreateLetsEncrypt**
+> TargetCreateOutput TargetCreateLetsEncrypt (TargetCreateLetsEncrypt targetCreateLetsEncrypt)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateLetsEncryptExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateLetsEncrypt = new TargetCreateLetsEncrypt(); // TargetCreateLetsEncrypt | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateLetsEncrypt(targetCreateLetsEncrypt);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateLetsEncrypt: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateLetsEncryptWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateLetsEncryptWithHttpInfo(targetCreateLetsEncrypt);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateLetsEncryptWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateLetsEncrypt** | [**TargetCreateLetsEncrypt**](TargetCreateLetsEncrypt.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateLetsEncryptResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetcreatelinked"></a>
 # **TargetCreateLinked**
 > TargetCreateOutput TargetCreateLinked (TargetCreateLinked targetCreateLinked)
@@ -42461,6 +43175,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetCreateSectigoResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetcreatesplunk"></a>
+# **TargetCreateSplunk**
+> TargetCreateOutput TargetCreateSplunk (TargetCreateSplunk targetCreateSplunk)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateSplunkExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateSplunk = new TargetCreateSplunk(); // TargetCreateSplunk | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateSplunk(targetCreateSplunk);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateSplunk: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateSplunkWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateSplunkWithHttpInfo(targetCreateSplunk);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateSplunkWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateSplunk** | [**TargetCreateSplunk**](TargetCreateSplunk.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateSplunkResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -44661,6 +45463,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateLdapResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdateletsencrypt"></a>
+# **TargetUpdateLetsEncrypt**
+> TargetUpdateOutput TargetUpdateLetsEncrypt (TargetUpdateLetsEncrypt targetUpdateLetsEncrypt)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateLetsEncryptExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateLetsEncrypt = new TargetUpdateLetsEncrypt(); // TargetUpdateLetsEncrypt | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateLetsEncrypt(targetUpdateLetsEncrypt);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateLetsEncrypt: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateLetsEncryptWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateLetsEncryptWithHttpInfo(targetUpdateLetsEncrypt);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateLetsEncryptWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateLetsEncrypt** | [**TargetUpdateLetsEncrypt**](TargetUpdateLetsEncrypt.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateLetsEncryptResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

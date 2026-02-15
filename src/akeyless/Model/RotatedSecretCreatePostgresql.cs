@@ -65,7 +65,7 @@ namespace akeyless.Model
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
         /// <param name="tags">Add tags attached to this object.</param>
-        /// <param name="targetName">Target name (required).</param>
+        /// <param name="targetName">The target name to associate (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public RotatedSecretCreatePostgresql(string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = @"false", string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
@@ -293,9 +293,9 @@ namespace akeyless.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
-        /// Target name
+        /// The target name to associate
         /// </summary>
-        /// <value>Target name</value>
+        /// <value>The target name to associate</value>
         [DataMember(Name = "target-name", IsRequired = true, EmitDefaultValue = true)]
         public string TargetName { get; set; }
 

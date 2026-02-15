@@ -11,9 +11,10 @@ Name | Type | Description | Notes
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
 **GcpServiceAccountEmail** | **string** | The email of the gcp service account to rotate | [optional] 
 **GcpServiceAccountKeyId** | **string** | The key id of the gcp service account to rotate | [optional] 
-**GraceRotation** | **string** | Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false] | [optional] 
+**GraceRotation** | **string** | Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false] | [optional] 
 **GraceRotationHour** | **int** | The Hour of the grace rotation in UTC | [optional] 
 **GraceRotationInterval** | **string** | The number of days to wait before deleting the old key (must be bigger than rotation-interval) | [optional] 
+**GraceRotationTiming** | **string** | When to create the new version relative to the rotation date [after/before] | [optional] 
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 **RotationInterval** | **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **RotatorType** | **string** | The rotator type. options: [target/service-account-rotator] | 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
-**TargetName** | **string** | Target name | 
+**TargetName** | **string** | The target name to associate | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

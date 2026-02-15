@@ -73,6 +73,7 @@ namespace akeyless.Model
         /// <param name="azureTenantId">Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration).</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="gcpKey">Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration).</param>
+        /// <param name="gcpProjectId">GCP Project ID (cross-project override).</param>
         /// <param name="hashiJson">Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false] (default to &quot;true&quot;).</param>
         /// <param name="hashiNs">HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration).</param>
         /// <param name="hashiToken">HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration).</param>
@@ -104,7 +105,8 @@ namespace akeyless.Model
         /// <param name="targetLocation">Target location in Akeyless for imported secrets (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), List<string> expirationEventIn = default(List<string>), string gcpKey = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string hosts = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string portRanges = @"443", string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="useGwCloudIdentity">Use the GW&#39;s Cloud IAM.</param>
+        public GatewayUpdateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), List<string> expirationEventIn = default(List<string>), string gcpKey = default(string), string gcpProjectId = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string hosts = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string portRanges = @"443", string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "hosts" is required (not null)
             if (hosts == null)
@@ -171,6 +173,7 @@ namespace akeyless.Model
             this.AzureTenantId = azureTenantId;
             this.ExpirationEventIn = expirationEventIn;
             this.GcpKey = gcpKey;
+            this.GcpProjectId = gcpProjectId;
             // use default value if no "hashiJson" provided
             this.HashiJson = hashiJson ?? @"true";
             this.HashiNs = hashiNs;
@@ -201,6 +204,7 @@ namespace akeyless.Model
             this.SiUsersIgnore = siUsersIgnore;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UseGwCloudIdentity = useGwCloudIdentity;
         }
 
         /// <summary>
@@ -434,6 +438,13 @@ namespace akeyless.Model
         public string GcpKey { get; set; }
 
         /// <summary>
+        /// GCP Project ID (cross-project override)
+        /// </summary>
+        /// <value>GCP Project ID (cross-project override)</value>
+        [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
+        public string GcpProjectId { get; set; }
+
+        /// <summary>
         /// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]
         /// </summary>
         /// <value>Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]</value>
@@ -651,6 +662,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Use the GW&#39;s Cloud IAM
+        /// </summary>
+        /// <value>Use the GW&#39;s Cloud IAM</value>
+        [DataMember(Name = "use-gw-cloud-identity", EmitDefaultValue = true)]
+        public bool UseGwCloudIdentity { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -691,6 +709,7 @@ namespace akeyless.Model
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
+            sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
             sb.Append("  HashiJson: ").Append(HashiJson).Append("\n");
             sb.Append("  HashiNs: ").Append(HashiNs).Append("\n");
             sb.Append("  HashiToken: ").Append(HashiToken).Append("\n");
@@ -722,6 +741,7 @@ namespace akeyless.Model
             sb.Append("  TargetLocation: ").Append(TargetLocation).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

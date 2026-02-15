@@ -12,9 +12,10 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **ExplicitlySetSa** | **string** | If set, explicitly provide the storage account details [true/false] | [optional] [default to "false"]
-**GraceRotation** | **string** | Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false] | [optional] 
+**GraceRotation** | **string** | Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false] | [optional] 
 **GraceRotationHour** | **int** | The Hour of the grace rotation in UTC | [optional] 
 **GraceRotationInterval** | **string** | The number of days to wait before deleting the old key (must be bigger than rotation-interval) | [optional] 
+**GraceRotationTiming** | **string** | When to create the new version relative to the rotation date [after/before] | [optional] 
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -36,7 +37,7 @@ Name | Type | Description | Notes
 **SecureAccessWebProxy** | **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **StorageAccountKeyName** | **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account) | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
-**TargetName** | **string** | Target name | 
+**TargetName** | **string** | The target name to associate | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | **string** | The user principal name to rotate his password (relevant only for rotator-type&#x3D;password) | [optional] 

@@ -57,7 +57,7 @@ namespace akeyless.Model
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
         /// <param name="rotatorType">The rotator type. options: [target/password] (required).</param>
         /// <param name="tags">Add tags attached to this object.</param>
-        /// <param name="targetName">Target name (required).</param>
+        /// <param name="targetName">The target name to associate (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public RotatedSecretCreateHanadb(string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
@@ -220,9 +220,9 @@ namespace akeyless.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
-        /// Target name
+        /// The target name to associate
         /// </summary>
-        /// <value>Target name</value>
+        /// <value>The target name to associate</value>
         [DataMember(Name = "target-name", IsRequired = true, EmitDefaultValue = true)]
         public string TargetName { get; set; }
 

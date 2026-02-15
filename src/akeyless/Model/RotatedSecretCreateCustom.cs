@@ -69,7 +69,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="tags">Add tags attached to this object.</param>
-        /// <param name="targetName">Target name (required).</param>
+        /// <param name="targetName">The target name to associate (required).</param>
         /// <param name="timeoutSec">Maximum allowed time in seconds for the custom rotator to return the results (default to 40).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -334,9 +334,9 @@ namespace akeyless.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
-        /// Target name
+        /// The target name to associate
         /// </summary>
-        /// <value>Target name</value>
+        /// <value>The target name to associate</value>
         [DataMember(Name = "target-name", IsRequired = true, EmitDefaultValue = true)]
         public string TargetName { get; set; }
 

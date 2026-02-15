@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <param name="graceRotation">graceRotation.</param>
         /// <param name="graceRotationHour">graceRotationHour.</param>
         /// <param name="graceRotationInterval">graceRotationInterval.</param>
+        /// <param name="graceRotationTiming">graceRotationTiming.</param>
         /// <param name="gwClusterId">gwClusterId.</param>
         /// <param name="iisAppsDetails">iisAppsDetails.</param>
         /// <param name="lastRotationError">lastRotationError.</param>
@@ -57,13 +58,14 @@ namespace akeyless.Model
         /// <param name="samePassword">samePassword.</param>
         /// <param name="servicesDetails">servicesDetails.</param>
         /// <param name="timeoutSeconds">timeoutSeconds.</param>
-        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), bool enableCustomPasswordPolicy = default(bool), bool graceRotation = default(bool), int graceRotationHour = default(int), int graceRotationInterval = default(int), long gwClusterId = default(long), List<WindowsService> iisAppsDetails = default(List<WindowsService>), string lastRotationError = default(string), bool managedByAkeyless = default(bool), long maxVersions = default(long), string nextAutoRotateType = default(string), int numberOfVersionsToSave = default(int), string publicKeyRemotePath = default(string), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>), long timeoutSeconds = default(long))
+        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), bool enableCustomPasswordPolicy = default(bool), bool graceRotation = default(bool), int graceRotationHour = default(int), int graceRotationInterval = default(int), string graceRotationTiming = default(string), long gwClusterId = default(long), List<WindowsService> iisAppsDetails = default(List<WindowsService>), string lastRotationError = default(string), bool managedByAkeyless = default(bool), long maxVersions = default(long), string nextAutoRotateType = default(string), int numberOfVersionsToSave = default(int), string publicKeyRemotePath = default(string), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>), long timeoutSeconds = default(long))
         {
             this.DeletePreviousVersionInDays = deletePreviousVersionInDays;
             this.EnableCustomPasswordPolicy = enableCustomPasswordPolicy;
             this.GraceRotation = graceRotation;
             this.GraceRotationHour = graceRotationHour;
             this.GraceRotationInterval = graceRotationInterval;
+            this.GraceRotationTiming = graceRotationTiming;
             this.GwClusterId = gwClusterId;
             this.IisAppsDetails = iisAppsDetails;
             this.LastRotationError = lastRotationError;
@@ -112,6 +114,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "grace_rotation_interval", EmitDefaultValue = false)]
         public int GraceRotationInterval { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GraceRotationTiming
+        /// </summary>
+        [DataMember(Name = "grace_rotation_timing", EmitDefaultValue = false)]
+        public string GraceRotationTiming { get; set; }
 
         /// <summary>
         /// Gets or Sets GwClusterId
@@ -229,6 +237,7 @@ namespace akeyless.Model
             sb.Append("  GraceRotation: ").Append(GraceRotation).Append("\n");
             sb.Append("  GraceRotationHour: ").Append(GraceRotationHour).Append("\n");
             sb.Append("  GraceRotationInterval: ").Append(GraceRotationInterval).Append("\n");
+            sb.Append("  GraceRotationTiming: ").Append(GraceRotationTiming).Append("\n");
             sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
             sb.Append("  IisAppsDetails: ").Append(IisAppsDetails).Append("\n");
             sb.Append("  LastRotationError: ").Append(LastRotationError).Append("\n");

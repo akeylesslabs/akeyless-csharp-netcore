@@ -47,9 +47,10 @@ namespace akeyless.Model
         /// <param name="awsRegion">Aws Region (default to &quot;us-east-2&quot;).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="graceRotation">Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false].</param>
+        /// <param name="graceRotation">Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false].</param>
         /// <param name="graceRotationHour">The Hour of the grace rotation in UTC.</param>
         /// <param name="graceRotationInterval">The number of days to wait before deleting the old key (must be bigger than rotation-interval).</param>
+        /// <param name="graceRotationTiming">When to create the new version relative to the rotation date [after/before].</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -67,10 +68,10 @@ namespace akeyless.Model
         /// <param name="secureAccessCertificateIssuer">Path to the SSH Certificate Issuer for your Akeyless Secure Access.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
-        /// <param name="targetName">Target name (required).</param>
+        /// <param name="targetName">The target name to associate (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RotatedSecretCreateAws(string apiId = default(string), string apiKey = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string awsRegion = @"us-east-2", string deleteProtection = default(string), string description = default(string), string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = @"false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
+        public RotatedSecretCreateAws(string apiId = default(string), string apiKey = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string awsRegion = @"us-east-2", string deleteProtection = default(string), string description = default(string), string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string passwordLength = default(string), string rotateAfterDisconnect = @"false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -102,6 +103,7 @@ namespace akeyless.Model
             this.GraceRotation = graceRotation;
             this.GraceRotationHour = graceRotationHour;
             this.GraceRotationInterval = graceRotationInterval;
+            this.GraceRotationTiming = graceRotationTiming;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Key = key;
@@ -172,9 +174,9 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]
+        /// Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false]
         /// </summary>
-        /// <value>Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]</value>
+        /// <value>Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false]</value>
         [DataMember(Name = "grace-rotation", EmitDefaultValue = false)]
         public string GraceRotation { get; set; }
 
@@ -191,6 +193,13 @@ namespace akeyless.Model
         /// <value>The number of days to wait before deleting the old key (must be bigger than rotation-interval)</value>
         [DataMember(Name = "grace-rotation-interval", EmitDefaultValue = false)]
         public string GraceRotationInterval { get; set; }
+
+        /// <summary>
+        /// When to create the new version relative to the rotation date [after/before]
+        /// </summary>
+        /// <value>When to create the new version relative to the rotation date [after/before]</value>
+        [DataMember(Name = "grace-rotation-timing", EmitDefaultValue = false)]
+        public string GraceRotationTiming { get; set; }
 
         /// <summary>
         /// Additional custom fields to associate with the item
@@ -312,9 +321,9 @@ namespace akeyless.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
-        /// Target name
+        /// The target name to associate
         /// </summary>
-        /// <value>Target name</value>
+        /// <value>The target name to associate</value>
         [DataMember(Name = "target-name", IsRequired = true, EmitDefaultValue = true)]
         public string TargetName { get; set; }
 
@@ -350,6 +359,7 @@ namespace akeyless.Model
             sb.Append("  GraceRotation: ").Append(GraceRotation).Append("\n");
             sb.Append("  GraceRotationHour: ").Append(GraceRotationHour).Append("\n");
             sb.Append("  GraceRotationInterval: ").Append(GraceRotationInterval).Append("\n");
+            sb.Append("  GraceRotationTiming: ").Append(GraceRotationTiming).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");

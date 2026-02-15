@@ -49,9 +49,10 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="explicitlySetSa">If set, explicitly provide the storage account details [true/false] (default to &quot;false&quot;).</param>
-        /// <param name="graceRotation">Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false].</param>
+        /// <param name="graceRotation">Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false].</param>
         /// <param name="graceRotationHour">The Hour of the grace rotation in UTC.</param>
         /// <param name="graceRotationInterval">The number of days to wait before deleting the old key (must be bigger than rotation-interval).</param>
+        /// <param name="graceRotationTiming">When to create the new version relative to the rotation date [after/before].</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -77,7 +78,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">The user principal name to rotate his password (relevant only for rotator-type&#x3D;password).</param>
-        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string explicitlySetSa = @"false", string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), string resourceGroupName = default(string), string resourceName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = @"false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string explicitlySetSa = @"false", string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), string resourceGroupName = default(string), string resourceName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = @"false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -100,6 +101,7 @@ namespace akeyless.Model
             this.GraceRotation = graceRotation;
             this.GraceRotationHour = graceRotationHour;
             this.GraceRotationInterval = graceRotationInterval;
+            this.GraceRotationTiming = graceRotationTiming;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
@@ -191,9 +193,9 @@ namespace akeyless.Model
         public string ExplicitlySetSa { get; set; }
 
         /// <summary>
-        /// Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]
+        /// Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false]
         /// </summary>
-        /// <value>Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]</value>
+        /// <value>Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false]</value>
         [DataMember(Name = "grace-rotation", EmitDefaultValue = false)]
         public string GraceRotation { get; set; }
 
@@ -210,6 +212,13 @@ namespace akeyless.Model
         /// <value>The number of days to wait before deleting the old key (must be bigger than rotation-interval)</value>
         [DataMember(Name = "grace-rotation-interval", EmitDefaultValue = false)]
         public string GraceRotationInterval { get; set; }
+
+        /// <summary>
+        /// When to create the new version relative to the rotation date [after/before]
+        /// </summary>
+        /// <value>When to create the new version relative to the rotation date [after/before]</value>
+        [DataMember(Name = "grace-rotation-timing", EmitDefaultValue = false)]
+        public string GraceRotationTiming { get; set; }
 
         /// <summary>
         /// Additional custom fields to associate with the item
@@ -406,6 +415,7 @@ namespace akeyless.Model
             sb.Append("  GraceRotation: ").Append(GraceRotation).Append("\n");
             sb.Append("  GraceRotationHour: ").Append(GraceRotationHour).Append("\n");
             sb.Append("  GraceRotationInterval: ").Append(GraceRotationInterval).Append("\n");
+            sb.Append("  GraceRotationTiming: ").Append(GraceRotationTiming).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");

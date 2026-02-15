@@ -733,6 +733,7 @@ docs/LastStatusInfo.md
 docs/LdapConfigPart.md
 docs/LdapTargetDetails.md
 docs/LeadershipConfigPart.md
+docs/LetsEncryptTargetDetails.md
 docs/LinkedDetails.md
 docs/LinkedTargetDetails.md
 docs/ListAcmeAccounts.md
@@ -792,6 +793,15 @@ docs/PasswordScoreSetting.md
 docs/PasswordSecurityInfo.md
 docs/PathRule.md
 docs/PingTargetDetails.md
+docs/PoliciesCreateOutput.md
+docs/PoliciesDelete.md
+docs/PoliciesGet.md
+docs/PoliciesGetOutput.md
+docs/PoliciesList.md
+docs/PoliciesListOutput.md
+docs/PolicyCreateKeys.md
+docs/PolicyOutput.md
+docs/PolicyUpdateKeys.md
 docs/Producer.md
 docs/ProducersConfigPart.md
 docs/ProvisionCertificate.md
@@ -842,6 +852,7 @@ docs/RotatedSecretCreatePostgresql.md
 docs/RotatedSecretCreateRedis.md
 docs/RotatedSecretCreateRedshift.md
 docs/RotatedSecretCreateSnowflake.md
+docs/RotatedSecretCreateSplunk.md
 docs/RotatedSecretCreateSsh.md
 docs/RotatedSecretCreateWindows.md
 docs/RotatedSecretDelete.md
@@ -870,6 +881,7 @@ docs/RotatedSecretUpdatePostgresql.md
 docs/RotatedSecretUpdateRedis.md
 docs/RotatedSecretUpdateRedshift.md
 docs/RotatedSecretUpdateSnowflake.md
+docs/RotatedSecretUpdateSplunk.md
 docs/RotatedSecretUpdateSsh.md
 docs/RotatedSecretUpdateWindows.md
 docs/RotationSecretMaxInterval.md
@@ -912,6 +924,8 @@ docs/SignRsaSsaPssOutput.md
 docs/SlackNotiForwarderDetails.md
 docs/SmInfo.md
 docs/SplunkLogForwardingConfig.md
+docs/SplunkPayload.md
+docs/SplunkTargetDetails.md
 docs/SraDesktopAppConf.md
 docs/SraInfo.md
 docs/SraSessionEntryOut.md
@@ -945,6 +959,7 @@ docs/TargetCreateGodaddy.md
 docs/TargetCreateHashiVault.md
 docs/TargetCreateK8s.md
 docs/TargetCreateLdap.md
+docs/TargetCreateLetsEncrypt.md
 docs/TargetCreateLinked.md
 docs/TargetCreateOpenAI.md
 docs/TargetCreateOutput.md
@@ -952,6 +967,7 @@ docs/TargetCreatePing.md
 docs/TargetCreateRabbitMq.md
 docs/TargetCreateSalesforce.md
 docs/TargetCreateSectigo.md
+docs/TargetCreateSplunk.md
 docs/TargetCreateSsh.md
 docs/TargetCreateWeb.md
 docs/TargetCreateWindows.md
@@ -982,6 +998,7 @@ docs/TargetUpdateGodaddy.md
 docs/TargetUpdateHashiVault.md
 docs/TargetUpdateK8s.md
 docs/TargetUpdateLdap.md
+docs/TargetUpdateLetsEncrypt.md
 docs/TargetUpdateLinked.md
 docs/TargetUpdateOpenAI.md
 docs/TargetUpdateOutput.md
@@ -1150,6 +1167,23 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
+src/akeyless.Test/Model/LetsEncryptTargetDetailsTests.cs
+src/akeyless.Test/Model/PoliciesCreateOutputTests.cs
+src/akeyless.Test/Model/PoliciesDeleteTests.cs
+src/akeyless.Test/Model/PoliciesGetOutputTests.cs
+src/akeyless.Test/Model/PoliciesGetTests.cs
+src/akeyless.Test/Model/PoliciesListOutputTests.cs
+src/akeyless.Test/Model/PoliciesListTests.cs
+src/akeyless.Test/Model/PolicyCreateKeysTests.cs
+src/akeyless.Test/Model/PolicyOutputTests.cs
+src/akeyless.Test/Model/PolicyUpdateKeysTests.cs
+src/akeyless.Test/Model/RotatedSecretCreateSplunkTests.cs
+src/akeyless.Test/Model/RotatedSecretUpdateSplunkTests.cs
+src/akeyless.Test/Model/SplunkPayloadTests.cs
+src/akeyless.Test/Model/SplunkTargetDetailsTests.cs
+src/akeyless.Test/Model/TargetCreateLetsEncryptTests.cs
+src/akeyless.Test/Model/TargetCreateSplunkTests.cs
+src/akeyless.Test/Model/TargetUpdateLetsEncryptTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1899,6 +1933,7 @@ src/akeyless/Model/LastStatusInfo.cs
 src/akeyless/Model/LdapConfigPart.cs
 src/akeyless/Model/LdapTargetDetails.cs
 src/akeyless/Model/LeadershipConfigPart.cs
+src/akeyless/Model/LetsEncryptTargetDetails.cs
 src/akeyless/Model/LinkedDetails.cs
 src/akeyless/Model/LinkedTargetDetails.cs
 src/akeyless/Model/ListAcmeAccounts.cs
@@ -1958,6 +1993,15 @@ src/akeyless/Model/PasswordScoreSetting.cs
 src/akeyless/Model/PasswordSecurityInfo.cs
 src/akeyless/Model/PathRule.cs
 src/akeyless/Model/PingTargetDetails.cs
+src/akeyless/Model/PoliciesCreateOutput.cs
+src/akeyless/Model/PoliciesDelete.cs
+src/akeyless/Model/PoliciesGet.cs
+src/akeyless/Model/PoliciesGetOutput.cs
+src/akeyless/Model/PoliciesList.cs
+src/akeyless/Model/PoliciesListOutput.cs
+src/akeyless/Model/PolicyCreateKeys.cs
+src/akeyless/Model/PolicyOutput.cs
+src/akeyless/Model/PolicyUpdateKeys.cs
 src/akeyless/Model/Producer.cs
 src/akeyless/Model/ProducersConfigPart.cs
 src/akeyless/Model/ProvisionCertificate.cs
@@ -2008,6 +2052,7 @@ src/akeyless/Model/RotatedSecretCreatePostgresql.cs
 src/akeyless/Model/RotatedSecretCreateRedis.cs
 src/akeyless/Model/RotatedSecretCreateRedshift.cs
 src/akeyless/Model/RotatedSecretCreateSnowflake.cs
+src/akeyless/Model/RotatedSecretCreateSplunk.cs
 src/akeyless/Model/RotatedSecretCreateSsh.cs
 src/akeyless/Model/RotatedSecretCreateWindows.cs
 src/akeyless/Model/RotatedSecretDelete.cs
@@ -2036,6 +2081,7 @@ src/akeyless/Model/RotatedSecretUpdatePostgresql.cs
 src/akeyless/Model/RotatedSecretUpdateRedis.cs
 src/akeyless/Model/RotatedSecretUpdateRedshift.cs
 src/akeyless/Model/RotatedSecretUpdateSnowflake.cs
+src/akeyless/Model/RotatedSecretUpdateSplunk.cs
 src/akeyless/Model/RotatedSecretUpdateSsh.cs
 src/akeyless/Model/RotatedSecretUpdateWindows.cs
 src/akeyless/Model/RotationSecretMaxInterval.cs
@@ -2078,6 +2124,8 @@ src/akeyless/Model/SignRsaSsaPssOutput.cs
 src/akeyless/Model/SlackNotiForwarderDetails.cs
 src/akeyless/Model/SmInfo.cs
 src/akeyless/Model/SplunkLogForwardingConfig.cs
+src/akeyless/Model/SplunkPayload.cs
+src/akeyless/Model/SplunkTargetDetails.cs
 src/akeyless/Model/SraDesktopAppConf.cs
 src/akeyless/Model/SraInfo.cs
 src/akeyless/Model/SraSessionEntryOut.cs
@@ -2111,6 +2159,7 @@ src/akeyless/Model/TargetCreateGodaddy.cs
 src/akeyless/Model/TargetCreateHashiVault.cs
 src/akeyless/Model/TargetCreateK8s.cs
 src/akeyless/Model/TargetCreateLdap.cs
+src/akeyless/Model/TargetCreateLetsEncrypt.cs
 src/akeyless/Model/TargetCreateLinked.cs
 src/akeyless/Model/TargetCreateOpenAI.cs
 src/akeyless/Model/TargetCreateOutput.cs
@@ -2118,6 +2167,7 @@ src/akeyless/Model/TargetCreatePing.cs
 src/akeyless/Model/TargetCreateRabbitMq.cs
 src/akeyless/Model/TargetCreateSalesforce.cs
 src/akeyless/Model/TargetCreateSectigo.cs
+src/akeyless/Model/TargetCreateSplunk.cs
 src/akeyless/Model/TargetCreateSsh.cs
 src/akeyless/Model/TargetCreateWeb.cs
 src/akeyless/Model/TargetCreateWindows.cs
@@ -2148,6 +2198,7 @@ src/akeyless/Model/TargetUpdateGodaddy.cs
 src/akeyless/Model/TargetUpdateHashiVault.cs
 src/akeyless/Model/TargetUpdateK8s.cs
 src/akeyless/Model/TargetUpdateLdap.cs
+src/akeyless/Model/TargetUpdateLetsEncrypt.cs
 src/akeyless/Model/TargetUpdateLinked.cs
 src/akeyless/Model/TargetUpdateOpenAI.cs
 src/akeyless/Model/TargetUpdateOutput.cs

@@ -36,9 +36,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GCPPayload" /> class.
         /// </summary>
         /// <param name="gcpCredentialsJson">gcpCredentialsJson.</param>
-        public GCPPayload(string gcpCredentialsJson = default(string))
+        /// <param name="projectId">projectId.</param>
+        /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
+        public GCPPayload(string gcpCredentialsJson = default(string), string projectId = default(string), bool useGwCloudIdentity = default(bool))
         {
             this.GcpCredentialsJson = gcpCredentialsJson;
+            this.ProjectId = projectId;
+            this.UseGwCloudIdentity = useGwCloudIdentity;
         }
 
         /// <summary>
@@ -46,6 +50,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "gcp_credentials_json", EmitDefaultValue = false)]
         public string GcpCredentialsJson { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ProjectId
+        /// </summary>
+        [DataMember(Name = "project_id", EmitDefaultValue = false)]
+        public string ProjectId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UseGwCloudIdentity
+        /// </summary>
+        [DataMember(Name = "use_gw_cloud_identity", EmitDefaultValue = true)]
+        public bool UseGwCloudIdentity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -56,6 +72,8 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GCPPayload {\n");
             sb.Append("  GcpCredentialsJson: ").Append(GcpCredentialsJson).Append("\n");
+            sb.Append("  ProjectId: ").Append(ProjectId).Append("\n");
+            sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

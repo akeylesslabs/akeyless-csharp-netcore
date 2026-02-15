@@ -70,7 +70,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times.</param>
-        /// <param name="targetName">Target name (required).</param>
+        /// <param name="targetName">The target name to associate (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
@@ -342,9 +342,9 @@ namespace akeyless.Model
         public List<string> Target { get; set; }
 
         /// <summary>
-        /// Target name
+        /// The target name to associate
         /// </summary>
-        /// <value>Target name</value>
+        /// <value>The target name to associate</value>
         [DataMember(Name = "target-name", IsRequired = true, EmitDefaultValue = true)]
         public string TargetName { get; set; }
 
