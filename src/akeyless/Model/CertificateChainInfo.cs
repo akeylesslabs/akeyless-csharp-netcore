@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="certificatePem">certificatePem.</param>
         /// <param name="certificateStatus">certificateStatus.</param>
         /// <param name="commonName">commonName.</param>
+        /// <param name="csrPem">CSRPEM contains the PEM-encoded CSR for pending certificates (HTTP-01 challenge).</param>
         /// <param name="errorMessage">errorMessage.</param>
         /// <param name="expirationDate">expirationDate.</param>
         /// <param name="expirationEvents">expirationEvents.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="issuanceStatus">issuanceStatus.</param>
         /// <param name="notBefore">notBefore.</param>
         /// <param name="renewBeforeExpirationInDays">renewBeforeExpirationInDays.</param>
-        public CertificateChainInfo(bool autoRenewCertificate = default(bool), List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), bool certificateHasPrivateKey = default(bool), long certificateIssuerGwClusterId = default(long), string certificateIssuerGwClusterUrl = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), string commonName = default(string), string errorMessage = default(string), DateTime expirationDate = default(DateTime), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), NullString externalCaId = default(NullString), string issuanceStatus = default(string), DateTime notBefore = default(DateTime), long renewBeforeExpirationInDays = default(long))
+        public CertificateChainInfo(bool autoRenewCertificate = default(bool), List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), bool certificateHasPrivateKey = default(bool), long certificateIssuerGwClusterId = default(long), string certificateIssuerGwClusterUrl = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), string commonName = default(string), string csrPem = default(string), string errorMessage = default(string), DateTime expirationDate = default(DateTime), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), NullString externalCaId = default(NullString), string issuanceStatus = default(string), DateTime notBefore = default(DateTime), long renewBeforeExpirationInDays = default(long))
         {
             this.AutoRenewCertificate = autoRenewCertificate;
             this.CertificateChain = certificateChain;
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.CertificatePem = certificatePem;
             this.CertificateStatus = certificateStatus;
             this.CommonName = commonName;
+            this.CsrPem = csrPem;
             this.ErrorMessage = errorMessage;
             this.ExpirationDate = expirationDate;
             this.ExpirationEvents = expirationEvents;
@@ -142,6 +144,13 @@ namespace akeyless.Model
         public string CommonName { get; set; }
 
         /// <summary>
+        /// CSRPEM contains the PEM-encoded CSR for pending certificates (HTTP-01 challenge)
+        /// </summary>
+        /// <value>CSRPEM contains the PEM-encoded CSR for pending certificates (HTTP-01 challenge)</value>
+        [DataMember(Name = "csr_pem", EmitDefaultValue = false)]
+        public string CsrPem { get; set; }
+
+        /// <summary>
         /// Gets or Sets ErrorMessage
         /// </summary>
         [DataMember(Name = "error_message", EmitDefaultValue = false)]
@@ -202,6 +211,7 @@ namespace akeyless.Model
             sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
             sb.Append("  CertificateStatus: ").Append(CertificateStatus).Append("\n");
             sb.Append("  CommonName: ").Append(CommonName).Append("\n");
+            sb.Append("  CsrPem: ").Append(CsrPem).Append("\n");
             sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
             sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
             sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");

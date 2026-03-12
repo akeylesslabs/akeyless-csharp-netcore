@@ -62,11 +62,12 @@ namespace akeyless.Model
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
+        /// <param name="requireCrlDp">Require certificate CRL distribution points (CDP) and enforce CRL validation during authentication..</param>
         /// <param name="revokedCertIds">A list of revoked cert ids.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured, such as common_name or organizational_unit Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public UpdateAuthMethodCert(long accessExpires = 0, List<string> allowedClientType = default(List<string>), string allowedCors = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), List<string> revokedCertIds = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public UpdateAuthMethodCert(long accessExpires = 0, List<string> allowedClientType = default(List<string>), string allowedCors = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), bool requireCrlDp = default(bool), List<string> revokedCertIds = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -101,6 +102,7 @@ namespace akeyless.Model
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
             this.ProductType = productType;
+            this.RequireCrlDp = requireCrlDp;
             this.RevokedCertIds = revokedCertIds;
             this.Token = token;
             this.UidToken = uidToken;
@@ -261,6 +263,13 @@ namespace akeyless.Model
         public List<string> ProductType { get; set; }
 
         /// <summary>
+        /// Require certificate CRL distribution points (CDP) and enforce CRL validation during authentication.
+        /// </summary>
+        /// <value>Require certificate CRL distribution points (CDP) and enforce CRL validation during authentication.</value>
+        [DataMember(Name = "require-crl-dp", EmitDefaultValue = true)]
+        public bool RequireCrlDp { get; set; }
+
+        /// <summary>
         /// A list of revoked cert ids
         /// </summary>
         /// <value>A list of revoked cert ids</value>
@@ -318,6 +327,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
+            sb.Append("  RequireCrlDp: ").Append(RequireCrlDp).Append("\n");
             sb.Append("  RevokedCertIds: ").Append(RevokedCertIds).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

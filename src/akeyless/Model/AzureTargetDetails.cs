@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="azureClientId">azureClientId.</param>
         /// <param name="azureClientSecret">azureClientSecret.</param>
+        /// <param name="azureCloud">azureCloud.</param>
         /// <param name="azureResourceGroupName">azureResourceGroupName.</param>
         /// <param name="azureResourceName">azureResourceName.</param>
         /// <param name="azureSubscriptionId">azureSubscriptionId.</param>
@@ -46,10 +47,11 @@ namespace akeyless.Model
         /// <param name="expirationDate">expirationDate.</param>
         /// <param name="graceRotatedSecretKey">graceRotatedSecretKey.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public AzureTargetDetails(string azureClientId = default(string), string azureClientSecret = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUsername = default(string), string connectionType = default(string), DateTime expirationDate = default(DateTime), string graceRotatedSecretKey = default(string), bool useGwCloudIdentity = default(bool))
+        public AzureTargetDetails(string azureClientId = default(string), string azureClientSecret = default(string), string azureCloud = default(string), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUsername = default(string), string connectionType = default(string), DateTime expirationDate = default(DateTime), string graceRotatedSecretKey = default(string), bool useGwCloudIdentity = default(bool))
         {
             this.AzureClientId = azureClientId;
             this.AzureClientSecret = azureClientSecret;
+            this.AzureCloud = azureCloud;
             this.AzureResourceGroupName = azureResourceGroupName;
             this.AzureResourceName = azureResourceName;
             this.AzureSubscriptionId = azureSubscriptionId;
@@ -72,6 +74,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "azure_client_secret", EmitDefaultValue = false)]
         public string AzureClientSecret { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AzureCloud
+        /// </summary>
+        [DataMember(Name = "azure_cloud", EmitDefaultValue = false)]
+        public string AzureCloud { get; set; }
 
         /// <summary>
         /// Gets or Sets AzureResourceGroupName
@@ -137,6 +145,7 @@ namespace akeyless.Model
             sb.Append("class AzureTargetDetails {\n");
             sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
             sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
+            sb.Append("  AzureCloud: ").Append(AzureCloud).Append("\n");
             sb.Append("  AzureResourceGroupName: ").Append(AzureResourceGroupName).Append("\n");
             sb.Append("  AzureResourceName: ").Append(AzureResourceName).Append("\n");
             sb.Append("  AzureSubscriptionId: ").Append(AzureSubscriptionId).Append("\n");

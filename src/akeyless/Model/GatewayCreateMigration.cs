@@ -42,6 +42,8 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="serviceAccountKeyDecoded">serviceAccountKeyDecoded.</param>
         /// <param name="adAutoRotate">Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration).</param>
+        /// <param name="adCertExpirationEventIn">How many days before the expiration of discovered certificates would you like to be notified (Relevant only for Active Directory migration with certificate discovery enabled).</param>
+        /// <param name="adCertificatesPathTemplate">Path location template for migrating certificates e.g.: /Certificates/{{COMMON_NAME}} (Relevant only for Active Directory migration with certificate discovery enabled).</param>
         /// <param name="adComputerBaseDn">Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration).</param>
         /// <param name="adDiscoverIisApp">Enable/Disable discovery of IIS application from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) (default to &quot;false&quot;).</param>
         /// <param name="adDiscoverServices">Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) (default to &quot;false&quot;).</param>
@@ -64,6 +66,7 @@ namespace akeyless.Model
         /// <param name="adWinrmOverHttp">Use WinRM over HTTP, by default runs over HTTPS (default to &quot;false&quot;).</param>
         /// <param name="adWinrmPort">Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration) (default to &quot;5986&quot;).</param>
         /// <param name="adDiscoverLocalUsers">Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) Deprecated: use AdDiscoverTypes.</param>
+        /// <param name="aiCertificateDiscovery">Enable AI-assisted certificate discovery (only when AI Insight is enabled on the Gateway).</param>
         /// <param name="awsKey">AWS Secret Access Key (relevant only for AWS migration).</param>
         /// <param name="awsKeyId">AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration).</param>
         /// <param name="awsRegion">AWS region of the required Secrets Manager (relevant only for AWS migration) (default to &quot;us-east-2&quot;).</param>
@@ -71,6 +74,10 @@ namespace akeyless.Model
         /// <param name="azureKvName">Azure Key Vault Name (relevant only for Azure Key Vault migration).</param>
         /// <param name="azureSecret">Azure Key Vault secret (relevant only for Azure Key Vault migration).</param>
         /// <param name="azureTenantId">Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration).</param>
+        /// <param name="conjurAccount">Conjur account name set on your Conjur server (relevant only for Conjur migration)..</param>
+        /// <param name="conjurApiKey">Conjur API Key for the specified user (relevant only for Conjur migration)..</param>
+        /// <param name="conjurUrl">Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path..</param>
+        /// <param name="conjurUsername">Conjur username used to authenticate (relevant only for Conjur migration)..</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="gcpKey">Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration).</param>
         /// <param name="gcpProjectId">GCP Project ID (cross-project override).</param>
@@ -102,10 +109,10 @@ namespace akeyless.Model
         /// <param name="siUsersPathTemplate">Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) (required).</param>
         /// <param name="targetLocation">Target location in Akeyless for imported secrets (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="type">Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory/server_inventory/certificate).</param>
+        /// <param name="type">Migration type (hashi/aws/gcp/k8s/azure_kv/conjur/active_directory/server_inventory/certificate).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">Use the GW&#39;s Cloud IAM.</param>
-        public GatewayCreateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), List<string> expirationEventIn = default(List<string>), string gcpKey = default(string), string gcpProjectId = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string hosts = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string portRanges = @"443", string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public GatewayCreateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), List<string> adCertExpirationEventIn = default(List<string>), string adCertificatesPathTemplate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string aiCertificateDiscovery = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string conjurAccount = default(string), string conjurApiKey = default(string), string conjurUrl = default(string), string conjurUsername = default(string), List<string> expirationEventIn = default(List<string>), string gcpKey = default(string), string gcpProjectId = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string hosts = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string portRanges = @"443", string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "hosts" is required (not null)
             if (hosts == null)
@@ -139,6 +146,8 @@ namespace akeyless.Model
             this.TargetLocation = targetLocation;
             this.ServiceAccountKeyDecoded = serviceAccountKeyDecoded;
             this.AdAutoRotate = adAutoRotate;
+            this.AdCertExpirationEventIn = adCertExpirationEventIn;
+            this.AdCertificatesPathTemplate = adCertificatesPathTemplate;
             this.AdComputerBaseDn = adComputerBaseDn;
             // use default value if no "adDiscoverIisApp" provided
             this.AdDiscoverIisApp = adDiscoverIisApp ?? @"false";
@@ -168,6 +177,7 @@ namespace akeyless.Model
             // use default value if no "adWinrmPort" provided
             this.AdWinrmPort = adWinrmPort ?? @"5986";
             this.AdDiscoverLocalUsers = adDiscoverLocalUsers;
+            this.AiCertificateDiscovery = aiCertificateDiscovery;
             this.AwsKey = awsKey;
             this.AwsKeyId = awsKeyId;
             // use default value if no "awsRegion" provided
@@ -176,6 +186,10 @@ namespace akeyless.Model
             this.AzureKvName = azureKvName;
             this.AzureSecret = azureSecret;
             this.AzureTenantId = azureTenantId;
+            this.ConjurAccount = conjurAccount;
+            this.ConjurApiKey = conjurApiKey;
+            this.ConjurUrl = conjurUrl;
+            this.ConjurUsername = conjurUsername;
             this.ExpirationEventIn = expirationEventIn;
             this.GcpKey = gcpKey;
             this.GcpProjectId = gcpProjectId;
@@ -222,6 +236,20 @@ namespace akeyless.Model
         /// <value>Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration)</value>
         [DataMember(Name = "ad-auto-rotate", EmitDefaultValue = false)]
         public string AdAutoRotate { get; set; }
+
+        /// <summary>
+        /// How many days before the expiration of discovered certificates would you like to be notified (Relevant only for Active Directory migration with certificate discovery enabled)
+        /// </summary>
+        /// <value>How many days before the expiration of discovered certificates would you like to be notified (Relevant only for Active Directory migration with certificate discovery enabled)</value>
+        [DataMember(Name = "ad-cert-expiration-event-in", EmitDefaultValue = false)]
+        public List<string> AdCertExpirationEventIn { get; set; }
+
+        /// <summary>
+        /// Path location template for migrating certificates e.g.: /Certificates/{{COMMON_NAME}} (Relevant only for Active Directory migration with certificate discovery enabled)
+        /// </summary>
+        /// <value>Path location template for migrating certificates e.g.: /Certificates/{{COMMON_NAME}} (Relevant only for Active Directory migration with certificate discovery enabled)</value>
+        [DataMember(Name = "ad-certificates-path-template", EmitDefaultValue = false)]
+        public string AdCertificatesPathTemplate { get; set; }
 
         /// <summary>
         /// Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration)
@@ -378,6 +406,13 @@ namespace akeyless.Model
         public string AdDiscoverLocalUsers { get; set; }
 
         /// <summary>
+        /// Enable AI-assisted certificate discovery (only when AI Insight is enabled on the Gateway)
+        /// </summary>
+        /// <value>Enable AI-assisted certificate discovery (only when AI Insight is enabled on the Gateway)</value>
+        [DataMember(Name = "ai-certificate-discovery", EmitDefaultValue = false)]
+        public string AiCertificateDiscovery { get; set; }
+
+        /// <summary>
         /// AWS Secret Access Key (relevant only for AWS migration)
         /// </summary>
         /// <value>AWS Secret Access Key (relevant only for AWS migration)</value>
@@ -425,6 +460,34 @@ namespace akeyless.Model
         /// <value>Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration)</value>
         [DataMember(Name = "azure-tenant-id", EmitDefaultValue = false)]
         public string AzureTenantId { get; set; }
+
+        /// <summary>
+        /// Conjur account name set on your Conjur server (relevant only for Conjur migration).
+        /// </summary>
+        /// <value>Conjur account name set on your Conjur server (relevant only for Conjur migration).</value>
+        [DataMember(Name = "conjur-account", EmitDefaultValue = false)]
+        public string ConjurAccount { get; set; }
+
+        /// <summary>
+        /// Conjur API Key for the specified user (relevant only for Conjur migration).
+        /// </summary>
+        /// <value>Conjur API Key for the specified user (relevant only for Conjur migration).</value>
+        [DataMember(Name = "conjur-api-key", EmitDefaultValue = false)]
+        public string ConjurApiKey { get; set; }
+
+        /// <summary>
+        /// Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path.
+        /// </summary>
+        /// <value>Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path.</value>
+        [DataMember(Name = "conjur-url", EmitDefaultValue = false)]
+        public string ConjurUrl { get; set; }
+
+        /// <summary>
+        /// Conjur username used to authenticate (relevant only for Conjur migration).
+        /// </summary>
+        /// <value>Conjur username used to authenticate (relevant only for Conjur migration).</value>
+        [DataMember(Name = "conjur-username", EmitDefaultValue = false)]
+        public string ConjurUsername { get; set; }
 
         /// <summary>
         /// How many days before the expiration of the certificate would you like to be notified.
@@ -644,9 +707,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory/server_inventory/certificate)
+        /// Migration type (hashi/aws/gcp/k8s/azure_kv/conjur/active_directory/server_inventory/certificate)
         /// </summary>
-        /// <value>Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory/server_inventory/certificate)</value>
+        /// <value>Migration type (hashi/aws/gcp/k8s/azure_kv/conjur/active_directory/server_inventory/certificate)</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
@@ -674,6 +737,8 @@ namespace akeyless.Model
             sb.Append("class GatewayCreateMigration {\n");
             sb.Append("  ServiceAccountKeyDecoded: ").Append(ServiceAccountKeyDecoded).Append("\n");
             sb.Append("  AdAutoRotate: ").Append(AdAutoRotate).Append("\n");
+            sb.Append("  AdCertExpirationEventIn: ").Append(AdCertExpirationEventIn).Append("\n");
+            sb.Append("  AdCertificatesPathTemplate: ").Append(AdCertificatesPathTemplate).Append("\n");
             sb.Append("  AdComputerBaseDn: ").Append(AdComputerBaseDn).Append("\n");
             sb.Append("  AdDiscoverIisApp: ").Append(AdDiscoverIisApp).Append("\n");
             sb.Append("  AdDiscoverServices: ").Append(AdDiscoverServices).Append("\n");
@@ -696,6 +761,7 @@ namespace akeyless.Model
             sb.Append("  AdWinrmOverHttp: ").Append(AdWinrmOverHttp).Append("\n");
             sb.Append("  AdWinrmPort: ").Append(AdWinrmPort).Append("\n");
             sb.Append("  AdDiscoverLocalUsers: ").Append(AdDiscoverLocalUsers).Append("\n");
+            sb.Append("  AiCertificateDiscovery: ").Append(AiCertificateDiscovery).Append("\n");
             sb.Append("  AwsKey: ").Append(AwsKey).Append("\n");
             sb.Append("  AwsKeyId: ").Append(AwsKeyId).Append("\n");
             sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
@@ -703,6 +769,10 @@ namespace akeyless.Model
             sb.Append("  AzureKvName: ").Append(AzureKvName).Append("\n");
             sb.Append("  AzureSecret: ").Append(AzureSecret).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
+            sb.Append("  ConjurAccount: ").Append(ConjurAccount).Append("\n");
+            sb.Append("  ConjurApiKey: ").Append(ConjurApiKey).Append("\n");
+            sb.Append("  ConjurUrl: ").Append(ConjurUrl).Append("\n");
+            sb.Append("  ConjurUsername: ").Append(ConjurUsername).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");

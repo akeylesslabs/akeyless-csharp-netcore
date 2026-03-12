@@ -43,9 +43,10 @@ namespace akeyless.Model
         /// <param name="boundOrganizationalUnits">A list of Organizational Units names. At least one must exist in the OU field..</param>
         /// <param name="boundUriSans">A list of URIs. At least one must exist in the SANs. Supports globbing..</param>
         /// <param name="certificate">Base64 encdoed PEM certificate.</param>
+        /// <param name="requireCrlDp">RequireCrlDp indicates whether CRL distribution points are required on the leaf client certificate, and whether CRL validation must be enforced during authentication..</param>
         /// <param name="revokedCertIds">A list of revoked cert ids.</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public CertAccessRules(List<string> allowedCors = default(List<string>), List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificate = default(string), List<string> revokedCertIds = default(List<string>), string uniqueIdentifier = default(string))
+        public CertAccessRules(List<string> allowedCors = default(List<string>), List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificate = default(string), bool requireCrlDp = default(bool), List<string> revokedCertIds = default(List<string>), string uniqueIdentifier = default(string))
         {
             this.AllowedCors = allowedCors;
             this.BoundCommonNames = boundCommonNames;
@@ -55,6 +56,7 @@ namespace akeyless.Model
             this.BoundOrganizationalUnits = boundOrganizationalUnits;
             this.BoundUriSans = boundUriSans;
             this.Certificate = certificate;
+            this.RequireCrlDp = requireCrlDp;
             this.RevokedCertIds = revokedCertIds;
             this.UniqueIdentifier = uniqueIdentifier;
         }
@@ -116,6 +118,13 @@ namespace akeyless.Model
         public string Certificate { get; set; }
 
         /// <summary>
+        /// RequireCrlDp indicates whether CRL distribution points are required on the leaf client certificate, and whether CRL validation must be enforced during authentication.
+        /// </summary>
+        /// <value>RequireCrlDp indicates whether CRL distribution points are required on the leaf client certificate, and whether CRL validation must be enforced during authentication.</value>
+        [DataMember(Name = "require_crl_dp", EmitDefaultValue = true)]
+        public bool RequireCrlDp { get; set; }
+
+        /// <summary>
         /// A list of revoked cert ids
         /// </summary>
         /// <value>A list of revoked cert ids</value>
@@ -145,6 +154,7 @@ namespace akeyless.Model
             sb.Append("  BoundOrganizationalUnits: ").Append(BoundOrganizationalUnits).Append("\n");
             sb.Append("  BoundUriSans: ").Append(BoundUriSans).Append("\n");
             sb.Append("  Certificate: ").Append(Certificate).Append("\n");
+            sb.Append("  RequireCrlDp: ").Append(RequireCrlDp).Append("\n");
             sb.Append("  RevokedCertIds: ").Append(RevokedCertIds).Append("\n");
             sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");

@@ -36,9 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ActiveDirectoryPayload" /> class.
         /// </summary>
         /// <param name="activeDirectoryTargetId">activeDirectoryTargetId.</param>
+        /// <param name="aiCertificateDiscovery">aiCertificateDiscovery.</param>
         /// <param name="autoRotate">autoRotate.</param>
         /// <param name="autoRotateIntervalInDays">autoRotateIntervalInDays.</param>
         /// <param name="autoRotateRotationHour">autoRotateRotationHour.</param>
+        /// <param name="certificatesExpirationEvents">certificatesExpirationEvents.</param>
+        /// <param name="certificatesPathTemplate">certificatesPathTemplate.</param>
         /// <param name="computerBaseDn">computerBaseDn.</param>
         /// <param name="discoverIisApps">discoverIisApps.</param>
         /// <param name="discoverLocalUsers">Deprecated.</param>
@@ -58,12 +61,15 @@ namespace akeyless.Model
         /// <param name="userGroups">userGroups.</param>
         /// <param name="winrmOverHttp">winrmOverHttp.</param>
         /// <param name="winrmPort">winrmPort.</param>
-        public ActiveDirectoryPayload(long activeDirectoryTargetId = default(long), bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), string computerBaseDn = default(string), bool discoverIisApps = default(bool), bool discoverLocalUsers = default(bool), bool discoverServices = default(bool), List<string> discoveryTypes = default(List<string>), string domainName = default(string), string domainServerTargetsPathTemplate = default(string), string domainUsersRotatedSecretsPathTemplate = default(string), bool enableRdpSra = default(bool), Dictionary<string, bool> localUsersIgnoreList = default(Dictionary<string, bool>), string localUsersRotatedSecretsPathTemplate = default(string), string osFilter = default(string), string sshPort = default(string), string targetFormat = default(string), string targetsType = default(string), string userBaseDn = default(string), List<string> userGroups = default(List<string>), bool winrmOverHttp = default(bool), string winrmPort = default(string))
+        public ActiveDirectoryPayload(long activeDirectoryTargetId = default(long), bool aiCertificateDiscovery = default(bool), bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), List<CertificateExpirationEvent> certificatesExpirationEvents = default(List<CertificateExpirationEvent>), string certificatesPathTemplate = default(string), string computerBaseDn = default(string), bool discoverIisApps = default(bool), bool discoverLocalUsers = default(bool), bool discoverServices = default(bool), List<string> discoveryTypes = default(List<string>), string domainName = default(string), string domainServerTargetsPathTemplate = default(string), string domainUsersRotatedSecretsPathTemplate = default(string), bool enableRdpSra = default(bool), Dictionary<string, bool> localUsersIgnoreList = default(Dictionary<string, bool>), string localUsersRotatedSecretsPathTemplate = default(string), string osFilter = default(string), string sshPort = default(string), string targetFormat = default(string), string targetsType = default(string), string userBaseDn = default(string), List<string> userGroups = default(List<string>), bool winrmOverHttp = default(bool), string winrmPort = default(string))
         {
             this.ActiveDirectoryTargetId = activeDirectoryTargetId;
+            this.AiCertificateDiscovery = aiCertificateDiscovery;
             this.AutoRotate = autoRotate;
             this.AutoRotateIntervalInDays = autoRotateIntervalInDays;
             this.AutoRotateRotationHour = autoRotateRotationHour;
+            this.CertificatesExpirationEvents = certificatesExpirationEvents;
+            this.CertificatesPathTemplate = certificatesPathTemplate;
             this.ComputerBaseDn = computerBaseDn;
             this.DiscoverIisApps = discoverIisApps;
             this.DiscoverLocalUsers = discoverLocalUsers;
@@ -92,6 +98,12 @@ namespace akeyless.Model
         public long ActiveDirectoryTargetId { get; set; }
 
         /// <summary>
+        /// Gets or Sets AiCertificateDiscovery
+        /// </summary>
+        [DataMember(Name = "ai_certificate_discovery", EmitDefaultValue = true)]
+        public bool AiCertificateDiscovery { get; set; }
+
+        /// <summary>
         /// Gets or Sets AutoRotate
         /// </summary>
         [DataMember(Name = "auto_rotate", EmitDefaultValue = true)]
@@ -108,6 +120,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "auto_rotate_rotation_hour", EmitDefaultValue = false)]
         public int AutoRotateRotationHour { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificatesExpirationEvents
+        /// </summary>
+        [DataMember(Name = "certificates_expiration_events", EmitDefaultValue = false)]
+        public List<CertificateExpirationEvent> CertificatesExpirationEvents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CertificatesPathTemplate
+        /// </summary>
+        [DataMember(Name = "certificates_path_template", EmitDefaultValue = false)]
+        public string CertificatesPathTemplate { get; set; }
 
         /// <summary>
         /// Gets or Sets ComputerBaseDn
@@ -233,9 +257,12 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ActiveDirectoryPayload {\n");
             sb.Append("  ActiveDirectoryTargetId: ").Append(ActiveDirectoryTargetId).Append("\n");
+            sb.Append("  AiCertificateDiscovery: ").Append(AiCertificateDiscovery).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  AutoRotateIntervalInDays: ").Append(AutoRotateIntervalInDays).Append("\n");
             sb.Append("  AutoRotateRotationHour: ").Append(AutoRotateRotationHour).Append("\n");
+            sb.Append("  CertificatesExpirationEvents: ").Append(CertificatesExpirationEvents).Append("\n");
+            sb.Append("  CertificatesPathTemplate: ").Append(CertificatesPathTemplate).Append("\n");
             sb.Append("  ComputerBaseDn: ").Append(ComputerBaseDn).Append("\n");
             sb.Append("  DiscoverIisApps: ").Append(DiscoverIisApps).Append("\n");
             sb.Append("  DiscoverLocalUsers: ").Append(DiscoverLocalUsers).Append("\n");

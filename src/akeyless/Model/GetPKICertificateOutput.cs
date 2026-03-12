@@ -38,14 +38,16 @@ namespace akeyless.Model
         /// <param name="certDisplayId">certDisplayId.</param>
         /// <param name="certItemId">certItemId.</param>
         /// <param name="data">data.</param>
+        /// <param name="httpChallengeInfo">httpChallengeInfo.</param>
         /// <param name="parentCert">parentCert.</param>
         /// <param name="path">path.</param>
         /// <param name="readingToken">readingToken.</param>
-        public GetPKICertificateOutput(string certDisplayId = default(string), long certItemId = default(long), string data = default(string), string parentCert = default(string), string path = default(string), string readingToken = default(string))
+        public GetPKICertificateOutput(string certDisplayId = default(string), long certItemId = default(long), string data = default(string), HTTPChallengeInfo httpChallengeInfo = default(HTTPChallengeInfo), string parentCert = default(string), string path = default(string), string readingToken = default(string))
         {
             this.CertDisplayId = certDisplayId;
             this.CertItemId = certItemId;
             this.Data = data;
+            this.HttpChallengeInfo = httpChallengeInfo;
             this.ParentCert = parentCert;
             this.Path = path;
             this.ReadingToken = readingToken;
@@ -68,6 +70,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "data", EmitDefaultValue = false)]
         public string Data { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HttpChallengeInfo
+        /// </summary>
+        [DataMember(Name = "http_challenge_info", EmitDefaultValue = false)]
+        public HTTPChallengeInfo HttpChallengeInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets ParentCert
@@ -98,6 +106,7 @@ namespace akeyless.Model
             sb.Append("  CertDisplayId: ").Append(CertDisplayId).Append("\n");
             sb.Append("  CertItemId: ").Append(CertItemId).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("  HttpChallengeInfo: ").Append(HttpChallengeInfo).Append("\n");
             sb.Append("  ParentCert: ").Append(ParentCert).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  ReadingToken: ").Append(ReadingToken).Append("\n");

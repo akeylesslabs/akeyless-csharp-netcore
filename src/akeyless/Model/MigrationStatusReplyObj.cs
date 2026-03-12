@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MigrationStatusReplyObj" /> class.
         /// </summary>
+        /// <param name="certificates">certificates.</param>
         /// <param name="computers">computers.</param>
         /// <param name="durationTime">durationTime.</param>
         /// <param name="error">error.</param>
@@ -50,8 +51,9 @@ namespace akeyless.Model
         /// <param name="rotatedSecrets">rotatedSecrets.</param>
         /// <param name="startTime">startTime.</param>
         /// <param name="targets">targets.</param>
-        public MigrationStatusReplyObj(long computers = default(long), string durationTime = default(string), string error = default(string), string lastStatusMessage = default(string), long maxNameLength = default(long), long maxValueLength = default(long), string migrationId = default(string), MigrationItems migrationItems = default(MigrationItems), string migrationName = default(string), string migrationState = default(string), string migrationType = default(string), string migrationTypeName = default(string), MigrationItems rotatedSecrets = default(MigrationItems), string startTime = default(string), MigrationItems targets = default(MigrationItems))
+        public MigrationStatusReplyObj(MigrationItems certificates = default(MigrationItems), long computers = default(long), string durationTime = default(string), string error = default(string), string lastStatusMessage = default(string), long maxNameLength = default(long), long maxValueLength = default(long), string migrationId = default(string), MigrationItems migrationItems = default(MigrationItems), string migrationName = default(string), string migrationState = default(string), string migrationType = default(string), string migrationTypeName = default(string), MigrationItems rotatedSecrets = default(MigrationItems), string startTime = default(string), MigrationItems targets = default(MigrationItems))
         {
+            this.Certificates = certificates;
             this.Computers = computers;
             this.DurationTime = durationTime;
             this.Error = error;
@@ -68,6 +70,12 @@ namespace akeyless.Model
             this.StartTime = startTime;
             this.Targets = targets;
         }
+
+        /// <summary>
+        /// Gets or Sets Certificates
+        /// </summary>
+        [DataMember(Name = "certificates", EmitDefaultValue = false)]
+        public MigrationItems Certificates { get; set; }
 
         /// <summary>
         /// Gets or Sets Computers
@@ -167,6 +175,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class MigrationStatusReplyObj {\n");
+            sb.Append("  Certificates: ").Append(Certificates).Append("\n");
             sb.Append("  Computers: ").Append(Computers).Append("\n");
             sb.Append("  DurationTime: ").Append(DurationTime).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");

@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// <param name="accountId">Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
+        /// <param name="azureCloud">Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud. (default to &quot;AzureCloud&quot;).</param>
         /// <param name="certChallenge">Certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
@@ -66,7 +67,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal_identity token (relevant only for access-type&#x3D;universal_identity).</param>
         /// <param name="useRemoteBrowser">Returns a link to complete the authentication remotely (relevant only for access-type&#x3D;saml/oidc).</param>
         /// <param name="username">LDAP username (relevant only for access-type&#x3D;ldap).</param>
-        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = @"access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string certChallenge = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string disablePafxfast = default(string), string gatewaySpn = default(string), string gatewayUrl = default(string), string gcpAudience = @"akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string kerberosToken = default(string), string kerberosUsername = default(string), string keyData = default(string), string keytabData = default(string), string krb5ConfData = default(string), string ldapPassword = default(string), string ociAuthType = @"apikey", List<string> ociGroupOcid = default(List<string>), string otp = default(string), string signedCertChallenge = default(string), string uidToken = default(string), bool useRemoteBrowser = default(bool), string username = default(string))
+        public Auth(string accessId = default(string), string accessKey = default(string), string accessType = @"access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string azureCloud = @"AzureCloud", string certChallenge = default(string), string certData = default(string), string cloudId = default(string), bool debug = default(bool), string disablePafxfast = default(string), string gatewaySpn = default(string), string gatewayUrl = default(string), string gcpAudience = @"akeyless.io", bool json = false, string jwt = default(string), string k8sAuthConfigName = default(string), string k8sServiceAccountToken = default(string), string kerberosToken = default(string), string kerberosUsername = default(string), string keyData = default(string), string keytabData = default(string), string krb5ConfData = default(string), string ldapPassword = default(string), string ociAuthType = @"apikey", List<string> ociGroupOcid = default(List<string>), string otp = default(string), string signedCertChallenge = default(string), string uidToken = default(string), bool useRemoteBrowser = default(bool), string username = default(string))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -75,6 +76,8 @@ namespace akeyless.Model
             this.AccountId = accountId;
             this.AdminEmail = adminEmail;
             this.AdminPassword = adminPassword;
+            // use default value if no "azureCloud" provided
+            this.AzureCloud = azureCloud ?? @"AzureCloud";
             this.CertChallenge = certChallenge;
             this.CertData = certData;
             this.CloudId = cloudId;
@@ -145,6 +148,13 @@ namespace akeyless.Model
         /// <value>Password (relevant only for access-type&#x3D;password)</value>
         [DataMember(Name = "admin-password", EmitDefaultValue = false)]
         public string AdminPassword { get; set; }
+
+        /// <summary>
+        /// Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.
+        /// </summary>
+        /// <value>Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.</value>
+        [DataMember(Name = "azure-cloud", EmitDefaultValue = false)]
+        public string AzureCloud { get; set; }
 
         /// <summary>
         /// Certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert)
@@ -333,6 +343,7 @@ namespace akeyless.Model
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  AdminEmail: ").Append(AdminEmail).Append("\n");
             sb.Append("  AdminPassword: ").Append(AdminPassword).Append("\n");
+            sb.Append("  AzureCloud: ").Append(AzureCloud).Append("\n");
             sb.Append("  CertChallenge: ").Append(CertChallenge).Append("\n");
             sb.Append("  CertData: ").Append(CertData).Append("\n");
             sb.Append("  CloudId: ").Append(CloudId).Append("\n");

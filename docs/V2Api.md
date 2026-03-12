@@ -598,7 +598,9 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UscGet**](V2Api.md#uscget) | **POST** /usc-get |  |
 | [**UscList**](V2Api.md#usclist) | **POST** /usc-list |  |
 | [**UscUpdate**](V2Api.md#uscupdate) | **POST** /usc-update |  |
+| [**ValidateCertificateChallenge**](V2Api.md#validatecertificatechallenge) | **POST** /validate-certificate-challenge |  |
 | [**ValidateToken**](V2Api.md#validatetoken) | **POST** /validate-token |  |
+| [**VaultAddress**](V2Api.md#vaultaddress) | **POST** /vault-address |  |
 | [**VerifyDataWithClassicKey**](V2Api.md#verifydatawithclassickey) | **POST** /verify-data-with-classic-key |  |
 | [**VerifyEcDsa**](V2Api.md#verifyecdsa) | **POST** /verify-ecdsa |  |
 | [**VerifyGPG**](V2Api.md#verifygpg) | **POST** /verify-gpg |  |
@@ -52859,6 +52861,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="validatecertificatechallenge"></a>
+# **ValidateCertificateChallenge**
+> ValidateCertificateChallengeOutput ValidateCertificateChallenge (ValidateCertificateChallenge validateCertificateChallenge)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ValidateCertificateChallengeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var validateCertificateChallenge = new ValidateCertificateChallenge(); // ValidateCertificateChallenge | 
+
+            try
+            {
+                ValidateCertificateChallengeOutput result = apiInstance.ValidateCertificateChallenge(validateCertificateChallenge);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ValidateCertificateChallenge: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ValidateCertificateChallengeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ValidateCertificateChallengeOutput> response = apiInstance.ValidateCertificateChallengeWithHttpInfo(validateCertificateChallenge);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ValidateCertificateChallengeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **validateCertificateChallenge** | [**ValidateCertificateChallenge**](ValidateCertificateChallenge.md) |  |  |
+
+### Return type
+
+[**ValidateCertificateChallengeOutput**](ValidateCertificateChallengeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | validateCertificateChallengeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="validatetoken"></a>
 # **ValidateToken**
 > ValidateTokenOutput ValidateToken (ValidateToken validateToken)
@@ -52944,6 +53034,94 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | validateTokenResponse wraps response body. |  -  |
 | **401** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="vaultaddress"></a>
+# **VaultAddress**
+> VaultAddressOutput VaultAddress (VaultAddress vaultAddress)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class VaultAddressExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var vaultAddress = new VaultAddress(); // VaultAddress | 
+
+            try
+            {
+                VaultAddressOutput result = apiInstance.VaultAddress(vaultAddress);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.VaultAddress: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the VaultAddressWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<VaultAddressOutput> response = apiInstance.VaultAddressWithHttpInfo(vaultAddress);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.VaultAddressWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **vaultAddress** | [**VaultAddress**](VaultAddress.md) |  |  |
+
+### Return type
+
+[**VaultAddressOutput**](VaultAddressOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | vaultAddressResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

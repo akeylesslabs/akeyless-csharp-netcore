@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CertDisplayId** | **string** |  | [optional] 
 **CertItemId** | **long** |  | [optional] 
 **Data** | **string** |  | [optional] 
+**HttpChallengeInfo** | [**HTTPChallengeInfo**](HTTPChallengeInfo.md) |  | [optional] 
 **ParentCert** | **string** |  | [optional] 
 **Path** | **string** |  | [optional] 
 **ReadingToken** | **string** |  | [optional] 

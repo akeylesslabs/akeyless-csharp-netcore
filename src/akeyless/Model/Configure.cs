@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="azureAdObjectId">Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad).</param>
+        /// <param name="azureCloud">Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud. (default to &quot;AzureCloud&quot;).</param>
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context).</param>
         /// <param name="certIssuerName">Certificate Issuer Name.</param>
         /// <param name="certUsername">The username to sign in the SSH certificate (use a comma-separated list for more than one username).</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="legacySigningAlgName">Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the certificate..</param>
         /// <param name="ociAuthType">The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) (default to &quot;apikey&quot;).</param>
         /// <param name="ociGroupOcid">A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci).</param>
-        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = @"access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string certData = default(string), string certIssuerName = default(string), string certUsername = default(string), string defaultLocationPrefix = default(string), string disablePafxfast = default(string), string gatewaySpn = default(string), string gcpAudience = @"akeyless.io", bool json = false, string k8sAuthConfigName = default(string), string kerberosToken = default(string), string kerberosUsername = default(string), string keyData = default(string), string keytabData = default(string), string krb5ConfData = default(string), bool legacySigningAlgName = default(bool), string ociAuthType = @"apikey", List<string> ociGroupOcid = default(List<string>))
+        public Configure(string accessId = default(string), string accessKey = default(string), string accessType = @"access_key", string accountId = default(string), string adminEmail = default(string), string adminPassword = default(string), string azureAdObjectId = default(string), string azureCloud = @"AzureCloud", string certData = default(string), string certIssuerName = default(string), string certUsername = default(string), string defaultLocationPrefix = default(string), string disablePafxfast = default(string), string gatewaySpn = default(string), string gcpAudience = @"akeyless.io", bool json = false, string k8sAuthConfigName = default(string), string kerberosToken = default(string), string kerberosUsername = default(string), string keyData = default(string), string keytabData = default(string), string krb5ConfData = default(string), bool legacySigningAlgName = default(bool), string ociAuthType = @"apikey", List<string> ociGroupOcid = default(List<string>))
         {
             this.AccessId = accessId;
             this.AccessKey = accessKey;
@@ -69,6 +70,8 @@ namespace akeyless.Model
             this.AdminEmail = adminEmail;
             this.AdminPassword = adminPassword;
             this.AzureAdObjectId = azureAdObjectId;
+            // use default value if no "azureCloud" provided
+            this.AzureCloud = azureCloud ?? @"AzureCloud";
             this.CertData = certData;
             this.CertIssuerName = certIssuerName;
             this.CertUsername = certUsername;
@@ -138,6 +141,13 @@ namespace akeyless.Model
         /// <value>Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad)</value>
         [DataMember(Name = "azure-ad-object-id", EmitDefaultValue = false)]
         public string AzureAdObjectId { get; set; }
+
+        /// <summary>
+        /// Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.
+        /// </summary>
+        /// <value>Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.</value>
+        [DataMember(Name = "azure-cloud", EmitDefaultValue = false)]
+        public string AzureCloud { get; set; }
 
         /// <summary>
         /// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context)
@@ -273,6 +283,7 @@ namespace akeyless.Model
             sb.Append("  AdminEmail: ").Append(AdminEmail).Append("\n");
             sb.Append("  AdminPassword: ").Append(AdminPassword).Append("\n");
             sb.Append("  AzureAdObjectId: ").Append(AzureAdObjectId).Append("\n");
+            sb.Append("  AzureCloud: ").Append(AzureCloud).Append("\n");
             sb.Append("  CertData: ").Append(CertData).Append("\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  CertUsername: ").Append(CertUsername).Append("\n");

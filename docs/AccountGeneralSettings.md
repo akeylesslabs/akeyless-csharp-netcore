@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **AuthUsageEvent** | [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
 **CertificateExpirationEvents** | [**CertificateExpirationEventsSettings**](CertificateExpirationEventsSettings.md) |  | [optional] 
 **DataProtectionSection** | [**DataProtectionSection**](DataProtectionSection.md) |  | [optional] 
+**DefaultAuthMethod** | [**DefaultAuthMethodSettings**](DefaultAuthMethodSettings.md) |  | [optional] 
 **DefaultHomePage** | [**DefaultHomePage**](DefaultHomePage.md) |  | [optional] 
 **DynamicSecretMaxTtl** | [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
 **EnableRequestForAccess** | **bool** |  | [optional] 

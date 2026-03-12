@@ -8,12 +8,17 @@ Name | Type | Description | Notes
 **AzureKvName** | **string** | Azure Key Vault name (Relevant only for Azure targets) | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the Universal Secrets Connector | [optional] 
+**EnvironmentNames** | **string** | The environments in repo-name/environment-name format, comma-separated (only relevant for: github-scope&#x3D;repository-environment) | [optional] 
 **GcpProjectId** | **string** | GCP Project ID (Relevant only for GCP targets) | [optional] 
 **GcpSmRegions** | **string** | GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets. | [optional] 
+**GithubScope** | **string** | The scope where secrets will be created, available options: [repository, organization, repository-environment] | [optional] [default to "repository"]
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **K8sNamespace** | **string** | K8s namespace (Relevant to Kubernetes targets) | [optional] 
 **Name** | **string** | Universal Secrets Connector name | 
+**OrganizationName** | **string** | The organization name to create the secret in (only relevant for: github-scope&#x3D;organization) | [optional] 
+**RepositoryAccess** | **string** |  | [optional] [default to "public"]
+**RepositoryNames** | **string** | The repository names, comma-separated (only relevant for: github-scope&#x3D;repository) | [optional] 
 **Tags** | **List&lt;string&gt;** | List of the tags attached to this Universal Secrets Connector | [optional] 
 **TargetToAssociate** | **string** | Target Universal Secrets Connector to connect | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

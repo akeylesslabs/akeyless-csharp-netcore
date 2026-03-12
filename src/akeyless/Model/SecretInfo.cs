@@ -38,6 +38,7 @@ namespace akeyless.Model
         /// <param name="created">created.</param>
         /// <param name="description">description.</param>
         /// <param name="expiration">expiration.</param>
+        /// <param name="github">github.</param>
         /// <param name="keyId">keyId.</param>
         /// <param name="lastRetrieved">lastRetrieved.</param>
         /// <param name="location">location.</param>
@@ -49,11 +50,12 @@ namespace akeyless.Model
         /// <param name="thumbprint">thumbprint.</param>
         /// <param name="type">type.</param>
         /// <param name="varVersion">varVersion.</param>
-        public SecretInfo(DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), string keyId = default(string), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string region = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long))
+        public SecretInfo(DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), GithubMetadata github = default(GithubMetadata), string keyId = default(string), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string region = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long))
         {
             this.Created = created;
             this.Description = description;
             this.Expiration = expiration;
+            this.Github = github;
             this.KeyId = keyId;
             this.LastRetrieved = lastRetrieved;
             this.Location = location;
@@ -84,6 +86,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "expiration", EmitDefaultValue = false)]
         public DateTime Expiration { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Github
+        /// </summary>
+        [DataMember(Name = "github", EmitDefaultValue = false)]
+        public GithubMetadata Github { get; set; }
 
         /// <summary>
         /// Gets or Sets KeyId
@@ -162,6 +170,7 @@ namespace akeyless.Model
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Expiration: ").Append(Expiration).Append("\n");
+            sb.Append("  Github: ").Append(Github).Append("\n");
             sb.Append("  KeyId: ").Append(KeyId).Append("\n");
             sb.Append("  LastRetrieved: ").Append(LastRetrieved).Append("\n");
             sb.Append("  Location: ").Append(Location).Append("\n");

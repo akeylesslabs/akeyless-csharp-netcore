@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AzureClientId** | **string** |  | [optional] 
 **AzureClientSecret** | **string** |  | [optional] 
+**AzureCloud** | **string** |  | [optional] 
 **AzureResourceGroupName** | **string** |  | [optional] 
 **AzureResourceName** | **string** |  | [optional] 
 **AzureSubscriptionId** | **string** |  | [optional] 

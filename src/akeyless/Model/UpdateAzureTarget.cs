@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateAzureTarget" /> class.
         /// </summary>
+        /// <param name="azureCloud">Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud. (default to &quot;AzureCloud&quot;).</param>
         /// <param name="clientId">Azure client/application id.</param>
         /// <param name="clientSecret">Azure client secret.</param>
         /// <param name="comment">Deprecated - use description.</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="useGwCloudIdentity">Use the GW&#39;s Cloud IAM [Deprecated: Use connection-type&#x3D;cloud-identity].</param>
-        public UpdateAzureTarget(string clientId = default(string), string clientSecret = default(string), string comment = default(string), string connectionType = @"credentials", string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
+        public UpdateAzureTarget(string azureCloud = @"AzureCloud", string clientId = default(string), string clientSecret = default(string), string comment = default(string), string connectionType = @"credentials", string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -67,6 +68,8 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for UpdateAzureTarget and cannot be null");
             }
             this.Name = name;
+            // use default value if no "azureCloud" provided
+            this.AzureCloud = azureCloud ?? @"AzureCloud";
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
             this.Comment = comment;
@@ -87,6 +90,13 @@ namespace akeyless.Model
             this.UpdateVersion = updateVersion;
             this.UseGwCloudIdentity = useGwCloudIdentity;
         }
+
+        /// <summary>
+        /// Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.
+        /// </summary>
+        /// <value>Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.</value>
+        [DataMember(Name = "azure-cloud", EmitDefaultValue = false)]
+        public string AzureCloud { get; set; }
 
         /// <summary>
         /// Azure client/application id
@@ -229,6 +239,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateAzureTarget {\n");
+            sb.Append("  AzureCloud: ").Append(AzureCloud).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");

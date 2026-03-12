@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **AzureAppObjectId** | **string** |  | [optional] 
 **AzureClientId** | **string** |  | [optional] 
 **AzureClientSecret** | **string** |  | [optional] 
+**AzureCloud** | **string** |  | [optional] 
 **AzureFixedUserNameSubClaimKey** | **string** |  | [optional] 
 **AzureFixedUserOnly** | **bool** |  | [optional] 
 **AzureResourceGroupName** | **string** |  | [optional] 

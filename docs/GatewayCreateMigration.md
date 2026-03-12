@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServiceAccountKeyDecoded** | **string** |  | [optional] 
 **AdAutoRotate** | **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -ad-rotation-interval and - -ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
+**AdCertExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of discovered certificates would you like to be notified (Relevant only for Active Directory migration with certificate discovery enabled) | [optional] 
+**AdCertificatesPathTemplate** | **string** | Path location template for migrating certificates e.g.: /Certificates/{{COMMON_NAME}} (Relevant only for Active Directory migration with certificate discovery enabled) | [optional] 
 **AdComputerBaseDn** | **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
 **AdDiscoverIisApp** | **string** | Enable/Disable discovery of IIS application from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
 **AdDiscoverServices** | **string** | Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
@@ -29,6 +31,7 @@ Name | Type | Description | Notes
 **AdWinrmOverHttp** | **string** | Use WinRM over HTTP, by default runs over HTTPS | [optional] [default to "false"]
 **AdWinrmPort** | **string** | Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration) | [optional] [default to "5986"]
 **AdDiscoverLocalUsers** | **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) Deprecated: use AdDiscoverTypes | [optional] 
+**AiCertificateDiscovery** | **string** | Enable AI-assisted certificate discovery (only when AI Insight is enabled on the Gateway) | [optional] 
 **AwsKey** | **string** | AWS Secret Access Key (relevant only for AWS migration) | [optional] 
 **AwsKeyId** | **string** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration) | [optional] 
 **AwsRegion** | **string** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] [default to "us-east-2"]
@@ -36,6 +39,10 @@ Name | Type | Description | Notes
 **AzureKvName** | **string** | Azure Key Vault Name (relevant only for Azure Key Vault migration) | [optional] 
 **AzureSecret** | **string** | Azure Key Vault secret (relevant only for Azure Key Vault migration) | [optional] 
 **AzureTenantId** | **string** | Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration) | [optional] 
+**ConjurAccount** | **string** | Conjur account name set on your Conjur server (relevant only for Conjur migration). | [optional] 
+**ConjurApiKey** | **string** | Conjur API Key for the specified user (relevant only for Conjur migration). | [optional] 
+**ConjurUrl** | **string** | Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path. | [optional] 
+**ConjurUsername** | **string** | Conjur username used to authenticate (relevant only for Conjur migration). | [optional] 
 **ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpKey** | **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
 **GcpProjectId** | **string** | GCP Project ID (cross-project override) | [optional] 
@@ -67,7 +74,7 @@ Name | Type | Description | Notes
 **SiUsersPathTemplate** | **string** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) | 
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory/server_inventory/certificate) | [optional] 
+**Type** | **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/conjur/active_directory/server_inventory/certificate) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UseGwCloudIdentity** | **bool** | Use the GW&#39;s Cloud IAM | [optional] 
 

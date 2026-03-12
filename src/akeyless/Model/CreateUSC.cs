@@ -43,19 +43,24 @@ namespace akeyless.Model
         /// <param name="azureKvName">Azure Key Vault name (Relevant only for Azure targets).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the Universal Secrets Connector.</param>
+        /// <param name="environmentNames">The environments in repo-name/environment-name format, comma-separated (only relevant for: github-scope&#x3D;repository-environment).</param>
         /// <param name="gcpProjectId">GCP Project ID (Relevant only for GCP targets).</param>
         /// <param name="gcpSmRegions">GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets..</param>
+        /// <param name="githubScope">The scope where secrets will be created, available options: [repository, organization, repository-environment] (default to &quot;repository&quot;).</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sNamespace">K8s namespace (Relevant to Kubernetes targets).</param>
         /// <param name="name">Universal Secrets Connector name (required).</param>
+        /// <param name="organizationName">The organization name to create the secret in (only relevant for: github-scope&#x3D;organization).</param>
+        /// <param name="repositoryAccess">repositoryAccess (default to &quot;public&quot;).</param>
+        /// <param name="repositoryNames">The repository names, comma-separated (only relevant for: github-scope&#x3D;repository).</param>
         /// <param name="tags">List of the tags attached to this Universal Secrets Connector.</param>
         /// <param name="targetToAssociate">Target Universal Secrets Connector to connect (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscPrefix">Prefix for all secrets created in AWS Secrets Manager.</param>
         /// <param name="usePrefixAsFilter">Whether to filter the USC secret list using the specified usc-prefix [true/false] (default to &quot;false&quot;).</param>
-        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string gcpProjectId = default(string), string gcpSmRegions = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sNamespace = default(string), string name = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string usePrefixAsFilter = @"false")
+        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string environmentNames = default(string), string gcpProjectId = default(string), string gcpSmRegions = default(string), string githubScope = @"repository", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sNamespace = default(string), string name = default(string), string organizationName = default(string), string repositoryAccess = @"public", string repositoryNames = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string usePrefixAsFilter = @"false")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,11 +77,18 @@ namespace akeyless.Model
             this.AzureKvName = azureKvName;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            this.EnvironmentNames = environmentNames;
             this.GcpProjectId = gcpProjectId;
             this.GcpSmRegions = gcpSmRegions;
+            // use default value if no "githubScope" provided
+            this.GithubScope = githubScope ?? @"repository";
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.K8sNamespace = k8sNamespace;
+            this.OrganizationName = organizationName;
+            // use default value if no "repositoryAccess" provided
+            this.RepositoryAccess = repositoryAccess ?? @"public";
+            this.RepositoryNames = repositoryNames;
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
@@ -107,6 +119,13 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// The environments in repo-name/environment-name format, comma-separated (only relevant for: github-scope&#x3D;repository-environment)
+        /// </summary>
+        /// <value>The environments in repo-name/environment-name format, comma-separated (only relevant for: github-scope&#x3D;repository-environment)</value>
+        [DataMember(Name = "environment-names", EmitDefaultValue = false)]
+        public string EnvironmentNames { get; set; }
+
+        /// <summary>
         /// GCP Project ID (Relevant only for GCP targets)
         /// </summary>
         /// <value>GCP Project ID (Relevant only for GCP targets)</value>
@@ -119,6 +138,13 @@ namespace akeyless.Model
         /// <value>GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets.</value>
         [DataMember(Name = "gcp-sm-regions", EmitDefaultValue = false)]
         public string GcpSmRegions { get; set; }
+
+        /// <summary>
+        /// The scope where secrets will be created, available options: [repository, organization, repository-environment]
+        /// </summary>
+        /// <value>The scope where secrets will be created, available options: [repository, organization, repository-environment]</value>
+        [DataMember(Name = "github-scope", EmitDefaultValue = false)]
+        public string GithubScope { get; set; }
 
         /// <summary>
         /// Additional custom fields to associate with the item
@@ -147,6 +173,26 @@ namespace akeyless.Model
         /// <value>Universal Secrets Connector name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The organization name to create the secret in (only relevant for: github-scope&#x3D;organization)
+        /// </summary>
+        /// <value>The organization name to create the secret in (only relevant for: github-scope&#x3D;organization)</value>
+        [DataMember(Name = "organization-name", EmitDefaultValue = false)]
+        public string OrganizationName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RepositoryAccess
+        /// </summary>
+        [DataMember(Name = "repository-access", EmitDefaultValue = false)]
+        public string RepositoryAccess { get; set; }
+
+        /// <summary>
+        /// The repository names, comma-separated (only relevant for: github-scope&#x3D;repository)
+        /// </summary>
+        /// <value>The repository names, comma-separated (only relevant for: github-scope&#x3D;repository)</value>
+        [DataMember(Name = "repository-names", EmitDefaultValue = false)]
+        public string RepositoryNames { get; set; }
 
         /// <summary>
         /// List of the tags attached to this Universal Secrets Connector
@@ -201,12 +247,17 @@ namespace akeyless.Model
             sb.Append("  AzureKvName: ").Append(AzureKvName).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  EnvironmentNames: ").Append(EnvironmentNames).Append("\n");
             sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
             sb.Append("  GcpSmRegions: ").Append(GcpSmRegions).Append("\n");
+            sb.Append("  GithubScope: ").Append(GithubScope).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  K8sNamespace: ").Append(K8sNamespace).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  OrganizationName: ").Append(OrganizationName).Append("\n");
+            sb.Append("  RepositoryAccess: ").Append(RepositoryAccess).Append("\n");
+            sb.Append("  RepositoryNames: ").Append(RepositoryNames).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetToAssociate: ").Append(TargetToAssociate).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

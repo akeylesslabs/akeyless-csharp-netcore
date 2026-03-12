@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AzureADAccessRules" /> class.
         /// </summary>
         /// <param name="adEndpoint">The audience in the JWT..</param>
+        /// <param name="azureCloud">Azure cloud environment [AzureCloud/AzureUSGovernment/AzureChinaCloud]. For create/update, cloud is inferred from jwks_uri..</param>
         /// <param name="boundGroupIds">The list of group ids that login is restricted to..</param>
         /// <param name="boundResourceGroups">The list of resource groups that login is restricted to..</param>
         /// <param name="boundResourceIds">The list of full resource ids that the login is restricted to..</param>
@@ -48,9 +49,10 @@ namespace akeyless.Model
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="jwksUri">The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server..</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public AzureADAccessRules(string adEndpoint = default(string), List<string> boundGroupIds = default(List<string>), List<string> boundResourceGroups = default(List<string>), List<string> boundResourceIds = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceProviders = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundServicePrincipalIds = default(List<string>), List<string> boundSubscriptionIds = default(List<string>), string boundTenantId = default(string), string issuer = default(string), string jwksUri = default(string), string uniqueIdentifier = default(string))
+        public AzureADAccessRules(string adEndpoint = default(string), string azureCloud = default(string), List<string> boundGroupIds = default(List<string>), List<string> boundResourceGroups = default(List<string>), List<string> boundResourceIds = default(List<string>), List<string> boundResourceNames = default(List<string>), List<string> boundResourceProviders = default(List<string>), List<string> boundResourceTypes = default(List<string>), List<string> boundServicePrincipalIds = default(List<string>), List<string> boundSubscriptionIds = default(List<string>), string boundTenantId = default(string), string issuer = default(string), string jwksUri = default(string), string uniqueIdentifier = default(string))
         {
             this.AdEndpoint = adEndpoint;
+            this.AzureCloud = azureCloud;
             this.BoundGroupIds = boundGroupIds;
             this.BoundResourceGroups = boundResourceGroups;
             this.BoundResourceIds = boundResourceIds;
@@ -71,6 +73,13 @@ namespace akeyless.Model
         /// <value>The audience in the JWT.</value>
         [DataMember(Name = "ad_endpoint", EmitDefaultValue = false)]
         public string AdEndpoint { get; set; }
+
+        /// <summary>
+        /// Azure cloud environment [AzureCloud/AzureUSGovernment/AzureChinaCloud]. For create/update, cloud is inferred from jwks_uri.
+        /// </summary>
+        /// <value>Azure cloud environment [AzureCloud/AzureUSGovernment/AzureChinaCloud]. For create/update, cloud is inferred from jwks_uri.</value>
+        [DataMember(Name = "azure_cloud", EmitDefaultValue = false)]
+        public string AzureCloud { get; set; }
 
         /// <summary>
         /// The list of group ids that login is restricted to.
@@ -165,6 +174,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AzureADAccessRules {\n");
             sb.Append("  AdEndpoint: ").Append(AdEndpoint).Append("\n");
+            sb.Append("  AzureCloud: ").Append(AzureCloud).Append("\n");
             sb.Append("  BoundGroupIds: ").Append(BoundGroupIds).Append("\n");
             sb.Append("  BoundResourceGroups: ").Append(BoundResourceGroups).Append("\n");
             sb.Append("  BoundResourceIds: ").Append(BoundResourceIds).Append("\n");

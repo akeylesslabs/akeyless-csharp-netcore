@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Certificates** | [**MigrationItems**](MigrationItems.md) |  | [optional] 
 **Computers** | **long** |  | [optional] 
 **DurationTime** | **string** |  | [optional] 
 **Error** | **string** |  | [optional] 

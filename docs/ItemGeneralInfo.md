@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **DynamicSecretProducerDetails** | [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
 **ExpirationEvents** | [**List&lt;CertificateExpirationEvent&gt;**](CertificateExpirationEvent.md) |  | [optional] 
 **ImporterInfo** | [**ImporterInfo**](ImporterInfo.md) |  | [optional] 
+**IssuerOverviewInfo** | [**IssuerOverviewInfo**](IssuerOverviewInfo.md) |  | [optional] 
 **NextRotationEvents** | [**List&lt;NextAutoRotationEvent&gt;**](NextAutoRotationEvent.md) |  | [optional] 
 **OidcClientInfo** | [**OidcClientInfo**](OidcClientInfo.md) |  | [optional] 
 **PasswordPolicy** | [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
