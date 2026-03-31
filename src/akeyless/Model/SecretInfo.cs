@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="lastRetrieved">lastRetrieved.</param>
         /// <param name="location">location.</param>
         /// <param name="name">name.</param>
+        /// <param name="varNamespace">varNamespace.</param>
         /// <param name="region">region.</param>
         /// <param name="secretId">secretId.</param>
         /// <param name="status">status.</param>
@@ -50,7 +51,7 @@ namespace akeyless.Model
         /// <param name="thumbprint">thumbprint.</param>
         /// <param name="type">type.</param>
         /// <param name="varVersion">varVersion.</param>
-        public SecretInfo(DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), GithubMetadata github = default(GithubMetadata), string keyId = default(string), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string region = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long))
+        public SecretInfo(DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), GithubMetadata github = default(GithubMetadata), string keyId = default(string), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string varNamespace = default(string), string region = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long))
         {
             this.Created = created;
             this.Description = description;
@@ -60,6 +61,7 @@ namespace akeyless.Model
             this.LastRetrieved = lastRetrieved;
             this.Location = location;
             this.Name = name;
+            this.Namespace = varNamespace;
             this.Region = region;
             this.SecretId = secretId;
             this.Status = status;
@@ -116,6 +118,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Namespace
+        /// </summary>
+        [DataMember(Name = "namespace", EmitDefaultValue = false)]
+        public string Namespace { get; set; }
 
         /// <summary>
         /// Gets or Sets Region
@@ -175,6 +183,7 @@ namespace akeyless.Model
             sb.Append("  LastRetrieved: ").Append(LastRetrieved).Append("\n");
             sb.Append("  Location: ").Append(Location).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");

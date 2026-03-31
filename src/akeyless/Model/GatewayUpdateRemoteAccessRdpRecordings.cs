@@ -38,6 +38,7 @@ namespace akeyless.Model
         /// <param name="awsStorageAccessKeyId">AWS access key id. For more information refer to https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html.</param>
         /// <param name="awsStorageBucketName">The AWS bucket name. For more information refer to https://docs.aws.amazon.com/s3/.</param>
         /// <param name="awsStorageBucketPrefix">The folder name in S3 bucket. For more information refer to https://docs.aws.amazon.com/s3/.</param>
+        /// <param name="awsStorageEndpointUrl">Custom AWS endpoint URL for S3-compatible storage (e.g. a private AWS endpoint).</param>
         /// <param name="awsStorageRegion">The region where the storage is located.</param>
         /// <param name="awsStorageSecretAccessKey">AWS secret access key. For more information refer to https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html.</param>
         /// <param name="azureStorageAccountName">Azure account name. For more information refer to https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview.</param>
@@ -53,11 +54,12 @@ namespace akeyless.Model
         /// <param name="rdpSessionStorage">Rdp session recording storage destination [local/aws/azure].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateRemoteAccessRdpRecordings(string awsStorageAccessKeyId = default(string), string awsStorageBucketName = default(string), string awsStorageBucketPrefix = default(string), string awsStorageRegion = default(string), string awsStorageSecretAccessKey = default(string), string azureStorageAccountName = default(string), string azureStorageClientId = default(string), string azureStorageClientSecret = default(string), string azureStorageContainerName = default(string), string azureStorageTenantId = default(string), bool json = false, string rdpSessionRecording = default(string), bool rdpSessionRecordingCompress = default(bool), string rdpSessionRecordingEncryptionKey = default(string), string rdpSessionRecordingQuality = default(string), string rdpSessionStorage = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateRemoteAccessRdpRecordings(string awsStorageAccessKeyId = default(string), string awsStorageBucketName = default(string), string awsStorageBucketPrefix = default(string), string awsStorageEndpointUrl = default(string), string awsStorageRegion = default(string), string awsStorageSecretAccessKey = default(string), string azureStorageAccountName = default(string), string azureStorageClientId = default(string), string azureStorageClientSecret = default(string), string azureStorageContainerName = default(string), string azureStorageTenantId = default(string), bool json = false, string rdpSessionRecording = default(string), bool rdpSessionRecordingCompress = default(bool), string rdpSessionRecordingEncryptionKey = default(string), string rdpSessionRecordingQuality = default(string), string rdpSessionStorage = default(string), string token = default(string), string uidToken = default(string))
         {
             this.AwsStorageAccessKeyId = awsStorageAccessKeyId;
             this.AwsStorageBucketName = awsStorageBucketName;
             this.AwsStorageBucketPrefix = awsStorageBucketPrefix;
+            this.AwsStorageEndpointUrl = awsStorageEndpointUrl;
             this.AwsStorageRegion = awsStorageRegion;
             this.AwsStorageSecretAccessKey = awsStorageSecretAccessKey;
             this.AzureStorageAccountName = azureStorageAccountName;
@@ -95,6 +97,13 @@ namespace akeyless.Model
         /// <value>The folder name in S3 bucket. For more information refer to https://docs.aws.amazon.com/s3/</value>
         [DataMember(Name = "aws-storage-bucket-prefix", EmitDefaultValue = false)]
         public string AwsStorageBucketPrefix { get; set; }
+
+        /// <summary>
+        /// Custom AWS endpoint URL for S3-compatible storage (e.g. a private AWS endpoint)
+        /// </summary>
+        /// <value>Custom AWS endpoint URL for S3-compatible storage (e.g. a private AWS endpoint)</value>
+        [DataMember(Name = "aws-storage-endpoint-url", EmitDefaultValue = false)]
+        public string AwsStorageEndpointUrl { get; set; }
 
         /// <summary>
         /// The region where the storage is located
@@ -212,6 +221,7 @@ namespace akeyless.Model
             sb.Append("  AwsStorageAccessKeyId: ").Append(AwsStorageAccessKeyId).Append("\n");
             sb.Append("  AwsStorageBucketName: ").Append(AwsStorageBucketName).Append("\n");
             sb.Append("  AwsStorageBucketPrefix: ").Append(AwsStorageBucketPrefix).Append("\n");
+            sb.Append("  AwsStorageEndpointUrl: ").Append(AwsStorageEndpointUrl).Append("\n");
             sb.Append("  AwsStorageRegion: ").Append(AwsStorageRegion).Append("\n");
             sb.Append("  AwsStorageSecretAccessKey: ").Append(AwsStorageSecretAccessKey).Append("\n");
             sb.Append("  AzureStorageAccountName: ").Append(AzureStorageAccountName).Append("\n");

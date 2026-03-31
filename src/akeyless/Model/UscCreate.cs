@@ -48,13 +48,14 @@ namespace akeyless.Model
         /// <param name="pfxPassword">Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates).</param>
         /// <param name="region">Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default)..</param>
         /// <param name="secretName">Name for the new universal secrets (required).</param>
+        /// <param name="selectedRepositories">selectedRepositories.</param>
         /// <param name="tags">Tags for the universal secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscEncryptionKey">Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used).</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
-        public UscCreate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string region = default(string), string secretName = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
+        public UscCreate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string region = default(string), string secretName = default(string), string selectedRepositories = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
         {
             // to ensure "secretName" is required (not null)
             if (secretName == null)
@@ -81,6 +82,7 @@ namespace akeyless.Model
             this.ObjectType = objectType;
             this.PfxPassword = pfxPassword;
             this.Region = region;
+            this.SelectedRepositories = selectedRepositories;
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
@@ -143,6 +145,12 @@ namespace akeyless.Model
         public string SecretName { get; set; }
 
         /// <summary>
+        /// Gets or Sets SelectedRepositories
+        /// </summary>
+        [DataMember(Name = "selected-repositories", EmitDefaultValue = false)]
+        public string SelectedRepositories { get; set; }
+
+        /// <summary>
         /// Tags for the universal secrets
         /// </summary>
         /// <value>Tags for the universal secrets</value>
@@ -200,6 +208,7 @@ namespace akeyless.Model
             sb.Append("  PfxPassword: ").Append(PfxPassword).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  SecretName: ").Append(SecretName).Append("\n");
+            sb.Append("  SelectedRepositories: ").Append(SelectedRepositories).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

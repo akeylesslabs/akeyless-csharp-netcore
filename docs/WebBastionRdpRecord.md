@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Azure** | [**AzureStorage**](AzureStorage.md) |  | [optional] 
 **Compress** | **bool** |  | [optional] 
 **EncryptionKey** | **string** |  | [optional] 
+**Netapp** | [**NetappStorage**](NetappStorage.md) |  | [optional] 
 **RecordingQuality** | **string** |  | [optional] 
 **StorageType** | **string** |  | [optional] 
 

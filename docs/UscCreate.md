@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **PfxPassword** | **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
 **Region** | **string** | Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default). | [optional] 
 **SecretName** | **string** | Name for the new universal secrets | 
+**SelectedRepositories** | **string** |  | [optional] 
 **Tags** | **Dictionary&lt;string, string&gt;** | Tags for the universal secrets | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

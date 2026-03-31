@@ -35,15 +35,25 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UniversalIdentityAccessRules" /> class.
         /// </summary>
+        /// <param name="childTtlLimit">childTtlLimit.</param>
         /// <param name="denyInheritance">denyInheritance.</param>
         /// <param name="denyRotate">denyRotate.</param>
+        /// <param name="treeLength">treeLength.</param>
         /// <param name="ttl">ttl.</param>
-        public UniversalIdentityAccessRules(bool denyInheritance = default(bool), bool denyRotate = default(bool), int ttl = default(int))
+        public UniversalIdentityAccessRules(int childTtlLimit = default(int), bool denyInheritance = default(bool), bool denyRotate = default(bool), int treeLength = default(int), int ttl = default(int))
         {
+            this.ChildTtlLimit = childTtlLimit;
             this.DenyInheritance = denyInheritance;
             this.DenyRotate = denyRotate;
+            this.TreeLength = treeLength;
             this.Ttl = ttl;
         }
+
+        /// <summary>
+        /// Gets or Sets ChildTtlLimit
+        /// </summary>
+        [DataMember(Name = "child_ttl_limit", EmitDefaultValue = false)]
+        public int ChildTtlLimit { get; set; }
 
         /// <summary>
         /// Gets or Sets DenyInheritance
@@ -56,6 +66,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "deny_rotate", EmitDefaultValue = true)]
         public bool DenyRotate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TreeLength
+        /// </summary>
+        [DataMember(Name = "tree_length", EmitDefaultValue = false)]
+        public int TreeLength { get; set; }
 
         /// <summary>
         /// Gets or Sets Ttl
@@ -71,8 +87,10 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UniversalIdentityAccessRules {\n");
+            sb.Append("  ChildTtlLimit: ").Append(ChildTtlLimit).Append("\n");
             sb.Append("  DenyInheritance: ").Append(DenyInheritance).Append("\n");
             sb.Append("  DenyRotate: ").Append(DenyRotate).Append("\n");
+            sb.Append("  TreeLength: ").Append(TreeLength).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

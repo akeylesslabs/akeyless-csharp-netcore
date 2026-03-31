@@ -43,6 +43,7 @@ Name | Type | Description | Notes
 **ConjurApiKey** | **string** | Conjur API Key for the specified user (relevant only for Conjur migration). | [optional] 
 **ConjurUrl** | **string** | Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path. | [optional] 
 **ConjurUsername** | **string** | Conjur username used to authenticate (relevant only for Conjur migration). | [optional] 
+**DeleteRemote** | **bool** | Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration) | [optional] 
 **ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpKey** | **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
 **GcpProjectId** | **string** | GCP Project ID (cross-project override) | [optional] 
@@ -77,6 +78,7 @@ Name | Type | Description | Notes
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UscName** | **string** | Universal Secret Connector name | [optional] 
 **UseGwCloudIdentity** | **bool** | Use the GW&#39;s Cloud IAM | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

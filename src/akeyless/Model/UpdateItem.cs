@@ -53,12 +53,13 @@ namespace akeyless.Model
         /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="lockDuringSraSession">Lock this secret for read/update while an SRA session is active.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Current item name (required).</param>
         /// <param name="newMetadata">Deprecated - use description (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
-        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
+        /// <param name="rotateAfterDisconnect">StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect..</param>
         /// <param name="secureAccessAddHost">List of the new hosts that will be attached to SRA servers host.</param>
         /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users [true/false].</param>
         /// <param name="secureAccessAllowPortForwading">Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret).</param>
@@ -91,7 +92,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string providerType = default(string), string accessibility = @"regular", List<string> addTag = default(List<string>), string certFileData = default(string), string certificateFormat = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = @"default_metadata", List<string> expirationEventIn = default(List<string>), string gcpSmRegions = default(string), string hostProvider = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string maxVersions = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = @"false", List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessApi = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSsh = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessUseInternalSshAccess = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
+        public UpdateItem(string providerType = default(string), string accessibility = @"regular", List<string> addTag = default(List<string>), string certFileData = default(string), string certificateFormat = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = @"default_metadata", List<string> expirationEventIn = default(List<string>), string gcpSmRegions = default(string), string hostProvider = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessApi = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSsh = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessUseInternalSshAccess = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -114,13 +115,13 @@ namespace akeyless.Model
             this.HostProvider = hostProvider;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
+            this.LockDuringSraSession = lockDuringSraSession;
             this.MaxVersions = maxVersions;
             // use default value if no "newMetadata" provided
             this.NewMetadata = newMetadata ?? @"default_metadata";
             this.NewName = newName;
             this.RmTag = rmTag;
-            // use default value if no "rotateAfterDisconnect" provided
-            this.RotateAfterDisconnect = rotateAfterDisconnect ?? @"false";
+            this.RotateAfterDisconnect = rotateAfterDisconnect;
             this.SecureAccessAddHost = secureAccessAddHost;
             this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
             this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
@@ -245,6 +246,13 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
+        /// Lock this secret for read/update while an SRA session is active
+        /// </summary>
+        /// <value>Lock this secret for read/update while an SRA session is active</value>
+        [DataMember(Name = "lock-during-sra-session", EmitDefaultValue = false)]
+        public string LockDuringSraSession { get; set; }
+
+        /// <summary>
         /// Set the maximum number of versions, limited by the account settings defaults.
         /// </summary>
         /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
@@ -280,9 +288,9 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
-        /// Rotate the value of the secret after SRA session ends [true/false]
+        /// StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.
         /// </summary>
-        /// <value>Rotate the value of the secret after SRA session ends [true/false]</value>
+        /// <value>StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.</value>
         [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
         public string RotateAfterDisconnect { get; set; }
 
@@ -530,6 +538,7 @@ namespace akeyless.Model
             sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  LockDuringSraSession: ").Append(LockDuringSraSession).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewMetadata: ").Append(NewMetadata).Append("\n");

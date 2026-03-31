@@ -387,6 +387,8 @@ All URIs are relative to *https://api.akeyless.io*
 | [**ListSRASessions**](V2Api.md#listsrasessions) | **POST** /list-sra-sessions |  |
 | [**ListSharedItems**](V2Api.md#listshareditems) | **POST** /list-shared-items |  |
 | [**ListTargets**](V2Api.md#listtargets) | **POST** /list-targets |  |
+| [**LockItem**](V2Api.md#lockitem) | **POST** /lock-item |  |
+| [**LockTarget**](V2Api.md#locktarget) | **POST** /lock-target |  |
 | [**MoveObjects**](V2Api.md#moveobjects) | **POST** /move-objects |  |
 | [**PoliciesDelete**](V2Api.md#policiesdelete) | **POST** /policy-delete |  |
 | [**PoliciesGet**](V2Api.md#policiesget) | **POST** /policy-get |  |
@@ -468,6 +470,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreateAws**](V2Api.md#targetcreateaws) | **POST** /target-create-aws |  |
 | [**TargetCreateAzure**](V2Api.md#targetcreateazure) | **POST** /target-create-azure |  |
 | [**TargetCreateDB**](V2Api.md#targetcreatedb) | **POST** /target-create-db |  |
+| [**TargetCreateDigiCert**](V2Api.md#targetcreatedigicert) | **POST** /target-create-digicert |  |
 | [**TargetCreateDockerhub**](V2Api.md#targetcreatedockerhub) | **POST** /target-create-dockerhub |  |
 | [**TargetCreateEks**](V2Api.md#targetcreateeks) | **POST** /target-create-eks |  |
 | [**TargetCreateGcp**](V2Api.md#targetcreategcp) | **POST** /target-create-gcp |  |
@@ -478,6 +481,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreateGlobalSign**](V2Api.md#targetcreateglobalsign) | **POST** /target-create-globalsign |  |
 | [**TargetCreateGlobalSignAtlas**](V2Api.md#targetcreateglobalsignatlas) | **POST** /target-create-globalsign-atlas |  |
 | [**TargetCreateGodaddy**](V2Api.md#targetcreategodaddy) | **POST** /target-create-godaddy |  |
+| [**TargetCreateGoogleTrust**](V2Api.md#targetcreategoogletrust) | **POST** /target-create-google-trust |  |
 | [**TargetCreateHashiVault**](V2Api.md#targetcreatehashivault) | **POST** /target-create-hashi-vault |  |
 | [**TargetCreateK8s**](V2Api.md#targetcreatek8s) | **POST** /target-create-k8s |  |
 | [**TargetCreateLdap**](V2Api.md#targetcreateldap) | **POST** /target-create-ldap |  |
@@ -501,6 +505,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdateAws**](V2Api.md#targetupdateaws) | **POST** /target-update-aws |  |
 | [**TargetUpdateAzure**](V2Api.md#targetupdateazure) | **POST** /target-update-azure |  |
 | [**TargetUpdateDB**](V2Api.md#targetupdatedb) | **POST** /target-update-db |  |
+| [**TargetUpdateDigiCert**](V2Api.md#targetupdatedigicert) | **POST** /target-update-digicert |  |
 | [**TargetUpdateDockerhub**](V2Api.md#targetupdatedockerhub) | **POST** /target-update-dockerhub |  |
 | [**TargetUpdateEks**](V2Api.md#targetupdateeks) | **POST** /target-update-eks |  |
 | [**TargetUpdateGcp**](V2Api.md#targetupdategcp) | **POST** /target-update-gcp |  |
@@ -511,6 +516,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdateGlobalSign**](V2Api.md#targetupdateglobalsign) | **POST** /target-update-globalsign |  |
 | [**TargetUpdateGlobalSignAtlas**](V2Api.md#targetupdateglobalsignatlas) | **POST** /target-update-globalsign-atlas |  |
 | [**TargetUpdateGodaddy**](V2Api.md#targetupdategodaddy) | **POST** /target-update-godaddy |  |
+| [**TargetUpdateGoogleTrust**](V2Api.md#targetupdategoogletrust) | **POST** /target-update-google-trust |  |
 | [**TargetUpdateHashiVault**](V2Api.md#targetupdatehashivault) | **POST** /target-update-hashi-vault |  |
 | [**TargetUpdateK8s**](V2Api.md#targetupdatek8s) | **POST** /target-update-k8s |  |
 | [**TargetUpdateLdap**](V2Api.md#targetupdateldap) | **POST** /target-update-ldap |  |
@@ -532,6 +538,8 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UidListChildren**](V2Api.md#uidlistchildren) | **POST** /uid-list-children |  |
 | [**UidRevokeToken**](V2Api.md#uidrevoketoken) | **POST** /uid-revoke-token |  |
 | [**UidRotateToken**](V2Api.md#uidrotatetoken) | **POST** /uid-rotate-token |  |
+| [**UnlockItem**](V2Api.md#unlockitem) | **POST** /unlock-item |  |
+| [**UnlockTarget**](V2Api.md#unlocktarget) | **POST** /unlock-target |  |
 | [**UnwrapToken**](V2Api.md#unwraptoken) | **POST** /unwrap-token |  |
 | [**UpdateAWSTarget**](V2Api.md#updateawstarget) | **POST** /update-aws-target |  |
 | [**UpdateAWSTargetDetails**](V2Api.md#updateawstargetdetails) | **POST** /update-aws-target-details |  |
@@ -34298,6 +34306,182 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="lockitem"></a>
+# **LockItem**
+> Object LockItem (LockItem lockItem)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class LockItemExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var lockItem = new LockItem(); // LockItem | 
+
+            try
+            {
+                Object result = apiInstance.LockItem(lockItem);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.LockItem: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the LockItemWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.LockItemWithHttpInfo(lockItem);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.LockItemWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **lockItem** | [**LockItem**](LockItem.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="locktarget"></a>
+# **LockTarget**
+> Object LockTarget (LockTarget lockTarget)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class LockTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var lockTarget = new LockTarget(); // LockTarget | 
+
+            try
+            {
+                Object result = apiInstance.LockTarget(lockTarget);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.LockTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the LockTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.LockTargetWithHttpInfo(lockTarget);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.LockTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **lockTarget** | [**LockTarget**](LockTarget.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="moveobjects"></a>
 # **MoveObjects**
 > Object MoveObjects (MoveObjects moveObjects)
@@ -41421,6 +41605,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetcreatedigicert"></a>
+# **TargetCreateDigiCert**
+> TargetCreateOutput TargetCreateDigiCert (TargetCreateDigiCert targetCreateDigiCert)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateDigiCertExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateDigiCert = new TargetCreateDigiCert(); // TargetCreateDigiCert | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateDigiCert(targetCreateDigiCert);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateDigiCert: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateDigiCertWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateDigiCertWithHttpInfo(targetCreateDigiCert);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateDigiCertWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateDigiCert** | [**TargetCreateDigiCert**](TargetCreateDigiCert.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateDigiCertResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetcreatedockerhub"></a>
 # **TargetCreateDockerhub**
 > TargetCreateOutput TargetCreateDockerhub (TargetCreateDockerhub targetCreateDockerhub)
@@ -42297,6 +42569,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetCreateGodaddyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetcreategoogletrust"></a>
+# **TargetCreateGoogleTrust**
+> TargetCreateOutput TargetCreateGoogleTrust (TargetCreateGoogleTrust targetCreateGoogleTrust)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateGoogleTrustExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateGoogleTrust = new TargetCreateGoogleTrust(); // TargetCreateGoogleTrust | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateGoogleTrust(targetCreateGoogleTrust);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateGoogleTrust: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateGoogleTrustWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateGoogleTrustWithHttpInfo(targetCreateGoogleTrust);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateGoogleTrustWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateGoogleTrust** | [**TargetCreateGoogleTrust**](TargetCreateGoogleTrust.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateGoogleTrustResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -44325,6 +44685,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetupdatedigicert"></a>
+# **TargetUpdateDigiCert**
+> TargetUpdateOutput TargetUpdateDigiCert (TargetUpdateDigiCert targetUpdateDigiCert)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateDigiCertExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateDigiCert = new TargetUpdateDigiCert(); // TargetUpdateDigiCert | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateDigiCert(targetUpdateDigiCert);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateDigiCert: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateDigiCertWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateDigiCertWithHttpInfo(targetUpdateDigiCert);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateDigiCertWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateDigiCert** | [**TargetUpdateDigiCert**](TargetUpdateDigiCert.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateDigiCertResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetupdatedockerhub"></a>
 # **TargetUpdateDockerhub**
 > TargetUpdateOutput TargetUpdateDockerhub (TargetUpdateDockerhub targetUpdateDockerhub)
@@ -45201,6 +45649,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateGodaddyResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdategoogletrust"></a>
+# **TargetUpdateGoogleTrust**
+> TargetUpdateOutput TargetUpdateGoogleTrust (TargetUpdateGoogleTrust targetUpdateGoogleTrust)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateGoogleTrustExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateGoogleTrust = new TargetUpdateGoogleTrust(); // TargetUpdateGoogleTrust | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateGoogleTrust(targetUpdateGoogleTrust);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateGoogleTrust: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateGoogleTrustWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateGoogleTrustWithHttpInfo(targetUpdateGoogleTrust);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateGoogleTrustWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateGoogleTrust** | [**TargetUpdateGoogleTrust**](TargetUpdateGoogleTrust.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateGoogleTrustResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -47049,6 +47585,182 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | uidRotateTokenResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="unlockitem"></a>
+# **UnlockItem**
+> Object UnlockItem (UnlockItem unlockItem)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UnlockItemExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var unlockItem = new UnlockItem(); // UnlockItem | 
+
+            try
+            {
+                Object result = apiInstance.UnlockItem(unlockItem);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UnlockItem: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UnlockItemWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UnlockItemWithHttpInfo(unlockItem);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UnlockItemWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **unlockItem** | [**UnlockItem**](UnlockItem.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="unlocktarget"></a>
+# **UnlockTarget**
+> Object UnlockTarget (UnlockTarget unlockTarget)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UnlockTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var unlockTarget = new UnlockTarget(); // UnlockTarget | 
+
+            try
+            {
+                Object result = apiInstance.UnlockTarget(unlockTarget);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UnlockTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UnlockTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Object> response = apiInstance.UnlockTargetWithHttpInfo(unlockTarget);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UnlockTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **unlockTarget** | [**UnlockTarget**](UnlockTarget.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

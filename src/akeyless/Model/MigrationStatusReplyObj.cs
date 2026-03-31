@@ -50,8 +50,9 @@ namespace akeyless.Model
         /// <param name="migrationTypeName">migrationTypeName.</param>
         /// <param name="rotatedSecrets">rotatedSecrets.</param>
         /// <param name="startTime">startTime.</param>
+        /// <param name="sync">sync.</param>
         /// <param name="targets">targets.</param>
-        public MigrationStatusReplyObj(MigrationItems certificates = default(MigrationItems), long computers = default(long), string durationTime = default(string), string error = default(string), string lastStatusMessage = default(string), long maxNameLength = default(long), long maxValueLength = default(long), string migrationId = default(string), MigrationItems migrationItems = default(MigrationItems), string migrationName = default(string), string migrationState = default(string), string migrationType = default(string), string migrationTypeName = default(string), MigrationItems rotatedSecrets = default(MigrationItems), string startTime = default(string), MigrationItems targets = default(MigrationItems))
+        public MigrationStatusReplyObj(MigrationItems certificates = default(MigrationItems), long computers = default(long), string durationTime = default(string), string error = default(string), string lastStatusMessage = default(string), long maxNameLength = default(long), long maxValueLength = default(long), string migrationId = default(string), MigrationItems migrationItems = default(MigrationItems), string migrationName = default(string), string migrationState = default(string), string migrationType = default(string), string migrationTypeName = default(string), MigrationItems rotatedSecrets = default(MigrationItems), string startTime = default(string), SyncCounters sync = default(SyncCounters), MigrationItems targets = default(MigrationItems))
         {
             this.Certificates = certificates;
             this.Computers = computers;
@@ -68,6 +69,7 @@ namespace akeyless.Model
             this.MigrationTypeName = migrationTypeName;
             this.RotatedSecrets = rotatedSecrets;
             this.StartTime = startTime;
+            this.Sync = sync;
             this.Targets = targets;
         }
 
@@ -162,6 +164,12 @@ namespace akeyless.Model
         public string StartTime { get; set; }
 
         /// <summary>
+        /// Gets or Sets Sync
+        /// </summary>
+        [DataMember(Name = "sync", EmitDefaultValue = false)]
+        public SyncCounters Sync { get; set; }
+
+        /// <summary>
         /// Gets or Sets Targets
         /// </summary>
         [DataMember(Name = "targets", EmitDefaultValue = false)]
@@ -190,6 +198,7 @@ namespace akeyless.Model
             sb.Append("  MigrationTypeName: ").Append(MigrationTypeName).Append("\n");
             sb.Append("  RotatedSecrets: ").Append(RotatedSecrets).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
+            sb.Append("  Sync: ").Append(Sync).Append("\n");
             sb.Append("  Targets: ").Append(Targets).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

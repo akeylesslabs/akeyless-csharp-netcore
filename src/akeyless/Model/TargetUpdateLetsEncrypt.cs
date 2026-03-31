@@ -43,7 +43,7 @@ namespace akeyless.Model
         /// <param name="acmeChallenge">acmeChallenge (default to &quot;http&quot;).</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="dnsTargetCreds">Name of existing cloud target for DNS credentials. Required when acme-challenge&#x3D;dns. Supported: AWS, Azure, GCP targets.</param>
-        /// <param name="email">Email address for ACME account registration.</param>
+        /// <param name="email">Email address for ACME account registration (required).</param>
         /// <param name="gcpProject">GCP Cloud DNS: Project ID. Optional - can be derived from service account.</param>
         /// <param name="hostedZone">AWS Route53 hosted zone ID. Required when dns-target-creds points to AWS target.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -59,6 +59,12 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public TargetUpdateLetsEncrypt(string acmeChallenge = @"http", string description = default(string), string dnsTargetCreds = default(string), string email = default(string), string gcpProject = default(string), string hostedZone = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string letsEncryptUrl = @"production", string maxVersions = default(string), string name = default(string), string newName = default(string), string resourceGroup = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
         {
+            // to ensure "email" is required (not null)
+            if (email == null)
+            {
+                throw new ArgumentNullException("email is a required property for TargetUpdateLetsEncrypt and cannot be null");
+            }
+            this.Email = email;
             // to ensure "name" is required (not null)
             if (name == null)
             {
@@ -69,7 +75,6 @@ namespace akeyless.Model
             this.AcmeChallenge = acmeChallenge ?? @"http";
             this.Description = description;
             this.DnsTargetCreds = dnsTargetCreds;
-            this.Email = email;
             this.GcpProject = gcpProject;
             this.HostedZone = hostedZone;
             this.Json = json;
@@ -110,7 +115,7 @@ namespace akeyless.Model
         /// Email address for ACME account registration
         /// </summary>
         /// <value>Email address for ACME account registration</value>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
+        [DataMember(Name = "email", IsRequired = true, EmitDefaultValue = true)]
         public string Email { get; set; }
 
         /// <summary>

@@ -44,15 +44,17 @@ namespace akeyless.Model
         /// <param name="description">Description of the universal secrets.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="varNamespace">The namespace (relevant for Hashi vault target).</param>
+        /// <param name="objectType">objectType.</param>
         /// <param name="pfxPassword">Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates).</param>
         /// <param name="secretId">The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update (required).</param>
+        /// <param name="selectedRepositories">GitHub selected repositories (required for GitHub USC when repository-access is &#39;selected&#39; or for repository scope) Comma-separated repository names (e.g., \&quot;repo1,repo2\&quot;).</param>
         /// <param name="tags">Tags for the universal secrets.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscEncryptionKey">Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used).</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
-        public UscUpdate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string pfxPassword = default(string), string secretId = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
+        public UscUpdate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string secretId = default(string), string selectedRepositories = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
         {
             // to ensure "secretId" is required (not null)
             if (secretId == null)
@@ -76,7 +78,9 @@ namespace akeyless.Model
             this.Description = description;
             this.Json = json;
             this.Namespace = varNamespace;
+            this.ObjectType = objectType;
             this.PfxPassword = pfxPassword;
+            this.SelectedRepositories = selectedRepositories;
             this.Tags = tags;
             this.Token = token;
             this.UidToken = uidToken;
@@ -112,6 +116,12 @@ namespace akeyless.Model
         public string Namespace { get; set; }
 
         /// <summary>
+        /// Gets or Sets ObjectType
+        /// </summary>
+        [DataMember(Name = "object-type", EmitDefaultValue = false)]
+        public string ObjectType { get; set; }
+
+        /// <summary>
         /// Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)
         /// </summary>
         /// <value>Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)</value>
@@ -124,6 +134,13 @@ namespace akeyless.Model
         /// <value>The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update</value>
         [DataMember(Name = "secret-id", IsRequired = true, EmitDefaultValue = true)]
         public string SecretId { get; set; }
+
+        /// <summary>
+        /// GitHub selected repositories (required for GitHub USC when repository-access is &#39;selected&#39; or for repository scope) Comma-separated repository names (e.g., \&quot;repo1,repo2\&quot;)
+        /// </summary>
+        /// <value>GitHub selected repositories (required for GitHub USC when repository-access is &#39;selected&#39; or for repository scope) Comma-separated repository names (e.g., \&quot;repo1,repo2\&quot;)</value>
+        [DataMember(Name = "selected-repositories", EmitDefaultValue = false)]
+        public string SelectedRepositories { get; set; }
 
         /// <summary>
         /// Tags for the universal secrets
@@ -179,8 +196,10 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
+            sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
             sb.Append("  PfxPassword: ").Append(PfxPassword).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
+            sb.Append("  SelectedRepositories: ").Append(SelectedRepositories).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

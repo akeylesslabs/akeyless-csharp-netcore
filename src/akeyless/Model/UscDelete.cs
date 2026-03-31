@@ -43,11 +43,13 @@ namespace akeyless.Model
         /// <param name="forceDelete">Force delete objects that are soft deleted by default (relavent only for Azure target).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="varNamespace">The namespace (relevant for Hashi vault target).</param>
+        /// <param name="objectType">objectType.</param>
         /// <param name="secretId">The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete (required).</param>
+        /// <param name="selectedRepositories">GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
-        public UscDelete(bool forceDelete = default(bool), bool json = false, string varNamespace = default(string), string secretId = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public UscDelete(bool forceDelete = default(bool), bool json = false, string varNamespace = default(string), string objectType = default(string), string secretId = default(string), string selectedRepositories = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "secretId" is required (not null)
             if (secretId == null)
@@ -64,6 +66,8 @@ namespace akeyless.Model
             this.ForceDelete = forceDelete;
             this.Json = json;
             this.Namespace = varNamespace;
+            this.ObjectType = objectType;
+            this.SelectedRepositories = selectedRepositories;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -90,11 +94,24 @@ namespace akeyless.Model
         public string Namespace { get; set; }
 
         /// <summary>
+        /// Gets or Sets ObjectType
+        /// </summary>
+        [DataMember(Name = "object-type", EmitDefaultValue = false)]
+        public string ObjectType { get; set; }
+
+        /// <summary>
         /// The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete
         /// </summary>
         /// <value>The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete</value>
         [DataMember(Name = "secret-id", IsRequired = true, EmitDefaultValue = true)]
         public string SecretId { get; set; }
+
+        /// <summary>
+        /// GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured.
+        /// </summary>
+        /// <value>GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured.</value>
+        [DataMember(Name = "selected-repositories", EmitDefaultValue = false)]
+        public string SelectedRepositories { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -128,7 +145,9 @@ namespace akeyless.Model
             sb.Append("  ForceDelete: ").Append(ForceDelete).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
+            sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
+            sb.Append("  SelectedRepositories: ").Append(SelectedRepositories).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UscName: ").Append(UscName).Append("\n");

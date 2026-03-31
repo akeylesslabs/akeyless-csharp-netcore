@@ -39,14 +39,16 @@ namespace akeyless.Model
         /// <param name="accessKeySecret">accessKeySecret.</param>
         /// <param name="authType">authType.</param>
         /// <param name="bucket">bucket.</param>
+        /// <param name="endpointUrl">endpointUrl.</param>
         /// <param name="prefix">prefix.</param>
         /// <param name="region">region.</param>
-        public AwsStorage(string accessKeyId = default(string), string accessKeySecret = default(string), string authType = default(string), string bucket = default(string), string prefix = default(string), string region = default(string))
+        public AwsStorage(string accessKeyId = default(string), string accessKeySecret = default(string), string authType = default(string), string bucket = default(string), string endpointUrl = default(string), string prefix = default(string), string region = default(string))
         {
             this.AccessKeyId = accessKeyId;
             this.AccessKeySecret = accessKeySecret;
             this.AuthType = authType;
             this.Bucket = bucket;
+            this.EndpointUrl = endpointUrl;
             this.Prefix = prefix;
             this.Region = region;
         }
@@ -77,6 +79,12 @@ namespace akeyless.Model
         public string Bucket { get; set; }
 
         /// <summary>
+        /// Gets or Sets EndpointUrl
+        /// </summary>
+        [DataMember(Name = "endpoint_url", EmitDefaultValue = false)]
+        public string EndpointUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets Prefix
         /// </summary>
         [DataMember(Name = "prefix", EmitDefaultValue = false)]
@@ -100,6 +108,7 @@ namespace akeyless.Model
             sb.Append("  AccessKeySecret: ").Append(AccessKeySecret).Append("\n");
             sb.Append("  AuthType: ").Append(AuthType).Append("\n");
             sb.Append("  Bucket: ").Append(Bucket).Append("\n");
+            sb.Append("  EndpointUrl: ").Append(EndpointUrl).Append("\n");
             sb.Append("  Prefix: ").Append(Prefix).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("}\n");

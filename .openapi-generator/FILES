@@ -297,6 +297,7 @@ docs/DescribeSubClaimsOutput.md
 docs/DesktopAppConf.md
 docs/Detokenize.md
 docs/DetokenizeOutput.md
+docs/DigiCertTargetDetails.md
 docs/DockerhubTargetDetails.md
 docs/DynamicSecretCreateArtifactory.md
 docs/DynamicSecretCreateAws.md
@@ -657,6 +658,7 @@ docs/GlobalSignAtlasTargetDetails.md
 docs/GlobalSignGCCTargetDetails.md
 docs/GodaddyTargetDetails.md
 docs/GoogleChronicleForwardingConfig.md
+docs/GoogleTrustTargetDetails.md
 docs/Group.md
 docs/GwClusterIdentity.md
 docs/GwUpdateRemoteAccessSessionLogsAwsS3.md
@@ -684,6 +686,7 @@ docs/IssuerOverviewInfo.md
 docs/Item.md
 docs/ItemCustomFieldsDetails.md
 docs/ItemGeneralInfo.md
+docs/ItemLockingSetting.md
 docs/ItemSraStatus.md
 docs/ItemTargetAssociation.md
 docs/ItemUSCSyncAssociation.md
@@ -760,6 +763,9 @@ docs/ListSharedItems.md
 docs/ListSraSessionsOutput.md
 docs/ListTargets.md
 docs/ListTargetsOutput.md
+docs/LockItem.md
+docs/LockTarget.md
+docs/LockingInfo.md
 docs/LogForwardingConfigPart.md
 docs/LogstashLogForwardingConfig.md
 docs/LogzIoLogForwardingConfig.md
@@ -775,6 +781,7 @@ docs/MongoDBTargetDetails.md
 docs/MoveObjects.md
 docs/Name.md
 docs/NativeK8sTargetDetails.md
+docs/NetappStorage.md
 docs/NextAutoRotationEvent.md
 docs/NotiForwarder.md
 docs/NotiForwarderDetailsInput.md
@@ -944,6 +951,7 @@ docs/StaticSecretDeleteSyncOutput.md
 docs/StaticSecretDetailsInfo.md
 docs/StaticSecretSync.md
 docs/SumologicLogForwardingConfig.md
+docs/SyncCounters.md
 docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
 docs/SystemAccessCredsSettings.md
@@ -952,6 +960,7 @@ docs/TargetCreateArtifactory.md
 docs/TargetCreateAws.md
 docs/TargetCreateAzure.md
 docs/TargetCreateDB.md
+docs/TargetCreateDigiCert.md
 docs/TargetCreateDockerhub.md
 docs/TargetCreateEks.md
 docs/TargetCreateGcp.md
@@ -962,6 +971,7 @@ docs/TargetCreateGke.md
 docs/TargetCreateGlobalSign.md
 docs/TargetCreateGlobalSignAtlas.md
 docs/TargetCreateGodaddy.md
+docs/TargetCreateGoogleTrust.md
 docs/TargetCreateHashiVault.md
 docs/TargetCreateK8s.md
 docs/TargetCreateLdap.md
@@ -991,6 +1001,7 @@ docs/TargetUpdateArtifactory.md
 docs/TargetUpdateAws.md
 docs/TargetUpdateAzure.md
 docs/TargetUpdateDB.md
+docs/TargetUpdateDigiCert.md
 docs/TargetUpdateDockerhub.md
 docs/TargetUpdateEks.md
 docs/TargetUpdateGcp.md
@@ -1001,6 +1012,7 @@ docs/TargetUpdateGke.md
 docs/TargetUpdateGlobalSign.md
 docs/TargetUpdateGlobalSignAtlas.md
 docs/TargetUpdateGodaddy.md
+docs/TargetUpdateGoogleTrust.md
 docs/TargetUpdateHashiVault.md
 docs/TargetUpdateK8s.md
 docs/TargetUpdateLdap.md
@@ -1033,6 +1045,8 @@ docs/UidRotateTokenOutput.md
 docs/Unconfigure.md
 docs/UniversalIdentityAccessRules.md
 docs/UniversalIdentityDetails.md
+docs/UnlockItem.md
+docs/UnlockTarget.md
 docs/UnwrapToken.md
 docs/UnwrapTokenOutput.md
 docs/Update.md
@@ -1177,16 +1191,20 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/ConjurMigrationTests.cs
-src/akeyless.Test/Model/ConjurPayloadTests.cs
-src/akeyless.Test/Model/DefaultAuthMethodSettingsTests.cs
-src/akeyless.Test/Model/GithubMetadataTests.cs
-src/akeyless.Test/Model/HTTPChallengeInfoTests.cs
-src/akeyless.Test/Model/IssuerOverviewInfoTests.cs
-src/akeyless.Test/Model/ValidateCertificateChallengeOutputTests.cs
-src/akeyless.Test/Model/ValidateCertificateChallengeTests.cs
-src/akeyless.Test/Model/VaultAddressOutputTests.cs
-src/akeyless.Test/Model/VaultAddressTests.cs
+src/akeyless.Test/Model/DigiCertTargetDetailsTests.cs
+src/akeyless.Test/Model/GoogleTrustTargetDetailsTests.cs
+src/akeyless.Test/Model/ItemLockingSettingTests.cs
+src/akeyless.Test/Model/LockItemTests.cs
+src/akeyless.Test/Model/LockTargetTests.cs
+src/akeyless.Test/Model/LockingInfoTests.cs
+src/akeyless.Test/Model/NetappStorageTests.cs
+src/akeyless.Test/Model/SyncCountersTests.cs
+src/akeyless.Test/Model/TargetCreateDigiCertTests.cs
+src/akeyless.Test/Model/TargetCreateGoogleTrustTests.cs
+src/akeyless.Test/Model/TargetUpdateDigiCertTests.cs
+src/akeyless.Test/Model/TargetUpdateGoogleTrustTests.cs
+src/akeyless.Test/Model/UnlockItemTests.cs
+src/akeyless.Test/Model/UnlockTargetTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1500,6 +1518,7 @@ src/akeyless/Model/DescribeSubClaimsOutput.cs
 src/akeyless/Model/DesktopAppConf.cs
 src/akeyless/Model/Detokenize.cs
 src/akeyless/Model/DetokenizeOutput.cs
+src/akeyless/Model/DigiCertTargetDetails.cs
 src/akeyless/Model/DockerhubTargetDetails.cs
 src/akeyless/Model/DynamicSecretCreateArtifactory.cs
 src/akeyless/Model/DynamicSecretCreateAws.cs
@@ -1860,6 +1879,7 @@ src/akeyless/Model/GlobalSignAtlasTargetDetails.cs
 src/akeyless/Model/GlobalSignGCCTargetDetails.cs
 src/akeyless/Model/GodaddyTargetDetails.cs
 src/akeyless/Model/GoogleChronicleForwardingConfig.cs
+src/akeyless/Model/GoogleTrustTargetDetails.cs
 src/akeyless/Model/Group.cs
 src/akeyless/Model/GwClusterIdentity.cs
 src/akeyless/Model/GwUpdateRemoteAccessSessionLogsAwsS3.cs
@@ -1887,6 +1907,7 @@ src/akeyless/Model/IssuerOverviewInfo.cs
 src/akeyless/Model/Item.cs
 src/akeyless/Model/ItemCustomFieldsDetails.cs
 src/akeyless/Model/ItemGeneralInfo.cs
+src/akeyless/Model/ItemLockingSetting.cs
 src/akeyless/Model/ItemSraStatus.cs
 src/akeyless/Model/ItemTargetAssociation.cs
 src/akeyless/Model/ItemUSCSyncAssociation.cs
@@ -1963,6 +1984,9 @@ src/akeyless/Model/ListSharedItems.cs
 src/akeyless/Model/ListSraSessionsOutput.cs
 src/akeyless/Model/ListTargets.cs
 src/akeyless/Model/ListTargetsOutput.cs
+src/akeyless/Model/LockItem.cs
+src/akeyless/Model/LockTarget.cs
+src/akeyless/Model/LockingInfo.cs
 src/akeyless/Model/LogForwardingConfigPart.cs
 src/akeyless/Model/LogstashLogForwardingConfig.cs
 src/akeyless/Model/LogzIoLogForwardingConfig.cs
@@ -1978,6 +2002,7 @@ src/akeyless/Model/MongoDBTargetDetails.cs
 src/akeyless/Model/MoveObjects.cs
 src/akeyless/Model/Name.cs
 src/akeyless/Model/NativeK8sTargetDetails.cs
+src/akeyless/Model/NetappStorage.cs
 src/akeyless/Model/NextAutoRotationEvent.cs
 src/akeyless/Model/NotiForwarder.cs
 src/akeyless/Model/NotiForwarderDetailsInput.cs
@@ -2147,6 +2172,7 @@ src/akeyless/Model/StaticSecretDeleteSyncOutput.cs
 src/akeyless/Model/StaticSecretDetailsInfo.cs
 src/akeyless/Model/StaticSecretSync.cs
 src/akeyless/Model/SumologicLogForwardingConfig.cs
+src/akeyless/Model/SyncCounters.cs
 src/akeyless/Model/SyslogLogForwardingConfig.cs
 src/akeyless/Model/SystemAccessCredentialsReplyObj.cs
 src/akeyless/Model/SystemAccessCredsSettings.cs
@@ -2155,6 +2181,7 @@ src/akeyless/Model/TargetCreateArtifactory.cs
 src/akeyless/Model/TargetCreateAws.cs
 src/akeyless/Model/TargetCreateAzure.cs
 src/akeyless/Model/TargetCreateDB.cs
+src/akeyless/Model/TargetCreateDigiCert.cs
 src/akeyless/Model/TargetCreateDockerhub.cs
 src/akeyless/Model/TargetCreateEks.cs
 src/akeyless/Model/TargetCreateGcp.cs
@@ -2165,6 +2192,7 @@ src/akeyless/Model/TargetCreateGke.cs
 src/akeyless/Model/TargetCreateGlobalSign.cs
 src/akeyless/Model/TargetCreateGlobalSignAtlas.cs
 src/akeyless/Model/TargetCreateGodaddy.cs
+src/akeyless/Model/TargetCreateGoogleTrust.cs
 src/akeyless/Model/TargetCreateHashiVault.cs
 src/akeyless/Model/TargetCreateK8s.cs
 src/akeyless/Model/TargetCreateLdap.cs
@@ -2194,6 +2222,7 @@ src/akeyless/Model/TargetUpdateArtifactory.cs
 src/akeyless/Model/TargetUpdateAws.cs
 src/akeyless/Model/TargetUpdateAzure.cs
 src/akeyless/Model/TargetUpdateDB.cs
+src/akeyless/Model/TargetUpdateDigiCert.cs
 src/akeyless/Model/TargetUpdateDockerhub.cs
 src/akeyless/Model/TargetUpdateEks.cs
 src/akeyless/Model/TargetUpdateGcp.cs
@@ -2204,6 +2233,7 @@ src/akeyless/Model/TargetUpdateGke.cs
 src/akeyless/Model/TargetUpdateGlobalSign.cs
 src/akeyless/Model/TargetUpdateGlobalSignAtlas.cs
 src/akeyless/Model/TargetUpdateGodaddy.cs
+src/akeyless/Model/TargetUpdateGoogleTrust.cs
 src/akeyless/Model/TargetUpdateHashiVault.cs
 src/akeyless/Model/TargetUpdateK8s.cs
 src/akeyless/Model/TargetUpdateLdap.cs
@@ -2236,6 +2266,8 @@ src/akeyless/Model/UidRotateTokenOutput.cs
 src/akeyless/Model/Unconfigure.cs
 src/akeyless/Model/UniversalIdentityAccessRules.cs
 src/akeyless/Model/UniversalIdentityDetails.cs
+src/akeyless/Model/UnlockItem.cs
+src/akeyless/Model/UnlockTarget.cs
 src/akeyless/Model/UnwrapToken.cs
 src/akeyless/Model/UnwrapTokenOutput.cs
 src/akeyless/Model/Update.cs

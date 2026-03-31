@@ -38,6 +38,7 @@ namespace akeyless.Model
         /// <param name="akeylessUrl">AkeylessUrl is here for BC only. Gator will still return it if it exists in the configuration, but new clients (&gt;&#x3D;2.34.0) will ignore it and override it with what exists in their local file. It will no longer be sent to Gator for update, so new clusters will only have the default value saved in the DB..</param>
         /// <param name="apiTokenTtl">apiTokenTtl.</param>
         /// <param name="displayName">displayName.</param>
+        /// <param name="enableJsonBodyLimit">enableJsonBodyLimit.</param>
         /// <param name="enableSniProxy">enableSniProxy.</param>
         /// <param name="enableTls">enableTls.</param>
         /// <param name="enableTlsConfigure">enableTlsConfigure.</param>
@@ -45,6 +46,7 @@ namespace akeyless.Model
         /// <param name="enableTlsHvp">enableTlsHvp.</param>
         /// <param name="gwClusterUrl">gwClusterUrl.</param>
         /// <param name="hvpRouteVersion">hvpRouteVersion.</param>
+        /// <param name="jsonBodyLimitMb">jsonBodyLimitMb.</param>
         /// <param name="notifyOnStatusChange">notifyOnStatusChange.</param>
         /// <param name="tcpPort">tcpPort.</param>
         /// <param name="tlsCert">tlsCert.</param>
@@ -52,11 +54,12 @@ namespace akeyless.Model
         /// <param name="tlsCertExpirationDate">tlsCertExpirationDate.</param>
         /// <param name="tlsCertExpirationEvents">tlsCertExpirationEvents.</param>
         /// <param name="tlsKey">tlsKey.</param>
-        public GeneralConfigPart(string akeylessUrl = default(string), string apiTokenTtl = default(string), string displayName = default(string), bool enableSniProxy = default(bool), bool enableTls = default(bool), bool enableTlsConfigure = default(bool), bool enableTlsCurl = default(bool), bool enableTlsHvp = default(bool), string gwClusterUrl = default(string), long hvpRouteVersion = default(long), bool notifyOnStatusChange = default(bool), string tcpPort = default(string), string tlsCert = default(string), string tlsCertCommonName = default(string), DateTime tlsCertExpirationDate = default(DateTime), List<CertificateExpirationEvent> tlsCertExpirationEvents = default(List<CertificateExpirationEvent>), string tlsKey = default(string))
+        public GeneralConfigPart(string akeylessUrl = default(string), string apiTokenTtl = default(string), string displayName = default(string), bool enableJsonBodyLimit = default(bool), bool enableSniProxy = default(bool), bool enableTls = default(bool), bool enableTlsConfigure = default(bool), bool enableTlsCurl = default(bool), bool enableTlsHvp = default(bool), string gwClusterUrl = default(string), long hvpRouteVersion = default(long), long jsonBodyLimitMb = default(long), bool notifyOnStatusChange = default(bool), string tcpPort = default(string), string tlsCert = default(string), string tlsCertCommonName = default(string), DateTime tlsCertExpirationDate = default(DateTime), List<CertificateExpirationEvent> tlsCertExpirationEvents = default(List<CertificateExpirationEvent>), string tlsKey = default(string))
         {
             this.AkeylessUrl = akeylessUrl;
             this.ApiTokenTtl = apiTokenTtl;
             this.DisplayName = displayName;
+            this.EnableJsonBodyLimit = enableJsonBodyLimit;
             this.EnableSniProxy = enableSniProxy;
             this.EnableTls = enableTls;
             this.EnableTlsConfigure = enableTlsConfigure;
@@ -64,6 +67,7 @@ namespace akeyless.Model
             this.EnableTlsHvp = enableTlsHvp;
             this.GwClusterUrl = gwClusterUrl;
             this.HvpRouteVersion = hvpRouteVersion;
+            this.JsonBodyLimitMb = jsonBodyLimitMb;
             this.NotifyOnStatusChange = notifyOnStatusChange;
             this.TcpPort = tcpPort;
             this.TlsCert = tlsCert;
@@ -91,6 +95,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "display_name", EmitDefaultValue = false)]
         public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EnableJsonBodyLimit
+        /// </summary>
+        [DataMember(Name = "enable_json_body_limit", EmitDefaultValue = true)]
+        public bool EnableJsonBodyLimit { get; set; }
 
         /// <summary>
         /// Gets or Sets EnableSniProxy
@@ -133,6 +143,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "hvp_route_version", EmitDefaultValue = false)]
         public long HvpRouteVersion { get; set; }
+
+        /// <summary>
+        /// Gets or Sets JsonBodyLimitMb
+        /// </summary>
+        [DataMember(Name = "json_body_limit_mb", EmitDefaultValue = false)]
+        public long JsonBodyLimitMb { get; set; }
 
         /// <summary>
         /// Gets or Sets NotifyOnStatusChange
@@ -187,6 +203,7 @@ namespace akeyless.Model
             sb.Append("  AkeylessUrl: ").Append(AkeylessUrl).Append("\n");
             sb.Append("  ApiTokenTtl: ").Append(ApiTokenTtl).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  EnableJsonBodyLimit: ").Append(EnableJsonBodyLimit).Append("\n");
             sb.Append("  EnableSniProxy: ").Append(EnableSniProxy).Append("\n");
             sb.Append("  EnableTls: ").Append(EnableTls).Append("\n");
             sb.Append("  EnableTlsConfigure: ").Append(EnableTlsConfigure).Append("\n");
@@ -194,6 +211,7 @@ namespace akeyless.Model
             sb.Append("  EnableTlsHvp: ").Append(EnableTlsHvp).Append("\n");
             sb.Append("  GwClusterUrl: ").Append(GwClusterUrl).Append("\n");
             sb.Append("  HvpRouteVersion: ").Append(HvpRouteVersion).Append("\n");
+            sb.Append("  JsonBodyLimitMb: ").Append(JsonBodyLimitMb).Append("\n");
             sb.Append("  NotifyOnStatusChange: ").Append(NotifyOnStatusChange).Append("\n");
             sb.Append("  TcpPort: ").Append(TcpPort).Append("\n");
             sb.Append("  TlsCert: ").Append(TlsCert).Append("\n");

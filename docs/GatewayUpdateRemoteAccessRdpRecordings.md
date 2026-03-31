@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AwsStorageAccessKeyId** | **string** | AWS access key id. For more information refer to https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html | [optional] 
 **AwsStorageBucketName** | **string** | The AWS bucket name. For more information refer to https://docs.aws.amazon.com/s3/ | [optional] 
 **AwsStorageBucketPrefix** | **string** | The folder name in S3 bucket. For more information refer to https://docs.aws.amazon.com/s3/ | [optional] 
+**AwsStorageEndpointUrl** | **string** | Custom AWS endpoint URL for S3-compatible storage (e.g. a private AWS endpoint) | [optional] 
 **AwsStorageRegion** | **string** | The region where the storage is located | [optional] 
 **AwsStorageSecretAccessKey** | **string** | AWS secret access key. For more information refer to https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html | [optional] 
 **AzureStorageAccountName** | **string** | Azure account name. For more information refer to https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview | [optional] 

@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="allowedClientType">limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension].</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
+        /// <param name="childTtlLimit">Maximum child token ttl allowed in uid-create-child-token (default to 43200).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="denyInheritance">Deny from root to create children.</param>
         /// <param name="denyRotate">Deny from the token to rotate.</param>
@@ -57,9 +58,10 @@ namespace akeyless.Model
         /// <param name="newName">Auth Method new name.</param>
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="treeLength">Maximum UID tree depth allowed (child of child of ...) (default to 200).</param>
         /// <param name="ttl">Token ttl (default to 60).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AuthMethodUpdateUniversalIdentity(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string deleteProtection = default(string), bool denyInheritance = default(bool), bool denyRotate = default(bool), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), int ttl = 60, string uidToken = default(string))
+        public AuthMethodUpdateUniversalIdentity(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), int childTtlLimit = 43200, string deleteProtection = default(string), bool denyInheritance = default(bool), bool denyRotate = default(bool), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), int treeLength = 200, int ttl = 60, string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -71,6 +73,7 @@ namespace akeyless.Model
             this.AllowedClientType = allowedClientType;
             this.AuditLogsClaims = auditLogsClaims;
             this.BoundIps = boundIps;
+            this.ChildTtlLimit = childTtlLimit;
             this.DeleteProtection = deleteProtection;
             this.DenyInheritance = denyInheritance;
             this.DenyRotate = denyRotate;
@@ -83,6 +86,7 @@ namespace akeyless.Model
             this.NewName = newName;
             this.ProductType = productType;
             this.Token = token;
+            this.TreeLength = treeLength;
             this.Ttl = ttl;
             this.UidToken = uidToken;
         }
@@ -114,6 +118,13 @@ namespace akeyless.Model
         /// <value>A CIDR whitelist with the IPs that the access is restricted to</value>
         [DataMember(Name = "bound-ips", EmitDefaultValue = false)]
         public List<string> BoundIps { get; set; }
+
+        /// <summary>
+        /// Maximum child token ttl allowed in uid-create-child-token
+        /// </summary>
+        /// <value>Maximum child token ttl allowed in uid-create-child-token</value>
+        [DataMember(Name = "child-ttl-limit", EmitDefaultValue = false)]
+        public int ChildTtlLimit { get; set; }
 
         /// <summary>
         /// Protection from accidental deletion of this object [true/false]
@@ -207,6 +218,13 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
+        /// Maximum UID tree depth allowed (child of child of ...)
+        /// </summary>
+        /// <value>Maximum UID tree depth allowed (child of child of ...)</value>
+        [DataMember(Name = "tree-length", EmitDefaultValue = false)]
+        public int TreeLength { get; set; }
+
+        /// <summary>
         /// Token ttl
         /// </summary>
         /// <value>Token ttl</value>
@@ -232,6 +250,7 @@ namespace akeyless.Model
             sb.Append("  AllowedClientType: ").Append(AllowedClientType).Append("\n");
             sb.Append("  AuditLogsClaims: ").Append(AuditLogsClaims).Append("\n");
             sb.Append("  BoundIps: ").Append(BoundIps).Append("\n");
+            sb.Append("  ChildTtlLimit: ").Append(ChildTtlLimit).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  DenyInheritance: ").Append(DenyInheritance).Append("\n");
             sb.Append("  DenyRotate: ").Append(DenyRotate).Append("\n");
@@ -245,6 +264,7 @@ namespace akeyless.Model
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  TreeLength: ").Append(TreeLength).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");

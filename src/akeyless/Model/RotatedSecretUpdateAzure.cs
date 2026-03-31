@@ -57,6 +57,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="lockDuringSraSession">Lock this secret for read/update while an SRA session is active.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="newName">New item name.</param>
@@ -64,7 +65,7 @@ namespace akeyless.Model
         /// <param name="resourceGroupName">The resource group name (only relevant when explicitly-set-sa&#x3D;true).</param>
         /// <param name="resourceName">The name of the storage account (only relevant when explicitly-set-sa&#x3D;true).</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
-        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
+        /// <param name="rotateAfterDisconnect">StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect..</param>
         /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
         /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
         /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
@@ -78,7 +79,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">The user principal name to rotate his password (relevant only for rotator-type&#x3D;password).</param>
-        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string explicitlySetSa = @"false", string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), string resourceGroupName = default(string), string resourceName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = @"false", List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
+        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string explicitlySetSa = @"false", string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), string resourceGroupName = default(string), string resourceName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -106,14 +107,14 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.LockDuringSraSession = lockDuringSraSession;
             this.MaxVersions = maxVersions;
             this.NewName = newName;
             this.PasswordLength = passwordLength;
             this.ResourceGroupName = resourceGroupName;
             this.ResourceName = resourceName;
             this.RmTag = rmTag;
-            // use default value if no "rotateAfterDisconnect" provided
-            this.RotateAfterDisconnect = rotateAfterDisconnect ?? @"false";
+            this.RotateAfterDisconnect = rotateAfterDisconnect;
             this.RotationEventIn = rotationEventIn;
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
@@ -249,6 +250,13 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Lock this secret for read/update while an SRA session is active
+        /// </summary>
+        /// <value>Lock this secret for read/update while an SRA session is active</value>
+        [DataMember(Name = "lock-during-sra-session", EmitDefaultValue = false)]
+        public string LockDuringSraSession { get; set; }
+
+        /// <summary>
         /// Set the maximum number of versions, limited by the account settings defaults.
         /// </summary>
         /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
@@ -298,9 +306,9 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
-        /// Rotate the value of the secret after SRA session ends [true/false]
+        /// StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.
         /// </summary>
-        /// <value>Rotate the value of the secret after SRA session ends [true/false]</value>
+        /// <value>StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.</value>
         [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
         public string RotateAfterDisconnect { get; set; }
 
@@ -420,6 +428,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  LockDuringSraSession: ").Append(LockDuringSraSession).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

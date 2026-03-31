@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="injectUrl">For Password Management use, reflect the website context.</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="lockDuringSraSession">Lock this secret for read/update while an SRA session is active.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="multilineValue">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
@@ -72,7 +73,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">For Password Management use.</param>
         /// <param name="value">The secret value (relevant only for type &#39;generic&#39;) (required).</param>
-        public CreateSecret(string accessibility = @"regular", string changeEvent = default(string), Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), string format = @"text", List<string> injectUrl = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string maxVersions = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = @"generic", string uidToken = default(string), string username = default(string), string value = default(string))
+        public CreateSecret(string accessibility = @"regular", string changeEvent = default(string), Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), string format = @"text", List<string> injectUrl = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string maxVersions = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = @"generic", string uidToken = default(string), string username = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -97,6 +98,7 @@ namespace akeyless.Model
             this.InjectUrl = injectUrl;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
+            this.LockDuringSraSession = lockDuringSraSession;
             this.MaxVersions = maxVersions;
             this.Metadata = metadata;
             this.MultilineValue = multilineValue;
@@ -183,6 +185,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// Lock this secret for read/update while an SRA session is active
+        /// </summary>
+        /// <value>Lock this secret for read/update while an SRA session is active</value>
+        [DataMember(Name = "lock-during-sra-session", EmitDefaultValue = false)]
+        public string LockDuringSraSession { get; set; }
 
         /// <summary>
         /// Set the maximum number of versions, limited by the account settings defaults.
@@ -361,6 +370,7 @@ namespace akeyless.Model
             sb.Append("  InjectUrl: ").Append(InjectUrl).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  LockDuringSraSession: ").Append(LockDuringSraSession).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  MultilineValue: ").Append(MultilineValue).Append("\n");

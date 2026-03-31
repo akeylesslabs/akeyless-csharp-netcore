@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **MigrationTypeName** | **string** |  | [optional] 
 **RotatedSecrets** | [**MigrationItems**](MigrationItems.md) |  | [optional] 
 **StartTime** | **string** |  | [optional] 
+**Sync** | [**SyncCounters**](SyncCounters.md) |  | [optional] 
 **Targets** | [**MigrationItems**](MigrationItems.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

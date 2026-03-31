@@ -18,10 +18,11 @@ Name | Type | Description | Notes
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**LockDuringSraSession** | **string** | Lock this secret for read/update while an SRA session is active | [optional] 
 **MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
-**RotateAfterDisconnect** | **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
+**RotateAfterDisconnect** | **string** | StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect. | [optional] 
 **RotationEventIn** | **List&lt;string&gt;** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | **int** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 

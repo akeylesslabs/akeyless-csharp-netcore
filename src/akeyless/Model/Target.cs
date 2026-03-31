@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="creationDate">creationDate.</param>
         /// <param name="isAccessRequestEnabled">isAccessRequestEnabled.</param>
         /// <param name="lastVersion">lastVersion.</param>
+        /// <param name="lockingInfo">lockingInfo.</param>
         /// <param name="modificationDate">modificationDate.</param>
         /// <param name="parentTargetName">parentTargetName.</param>
         /// <param name="protectionKeyName">protectionKeyName.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="targetType">targetType.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Target(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), string accessRequestStatus = default(string), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool isAccessRequestEnabled = default(bool), int lastVersion = default(int), DateTime modificationDate = default(DateTime), string parentTargetName = default(string), string protectionKeyName = default(string), string targetDetails = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetSubType = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
+        public Target(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), string accessRequestStatus = default(string), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool isAccessRequestEnabled = default(bool), int lastVersion = default(int), LockingInfo lockingInfo = default(LockingInfo), DateTime modificationDate = default(DateTime), string parentTargetName = default(string), string protectionKeyName = default(string), string targetDetails = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetSubType = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.CreationDate = creationDate;
             this.IsAccessRequestEnabled = isAccessRequestEnabled;
             this.LastVersion = lastVersion;
+            this.LockingInfo = lockingInfo;
             this.ModificationDate = modificationDate;
             this.ParentTargetName = parentTargetName;
             this.ProtectionKeyName = protectionKeyName;
@@ -133,6 +135,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "last_version", EmitDefaultValue = false)]
         public int LastVersion { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LockingInfo
+        /// </summary>
+        [DataMember(Name = "locking_info", EmitDefaultValue = false)]
+        public LockingInfo LockingInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets ModificationDate
@@ -217,6 +225,7 @@ namespace akeyless.Model
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  IsAccessRequestEnabled: ").Append(IsAccessRequestEnabled).Append("\n");
             sb.Append("  LastVersion: ").Append(LastVersion).Append("\n");
+            sb.Append("  LockingInfo: ").Append(LockingInfo).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("  ParentTargetName: ").Append(ParentTargetName).Append("\n");
             sb.Append("  ProtectionKeyName: ").Append(ProtectionKeyName).Append("\n");

@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the universal secrets | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | **string** | The namespace (relevant for Hashi vault target) | [optional] 
+**ObjectType** | **string** |  | [optional] 
 **PfxPassword** | **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
 **SecretId** | **string** | The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update | 
+**SelectedRepositories** | **string** | GitHub selected repositories (required for GitHub USC when repository-access is &#39;selected&#39; or for repository scope) Comma-separated repository names (e.g., \&quot;repo1,repo2\&quot;) | [optional] 
 **Tags** | **Dictionary&lt;string, string&gt;** | Tags for the universal secrets | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

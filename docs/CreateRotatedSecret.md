@@ -22,10 +22,11 @@ Name | Type | Description | Notes
 **HostProvider** | **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**LockDuringSraSession** | **string** | Lock this secret for read/update while an SRA session is active | [optional] 
 **Metadata** | **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Secret name | 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
-**RotateAfterDisconnect** | **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
+**RotateAfterDisconnect** | **string** | StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect. | [optional] 
 **RotatedPassword** | **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotationHour** | **int** | The Hour of the rotation in UTC. Default rotation-hour is 14:00 | [optional] 

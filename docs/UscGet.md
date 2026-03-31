@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | **string** | The namespace (relevant for Hashi vault target) | [optional] 
+**ObjectType** | **string** |  | [optional] 
 **SecretId** | **string** | The secret id (or name, for AWS, Azure, K8s or Hashi vault targets) to get from the Universal Secrets Connector | 
+**SelectedRepositories** | **string** | GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured. | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscName** | **string** | Name of the Universal Secrets Connector item | 

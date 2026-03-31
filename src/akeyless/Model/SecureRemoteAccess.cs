@@ -59,11 +59,13 @@ namespace akeyless.Model
         /// <param name="isDesktopApp">isDesktopApp.</param>
         /// <param name="isWeb">isWeb.</param>
         /// <param name="isolated">isolated.</param>
+        /// <param name="lockDuringSraSession">lockDuringSraSession.</param>
         /// <param name="native">native.</param>
         /// <param name="rdGatewayServer">rdGatewayServer.</param>
         /// <param name="rdpUser">rdpUser.</param>
         /// <param name="region">region.</param>
         /// <param name="rotateAfterDisconnect">rotateAfterDisconnect.</param>
+        /// <param name="rotateAfterDisconnectDelayMins">rotateAfterDisconnectDelayMins.</param>
         /// <param name="schema">schema.</param>
         /// <param name="sshPassword">sshPassword.</param>
         /// <param name="sshPrivateKey">sshPrivateKey.</param>
@@ -74,7 +76,7 @@ namespace akeyless.Model
         /// <param name="url">url.</param>
         /// <param name="useInternalBastion">useInternalBastion.</param>
         /// <param name="webProxy">webProxy.</param>
-        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), bool blockConcurrentConnections = default(bool), string blockConcurrentConnectionsLevel = default(string), string category = default(string), long connectionDelaySeconds = default(long), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), bool enforceHostsRestriction = default(bool), long gwClusterId = default(long), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isDesktopApp = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), ItemSraStatus statusInfo = default(ItemSraStatus), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
+        public SecureRemoteAccess(string accountId = default(string), bool allowPortForwarding = default(bool), bool allowProvidingExternalUsername = default(bool), string bastionApi = default(string), string bastionIssuer = default(string), long bastionIssuerId = default(long), string bastionSsh = default(string), bool blockConcurrentConnections = default(bool), string blockConcurrentConnectionsLevel = default(string), string category = default(string), long connectionDelaySeconds = default(long), string dashboardUrl = default(string), string dbName = default(string), string domain = default(string), bool enable = default(bool), string endpoint = default(string), bool enforceHostsRestriction = default(bool), long gwClusterId = default(long), List<string> host = default(List<string>), string hostProviderType = default(string), bool isCli = default(bool), bool isDesktopApp = default(bool), bool isWeb = default(bool), bool isolated = default(bool), bool lockDuringSraSession = default(bool), bool native = default(bool), string rdGatewayServer = default(string), string rdpUser = default(string), string region = default(string), bool rotateAfterDisconnect = default(bool), long rotateAfterDisconnectDelayMins = default(long), string schema = default(string), bool sshPassword = default(bool), bool sshPrivateKey = default(bool), string sshUser = default(string), ItemSraStatus statusInfo = default(ItemSraStatus), List<TargetNameWithHosts> targetHosts = default(List<TargetNameWithHosts>), List<string> targets = default(List<string>), string url = default(string), bool useInternalBastion = default(bool), bool webProxy = default(bool))
         {
             this.AccountId = accountId;
             this.AllowPortForwarding = allowPortForwarding;
@@ -100,11 +102,13 @@ namespace akeyless.Model
             this.IsDesktopApp = isDesktopApp;
             this.IsWeb = isWeb;
             this.Isolated = isolated;
+            this.LockDuringSraSession = lockDuringSraSession;
             this.Native = native;
             this.RdGatewayServer = rdGatewayServer;
             this.RdpUser = rdpUser;
             this.Region = region;
             this.RotateAfterDisconnect = rotateAfterDisconnect;
+            this.RotateAfterDisconnectDelayMins = rotateAfterDisconnectDelayMins;
             this.Schema = schema;
             this.SshPassword = sshPassword;
             this.SshPrivateKey = sshPrivateKey;
@@ -262,6 +266,12 @@ namespace akeyless.Model
         public bool Isolated { get; set; }
 
         /// <summary>
+        /// Gets or Sets LockDuringSraSession
+        /// </summary>
+        [DataMember(Name = "lock_during_sra_session", EmitDefaultValue = true)]
+        public bool LockDuringSraSession { get; set; }
+
+        /// <summary>
         /// Gets or Sets Native
         /// </summary>
         [DataMember(Name = "native", EmitDefaultValue = true)]
@@ -290,6 +300,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "rotate_after_disconnect", EmitDefaultValue = true)]
         public bool RotateAfterDisconnect { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RotateAfterDisconnectDelayMins
+        /// </summary>
+        [DataMember(Name = "rotate_after_disconnect_delay_mins", EmitDefaultValue = false)]
+        public long RotateAfterDisconnectDelayMins { get; set; }
 
         /// <summary>
         /// Gets or Sets Schema
@@ -383,11 +399,13 @@ namespace akeyless.Model
             sb.Append("  IsDesktopApp: ").Append(IsDesktopApp).Append("\n");
             sb.Append("  IsWeb: ").Append(IsWeb).Append("\n");
             sb.Append("  Isolated: ").Append(Isolated).Append("\n");
+            sb.Append("  LockDuringSraSession: ").Append(LockDuringSraSession).Append("\n");
             sb.Append("  Native: ").Append(Native).Append("\n");
             sb.Append("  RdGatewayServer: ").Append(RdGatewayServer).Append("\n");
             sb.Append("  RdpUser: ").Append(RdpUser).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
+            sb.Append("  RotateAfterDisconnectDelayMins: ").Append(RotateAfterDisconnectDelayMins).Append("\n");
             sb.Append("  Schema: ").Append(Schema).Append("\n");
             sb.Append("  SshPassword: ").Append(SshPassword).Append("\n");
             sb.Append("  SshPrivateKey: ").Append(SshPrivateKey).Append("\n");

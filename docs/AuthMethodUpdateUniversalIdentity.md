@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AllowedClientType** | **List&lt;string&gt;** | limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension] | [optional] 
 **AuditLogsClaims** | **List&lt;string&gt;** | Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot; | [optional] 
 **BoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
+**ChildTtlLimit** | **int** | Maximum child token ttl allowed in uid-create-child-token | [optional] [default to 43200]
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **DenyInheritance** | **bool** | Deny from root to create children | [optional] 
 **DenyRotate** | **bool** | Deny from the token to rotate | [optional] 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 **NewName** | **string** | Auth Method new name | [optional] 
 **ProductType** | **List&lt;string&gt;** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**TreeLength** | **int** | Maximum UID tree depth allowed (child of child of ...) | [optional] [default to 200]
 **Ttl** | **int** | Token ttl | [optional] [default to 60]
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

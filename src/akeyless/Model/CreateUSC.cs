@@ -51,7 +51,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="k8sNamespace">K8s namespace (Relevant to Kubernetes targets).</param>
         /// <param name="name">Universal Secrets Connector name (required).</param>
-        /// <param name="organizationName">The organization name to create the secret in (only relevant for: github-scope&#x3D;organization).</param>
+        /// <param name="organizationName">The organization name to create the secret in.</param>
         /// <param name="repositoryAccess">repositoryAccess (default to &quot;public&quot;).</param>
         /// <param name="repositoryNames">The repository names, comma-separated (only relevant for: github-scope&#x3D;repository).</param>
         /// <param name="tags">List of the tags attached to this Universal Secrets Connector.</param>
@@ -175,9 +175,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The organization name to create the secret in (only relevant for: github-scope&#x3D;organization)
+        /// The organization name to create the secret in
         /// </summary>
-        /// <value>The organization name to create the secret in (only relevant for: github-scope&#x3D;organization)</value>
+        /// <value>The organization name to create the secret in</value>
         [DataMember(Name = "organization-name", EmitDefaultValue = false)]
         public string OrganizationName { get; set; }
 

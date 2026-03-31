@@ -78,6 +78,7 @@ namespace akeyless.Model
         /// <param name="conjurApiKey">Conjur API Key for the specified user (relevant only for Conjur migration)..</param>
         /// <param name="conjurUrl">Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path..</param>
         /// <param name="conjurUsername">Conjur username used to authenticate (relevant only for Conjur migration)..</param>
+        /// <param name="deleteRemote">Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration).</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="gcpKey">Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration).</param>
         /// <param name="gcpProjectId">GCP Project ID (cross-project override).</param>
@@ -111,8 +112,9 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Migration type (hashi/aws/gcp/k8s/azure_kv/conjur/active_directory/server_inventory/certificate).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="uscName">Universal Secret Connector name.</param>
         /// <param name="useGwCloudIdentity">Use the GW&#39;s Cloud IAM.</param>
-        public GatewayCreateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), List<string> adCertExpirationEventIn = default(List<string>), string adCertificatesPathTemplate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string aiCertificateDiscovery = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string conjurAccount = default(string), string conjurApiKey = default(string), string conjurUrl = default(string), string conjurUsername = default(string), List<string> expirationEventIn = default(List<string>), string gcpKey = default(string), string gcpProjectId = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string hosts = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string portRanges = @"443", string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public GatewayCreateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), List<string> adCertExpirationEventIn = default(List<string>), string adCertificatesPathTemplate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string aiCertificateDiscovery = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string conjurAccount = default(string), string conjurApiKey = default(string), string conjurUrl = default(string), string conjurUsername = default(string), bool deleteRemote = default(bool), List<string> expirationEventIn = default(List<string>), string gcpKey = default(string), string gcpProjectId = default(string), string hashiJson = @"true", List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string hosts = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string portRanges = @"443", string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string type = default(string), string uidToken = default(string), string uscName = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "hosts" is required (not null)
             if (hosts == null)
@@ -190,6 +192,7 @@ namespace akeyless.Model
             this.ConjurApiKey = conjurApiKey;
             this.ConjurUrl = conjurUrl;
             this.ConjurUsername = conjurUsername;
+            this.DeleteRemote = deleteRemote;
             this.ExpirationEventIn = expirationEventIn;
             this.GcpKey = gcpKey;
             this.GcpProjectId = gcpProjectId;
@@ -221,6 +224,7 @@ namespace akeyless.Model
             this.Token = token;
             this.Type = type;
             this.UidToken = uidToken;
+            this.UscName = uscName;
             this.UseGwCloudIdentity = useGwCloudIdentity;
         }
 
@@ -490,6 +494,13 @@ namespace akeyless.Model
         public string ConjurUsername { get; set; }
 
         /// <summary>
+        /// Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration)
+        /// </summary>
+        /// <value>Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration)</value>
+        [DataMember(Name = "delete-remote", EmitDefaultValue = true)]
+        public bool DeleteRemote { get; set; }
+
+        /// <summary>
         /// How many days before the expiration of the certificate would you like to be notified.
         /// </summary>
         /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
@@ -721,6 +732,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Universal Secret Connector name
+        /// </summary>
+        /// <value>Universal Secret Connector name</value>
+        [DataMember(Name = "usc-name", EmitDefaultValue = false)]
+        public string UscName { get; set; }
+
+        /// <summary>
         /// Use the GW&#39;s Cloud IAM
         /// </summary>
         /// <value>Use the GW&#39;s Cloud IAM</value>
@@ -773,6 +791,7 @@ namespace akeyless.Model
             sb.Append("  ConjurApiKey: ").Append(ConjurApiKey).Append("\n");
             sb.Append("  ConjurUrl: ").Append(ConjurUrl).Append("\n");
             sb.Append("  ConjurUsername: ").Append(ConjurUsername).Append("\n");
+            sb.Append("  DeleteRemote: ").Append(DeleteRemote).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
@@ -806,6 +825,7 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UscName: ").Append(UscName).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

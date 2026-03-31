@@ -54,12 +54,13 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="lockDuringSraSession">Lock this secret for read/update while an SRA session is active.</param>
         /// <param name="name">Secret name (required).</param>
         /// <param name="newMetadata">Deprecated - use description (default to &quot;default_metadata&quot;).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="newVersion">Deprecated.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
-        /// <param name="rotateAfterDisconnect">Rotate the value of the secret after SRA session ends [true/false] (default to &quot;false&quot;).</param>
+        /// <param name="rotateAfterDisconnect">StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect..</param>
         /// <param name="rotatedPassword">rotated-username password.</param>
         /// <param name="rotatedUsername">username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password.</param>
         /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
@@ -90,7 +91,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
         /// <param name="userDn">LDAP User Base DN.</param>
-        public UpdateRotatedSecret(string providerType = default(string), List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = @"us-east-2", string customPayload = default(string), string description = @"default_metadata", string gcpKey = default(string), string graceRotation = default(string), string hostProvider = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = @"false", string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = @"use-self-creds", string rotatorCustomCmd = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = @"cn", string userDn = default(string))
+        public UpdateRotatedSecret(string providerType = default(string), List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = @"us-east-2", string customPayload = default(string), string description = @"default_metadata", string gcpKey = default(string), string graceRotation = default(string), string hostProvider = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = @"use-self-creds", string rotatorCustomCmd = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = @"cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -114,13 +115,13 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.LockDuringSraSession = lockDuringSraSession;
             // use default value if no "newMetadata" provided
             this.NewMetadata = newMetadata ?? @"default_metadata";
             this.NewName = newName;
             this.NewVersion = newVersion;
             this.RmTag = rmTag;
-            // use default value if no "rotateAfterDisconnect" provided
-            this.RotateAfterDisconnect = rotateAfterDisconnect ?? @"false";
+            this.RotateAfterDisconnect = rotateAfterDisconnect;
             this.RotatedPassword = rotatedPassword;
             this.RotatedUsername = rotatedUsername;
             this.RotationHour = rotationHour;
@@ -253,6 +254,13 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Lock this secret for read/update while an SRA session is active
+        /// </summary>
+        /// <value>Lock this secret for read/update while an SRA session is active</value>
+        [DataMember(Name = "lock-during-sra-session", EmitDefaultValue = false)]
+        public string LockDuringSraSession { get; set; }
+
+        /// <summary>
         /// Secret name
         /// </summary>
         /// <value>Secret name</value>
@@ -288,9 +296,9 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
-        /// Rotate the value of the secret after SRA session ends [true/false]
+        /// StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.
         /// </summary>
-        /// <value>Rotate the value of the secret after SRA session ends [true/false]</value>
+        /// <value>StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.</value>
         [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
         public string RotateAfterDisconnect { get; set; }
 
@@ -526,6 +534,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  LockDuringSraSession: ").Append(LockDuringSraSession).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewMetadata: ").Append(NewMetadata).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");

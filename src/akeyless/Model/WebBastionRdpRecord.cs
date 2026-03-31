@@ -39,14 +39,16 @@ namespace akeyless.Model
         /// <param name="azure">azure.</param>
         /// <param name="compress">compress.</param>
         /// <param name="encryptionKey">encryptionKey.</param>
+        /// <param name="netapp">netapp.</param>
         /// <param name="recordingQuality">recordingQuality.</param>
         /// <param name="storageType">storageType.</param>
-        public WebBastionRdpRecord(AwsStorage aws = default(AwsStorage), AzureStorage azure = default(AzureStorage), bool compress = default(bool), string encryptionKey = default(string), string recordingQuality = default(string), string storageType = default(string))
+        public WebBastionRdpRecord(AwsStorage aws = default(AwsStorage), AzureStorage azure = default(AzureStorage), bool compress = default(bool), string encryptionKey = default(string), NetappStorage netapp = default(NetappStorage), string recordingQuality = default(string), string storageType = default(string))
         {
             this.Aws = aws;
             this.Azure = azure;
             this.Compress = compress;
             this.EncryptionKey = encryptionKey;
+            this.Netapp = netapp;
             this.RecordingQuality = recordingQuality;
             this.StorageType = storageType;
         }
@@ -76,6 +78,12 @@ namespace akeyless.Model
         public string EncryptionKey { get; set; }
 
         /// <summary>
+        /// Gets or Sets Netapp
+        /// </summary>
+        [DataMember(Name = "netapp", EmitDefaultValue = false)]
+        public NetappStorage Netapp { get; set; }
+
+        /// <summary>
         /// Gets or Sets RecordingQuality
         /// </summary>
         [DataMember(Name = "recording_quality", EmitDefaultValue = false)]
@@ -99,6 +107,7 @@ namespace akeyless.Model
             sb.Append("  Azure: ").Append(Azure).Append("\n");
             sb.Append("  Compress: ").Append(Compress).Append("\n");
             sb.Append("  EncryptionKey: ").Append(EncryptionKey).Append("\n");
+            sb.Append("  Netapp: ").Append(Netapp).Append("\n");
             sb.Append("  RecordingQuality: ").Append(RecordingQuality).Append("\n");
             sb.Append("  StorageType: ").Append(StorageType).Append("\n");
             sb.Append("}\n");

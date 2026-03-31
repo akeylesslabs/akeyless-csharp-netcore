@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AccessKeySecret** | **string** |  | [optional] 
 **AuthType** | **string** |  | [optional] 
 **Bucket** | **string** |  | [optional] 
+**EndpointUrl** | **string** |  | [optional] 
 **Prefix** | **string** |  | [optional] 
 **Region** | **string** |  | [optional] 
 

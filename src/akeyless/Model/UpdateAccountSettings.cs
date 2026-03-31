@@ -58,6 +58,7 @@ namespace akeyless.Model
         /// <param name="hidePersonalFolder">Hide personal folder, if set - users will not be able to use personal folder [true/false].</param>
         /// <param name="hideStaticPassword">Hide static secret&#39;s password type [true/false].</param>
         /// <param name="invalidCharacters">Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. (default to &quot;notReceivedInvalidCharacter&quot;).</param>
+        /// <param name="itemLockingEnabled">Enable item locking feature [true/false].</param>
         /// <param name="itemType">VersionSettingsObjectType defines object types for account version settings.</param>
         /// <param name="itemsDeletionProtection">Set or unset the default behaviour of items deletion protection [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -68,6 +69,7 @@ namespace akeyless.Model
         /// <param name="lockBoundIps">Lock bound-ips setting globally in the account..</param>
         /// <param name="lockDefaultKey">Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false].</param>
         /// <param name="lockGwBoundIps">Lock gw-bound-ips setting in the account..</param>
+        /// <param name="lockMaxTtl">Set the maximum TTL for item/target locks in minutes.</param>
         /// <param name="maxRotationInterval">Set the maximum rotation interval for rotated secrets auto rotation settings.</param>
         /// <param name="maxRotationIntervalEnable">Set a maximum rotation interval for rotated secrets auto rotation settings [true/false].</param>
         /// <param name="maxVersions">Max versions.</param>
@@ -85,7 +87,7 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Password must contain lower case letters [true/false].</param>
         /// <param name="useNumbers">Password must contain numbers [true/false].</param>
         /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
-        public UpdateAccountSettings(string address = default(string), List<string> allowedClientType = default(List<string>), List<string> allowedEmailDomains = default(List<string>), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), List<string> defaultCertificateExpirationNotificationDays = default(List<string>), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableAiInsights = default(string), string enableDefaultCertificateExpirationEvent = default(string), string enableItemSharing = default(string), string enablePasswordExpiration = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string hidePersonalFolder = default(string), string hideStaticPassword = default(string), string invalidCharacters = @"notReceivedInvalidCharacter", string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockAllowedClientType = default(string), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), string passwordExpirationDays = default(string), string passwordExpirationNotificationDays = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public UpdateAccountSettings(string address = default(string), List<string> allowedClientType = default(List<string>), List<string> allowedEmailDomains = default(List<string>), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), List<string> defaultCertificateExpirationNotificationDays = default(List<string>), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableAiInsights = default(string), string enableDefaultCertificateExpirationEvent = default(string), string enableItemSharing = default(string), string enablePasswordExpiration = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string hidePersonalFolder = default(string), string hideStaticPassword = default(string), string invalidCharacters = @"notReceivedInvalidCharacter", string itemLockingEnabled = default(string), string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockAllowedClientType = default(string), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), long lockMaxTtl = default(long), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), string passwordExpirationDays = default(string), string passwordExpirationNotificationDays = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             this.Address = address;
             this.AllowedClientType = allowedClientType;
@@ -111,6 +113,7 @@ namespace akeyless.Model
             this.HideStaticPassword = hideStaticPassword;
             // use default value if no "invalidCharacters" provided
             this.InvalidCharacters = invalidCharacters ?? @"notReceivedInvalidCharacter";
+            this.ItemLockingEnabled = itemLockingEnabled;
             this.ItemType = itemType;
             this.ItemsDeletionProtection = itemsDeletionProtection;
             this.Json = json;
@@ -121,6 +124,7 @@ namespace akeyless.Model
             this.LockBoundIps = lockBoundIps;
             this.LockDefaultKey = lockDefaultKey;
             this.LockGwBoundIps = lockGwBoundIps;
+            this.LockMaxTtl = lockMaxTtl;
             this.MaxRotationInterval = maxRotationInterval;
             this.MaxRotationIntervalEnable = maxRotationIntervalEnable;
             this.MaxVersions = maxVersions;
@@ -302,6 +306,13 @@ namespace akeyless.Model
         public string InvalidCharacters { get; set; }
 
         /// <summary>
+        /// Enable item locking feature [true/false]
+        /// </summary>
+        /// <value>Enable item locking feature [true/false]</value>
+        [DataMember(Name = "item-locking-enabled", EmitDefaultValue = false)]
+        public string ItemLockingEnabled { get; set; }
+
+        /// <summary>
         /// VersionSettingsObjectType defines object types for account version settings
         /// </summary>
         /// <value>VersionSettingsObjectType defines object types for account version settings</value>
@@ -370,6 +381,13 @@ namespace akeyless.Model
         /// <value>Lock gw-bound-ips setting in the account.</value>
         [DataMember(Name = "lock-gw-bound-ips", EmitDefaultValue = false)]
         public string LockGwBoundIps { get; set; }
+
+        /// <summary>
+        /// Set the maximum TTL for item/target locks in minutes
+        /// </summary>
+        /// <value>Set the maximum TTL for item/target locks in minutes</value>
+        [DataMember(Name = "lock-max-ttl", EmitDefaultValue = false)]
+        public long LockMaxTtl { get; set; }
 
         /// <summary>
         /// Set the maximum rotation interval for rotated secrets auto rotation settings
@@ -521,6 +539,7 @@ namespace akeyless.Model
             sb.Append("  HidePersonalFolder: ").Append(HidePersonalFolder).Append("\n");
             sb.Append("  HideStaticPassword: ").Append(HideStaticPassword).Append("\n");
             sb.Append("  InvalidCharacters: ").Append(InvalidCharacters).Append("\n");
+            sb.Append("  ItemLockingEnabled: ").Append(ItemLockingEnabled).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  ItemsDeletionProtection: ").Append(ItemsDeletionProtection).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
@@ -531,6 +550,7 @@ namespace akeyless.Model
             sb.Append("  LockBoundIps: ").Append(LockBoundIps).Append("\n");
             sb.Append("  LockDefaultKey: ").Append(LockDefaultKey).Append("\n");
             sb.Append("  LockGwBoundIps: ").Append(LockGwBoundIps).Append("\n");
+            sb.Append("  LockMaxTtl: ").Append(LockMaxTtl).Append("\n");
             sb.Append("  MaxRotationInterval: ").Append(MaxRotationInterval).Append("\n");
             sb.Append("  MaxRotationIntervalEnable: ").Append(MaxRotationIntervalEnable).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");

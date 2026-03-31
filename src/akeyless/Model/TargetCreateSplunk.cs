@@ -47,13 +47,14 @@ namespace akeyless.Model
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="password">Splunk Password (used when authenticating with username/password).</param>
-        /// <param name="token">Splunk Token (used when authenticating with token).</param>
+        /// <param name="splunkToken">Splunk Token (used when authenticating with token).</param>
+        /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenOwner">Splunk Token Owner (required when using token authentication for rotation).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="url">Splunk server URL (required).</param>
         /// <param name="useTls">Use TLS certificate verification when connecting to the Splunk management API (default to true).</param>
         /// <param name="username">Splunk Username (used when authenticating with username/password).</param>
-        public TargetCreateSplunk(string audience = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string password = default(string), string token = default(string), string tokenOwner = default(string), string uidToken = default(string), string url = default(string), bool useTls = true, string username = default(string))
+        public TargetCreateSplunk(string audience = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string password = default(string), string splunkToken = default(string), string token = default(string), string tokenOwner = default(string), string uidToken = default(string), string url = default(string), bool useTls = true, string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -73,6 +74,7 @@ namespace akeyless.Model
             this.Key = key;
             this.MaxVersions = maxVersions;
             this.Password = password;
+            this.SplunkToken = splunkToken;
             this.Token = token;
             this.TokenOwner = tokenOwner;
             this.UidToken = uidToken;
@@ -133,6 +135,13 @@ namespace akeyless.Model
         /// Splunk Token (used when authenticating with token)
         /// </summary>
         /// <value>Splunk Token (used when authenticating with token)</value>
+        [DataMember(Name = "splunk-token", EmitDefaultValue = false)]
+        public string SplunkToken { get; set; }
+
+        /// <summary>
+        /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
+        /// </summary>
+        /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
         [DataMember(Name = "token", EmitDefaultValue = false)]
         public string Token { get; set; }
 
@@ -186,6 +195,7 @@ namespace akeyless.Model
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  SplunkToken: ").Append(SplunkToken).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenOwner: ").Append(TokenOwner).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
