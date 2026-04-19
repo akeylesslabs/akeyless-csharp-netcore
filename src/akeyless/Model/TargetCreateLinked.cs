@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetCreateLinked" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="hosts">A comma seperated list of server hosts and server descriptions joined by semicolon &#39;;&#39; (i.e. &#39;server-dev.com;My Dev server,server-prod.com;My Prod server description&#39;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -48,7 +49,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Specifies the hosts type, relevant only when working without parent target.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetCreateLinked(string description = default(string), string hosts = default(string), bool json = false, string name = default(string), string parentTargetName = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public TargetCreateLinked(string deleteProtection = default(string), string description = default(string), string hosts = default(string), bool json = false, string name = default(string), string parentTargetName = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -56,6 +57,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetCreateLinked and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Hosts = hosts;
             this.Json = json;
@@ -64,6 +66,13 @@ namespace akeyless.Model
             this.Type = type;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -129,6 +138,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetCreateLinked {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Hosts: ").Append(Hosts).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

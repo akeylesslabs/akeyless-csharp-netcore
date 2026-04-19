@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | **string** | for personal password manager | [optional] [default to "regular"]
 **AdvancedFilter** | **string** | Filter by item name/username/website or part of it | [optional] 
+**AraOnly** | **bool** | Filter by items with ARA functionality enabled | [optional] [default to false]
 **AutoPagination** | **string** | Retrieve all items using pagination, when disabled retrieving only first 1000 items | [optional] [default to "enabled"]
 **CurrentFolder** | **bool** | List only items in the current folder (excludes subfolders) | [optional] [default to false]
 **Filter** | **string** | Filter by item name or part of it | [optional] 

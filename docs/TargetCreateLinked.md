@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **Hosts** | **string** | A comma seperated list of server hosts and server descriptions joined by semicolon &#39;;&#39; (i.e. &#39;server-dev.com;My Dev server,server-prod.com;My Prod server description&#39;) | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

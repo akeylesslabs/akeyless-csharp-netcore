@@ -51,6 +51,7 @@ namespace akeyless.Model
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
         /// <param name="dbType">dbType (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="host">host.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -78,7 +79,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        public TargetCreateDB(string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string comment = default(string), string connectionType = @"credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = false, string key = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string oracleWalletLoginType = default(string), string oracleWalletP12FileData = default(string), string oracleWalletSsoFileData = default(string), string parentTargetName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
+        public TargetCreateDB(string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string comment = default(string), string connectionType = @"credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string deleteProtection = default(string), string description = default(string), string host = default(string), bool json = false, string key = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string oracleWalletLoginType = default(string), string oracleWalletP12FileData = default(string), string oracleWalletSsoFileData = default(string), string parentTargetName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
             // to ensure "connectionType" is required (not null)
             if (connectionType == null)
@@ -107,6 +108,7 @@ namespace akeyless.Model
             this.DbName = dbName;
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Host = host;
             this.Json = json;
@@ -209,6 +211,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "db-type", IsRequired = true, EmitDefaultValue = true)]
         public string DbType { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -412,6 +421,7 @@ namespace akeyless.Model
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DbType: ").Append(DbType).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

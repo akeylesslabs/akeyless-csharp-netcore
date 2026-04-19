@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certificate">SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA).</param>
         /// <param name="connectionType">Type of connection to Windows Server [credentials/parent-target] (default to &quot;credentials&quot;).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="domain">User domain name.</param>
         /// <param name="hostname">Server hostname (required).</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useTls">Enable/Disable TLS for WinRM over HTTPS [true/false] (default to &quot;true&quot;).</param>
         /// <param name="username">Privileged username (required) (default to &quot;dummy_value&quot;).</param>
-        public TargetUpdateWindows(string certificate = default(string), string connectionType = @"credentials", string description = default(string), string domain = default(string), string hostname = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string parentTargetName = default(string), string password = @"dummy_value", string port = @"5986", string token = default(string), string uidToken = default(string), string useTls = @"true", string username = @"dummy_value")
+        public TargetUpdateWindows(string certificate = default(string), string connectionType = @"credentials", string deleteProtection = default(string), string description = default(string), string domain = default(string), string hostname = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string parentTargetName = default(string), string password = @"dummy_value", string port = @"5986", string token = default(string), string uidToken = default(string), string useTls = @"true", string username = @"dummy_value")
         {
             // to ensure "hostname" is required (not null)
             if (hostname == null)
@@ -87,6 +88,7 @@ namespace akeyless.Model
             this.Certificate = certificate;
             // use default value if no "connectionType" provided
             this.ConnectionType = connectionType ?? @"credentials";
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Domain = domain;
             this.Json = json;
@@ -116,6 +118,13 @@ namespace akeyless.Model
         /// <value>Type of connection to Windows Server [credentials/parent-target]</value>
         [DataMember(Name = "connection-type", EmitDefaultValue = false)]
         public string ConnectionType { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -239,6 +248,7 @@ namespace akeyless.Model
             sb.Append("class TargetUpdateWindows {\n");
             sb.Append("  Certificate: ").Append(Certificate).Append("\n");
             sb.Append("  ConnectionType: ").Append(ConnectionType).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");

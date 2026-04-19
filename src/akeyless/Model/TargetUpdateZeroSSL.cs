@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="TargetUpdateZeroSSL" /> class.
         /// </summary>
         /// <param name="apiKey">API Key of the ZeroSSLTarget account (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="imapFqdn">ImapFQDN of the IMAP service, FQDN or IPv4 address. Must be FQDN if the IMAP is using TLS (required).</param>
         /// <param name="imapPassword">ImapPassword to access the IMAP service (required).</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="timeout">Timeout waiting for certificate validation in Duration format (1h - 1 Hour, 20m - 20 Minutes, 33m3s - 33 Minutes and 3 Seconds), maximum 1h. (default to &quot;5m&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetUpdateZeroSSL(string apiKey = default(string), string description = default(string), string imapFqdn = default(string), string imapPassword = default(string), string imapPort = @"993", string imapTargetEmail = default(string), string imapUsername = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
+        public TargetUpdateZeroSSL(string apiKey = default(string), string deleteProtection = default(string), string description = default(string), string imapFqdn = default(string), string imapPassword = default(string), string imapPort = @"993", string imapTargetEmail = default(string), string imapUsername = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
         {
             // to ensure "apiKey" is required (not null)
             if (apiKey == null)
@@ -88,6 +89,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetUpdateZeroSSL and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             // use default value if no "imapPort" provided
             this.ImapPort = imapPort ?? @"993";
@@ -109,6 +111,13 @@ namespace akeyless.Model
         /// <value>API Key of the ZeroSSLTarget account</value>
         [DataMember(Name = "api-key", IsRequired = true, EmitDefaultValue = true)]
         public string ApiKey { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -224,6 +233,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetUpdateZeroSSL {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ImapFqdn: ").Append(ImapFqdn).Append("\n");
             sb.Append("  ImapPassword: ").Append(ImapPassword).Append("\n");

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdministrativePort** | **string** | Ping Federate administrative port | [optional] [default to "9999"]
 **AuthorizationPort** | **string** | Ping Federate authorization port | [optional] [default to "9031"]
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 

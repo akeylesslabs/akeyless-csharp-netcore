@@ -6,6 +6,7 @@ targetUpdateZeroSSL is a command that updates an existing ZeroSSL target
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | **string** | API Key of the ZeroSSLTarget account | 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **ImapFqdn** | **string** | ImapFQDN of the IMAP service, FQDN or IPv4 address. Must be FQDN if the IMAP is using TLS | 
 **ImapPassword** | **string** | ImapPassword to access the IMAP service | 

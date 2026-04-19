@@ -25,6 +25,8 @@ docs/ActiveDirectoryMigration.md
 docs/ActiveDirectoryPayload.md
 docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
+docs/AgenticRule.md
+docs/AgenticRules.md
 docs/AiInsightsConfigPart.md
 docs/AiInsightsSetting.md
 docs/AkeylessGatewayConfig.md
@@ -902,6 +904,7 @@ docs/Rotator.md
 docs/RotatorsConfigPart.md
 docs/RuleAssigner.md
 docs/Rules.md
+docs/RuntimeAuthorityCommand.md
 docs/SAMLAccessRules.md
 docs/SAMLAttribute.md
 docs/SSHCertificateIssueDetails.md
@@ -914,6 +917,8 @@ docs/SectigoTargetDetails.md
 docs/SecureRemoteAccess.md
 docs/ServerInventoryMigration.md
 docs/ServerInventoryPayload.md
+docs/SetDefaultProfile.md
+docs/SetDefaultProfileOutput.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/ShareItem.md
@@ -1191,20 +1196,11 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/DigiCertTargetDetailsTests.cs
-src/akeyless.Test/Model/GoogleTrustTargetDetailsTests.cs
-src/akeyless.Test/Model/ItemLockingSettingTests.cs
-src/akeyless.Test/Model/LockItemTests.cs
-src/akeyless.Test/Model/LockTargetTests.cs
-src/akeyless.Test/Model/LockingInfoTests.cs
-src/akeyless.Test/Model/NetappStorageTests.cs
-src/akeyless.Test/Model/SyncCountersTests.cs
-src/akeyless.Test/Model/TargetCreateDigiCertTests.cs
-src/akeyless.Test/Model/TargetCreateGoogleTrustTests.cs
-src/akeyless.Test/Model/TargetUpdateDigiCertTests.cs
-src/akeyless.Test/Model/TargetUpdateGoogleTrustTests.cs
-src/akeyless.Test/Model/UnlockItemTests.cs
-src/akeyless.Test/Model/UnlockTargetTests.cs
+src/akeyless.Test/Model/AgenticRuleTests.cs
+src/akeyless.Test/Model/AgenticRulesTests.cs
+src/akeyless.Test/Model/RuntimeAuthorityCommandTests.cs
+src/akeyless.Test/Model/SetDefaultProfileOutputTests.cs
+src/akeyless.Test/Model/SetDefaultProfileTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1246,6 +1242,8 @@ src/akeyless/Model/ActiveDirectoryMigration.cs
 src/akeyless/Model/ActiveDirectoryPayload.cs
 src/akeyless/Model/AddGatewayAllowedAccessId.cs
 src/akeyless/Model/AdminsConfigPart.cs
+src/akeyless/Model/AgenticRule.cs
+src/akeyless/Model/AgenticRules.cs
 src/akeyless/Model/AiInsightsConfigPart.cs
 src/akeyless/Model/AiInsightsSetting.cs
 src/akeyless/Model/AkeylessGatewayConfig.cs
@@ -2123,6 +2121,7 @@ src/akeyless/Model/Rotator.cs
 src/akeyless/Model/RotatorsConfigPart.cs
 src/akeyless/Model/RuleAssigner.cs
 src/akeyless/Model/Rules.cs
+src/akeyless/Model/RuntimeAuthorityCommand.cs
 src/akeyless/Model/SAMLAccessRules.cs
 src/akeyless/Model/SAMLAttribute.cs
 src/akeyless/Model/SSHCertificateIssueDetails.cs
@@ -2135,6 +2134,8 @@ src/akeyless/Model/SectigoTargetDetails.cs
 src/akeyless/Model/SecureRemoteAccess.cs
 src/akeyless/Model/ServerInventoryMigration.cs
 src/akeyless/Model/ServerInventoryPayload.cs
+src/akeyless/Model/SetDefaultProfile.cs
+src/akeyless/Model/SetDefaultProfileOutput.cs
 src/akeyless/Model/SetItemState.cs
 src/akeyless/Model/SetRoleRule.cs
 src/akeyless/Model/ShareItem.cs

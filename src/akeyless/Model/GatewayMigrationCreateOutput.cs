@@ -35,11 +35,19 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayMigrationCreateOutput" /> class.
         /// </summary>
+        /// <param name="migrationId">migrationId.</param>
         /// <param name="migrationName">migrationName.</param>
-        public GatewayMigrationCreateOutput(string migrationName = default(string))
+        public GatewayMigrationCreateOutput(string migrationId = default(string), string migrationName = default(string))
         {
+            this.MigrationId = migrationId;
             this.MigrationName = migrationName;
         }
+
+        /// <summary>
+        /// Gets or Sets MigrationId
+        /// </summary>
+        [DataMember(Name = "migration_id", EmitDefaultValue = false)]
+        public string MigrationId { get; set; }
 
         /// <summary>
         /// Gets or Sets MigrationName
@@ -55,6 +63,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayMigrationCreateOutput {\n");
+            sb.Append("  MigrationId: ").Append(MigrationId).Append("\n");
             sb.Append("  MigrationName: ").Append(MigrationName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

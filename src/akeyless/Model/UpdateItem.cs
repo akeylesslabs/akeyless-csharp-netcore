@@ -92,7 +92,9 @@ namespace akeyless.Model
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdateItem(string providerType = default(string), string accessibility = @"regular", List<string> addTag = default(List<string>), string certFileData = default(string), string certificateFormat = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = @"default_metadata", List<string> expirationEventIn = default(List<string>), string gcpSmRegions = default(string), string hostProvider = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessApi = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSsh = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessUseInternalSshAccess = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string))
+        /// <param name="uscTags">Comma-separated list of tags to apply to all secrets created/synced on the remote USC  USC items only..</param>
+        /// <param name="useTagsAsFilter">Whether to filter the USC secret list using the specified usc-tags [true/false]  USC items only..</param>
+        public UpdateItem(string providerType = default(string), string accessibility = @"regular", List<string> addTag = default(List<string>), string certFileData = default(string), string certificateFormat = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = @"default_metadata", List<string> expirationEventIn = default(List<string>), string gcpSmRegions = default(string), string hostProvider = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessApi = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSsh = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessUseInternalSshAccess = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string), string uscTags = default(string), string useTagsAsFilter = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -154,6 +156,8 @@ namespace akeyless.Model
             this.SecureAccessWebProxy = secureAccessWebProxy;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UscTags = uscTags;
+            this.UseTagsAsFilter = useTagsAsFilter;
         }
 
         /// <summary>
@@ -518,6 +522,20 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Comma-separated list of tags to apply to all secrets created/synced on the remote USC  USC items only.
+        /// </summary>
+        /// <value>Comma-separated list of tags to apply to all secrets created/synced on the remote USC  USC items only.</value>
+        [DataMember(Name = "usc-tags", EmitDefaultValue = false)]
+        public string UscTags { get; set; }
+
+        /// <summary>
+        /// Whether to filter the USC secret list using the specified usc-tags [true/false]  USC items only.
+        /// </summary>
+        /// <value>Whether to filter the USC secret list using the specified usc-tags [true/false]  USC items only.</value>
+        [DataMember(Name = "use-tags-as-filter", EmitDefaultValue = false)]
+        public string UseTagsAsFilter { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -577,6 +595,8 @@ namespace akeyless.Model
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UscTags: ").Append(UscTags).Append("\n");
+            sb.Append("  UseTagsAsFilter: ").Append(UseTagsAsFilter).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

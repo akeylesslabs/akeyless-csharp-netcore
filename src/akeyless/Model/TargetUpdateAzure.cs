@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="clientId">Azure client/application id.</param>
         /// <param name="clientSecret">Azure client secret.</param>
         /// <param name="connectionType">Type of connection [credentials/cloud-identity] (default to &quot;credentials&quot;).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">Use the GW&#39;s Cloud IAM [Deprecated: Use connection-type&#x3D;cloud-identity].</param>
-        public TargetUpdateAzure(string azureCloud = @"AzureCloud", string clientId = default(string), string clientSecret = default(string), string connectionType = @"credentials", string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public TargetUpdateAzure(string azureCloud = @"AzureCloud", string clientId = default(string), string clientSecret = default(string), string connectionType = @"credentials", string deleteProtection = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string resourceGroupName = default(string), string resourceName = default(string), string subscriptionId = default(string), string tenantId = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.ClientSecret = clientSecret;
             // use default value if no "connectionType" provided
             this.ConnectionType = connectionType ?? @"credentials";
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
@@ -114,6 +116,13 @@ namespace akeyless.Model
         /// <value>Type of connection [credentials/cloud-identity]</value>
         [DataMember(Name = "connection-type", EmitDefaultValue = false)]
         public string ConnectionType { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -225,6 +234,7 @@ namespace akeyless.Model
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  ConnectionType: ").Append(ConnectionType).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");

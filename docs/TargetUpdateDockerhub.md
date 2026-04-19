@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **DockerhubPassword** | **string** | Password for docker repository | [optional] 
 **DockerhubUsername** | **string** | Username for docker repository | [optional] 

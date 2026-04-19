@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="apiKey">API key for OpenAI.</param>
         /// <param name="apiKeyId">API key ID.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="organizationId">Organization ID.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetCreateOpenAI(string apiKey = default(string), string apiKeyId = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string model = default(string), string name = default(string), string openaiUrl = @"https://api.openai.com/v1", string organizationId = default(string), string token = default(string), string uidToken = default(string))
+        public TargetCreateOpenAI(string apiKey = default(string), string apiKeyId = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string model = default(string), string name = default(string), string openaiUrl = @"https://api.openai.com/v1", string organizationId = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,6 +63,7 @@ namespace akeyless.Model
             this.Name = name;
             this.ApiKey = apiKey;
             this.ApiKeyId = apiKeyId;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Json = json;
             this.Key = key;
@@ -87,6 +89,13 @@ namespace akeyless.Model
         /// <value>API key ID</value>
         [DataMember(Name = "api-key-id", EmitDefaultValue = false)]
         public string ApiKeyId { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -168,6 +177,7 @@ namespace akeyless.Model
             sb.Append("class TargetCreateOpenAI {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  ApiKeyId: ").Append(ApiKeyId).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");

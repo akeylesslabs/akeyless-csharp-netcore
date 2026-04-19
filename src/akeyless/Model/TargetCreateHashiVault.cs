@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetCreateHashiVault" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="hashiUrl">HashiCorp Vault API URL, e.g. https://vault-mgr01:8200.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -50,7 +51,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultToken">Vault access token with sufficient permissions.</param>
-        public TargetCreateHashiVault(string description = default(string), string hashiUrl = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), List<string> varNamespace = default(List<string>), string token = default(string), string uidToken = default(string), string vaultToken = default(string))
+        public TargetCreateHashiVault(string deleteProtection = default(string), string description = default(string), string hashiUrl = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), List<string> varNamespace = default(List<string>), string token = default(string), string uidToken = default(string), string vaultToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -58,6 +59,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetCreateHashiVault and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.HashiUrl = hashiUrl;
             this.Json = json;
@@ -68,6 +70,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.VaultToken = vaultToken;
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -147,6 +156,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetCreateHashiVault {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  HashiUrl: ").Append(HashiUrl).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

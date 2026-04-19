@@ -43,7 +43,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="path">The path the rule refers to (required).</param>
         /// <param name="roleName">The role name to be updated (required).</param>
-        /// <param name="ruleType">item-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule, sra-reports-rule, sra-rule, ara-rule (default to &quot;item-rule&quot;).</param>
+        /// <param name="ruleType">item-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule, sra-reports-rule, ara-reports-rule, sra-rule, ara-rule, usage-reports-rule, event-rule, event-forwarder-rule, reverse-rbac-rule (default to &quot;item-rule&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public DeleteRoleRule(bool json = false, string path = default(string), string roleName = default(string), string ruleType = @"item-rule", string token = default(string), string uidToken = default(string))
@@ -89,9 +89,9 @@ namespace akeyless.Model
         public string RoleName { get; set; }
 
         /// <summary>
-        /// item-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule, sra-reports-rule, sra-rule, ara-rule
+        /// item-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule, sra-reports-rule, ara-reports-rule, sra-rule, ara-rule, usage-reports-rule, event-rule, event-forwarder-rule, reverse-rbac-rule
         /// </summary>
-        /// <value>item-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule, sra-reports-rule, sra-rule, ara-rule</value>
+        /// <value>item-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule, sra-reports-rule, ara-reports-rule, sra-rule, ara-rule, usage-reports-rule, event-rule, event-forwarder-rule, reverse-rbac-rule</value>
         [DataMember(Name = "rule-type", EmitDefaultValue = false)]
         public string RuleType { get; set; }
 

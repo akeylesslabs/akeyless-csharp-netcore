@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AdminPwd** | **string** |  | [optional] 
 **AdminRotationIntervalDays** | **long** |  | [optional] 
 **AdministrativePort** | **string** |  | [optional] 
+**AgenticRules** | [**AgenticRules**](AgenticRules.md) |  | [optional] 
 **ApiKey** | **string** |  | [optional] 
 **ApiKeyId** | **string** |  | [optional] 
 **ArtifactoryAdminApikey** | **string** |  | [optional] 

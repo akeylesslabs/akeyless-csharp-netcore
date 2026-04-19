@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="TargetUpdateLetsEncrypt" /> class.
         /// </summary>
         /// <param name="acmeChallenge">acmeChallenge (default to &quot;http&quot;).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="dnsTargetCreds">Name of existing cloud target for DNS credentials. Required when acme-challenge&#x3D;dns. Supported: AWS, Azure, GCP targets.</param>
         /// <param name="email">Email address for ACME account registration (required).</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="timeout">timeout (default to &quot;5m&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetUpdateLetsEncrypt(string acmeChallenge = @"http", string description = default(string), string dnsTargetCreds = default(string), string email = default(string), string gcpProject = default(string), string hostedZone = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string letsEncryptUrl = @"production", string maxVersions = default(string), string name = default(string), string newName = default(string), string resourceGroup = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
+        public TargetUpdateLetsEncrypt(string acmeChallenge = @"http", string deleteProtection = default(string), string description = default(string), string dnsTargetCreds = default(string), string email = default(string), string gcpProject = default(string), string hostedZone = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string letsEncryptUrl = @"production", string maxVersions = default(string), string name = default(string), string newName = default(string), string resourceGroup = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -73,6 +74,7 @@ namespace akeyless.Model
             this.Name = name;
             // use default value if no "acmeChallenge" provided
             this.AcmeChallenge = acmeChallenge ?? @"http";
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.DnsTargetCreds = dnsTargetCreds;
             this.GcpProject = gcpProject;
@@ -96,6 +98,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "acme-challenge", EmitDefaultValue = false)]
         public string AcmeChallenge { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -216,6 +225,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetUpdateLetsEncrypt {\n");
             sb.Append("  AcmeChallenge: ").Append(AcmeChallenge).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  DnsTargetCreds: ").Append(DnsTargetCreds).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");

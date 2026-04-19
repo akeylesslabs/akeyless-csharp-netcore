@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certificateProfileId">Certificate Profile ID in Sectigo account (required).</param>
         /// <param name="customerUri">Customer Uri of the Sectigo account (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="externalRequester">External Requester - a comma separated list of emails (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Username of the Sectigo account (required).</param>
-        public TargetCreateSectigo(long certificateProfileId = default(long), string customerUri = default(string), string description = default(string), string externalRequester = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), long organizationId = default(long), string password = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string), string username = default(string))
+        public TargetCreateSectigo(long certificateProfileId = default(long), string customerUri = default(string), string deleteProtection = default(string), string description = default(string), string externalRequester = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), long organizationId = default(long), string password = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string), string username = default(string))
         {
             this.CertificateProfileId = certificateProfileId;
             // to ensure "customerUri" is required (not null)
@@ -88,6 +89,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("username is a required property for TargetCreateSectigo and cannot be null");
             }
             this.Username = username;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Json = json;
             this.Key = key;
@@ -111,6 +113,13 @@ namespace akeyless.Model
         /// <value>Customer Uri of the Sectigo account</value>
         [DataMember(Name = "customer-uri", IsRequired = true, EmitDefaultValue = true)]
         public string CustomerUri { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -206,6 +215,7 @@ namespace akeyless.Model
             sb.Append("class TargetCreateSectigo {\n");
             sb.Append("  CertificateProfileId: ").Append(CertificateProfileId).Append("\n");
             sb.Append("  CustomerUri: ").Append(CustomerUri).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExternalRequester: ").Append(ExternalRequester).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

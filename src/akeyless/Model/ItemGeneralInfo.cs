@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemGeneralInfo" /> class.
         /// </summary>
+        /// <param name="agenticRules">agenticRules.</param>
         /// <param name="certIssueDetails">certIssueDetails.</param>
         /// <param name="certificateChainInfo">certificateChainInfo.</param>
         /// <param name="certificateFormat">certificateFormat.</param>
@@ -53,8 +54,9 @@ namespace akeyless.Model
         /// <param name="secureRemoteAccessDetails">secureRemoteAccessDetails.</param>
         /// <param name="staticSecretInfo">staticSecretInfo.</param>
         /// <param name="tokenizerInfo">tokenizerInfo.</param>
-        public ItemGeneralInfo(CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), CertificateChainInfo certificateChainInfo = default(CertificateChainInfo), string certificateFormat = default(string), CertificateTemplateInfo certificatesTemplateInfo = default(CertificateTemplateInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), ImporterInfo importerInfo = default(ImporterInfo), IssuerOverviewInfo issuerOverviewInfo = default(IssuerOverviewInfo), List<NextAutoRotationEvent> nextRotationEvents = default(List<NextAutoRotationEvent>), OidcClientInfo oidcClientInfo = default(OidcClientInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
+        public ItemGeneralInfo(AgenticRules agenticRules = default(AgenticRules), CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), CertificateChainInfo certificateChainInfo = default(CertificateChainInfo), string certificateFormat = default(string), CertificateTemplateInfo certificatesTemplateInfo = default(CertificateTemplateInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), ImporterInfo importerInfo = default(ImporterInfo), IssuerOverviewInfo issuerOverviewInfo = default(IssuerOverviewInfo), List<NextAutoRotationEvent> nextRotationEvents = default(List<NextAutoRotationEvent>), OidcClientInfo oidcClientInfo = default(OidcClientInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
         {
+            this.AgenticRules = agenticRules;
             this.CertIssueDetails = certIssueDetails;
             this.CertificateChainInfo = certificateChainInfo;
             this.CertificateFormat = certificateFormat;
@@ -74,6 +76,12 @@ namespace akeyless.Model
             this.StaticSecretInfo = staticSecretInfo;
             this.TokenizerInfo = tokenizerInfo;
         }
+
+        /// <summary>
+        /// Gets or Sets AgenticRules
+        /// </summary>
+        [DataMember(Name = "agentic_rules", EmitDefaultValue = false)]
+        public AgenticRules AgenticRules { get; set; }
 
         /// <summary>
         /// Gets or Sets CertIssueDetails
@@ -191,6 +199,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ItemGeneralInfo {\n");
+            sb.Append("  AgenticRules: ").Append(AgenticRules).Append("\n");
             sb.Append("  CertIssueDetails: ").Append(CertIssueDetails).Append("\n");
             sb.Append("  CertificateChainInfo: ").Append(CertificateChainInfo).Append("\n");
             sb.Append("  CertificateFormat: ").Append(CertificateFormat).Append("\n");

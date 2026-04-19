@@ -152,7 +152,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretCreateMsSql**](V2Api.md#dynamicsecretcreatemssql) | **POST** /dynamic-secret-create-mssql |  |
 | [**DynamicSecretCreateMySql**](V2Api.md#dynamicsecretcreatemysql) | **POST** /dynamic-secret-create-mysql |  |
 | [**DynamicSecretCreateOpenAI**](V2Api.md#dynamicsecretcreateopenai) | **POST** /dynamic-secret-create-openai |  |
-| [**DynamicSecretCreateOracleDb**](V2Api.md#dynamicsecretcreateoracledb) | **POST** /dynamic-secret-create-oracle |  |
+| [**DynamicSecretCreateOracleDb**](V2Api.md#dynamicsecretcreateoracledb) | **POST** /dynamic-secret-create-oracledb |  |
 | [**DynamicSecretCreatePing**](V2Api.md#dynamicsecretcreateping) | **POST** /dynamic-secret-create-ping |  |
 | [**DynamicSecretCreatePostgreSql**](V2Api.md#dynamicsecretcreatepostgresql) | **POST** /dynamic-secret-create-postgresql |  |
 | [**DynamicSecretCreateRabbitMq**](V2Api.md#dynamicsecretcreaterabbitmq) | **POST** /dynamic-secret-create-rabbitmq |  |
@@ -166,7 +166,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretGetValue**](V2Api.md#dynamicsecretgetvalue) | **POST** /dynamic-secret-get-value |  |
 | [**DynamicSecretList**](V2Api.md#dynamicsecretlist) | **POST** /dynamic-secret-list |  |
 | [**DynamicSecretTmpCredsDelete**](V2Api.md#dynamicsecrettmpcredsdelete) | **POST** /dynamic-secret-tmp-creds-delete |  |
-| [**DynamicSecretTmpCredsGet**](V2Api.md#dynamicsecrettmpcredsget) | **POST** /dynamic-secret-tmp-creds-Get |  |
+| [**DynamicSecretTmpCredsGet**](V2Api.md#dynamicsecrettmpcredsget) | **POST** /dynamic-secret-tmp-creds-get |  |
 | [**DynamicSecretTmpCredsUpdate**](V2Api.md#dynamicsecrettmpcredsupdate) | **POST** /dynamic-secret-tmp-creds-update |  |
 | [**DynamicSecretUpdateArtifactory**](V2Api.md#dynamicsecretupdateartifactory) | **POST** /dynamic-secret-update-artifactory |  |
 | [**DynamicSecretUpdateAws**](V2Api.md#dynamicsecretupdateaws) | **POST** /dynamic-secret-update-aws |  |
@@ -180,10 +180,10 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretUpdateGitlab**](V2Api.md#dynamicsecretupdategitlab) | **POST** /dynamic-secret-update-gitlab |  |
 | [**DynamicSecretUpdateGke**](V2Api.md#dynamicsecretupdategke) | **POST** /dynamic-secret-update-gke |  |
 | [**DynamicSecretUpdateGoogleWorkspace**](V2Api.md#dynamicsecretupdategoogleworkspace) | **POST** /dynamic-secret-update-google-workspace |  |
-| [**DynamicSecretUpdateHanaDb**](V2Api.md#dynamicsecretupdatehanadb) | **POST** /dynamic-secret-update-hana |  |
+| [**DynamicSecretUpdateHanaDb**](V2Api.md#dynamicsecretupdatehanadb) | **POST** /dynamic-secret-update-hanadb |  |
 | [**DynamicSecretUpdateK8s**](V2Api.md#dynamicsecretupdatek8s) | **POST** /dynamic-secret-update-k8s |  |
 | [**DynamicSecretUpdateLdap**](V2Api.md#dynamicsecretupdateldap) | **POST** /dynamic-secret-update-ldap |  |
-| [**DynamicSecretUpdateMongoDb**](V2Api.md#dynamicsecretupdatemongodb) | **POST** /dynamic-secret-update-mongo |  |
+| [**DynamicSecretUpdateMongoDb**](V2Api.md#dynamicsecretupdatemongodb) | **POST** /dynamic-secret-update-mongodb |  |
 | [**DynamicSecretUpdateMsSql**](V2Api.md#dynamicsecretupdatemssql) | **POST** /dynamic-secret-update-mssql |  |
 | [**DynamicSecretUpdateMySql**](V2Api.md#dynamicsecretupdatemysql) | **POST** /dynamic-secret-update-mysql |  |
 | [**DynamicSecretUpdateOpenAI**](V2Api.md#dynamicsecretupdateopenai) | **POST** /dynamic-secret-update-openai |  |
@@ -453,6 +453,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretUpdateSplunk**](V2Api.md#rotatedsecretupdatesplunk) | **POST** /rotated-secret-update-splunk |  |
 | [**RotatedSecretUpdateSsh**](V2Api.md#rotatedsecretupdatessh) | **POST** /rotated-secret-update-ssh |  |
 | [**RotatedSecretUpdateWindows**](V2Api.md#rotatedsecretupdatewindows) | **POST** /rotated-secret-update-windows |  |
+| [**RuntimeAuthority**](V2Api.md#runtimeauthority) | **POST** /runtime-authority |  |
 | [**SetItemState**](V2Api.md#setitemstate) | **POST** /set-item-state |  |
 | [**SetRoleRule**](V2Api.md#setrolerule) | **POST** /set-role-rule |  |
 | [**ShareItem**](V2Api.md#shareitem) | **POST** /share-item |  |
@@ -40105,6 +40106,90 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | rotatedSecretUpdateWindowsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="runtimeauthority"></a>
+# **RuntimeAuthority**
+> void RuntimeAuthority (RuntimeAuthorityCommand runtimeAuthorityCommand)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RuntimeAuthorityExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var runtimeAuthorityCommand = new RuntimeAuthorityCommand(); // RuntimeAuthorityCommand | 
+
+            try
+            {
+                apiInstance.RuntimeAuthority(runtimeAuthorityCommand);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RuntimeAuthority: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RuntimeAuthorityWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    apiInstance.RuntimeAuthorityWithHttpInfo(runtimeAuthorityCommand);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RuntimeAuthorityWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **runtimeAuthorityCommand** | [**RuntimeAuthorityCommand**](RuntimeAuthorityCommand.md) |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

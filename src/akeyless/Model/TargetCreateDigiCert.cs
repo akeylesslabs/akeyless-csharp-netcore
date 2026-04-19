@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="TargetCreateDigiCert" /> class.
         /// </summary>
         /// <param name="acmeChallenge">ACME challenge type. Options: [dns] (default to &quot;dns&quot;).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="digicertUrl">DigiCert ACME endpoint selector. Options: [us-production/eu-production/us-demo/eu-demo] (default to &quot;us-production&quot;).</param>
         /// <param name="dnsTargetCreds">Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP.</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="timeout">Timeout for challenge validation (default to &quot;5m&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetCreateDigiCert(string acmeChallenge = @"dns", string description = default(string), string digicertUrl = @"us-production", string dnsTargetCreds = default(string), string eabHmacKey = default(string), string eabKeyId = default(string), string email = default(string), string gcpProject = default(string), string hostedZone = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string resourceGroup = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
+        public TargetCreateDigiCert(string acmeChallenge = @"dns", string deleteProtection = default(string), string description = default(string), string digicertUrl = @"us-production", string dnsTargetCreds = default(string), string eabHmacKey = default(string), string eabKeyId = default(string), string email = default(string), string gcpProject = default(string), string hostedZone = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string resourceGroup = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -73,6 +74,7 @@ namespace akeyless.Model
             this.Name = name;
             // use default value if no "acmeChallenge" provided
             this.AcmeChallenge = acmeChallenge ?? @"dns";
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             // use default value if no "digicertUrl" provided
             this.DigicertUrl = digicertUrl ?? @"us-production";
@@ -97,6 +99,13 @@ namespace akeyless.Model
         /// <value>ACME challenge type. Options: [dns]</value>
         [DataMember(Name = "acme-challenge", EmitDefaultValue = false)]
         public string AcmeChallenge { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -219,6 +228,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetCreateDigiCert {\n");
             sb.Append("  AcmeChallenge: ").Append(AcmeChallenge).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  DigicertUrl: ").Append(DigicertUrl).Append("\n");
             sb.Append("  DnsTargetCreds: ").Append(DnsTargetCreds).Append("\n");

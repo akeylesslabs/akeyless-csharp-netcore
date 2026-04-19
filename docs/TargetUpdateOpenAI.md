@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | **string** | API key for OpenAI | [optional] 
 **ApiKeyId** | **string** | API key ID | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] [default to "default_comment"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 

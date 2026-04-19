@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessKey** | **string** | AWS secret access key | 
 **AccessKeyId** | **string** | AWS access key ID | 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **GenerateExternalId** | **bool** | A unique auto-generated value used in your AWS account when configuring your AWS IAM role to securely delegate access to Akeyless. Relevant only when using GW cloud ID | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

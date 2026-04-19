@@ -37,16 +37,18 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessId">accessId.</param>
         /// <param name="authCreds">Temporary credentials for accessing Auth.</param>
+        /// <param name="csrfToken">CSRF token for synchronizer-token pattern (only populated for WebUI clients).</param>
         /// <param name="expiry">Credentials expiration date.</param>
         /// <param name="kfmCreds">Temporary credentials for accessing the KFMs instances.</param>
         /// <param name="needMfaAppFirstConfig">If the user didn&#39;t complete to configure the MFA app.</param>
         /// <param name="requiredMfa">requiredMfa.</param>
         /// <param name="token">Credentials tmp token.</param>
         /// <param name="uamCreds">Temporary credentials for accessing the UAM service.</param>
-        public SystemAccessCredentialsReplyObj(string accessId = default(string), string authCreds = default(string), long expiry = default(long), string kfmCreds = default(string), bool needMfaAppFirstConfig = default(bool), string requiredMfa = default(string), string token = default(string), string uamCreds = default(string))
+        public SystemAccessCredentialsReplyObj(string accessId = default(string), string authCreds = default(string), string csrfToken = default(string), long expiry = default(long), string kfmCreds = default(string), bool needMfaAppFirstConfig = default(bool), string requiredMfa = default(string), string token = default(string), string uamCreds = default(string))
         {
             this.AccessId = accessId;
             this.AuthCreds = authCreds;
+            this.CsrfToken = csrfToken;
             this.Expiry = expiry;
             this.KfmCreds = kfmCreds;
             this.NeedMfaAppFirstConfig = needMfaAppFirstConfig;
@@ -67,6 +69,13 @@ namespace akeyless.Model
         /// <value>Temporary credentials for accessing Auth</value>
         [DataMember(Name = "auth_creds", EmitDefaultValue = false)]
         public string AuthCreds { get; set; }
+
+        /// <summary>
+        /// CSRF token for synchronizer-token pattern (only populated for WebUI clients)
+        /// </summary>
+        /// <value>CSRF token for synchronizer-token pattern (only populated for WebUI clients)</value>
+        [DataMember(Name = "csrf_token", EmitDefaultValue = false)]
+        public string CsrfToken { get; set; }
 
         /// <summary>
         /// Credentials expiration date
@@ -119,6 +128,7 @@ namespace akeyless.Model
             sb.Append("class SystemAccessCredentialsReplyObj {\n");
             sb.Append("  AccessId: ").Append(AccessId).Append("\n");
             sb.Append("  AuthCreds: ").Append(AuthCreds).Append("\n");
+            sb.Append("  CsrfToken: ").Append(CsrfToken).Append("\n");
             sb.Append("  Expiry: ").Append(Expiry).Append("\n");
             sb.Append("  KfmCreds: ").Append(KfmCreds).Append("\n");
             sb.Append("  NeedMfaAppFirstConfig: ").Append(NeedMfaAppFirstConfig).Append("\n");

@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="administrativePort">Ping Federate administrative port (default to &quot;9999&quot;).</param>
         /// <param name="authorizationPort">Ping Federate authorization port (default to &quot;9031&quot;).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="privilegedUser">Ping Federate privileged user.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetUpdatePing(string administrativePort = @"9999", string authorizationPort = @"9031", string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string password = default(string), string pingUrl = default(string), string privilegedUser = default(string), string token = default(string), string uidToken = default(string))
+        public TargetUpdatePing(string administrativePort = @"9999", string authorizationPort = @"9031", string deleteProtection = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string password = default(string), string pingUrl = default(string), string privilegedUser = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.AdministrativePort = administrativePort ?? @"9999";
             // use default value if no "authorizationPort" provided
             this.AuthorizationPort = authorizationPort ?? @"9031";
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
@@ -92,6 +94,13 @@ namespace akeyless.Model
         /// <value>Ping Federate authorization port</value>
         [DataMember(Name = "authorization-port", EmitDefaultValue = false)]
         public string AuthorizationPort { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -187,6 +196,7 @@ namespace akeyless.Model
             sb.Append("class TargetUpdatePing {\n");
             sb.Append("  AdministrativePort: ").Append(AdministrativePort).Append("\n");
             sb.Append("  AuthorizationPort: ").Append(AuthorizationPort).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");

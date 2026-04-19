@@ -6,6 +6,7 @@ targetUpdateGemini is a command that updates an existing gemini target
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | **string** | API key for Gemini | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] [default to "default_comment"]
 **GeminiUrl** | **string** | Base URL of the Gemini API | [optional] [default to "https://generativelanguage.googleapis.com"]
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

@@ -59,8 +59,10 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscPrefix">Prefix for all secrets created in AWS Secrets Manager.</param>
+        /// <param name="uscTags">Comma-separated list of tags to apply to all secrets created on the remote USC.</param>
         /// <param name="usePrefixAsFilter">Whether to filter the USC secret list using the specified usc-prefix [true/false] (default to &quot;false&quot;).</param>
-        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string environmentNames = default(string), string gcpProjectId = default(string), string gcpSmRegions = default(string), string githubScope = @"repository", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sNamespace = default(string), string name = default(string), string organizationName = default(string), string repositoryAccess = @"public", string repositoryNames = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string usePrefixAsFilter = @"false")
+        /// <param name="useTagsAsFilter">Filter the USC secret list by the value(s) of - -usc-tags. [true|false].</param>
+        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string environmentNames = default(string), string gcpProjectId = default(string), string gcpSmRegions = default(string), string githubScope = @"repository", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sNamespace = default(string), string name = default(string), string organizationName = default(string), string repositoryAccess = @"public", string repositoryNames = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string uscTags = default(string), string usePrefixAsFilter = @"false", bool useTagsAsFilter = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -93,8 +95,10 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
             this.UscPrefix = uscPrefix;
+            this.UscTags = uscTags;
             // use default value if no "usePrefixAsFilter" provided
             this.UsePrefixAsFilter = usePrefixAsFilter ?? @"false";
+            this.UseTagsAsFilter = useTagsAsFilter;
         }
 
         /// <summary>
@@ -230,11 +234,25 @@ namespace akeyless.Model
         public string UscPrefix { get; set; }
 
         /// <summary>
+        /// Comma-separated list of tags to apply to all secrets created on the remote USC
+        /// </summary>
+        /// <value>Comma-separated list of tags to apply to all secrets created on the remote USC</value>
+        [DataMember(Name = "usc-tags", EmitDefaultValue = false)]
+        public string UscTags { get; set; }
+
+        /// <summary>
         /// Whether to filter the USC secret list using the specified usc-prefix [true/false]
         /// </summary>
         /// <value>Whether to filter the USC secret list using the specified usc-prefix [true/false]</value>
         [DataMember(Name = "use-prefix-as-filter", EmitDefaultValue = false)]
         public string UsePrefixAsFilter { get; set; }
+
+        /// <summary>
+        /// Filter the USC secret list by the value(s) of - -usc-tags. [true|false]
+        /// </summary>
+        /// <value>Filter the USC secret list by the value(s) of - -usc-tags. [true|false]</value>
+        [DataMember(Name = "use-tags-as-filter", EmitDefaultValue = true)]
+        public bool UseTagsAsFilter { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -263,7 +281,9 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UscPrefix: ").Append(UscPrefix).Append("\n");
+            sb.Append("  UscTags: ").Append(UscTags).Append("\n");
             sb.Append("  UsePrefixAsFilter: ").Append(UsePrefixAsFilter).Append("\n");
+            sb.Append("  UseTagsAsFilter: ").Append(UseTagsAsFilter).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

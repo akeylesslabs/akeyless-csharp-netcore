@@ -35,13 +35,21 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EsmListSecretsOutput" /> class.
         /// </summary>
+        /// <param name="nextToken">nextToken.</param>
         /// <param name="secretsList">secretsList.</param>
         /// <param name="warnings">warnings.</param>
-        public EsmListSecretsOutput(List<SecretInfo> secretsList = default(List<SecretInfo>), List<string> warnings = default(List<string>))
+        public EsmListSecretsOutput(string nextToken = default(string), List<SecretInfo> secretsList = default(List<SecretInfo>), List<string> warnings = default(List<string>))
         {
+            this.NextToken = nextToken;
             this.SecretsList = secretsList;
             this.Warnings = warnings;
         }
+
+        /// <summary>
+        /// Gets or Sets NextToken
+        /// </summary>
+        [DataMember(Name = "next_token", EmitDefaultValue = false)]
+        public string NextToken { get; set; }
 
         /// <summary>
         /// Gets or Sets SecretsList
@@ -63,6 +71,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class EsmListSecretsOutput {\n");
+            sb.Append("  NextToken: ").Append(NextToken).Append("\n");
             sb.Append("  SecretsList: ").Append(SecretsList).Append("\n");
             sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("}\n");

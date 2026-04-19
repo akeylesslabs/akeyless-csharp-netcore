@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessKey">AWS secret access key (required).</param>
         /// <param name="accessKeyId">AWS access key ID (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="generateExternalId">A unique auto-generated value used in your AWS account when configuring your AWS IAM role to securely delegate access to Akeyless. Relevant only when using GW cloud ID.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">Use the GW&#39;s Cloud IAM.</param>
-        public TargetUpdateAws(string accessKey = default(string), string accessKeyId = default(string), string description = default(string), bool generateExternalId = default(bool), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string region = @"us-east-2", string roleArn = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public TargetUpdateAws(string accessKey = default(string), string accessKeyId = default(string), string deleteProtection = default(string), string description = default(string), bool generateExternalId = default(bool), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string region = @"us-east-2", string roleArn = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "accessKey" is required (not null)
             if (accessKey == null)
@@ -76,6 +77,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetUpdateAws and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.GenerateExternalId = generateExternalId;
             this.Json = json;
@@ -105,6 +107,13 @@ namespace akeyless.Model
         /// <value>AWS access key ID</value>
         [DataMember(Name = "access-key-id", IsRequired = true, EmitDefaultValue = true)]
         public string AccessKeyId { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -214,6 +223,7 @@ namespace akeyless.Model
             sb.Append("class TargetUpdateAws {\n");
             sb.Append("  AccessKey: ").Append(AccessKey).Append("\n");
             sb.Append("  AccessKeyId: ").Append(AccessKeyId).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GenerateExternalId: ").Append(GenerateExternalId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

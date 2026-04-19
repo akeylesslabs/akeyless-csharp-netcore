@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetCreateGcp" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -49,7 +50,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public TargetCreateGcp(string description = default(string), string gcpKey = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public TargetCreateGcp(string deleteProtection = default(string), string description = default(string), string gcpKey = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -57,6 +58,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetCreateGcp and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.GcpKey = gcpKey;
             this.Json = json;
@@ -66,6 +68,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.UseGwCloudIdentity = useGwCloudIdentity;
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -137,6 +146,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetCreateGcp {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GcpKey: ").Append(GcpKey).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

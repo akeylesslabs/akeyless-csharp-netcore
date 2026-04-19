@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="contactFirstName">First name of the GlobalSign GCC account contact (required).</param>
         /// <param name="contactLastName">Last name of the GlobalSign GCC account contact (required).</param>
         /// <param name="contactPhone">Telephone of the GlobalSign GCC account contact (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">Username of the GlobalSign GCC account (required).</param>
-        public TargetUpdateGlobalSign(string contactEmail = default(string), string contactFirstName = default(string), string contactLastName = default(string), string contactPhone = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string password = default(string), string profileId = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string), string username = default(string))
+        public TargetUpdateGlobalSign(string contactEmail = default(string), string contactFirstName = default(string), string contactLastName = default(string), string contactPhone = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string password = default(string), string profileId = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string), string username = default(string))
         {
             // to ensure "contactEmail" is required (not null)
             if (contactEmail == null)
@@ -107,6 +108,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("username is a required property for TargetUpdateGlobalSign and cannot be null");
             }
             this.Username = username;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
@@ -146,6 +148,13 @@ namespace akeyless.Model
         /// <value>Telephone of the GlobalSign GCC account contact</value>
         [DataMember(Name = "contact-phone", IsRequired = true, EmitDefaultValue = true)]
         public string ContactPhone { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -250,6 +259,7 @@ namespace akeyless.Model
             sb.Append("  ContactFirstName: ").Append(ContactFirstName).Append("\n");
             sb.Append("  ContactLastName: ").Append(ContactLastName).Append("\n");
             sb.Append("  ContactPhone: ").Append(ContactPhone).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **DbServerCertificates** | **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
 **DbType** | **string** |  | 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **Host** | **string** |  | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

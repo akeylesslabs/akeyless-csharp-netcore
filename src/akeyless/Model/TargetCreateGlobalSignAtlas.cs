@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="apiKey">API Key of the GlobalSign Atlas account (required).</param>
         /// <param name="apiSecret">API Secret of the GlobalSign Atlas account (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="timeout">Timeout waiting for certificate validation in Duration format (1h - 1 Hour, 20m - 20 Minutes, 33m3s - 33 Minutes and 3 Seconds), maximum 1h. (default to &quot;5m&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetCreateGlobalSignAtlas(string apiKey = default(string), string apiSecret = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string mtlsCertDataBase64 = default(string), string mtlsKeyDataBase64 = default(string), string name = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
+        public TargetCreateGlobalSignAtlas(string apiKey = default(string), string apiSecret = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string mtlsCertDataBase64 = default(string), string mtlsKeyDataBase64 = default(string), string name = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
         {
             // to ensure "apiKey" is required (not null)
             if (apiKey == null)
@@ -72,6 +73,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetCreateGlobalSignAtlas and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Json = json;
             this.Key = key;
@@ -97,6 +99,13 @@ namespace akeyless.Model
         /// <value>API Secret of the GlobalSign Atlas account</value>
         [DataMember(Name = "api-secret", IsRequired = true, EmitDefaultValue = true)]
         public string ApiSecret { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -178,6 +187,7 @@ namespace akeyless.Model
             sb.Append("class TargetCreateGlobalSignAtlas {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  ApiSecret: ").Append(ApiSecret).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");

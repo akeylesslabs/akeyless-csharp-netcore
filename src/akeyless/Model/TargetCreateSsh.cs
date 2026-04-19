@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetCreateSsh" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="host">SSH host name.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="sshUsername">SSH username.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetCreateSsh(string description = default(string), string host = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string port = @"22", string privateKey = default(string), string privateKeyPassword = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
+        public TargetCreateSsh(string deleteProtection = default(string), string description = default(string), string host = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string port = @"22", string privateKey = default(string), string privateKeyPassword = default(string), string sshPassword = default(string), string sshUsername = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -61,6 +62,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetCreateSsh and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Host = host;
             this.Json = json;
@@ -75,6 +77,13 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -175,6 +184,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetCreateSsh {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

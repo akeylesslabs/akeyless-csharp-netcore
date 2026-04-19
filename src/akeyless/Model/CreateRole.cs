@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateRole" /> class.
         /// </summary>
         /// <param name="analyticsAccess">Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
+        /// <param name="araReportsAccess">Allow this role to view Agentic Runtime Authority Dashboard. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="auditAccess">Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods..</param>
         /// <param name="comment">Deprecated - use description.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="usageReportsAccess">Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
-        public CreateRole(string analyticsAccess = default(string), string auditAccess = default(string), string comment = default(string), string deleteProtection = default(string), string description = default(string), string eventCenterAccess = default(string), string eventForwardersAccess = default(string), List<string> eventForwardersName = default(List<string>), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string reverseRbacAccess = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
+        public CreateRole(string analyticsAccess = default(string), string araReportsAccess = default(string), string auditAccess = default(string), string comment = default(string), string deleteProtection = default(string), string description = default(string), string eventCenterAccess = default(string), string eventForwardersAccess = default(string), List<string> eventForwardersName = default(List<string>), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string reverseRbacAccess = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -65,6 +66,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AnalyticsAccess = analyticsAccess;
+            this.AraReportsAccess = araReportsAccess;
             this.AuditAccess = auditAccess;
             this.Comment = comment;
             this.DeleteProtection = deleteProtection;
@@ -87,6 +89,13 @@ namespace akeyless.Model
         /// <value>Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.</value>
         [DataMember(Name = "analytics-access", EmitDefaultValue = false)]
         public string AnalyticsAccess { get; set; }
+
+        /// <summary>
+        /// Allow this role to view Agentic Runtime Authority Dashboard. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported.
+        /// </summary>
+        /// <value>Allow this role to view Agentic Runtime Authority Dashboard. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported.</value>
+        [DataMember(Name = "ara-reports-access", EmitDefaultValue = false)]
+        public string AraReportsAccess { get; set; }
 
         /// <summary>
         /// Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
@@ -202,6 +211,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateRole {\n");
             sb.Append("  AnalyticsAccess: ").Append(AnalyticsAccess).Append("\n");
+            sb.Append("  AraReportsAccess: ").Append(AraReportsAccess).Append("\n");
             sb.Append("  AuditAccess: ").Append(AuditAccess).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");

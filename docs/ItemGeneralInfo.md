@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AgenticRules** | [**AgenticRules**](AgenticRules.md) |  | [optional] 
 **CertIssueDetails** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **CertificateChainInfo** | [**CertificateChainInfo**](CertificateChainInfo.md) |  | [optional] 
 **CertificateFormat** | **string** |  | [optional] 

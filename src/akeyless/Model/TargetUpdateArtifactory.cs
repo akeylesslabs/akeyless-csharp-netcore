@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="artifactoryAdminName">Artifactory Admin Name (required).</param>
         /// <param name="artifactoryAdminPwd">Artifactory Admin password (required).</param>
         /// <param name="baseUrl">Base URL (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="newName">New target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetUpdateArtifactory(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string baseUrl = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string))
+        public TargetUpdateArtifactory(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string baseUrl = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "artifactoryAdminName" is required (not null)
             if (artifactoryAdminName == null)
@@ -78,6 +79,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetUpdateArtifactory and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
@@ -108,6 +110,13 @@ namespace akeyless.Model
         /// <value>Base URL</value>
         [DataMember(Name = "base-url", IsRequired = true, EmitDefaultValue = true)]
         public string BaseUrl { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -183,6 +192,7 @@ namespace akeyless.Model
             sb.Append("  ArtifactoryAdminName: ").Append(ArtifactoryAdminName).Append("\n");
             sb.Append("  ArtifactoryAdminPwd: ").Append(ArtifactoryAdminPwd).Append("\n");
             sb.Append("  BaseUrl: ").Append(BaseUrl).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");

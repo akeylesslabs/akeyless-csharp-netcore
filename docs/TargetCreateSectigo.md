@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateProfileId** | **long** | Certificate Profile ID in Sectigo account | 
 **CustomerUri** | **string** | Customer Uri of the Sectigo account | 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **ExternalRequester** | **string** | External Requester - a comma separated list of emails | 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

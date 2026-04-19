@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

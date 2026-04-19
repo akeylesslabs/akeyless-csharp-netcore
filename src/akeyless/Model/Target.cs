@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="comment">comment.</param>
         /// <param name="creationDate">creationDate.</param>
+        /// <param name="deleteProtection">deleteProtection.</param>
         /// <param name="isAccessRequestEnabled">isAccessRequestEnabled.</param>
         /// <param name="lastVersion">lastVersion.</param>
         /// <param name="lockingInfo">lockingInfo.</param>
@@ -56,7 +57,7 @@ namespace akeyless.Model
         /// <param name="targetType">targetType.</param>
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Target(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), string accessRequestStatus = default(string), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool isAccessRequestEnabled = default(bool), int lastVersion = default(int), LockingInfo lockingInfo = default(LockingInfo), DateTime modificationDate = default(DateTime), string parentTargetName = default(string), string protectionKeyName = default(string), string targetDetails = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetSubType = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
+        public Target(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), string accessRequestStatus = default(string), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<string> clientPermissions = default(List<string>), string comment = default(string), DateTime creationDate = default(DateTime), bool deleteProtection = default(bool), bool isAccessRequestEnabled = default(bool), int lastVersion = default(int), LockingInfo lockingInfo = default(LockingInfo), DateTime modificationDate = default(DateTime), string parentTargetName = default(string), string protectionKeyName = default(string), string targetDetails = default(string), long targetId = default(long), List<TargetItemAssociation> targetItemsAssoc = default(List<TargetItemAssociation>), string targetName = default(string), string targetSubType = default(string), string targetType = default(string), List<ItemVersion> targetVersions = default(List<ItemVersion>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
@@ -65,6 +66,7 @@ namespace akeyless.Model
             this.ClientPermissions = clientPermissions;
             this.Comment = comment;
             this.CreationDate = creationDate;
+            this.DeleteProtection = deleteProtection;
             this.IsAccessRequestEnabled = isAccessRequestEnabled;
             this.LastVersion = lastVersion;
             this.LockingInfo = lockingInfo;
@@ -123,6 +125,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "creation_date", EmitDefaultValue = false)]
         public DateTime CreationDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DeleteProtection
+        /// </summary>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = true)]
+        public bool DeleteProtection { get; set; }
 
         /// <summary>
         /// Gets or Sets IsAccessRequestEnabled
@@ -223,6 +231,7 @@ namespace akeyless.Model
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  IsAccessRequestEnabled: ").Append(IsAccessRequestEnabled).Append("\n");
             sb.Append("  LastVersion: ").Append(LastVersion).Append("\n");
             sb.Append("  LockingInfo: ").Append(LockingInfo).Append("\n");

@@ -6,6 +6,7 @@ targetUpdateLetsEncrypt is a command that updates an existing Let's Encrypt targ
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AcmeChallenge** | **string** |  | [optional] [default to "http"]
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **DnsTargetCreds** | **string** | Name of existing cloud target for DNS credentials. Required when acme-challenge&#x3D;dns. Supported: AWS, Azure, GCP targets | [optional] 
 **Email** | **string** | Email address for ACME account registration | 

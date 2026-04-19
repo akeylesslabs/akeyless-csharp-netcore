@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetUpdateGithub" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="githubAppId">Github app id.</param>
         /// <param name="githubAppPrivateKey">App private key.</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="newName">New target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetUpdateGithub(string description = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = @"https://api.github.com/", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string))
+        public TargetUpdateGithub(string deleteProtection = default(string), string description = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = @"https://api.github.com/", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -60,6 +61,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetUpdateGithub and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.GithubAppId = githubAppId;
             this.GithubAppPrivateKey = githubAppPrivateKey;
@@ -73,6 +75,13 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -166,6 +175,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetUpdateGithub {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GithubAppId: ").Append(GithubAppId).Append("\n");
             sb.Append("  GithubAppPrivateKey: ").Append(GithubAppPrivateKey).Append("\n");

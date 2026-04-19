@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="caCertName">name of the certificate in Salesforce tenant to use when uploading new key.</param>
         /// <param name="clientId">Client ID of the oauth2 app to use for connecting to Salesforce (required).</param>
         /// <param name="clientSecret">Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="email">The email of the user attached to the oauth2 app used for connecting to Salesforce (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -59,7 +60,7 @@ namespace akeyless.Model
         /// <param name="tenantUrl">Url of the Salesforce tenant (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetUpdateSalesforce(string appPrivateKeyData = default(string), string authFlow = default(string), string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string description = default(string), string email = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string))
+        public TargetUpdateSalesforce(string appPrivateKeyData = default(string), string authFlow = default(string), string caCertData = default(string), string caCertName = default(string), string clientId = default(string), string clientSecret = default(string), string deleteProtection = default(string), string description = default(string), string email = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string password = default(string), string securityToken = default(string), string tenantUrl = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "authFlow" is required (not null)
             if (authFlow == null)
@@ -95,6 +96,7 @@ namespace akeyless.Model
             this.CaCertData = caCertData;
             this.CaCertName = caCertName;
             this.ClientSecret = clientSecret;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
@@ -148,6 +150,13 @@ namespace akeyless.Model
         /// <value>Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow)</value>
         [DataMember(Name = "client-secret", EmitDefaultValue = false)]
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -254,6 +263,7 @@ namespace akeyless.Model
             sb.Append("  CaCertName: ").Append(CaCertName).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

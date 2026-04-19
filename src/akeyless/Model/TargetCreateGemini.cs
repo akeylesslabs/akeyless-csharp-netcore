@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="TargetCreateGemini" /> class.
         /// </summary>
         /// <param name="apiKey">API key for Gemini.</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="geminiUrl">Base URL of the Gemini API (default to &quot;https://generativelanguage.googleapis.com&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -49,7 +50,7 @@ namespace akeyless.Model
         /// <param name="name">Target name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetCreateGemini(string apiKey = default(string), string description = default(string), string geminiUrl = @"https://generativelanguage.googleapis.com", bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
+        public TargetCreateGemini(string apiKey = default(string), string deleteProtection = default(string), string description = default(string), string geminiUrl = @"https://generativelanguage.googleapis.com", bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -58,6 +59,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.ApiKey = apiKey;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             // use default value if no "geminiUrl" provided
             this.GeminiUrl = geminiUrl ?? @"https://generativelanguage.googleapis.com";
@@ -74,6 +76,13 @@ namespace akeyless.Model
         /// <value>API key for Gemini</value>
         [DataMember(Name = "api-key", EmitDefaultValue = false)]
         public string ApiKey { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -140,6 +149,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetCreateGemini {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GeminiUrl: ").Append(GeminiUrl).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

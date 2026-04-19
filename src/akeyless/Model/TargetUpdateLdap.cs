@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="bindDn">Bind DN (required).</param>
         /// <param name="bindDnPassword">Bind DN Password (required).</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -55,7 +56,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExpiration">Token expiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetUpdateLdap(string bindDn = default(string), string bindDnPassword = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string serverType = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string))
+        public TargetUpdateLdap(string bindDn = default(string), string bindDnPassword = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string serverType = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string))
         {
             // to ensure "bindDn" is required (not null)
             if (bindDn == null)
@@ -81,6 +82,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetUpdateLdap and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
@@ -107,6 +109,13 @@ namespace akeyless.Model
         /// <value>Bind DN Password</value>
         [DataMember(Name = "bind-dn-password", IsRequired = true, EmitDefaultValue = true)]
         public string BindDnPassword { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -209,6 +218,7 @@ namespace akeyless.Model
             sb.Append("class TargetUpdateLdap {\n");
             sb.Append("  BindDn: ").Append(BindDn).Append("\n");
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");

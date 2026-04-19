@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetCreateGke" /> class.
         /// </summary>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="gkeAccountKey">GKE Service Account key file path.</param>
         /// <param name="gkeClusterCert">GKE cluster CA certificate.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public TargetCreateGke(string description = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public TargetCreateGke(string deleteProtection = default(string), string description = default(string), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -61,6 +62,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for TargetCreateGke and cannot be null");
             }
             this.Name = name;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.GkeAccountKey = gkeAccountKey;
             this.GkeClusterCert = gkeClusterCert;
@@ -74,6 +76,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.UseGwCloudIdentity = useGwCloudIdentity;
         }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -173,6 +182,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetCreateGke {\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GkeAccountKey: ").Append(GkeAccountKey).Append("\n");
             sb.Append("  GkeClusterCert: ").Append(GkeClusterCert).Append("\n");
