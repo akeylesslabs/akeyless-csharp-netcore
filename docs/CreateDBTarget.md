@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **AzureClientId** | **string** | (Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureClientSecret** | **string** | (Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureTenantId** | **string** | (Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
+**ClientCertificate** | **string** | Client certificate for mutual TLS | [optional] 
+**ClientKeyPassphrase** | **string** | Client private key passphrase for mutual TLS | [optional] 
+**ClientPrivateKey** | **string** | Client private key for mutual TLS | [optional] 
 **CloudServiceProvider** | **string** | (Optional) Cloud service provider (currently only supports Azure) | [optional] 
 **ClusterMode** | **bool** | Cluster Mode | [optional] 
 **Comment** | **string** | Deprecated - use description | [optional] 
@@ -17,6 +20,7 @@ Name | Type | Description | Notes
 **DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
 **DbType** | **string** |  | 
 **Description** | **string** | Description of the object | [optional] 
+**EnableMtls** | **bool** | Enable mutual TLS | [optional] 
 **Host** | **string** |  | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 

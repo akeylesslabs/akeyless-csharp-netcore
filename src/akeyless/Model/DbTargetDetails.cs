@@ -35,6 +35,9 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DbTargetDetails" /> class.
         /// </summary>
+        /// <param name="clientCertificate">(Optional) ClientCertificate defines the client certificate for mutual TLS. Must be base64 certificate loaded by UI using file loader field.</param>
+        /// <param name="clientKeyPassphrase">(Optional) ClientKeyPassphrase defines the passphrase for the client private key.</param>
+        /// <param name="clientPrivateKey">(Optional) ClientPrivateKey defines the client private key for mutual TLS. Must be base64 private key loaded by UI using file loader field.</param>
         /// <param name="cloudServiceProvider">cloudServiceProvider.</param>
         /// <param name="clusterMode">clusterMode.</param>
         /// <param name="connectionType">connectionType.</param>
@@ -50,12 +53,16 @@ namespace akeyless.Model
         /// <param name="dbServerName">(Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address..</param>
         /// <param name="dbTenantId">dbTenantId.</param>
         /// <param name="dbUserName">dbUserName.</param>
+        /// <param name="enableMtls">(Optional) EnableMTLS defines if mutual TLS will be used to connect to DB.</param>
         /// <param name="oracleWalletDetails">oracleWalletDetails.</param>
         /// <param name="sfAccount">sfAccount.</param>
         /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
         /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
-        public DbTargetDetails(string cloudServiceProvider = default(string), bool clusterMode = default(bool), string connectionType = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), WalletDetails oracleWalletDetails = default(WalletDetails), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool))
+        public DbTargetDetails(string clientCertificate = default(string), string clientKeyPassphrase = default(string), string clientPrivateKey = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string connectionType = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), bool enableMtls = default(bool), WalletDetails oracleWalletDetails = default(WalletDetails), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool))
         {
+            this.ClientCertificate = clientCertificate;
+            this.ClientKeyPassphrase = clientKeyPassphrase;
+            this.ClientPrivateKey = clientPrivateKey;
             this.CloudServiceProvider = cloudServiceProvider;
             this.ClusterMode = clusterMode;
             this.ConnectionType = connectionType;
@@ -71,11 +78,33 @@ namespace akeyless.Model
             this.DbServerName = dbServerName;
             this.DbTenantId = dbTenantId;
             this.DbUserName = dbUserName;
+            this.EnableMtls = enableMtls;
             this.OracleWalletDetails = oracleWalletDetails;
             this.SfAccount = sfAccount;
             this.SslConnectionCertificate = sslConnectionCertificate;
             this.SslConnectionMode = sslConnectionMode;
         }
+
+        /// <summary>
+        /// (Optional) ClientCertificate defines the client certificate for mutual TLS. Must be base64 certificate loaded by UI using file loader field
+        /// </summary>
+        /// <value>(Optional) ClientCertificate defines the client certificate for mutual TLS. Must be base64 certificate loaded by UI using file loader field</value>
+        [DataMember(Name = "client_certificate", EmitDefaultValue = false)]
+        public string ClientCertificate { get; set; }
+
+        /// <summary>
+        /// (Optional) ClientKeyPassphrase defines the passphrase for the client private key
+        /// </summary>
+        /// <value>(Optional) ClientKeyPassphrase defines the passphrase for the client private key</value>
+        [DataMember(Name = "client_key_passphrase", EmitDefaultValue = false)]
+        public string ClientKeyPassphrase { get; set; }
+
+        /// <summary>
+        /// (Optional) ClientPrivateKey defines the client private key for mutual TLS. Must be base64 private key loaded by UI using file loader field
+        /// </summary>
+        /// <value>(Optional) ClientPrivateKey defines the client private key for mutual TLS. Must be base64 private key loaded by UI using file loader field</value>
+        [DataMember(Name = "client_private_key", EmitDefaultValue = false)]
+        public string ClientPrivateKey { get; set; }
 
         /// <summary>
         /// Gets or Sets CloudServiceProvider
@@ -171,6 +200,13 @@ namespace akeyless.Model
         public string DbUserName { get; set; }
 
         /// <summary>
+        /// (Optional) EnableMTLS defines if mutual TLS will be used to connect to DB
+        /// </summary>
+        /// <value>(Optional) EnableMTLS defines if mutual TLS will be used to connect to DB</value>
+        [DataMember(Name = "enable_mtls", EmitDefaultValue = true)]
+        public bool EnableMtls { get; set; }
+
+        /// <summary>
         /// Gets or Sets OracleWalletDetails
         /// </summary>
         [DataMember(Name = "oracle_wallet_details", EmitDefaultValue = false)]
@@ -204,6 +240,9 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DbTargetDetails {\n");
+            sb.Append("  ClientCertificate: ").Append(ClientCertificate).Append("\n");
+            sb.Append("  ClientKeyPassphrase: ").Append(ClientKeyPassphrase).Append("\n");
+            sb.Append("  ClientPrivateKey: ").Append(ClientPrivateKey).Append("\n");
             sb.Append("  CloudServiceProvider: ").Append(CloudServiceProvider).Append("\n");
             sb.Append("  ClusterMode: ").Append(ClusterMode).Append("\n");
             sb.Append("  ConnectionType: ").Append(ConnectionType).Append("\n");
@@ -219,6 +258,7 @@ namespace akeyless.Model
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DbTenantId: ").Append(DbTenantId).Append("\n");
             sb.Append("  DbUserName: ").Append(DbUserName).Append("\n");
+            sb.Append("  EnableMtls: ").Append(EnableMtls).Append("\n");
             sb.Append("  OracleWalletDetails: ").Append(OracleWalletDetails).Append("\n");
             sb.Append("  SfAccount: ").Append(SfAccount).Append("\n");
             sb.Append("  SslConnectionCertificate: ").Append(SslConnectionCertificate).Append("\n");

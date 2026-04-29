@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **AzureClientId** | **string** | (Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureClientSecret** | **string** | (Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureTenantId** | **string** | (Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
+**ClientCertificate** | **string** | Client certificate for mutual TLS | [optional] 
+**ClientKeyPassphrase** | **string** | Client private key passphrase for mutual TLS | [optional] 
+**ClientPrivateKey** | **string** | Client private key for mutual TLS | [optional] 
 **CloudServiceProvider** | **string** | (Optional) Cloud service provider (currently only supports Azure) | [optional] 
 **ClusterMode** | **bool** | Cluster Mode | [optional] 
 **Comment** | **string** | Deprecated - use description | [optional] 
@@ -17,6 +20,7 @@ Name | Type | Description | Notes
 **DbType** | **string** |  | 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
+**EnableMtls** | **bool** | Enable mutual TLS | [optional] 
 **Host** | **string** |  | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 

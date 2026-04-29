@@ -187,7 +187,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretUpdateMsSql**](V2Api.md#dynamicsecretupdatemssql) | **POST** /dynamic-secret-update-mssql |  |
 | [**DynamicSecretUpdateMySql**](V2Api.md#dynamicsecretupdatemysql) | **POST** /dynamic-secret-update-mysql |  |
 | [**DynamicSecretUpdateOpenAI**](V2Api.md#dynamicsecretupdateopenai) | **POST** /dynamic-secret-update-openai |  |
-| [**DynamicSecretUpdateOracleDb**](V2Api.md#dynamicsecretupdateoracledb) | **POST** /dynamic-secret-update-oracle |  |
+| [**DynamicSecretUpdateOracleDb**](V2Api.md#dynamicsecretupdateoracledb) | **POST** /dynamic-secret-update-oracledb |  |
 | [**DynamicSecretUpdatePing**](V2Api.md#dynamicsecretupdateping) | **POST** /dynamic-secret-update-ping |  |
 | [**DynamicSecretUpdatePostgreSql**](V2Api.md#dynamicsecretupdatepostgresql) | **POST** /dynamic-secret-update-postgresql |  |
 | [**DynamicSecretUpdateRabbitMq**](V2Api.md#dynamicsecretupdaterabbitmq) | **POST** /dynamic-secret-update-rabbitmq |  |

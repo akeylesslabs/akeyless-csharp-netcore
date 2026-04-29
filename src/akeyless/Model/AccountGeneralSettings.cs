@@ -39,6 +39,7 @@ namespace akeyless.Model
         /// <param name="accountDefaultKeyName">AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will..</param>
         /// <param name="aiInsights">aiInsights.</param>
         /// <param name="allowAutoFill">allowAutoFill.</param>
+        /// <param name="allowPasskeys">allowPasskeys.</param>
         /// <param name="allowedClientTypes">allowedClientTypes.</param>
         /// <param name="allowedClientsIps">allowedClientsIps.</param>
         /// <param name="allowedGatewaysIps">allowedGatewaysIps.</param>
@@ -62,12 +63,13 @@ namespace akeyless.Model
         /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="rotationSecretMaxInterval">rotationSecretMaxInterval.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AiInsightsSetting aiInsights = default(AiInsightsSetting), bool allowAutoFill = default(bool), AllowedClientType allowedClientTypes = default(AllowedClientType), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), CertificateExpirationEventsSettings certificateExpirationEvents = default(CertificateExpirationEventsSettings), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DefaultAuthMethodSettings defaultAuthMethod = default(DefaultAuthMethodSettings), DefaultHomePage defaultHomePage = default(DefaultHomePage), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), bool hidePersonalFolder = default(bool), bool hideSecretRevealCopy = default(bool), bool hideStaticPassword = default(bool), string invalidCharacters = default(string), ItemLockingSetting itemLocking = default(ItemLockingSetting), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), PasswordScoreSetting passwordScore = default(PasswordScoreSetting), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AiInsightsSetting aiInsights = default(AiInsightsSetting), bool allowAutoFill = default(bool), bool allowPasskeys = default(bool), AllowedClientType allowedClientTypes = default(AllowedClientType), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), CertificateExpirationEventsSettings certificateExpirationEvents = default(CertificateExpirationEventsSettings), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DefaultAuthMethodSettings defaultAuthMethod = default(DefaultAuthMethodSettings), DefaultHomePage defaultHomePage = default(DefaultHomePage), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), bool hidePersonalFolder = default(bool), bool hideSecretRevealCopy = default(bool), bool hideStaticPassword = default(bool), string invalidCharacters = default(string), ItemLockingSetting itemLocking = default(ItemLockingSetting), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), PasswordScoreSetting passwordScore = default(PasswordScoreSetting), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.AccountDefaultKeyItemId = accountDefaultKeyItemId;
             this.AccountDefaultKeyName = accountDefaultKeyName;
             this.AiInsights = aiInsights;
             this.AllowAutoFill = allowAutoFill;
+            this.AllowPasskeys = allowPasskeys;
             this.AllowedClientTypes = allowedClientTypes;
             this.AllowedClientsIps = allowedClientsIps;
             this.AllowedGatewaysIps = allowedGatewaysIps;
@@ -118,6 +120,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "allow_auto_fill", EmitDefaultValue = true)]
         public bool AllowAutoFill { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AllowPasskeys
+        /// </summary>
+        [DataMember(Name = "allow_passkeys", EmitDefaultValue = true)]
+        public bool AllowPasskeys { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedClientTypes
@@ -271,6 +279,7 @@ namespace akeyless.Model
             sb.Append("  AccountDefaultKeyName: ").Append(AccountDefaultKeyName).Append("\n");
             sb.Append("  AiInsights: ").Append(AiInsights).Append("\n");
             sb.Append("  AllowAutoFill: ").Append(AllowAutoFill).Append("\n");
+            sb.Append("  AllowPasskeys: ").Append(AllowPasskeys).Append("\n");
             sb.Append("  AllowedClientTypes: ").Append(AllowedClientTypes).Append("\n");
             sb.Append("  AllowedClientsIps: ").Append(AllowedClientsIps).Append("\n");
             sb.Append("  AllowedGatewaysIps: ").Append(AllowedGatewaysIps).Append("\n");

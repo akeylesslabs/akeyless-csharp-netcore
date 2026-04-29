@@ -43,6 +43,9 @@ namespace akeyless.Model
         /// <param name="azureClientId">(Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only).</param>
         /// <param name="azureClientSecret">(Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only).</param>
         /// <param name="azureTenantId">(Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only).</param>
+        /// <param name="clientCertificate">Client certificate for mutual TLS.</param>
+        /// <param name="clientKeyPassphrase">Client private key passphrase for mutual TLS.</param>
+        /// <param name="clientPrivateKey">Client private key for mutual TLS.</param>
         /// <param name="cloudServiceProvider">(Optional) Cloud service provider (currently only supports Azure).</param>
         /// <param name="clusterMode">Cluster Mode.</param>
         /// <param name="comment">Deprecated - use description.</param>
@@ -52,6 +55,7 @@ namespace akeyless.Model
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
         /// <param name="dbType">dbType (required).</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="enableMtls">Enable mutual TLS.</param>
         /// <param name="host">host.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
@@ -81,7 +85,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="userName">userName.</param>
-        public UpdateDBTarget(string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string comment = default(string), string connectionType = @"credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), string host = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string oracleWalletLoginType = default(string), string oracleWalletP12FileData = default(string), string oracleWalletSsoFileData = default(string), string parentTargetName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
+        public UpdateDBTarget(string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string clientCertificate = default(string), string clientKeyPassphrase = default(string), string clientPrivateKey = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string comment = default(string), string connectionType = @"credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), bool enableMtls = default(bool), string host = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string oracleWalletLoginType = default(string), string oracleWalletP12FileData = default(string), string oracleWalletSsoFileData = default(string), string parentTargetName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
         {
             // to ensure "connectionType" is required (not null)
             if (connectionType == null)
@@ -104,6 +108,9 @@ namespace akeyless.Model
             this.AzureClientId = azureClientId;
             this.AzureClientSecret = azureClientSecret;
             this.AzureTenantId = azureTenantId;
+            this.ClientCertificate = clientCertificate;
+            this.ClientKeyPassphrase = clientKeyPassphrase;
+            this.ClientPrivateKey = clientPrivateKey;
             this.CloudServiceProvider = cloudServiceProvider;
             this.ClusterMode = clusterMode;
             this.Comment = comment;
@@ -111,6 +118,7 @@ namespace akeyless.Model
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
             this.Description = description;
+            this.EnableMtls = enableMtls;
             this.Host = host;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
@@ -161,6 +169,27 @@ namespace akeyless.Model
         /// <value>(Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only)</value>
         [DataMember(Name = "azure-tenant-id", EmitDefaultValue = false)]
         public string AzureTenantId { get; set; }
+
+        /// <summary>
+        /// Client certificate for mutual TLS
+        /// </summary>
+        /// <value>Client certificate for mutual TLS</value>
+        [DataMember(Name = "client-certificate", EmitDefaultValue = false)]
+        public string ClientCertificate { get; set; }
+
+        /// <summary>
+        /// Client private key passphrase for mutual TLS
+        /// </summary>
+        /// <value>Client private key passphrase for mutual TLS</value>
+        [DataMember(Name = "client-key-passphrase", EmitDefaultValue = false)]
+        public string ClientKeyPassphrase { get; set; }
+
+        /// <summary>
+        /// Client private key for mutual TLS
+        /// </summary>
+        /// <value>Client private key for mutual TLS</value>
+        [DataMember(Name = "client-private-key", EmitDefaultValue = false)]
+        public string ClientPrivateKey { get; set; }
 
         /// <summary>
         /// (Optional) Cloud service provider (currently only supports Azure)
@@ -222,6 +251,13 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Enable mutual TLS
+        /// </summary>
+        /// <value>Enable mutual TLS</value>
+        [DataMember(Name = "enable-mtls", EmitDefaultValue = true)]
+        public bool EnableMtls { get; set; }
 
         /// <summary>
         /// Gets or Sets Host
@@ -431,6 +467,9 @@ namespace akeyless.Model
             sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
             sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
+            sb.Append("  ClientCertificate: ").Append(ClientCertificate).Append("\n");
+            sb.Append("  ClientKeyPassphrase: ").Append(ClientKeyPassphrase).Append("\n");
+            sb.Append("  ClientPrivateKey: ").Append(ClientPrivateKey).Append("\n");
             sb.Append("  CloudServiceProvider: ").Append(CloudServiceProvider).Append("\n");
             sb.Append("  ClusterMode: ").Append(ClusterMode).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
@@ -440,6 +479,7 @@ namespace akeyless.Model
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DbType: ").Append(DbType).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  EnableMtls: ").Append(EnableMtls).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");

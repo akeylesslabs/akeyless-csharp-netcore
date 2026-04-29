@@ -1196,11 +1196,6 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/AgenticRuleTests.cs
-src/akeyless.Test/Model/AgenticRulesTests.cs
-src/akeyless.Test/Model/RuntimeAuthorityCommandTests.cs
-src/akeyless.Test/Model/SetDefaultProfileOutputTests.cs
-src/akeyless.Test/Model/SetDefaultProfileTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
