@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateTtl** | **long** | Server certificate TTL in days | [optional] [default to 90]
+**ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **Hostname** | **string** | Hostname | 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Root** | **string** | Root path of KMIP Resources | 

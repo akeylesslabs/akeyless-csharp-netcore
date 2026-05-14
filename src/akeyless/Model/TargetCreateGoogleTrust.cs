@@ -43,7 +43,8 @@ namespace akeyless.Model
         /// <param name="acmeChallenge">ACME challenge type. Options: [dns] (default to &quot;dns&quot;).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="dnsTargetCreds">Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP.</param>
+        /// <param name="dnsTargetCreds">Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP, Cloudflare.</param>
+        /// <param name="dnsZone">Cloudflare DNS zone identifier. Required when DNS credentials target is Cloudflare.</param>
         /// <param name="eabHmacKey">External Account Binding HMAC key (required for ACME account bootstrap on create).</param>
         /// <param name="eabKeyId">External Account Binding key identifier (required for ACME account bootstrap on create).</param>
         /// <param name="email">Email address for ACME account registration (required).</param>
@@ -58,7 +59,7 @@ namespace akeyless.Model
         /// <param name="timeout">Timeout for challenge validation (default to &quot;5m&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetCreateGoogleTrust(string acmeChallenge = @"dns", string deleteProtection = default(string), string description = default(string), string dnsTargetCreds = default(string), string eabHmacKey = default(string), string eabKeyId = default(string), string email = default(string), string gcpProject = default(string), string googleTrustUrl = @"production", string hostedZone = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string resourceGroup = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
+        public TargetCreateGoogleTrust(string acmeChallenge = @"dns", string deleteProtection = default(string), string description = default(string), string dnsTargetCreds = default(string), string dnsZone = default(string), string eabHmacKey = default(string), string eabKeyId = default(string), string email = default(string), string gcpProject = default(string), string googleTrustUrl = @"production", string hostedZone = default(string), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string resourceGroup = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -77,6 +78,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.DnsTargetCreds = dnsTargetCreds;
+            this.DnsZone = dnsZone;
             this.EabHmacKey = eabHmacKey;
             this.EabKeyId = eabKeyId;
             this.GcpProject = gcpProject;
@@ -115,11 +117,18 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP
+        /// Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP, Cloudflare
         /// </summary>
-        /// <value>Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP</value>
+        /// <value>Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP, Cloudflare</value>
         [DataMember(Name = "dns-target-creds", EmitDefaultValue = false)]
         public string DnsTargetCreds { get; set; }
+
+        /// <summary>
+        /// Cloudflare DNS zone identifier. Required when DNS credentials target is Cloudflare
+        /// </summary>
+        /// <value>Cloudflare DNS zone identifier. Required when DNS credentials target is Cloudflare</value>
+        [DataMember(Name = "dns-zone", EmitDefaultValue = false)]
+        public string DnsZone { get; set; }
 
         /// <summary>
         /// External Account Binding HMAC key (required for ACME account bootstrap on create)
@@ -231,6 +240,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  DnsTargetCreds: ").Append(DnsTargetCreds).Append("\n");
+            sb.Append("  DnsZone: ").Append(DnsZone).Append("\n");
             sb.Append("  EabHmacKey: ").Append(EabHmacKey).Append("\n");
             sb.Append("  EabKeyId: ").Append(EabKeyId).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");

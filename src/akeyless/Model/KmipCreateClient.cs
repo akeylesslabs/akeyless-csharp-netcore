@@ -42,11 +42,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="activateKeysOnCreation">If set to &#39;true&#39;, newly created keys on the client will be set to an &#39;active&#39; state (default to &quot;false&quot;).</param>
         /// <param name="certificateTtl">Client certificate TTL in days (default to 90).</param>
+        /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Client name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipCreateClient(string activateKeysOnCreation = @"false", long certificateTtl = 90, bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
+        public KmipCreateClient(string activateKeysOnCreation = @"false", long certificateTtl = 90, List<string> expirationEventIn = default(List<string>), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -57,6 +58,7 @@ namespace akeyless.Model
             // use default value if no "activateKeysOnCreation" provided
             this.ActivateKeysOnCreation = activateKeysOnCreation ?? @"false";
             this.CertificateTtl = certificateTtl;
+            this.ExpirationEventIn = expirationEventIn;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
@@ -75,6 +77,13 @@ namespace akeyless.Model
         /// <value>Client certificate TTL in days</value>
         [DataMember(Name = "certificate-ttl", EmitDefaultValue = false)]
         public long CertificateTtl { get; set; }
+
+        /// <summary>
+        /// How many days before the expiration of the certificate would you like to be notified.
+        /// </summary>
+        /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
+        [DataMember(Name = "expiration-event-in", EmitDefaultValue = false)]
+        public List<string> ExpirationEventIn { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -114,6 +123,7 @@ namespace akeyless.Model
             sb.Append("class KmipCreateClient {\n");
             sb.Append("  ActivateKeysOnCreation: ").Append(ActivateKeysOnCreation).Append("\n");
             sb.Append("  CertificateTtl: ").Append(CertificateTtl).Append("\n");
+            sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

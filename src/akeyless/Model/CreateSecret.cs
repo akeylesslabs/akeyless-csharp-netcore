@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="format">Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;) (default to &quot;text&quot;).</param>
         /// <param name="injectUrl">For Password Management use, reflect the website context.</param>
+        /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input).</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="lockDuringSraSession">Lock this secret for read/update while an SRA session is active.</param>
@@ -54,6 +55,7 @@ namespace akeyless.Model
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="multilineValue">The provided value is a multiline value (separated by &#39;\\n&#39;).</param>
         /// <param name="name">Secret name (required).</param>
+        /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="password">For Password Management use, additional fields.</param>
         /// <param name="protectionKey">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
@@ -73,7 +75,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">For Password Management use.</param>
         /// <param name="value">The secret value (relevant only for type &#39;generic&#39;) (required).</param>
-        public CreateSecret(string accessibility = @"regular", string changeEvent = default(string), Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), string format = @"text", List<string> injectUrl = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string maxVersions = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = @"generic", string uidToken = default(string), string username = default(string), string value = default(string))
+        public CreateSecret(string accessibility = @"regular", string changeEvent = default(string), Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), string format = @"text", List<string> injectUrl = default(List<string>), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string maxVersions = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), List<string> outputRule = default(List<string>), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string token = default(string), string type = @"generic", string uidToken = default(string), string username = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -96,12 +98,14 @@ namespace akeyless.Model
             // use default value if no "format" provided
             this.Format = format ?? @"text";
             this.InjectUrl = injectUrl;
+            this.InputRule = inputRule;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.LockDuringSraSession = lockDuringSraSession;
             this.MaxVersions = maxVersions;
             this.Metadata = metadata;
             this.MultilineValue = multilineValue;
+            this.OutputRule = outputRule;
             this.Password = password;
             this.ProtectionKey = protectionKey;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
@@ -173,6 +177,13 @@ namespace akeyless.Model
         public List<string> InjectUrl { get; set; }
 
         /// <summary>
+        /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input)
+        /// </summary>
+        /// <value>Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input)</value>
+        [DataMember(Name = "input-rule", EmitDefaultValue = false)]
+        public List<string> InputRule { get; set; }
+
+        /// <summary>
         /// Additional custom fields to associate with the item
         /// </summary>
         /// <value>Additional custom fields to associate with the item</value>
@@ -220,6 +231,13 @@ namespace akeyless.Model
         /// <value>Secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)
+        /// </summary>
+        /// <value>Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)</value>
+        [DataMember(Name = "output-rule", EmitDefaultValue = false)]
+        public List<string> OutputRule { get; set; }
 
         /// <summary>
         /// For Password Management use, additional fields
@@ -368,6 +386,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  InjectUrl: ").Append(InjectUrl).Append("\n");
+            sb.Append("  InputRule: ").Append(InputRule).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  LockDuringSraSession: ").Append(LockDuringSraSession).Append("\n");
@@ -375,6 +394,7 @@ namespace akeyless.Model
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  MultilineValue: ").Append(MultilineValue).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");

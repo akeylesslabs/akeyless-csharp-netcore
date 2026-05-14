@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **GraceRotationHour** | **int** | The Hour of the grace rotation in UTC | [optional] 
 **GraceRotationInterval** | **string** | The number of days to wait before deleting the old key (must be bigger than rotation-interval) | [optional] 
 **GraceRotationTiming** | **string** | When to create the new version relative to the rotation date [after/before] | [optional] 
+**InputRule** | **List&lt;string&gt;** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
@@ -25,6 +26,7 @@ Name | Type | Description | Notes
 **MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **NewName** | **string** | New item name | [optional] 
+**OutputRule** | **List&lt;string&gt;** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ResourceGroupName** | **string** | The resource group name (only relevant when explicitly-set-sa&#x3D;true) | [optional] 
 **ResourceName** | **string** | The name of the storage account (only relevant when explicitly-set-sa&#x3D;true) | [optional] 

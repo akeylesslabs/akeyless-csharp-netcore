@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Metadata** | **string** |  | [optional] 
 **ModificationDate** | **DateTime** |  | [optional] 
 **Tags** | **List&lt;string&gt;** |  | [optional] 
+**UscSyncConfigs** | [**List&lt;FolderUSCSyncConfig&gt;**](FolderUSCSyncConfig.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

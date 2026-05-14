@@ -40,15 +40,17 @@ namespace akeyless.Model
         /// <param name="certificate">certificate.</param>
         /// <param name="certificateIssueDate">certificateIssueDate.</param>
         /// <param name="certificateTtlInSeconds">certificateTtlInSeconds.</param>
+        /// <param name="expirationEvents">expirationEvents.</param>
         /// <param name="hostname">hostname.</param>
         /// <param name="root">root.</param>
-        public KMIPServer(bool active = default(bool), List<int> ca = default(List<int>), List<int> certificate = default(List<int>), DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), string hostname = default(string), string root = default(string))
+        public KMIPServer(bool active = default(bool), List<int> ca = default(List<int>), List<int> certificate = default(List<int>), DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string hostname = default(string), string root = default(string))
         {
             this.Active = active;
             this.Ca = ca;
             this.Certificate = certificate;
             this.CertificateIssueDate = certificateIssueDate;
             this.CertificateTtlInSeconds = certificateTtlInSeconds;
+            this.ExpirationEvents = expirationEvents;
             this.Hostname = hostname;
             this.Root = root;
         }
@@ -84,6 +86,12 @@ namespace akeyless.Model
         public long CertificateTtlInSeconds { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExpirationEvents
+        /// </summary>
+        [DataMember(Name = "expiration_events", EmitDefaultValue = false)]
+        public List<CertificateExpirationEvent> ExpirationEvents { get; set; }
+
+        /// <summary>
         /// Gets or Sets Hostname
         /// </summary>
         [DataMember(Name = "hostname", EmitDefaultValue = false)]
@@ -108,6 +116,7 @@ namespace akeyless.Model
             sb.Append("  Certificate: ").Append(Certificate).Append("\n");
             sb.Append("  CertificateIssueDate: ").Append(CertificateIssueDate).Append("\n");
             sb.Append("  CertificateTtlInSeconds: ").Append(CertificateTtlInSeconds).Append("\n");
+            sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");
             sb.Append("  Root: ").Append(Root).Append("\n");
             sb.Append("}\n");

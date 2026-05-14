@@ -45,7 +45,8 @@ namespace akeyless.Model
         /// <param name="metadata">metadata.</param>
         /// <param name="modificationDate">modificationDate.</param>
         /// <param name="tags">tags.</param>
-        public GetFolderOutput(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), long accessibility = default(long), DateTime creationDate = default(DateTime), bool deleteProtection = default(bool), long folderId = default(long), string folderName = default(string), string metadata = default(string), DateTime modificationDate = default(DateTime), List<string> tags = default(List<string>))
+        /// <param name="uscSyncConfigs">uscSyncConfigs.</param>
+        public GetFolderOutput(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), long accessibility = default(long), DateTime creationDate = default(DateTime), bool deleteProtection = default(bool), long folderId = default(long), string folderName = default(string), string metadata = default(string), DateTime modificationDate = default(DateTime), List<string> tags = default(List<string>), List<FolderUSCSyncConfig> uscSyncConfigs = default(List<FolderUSCSyncConfig>))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
@@ -57,6 +58,7 @@ namespace akeyless.Model
             this.Metadata = metadata;
             this.ModificationDate = modificationDate;
             this.Tags = tags;
+            this.UscSyncConfigs = uscSyncConfigs;
         }
 
         /// <summary>
@@ -120,6 +122,12 @@ namespace akeyless.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
+        /// Gets or Sets UscSyncConfigs
+        /// </summary>
+        [DataMember(Name = "usc_sync_configs", EmitDefaultValue = false)]
+        public List<FolderUSCSyncConfig> UscSyncConfigs { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -137,6 +145,7 @@ namespace akeyless.Model
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  UscSyncConfigs: ").Append(UscSyncConfigs).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

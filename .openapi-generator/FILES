@@ -11,6 +11,7 @@ docs/AWSSecretsMigration.md
 docs/AWSTargetDetails.md
 docs/AccessOrGroupPermissionAssignment.md
 docs/AccessPermissionAssignment.md
+docs/AccountCustomField.md
 docs/AccountCustomFieldCreate.md
 docs/AccountCustomFieldCreateOutput.md
 docs/AccountCustomFieldDelete.md
@@ -126,6 +127,7 @@ docs/ClassicKeyTargetInfo.md
 docs/ClientData.md
 docs/ClientUsageInfo.md
 docs/ClientsUsageReport.md
+docs/CloudflareTargetDetails.md
 docs/ConfigChange.md
 docs/ConfigHash.md
 docs/Configure.md
@@ -420,6 +422,7 @@ docs/FolderCreateOutput.md
 docs/FolderDelete.md
 docs/FolderGet.md
 docs/FolderGetOutput.md
+docs/FolderUSCSyncConfig.md
 docs/FolderUpdate.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
@@ -711,6 +714,8 @@ docs/KerberosAuthMethodInfo.md
 docs/KerberosConfigPart.md
 docs/KmipClientDeleteRule.md
 docs/KmipClientSetRule.md
+docs/KmipClientUpdate.md
+docs/KmipClientUpdateOutput.md
 docs/KmipCreateClient.md
 docs/KmipCreateClientOutput.md
 docs/KmipDeleteClient.md
@@ -726,6 +731,8 @@ docs/KmipRenewClientCertificateOutput.md
 docs/KmipRenewServerCertificate.md
 docs/KmipRenewServerCertificateOutput.md
 docs/KmipServerSetup.md
+docs/KmipServerUpdate.md
+docs/KmipServerUpdateOutput.md
 docs/KmipSetServerState.md
 docs/KmipSetServerStateOutput.md
 docs/KubeConfigValue.md
@@ -788,7 +795,6 @@ docs/NextAutoRotationEvent.md
 docs/NotiForwarder.md
 docs/NotiForwarderDetailsInput.md
 docs/NullString.md
-docs/NullTime.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OCIAccessRules.md
@@ -964,6 +970,7 @@ docs/Target.md
 docs/TargetCreateArtifactory.md
 docs/TargetCreateAws.md
 docs/TargetCreateAzure.md
+docs/TargetCreateCloudflare.md
 docs/TargetCreateDB.md
 docs/TargetCreateDigiCert.md
 docs/TargetCreateDockerhub.md
@@ -1005,6 +1012,7 @@ docs/TargetTypeDetailsInput.md
 docs/TargetUpdateArtifactory.md
 docs/TargetUpdateAws.md
 docs/TargetUpdateAzure.md
+docs/TargetUpdateCloudflare.md
 docs/TargetUpdateDB.md
 docs/TargetUpdateDigiCert.md
 docs/TargetUpdateDockerhub.md
@@ -1196,6 +1204,15 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
+src/akeyless.Test/Model/AccountCustomFieldTests.cs
+src/akeyless.Test/Model/CloudflareTargetDetailsTests.cs
+src/akeyless.Test/Model/FolderUSCSyncConfigTests.cs
+src/akeyless.Test/Model/KmipClientUpdateOutputTests.cs
+src/akeyless.Test/Model/KmipClientUpdateTests.cs
+src/akeyless.Test/Model/KmipServerUpdateOutputTests.cs
+src/akeyless.Test/Model/KmipServerUpdateTests.cs
+src/akeyless.Test/Model/TargetCreateCloudflareTests.cs
+src/akeyless.Test/Model/TargetUpdateCloudflareTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1223,6 +1240,7 @@ src/akeyless/Model/AWSTargetDetails.cs
 src/akeyless/Model/AbstractOpenAPISchema.cs
 src/akeyless/Model/AccessOrGroupPermissionAssignment.cs
 src/akeyless/Model/AccessPermissionAssignment.cs
+src/akeyless/Model/AccountCustomField.cs
 src/akeyless/Model/AccountCustomFieldCreate.cs
 src/akeyless/Model/AccountCustomFieldCreateOutput.cs
 src/akeyless/Model/AccountCustomFieldDelete.cs
@@ -1338,6 +1356,7 @@ src/akeyless/Model/ClassicKeyTargetInfo.cs
 src/akeyless/Model/ClientData.cs
 src/akeyless/Model/ClientUsageInfo.cs
 src/akeyless/Model/ClientsUsageReport.cs
+src/akeyless/Model/CloudflareTargetDetails.cs
 src/akeyless/Model/ConfigChange.cs
 src/akeyless/Model/ConfigHash.cs
 src/akeyless/Model/Configure.cs
@@ -1632,6 +1651,7 @@ src/akeyless/Model/FolderCreateOutput.cs
 src/akeyless/Model/FolderDelete.cs
 src/akeyless/Model/FolderGet.cs
 src/akeyless/Model/FolderGetOutput.cs
+src/akeyless/Model/FolderUSCSyncConfig.cs
 src/akeyless/Model/FolderUpdate.cs
 src/akeyless/Model/GCPAccessRules.cs
 src/akeyless/Model/GCPPayload.cs
@@ -1923,6 +1943,8 @@ src/akeyless/Model/KerberosAuthMethodInfo.cs
 src/akeyless/Model/KerberosConfigPart.cs
 src/akeyless/Model/KmipClientDeleteRule.cs
 src/akeyless/Model/KmipClientSetRule.cs
+src/akeyless/Model/KmipClientUpdate.cs
+src/akeyless/Model/KmipClientUpdateOutput.cs
 src/akeyless/Model/KmipCreateClient.cs
 src/akeyless/Model/KmipCreateClientOutput.cs
 src/akeyless/Model/KmipDeleteClient.cs
@@ -1938,6 +1960,8 @@ src/akeyless/Model/KmipRenewClientCertificateOutput.cs
 src/akeyless/Model/KmipRenewServerCertificate.cs
 src/akeyless/Model/KmipRenewServerCertificateOutput.cs
 src/akeyless/Model/KmipServerSetup.cs
+src/akeyless/Model/KmipServerUpdate.cs
+src/akeyless/Model/KmipServerUpdateOutput.cs
 src/akeyless/Model/KmipSetServerState.cs
 src/akeyless/Model/KmipSetServerStateOutput.cs
 src/akeyless/Model/KubeConfigValue.cs
@@ -2000,7 +2024,6 @@ src/akeyless/Model/NextAutoRotationEvent.cs
 src/akeyless/Model/NotiForwarder.cs
 src/akeyless/Model/NotiForwarderDetailsInput.cs
 src/akeyless/Model/NullString.cs
-src/akeyless/Model/NullTime.cs
 src/akeyless/Model/OAuth2AccessRules.cs
 src/akeyless/Model/OAuth2CustomClaim.cs
 src/akeyless/Model/OCIAccessRules.cs
@@ -2176,6 +2199,7 @@ src/akeyless/Model/Target.cs
 src/akeyless/Model/TargetCreateArtifactory.cs
 src/akeyless/Model/TargetCreateAws.cs
 src/akeyless/Model/TargetCreateAzure.cs
+src/akeyless/Model/TargetCreateCloudflare.cs
 src/akeyless/Model/TargetCreateDB.cs
 src/akeyless/Model/TargetCreateDigiCert.cs
 src/akeyless/Model/TargetCreateDockerhub.cs
@@ -2217,6 +2241,7 @@ src/akeyless/Model/TargetTypeDetailsInput.cs
 src/akeyless/Model/TargetUpdateArtifactory.cs
 src/akeyless/Model/TargetUpdateAws.cs
 src/akeyless/Model/TargetUpdateAzure.cs
+src/akeyless/Model/TargetUpdateCloudflare.cs
 src/akeyless/Model/TargetUpdateDB.cs
 src/akeyless/Model/TargetUpdateDigiCert.cs
 src/akeyless/Model/TargetUpdateDockerhub.cs

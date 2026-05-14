@@ -49,12 +49,14 @@ namespace akeyless.Model
         /// <param name="fixedUserClaimKeyname">For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username&#x3D;true) (default to &quot;ext_username&quot;).</param>
         /// <param name="groupDn">Group DN which the temporary user should be added.</param>
         /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
+        /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="ldapCaCert">CA Certificate File Content.</param>
         /// <param name="ldapUrl">LDAP Server URL.</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
+        /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
@@ -73,7 +75,7 @@ namespace akeyless.Model
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerLdap(string providerType = default(string), string bindDn = default(string), string bindDnPassword = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string externalUsername = @"false", string fixedUserClaimKeyname = @"ext_username", string groupDn = default(string), string hostProvider = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string newName = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerLdap(string providerType = default(string), string bindDn = default(string), string bindDnPassword = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string externalUsername = @"false", string fixedUserClaimKeyname = @"ext_username", string groupDn = default(string), string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -92,11 +94,13 @@ namespace akeyless.Model
             this.FixedUserClaimKeyname = fixedUserClaimKeyname ?? @"ext_username";
             this.GroupDn = groupDn;
             this.HostProvider = hostProvider;
+            this.InputRule = inputRule;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.LdapCaCert = ldapCaCert;
             this.LdapUrl = ldapUrl;
             this.NewName = newName;
+            this.OutputRule = outputRule;
             this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
@@ -181,6 +185,13 @@ namespace akeyless.Model
         public string HostProvider { get; set; }
 
         /// <summary>
+        /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+        /// </summary>
+        /// <value>Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).</value>
+        [DataMember(Name = "input-rule", EmitDefaultValue = false)]
+        public List<string> InputRule { get; set; }
+
+        /// <summary>
         /// Additional custom fields to associate with the item
         /// </summary>
         /// <value>Additional custom fields to associate with the item</value>
@@ -221,6 +232,13 @@ namespace akeyless.Model
         /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
+
+        /// <summary>
+        /// Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)
+        /// </summary>
+        /// <value>Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)</value>
+        [DataMember(Name = "output-rule", EmitDefaultValue = false)]
+        public List<string> OutputRule { get; set; }
 
         /// <summary>
         /// The length of the password to be generated
@@ -365,12 +383,14 @@ namespace akeyless.Model
             sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
             sb.Append("  GroupDn: ").Append(GroupDn).Append("\n");
             sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
+            sb.Append("  InputRule: ").Append(InputRule).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");

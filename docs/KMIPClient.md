@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ActivateKeysOnCreation** | **bool** |  | [optional] 
 **CertificateIssueDate** | **DateTime** |  | [optional] 
 **CertificateTtlInSeconds** | **long** |  | [optional] 
+**ExpirationEvents** | [**List&lt;CertificateExpirationEvent&gt;**](CertificateExpirationEvent.md) |  | [optional] 
 **Id** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **Rules** | [**List&lt;PathRule&gt;**](PathRule.md) |  | [optional] 

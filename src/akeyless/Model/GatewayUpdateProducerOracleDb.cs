@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
+        /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
@@ -55,6 +56,7 @@ namespace akeyless.Model
         /// <param name="oracleScreationStatements">Oracle Creation statements.</param>
         /// <param name="oracleServiceName">Oracle DB Name.</param>
         /// <param name="oracleUsername">Oracle Username.</param>
+        /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
@@ -67,7 +69,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerOracleDb(string customUsernameTemplate = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string oracleHost = @"127.0.0.1", string oraclePassword = default(string), string oraclePort = @"1521", string oracleRevocationStatements = default(string), string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = @"false", List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerOracleDb(string customUsernameTemplate = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), string oracleHost = @"127.0.0.1", string oraclePassword = default(string), string oraclePort = @"1521", string oracleRevocationStatements = default(string), string oracleScreationStatements = default(string), string oracleServiceName = default(string), string oracleUsername = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = @"false", List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -79,6 +81,7 @@ namespace akeyless.Model
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
             this.DeleteProtection = deleteProtection;
+            this.InputRule = inputRule;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
@@ -91,6 +94,7 @@ namespace akeyless.Model
             this.OracleScreationStatements = oracleScreationStatements;
             this.OracleServiceName = oracleServiceName;
             this.OracleUsername = oracleUsername;
+            this.OutputRule = outputRule;
             this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
@@ -134,6 +138,13 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+        /// </summary>
+        /// <value>Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).</value>
+        [DataMember(Name = "input-rule", EmitDefaultValue = false)]
+        public List<string> InputRule { get; set; }
 
         /// <summary>
         /// Additional custom fields to associate with the item
@@ -211,6 +222,13 @@ namespace akeyless.Model
         /// <value>Oracle Username</value>
         [DataMember(Name = "oracle-username", EmitDefaultValue = false)]
         public string OracleUsername { get; set; }
+
+        /// <summary>
+        /// Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)
+        /// </summary>
+        /// <value>Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)</value>
+        [DataMember(Name = "output-rule", EmitDefaultValue = false)]
+        public List<string> OutputRule { get; set; }
 
         /// <summary>
         /// The length of the password to be generated
@@ -308,6 +326,7 @@ namespace akeyless.Model
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  InputRule: ").Append(InputRule).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -319,6 +338,7 @@ namespace akeyless.Model
             sb.Append("  OracleScreationStatements: ").Append(OracleScreationStatements).Append("\n");
             sb.Append("  OracleServiceName: ").Append(OracleServiceName).Append("\n");
             sb.Append("  OracleUsername: ").Append(OracleUsername).Append("\n");
+            sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");

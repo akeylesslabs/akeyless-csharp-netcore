@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
 **DigicertUrl** | **string** | DigiCert ACME endpoint selector. Options: [us-production/eu-production/us-demo/eu-demo] | [optional] [default to "us-production"]
-**DnsTargetCreds** | **string** | Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP | [optional] 
+**DnsTargetCreds** | **string** | Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP, Cloudflare | [optional] 
+**DnsZone** | **string** | Cloudflare DNS zone identifier. Required when DNS credentials target is Cloudflare | [optional] 
 **EabHmacKey** | **string** | External Account Binding HMAC key (required for ACME account bootstrap on create) | [optional] 
 **EabKeyId** | **string** | External Account Binding key identifier (required for ACME account bootstrap on create) | [optional] 
 **Email** | **string** | Email address for ACME account registration | 

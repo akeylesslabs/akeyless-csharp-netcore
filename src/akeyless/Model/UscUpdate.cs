@@ -46,6 +46,8 @@ namespace akeyless.Model
         /// <param name="varNamespace">The namespace (relevant for Hashi vault target).</param>
         /// <param name="objectType">objectType.</param>
         /// <param name="pfxPassword">Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates).</param>
+        /// <param name="remoteSecretActivationDate">Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ.</param>
+        /// <param name="remoteSecretExpires">Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ.</param>
         /// <param name="secretId">The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update (required).</param>
         /// <param name="selectedRepositories">GitHub selected repositories (required for GitHub USC when repository-access is &#39;selected&#39; or for repository scope) Comma-separated repository names (e.g., \&quot;repo1,repo2\&quot;).</param>
         /// <param name="tags">Tags for the universal secrets.</param>
@@ -54,7 +56,7 @@ namespace akeyless.Model
         /// <param name="uscEncryptionKey">Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used).</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
-        public UscUpdate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string secretId = default(string), string selectedRepositories = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
+        public UscUpdate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string remoteSecretActivationDate = default(string), string remoteSecretExpires = default(string), string secretId = default(string), string selectedRepositories = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
         {
             // to ensure "secretId" is required (not null)
             if (secretId == null)
@@ -80,6 +82,8 @@ namespace akeyless.Model
             this.Namespace = varNamespace;
             this.ObjectType = objectType;
             this.PfxPassword = pfxPassword;
+            this.RemoteSecretActivationDate = remoteSecretActivationDate;
+            this.RemoteSecretExpires = remoteSecretExpires;
             this.SelectedRepositories = selectedRepositories;
             this.Tags = tags;
             this.Token = token;
@@ -127,6 +131,20 @@ namespace akeyless.Model
         /// <value>Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)</value>
         [DataMember(Name = "pfx-password", EmitDefaultValue = false)]
         public string PfxPassword { get; set; }
+
+        /// <summary>
+        /// Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
+        /// </summary>
+        /// <value>Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ</value>
+        [DataMember(Name = "remote-secret-activation-date", EmitDefaultValue = false)]
+        public string RemoteSecretActivationDate { get; set; }
+
+        /// <summary>
+        /// Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
+        /// </summary>
+        /// <value>Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ</value>
+        [DataMember(Name = "remote-secret-expires", EmitDefaultValue = false)]
+        public string RemoteSecretExpires { get; set; }
 
         /// <summary>
         /// The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update
@@ -198,6 +216,8 @@ namespace akeyless.Model
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
             sb.Append("  PfxPassword: ").Append(PfxPassword).Append("\n");
+            sb.Append("  RemoteSecretActivationDate: ").Append(RemoteSecretActivationDate).Append("\n");
+            sb.Append("  RemoteSecretExpires: ").Append(RemoteSecretExpires).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
             sb.Append("  SelectedRepositories: ").Append(SelectedRepositories).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");

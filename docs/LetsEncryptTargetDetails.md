@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ChallengeType** | **string** | ACMEChallengeType defines ACME challenge type for Let&#39;s Encrypt | [optional] 
 **DnsTargetName** | **string** | Name of DNS target (transient field - not stored in DB) Used by CLI to pass DNS target name to SDK for creating target_object_assoc Retrieved from target_object_assoc when reading target Required when ChallengeType is \&quot;dns\&quot; | [optional] 
 **DnsTargetType** | **string** |  | [optional] 
+**DnsZone** | **string** | Cloudflare zone identifier Required when DNSTargetType is Cloudflare | [optional] 
 **Email** | **string** | Email address for ACME account registration Required | [optional] 
 **GcpProject** | **string** | GCP Cloud DNS: Project ID Optional - can be derived from service account | [optional] 
 **HostedZone** | **string** | AWS Route53: Hosted zone ID Required when DNSTargetType is AWS | [optional] 

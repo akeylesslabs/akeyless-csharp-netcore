@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteSyncOnDeletion** | **bool** |  | [optional] 
 **ImportAsJson** | **bool** |  | [optional] 
+**MetadataMode** | **string** |  | [optional] 
 **Namespaces** | **List&lt;string&gt;** |  | [optional] 
 **Token** | **string** |  | [optional] 
 **Url** | **string** |  | [optional] 

@@ -50,9 +50,11 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="fixedUserClaimKeyname">FixedUserClaimKeyname (default to &quot;false&quot;).</param>
         /// <param name="fixedUserOnly">Fixed user (default to false).</param>
+        /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic secret encryption key.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
@@ -70,7 +72,7 @@ namespace akeyless.Model
         /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateAzure(string appObjId = default(string), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
+        public DynamicSecretCreateAzure(string appObjId = default(string), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -89,8 +91,10 @@ namespace akeyless.Model
             // use default value if no "fixedUserClaimKeyname" provided
             this.FixedUserClaimKeyname = fixedUserClaimKeyname ?? @"false";
             this.FixedUserOnly = fixedUserOnly;
+            this.InputRule = inputRule;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
+            this.OutputRule = outputRule;
             this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessEnable = secureAccessEnable;
@@ -182,6 +186,13 @@ namespace akeyless.Model
         public bool FixedUserOnly { get; set; }
 
         /// <summary>
+        /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+        /// </summary>
+        /// <value>Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).</value>
+        [DataMember(Name = "input-rule", EmitDefaultValue = false)]
+        public List<string> InputRule { get; set; }
+
+        /// <summary>
         /// Additional custom fields to associate with the item
         /// </summary>
         /// <value>Additional custom fields to associate with the item</value>
@@ -201,6 +212,13 @@ namespace akeyless.Model
         /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)
+        /// </summary>
+        /// <value>Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)</value>
+        [DataMember(Name = "output-rule", EmitDefaultValue = false)]
+        public List<string> OutputRule { get; set; }
 
         /// <summary>
         /// The length of the password to be generated
@@ -339,9 +357,11 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
+            sb.Append("  InputRule: ").Append(InputRule).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");

@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **ObjectType** | **string** |  | [optional] 
 **PfxPassword** | **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
 **Region** | **string** | Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default). | [optional] 
+**RemoteSecretActivationDate** | **string** | Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
+**RemoteSecretExpires** | **string** | Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
 **SecretName** | **string** | Name for the new universal secrets | 
 **SelectedRepositories** | **string** |  | [optional] 
 **Tags** | **Dictionary&lt;string, string&gt;** | Tags for the universal secrets | [optional] 

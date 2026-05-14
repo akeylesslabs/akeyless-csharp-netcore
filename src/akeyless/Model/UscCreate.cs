@@ -47,6 +47,8 @@ namespace akeyless.Model
         /// <param name="objectType">objectType.</param>
         /// <param name="pfxPassword">Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates).</param>
         /// <param name="region">Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default)..</param>
+        /// <param name="remoteSecretActivationDate">Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ.</param>
+        /// <param name="remoteSecretExpires">Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ.</param>
         /// <param name="secretName">Name for the new universal secrets (required).</param>
         /// <param name="selectedRepositories">selectedRepositories.</param>
         /// <param name="tags">Tags for the universal secrets.</param>
@@ -55,7 +57,7 @@ namespace akeyless.Model
         /// <param name="uscEncryptionKey">Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used).</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
-        public UscCreate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string region = default(string), string secretName = default(string), string selectedRepositories = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
+        public UscCreate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string region = default(string), string remoteSecretActivationDate = default(string), string remoteSecretExpires = default(string), string secretName = default(string), string selectedRepositories = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
         {
             // to ensure "secretName" is required (not null)
             if (secretName == null)
@@ -82,6 +84,8 @@ namespace akeyless.Model
             this.ObjectType = objectType;
             this.PfxPassword = pfxPassword;
             this.Region = region;
+            this.RemoteSecretActivationDate = remoteSecretActivationDate;
+            this.RemoteSecretExpires = remoteSecretExpires;
             this.SelectedRepositories = selectedRepositories;
             this.Tags = tags;
             this.Token = token;
@@ -136,6 +140,20 @@ namespace akeyless.Model
         /// <value>Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default).</value>
         [DataMember(Name = "region", EmitDefaultValue = false)]
         public string Region { get; set; }
+
+        /// <summary>
+        /// Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
+        /// </summary>
+        /// <value>Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ</value>
+        [DataMember(Name = "remote-secret-activation-date", EmitDefaultValue = false)]
+        public string RemoteSecretActivationDate { get; set; }
+
+        /// <summary>
+        /// Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
+        /// </summary>
+        /// <value>Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ</value>
+        [DataMember(Name = "remote-secret-expires", EmitDefaultValue = false)]
+        public string RemoteSecretExpires { get; set; }
 
         /// <summary>
         /// Name for the new universal secrets
@@ -207,6 +225,8 @@ namespace akeyless.Model
             sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
             sb.Append("  PfxPassword: ").Append(PfxPassword).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
+            sb.Append("  RemoteSecretActivationDate: ").Append(RemoteSecretActivationDate).Append("\n");
+            sb.Append("  RemoteSecretExpires: ").Append(RemoteSecretExpires).Append("\n");
             sb.Append("  SecretName: ").Append(SecretName).Append("\n");
             sb.Append("  SelectedRepositories: ").Append(SelectedRepositories).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");

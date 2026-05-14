@@ -365,6 +365,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**ImportPasswords**](V2Api.md#importpasswords) | **POST** /import-passwords |  |
 | [**KmipClientDeleteRule**](V2Api.md#kmipclientdeleterule) | **POST** /kmip-client-delete-rule |  |
 | [**KmipClientSetRule**](V2Api.md#kmipclientsetrule) | **POST** /kmip-client-set-rule |  |
+| [**KmipClientUpdate**](V2Api.md#kmipclientupdate) | **POST** /kmip-client-update |  |
 | [**KmipCreateClient**](V2Api.md#kmipcreateclient) | **POST** /kmip-create-client |  |
 | [**KmipDeleteClient**](V2Api.md#kmipdeleteclient) | **POST** /kmip-delete-client |  |
 | [**KmipDeleteServer**](V2Api.md#kmipdeleteserver) | **DELETE** /kmip-delete-environment |  |
@@ -375,6 +376,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**KmipRenewClientCertificate**](V2Api.md#kmiprenewclientcertificate) | **POST** /kmip-renew-client |  |
 | [**KmipRenewServerCertificate**](V2Api.md#kmiprenewservercertificate) | **POST** /kmip-renew-environment |  |
 | [**KmipServerSetup**](V2Api.md#kmipserversetup) | **POST** /kmip-create-environment |  |
+| [**KmipServerUpdate**](V2Api.md#kmipserverupdate) | **POST** /kmip-server-update |  |
 | [**KmipSetServerState**](V2Api.md#kmipsetserverstate) | **POST** /kmip-set-environment-state |  |
 | [**KubeconfigGenerate**](V2Api.md#kubeconfiggenerate) | **POST** /kubeconfig-generate |  |
 | [**ListAcmeAccounts**](V2Api.md#listacmeaccounts) | **POST** /list-acme-accounts |  |
@@ -470,6 +472,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreateArtifactory**](V2Api.md#targetcreateartifactory) | **POST** /target-create-artifactory |  |
 | [**TargetCreateAws**](V2Api.md#targetcreateaws) | **POST** /target-create-aws |  |
 | [**TargetCreateAzure**](V2Api.md#targetcreateazure) | **POST** /target-create-azure |  |
+| [**TargetCreateCloudflare**](V2Api.md#targetcreatecloudflare) | **POST** /target-create-cloudflare |  |
 | [**TargetCreateDB**](V2Api.md#targetcreatedb) | **POST** /target-create-db |  |
 | [**TargetCreateDigiCert**](V2Api.md#targetcreatedigicert) | **POST** /target-create-digicert |  |
 | [**TargetCreateDockerhub**](V2Api.md#targetcreatedockerhub) | **POST** /target-create-dockerhub |  |
@@ -505,6 +508,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdateArtifactory**](V2Api.md#targetupdateartifactory) | **POST** /target-update-artifactory |  |
 | [**TargetUpdateAws**](V2Api.md#targetupdateaws) | **POST** /target-update-aws |  |
 | [**TargetUpdateAzure**](V2Api.md#targetupdateazure) | **POST** /target-update-azure |  |
+| [**TargetUpdateCloudflare**](V2Api.md#targetupdatecloudflare) | **POST** /target-update-cloudflare |  |
 | [**TargetUpdateDB**](V2Api.md#targetupdatedb) | **POST** /target-update-db |  |
 | [**TargetUpdateDigiCert**](V2Api.md#targetupdatedigicert) | **POST** /target-update-digicert |  |
 | [**TargetUpdateDockerhub**](V2Api.md#targetupdatedockerhub) | **POST** /target-update-dockerhub |  |
@@ -890,7 +894,7 @@ No authorization required
 
 <a id="accountcustomfieldlist"></a>
 # **AccountCustomFieldList**
-> Object AccountCustomFieldList (AccountCustomFieldList accountCustomFieldList)
+> List&lt;AccountCustomField&gt; AccountCustomFieldList (AccountCustomFieldList accountCustomFieldList)
 
 List all account custom fields.
 
@@ -918,7 +922,7 @@ namespace Example
             try
             {
                 // List all account custom fields.
-                Object result = apiInstance.AccountCustomFieldList(accountCustomFieldList);
+                List<AccountCustomField> result = apiInstance.AccountCustomFieldList(accountCustomFieldList);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -939,7 +943,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List all account custom fields.
-    ApiResponse<Object> response = apiInstance.AccountCustomFieldListWithHttpInfo(accountCustomFieldList);
+    ApiResponse<List<AccountCustomField>> response = apiInstance.AccountCustomFieldListWithHttpInfo(accountCustomFieldList);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -960,7 +964,7 @@ catch (ApiException e)
 
 ### Return type
 
-**Object**
+[**List&lt;AccountCustomField&gt;**](AccountCustomField.md)
 
 ### Authorization
 
@@ -32380,6 +32384,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="kmipclientupdate"></a>
+# **KmipClientUpdate**
+> KmipClientUpdateOutput KmipClientUpdate (KmipClientUpdate? kmipClientUpdate = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipClientUpdateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var kmipClientUpdate = new KmipClientUpdate?(); // KmipClientUpdate? |  (optional) 
+
+            try
+            {
+                KmipClientUpdateOutput result = apiInstance.KmipClientUpdate(kmipClientUpdate);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipClientUpdate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the KmipClientUpdateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipClientUpdateOutput> response = apiInstance.KmipClientUpdateWithHttpInfo(kmipClientUpdate);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipClientUpdateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **kmipClientUpdate** | [**KmipClientUpdate?**](KmipClientUpdate?.md) |  | [optional]  |
+
+### Return type
+
+[**KmipClientUpdateOutput**](KmipClientUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipClientUpdateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="kmipcreateclient"></a>
 # **KmipCreateClient**
 > KmipCreateClientOutput KmipCreateClient (KmipCreateClient? kmipCreateClient = null)
@@ -33256,6 +33348,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | kmipServerSetupResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="kmipserverupdate"></a>
+# **KmipServerUpdate**
+> KmipServerUpdateOutput KmipServerUpdate (KmipServerUpdate? kmipServerUpdate = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipServerUpdateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var kmipServerUpdate = new KmipServerUpdate?(); // KmipServerUpdate? |  (optional) 
+
+            try
+            {
+                KmipServerUpdateOutput result = apiInstance.KmipServerUpdate(kmipServerUpdate);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipServerUpdate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the KmipServerUpdateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipServerUpdateOutput> response = apiInstance.KmipServerUpdateWithHttpInfo(kmipServerUpdate);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipServerUpdateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **kmipServerUpdate** | [**KmipServerUpdate?**](KmipServerUpdate?.md) |  | [optional]  |
+
+### Return type
+
+[**KmipServerUpdateOutput**](KmipServerUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipServerUpdateResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -41602,6 +41782,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetcreatecloudflare"></a>
+# **TargetCreateCloudflare**
+> TargetCreateOutput TargetCreateCloudflare (TargetCreateCloudflare targetCreateCloudflare)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateCloudflareExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateCloudflare = new TargetCreateCloudflare(); // TargetCreateCloudflare | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateCloudflare(targetCreateCloudflare);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateCloudflare: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateCloudflareWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateCloudflareWithHttpInfo(targetCreateCloudflare);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateCloudflareWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateCloudflare** | [**TargetCreateCloudflare**](TargetCreateCloudflare.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateCloudflareResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetcreatedb"></a>
 # **TargetCreateDB**
 > TargetCreateOutput TargetCreateDB (TargetCreateDB targetCreateDB)
@@ -44678,6 +44946,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateAzureResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdatecloudflare"></a>
+# **TargetUpdateCloudflare**
+> TargetUpdateOutput TargetUpdateCloudflare (TargetUpdateCloudflare targetUpdateCloudflare)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateCloudflareExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateCloudflare = new TargetUpdateCloudflare(); // TargetUpdateCloudflare | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateCloudflare(targetUpdateCloudflare);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateCloudflare: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateCloudflareWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateCloudflareWithHttpInfo(targetUpdateCloudflare);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateCloudflareWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateCloudflare** | [**TargetUpdateCloudflare**](TargetUpdateCloudflare.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateCloudflareResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

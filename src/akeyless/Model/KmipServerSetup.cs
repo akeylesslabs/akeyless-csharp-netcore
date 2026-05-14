@@ -41,12 +41,13 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="KmipServerSetup" /> class.
         /// </summary>
         /// <param name="certificateTtl">Server certificate TTL in days (default to 90).</param>
+        /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="hostname">Hostname (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="root">Root path of KMIP Resources (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipServerSetup(long certificateTtl = 90, string hostname = default(string), bool json = false, string root = default(string), string token = default(string), string uidToken = default(string))
+        public KmipServerSetup(long certificateTtl = 90, List<string> expirationEventIn = default(List<string>), string hostname = default(string), bool json = false, string root = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "hostname" is required (not null)
             if (hostname == null)
@@ -61,6 +62,7 @@ namespace akeyless.Model
             }
             this.Root = root;
             this.CertificateTtl = certificateTtl;
+            this.ExpirationEventIn = expirationEventIn;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
@@ -72,6 +74,13 @@ namespace akeyless.Model
         /// <value>Server certificate TTL in days</value>
         [DataMember(Name = "certificate-ttl", EmitDefaultValue = false)]
         public long CertificateTtl { get; set; }
+
+        /// <summary>
+        /// How many days before the expiration of the certificate would you like to be notified.
+        /// </summary>
+        /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
+        [DataMember(Name = "expiration-event-in", EmitDefaultValue = false)]
+        public List<string> ExpirationEventIn { get; set; }
 
         /// <summary>
         /// Hostname
@@ -117,6 +126,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class KmipServerSetup {\n");
             sb.Append("  CertificateTtl: ").Append(CertificateTtl).Append("\n");
+            sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  Hostname: ").Append(Hostname).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Root: ").Append(Root).Append("\n");

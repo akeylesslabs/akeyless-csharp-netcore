@@ -6,10 +6,12 @@ gatewayUpdateProducerPing is a command that updates Ping producer [Deprecated: U
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**InputRule** | **List&lt;string&gt;** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | **string** | Dynamic secret New name | [optional] 
+**OutputRule** | **List&lt;string&gt;** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **PingAdministrativePort** | **string** | Ping Federate administrative port | [optional] [default to "9999"]
 **PingAtmId** | **string** | Set a specific Access Token Management (ATM) instance for the created OAuth Client by providing the ATM Id. If no explicit value is given, the default pingfederate server ATM will be set. | [optional] 
 **PingAuthorizationPort** | **string** | Ping Federate authorization port | [optional] [default to "9031"]

@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **AcmeChallenge** | **string** |  | [optional] [default to "http"]
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
-**DnsTargetCreds** | **string** | Name of existing cloud target for DNS credentials. Required when acme-challenge&#x3D;dns. Supported: AWS, Azure, GCP targets | [optional] 
+**DnsTargetCreds** | **string** | Name of existing cloud target for DNS credentials. Required when acme-challenge&#x3D;dns. Supported: AWS, Azure, GCP, Cloudflare targets | [optional] 
+**DnsZone** | **string** | Cloudflare DNS zone identifier. Required when dns-target-creds points to Cloudflare target | [optional] 
 **Email** | **string** | Email address for ACME account registration | 
 **GcpProject** | **string** | GCP Cloud DNS: Project ID. Optional - can be derived from service account | [optional] 
 **HostedZone** | **string** | AWS Route53 hosted zone ID. Required when dns-target-creds points to AWS target | [optional] 

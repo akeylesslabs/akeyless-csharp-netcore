@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="varObject">varObject.</param>
         /// <param name="objectType">objectType.</param>
         /// <param name="required">required.</param>
-        public AccountCustomFieldGetOutput(string accountId = default(string), DateTime creationDate = default(DateTime), NullTime deletionDate = default(NullTime), long id = default(long), DateTime modificationDate = default(DateTime), string name = default(string), string varObject = default(string), string objectType = default(string), bool required = default(bool))
+        public AccountCustomFieldGetOutput(string accountId = default(string), DateTime creationDate = default(DateTime), DateTime deletionDate = default(DateTime), long id = default(long), DateTime modificationDate = default(DateTime), string name = default(string), string varObject = default(string), string objectType = default(string), bool required = default(bool))
         {
             this.AccountId = accountId;
             this.CreationDate = creationDate;
@@ -73,7 +73,7 @@ namespace akeyless.Model
         /// Gets or Sets DeletionDate
         /// </summary>
         [DataMember(Name = "deletion_date", EmitDefaultValue = false)]
-        public NullTime DeletionDate { get; set; }
+        public DateTime DeletionDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Id

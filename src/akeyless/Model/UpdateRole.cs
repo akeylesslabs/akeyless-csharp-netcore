@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="eventCenterAccess">Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported.</param>
         /// <param name="eventForwarderAccess">Allow this role to manage Event Forwarders. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
         /// <param name="gwAnalyticsAccess">Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
+        /// <param name="isiAccess">Allow this role to access Identity &amp; Secrets Intelligence. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Role name (required).</param>
         /// <param name="newComment">Deprecated - use description (default to &quot;default_comment&quot;).</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="usageReportsAccess">Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
-        public UpdateRole(string analyticsAccess = default(string), string araReportsAccess = default(string), string auditAccess = default(string), string deleteProtection = default(string), string description = @"default_comment", string eventCenterAccess = default(string), string eventForwarderAccess = default(string), string gwAnalyticsAccess = default(string), bool json = false, string name = default(string), string newComment = @"default_comment", string newName = default(string), string reverseRbacAccess = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
+        public UpdateRole(string analyticsAccess = default(string), string araReportsAccess = default(string), string auditAccess = default(string), string deleteProtection = default(string), string description = @"default_comment", string eventCenterAccess = default(string), string eventForwarderAccess = default(string), string gwAnalyticsAccess = default(string), string isiAccess = default(string), bool json = false, string name = default(string), string newComment = @"default_comment", string newName = default(string), string reverseRbacAccess = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -74,6 +75,7 @@ namespace akeyless.Model
             this.EventCenterAccess = eventCenterAccess;
             this.EventForwarderAccess = eventForwarderAccess;
             this.GwAnalyticsAccess = gwAnalyticsAccess;
+            this.IsiAccess = isiAccess;
             this.Json = json;
             // use default value if no "newComment" provided
             this.NewComment = newComment ?? @"default_comment";
@@ -140,6 +142,13 @@ namespace akeyless.Model
         /// <value>Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.</value>
         [DataMember(Name = "gw-analytics-access", EmitDefaultValue = false)]
         public string GwAnalyticsAccess { get; set; }
+
+        /// <summary>
+        /// Allow this role to access Identity &amp; Secrets Intelligence. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported.
+        /// </summary>
+        /// <value>Allow this role to access Identity &amp; Secrets Intelligence. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported.</value>
+        [DataMember(Name = "isi-access", EmitDefaultValue = false)]
+        public string IsiAccess { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -220,6 +229,7 @@ namespace akeyless.Model
             sb.Append("  EventCenterAccess: ").Append(EventCenterAccess).Append("\n");
             sb.Append("  EventForwarderAccess: ").Append(EventForwarderAccess).Append("\n");
             sb.Append("  GwAnalyticsAccess: ").Append(GwAnalyticsAccess).Append("\n");
+            sb.Append("  IsiAccess: ").Append(IsiAccess).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewComment: ").Append(NewComment).Append("\n");

@@ -39,7 +39,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="type">The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres].</param>
+        /// <param name="type">The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub cloudflare ldap github chef web salesforce postgres].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public TargetList(string filter = default(string), bool json = false, string paginationToken = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
@@ -80,9 +80,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres]
+        /// The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub cloudflare ldap github chef web salesforce postgres]
         /// </summary>
-        /// <value>The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres]</value>
+        /// <value>The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub cloudflare ldap github chef web salesforce postgres]</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public List<string> Type { get; set; }
 

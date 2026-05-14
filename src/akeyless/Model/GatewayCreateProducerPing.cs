@@ -41,9 +41,11 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayCreateProducerPing" /> class.
         /// </summary>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
+        /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
+        /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="pingAdministrativePort">Ping Federate administrative port (default to &quot;9999&quot;).</param>
         /// <param name="pingAtmId">Set a specific Access Token Management (ATM) instance for the created OAuth Client by providing the ATM Id. If no explicit value is given, the default pingfederate server ATM will be set..</param>
         /// <param name="pingAuthorizationPort">Ping Federate authorization port (default to &quot;9031&quot;).</param>
@@ -66,7 +68,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">The time from dynamic secret creation to expiration. (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerPing(string deleteProtection = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string pingAdministrativePort = @"9999", string pingAtmId = default(string), string pingAuthorizationPort = @"9031", string pingCertSubjectDn = default(string), string pingClientAuthenticationType = @"CLIENT_SECRET", string pingEnforceReplayPrevention = @"false", List<string> pingGrantTypes = default(List<string>), string pingIssuerDn = default(string), string pingJwks = default(string), string pingJwksUrl = default(string), string pingPassword = default(string), string pingPrivilegedUser = default(string), List<string> pingRedirectUris = default(List<string>), List<string> pingRestrictedScopes = default(List<string>), string pingSigningAlgo = default(string), string pingUrl = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerPing(string deleteProtection = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string pingAdministrativePort = @"9999", string pingAtmId = default(string), string pingAuthorizationPort = @"9031", string pingCertSubjectDn = default(string), string pingClientAuthenticationType = @"CLIENT_SECRET", string pingEnforceReplayPrevention = @"false", List<string> pingGrantTypes = default(List<string>), string pingIssuerDn = default(string), string pingJwks = default(string), string pingJwksUrl = default(string), string pingPassword = default(string), string pingPrivilegedUser = default(string), List<string> pingRedirectUris = default(List<string>), List<string> pingRestrictedScopes = default(List<string>), string pingSigningAlgo = default(string), string pingUrl = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -75,8 +77,10 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.DeleteProtection = deleteProtection;
+            this.InputRule = inputRule;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
+            this.OutputRule = outputRule;
             // use default value if no "pingAdministrativePort" provided
             this.PingAdministrativePort = pingAdministrativePort ?? @"9999";
             this.PingAtmId = pingAtmId;
@@ -114,6 +118,13 @@ namespace akeyless.Model
         public string DeleteProtection { get; set; }
 
         /// <summary>
+        /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+        /// </summary>
+        /// <value>Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).</value>
+        [DataMember(Name = "input-rule", EmitDefaultValue = false)]
+        public List<string> InputRule { get; set; }
+
+        /// <summary>
         /// Additional custom fields to associate with the item
         /// </summary>
         /// <value>Additional custom fields to associate with the item</value>
@@ -133,6 +144,13 @@ namespace akeyless.Model
         /// <value>Dynamic secret name</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)
+        /// </summary>
+        /// <value>Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)</value>
+        [DataMember(Name = "output-rule", EmitDefaultValue = false)]
+        public List<string> OutputRule { get; set; }
 
         /// <summary>
         /// Ping Federate administrative port
@@ -297,9 +315,11 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerPing {\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  InputRule: ").Append(InputRule).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
             sb.Append("  PingAdministrativePort: ").Append(PingAdministrativePort).Append("\n");
             sb.Append("  PingAtmId: ").Append(PingAtmId).Append("\n");
             sb.Append("  PingAuthorizationPort: ").Append(PingAuthorizationPort).Append("\n");

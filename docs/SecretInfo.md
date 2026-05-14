@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActivationDate** | **DateTime** |  | [optional] 
 **Created** | **DateTime** |  | [optional] 
 **Description** | **string** |  | [optional] 
 **Expiration** | **DateTime** |  | [optional] 

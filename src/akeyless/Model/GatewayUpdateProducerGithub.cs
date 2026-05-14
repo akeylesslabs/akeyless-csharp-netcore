@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="githubAppId">Github app id.</param>
         /// <param name="githubAppPrivateKey">App private key.</param>
         /// <param name="githubBaseUrl">Base URL (default to &quot;https://api.github.com/&quot;).</param>
+        /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
         /// <param name="installationId">GitHub application installation id.</param>
         /// <param name="installationOrganization">Optional, mutually exclusive with installation id, GitHub organization name.</param>
         /// <param name="installationRepository">Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39;.</param>
@@ -51,6 +52,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
+        /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -58,7 +60,7 @@ namespace akeyless.Model
         /// <param name="tokenRepositories">Optional - installation token&#39;s allowed repositories.</param>
         /// <param name="tokenTtl">Token TTL (default to &quot;60m&quot;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = @"https://api.github.com/", long installationId = default(long), string installationOrganization = default(string), string installationRepository = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string tokenTtl = @"60m", string uidToken = default(string))
+        public GatewayUpdateProducerGithub(string deleteProtection = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = @"https://api.github.com/", List<string> inputRule = default(List<string>), long installationId = default(long), string installationOrganization = default(string), string installationRepository = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string tokenTtl = @"60m", string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -71,12 +73,14 @@ namespace akeyless.Model
             this.GithubAppPrivateKey = githubAppPrivateKey;
             // use default value if no "githubBaseUrl" provided
             this.GithubBaseUrl = githubBaseUrl ?? @"https://api.github.com/";
+            this.InputRule = inputRule;
             this.InstallationId = installationId;
             this.InstallationOrganization = installationOrganization;
             this.InstallationRepository = installationRepository;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.NewName = newName;
+            this.OutputRule = outputRule;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -114,6 +118,13 @@ namespace akeyless.Model
         /// <value>Base URL</value>
         [DataMember(Name = "github-base-url", EmitDefaultValue = false)]
         public string GithubBaseUrl { get; set; }
+
+        /// <summary>
+        /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+        /// </summary>
+        /// <value>Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).</value>
+        [DataMember(Name = "input-rule", EmitDefaultValue = false)]
+        public List<string> InputRule { get; set; }
 
         /// <summary>
         /// GitHub application installation id
@@ -163,6 +174,13 @@ namespace akeyless.Model
         /// <value>Dynamic secret name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
+
+        /// <summary>
+        /// Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)
+        /// </summary>
+        /// <value>Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)</value>
+        [DataMember(Name = "output-rule", EmitDefaultValue = false)]
+        public List<string> OutputRule { get; set; }
 
         /// <summary>
         /// Add tags attached to this object
@@ -225,6 +243,7 @@ namespace akeyless.Model
             sb.Append("  GithubAppId: ").Append(GithubAppId).Append("\n");
             sb.Append("  GithubAppPrivateKey: ").Append(GithubAppPrivateKey).Append("\n");
             sb.Append("  GithubBaseUrl: ").Append(GithubBaseUrl).Append("\n");
+            sb.Append("  InputRule: ").Append(InputRule).Append("\n");
             sb.Append("  InstallationId: ").Append(InstallationId).Append("\n");
             sb.Append("  InstallationOrganization: ").Append(InstallationOrganization).Append("\n");
             sb.Append("  InstallationRepository: ").Append(InstallationRepository).Append("\n");
@@ -232,6 +251,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

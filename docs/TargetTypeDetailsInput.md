@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AwsTargetDetails** | [**AWSTargetDetails**](AWSTargetDetails.md) |  | [optional] 
 **AzureTargetDetails** | [**AzureTargetDetails**](AzureTargetDetails.md) |  | [optional] 
 **ChefTargetDetails** | [**ChefTargetDetails**](ChefTargetDetails.md) |  | [optional] 
+**CloudflareTargetDetails** | [**CloudflareTargetDetails**](CloudflareTargetDetails.md) |  | [optional] 
 **CustomTargetDetails** | [**CustomTargetDetails**](CustomTargetDetails.md) |  | [optional] 
 **DbTargetDetails** | [**DbTargetDetails**](DbTargetDetails.md) |  | [optional] 
 **DigicertTargetDetails** | [**DigiCertTargetDetails**](DigiCertTargetDetails.md) |  | [optional] 

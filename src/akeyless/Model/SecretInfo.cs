@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SecretInfo" /> class.
         /// </summary>
+        /// <param name="activationDate">activationDate.</param>
         /// <param name="created">created.</param>
         /// <param name="description">description.</param>
         /// <param name="expiration">expiration.</param>
@@ -51,8 +52,9 @@ namespace akeyless.Model
         /// <param name="thumbprint">thumbprint.</param>
         /// <param name="type">type.</param>
         /// <param name="varVersion">varVersion.</param>
-        public SecretInfo(DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), GithubMetadata github = default(GithubMetadata), string keyId = default(string), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string varNamespace = default(string), string region = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long))
+        public SecretInfo(DateTime activationDate = default(DateTime), DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), GithubMetadata github = default(GithubMetadata), string keyId = default(string), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string varNamespace = default(string), string region = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long))
         {
+            this.ActivationDate = activationDate;
             this.Created = created;
             this.Description = description;
             this.Expiration = expiration;
@@ -70,6 +72,12 @@ namespace akeyless.Model
             this.Type = type;
             this.VarVersion = varVersion;
         }
+
+        /// <summary>
+        /// Gets or Sets ActivationDate
+        /// </summary>
+        [DataMember(Name = "activation_date", EmitDefaultValue = false)]
+        public DateTime ActivationDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Created
@@ -175,6 +183,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SecretInfo {\n");
+            sb.Append("  ActivationDate: ").Append(ActivationDate).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Expiration: ").Append(Expiration).Append("\n");

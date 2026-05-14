@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// <param name="challengeType">ACMEChallengeType defines ACME challenge type for Let&#39;s Encrypt.</param>
         /// <param name="dnsTargetName">Name of DNS target (transient field - not stored in DB) Used by CLI to pass DNS target name to SDK for creating target_object_assoc Retrieved from target_object_assoc when reading target Required when ChallengeType is \&quot;dns\&quot;.</param>
         /// <param name="dnsTargetType">dnsTargetType.</param>
+        /// <param name="dnsZone">Cloudflare zone identifier Required when DNSTargetType is Cloudflare.</param>
         /// <param name="eabHmacKey">External Account Binding HMAC key (required for ACME account bootstrap on target creation) Not persisted after bootstrap.</param>
         /// <param name="eabKeyId">External Account Binding key identifier (required for ACME account bootstrap on target creation) Not persisted after bootstrap.</param>
         /// <param name="email">Email address for ACME account registration Required.</param>
@@ -48,7 +49,7 @@ namespace akeyless.Model
         /// <param name="hostedZone">AWS Route53: Hosted zone ID Required when DNSTargetType is AWS.</param>
         /// <param name="resourceGroup">Azure DNS: Resource group name Required when DNSTargetType is Azure.</param>
         /// <param name="timeout">A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years..</param>
-        public GoogleTrustTargetDetails(string accountKeyPem = default(string), string accountUrl = default(string), string acmeEnvironment = default(string), string challengeType = default(string), string dnsTargetName = default(string), string dnsTargetType = default(string), string eabHmacKey = default(string), string eabKeyId = default(string), string email = default(string), string gcpProject = default(string), string hostedZone = default(string), string resourceGroup = default(string), long timeout = default(long))
+        public GoogleTrustTargetDetails(string accountKeyPem = default(string), string accountUrl = default(string), string acmeEnvironment = default(string), string challengeType = default(string), string dnsTargetName = default(string), string dnsTargetType = default(string), string dnsZone = default(string), string eabHmacKey = default(string), string eabKeyId = default(string), string email = default(string), string gcpProject = default(string), string hostedZone = default(string), string resourceGroup = default(string), long timeout = default(long))
         {
             this.AccountKeyPem = accountKeyPem;
             this.AccountUrl = accountUrl;
@@ -56,6 +57,7 @@ namespace akeyless.Model
             this.ChallengeType = challengeType;
             this.DnsTargetName = dnsTargetName;
             this.DnsTargetType = dnsTargetType;
+            this.DnsZone = dnsZone;
             this.EabHmacKey = eabHmacKey;
             this.EabKeyId = eabKeyId;
             this.Email = email;
@@ -105,6 +107,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "dns_target_type", EmitDefaultValue = false)]
         public string DnsTargetType { get; set; }
+
+        /// <summary>
+        /// Cloudflare zone identifier Required when DNSTargetType is Cloudflare
+        /// </summary>
+        /// <value>Cloudflare zone identifier Required when DNSTargetType is Cloudflare</value>
+        [DataMember(Name = "dns_zone", EmitDefaultValue = false)]
+        public string DnsZone { get; set; }
 
         /// <summary>
         /// External Account Binding HMAC key (required for ACME account bootstrap on target creation) Not persisted after bootstrap
@@ -169,6 +178,7 @@ namespace akeyless.Model
             sb.Append("  ChallengeType: ").Append(ChallengeType).Append("\n");
             sb.Append("  DnsTargetName: ").Append(DnsTargetName).Append("\n");
             sb.Append("  DnsTargetType: ").Append(DnsTargetType).Append("\n");
+            sb.Append("  DnsZone: ").Append(DnsZone).Append("\n");
             sb.Append("  EabHmacKey: ").Append(EabHmacKey).Append("\n");
             sb.Append("  EabKeyId: ").Append(EabKeyId).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");

@@ -38,14 +38,16 @@ namespace akeyless.Model
         /// <param name="activateKeysOnCreation">activateKeysOnCreation.</param>
         /// <param name="certificateIssueDate">certificateIssueDate.</param>
         /// <param name="certificateTtlInSeconds">certificateTtlInSeconds.</param>
+        /// <param name="expirationEvents">expirationEvents.</param>
         /// <param name="id">id.</param>
         /// <param name="name">name.</param>
         /// <param name="rules">rules.</param>
-        public KMIPClient(bool activateKeysOnCreation = default(bool), DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
+        public KMIPClient(bool activateKeysOnCreation = default(bool), DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
         {
             this.ActivateKeysOnCreation = activateKeysOnCreation;
             this.CertificateIssueDate = certificateIssueDate;
             this.CertificateTtlInSeconds = certificateTtlInSeconds;
+            this.ExpirationEvents = expirationEvents;
             this.Id = id;
             this.Name = name;
             this.Rules = rules;
@@ -68,6 +70,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "certificate_ttl_in_seconds", EmitDefaultValue = false)]
         public long CertificateTtlInSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExpirationEvents
+        /// </summary>
+        [DataMember(Name = "expiration_events", EmitDefaultValue = false)]
+        public List<CertificateExpirationEvent> ExpirationEvents { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -98,6 +106,7 @@ namespace akeyless.Model
             sb.Append("  ActivateKeysOnCreation: ").Append(ActivateKeysOnCreation).Append("\n");
             sb.Append("  CertificateIssueDate: ").Append(CertificateIssueDate).Append("\n");
             sb.Append("  CertificateTtlInSeconds: ").Append(CertificateTtlInSeconds).Append("\n");
+            sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Rules: ").Append(Rules).Append("\n");

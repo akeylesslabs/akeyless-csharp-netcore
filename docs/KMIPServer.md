@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Certificate** | **List&lt;int&gt;** |  | [optional] 
 **CertificateIssueDate** | **DateTime** |  | [optional] 
 **CertificateTtlInSeconds** | **long** |  | [optional] 
+**ExpirationEvents** | [**List&lt;CertificateExpirationEvent&gt;**](CertificateExpirationEvent.md) |  | [optional] 
 **Hostname** | **string** |  | [optional] 
 **Root** | **string** |  | [optional] 
 

@@ -39,6 +39,7 @@ namespace akeyless.Model
         /// <param name="awsTargetDetails">awsTargetDetails.</param>
         /// <param name="azureTargetDetails">azureTargetDetails.</param>
         /// <param name="chefTargetDetails">chefTargetDetails.</param>
+        /// <param name="cloudflareTargetDetails">cloudflareTargetDetails.</param>
         /// <param name="customTargetDetails">customTargetDetails.</param>
         /// <param name="dbTargetDetails">dbTargetDetails.</param>
         /// <param name="digicertTargetDetails">digicertTargetDetails.</param>
@@ -70,12 +71,13 @@ namespace akeyless.Model
         /// <param name="webTargetDetails">webTargetDetails.</param>
         /// <param name="windowsTargetDetails">windowsTargetDetails.</param>
         /// <param name="zerosslTargetDetails">zerosslTargetDetails.</param>
-        public TargetTypeDetailsInput(ArtifactoryTargetDetails artifactoryTargetDetails = default(ArtifactoryTargetDetails), AWSTargetDetails awsTargetDetails = default(AWSTargetDetails), AzureTargetDetails azureTargetDetails = default(AzureTargetDetails), ChefTargetDetails chefTargetDetails = default(ChefTargetDetails), CustomTargetDetails customTargetDetails = default(CustomTargetDetails), DbTargetDetails dbTargetDetails = default(DbTargetDetails), DigiCertTargetDetails digicertTargetDetails = default(DigiCertTargetDetails), DockerhubTargetDetails dockerhubTargetDetails = default(DockerhubTargetDetails), EKSTargetDetails eksTargetDetails = default(EKSTargetDetails), GcpTargetDetails gcpTargetDetails = default(GcpTargetDetails), GeminiTargetDetails geminiTargetDetails = default(GeminiTargetDetails), GithubTargetDetails githubTargetDetails = default(GithubTargetDetails), GitlabTargetDetails gitlabTargetDetails = default(GitlabTargetDetails), GKETargetDetails gkeTargetDetails = default(GKETargetDetails), GlobalSignAtlasTargetDetails globalsignAtlasTargetDetails = default(GlobalSignAtlasTargetDetails), GlobalSignGCCTargetDetails globalsignTargetDetails = default(GlobalSignGCCTargetDetails), GodaddyTargetDetails godaddyTargetDetails = default(GodaddyTargetDetails), GoogleTrustTargetDetails googleTrustTargetDetails = default(GoogleTrustTargetDetails), HashiVaultTargetDetails hashiVaultTargetDetails = default(HashiVaultTargetDetails), LdapTargetDetails ldapTargetDetails = default(LdapTargetDetails), LetsEncryptTargetDetails letsencryptTargetDetails = default(LetsEncryptTargetDetails), LinkedTargetDetails linkedTargetDetails = default(LinkedTargetDetails), MongoDBTargetDetails mongoDbTargetDetails = default(MongoDBTargetDetails), NativeK8sTargetDetails nativeK8sTargetDetails = default(NativeK8sTargetDetails), OpenAITargetDetails openaiTargetDetails = default(OpenAITargetDetails), PingTargetDetails pingTargetDetails = default(PingTargetDetails), RabbitMQTargetDetails rabbitMqTargetDetails = default(RabbitMQTargetDetails), SalesforceTargetDetails salesforceTargetDetails = default(SalesforceTargetDetails), SectigoTargetDetails sectigoTargetDetails = default(SectigoTargetDetails), SplunkTargetDetails splunkTargetDetails = default(SplunkTargetDetails), SSHTargetDetails sshTargetDetails = default(SSHTargetDetails), VenafiTargetDetails venafiTargetDetails = default(VenafiTargetDetails), WebTargetDetails webTargetDetails = default(WebTargetDetails), WindowsTargetDetails windowsTargetDetails = default(WindowsTargetDetails), ZeroSSLTargetDetails zerosslTargetDetails = default(ZeroSSLTargetDetails))
+        public TargetTypeDetailsInput(ArtifactoryTargetDetails artifactoryTargetDetails = default(ArtifactoryTargetDetails), AWSTargetDetails awsTargetDetails = default(AWSTargetDetails), AzureTargetDetails azureTargetDetails = default(AzureTargetDetails), ChefTargetDetails chefTargetDetails = default(ChefTargetDetails), CloudflareTargetDetails cloudflareTargetDetails = default(CloudflareTargetDetails), CustomTargetDetails customTargetDetails = default(CustomTargetDetails), DbTargetDetails dbTargetDetails = default(DbTargetDetails), DigiCertTargetDetails digicertTargetDetails = default(DigiCertTargetDetails), DockerhubTargetDetails dockerhubTargetDetails = default(DockerhubTargetDetails), EKSTargetDetails eksTargetDetails = default(EKSTargetDetails), GcpTargetDetails gcpTargetDetails = default(GcpTargetDetails), GeminiTargetDetails geminiTargetDetails = default(GeminiTargetDetails), GithubTargetDetails githubTargetDetails = default(GithubTargetDetails), GitlabTargetDetails gitlabTargetDetails = default(GitlabTargetDetails), GKETargetDetails gkeTargetDetails = default(GKETargetDetails), GlobalSignAtlasTargetDetails globalsignAtlasTargetDetails = default(GlobalSignAtlasTargetDetails), GlobalSignGCCTargetDetails globalsignTargetDetails = default(GlobalSignGCCTargetDetails), GodaddyTargetDetails godaddyTargetDetails = default(GodaddyTargetDetails), GoogleTrustTargetDetails googleTrustTargetDetails = default(GoogleTrustTargetDetails), HashiVaultTargetDetails hashiVaultTargetDetails = default(HashiVaultTargetDetails), LdapTargetDetails ldapTargetDetails = default(LdapTargetDetails), LetsEncryptTargetDetails letsencryptTargetDetails = default(LetsEncryptTargetDetails), LinkedTargetDetails linkedTargetDetails = default(LinkedTargetDetails), MongoDBTargetDetails mongoDbTargetDetails = default(MongoDBTargetDetails), NativeK8sTargetDetails nativeK8sTargetDetails = default(NativeK8sTargetDetails), OpenAITargetDetails openaiTargetDetails = default(OpenAITargetDetails), PingTargetDetails pingTargetDetails = default(PingTargetDetails), RabbitMQTargetDetails rabbitMqTargetDetails = default(RabbitMQTargetDetails), SalesforceTargetDetails salesforceTargetDetails = default(SalesforceTargetDetails), SectigoTargetDetails sectigoTargetDetails = default(SectigoTargetDetails), SplunkTargetDetails splunkTargetDetails = default(SplunkTargetDetails), SSHTargetDetails sshTargetDetails = default(SSHTargetDetails), VenafiTargetDetails venafiTargetDetails = default(VenafiTargetDetails), WebTargetDetails webTargetDetails = default(WebTargetDetails), WindowsTargetDetails windowsTargetDetails = default(WindowsTargetDetails), ZeroSSLTargetDetails zerosslTargetDetails = default(ZeroSSLTargetDetails))
         {
             this.ArtifactoryTargetDetails = artifactoryTargetDetails;
             this.AwsTargetDetails = awsTargetDetails;
             this.AzureTargetDetails = azureTargetDetails;
             this.ChefTargetDetails = chefTargetDetails;
+            this.CloudflareTargetDetails = cloudflareTargetDetails;
             this.CustomTargetDetails = customTargetDetails;
             this.DbTargetDetails = dbTargetDetails;
             this.DigicertTargetDetails = digicertTargetDetails;
@@ -132,6 +134,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "chef_target_details", EmitDefaultValue = false)]
         public ChefTargetDetails ChefTargetDetails { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CloudflareTargetDetails
+        /// </summary>
+        [DataMember(Name = "cloudflare_target_details", EmitDefaultValue = false)]
+        public CloudflareTargetDetails CloudflareTargetDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomTargetDetails
@@ -331,6 +339,7 @@ namespace akeyless.Model
             sb.Append("  AwsTargetDetails: ").Append(AwsTargetDetails).Append("\n");
             sb.Append("  AzureTargetDetails: ").Append(AzureTargetDetails).Append("\n");
             sb.Append("  ChefTargetDetails: ").Append(ChefTargetDetails).Append("\n");
+            sb.Append("  CloudflareTargetDetails: ").Append(CloudflareTargetDetails).Append("\n");
             sb.Append("  CustomTargetDetails: ").Append(CustomTargetDetails).Append("\n");
             sb.Append("  DbTargetDetails: ").Append(DbTargetDetails).Append("\n");
             sb.Append("  DigicertTargetDetails: ").Append(DigicertTargetDetails).Append("\n");
