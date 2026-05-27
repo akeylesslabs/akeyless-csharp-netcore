@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="defaultHomePage">defaultHomePage.</param>
         /// <param name="dynamicSecretMaxTtl">dynamicSecretMaxTtl.</param>
         /// <param name="enableRequestForAccess">enableRequestForAccess.</param>
+        /// <param name="enableSearchHistory">enableSearchHistory.</param>
         /// <param name="hidePersonalFolder">hidePersonalFolder.</param>
         /// <param name="hideSecretRevealCopy">hideSecretRevealCopy.</param>
         /// <param name="hideStaticPassword">hideStaticPassword.</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="rotationSecretMaxInterval">rotationSecretMaxInterval.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AiInsightsSetting aiInsights = default(AiInsightsSetting), bool allowAutoFill = default(bool), bool allowPasskeys = default(bool), AllowedClientType allowedClientTypes = default(AllowedClientType), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), CertificateExpirationEventsSettings certificateExpirationEvents = default(CertificateExpirationEventsSettings), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DefaultAuthMethodSettings defaultAuthMethod = default(DefaultAuthMethodSettings), DefaultHomePage defaultHomePage = default(DefaultHomePage), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), bool hidePersonalFolder = default(bool), bool hideSecretRevealCopy = default(bool), bool hideStaticPassword = default(bool), string invalidCharacters = default(string), ItemLockingSetting itemLocking = default(ItemLockingSetting), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), PasswordScoreSetting passwordScore = default(PasswordScoreSetting), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AiInsightsSetting aiInsights = default(AiInsightsSetting), bool allowAutoFill = default(bool), bool allowPasskeys = default(bool), AllowedClientType allowedClientTypes = default(AllowedClientType), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), CertificateExpirationEventsSettings certificateExpirationEvents = default(CertificateExpirationEventsSettings), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DefaultAuthMethodSettings defaultAuthMethod = default(DefaultAuthMethodSettings), DefaultHomePage defaultHomePage = default(DefaultHomePage), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), bool enableSearchHistory = default(bool), bool hidePersonalFolder = default(bool), bool hideSecretRevealCopy = default(bool), bool hideStaticPassword = default(bool), string invalidCharacters = default(string), ItemLockingSetting itemLocking = default(ItemLockingSetting), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), PasswordScoreSetting passwordScore = default(PasswordScoreSetting), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.AccountDefaultKeyItemId = accountDefaultKeyItemId;
             this.AccountDefaultKeyName = accountDefaultKeyName;
@@ -80,6 +81,7 @@ namespace akeyless.Model
             this.DefaultHomePage = defaultHomePage;
             this.DynamicSecretMaxTtl = dynamicSecretMaxTtl;
             this.EnableRequestForAccess = enableRequestForAccess;
+            this.EnableSearchHistory = enableSearchHistory;
             this.HidePersonalFolder = hidePersonalFolder;
             this.HideSecretRevealCopy = hideSecretRevealCopy;
             this.HideStaticPassword = hideStaticPassword;
@@ -188,6 +190,12 @@ namespace akeyless.Model
         public bool EnableRequestForAccess { get; set; }
 
         /// <summary>
+        /// Gets or Sets EnableSearchHistory
+        /// </summary>
+        [DataMember(Name = "enable_search_history", EmitDefaultValue = true)]
+        public bool EnableSearchHistory { get; set; }
+
+        /// <summary>
         /// Gets or Sets HidePersonalFolder
         /// </summary>
         [DataMember(Name = "hide_personal_folder", EmitDefaultValue = true)]
@@ -290,6 +298,7 @@ namespace akeyless.Model
             sb.Append("  DefaultHomePage: ").Append(DefaultHomePage).Append("\n");
             sb.Append("  DynamicSecretMaxTtl: ").Append(DynamicSecretMaxTtl).Append("\n");
             sb.Append("  EnableRequestForAccess: ").Append(EnableRequestForAccess).Append("\n");
+            sb.Append("  EnableSearchHistory: ").Append(EnableSearchHistory).Append("\n");
             sb.Append("  HidePersonalFolder: ").Append(HidePersonalFolder).Append("\n");
             sb.Append("  HideSecretRevealCopy: ").Append(HideSecretRevealCopy).Append("\n");
             sb.Append("  HideStaticPassword: ").Append(HideStaticPassword).Append("\n");

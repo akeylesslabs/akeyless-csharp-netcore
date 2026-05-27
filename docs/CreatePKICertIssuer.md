@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **AllowedIpSans** | **string** | A list of the allowed CIDRs for ips that clients can request to be included in the certificate as part of the IP Subject Alternative Names (in a comma-delimited list) | [optional] 
 **AllowedUriSans** | **string** | A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list) | [optional] 
 **AutoRenew** | **bool** | Automatically renew certificates before expiration | [optional] 
+**BasicConstraints** | **string** | Defines the X.509 Basic Constraints extension for certificates issued by this PKI issuer template | [optional] 
 **CaTarget** | **string** | The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode | [optional] 
 **ClientFlag** | **bool** | If set, certificates will be flagged for client auth use | [optional] 
 **CodeSigningFlag** | **bool** | If set, certificates will be flagged for code signing use | [optional] 

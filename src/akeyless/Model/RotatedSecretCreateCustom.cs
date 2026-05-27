@@ -76,10 +76,10 @@ namespace akeyless.Model
         /// <param name="timeoutSec">Maximum allowed time in seconds for the custom rotator to return the results (default to 40).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
-        /// <param name="useLowerLetters">Password must contain lower case letters [true/false].</param>
-        /// <param name="useNumbers">Password must contain numbers [true/false].</param>
-        /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
+        /// <param name="useCapitalLetters">Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false].</param>
+        /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
+        /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
+        /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         public RotatedSecretCreateCustom(string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string customPayload = default(string), string deleteProtection = default(string), string description = default(string), string enablePasswordPolicy = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string rotateAfterDisconnect = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), long timeoutSec = 40, string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             // to ensure "name" is required (not null)
@@ -388,30 +388,32 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
-        /// Password must contain capital letters [true/false]
+        /// Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false]
         /// </summary>
-        /// <value>Password must contain capital letters [true/false]</value>
+        /// <value>Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false]</value>
         [DataMember(Name = "use-capital-letters", EmitDefaultValue = false)]
         public string UseCapitalLetters { get; set; }
 
         /// <summary>
-        /// Password must contain lower case letters [true/false]
+        /// Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false]
         /// </summary>
-        /// <value>Password must contain lower case letters [true/false]</value>
+        /// <value>Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false]</value>
         [DataMember(Name = "use-lower-letters", EmitDefaultValue = false)]
         public string UseLowerLetters { get; set; }
 
         /// <summary>
-        /// Password must contain numbers [true/false]
+        /// Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false]
         /// </summary>
-        /// <value>Password must contain numbers [true/false]</value>
+        /// <value>Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false]</value>
         [DataMember(Name = "use-numbers", EmitDefaultValue = false)]
         public string UseNumbers { get; set; }
 
         /// <summary>
-        /// Password must contain special characters [true/false]
+        /// Gets or Sets UseSpecialCharacters
         /// </summary>
-        /// <value>Password must contain special characters [true/false]</value>
+        /*
+        <example>! @ # $. [true/false]</example>
+        */
         [DataMember(Name = "use-special-characters", EmitDefaultValue = false)]
         public string UseSpecialCharacters { get; set; }
 

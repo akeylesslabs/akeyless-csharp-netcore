@@ -83,10 +83,10 @@ namespace akeyless.Model
         /// <param name="usageEventEnable">Enable event for objects that have not been used or changed [true/false].</param>
         /// <param name="usageEventInterval">Interval by days for unused objects. Default and minimum interval is 90 days.</param>
         /// <param name="usageEventObjectType">Usage event is supported for auth method or secrets-and-keys [auth/item].</param>
-        /// <param name="useCapitalLetters">Password must contain capital letters [true/false].</param>
-        /// <param name="useLowerLetters">Password must contain lower case letters [true/false].</param>
-        /// <param name="useNumbers">Password must contain numbers [true/false].</param>
-        /// <param name="useSpecialCharacters">Password must contain special characters [true/false].</param>
+        /// <param name="useCapitalLetters">Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false].</param>
+        /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
+        /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
+        /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         public UpdateAccountSettings(string address = default(string), List<string> allowedClientType = default(List<string>), List<string> allowedEmailDomains = default(List<string>), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), List<string> defaultCertificateExpirationNotificationDays = default(List<string>), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableAiInsights = default(string), string enableDefaultCertificateExpirationEvent = default(string), string enableItemSharing = default(string), string enablePasswordExpiration = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string hidePersonalFolder = default(string), string hideStaticPassword = default(string), string invalidCharacters = @"notReceivedInvalidCharacter", string itemLockingEnabled = default(string), string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockAllowedClientType = default(string), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), long lockMaxTtl = default(long), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), string passwordExpirationDays = default(string), string passwordExpirationNotificationDays = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             this.Address = address;
@@ -481,30 +481,32 @@ namespace akeyless.Model
         public string UsageEventObjectType { get; set; }
 
         /// <summary>
-        /// Password must contain capital letters [true/false]
+        /// Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false]
         /// </summary>
-        /// <value>Password must contain capital letters [true/false]</value>
+        /// <value>Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false]</value>
         [DataMember(Name = "use-capital-letters", EmitDefaultValue = false)]
         public string UseCapitalLetters { get; set; }
 
         /// <summary>
-        /// Password must contain lower case letters [true/false]
+        /// Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false]
         /// </summary>
-        /// <value>Password must contain lower case letters [true/false]</value>
+        /// <value>Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false]</value>
         [DataMember(Name = "use-lower-letters", EmitDefaultValue = false)]
         public string UseLowerLetters { get; set; }
 
         /// <summary>
-        /// Password must contain numbers [true/false]
+        /// Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false]
         /// </summary>
-        /// <value>Password must contain numbers [true/false]</value>
+        /// <value>Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false]</value>
         [DataMember(Name = "use-numbers", EmitDefaultValue = false)]
         public string UseNumbers { get; set; }
 
         /// <summary>
-        /// Password must contain special characters [true/false]
+        /// Gets or Sets UseSpecialCharacters
         /// </summary>
-        /// <value>Password must contain special characters [true/false]</value>
+        /*
+        <example>! @ # $. [true/false]</example>
+        */
         [DataMember(Name = "use-special-characters", EmitDefaultValue = false)]
         public string UseSpecialCharacters { get; set; }
 

@@ -72,10 +72,14 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExpiration">Token expiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="useCapitalLetters">Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false].</param>
+        /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
+        /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
+        /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateLdap(string providerType = default(string), string bindDn = default(string), string bindDnPassword = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string externalUsername = @"false", string fixedUserClaimKeyname = @"ext_username", string groupDn = default(string), string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = @"60m")
+        public DynamicSecretCreateLdap(string providerType = default(string), string bindDn = default(string), string bindDnPassword = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string externalUsername = @"false", string fixedUserClaimKeyname = @"ext_username", string groupDn = default(string), string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -116,6 +120,10 @@ namespace akeyless.Model
             this.Token = token;
             this.TokenExpiration = tokenExpiration;
             this.UidToken = uidToken;
+            this.UseCapitalLetters = useCapitalLetters;
+            this.UseLowerLetters = useLowerLetters;
+            this.UseNumbers = useNumbers;
+            this.UseSpecialCharacters = useSpecialCharacters;
             this.UserAttribute = userAttribute;
             this.UserDn = userDn;
             // use default value if no "userTtl" provided
@@ -346,6 +354,36 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false]
+        /// </summary>
+        /// <value>Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false]</value>
+        [DataMember(Name = "use-capital-letters", EmitDefaultValue = false)]
+        public string UseCapitalLetters { get; set; }
+
+        /// <summary>
+        /// Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false]
+        /// </summary>
+        /// <value>Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false]</value>
+        [DataMember(Name = "use-lower-letters", EmitDefaultValue = false)]
+        public string UseLowerLetters { get; set; }
+
+        /// <summary>
+        /// Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false]
+        /// </summary>
+        /// <value>Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false]</value>
+        [DataMember(Name = "use-numbers", EmitDefaultValue = false)]
+        public string UseNumbers { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UseSpecialCharacters
+        /// </summary>
+        /*
+        <example>! @ # $. [true/false]</example>
+        */
+        [DataMember(Name = "use-special-characters", EmitDefaultValue = false)]
+        public string UseSpecialCharacters { get; set; }
+
+        /// <summary>
         /// User Attribute
         /// </summary>
         /// <value>User Attribute</value>
@@ -406,6 +444,10 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenExpiration: ").Append(TokenExpiration).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseCapitalLetters: ").Append(UseCapitalLetters).Append("\n");
+            sb.Append("  UseLowerLetters: ").Append(UseLowerLetters).Append("\n");
+            sb.Append("  UseNumbers: ").Append(UseNumbers).Append("\n");
+            sb.Append("  UseSpecialCharacters: ").Append(UseSpecialCharacters).Append("\n");
             sb.Append("  UserAttribute: ").Append(UserAttribute).Append("\n");
             sb.Append("  UserDn: ").Append(UserDn).Append("\n");
             sb.Append("  UserTtl: ").Append(UserTtl).Append("\n");

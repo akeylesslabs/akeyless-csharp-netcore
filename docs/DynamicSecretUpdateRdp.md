@@ -37,6 +37,10 @@ Name | Type | Description | Notes
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseCapitalLetters** | **string** | Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false] | [optional] 
+**UseLowerLetters** | **string** | Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false] | [optional] 
+**UseNumbers** | **string** | Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false] | [optional] 
+**UseSpecialCharacters** | **string** |  | [optional] 
 **UserTtl** | **string** | User TTL | [optional] [default to "60m"]
 **WarnUserBeforeExpiration** | **long** | WarnBeforeUserExpiration | [optional] 
 

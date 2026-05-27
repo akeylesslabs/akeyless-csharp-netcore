@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **AllowedIpSans** | **List&lt;string&gt;** |  | [optional] 
 **AllowedUriSans** | **List&lt;string&gt;** |  | [optional] 
 **AutoRenewCertificate** | **bool** |  | [optional] 
+**BasicConstraints** | **string** |  | [optional] 
+**BasicConstraintsCritical** | **bool** |  | [optional] 
 **BasicConstraintsValidForNonCa** | **bool** |  | [optional] 
 **CertificateAuthorityMode** | **string** |  | [optional] 
 **ClientFlag** | **bool** |  | [optional] 

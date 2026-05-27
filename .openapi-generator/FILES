@@ -1204,15 +1204,6 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/AccountCustomFieldTests.cs
-src/akeyless.Test/Model/CloudflareTargetDetailsTests.cs
-src/akeyless.Test/Model/FolderUSCSyncConfigTests.cs
-src/akeyless.Test/Model/KmipClientUpdateOutputTests.cs
-src/akeyless.Test/Model/KmipClientUpdateTests.cs
-src/akeyless.Test/Model/KmipServerUpdateOutputTests.cs
-src/akeyless.Test/Model/KmipServerUpdateTests.cs
-src/akeyless.Test/Model/TargetCreateCloudflareTests.cs
-src/akeyless.Test/Model/TargetUpdateCloudflareTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs

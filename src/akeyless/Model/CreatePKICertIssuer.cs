@@ -48,6 +48,7 @@ namespace akeyless.Model
         /// <param name="allowedIpSans">A list of the allowed CIDRs for ips that clients can request to be included in the certificate as part of the IP Subject Alternative Names (in a comma-delimited list).</param>
         /// <param name="allowedUriSans">A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list).</param>
         /// <param name="autoRenew">Automatically renew certificates before expiration.</param>
+        /// <param name="basicConstraints">Defines the X.509 Basic Constraints extension for certificates issued by this PKI issuer template.</param>
         /// <param name="caTarget">The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode.</param>
         /// <param name="clientFlag">If set, certificates will be flagged for client auth use.</param>
         /// <param name="codeSigningFlag">If set, certificates will be flagged for code signing use.</param>
@@ -88,7 +89,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedIpSans = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), string caTarget = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string criticalKeyUsage = @"true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool disableWildcards = default(bool), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyUsage = @"DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), long maxPathLen = -1, string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string ocspTtl = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public CreatePKICertIssuer(bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedIpSans = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), string basicConstraints = default(string), string caTarget = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string criticalKeyUsage = @"true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool disableWildcards = default(bool), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyUsage = @"DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), long maxPathLen = -1, string metadata = default(string), string name = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string ocspTtl = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), List<string> tag = default(List<string>), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -110,6 +111,7 @@ namespace akeyless.Model
             this.AllowedIpSans = allowedIpSans;
             this.AllowedUriSans = allowedUriSans;
             this.AutoRenew = autoRenew;
+            this.BasicConstraints = basicConstraints;
             this.CaTarget = caTarget;
             this.ClientFlag = clientFlag;
             this.CodeSigningFlag = codeSigningFlag;
@@ -207,6 +209,13 @@ namespace akeyless.Model
         /// <value>Automatically renew certificates before expiration</value>
         [DataMember(Name = "auto-renew", EmitDefaultValue = true)]
         public bool AutoRenew { get; set; }
+
+        /// <summary>
+        /// Defines the X.509 Basic Constraints extension for certificates issued by this PKI issuer template
+        /// </summary>
+        /// <value>Defines the X.509 Basic Constraints extension for certificates issued by this PKI issuer template</value>
+        [DataMember(Name = "basic-constraints", EmitDefaultValue = false)]
+        public string BasicConstraints { get; set; }
 
         /// <summary>
         /// The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode
@@ -504,6 +513,7 @@ namespace akeyless.Model
             sb.Append("  AllowedIpSans: ").Append(AllowedIpSans).Append("\n");
             sb.Append("  AllowedUriSans: ").Append(AllowedUriSans).Append("\n");
             sb.Append("  AutoRenew: ").Append(AutoRenew).Append("\n");
+            sb.Append("  BasicConstraints: ").Append(BasicConstraints).Append("\n");
             sb.Append("  CaTarget: ").Append(CaTarget).Append("\n");
             sb.Append("  ClientFlag: ").Append(ClientFlag).Append("\n");
             sb.Append("  CodeSigningFlag: ").Append(CodeSigningFlag).Append("\n");

@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **DefaultHomePage** | [**DefaultHomePage**](DefaultHomePage.md) |  | [optional] 
 **DynamicSecretMaxTtl** | [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
 **EnableRequestForAccess** | **bool** |  | [optional] 
+**EnableSearchHistory** | **bool** |  | [optional] 
 **HidePersonalFolder** | **bool** |  | [optional] 
 **HideSecretRevealCopy** | **bool** |  | [optional] 
 **HideStaticPassword** | **bool** |  | [optional] 

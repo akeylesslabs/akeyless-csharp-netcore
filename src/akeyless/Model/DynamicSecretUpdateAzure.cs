@@ -67,13 +67,17 @@ namespace akeyless.Model
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="useCapitalLetters">Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false].</param>
+        /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
+        /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
+        /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userGroupObjId">User Group Object Id.</param>
         /// <param name="userPortalAccess">Azure User portal access (default to false).</param>
         /// <param name="userPrincipalName">User Principal Name.</param>
         /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateAzure(string appObjId = default(string), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
+        public DynamicSecretUpdateAzure(string appObjId = default(string), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -108,6 +112,10 @@ namespace akeyless.Model
             this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UseCapitalLetters = useCapitalLetters;
+            this.UseLowerLetters = useLowerLetters;
+            this.UseNumbers = useNumbers;
+            this.UseSpecialCharacters = useSpecialCharacters;
             this.UserGroupObjId = userGroupObjId;
             this.UserPortalAccess = userPortalAccess;
             this.UserPrincipalName = userPrincipalName;
@@ -307,6 +315,36 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false]
+        /// </summary>
+        /// <value>Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false]</value>
+        [DataMember(Name = "use-capital-letters", EmitDefaultValue = false)]
+        public string UseCapitalLetters { get; set; }
+
+        /// <summary>
+        /// Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false]
+        /// </summary>
+        /// <value>Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false]</value>
+        [DataMember(Name = "use-lower-letters", EmitDefaultValue = false)]
+        public string UseLowerLetters { get; set; }
+
+        /// <summary>
+        /// Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false]
+        /// </summary>
+        /// <value>Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false]</value>
+        [DataMember(Name = "use-numbers", EmitDefaultValue = false)]
+        public string UseNumbers { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UseSpecialCharacters
+        /// </summary>
+        /*
+        <example>! @ # $. [true/false]</example>
+        */
+        [DataMember(Name = "use-special-characters", EmitDefaultValue = false)]
+        public string UseSpecialCharacters { get; set; }
+
+        /// <summary>
         /// User Group Object Id
         /// </summary>
         /// <value>User Group Object Id</value>
@@ -383,6 +421,10 @@ namespace akeyless.Model
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseCapitalLetters: ").Append(UseCapitalLetters).Append("\n");
+            sb.Append("  UseLowerLetters: ").Append(UseLowerLetters).Append("\n");
+            sb.Append("  UseNumbers: ").Append(UseNumbers).Append("\n");
+            sb.Append("  UseSpecialCharacters: ").Append(UseSpecialCharacters).Append("\n");
             sb.Append("  UserGroupObjId: ").Append(UserGroupObjId).Append("\n");
             sb.Append("  UserPortalAccess: ").Append(UserPortalAccess).Append("\n");
             sb.Append("  UserPrincipalName: ").Append(UserPrincipalName).Append("\n");

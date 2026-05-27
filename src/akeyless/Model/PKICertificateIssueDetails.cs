@@ -44,6 +44,8 @@ namespace akeyless.Model
         /// <param name="allowedIpSans">allowedIpSans.</param>
         /// <param name="allowedUriSans">allowedUriSans.</param>
         /// <param name="autoRenewCertificate">autoRenewCertificate.</param>
+        /// <param name="basicConstraints">basicConstraints.</param>
+        /// <param name="basicConstraintsCritical">basicConstraintsCritical.</param>
         /// <param name="basicConstraintsValidForNonCa">basicConstraintsValidForNonCa.</param>
         /// <param name="certificateAuthorityMode">certificateAuthorityMode.</param>
         /// <param name="clientFlag">clientFlag.</param>
@@ -78,7 +80,7 @@ namespace akeyless.Model
         /// <param name="requireCn">requireCn.</param>
         /// <param name="serverFlag">serverFlag.</param>
         /// <param name="streetAddress">streetAddress.</param>
-        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedIpSans = default(List<string>), List<string> allowedUriSans = default(List<string>), bool autoRenewCertificate = default(bool), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string destinationPath = default(string), bool disableWildcards = default(bool), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long maxPathLen = default(long), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), long ocspNextUpdate = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), string pkiIssuerType = default(string), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), long renewBeforeExpirationInDays = default(long), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
+        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedIpSans = default(List<string>), List<string> allowedUriSans = default(List<string>), bool autoRenewCertificate = default(bool), string basicConstraints = default(string), bool basicConstraintsCritical = default(bool), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string destinationPath = default(string), bool disableWildcards = default(bool), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long maxPathLen = default(long), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), long ocspNextUpdate = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), string pkiIssuerType = default(string), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), long renewBeforeExpirationInDays = default(long), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
         {
             this.AcmeEnabled = acmeEnabled;
             this.AllowAnyName = allowAnyName;
@@ -89,6 +91,8 @@ namespace akeyless.Model
             this.AllowedIpSans = allowedIpSans;
             this.AllowedUriSans = allowedUriSans;
             this.AutoRenewCertificate = autoRenewCertificate;
+            this.BasicConstraints = basicConstraints;
+            this.BasicConstraintsCritical = basicConstraintsCritical;
             this.BasicConstraintsValidForNonCa = basicConstraintsValidForNonCa;
             this.CertificateAuthorityMode = certificateAuthorityMode;
             this.ClientFlag = clientFlag;
@@ -178,6 +182,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "auto_renew_certificate", EmitDefaultValue = true)]
         public bool AutoRenewCertificate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BasicConstraints
+        /// </summary>
+        [DataMember(Name = "basic_constraints", EmitDefaultValue = false)]
+        public string BasicConstraints { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BasicConstraintsCritical
+        /// </summary>
+        [DataMember(Name = "basic_constraints_critical", EmitDefaultValue = true)]
+        public bool BasicConstraintsCritical { get; set; }
 
         /// <summary>
         /// Gets or Sets BasicConstraintsValidForNonCa
@@ -408,6 +424,8 @@ namespace akeyless.Model
             sb.Append("  AllowedIpSans: ").Append(AllowedIpSans).Append("\n");
             sb.Append("  AllowedUriSans: ").Append(AllowedUriSans).Append("\n");
             sb.Append("  AutoRenewCertificate: ").Append(AutoRenewCertificate).Append("\n");
+            sb.Append("  BasicConstraints: ").Append(BasicConstraints).Append("\n");
+            sb.Append("  BasicConstraintsCritical: ").Append(BasicConstraintsCritical).Append("\n");
             sb.Append("  BasicConstraintsValidForNonCa: ").Append(BasicConstraintsValidForNonCa).Append("\n");
             sb.Append("  CertificateAuthorityMode: ").Append(CertificateAuthorityMode).Append("\n");
             sb.Append("  ClientFlag: ").Append(ClientFlag).Append("\n");
