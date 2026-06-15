@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="allowedRedirectURIs">Allowed redirect URIs after the authentication.</param>
         /// <param name="audience">Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application.</param>
+        /// <param name="authorizedGwClusterName">AuthorizedGwClusterName binds the access method to a single GW cluster. When empty (or whitespace-only), GW-driven auth is disabled..</param>
         /// <param name="boundClaims">The claims that login is restricted to..</param>
         /// <param name="clientId">Client ID.</param>
         /// <param name="clientSecret">Client Secret.</param>
@@ -45,10 +46,11 @@ namespace akeyless.Model
         /// <param name="requiredScopes">A list of required scopes to request from the oidc provider, and to check on the token.</param>
         /// <param name="requiredScopesPrefix">A prefix to add to the required scopes (for example, azures&#39; Application ID URI).</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public OIDCAccessRules(List<string> allowedRedirectURIs = default(List<string>), string audience = default(string), List<OIDCCustomClaim> boundClaims = default(List<OIDCCustomClaim>), string clientId = default(string), string clientSecret = default(string), bool isInternal = default(bool), string issuer = default(string), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string uniqueIdentifier = default(string))
+        public OIDCAccessRules(List<string> allowedRedirectURIs = default(List<string>), string audience = default(string), string authorizedGwClusterName = default(string), List<OIDCCustomClaim> boundClaims = default(List<OIDCCustomClaim>), string clientId = default(string), string clientSecret = default(string), bool isInternal = default(bool), string issuer = default(string), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string uniqueIdentifier = default(string))
         {
             this.AllowedRedirectURIs = allowedRedirectURIs;
             this.Audience = audience;
+            this.AuthorizedGwClusterName = authorizedGwClusterName;
             this.BoundClaims = boundClaims;
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
@@ -72,6 +74,13 @@ namespace akeyless.Model
         /// <value>Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application</value>
         [DataMember(Name = "audience", EmitDefaultValue = false)]
         public string Audience { get; set; }
+
+        /// <summary>
+        /// AuthorizedGwClusterName binds the access method to a single GW cluster. When empty (or whitespace-only), GW-driven auth is disabled.
+        /// </summary>
+        /// <value>AuthorizedGwClusterName binds the access method to a single GW cluster. When empty (or whitespace-only), GW-driven auth is disabled.</value>
+        [DataMember(Name = "authorized_gw_cluster_name", EmitDefaultValue = false)]
+        public string AuthorizedGwClusterName { get; set; }
 
         /// <summary>
         /// The claims that login is restricted to.
@@ -139,6 +148,7 @@ namespace akeyless.Model
             sb.Append("class OIDCAccessRules {\n");
             sb.Append("  AllowedRedirectURIs: ").Append(AllowedRedirectURIs).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
+            sb.Append("  AuthorizedGwClusterName: ").Append(AuthorizedGwClusterName).Append("\n");
             sb.Append("  BoundClaims: ").Append(BoundClaims).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");

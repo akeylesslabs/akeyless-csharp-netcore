@@ -43,7 +43,7 @@ namespace akeyless.Model
         /// <param name="apiId">API ID to rotate (relevant only for rotator-type&#x3D;api-key).</param>
         /// <param name="apiKey">API key to rotate (relevant only for rotator-type&#x3D;api-key).</param>
         /// <param name="authenticationCredentials">The credentials to connect with use-user-creds/use-target-creds (default to &quot;use-user-creds&quot;).</param>
-        /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
+        /// <param name="autoRotate">autoRotate.</param>
         /// <param name="awsRegion">Aws Region (default to &quot;us-east-2&quot;).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
@@ -54,7 +54,7 @@ namespace akeyless.Model
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input).</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="key">key.</param>
         /// <param name="lockDuringSraSession">Lock this secret for read/update while an SRA session is active.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Rotated secret name (required).</param>
@@ -62,8 +62,8 @@ namespace akeyless.Model
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="rotateAfterDisconnect">StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect..</param>
         /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
-        /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
-        /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
+        /// <param name="rotationHour">rotationHour.</param>
+        /// <param name="rotationInterval">rotationInterval.</param>
         /// <param name="rotatorType">The rotator type. options: [target/api-key] (required).</param>
         /// <param name="secureAccessAwsAccountId">The AWS account id.</param>
         /// <param name="secureAccessAwsNativeCli">The AWS native cli.</param>
@@ -159,9 +159,8 @@ namespace akeyless.Model
         public string AuthenticationCredentials { get; set; }
 
         /// <summary>
-        /// Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false]
+        /// Gets or Sets AutoRotate
         /// </summary>
-        /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false]</value>
         [DataMember(Name = "auto-rotate", EmitDefaultValue = false)]
         public string AutoRotate { get; set; }
 
@@ -236,9 +235,8 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
+        /// Gets or Sets Key
         /// </summary>
-        /// <value>The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
 
@@ -292,16 +290,14 @@ namespace akeyless.Model
         public List<string> RotationEventIn { get; set; }
 
         /// <summary>
-        /// The Hour of the rotation in UTC
+        /// Gets or Sets RotationHour
         /// </summary>
-        /// <value>The Hour of the rotation in UTC</value>
         [DataMember(Name = "rotation-hour", EmitDefaultValue = false)]
         public int RotationHour { get; set; }
 
         /// <summary>
-        /// The number of days to wait between every automatic key rotation (1-365)
+        /// Gets or Sets RotationInterval
         /// </summary>
-        /// <value>The number of days to wait between every automatic key rotation (1-365)</value>
         [DataMember(Name = "rotation-interval", EmitDefaultValue = false)]
         public string RotationInterval { get; set; }
 

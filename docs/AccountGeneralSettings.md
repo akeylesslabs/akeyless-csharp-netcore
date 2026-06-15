@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **PasswordExpirationInfo** | [**PasswordExpirationInfo**](PasswordExpirationInfo.md) |  | [optional] 
 **PasswordPolicy** | [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 **PasswordScore** | [**PasswordScoreSetting**](PasswordScoreSetting.md) |  | [optional] 
+**PersonalFolderGlobalMapping** | [**PersonalFolderGlobalMappingSettings**](PersonalFolderGlobalMappingSettings.md) |  | [optional] 
 **ProtectItemsByDefault** | **bool** |  | [optional] 
 **RotationSecretMaxInterval** | [**RotationSecretMaxInterval**](RotationSecretMaxInterval.md) |  | [optional] 
 **SharingPolicy** | [**SharingPolicyInfo**](SharingPolicyInfo.md) |  | [optional] 

@@ -45,7 +45,7 @@ namespace akeyless.Model
         /// <param name="apiKey">API key to rotate (relevant only for rotator-type&#x3D;api-key).</param>
         /// <param name="applicationId">Id of the azure app that hold the serect to be rotated (relevant only for rotator-type&#x3D;api-key &amp; authentication-credentials&#x3D;use-target-creds).</param>
         /// <param name="authenticationCredentials">The credentials to connect with use-user-creds/use-target-creds (default to &quot;use-user-creds&quot;).</param>
-        /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
+        /// <param name="autoRotate">autoRotate.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="explicitlySetSa">If set, explicitly provide the storage account details [true/false] (default to &quot;false&quot;).</param>
@@ -57,20 +57,21 @@ namespace akeyless.Model
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
-        /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="key">key.</param>
         /// <param name="lockDuringSraSession">Lock this secret for read/update while an SRA session is active.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="newName">New item name.</param>
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
+        /// <param name="password">The password for the user principal name to rotate (relevant only for rotator-type&#x3D;password).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="resourceGroupName">The resource group name (only relevant when explicitly-set-sa&#x3D;true).</param>
         /// <param name="resourceName">The name of the storage account (only relevant when explicitly-set-sa&#x3D;true).</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="rotateAfterDisconnect">StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect..</param>
         /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
-        /// <param name="rotationHour">The Hour of the rotation in UTC.</param>
-        /// <param name="rotationInterval">The number of days to wait between every automatic key rotation (1-365).</param>
+        /// <param name="rotationHour">rotationHour.</param>
+        /// <param name="rotationInterval">rotationInterval.</param>
         /// <param name="secureAccessDisableConcurrentConnections">Enable this flag to prevent simultaneous use of the same secret.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
@@ -85,7 +86,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="username">The user principal name to rotate his password (relevant only for rotator-type&#x3D;password).</param>
-        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string explicitlySetSa = @"false", string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string resourceGroupName = default(string), string resourceName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string username = default(string))
+        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string explicitlySetSa = @"false", string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string password = default(string), string passwordLength = default(string), string resourceGroupName = default(string), string resourceName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -118,6 +119,7 @@ namespace akeyless.Model
             this.MaxVersions = maxVersions;
             this.NewName = newName;
             this.OutputRule = outputRule;
+            this.Password = password;
             this.PasswordLength = passwordLength;
             this.ResourceGroupName = resourceGroupName;
             this.ResourceName = resourceName;
@@ -178,9 +180,8 @@ namespace akeyless.Model
         public string AuthenticationCredentials { get; set; }
 
         /// <summary>
-        /// Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false]
+        /// Gets or Sets AutoRotate
         /// </summary>
-        /// <value>Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false]</value>
         [DataMember(Name = "auto-rotate", EmitDefaultValue = false)]
         public string AutoRotate { get; set; }
 
@@ -262,9 +263,8 @@ namespace akeyless.Model
         public string KeepPrevVersion { get; set; }
 
         /// <summary>
-        /// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
+        /// Gets or Sets Key
         /// </summary>
-        /// <value>The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
 
@@ -302,6 +302,13 @@ namespace akeyless.Model
         /// <value>Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets)</value>
         [DataMember(Name = "output-rule", EmitDefaultValue = false)]
         public List<string> OutputRule { get; set; }
+
+        /// <summary>
+        /// The password for the user principal name to rotate (relevant only for rotator-type&#x3D;password)
+        /// </summary>
+        /// <value>The password for the user principal name to rotate (relevant only for rotator-type&#x3D;password)</value>
+        [DataMember(Name = "password", EmitDefaultValue = false)]
+        public string Password { get; set; }
 
         /// <summary>
         /// The length of the password to be generated
@@ -346,16 +353,14 @@ namespace akeyless.Model
         public List<string> RotationEventIn { get; set; }
 
         /// <summary>
-        /// The Hour of the rotation in UTC
+        /// Gets or Sets RotationHour
         /// </summary>
-        /// <value>The Hour of the rotation in UTC</value>
         [DataMember(Name = "rotation-hour", EmitDefaultValue = false)]
         public int RotationHour { get; set; }
 
         /// <summary>
-        /// The number of days to wait between every automatic key rotation (1-365)
+        /// Gets or Sets RotationInterval
         /// </summary>
-        /// <value>The number of days to wait between every automatic key rotation (1-365)</value>
         [DataMember(Name = "rotation-interval", EmitDefaultValue = false)]
         public string RotationInterval { get; set; }
 
@@ -490,6 +495,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ResourceGroupName: ").Append(ResourceGroupName).Append("\n");
             sb.Append("  ResourceName: ").Append(ResourceName).Append("\n");

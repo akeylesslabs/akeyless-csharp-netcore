@@ -36,12 +36,14 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="FolderUSCSyncConfig" /> class.
         /// </summary>
         /// <param name="deleteRemote">deleteRemote.</param>
+        /// <param name="engineName">engineName.</param>
         /// <param name="varNamespace">varNamespace.</param>
         /// <param name="uscItemId">uscItemId.</param>
         /// <param name="uscItemName">uscItemName.</param>
-        public FolderUSCSyncConfig(bool deleteRemote = default(bool), string varNamespace = default(string), long uscItemId = default(long), string uscItemName = default(string))
+        public FolderUSCSyncConfig(bool deleteRemote = default(bool), string engineName = default(string), string varNamespace = default(string), long uscItemId = default(long), string uscItemName = default(string))
         {
             this.DeleteRemote = deleteRemote;
+            this.EngineName = engineName;
             this.Namespace = varNamespace;
             this.UscItemId = uscItemId;
             this.UscItemName = uscItemName;
@@ -52,6 +54,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "delete_remote", EmitDefaultValue = true)]
         public bool DeleteRemote { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EngineName
+        /// </summary>
+        [DataMember(Name = "engine_name", EmitDefaultValue = false)]
+        public string EngineName { get; set; }
 
         /// <summary>
         /// Gets or Sets Namespace
@@ -80,6 +88,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class FolderUSCSyncConfig {\n");
             sb.Append("  DeleteRemote: ").Append(DeleteRemote).Append("\n");
+            sb.Append("  EngineName: ").Append(EngineName).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  UscItemId: ").Append(UscItemId).Append("\n");
             sb.Append("  UscItemName: ").Append(UscItemName).Append("\n");

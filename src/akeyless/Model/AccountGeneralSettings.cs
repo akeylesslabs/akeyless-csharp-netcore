@@ -61,10 +61,11 @@ namespace akeyless.Model
         /// <param name="passwordExpirationInfo">passwordExpirationInfo.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
         /// <param name="passwordScore">passwordScore.</param>
+        /// <param name="personalFolderGlobalMapping">personalFolderGlobalMapping.</param>
         /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="rotationSecretMaxInterval">rotationSecretMaxInterval.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AiInsightsSetting aiInsights = default(AiInsightsSetting), bool allowAutoFill = default(bool), bool allowPasskeys = default(bool), AllowedClientType allowedClientTypes = default(AllowedClientType), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), CertificateExpirationEventsSettings certificateExpirationEvents = default(CertificateExpirationEventsSettings), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DefaultAuthMethodSettings defaultAuthMethod = default(DefaultAuthMethodSettings), DefaultHomePage defaultHomePage = default(DefaultHomePage), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), bool enableSearchHistory = default(bool), bool hidePersonalFolder = default(bool), bool hideSecretRevealCopy = default(bool), bool hideStaticPassword = default(bool), string invalidCharacters = default(string), ItemLockingSetting itemLocking = default(ItemLockingSetting), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), PasswordScoreSetting passwordScore = default(PasswordScoreSetting), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), AiInsightsSetting aiInsights = default(AiInsightsSetting), bool allowAutoFill = default(bool), bool allowPasskeys = default(bool), AllowedClientType allowedClientTypes = default(AllowedClientType), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), CertificateExpirationEventsSettings certificateExpirationEvents = default(CertificateExpirationEventsSettings), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DefaultAuthMethodSettings defaultAuthMethod = default(DefaultAuthMethodSettings), DefaultHomePage defaultHomePage = default(DefaultHomePage), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), bool enableRequestForAccess = default(bool), bool enableSearchHistory = default(bool), bool hidePersonalFolder = default(bool), bool hideSecretRevealCopy = default(bool), bool hideStaticPassword = default(bool), string invalidCharacters = default(string), ItemLockingSetting itemLocking = default(ItemLockingSetting), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), PasswordScoreSetting passwordScore = default(PasswordScoreSetting), PersonalFolderGlobalMappingSettings personalFolderGlobalMapping = default(PersonalFolderGlobalMappingSettings), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.AccountDefaultKeyItemId = accountDefaultKeyItemId;
             this.AccountDefaultKeyName = accountDefaultKeyName;
@@ -92,6 +93,7 @@ namespace akeyless.Model
             this.PasswordExpirationInfo = passwordExpirationInfo;
             this.PasswordPolicy = passwordPolicy;
             this.PasswordScore = passwordScore;
+            this.PersonalFolderGlobalMapping = personalFolderGlobalMapping;
             this.ProtectItemsByDefault = protectItemsByDefault;
             this.RotationSecretMaxInterval = rotationSecretMaxInterval;
             this.SharingPolicy = sharingPolicy;
@@ -258,6 +260,12 @@ namespace akeyless.Model
         public PasswordScoreSetting PasswordScore { get; set; }
 
         /// <summary>
+        /// Gets or Sets PersonalFolderGlobalMapping
+        /// </summary>
+        [DataMember(Name = "personal_folder_global_mapping", EmitDefaultValue = false)]
+        public PersonalFolderGlobalMappingSettings PersonalFolderGlobalMapping { get; set; }
+
+        /// <summary>
         /// Gets or Sets ProtectItemsByDefault
         /// </summary>
         [DataMember(Name = "protect_items_by_default", EmitDefaultValue = true)]
@@ -309,6 +317,7 @@ namespace akeyless.Model
             sb.Append("  PasswordExpirationInfo: ").Append(PasswordExpirationInfo).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
             sb.Append("  PasswordScore: ").Append(PasswordScore).Append("\n");
+            sb.Append("  PersonalFolderGlobalMapping: ").Append(PersonalFolderGlobalMapping).Append("\n");
             sb.Append("  ProtectItemsByDefault: ").Append(ProtectItemsByDefault).Append("\n");
             sb.Append("  RotationSecretMaxInterval: ").Append(RotationSecretMaxInterval).Append("\n");
             sb.Append("  SharingPolicy: ").Append(SharingPolicy).Append("\n");

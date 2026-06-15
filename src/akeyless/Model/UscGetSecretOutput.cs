@@ -41,7 +41,10 @@ namespace akeyless.Model
         /// <param name="metadata">metadata.</param>
         /// <param name="name">name.</param>
         /// <param name="value">value.</param>
-        public UscGetSecretOutput(bool binaryValue = default(bool), string encryptionKey = default(string), string id = default(string), Object metadata = default(Object), string name = default(string), string value = default(string))
+        /// <param name="versionId">versionId.</param>
+        /// <param name="versionIds">versionIds.</param>
+        /// <param name="warnings">warnings.</param>
+        public UscGetSecretOutput(bool binaryValue = default(bool), string encryptionKey = default(string), string id = default(string), Object metadata = default(Object), string name = default(string), string value = default(string), string versionId = default(string), List<string> versionIds = default(List<string>), List<string> warnings = default(List<string>))
         {
             this.BinaryValue = binaryValue;
             this.EncryptionKey = encryptionKey;
@@ -49,6 +52,9 @@ namespace akeyless.Model
             this.Metadata = metadata;
             this.Name = name;
             this.Value = value;
+            this.VersionId = versionId;
+            this.VersionIds = versionIds;
+            this.Warnings = warnings;
         }
 
         /// <summary>
@@ -88,6 +94,24 @@ namespace akeyless.Model
         public string Value { get; set; }
 
         /// <summary>
+        /// Gets or Sets VersionId
+        /// </summary>
+        [DataMember(Name = "version_id", EmitDefaultValue = false)]
+        public string VersionId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VersionIds
+        /// </summary>
+        [DataMember(Name = "version_ids", EmitDefaultValue = false)]
+        public List<string> VersionIds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Warnings
+        /// </summary>
+        [DataMember(Name = "warnings", EmitDefaultValue = false)]
+        public List<string> Warnings { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -101,6 +125,9 @@ namespace akeyless.Model
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  VersionId: ").Append(VersionId).Append("\n");
+            sb.Append("  VersionIds: ").Append(VersionIds).Append("\n");
+            sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

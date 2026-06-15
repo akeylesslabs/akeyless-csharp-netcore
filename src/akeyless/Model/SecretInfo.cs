@@ -52,7 +52,9 @@ namespace akeyless.Model
         /// <param name="thumbprint">thumbprint.</param>
         /// <param name="type">type.</param>
         /// <param name="varVersion">varVersion.</param>
-        public SecretInfo(DateTime activationDate = default(DateTime), DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), GithubMetadata github = default(GithubMetadata), string keyId = default(string), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string varNamespace = default(string), string region = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long))
+        /// <param name="versionId">versionId.</param>
+        /// <param name="versionIds">versionIds.</param>
+        public SecretInfo(DateTime activationDate = default(DateTime), DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), GithubMetadata github = default(GithubMetadata), string keyId = default(string), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string varNamespace = default(string), string region = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long), string versionId = default(string), List<string> versionIds = default(List<string>))
         {
             this.ActivationDate = activationDate;
             this.Created = created;
@@ -71,6 +73,8 @@ namespace akeyless.Model
             this.Thumbprint = thumbprint;
             this.Type = type;
             this.VarVersion = varVersion;
+            this.VersionId = versionId;
+            this.VersionIds = versionIds;
         }
 
         /// <summary>
@@ -176,6 +180,18 @@ namespace akeyless.Model
         public long VarVersion { get; set; }
 
         /// <summary>
+        /// Gets or Sets VersionId
+        /// </summary>
+        [DataMember(Name = "version_id", EmitDefaultValue = false)]
+        public string VersionId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VersionIds
+        /// </summary>
+        [DataMember(Name = "version_ids", EmitDefaultValue = false)]
+        public List<string> VersionIds { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -200,6 +216,8 @@ namespace akeyless.Model
             sb.Append("  Thumbprint: ").Append(Thumbprint).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  VersionId: ").Append(VersionId).Append("\n");
+            sb.Append("  VersionIds: ").Append(VersionIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

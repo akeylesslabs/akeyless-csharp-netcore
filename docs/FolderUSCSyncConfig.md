@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteRemote** | **bool** |  | [optional] 
+**EngineName** | **string** |  | [optional] 
 **Namespace** | **string** |  | [optional] 
 **UscItemId** | **long** |  | [optional] 
 **UscItemName** | **string** |  | [optional] 

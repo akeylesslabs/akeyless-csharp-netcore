@@ -71,7 +71,7 @@ namespace akeyless.Model
         /// Delete the secret from remote secret manager (for association create/update)
         /// </summary>
         /// <value>Delete the secret from remote secret manager (for association create/update)</value>
-        [DataMember(Name = "DeleteRemote", EmitDefaultValue = true)]
+        [DataMember(Name = "delete-remote", EmitDefaultValue = true)]
         public bool DeleteRemote { get; set; }
 
         /// <summary>

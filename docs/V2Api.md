@@ -221,7 +221,10 @@ All URIs are relative to *https://api.akeyless.io*
 | [**ExportClassicKey**](V2Api.md#exportclassickey) | **POST** /export-classic-key |  |
 | [**FolderCreate**](V2Api.md#foldercreate) | **POST** /folder-create |  |
 | [**FolderDelete**](V2Api.md#folderdelete) | **POST** /folder-delete |  |
+| [**FolderDeleteSync**](V2Api.md#folderdeletesync) | **POST** /folder-delete-sync |  |
 | [**FolderGet**](V2Api.md#folderget) | **POST** /folder-get |  |
+| [**FolderSync**](V2Api.md#foldersync) | **POST** /folder-sync |  |
+| [**FolderSyncAll**](V2Api.md#foldersyncall) | **POST** /folder-sync-all |  |
 | [**FolderUpdate**](V2Api.md#folderupdate) | **POST** /folder-update |  |
 | [**GatewayCreateAllowedAccess**](V2Api.md#gatewaycreateallowedaccess) | **POST** /gateway-create-allowed-access |  |
 | [**GatewayCreateK8SAuthConfig**](V2Api.md#gatewaycreatek8sauthconfig) | **POST** /gateway-create-k8s-auth-config |  |
@@ -417,6 +420,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretCreateDockerhub**](V2Api.md#rotatedsecretcreatedockerhub) | **POST** /rotated-secret-create-dockerhub |  |
 | [**RotatedSecretCreateGcp**](V2Api.md#rotatedsecretcreategcp) | **POST** /rotated-secret-create-gcp |  |
 | [**RotatedSecretCreateHanadb**](V2Api.md#rotatedsecretcreatehanadb) | **POST** /rotated-secret-create-hanadb |  |
+| [**RotatedSecretCreateHashiVault**](V2Api.md#rotatedsecretcreatehashivault) | **POST** /rotated-secret-create-hashi-vault |  |
 | [**RotatedSecretCreateLdap**](V2Api.md#rotatedsecretcreateldap) | **POST** /rotated-secret-create-ldap |  |
 | [**RotatedSecretCreateMongodb**](V2Api.md#rotatedsecretcreatemongodb) | **POST** /rotated-secret-create-mongodb |  |
 | [**RotatedSecretCreateMssql**](V2Api.md#rotatedsecretcreatemssql) | **POST** /rotated-secret-create-mssql |  |
@@ -442,6 +446,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretUpdateDockerhub**](V2Api.md#rotatedsecretupdatedockerhub) | **POST** /rotated-secret-update-dockerhub |  |
 | [**RotatedSecretUpdateGcp**](V2Api.md#rotatedsecretupdategcp) | **POST** /rotated-secret-update-gcp |  |
 | [**RotatedSecretUpdateHanadb**](V2Api.md#rotatedsecretupdatehanadb) | **POST** /rotated-secret-update-hanadb |  |
+| [**RotatedSecretUpdateHashiVault**](V2Api.md#rotatedsecretupdatehashivault) | **POST** /rotated-secret-update-hashi-vault |  |
 | [**RotatedSecretUpdateLdap**](V2Api.md#rotatedsecretupdateldap) | **POST** /rotated-secret-update-ldap |  |
 | [**RotatedSecretUpdateMongodb**](V2Api.md#rotatedsecretupdatemongodb) | **POST** /rotated-secret-update-mongodb |  |
 | [**RotatedSecretUpdateMssql**](V2Api.md#rotatedsecretupdatemssql) | **POST** /rotated-secret-update-mssql |  |
@@ -19724,6 +19729,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="folderdeletesync"></a>
+# **FolderDeleteSync**
+> FolderDeleteSyncOutput FolderDeleteSync (FolderDeleteSync folderDeleteSync)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class FolderDeleteSyncExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var folderDeleteSync = new FolderDeleteSync(); // FolderDeleteSync | 
+
+            try
+            {
+                FolderDeleteSyncOutput result = apiInstance.FolderDeleteSync(folderDeleteSync);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.FolderDeleteSync: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the FolderDeleteSyncWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<FolderDeleteSyncOutput> response = apiInstance.FolderDeleteSyncWithHttpInfo(folderDeleteSync);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.FolderDeleteSyncWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **folderDeleteSync** | [**FolderDeleteSync**](FolderDeleteSync.md) |  |  |
+
+### Return type
+
+[**FolderDeleteSyncOutput**](FolderDeleteSyncOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="folderget"></a>
 # **FolderGet**
 > FolderGetOutput FolderGet (FolderGet folderGet)
@@ -19808,6 +19901,182 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | folderGetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="foldersync"></a>
+# **FolderSync**
+> FolderSyncOutput FolderSync (FolderSync folderSync)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class FolderSyncExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var folderSync = new FolderSync(); // FolderSync | 
+
+            try
+            {
+                FolderSyncOutput result = apiInstance.FolderSync(folderSync);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.FolderSync: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the FolderSyncWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<FolderSyncOutput> response = apiInstance.FolderSyncWithHttpInfo(folderSync);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.FolderSyncWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **folderSync** | [**FolderSync**](FolderSync.md) |  |  |
+
+### Return type
+
+[**FolderSyncOutput**](FolderSyncOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="foldersyncall"></a>
+# **FolderSyncAll**
+> FolderSyncAllOutput FolderSyncAll (FolderSyncAll folderSyncAll)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class FolderSyncAllExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var folderSyncAll = new FolderSyncAll(); // FolderSyncAll | 
+
+            try
+            {
+                FolderSyncAllOutput result = apiInstance.FolderSyncAll(folderSyncAll);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.FolderSyncAll: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the FolderSyncAllWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<FolderSyncAllOutput> response = apiInstance.FolderSyncAllWithHttpInfo(folderSyncAll);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.FolderSyncAllWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **folderSyncAll** | [**FolderSyncAll**](FolderSyncAll.md) |  |  |
+
+### Return type
+
+[**FolderSyncAllOutput**](FolderSyncAllOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -36946,6 +37215,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="rotatedsecretcreatehashivault"></a>
+# **RotatedSecretCreateHashiVault**
+> RotatedSecretCreateOutput RotatedSecretCreateHashiVault (RotatedSecretCreateHashiVault rotatedSecretCreateHashiVault)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretCreateHashiVaultExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretCreateHashiVault = new RotatedSecretCreateHashiVault(); // RotatedSecretCreateHashiVault | 
+
+            try
+            {
+                RotatedSecretCreateOutput result = apiInstance.RotatedSecretCreateHashiVault(rotatedSecretCreateHashiVault);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretCreateHashiVault: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretCreateHashiVaultWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretCreateOutput> response = apiInstance.RotatedSecretCreateHashiVaultWithHttpInfo(rotatedSecretCreateHashiVault);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretCreateHashiVaultWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretCreateHashiVault** | [**RotatedSecretCreateHashiVault**](RotatedSecretCreateHashiVault.md) |  |  |
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | rotatedSecretCreateHashiVaultResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="rotatedsecretcreateldap"></a>
 # **RotatedSecretCreateLdap**
 > RotatedSecretCreateOutput RotatedSecretCreateLdap (RotatedSecretCreateLdap rotatedSecretCreateLdap)
@@ -39142,6 +39499,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | rotatedSecretUpdateHanadbResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="rotatedsecretupdatehashivault"></a>
+# **RotatedSecretUpdateHashiVault**
+> RotatedSecretUpdateOutput RotatedSecretUpdateHashiVault (RotatedSecretUpdateHashiVault rotatedSecretUpdateHashiVault)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretUpdateHashiVaultExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretUpdateHashiVault = new RotatedSecretUpdateHashiVault(); // RotatedSecretUpdateHashiVault | 
+
+            try
+            {
+                RotatedSecretUpdateOutput result = apiInstance.RotatedSecretUpdateHashiVault(rotatedSecretUpdateHashiVault);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretUpdateHashiVault: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretUpdateHashiVaultWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretUpdateOutput> response = apiInstance.RotatedSecretUpdateHashiVaultWithHttpInfo(rotatedSecretUpdateHashiVault);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretUpdateHashiVaultWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretUpdateHashiVault** | [**RotatedSecretUpdateHashiVault**](RotatedSecretUpdateHashiVault.md) |  |  |
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | rotatedSecretUpdateHashiVaultResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
