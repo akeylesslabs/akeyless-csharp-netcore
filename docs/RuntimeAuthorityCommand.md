@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **AgentId** | **string** | Agent identifier for auditing | 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Secret name (dynamic secret or rotated secret) | 
+**OriginalPrompt** | **string** | Original natural-language prompt from the user (optional, for auditing) | [optional] 
+**OriginalUser** | **string** | Human end-user behind the agent (optional, for auditing) | [optional] 
 **Payload** | **string** | Query or action payload (SQL, natural language, or CLI-style) | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

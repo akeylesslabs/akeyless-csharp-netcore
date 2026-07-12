@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="StaticSecretDetailsInfo" /> class.
         /// </summary>
+        /// <param name="fileInfo">fileInfo.</param>
         /// <param name="format">StaticSecretFormat defines the format of static secret (e.g. Text).</param>
         /// <param name="maxVersions">maxVersions.</param>
         /// <param name="notifyOnChangeEvent">notifyOnChangeEvent.</param>
@@ -42,8 +43,9 @@ namespace akeyless.Model
         /// <param name="username">username.</param>
         /// <param name="website">deprecated.</param>
         /// <param name="websites">websites.</param>
-        public StaticSecretDetailsInfo(string format = default(string), long maxVersions = default(long), bool notifyOnChangeEvent = default(bool), PasswordSecurityInfo passwordSecurityInfo = default(PasswordSecurityInfo), string username = default(string), string website = default(string), List<string> websites = default(List<string>))
+        public StaticSecretDetailsInfo(FileInfo fileInfo = default(FileInfo), string format = default(string), long maxVersions = default(long), bool notifyOnChangeEvent = default(bool), PasswordSecurityInfo passwordSecurityInfo = default(PasswordSecurityInfo), string username = default(string), string website = default(string), List<string> websites = default(List<string>))
         {
+            this.FileInfo = fileInfo;
             this.Format = format;
             this.MaxVersions = maxVersions;
             this.NotifyOnChangeEvent = notifyOnChangeEvent;
@@ -52,6 +54,12 @@ namespace akeyless.Model
             this.Website = website;
             this.Websites = websites;
         }
+
+        /// <summary>
+        /// Gets or Sets FileInfo
+        /// </summary>
+        [DataMember(Name = "file_info", EmitDefaultValue = false)]
+        public FileInfo FileInfo { get; set; }
 
         /// <summary>
         /// StaticSecretFormat defines the format of static secret (e.g. Text)
@@ -105,6 +113,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class StaticSecretDetailsInfo {\n");
+            sb.Append("  FileInfo: ").Append(FileInfo).Append("\n");
             sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  NotifyOnChangeEvent: ").Append(NotifyOnChangeEvent).Append("\n");

@@ -41,6 +41,7 @@ Name | Type | Description | Notes
 **ParentTargetName** | **string** | Name of the parent target, relevant only when connection-type is parent-target | [optional] 
 **Port** | **string** |  | [optional] 
 **Pwd** | **string** |  | [optional] 
+**SkipServerNameValidation** | **string** | (Optional) Skip server name verification | [optional] 
 **SnowflakeAccount** | **string** |  | [optional] 
 **SnowflakeApiPrivateKey** | **string** | RSA Private key (base64 encoded) | [optional] 
 **SnowflakeApiPrivateKeyPassword** | **string** | The Private key passphrase | [optional] 

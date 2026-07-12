@@ -60,8 +60,9 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="treeLength">Maximum UID tree depth allowed (child of child of ...) (default to 200).</param>
         /// <param name="ttl">Token ttl (default to 60).</param>
+        /// <param name="uidExpirationEventAt">Notify when this percent of the token TTL has elapsed (1-99)..</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AuthMethodUpdateUniversalIdentity(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), int childTtlLimit = 43200, string deleteProtection = default(string), bool denyInheritance = default(bool), bool denyRotate = default(bool), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), int treeLength = 200, int ttl = 60, string uidToken = default(string))
+        public AuthMethodUpdateUniversalIdentity(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), int childTtlLimit = 43200, string deleteProtection = default(string), bool denyInheritance = default(bool), bool denyRotate = default(bool), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), int treeLength = 200, int ttl = 60, List<string> uidExpirationEventAt = default(List<string>), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -88,6 +89,7 @@ namespace akeyless.Model
             this.Token = token;
             this.TreeLength = treeLength;
             this.Ttl = ttl;
+            this.UidExpirationEventAt = uidExpirationEventAt;
             this.UidToken = uidToken;
         }
 
@@ -232,6 +234,13 @@ namespace akeyless.Model
         public int Ttl { get; set; }
 
         /// <summary>
+        /// Notify when this percent of the token TTL has elapsed (1-99).
+        /// </summary>
+        /// <value>Notify when this percent of the token TTL has elapsed (1-99).</value>
+        [DataMember(Name = "uid-expiration-event-at", EmitDefaultValue = false)]
+        public List<string> UidExpirationEventAt { get; set; }
+
+        /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
@@ -266,6 +275,7 @@ namespace akeyless.Model
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TreeLength: ").Append(TreeLength).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
+            sb.Append("  UidExpirationEventAt: ").Append(UidExpirationEventAt).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

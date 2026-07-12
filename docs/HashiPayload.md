@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteSyncOnDeletion** | **bool** |  | [optional] 
+**HashiTargetId** | **long** |  | [optional] 
 **ImportAsJson** | **bool** |  | [optional] 
 **MetadataMode** | **string** |  | [optional] 
 **Namespaces** | **List&lt;string&gt;** |  | [optional] 

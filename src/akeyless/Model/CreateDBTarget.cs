@@ -74,6 +74,7 @@ namespace akeyless.Model
         /// <param name="parentTargetName">Name of the parent target, relevant only when connection-type is parent-target.</param>
         /// <param name="port">port.</param>
         /// <param name="pwd">pwd.</param>
+        /// <param name="skipServerNameValidation">(Optional) Skip server name verification.</param>
         /// <param name="snowflakeAccount">snowflakeAccount.</param>
         /// <param name="snowflakeApiPrivateKey">RSA Private key (base64 encoded).</param>
         /// <param name="snowflakeApiPrivateKeyPassword">The Private key passphrase.</param>
@@ -82,7 +83,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userName">userName.</param>
-        public CreateDBTarget(string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string clientCertificate = default(string), string clientKeyPassphrase = default(string), string clientPrivateKey = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string comment = default(string), string connectionType = @"credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), bool enableMtls = default(bool), string host = default(string), bool json = false, string key = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string oracleWalletLoginType = default(string), string oracleWalletP12FileData = default(string), string oracleWalletSsoFileData = default(string), string parentTargetName = default(string), string port = default(string), string pwd = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
+        public CreateDBTarget(string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string clientCertificate = default(string), string clientKeyPassphrase = default(string), string clientPrivateKey = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string comment = default(string), string connectionType = @"credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), bool enableMtls = default(bool), string host = default(string), bool json = false, string key = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string oracleServiceName = default(string), string oracleWalletLoginType = default(string), string oracleWalletP12FileData = default(string), string oracleWalletSsoFileData = default(string), string parentTargetName = default(string), string port = default(string), string pwd = default(string), string skipServerNameValidation = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), string userName = default(string))
         {
             // to ensure "connectionType" is required (not null)
             if (connectionType == null)
@@ -133,6 +134,7 @@ namespace akeyless.Model
             this.ParentTargetName = parentTargetName;
             this.Port = port;
             this.Pwd = pwd;
+            this.SkipServerNameValidation = skipServerNameValidation;
             this.SnowflakeAccount = snowflakeAccount;
             this.SnowflakeApiPrivateKey = snowflakeApiPrivateKey;
             this.SnowflakeApiPrivateKeyPassword = snowflakeApiPrivateKeyPassword;
@@ -376,6 +378,13 @@ namespace akeyless.Model
         public string Pwd { get; set; }
 
         /// <summary>
+        /// (Optional) Skip server name verification
+        /// </summary>
+        /// <value>(Optional) Skip server name verification</value>
+        [DataMember(Name = "skip-server-name-validation", EmitDefaultValue = false)]
+        public string SkipServerNameValidation { get; set; }
+
+        /// <summary>
         /// Gets or Sets SnowflakeAccount
         /// </summary>
         [DataMember(Name = "snowflake-account", EmitDefaultValue = false)]
@@ -471,6 +480,7 @@ namespace akeyless.Model
             sb.Append("  ParentTargetName: ").Append(ParentTargetName).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  Pwd: ").Append(Pwd).Append("\n");
+            sb.Append("  SkipServerNameValidation: ").Append(SkipServerNameValidation).Append("\n");
             sb.Append("  SnowflakeAccount: ").Append(SnowflakeAccount).Append("\n");
             sb.Append("  SnowflakeApiPrivateKey: ").Append(SnowflakeApiPrivateKey).Append("\n");
             sb.Append("  SnowflakeApiPrivateKeyPassword: ").Append(SnowflakeApiPrivateKeyPassword).Append("\n");

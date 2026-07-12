@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActivationDate** | **DateTime** |  | [optional] 
 **BinaryValue** | **bool** |  | [optional] 
 **EncryptionKey** | **string** |  | [optional] 
+**Expiration** | **DateTime** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **Metadata** | **Object** |  | [optional] 
 **Name** | **string** |  | [optional] 

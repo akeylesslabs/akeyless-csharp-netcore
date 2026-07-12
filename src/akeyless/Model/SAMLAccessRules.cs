@@ -40,13 +40,15 @@ namespace akeyless.Model
         /// <param name="idpMetadataUrl">IDP metadata url.</param>
         /// <param name="idpMetadataXml">IDP metadata XML.</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
-        public SAMLAccessRules(List<string> allowedRedirectURIs = default(List<string>), List<SAMLAttribute> boundAttributes = default(List<SAMLAttribute>), string idpMetadataUrl = default(string), string idpMetadataXml = default(string), string uniqueIdentifier = default(string))
+        /// <param name="useDedicatedSamlUrls">When true, the login AuthnRequest is signed with this access method&#39;s dedicated SP identity (Entity ID https://&lt;sp&gt;/saml/sp/{access_id} and ACS https://&lt;sp&gt;/saml/acs/{access_id}) instead of the shared global identity. Default false keeps the legacy global identity for backward compatibility..</param>
+        public SAMLAccessRules(List<string> allowedRedirectURIs = default(List<string>), List<SAMLAttribute> boundAttributes = default(List<SAMLAttribute>), string idpMetadataUrl = default(string), string idpMetadataXml = default(string), string uniqueIdentifier = default(string), bool useDedicatedSamlUrls = default(bool))
         {
             this.AllowedRedirectURIs = allowedRedirectURIs;
             this.BoundAttributes = boundAttributes;
             this.IdpMetadataUrl = idpMetadataUrl;
             this.IdpMetadataXml = idpMetadataXml;
             this.UniqueIdentifier = uniqueIdentifier;
+            this.UseDedicatedSamlUrls = useDedicatedSamlUrls;
         }
 
         /// <summary>
@@ -85,6 +87,13 @@ namespace akeyless.Model
         public string UniqueIdentifier { get; set; }
 
         /// <summary>
+        /// When true, the login AuthnRequest is signed with this access method&#39;s dedicated SP identity (Entity ID https://&lt;sp&gt;/saml/sp/{access_id} and ACS https://&lt;sp&gt;/saml/acs/{access_id}) instead of the shared global identity. Default false keeps the legacy global identity for backward compatibility.
+        /// </summary>
+        /// <value>When true, the login AuthnRequest is signed with this access method&#39;s dedicated SP identity (Entity ID https://&lt;sp&gt;/saml/sp/{access_id} and ACS https://&lt;sp&gt;/saml/acs/{access_id}) instead of the shared global identity. Default false keeps the legacy global identity for backward compatibility.</value>
+        [DataMember(Name = "use_dedicated_saml_urls", EmitDefaultValue = true)]
+        public bool UseDedicatedSamlUrls { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -97,6 +106,7 @@ namespace akeyless.Model
             sb.Append("  IdpMetadataUrl: ").Append(IdpMetadataUrl).Append("\n");
             sb.Append("  IdpMetadataXml: ").Append(IdpMetadataXml).Append("\n");
             sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
+            sb.Append("  UseDedicatedSamlUrls: ").Append(UseDedicatedSamlUrls).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

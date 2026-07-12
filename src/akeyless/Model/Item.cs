@@ -49,6 +49,7 @@ namespace akeyless.Model
         /// <param name="deleteProtection">deleteProtection.</param>
         /// <param name="deletionDate">deletionDate.</param>
         /// <param name="displayId">displayId.</param>
+        /// <param name="fileDownload">fileDownload.</param>
         /// <param name="gatewayDetails">gatewayDetails.</param>
         /// <param name="isAccessRequestEnabled">isAccessRequestEnabled.</param>
         /// <param name="isEnabled">isEnabled.</param>
@@ -79,7 +80,7 @@ namespace akeyless.Model
         /// <param name="targetVersions">targetVersions.</param>
         /// <param name="uscSyncAssociatedItems">for USC item, hold rotated-secrets that are associated to him for rotated-secret, holds the associated USCs.</param>
         /// <param name="withCustomerFragment">withCustomerFragment.</param>
-        public Item(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), string accessRequestStatus = default(string), bool autoRotate = default(bool), BastionsList bastionDetails = default(BastionsList), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), List<GatewayDetailsForItemReplyObj> gatewayDetails = default(List<GatewayDetailsForItemReplyObj>), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), List<ItemCustomFieldsDetails> itemCustomFieldsDetails = default(List<ItemCustomFieldsDetails>), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), DateTime lastRotationDate = default(DateTime), int lastVersion = default(int), LinkedDetails linkedDetails = default(LinkedDetails), LockingInfo lockingInfo = default(LockingInfo), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), List<ItemUSCSyncAssociation> uscSyncAssociatedItems = default(List<ItemUSCSyncAssociation>), bool withCustomerFragment = default(bool))
+        public Item(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), string accessRequestStatus = default(string), bool autoRotate = default(bool), BastionsList bastionDetails = default(BastionsList), string certIssuerSignerKeyName = default(string), CertificateIssueInfo certificateIssueDetails = default(CertificateIssueInfo), string certificates = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), string customerFragmentId = default(string), bool deleteProtection = default(bool), DateTime deletionDate = default(DateTime), string displayId = default(string), FileDownloadInstructions fileDownload = default(FileDownloadInstructions), List<GatewayDetailsForItemReplyObj> gatewayDetails = default(List<GatewayDetailsForItemReplyObj>), bool isAccessRequestEnabled = default(bool), bool isEnabled = default(bool), long itemAccessibility = default(long), List<ItemCustomFieldsDetails> itemCustomFieldsDetails = default(List<ItemCustomFieldsDetails>), ItemGeneralInfo itemGeneralInfo = default(ItemGeneralInfo), long itemId = default(long), string itemMetadata = default(string), string itemName = default(string), long itemSize = default(long), string itemState = default(string), string itemSubType = default(string), List<string> itemTags = default(List<string>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string itemType = default(string), List<ItemVersion> itemVersions = default(List<ItemVersion>), DateTime lastRotationDate = default(DateTime), int lastVersion = default(int), LinkedDetails linkedDetails = default(LinkedDetails), LockingInfo lockingInfo = default(LockingInfo), DateTime modificationDate = default(DateTime), DateTime nextRotationDate = default(DateTime), string protectionKeyName = default(string), string protectionKeyType = default(string), string publicValue = default(string), long rotationInterval = default(long), RuleAssigner sharedBy = default(RuleAssigner), List<TargetItemVersion> targetVersions = default(List<TargetItemVersion>), List<ItemUSCSyncAssociation> uscSyncAssociatedItems = default(List<ItemUSCSyncAssociation>), bool withCustomerFragment = default(bool))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
@@ -95,6 +96,7 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.DeletionDate = deletionDate;
             this.DisplayId = displayId;
+            this.FileDownload = fileDownload;
             this.GatewayDetails = gatewayDetails;
             this.IsAccessRequestEnabled = isAccessRequestEnabled;
             this.IsEnabled = isEnabled;
@@ -210,6 +212,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "display_id", EmitDefaultValue = false)]
         public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FileDownload
+        /// </summary>
+        [DataMember(Name = "file_download", EmitDefaultValue = false)]
+        public FileDownloadInstructions FileDownload { get; set; }
 
         /// <summary>
         /// Gets or Sets GatewayDetails
@@ -415,6 +423,7 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  DeletionDate: ").Append(DeletionDate).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  FileDownload: ").Append(FileDownload).Append("\n");
             sb.Append("  GatewayDetails: ").Append(GatewayDetails).Append("\n");
             sb.Append("  IsAccessRequestEnabled: ").Append(IsAccessRequestEnabled).Append("\n");
             sb.Append("  IsEnabled: ").Append(IsEnabled).Append("\n");

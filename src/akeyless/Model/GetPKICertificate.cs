@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="keyDataBase64">PKI key file contents. If this option is used, the certificate will be printed to stdout.</param>
         /// <param name="maxPathLen">The maximum path length for the generated certificate. -1, means unlimited unless the signing certificate has a maximum path length set (default to -1).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
-        /// <param name="ttl">Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL).</param>
+        /// <param name="ttl">Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL). Ignored for Let&#39;s Encrypt public CA issuers, which always use the CA default lifetime (about 90 days)..</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it).</param>
         public GetPKICertificate(string altNames = default(string), string certIssuerName = default(string), string commonName = default(string), string csrDataBase64 = default(string), string extendedKeyUsage = default(string), string extraExtensions = default(string), bool json = false, string keyDataBase64 = default(string), long maxPathLen = -1, string token = default(string), string ttl = default(string), string uidToken = default(string), string uriSans = default(string))
@@ -146,9 +146,9 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
+        /// Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL). Ignored for Let&#39;s Encrypt public CA issuers, which always use the CA default lifetime (about 90 days).
         /// </summary>
-        /// <value>Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)</value>
+        /// <value>Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL). Ignored for Let&#39;s Encrypt public CA issuers, which always use the CA default lifetime (about 90 days).</value>
         [DataMember(Name = "ttl", EmitDefaultValue = false)]
         public string Ttl { get; set; }
 

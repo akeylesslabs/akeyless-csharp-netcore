@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TreeLength** | **int** | Maximum UID tree depth allowed (child of child of ...) | [optional] [default to 200]
 **Ttl** | **int** | Token ttl | [optional] [default to 60]
+**UidExpirationEventAt** | **List&lt;string&gt;** | Notify when this percent of the token TTL has elapsed (1-99). | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

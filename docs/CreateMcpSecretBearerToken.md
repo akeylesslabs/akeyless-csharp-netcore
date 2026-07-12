@@ -1,0 +1,24 @@
+# akeyless.Model.CreateMcpSecretBearerToken
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Accessibility** | **string** | for personal password manager | [optional] [default to "regular"]
+**BearerToken** | **string** | Bearer token value | [optional] 
+**DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**Description** | **string** | Description of the object | [optional] 
+**InputRule** | **List&lt;string&gt;** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
+**Json** | **bool** | Set output format to JSON | [optional] [default to false]
+**MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
+**Metadata** | **string** | Deprecated - use description | [optional] 
+**Name** | **string** | Secret name | 
+**OutputRule** | **List&lt;string&gt;** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
+**ProtectionKey** | **string** |  | [optional] 
+**Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
+**Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Url** | **string** | URL of the service | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

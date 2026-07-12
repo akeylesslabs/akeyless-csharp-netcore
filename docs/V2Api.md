@@ -86,6 +86,9 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateHashiVaultTarget**](V2Api.md#createhashivaulttarget) | **POST** /create-hashi-vault-target |  |
 | [**CreateKey**](V2Api.md#createkey) | **POST** /create-key |  |
 | [**CreateLinkedTarget**](V2Api.md#createlinkedtarget) | **POST** /create-linked-target |  |
+| [**CreateMcpSecretBearerToken**](V2Api.md#createmcpsecretbearertoken) | **POST** /create-mcp-secret-bearer-token |  |
+| [**CreateMcpSecretOAuthAuthCode**](V2Api.md#createmcpsecretoauthauthcode) | **POST** /create-mcp-secret-oauth-authorization-code |  |
+| [**CreateMcpSecretOAuthClientCreds**](V2Api.md#createmcpsecretoauthclientcreds) | **POST** /create-mcp-secret-oauth-client-credentials |  |
 | [**CreateNativeK8STarget**](V2Api.md#createnativek8starget) | **POST** /create-k8s-target |  |
 | [**CreateOidcApp**](V2Api.md#createoidcapp) | **POST** /create-oidc-app |  |
 | [**CreatePKICertIssuer**](V2Api.md#createpkicertissuer) | **POST** /create-pki-cert-issuer |  |
@@ -474,10 +477,13 @@ All URIs are relative to *https://api.akeyless.io*
 | [**StaticCredsAuth**](V2Api.md#staticcredsauth) | **POST** /static-creds-auth |  |
 | [**StaticSecretDeleteSync**](V2Api.md#staticsecretdeletesync) | **POST** /static-secret-delete-sync |  |
 | [**StaticSecretSync**](V2Api.md#staticsecretsync) | **POST** /static-secret-sync |  |
+| [**TargetCreateAnthropic**](V2Api.md#targetcreateanthropic) | **POST** /target-create-anthropic |  |
 | [**TargetCreateArtifactory**](V2Api.md#targetcreateartifactory) | **POST** /target-create-artifactory |  |
 | [**TargetCreateAws**](V2Api.md#targetcreateaws) | **POST** /target-create-aws |  |
 | [**TargetCreateAzure**](V2Api.md#targetcreateazure) | **POST** /target-create-azure |  |
+| [**TargetCreateBedrock**](V2Api.md#targetcreatebedrock) | **POST** /target-create-bedrock |  |
 | [**TargetCreateCloudflare**](V2Api.md#targetcreatecloudflare) | **POST** /target-create-cloudflare |  |
+| [**TargetCreateCustomDns**](V2Api.md#targetcreatecustomdns) | **POST** /target-create-custom-dns |  |
 | [**TargetCreateDB**](V2Api.md#targetcreatedb) | **POST** /target-create-db |  |
 | [**TargetCreateDigiCert**](V2Api.md#targetcreatedigicert) | **POST** /target-create-digicert |  |
 | [**TargetCreateDockerhub**](V2Api.md#targetcreatedockerhub) | **POST** /target-create-dockerhub |  |
@@ -491,11 +497,14 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreateGlobalSignAtlas**](V2Api.md#targetcreateglobalsignatlas) | **POST** /target-create-globalsign-atlas |  |
 | [**TargetCreateGodaddy**](V2Api.md#targetcreategodaddy) | **POST** /target-create-godaddy |  |
 | [**TargetCreateGoogleTrust**](V2Api.md#targetcreategoogletrust) | **POST** /target-create-google-trust |  |
+| [**TargetCreateGrok**](V2Api.md#targetcreategrok) | **POST** /target-create-grok |  |
 | [**TargetCreateHashiVault**](V2Api.md#targetcreatehashivault) | **POST** /target-create-hashi-vault |  |
 | [**TargetCreateK8s**](V2Api.md#targetcreatek8s) | **POST** /target-create-k8s |  |
+| [**TargetCreateKeycloak**](V2Api.md#targetcreatekeycloak) | **POST** /target-create-keycloak |  |
 | [**TargetCreateLdap**](V2Api.md#targetcreateldap) | **POST** /target-create-ldap |  |
 | [**TargetCreateLetsEncrypt**](V2Api.md#targetcreateletsencrypt) | **POST** /target-create-lets-encrypt |  |
 | [**TargetCreateLinked**](V2Api.md#targetcreatelinked) | **POST** /target-create-linked |  |
+| [**TargetCreateOkta**](V2Api.md#targetcreateokta) | **POST** /target-create-okta |  |
 | [**TargetCreateOpenAI**](V2Api.md#targetcreateopenai) | **POST** /target-create-openai |  |
 | [**TargetCreatePing**](V2Api.md#targetcreateping) | **POST** /target-create-ping |  |
 | [**TargetCreateRabbitMq**](V2Api.md#targetcreaterabbitmq) | **POST** /target-create-rabbitmq |  |
@@ -510,10 +519,13 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetGet**](V2Api.md#targetget) | **POST** /target-get |  |
 | [**TargetGetDetails**](V2Api.md#targetgetdetails) | **POST** /target-get-details |  |
 | [**TargetList**](V2Api.md#targetlist) | **POST** /target-list |  |
+| [**TargetUpdateAnthropic**](V2Api.md#targetupdateanthropic) | **POST** /target-update-anthropic |  |
 | [**TargetUpdateArtifactory**](V2Api.md#targetupdateartifactory) | **POST** /target-update-artifactory |  |
 | [**TargetUpdateAws**](V2Api.md#targetupdateaws) | **POST** /target-update-aws |  |
 | [**TargetUpdateAzure**](V2Api.md#targetupdateazure) | **POST** /target-update-azure |  |
+| [**TargetUpdateBedrock**](V2Api.md#targetupdatebedrock) | **POST** /target-update-bedrock |  |
 | [**TargetUpdateCloudflare**](V2Api.md#targetupdatecloudflare) | **POST** /target-update-cloudflare |  |
+| [**TargetUpdateCustomDns**](V2Api.md#targetupdatecustomdns) | **POST** /target-update-custom-dns |  |
 | [**TargetUpdateDB**](V2Api.md#targetupdatedb) | **POST** /target-update-db |  |
 | [**TargetUpdateDigiCert**](V2Api.md#targetupdatedigicert) | **POST** /target-update-digicert |  |
 | [**TargetUpdateDockerhub**](V2Api.md#targetupdatedockerhub) | **POST** /target-update-dockerhub |  |
@@ -527,11 +539,14 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdateGlobalSignAtlas**](V2Api.md#targetupdateglobalsignatlas) | **POST** /target-update-globalsign-atlas |  |
 | [**TargetUpdateGodaddy**](V2Api.md#targetupdategodaddy) | **POST** /target-update-godaddy |  |
 | [**TargetUpdateGoogleTrust**](V2Api.md#targetupdategoogletrust) | **POST** /target-update-google-trust |  |
+| [**TargetUpdateGrok**](V2Api.md#targetupdategrok) | **POST** /target-update-grok |  |
 | [**TargetUpdateHashiVault**](V2Api.md#targetupdatehashivault) | **POST** /target-update-hashi-vault |  |
 | [**TargetUpdateK8s**](V2Api.md#targetupdatek8s) | **POST** /target-update-k8s |  |
+| [**TargetUpdateKeycloak**](V2Api.md#targetupdatekeycloak) | **POST** /target-update-keycloak |  |
 | [**TargetUpdateLdap**](V2Api.md#targetupdateldap) | **POST** /target-update-ldap |  |
 | [**TargetUpdateLetsEncrypt**](V2Api.md#targetupdateletsencrypt) | **POST** /target-update-lets-encrypt |  |
 | [**TargetUpdateLinked**](V2Api.md#targetupdatelinked) | **POST** /target-update-linked |  |
+| [**TargetUpdateOkta**](V2Api.md#targetupdateokta) | **POST** /target-update-okta |  |
 | [**TargetUpdateOpenAI**](V2Api.md#targetupdateopenai) | **POST** /target-update-openai |  |
 | [**TargetUpdatePing**](V2Api.md#targetupdateping) | **POST** /target-update-ping |  |
 | [**TargetUpdateRabbitMq**](V2Api.md#targetupdaterabbitmq) | **POST** /target-update-rabbitmq |  |
@@ -589,6 +604,9 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateLdapTarget**](V2Api.md#updateldaptarget) | **POST** /update-ldap-target |  |
 | [**UpdateLdapTargetDetails**](V2Api.md#updateldaptargetdetails) | **POST** /update-ldap-target-details |  |
 | [**UpdateLinkedTarget**](V2Api.md#updatelinkedtarget) | **POST** /update-linked-target |  |
+| [**UpdateMcpSecretBearerToken**](V2Api.md#updatemcpsecretbearertoken) | **POST** /update-mcp-secret-bearer-token |  |
+| [**UpdateMcpSecretOAuthAuthCode**](V2Api.md#updatemcpsecretoauthauthcode) | **POST** /update-mcp-secret-oauth-authorization-code |  |
+| [**UpdateMcpSecretOAuthClientCreds**](V2Api.md#updatemcpsecretoauthclientcreds) | **POST** /update-mcp-secret-oauth-client-credentials |  |
 | [**UpdateNativeK8STarget**](V2Api.md#updatenativek8starget) | **POST** /update-k8s-target |  |
 | [**UpdateOidcApp**](V2Api.md#updateoidcapp) | **POST** /update-oidc-app |  |
 | [**UpdatePKICertIssuer**](V2Api.md#updatepkicertissuer) | **POST** /update-pki-cert-issuer |  |
@@ -7852,6 +7870,270 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | createLinkedTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createmcpsecretbearertoken"></a>
+# **CreateMcpSecretBearerToken**
+> CreateSecretOutput CreateMcpSecretBearerToken (CreateMcpSecretBearerToken createMcpSecretBearerToken)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateMcpSecretBearerTokenExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var createMcpSecretBearerToken = new CreateMcpSecretBearerToken(); // CreateMcpSecretBearerToken | 
+
+            try
+            {
+                CreateSecretOutput result = apiInstance.CreateMcpSecretBearerToken(createMcpSecretBearerToken);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateMcpSecretBearerToken: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateMcpSecretBearerTokenWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateSecretOutput> response = apiInstance.CreateMcpSecretBearerTokenWithHttpInfo(createMcpSecretBearerToken);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateMcpSecretBearerTokenWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createMcpSecretBearerToken** | [**CreateMcpSecretBearerToken**](CreateMcpSecretBearerToken.md) |  |  |
+
+### Return type
+
+[**CreateSecretOutput**](CreateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createmcpsecretoauthauthcode"></a>
+# **CreateMcpSecretOAuthAuthCode**
+> CreateSecretOutput CreateMcpSecretOAuthAuthCode (CreateMcpSecretOAuthAuthCode createMcpSecretOAuthAuthCode)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateMcpSecretOAuthAuthCodeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var createMcpSecretOAuthAuthCode = new CreateMcpSecretOAuthAuthCode(); // CreateMcpSecretOAuthAuthCode | 
+
+            try
+            {
+                CreateSecretOutput result = apiInstance.CreateMcpSecretOAuthAuthCode(createMcpSecretOAuthAuthCode);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateMcpSecretOAuthAuthCode: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateMcpSecretOAuthAuthCodeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateSecretOutput> response = apiInstance.CreateMcpSecretOAuthAuthCodeWithHttpInfo(createMcpSecretOAuthAuthCode);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateMcpSecretOAuthAuthCodeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createMcpSecretOAuthAuthCode** | [**CreateMcpSecretOAuthAuthCode**](CreateMcpSecretOAuthAuthCode.md) |  |  |
+
+### Return type
+
+[**CreateSecretOutput**](CreateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createmcpsecretoauthclientcreds"></a>
+# **CreateMcpSecretOAuthClientCreds**
+> CreateSecretOutput CreateMcpSecretOAuthClientCreds (CreateMcpSecretOAuthClientCreds createMcpSecretOAuthClientCreds)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateMcpSecretOAuthClientCredsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var createMcpSecretOAuthClientCreds = new CreateMcpSecretOAuthClientCreds(); // CreateMcpSecretOAuthClientCreds | 
+
+            try
+            {
+                CreateSecretOutput result = apiInstance.CreateMcpSecretOAuthClientCreds(createMcpSecretOAuthClientCreds);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateMcpSecretOAuthClientCreds: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateMcpSecretOAuthClientCredsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateSecretOutput> response = apiInstance.CreateMcpSecretOAuthClientCredsWithHttpInfo(createMcpSecretOAuthClientCreds);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateMcpSecretOAuthClientCredsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createMcpSecretOAuthClientCreds** | [**CreateMcpSecretOAuthClientCreds**](CreateMcpSecretOAuthClientCreds.md) |  |  |
+
+### Return type
+
+[**CreateSecretOutput**](CreateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -41963,6 +42245,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetcreateanthropic"></a>
+# **TargetCreateAnthropic**
+> TargetCreateOutput TargetCreateAnthropic (TargetCreateAnthropic targetCreateAnthropic)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateAnthropicExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateAnthropic = new TargetCreateAnthropic(); // TargetCreateAnthropic | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateAnthropic(targetCreateAnthropic);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateAnthropic: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateAnthropicWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateAnthropicWithHttpInfo(targetCreateAnthropic);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateAnthropicWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateAnthropic** | [**TargetCreateAnthropic**](TargetCreateAnthropic.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateAnthropicResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetcreateartifactory"></a>
 # **TargetCreateArtifactory**
 > TargetCreateOutput TargetCreateArtifactory (TargetCreateArtifactory targetCreateArtifactory)
@@ -42227,6 +42597,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetcreatebedrock"></a>
+# **TargetCreateBedrock**
+> TargetCreateOutput TargetCreateBedrock (TargetCreateBedrock targetCreateBedrock)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateBedrockExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateBedrock = new TargetCreateBedrock(); // TargetCreateBedrock | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateBedrock(targetCreateBedrock);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateBedrock: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateBedrockWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateBedrockWithHttpInfo(targetCreateBedrock);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateBedrockWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateBedrock** | [**TargetCreateBedrock**](TargetCreateBedrock.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateBedrockResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetcreatecloudflare"></a>
 # **TargetCreateCloudflare**
 > TargetCreateOutput TargetCreateCloudflare (TargetCreateCloudflare targetCreateCloudflare)
@@ -42311,6 +42769,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetCreateCloudflareResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetcreatecustomdns"></a>
+# **TargetCreateCustomDns**
+> TargetCreateOutput TargetCreateCustomDns (TargetCreateCustomDns targetCreateCustomDns)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateCustomDnsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateCustomDns = new TargetCreateCustomDns(); // TargetCreateCustomDns | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateCustomDns(targetCreateCustomDns);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateCustomDns: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateCustomDnsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateCustomDnsWithHttpInfo(targetCreateCustomDns);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateCustomDnsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateCustomDns** | [**TargetCreateCustomDns**](TargetCreateCustomDns.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateCustomDnsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -43459,6 +44005,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetcreategrok"></a>
+# **TargetCreateGrok**
+> TargetCreateOutput TargetCreateGrok (TargetCreateGrok targetCreateGrok)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateGrokExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateGrok = new TargetCreateGrok(); // TargetCreateGrok | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateGrok(targetCreateGrok);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateGrok: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateGrokWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateGrokWithHttpInfo(targetCreateGrok);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateGrokWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateGrok** | [**TargetCreateGrok**](TargetCreateGrok.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateGrokResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetcreatehashivault"></a>
 # **TargetCreateHashiVault**
 > TargetCreateOutput TargetCreateHashiVault (TargetCreateHashiVault targetCreateHashiVault)
@@ -43631,6 +44265,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetCreateK8sResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetcreatekeycloak"></a>
+# **TargetCreateKeycloak**
+> TargetCreateOutput TargetCreateKeycloak (TargetCreateKeycloak targetCreateKeycloak)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateKeycloakExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateKeycloak = new TargetCreateKeycloak(); // TargetCreateKeycloak | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateKeycloak(targetCreateKeycloak);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateKeycloak: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateKeycloakWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateKeycloakWithHttpInfo(targetCreateKeycloak);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateKeycloakWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateKeycloak** | [**TargetCreateKeycloak**](TargetCreateKeycloak.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateKeycloakResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -43895,6 +44617,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetCreateLinkedResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetcreateokta"></a>
+# **TargetCreateOkta**
+> TargetCreateOutput TargetCreateOkta (TargetCreateOkta targetCreateOkta)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateOktaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateOkta = new TargetCreateOkta(); // TargetCreateOkta | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateOkta(targetCreateOkta);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateOkta: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateOktaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateOktaWithHttpInfo(targetCreateOkta);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateOktaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateOkta** | [**TargetCreateOkta**](TargetCreateOkta.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateOktaResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -45131,6 +45941,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetupdateanthropic"></a>
+# **TargetUpdateAnthropic**
+> TargetUpdateOutput TargetUpdateAnthropic (TargetUpdateAnthropic targetUpdateAnthropic)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateAnthropicExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateAnthropic = new TargetUpdateAnthropic(); // TargetUpdateAnthropic | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateAnthropic(targetUpdateAnthropic);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateAnthropic: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateAnthropicWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateAnthropicWithHttpInfo(targetUpdateAnthropic);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateAnthropicWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateAnthropic** | [**TargetUpdateAnthropic**](TargetUpdateAnthropic.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateAnthropicResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetupdateartifactory"></a>
 # **TargetUpdateArtifactory**
 > TargetUpdateOutput TargetUpdateArtifactory (TargetUpdateArtifactory targetUpdateArtifactory)
@@ -45395,6 +46293,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetupdatebedrock"></a>
+# **TargetUpdateBedrock**
+> TargetUpdateOutput TargetUpdateBedrock (TargetUpdateBedrock targetUpdateBedrock)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateBedrockExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateBedrock = new TargetUpdateBedrock(); // TargetUpdateBedrock | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateBedrock(targetUpdateBedrock);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateBedrock: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateBedrockWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateBedrockWithHttpInfo(targetUpdateBedrock);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateBedrockWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateBedrock** | [**TargetUpdateBedrock**](TargetUpdateBedrock.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateBedrockResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetupdatecloudflare"></a>
 # **TargetUpdateCloudflare**
 > TargetUpdateOutput TargetUpdateCloudflare (TargetUpdateCloudflare targetUpdateCloudflare)
@@ -45479,6 +46465,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateCloudflareResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdatecustomdns"></a>
+# **TargetUpdateCustomDns**
+> TargetUpdateOutput TargetUpdateCustomDns (TargetUpdateCustomDns targetUpdateCustomDns)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateCustomDnsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateCustomDns = new TargetUpdateCustomDns(); // TargetUpdateCustomDns | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateCustomDns(targetUpdateCustomDns);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateCustomDns: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateCustomDnsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateCustomDnsWithHttpInfo(targetUpdateCustomDns);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateCustomDnsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateCustomDns** | [**TargetUpdateCustomDns**](TargetUpdateCustomDns.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateCustomDnsResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -46627,6 +47701,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetupdategrok"></a>
+# **TargetUpdateGrok**
+> TargetUpdateOutput TargetUpdateGrok (TargetUpdateGrok targetUpdateGrok)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateGrokExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateGrok = new TargetUpdateGrok(); // TargetUpdateGrok | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateGrok(targetUpdateGrok);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateGrok: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateGrokWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateGrokWithHttpInfo(targetUpdateGrok);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateGrokWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateGrok** | [**TargetUpdateGrok**](TargetUpdateGrok.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateGrokResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetupdatehashivault"></a>
 # **TargetUpdateHashiVault**
 > TargetUpdateOutput TargetUpdateHashiVault (TargetUpdateHashiVault targetUpdateHashiVault)
@@ -46799,6 +47961,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateK8sResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdatekeycloak"></a>
+# **TargetUpdateKeycloak**
+> TargetUpdateOutput TargetUpdateKeycloak (TargetUpdateKeycloak targetUpdateKeycloak)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateKeycloakExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateKeycloak = new TargetUpdateKeycloak(); // TargetUpdateKeycloak | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateKeycloak(targetUpdateKeycloak);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateKeycloak: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateKeycloakWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateKeycloakWithHttpInfo(targetUpdateKeycloak);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateKeycloakWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateKeycloak** | [**TargetUpdateKeycloak**](TargetUpdateKeycloak.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateKeycloakResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -47063,6 +48313,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateLinkedResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdateokta"></a>
+# **TargetUpdateOkta**
+> TargetUpdateOutput TargetUpdateOkta (TargetUpdateOkta targetUpdateOkta)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateOktaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateOkta = new TargetUpdateOkta(); // TargetUpdateOkta | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateOkta(targetUpdateOkta);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateOkta: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateOktaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateOktaWithHttpInfo(targetUpdateOkta);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateOktaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateOkta** | [**TargetUpdateOkta**](TargetUpdateOkta.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateOktaResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -52079,6 +53417,270 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateLinkedTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatemcpsecretbearertoken"></a>
+# **UpdateMcpSecretBearerToken**
+> UpdateSecretValOutput UpdateMcpSecretBearerToken (UpdateMcpSecretBearerToken updateMcpSecretBearerToken)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateMcpSecretBearerTokenExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var updateMcpSecretBearerToken = new UpdateMcpSecretBearerToken(); // UpdateMcpSecretBearerToken | 
+
+            try
+            {
+                UpdateSecretValOutput result = apiInstance.UpdateMcpSecretBearerToken(updateMcpSecretBearerToken);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateMcpSecretBearerToken: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateMcpSecretBearerTokenWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateSecretValOutput> response = apiInstance.UpdateMcpSecretBearerTokenWithHttpInfo(updateMcpSecretBearerToken);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateMcpSecretBearerTokenWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **updateMcpSecretBearerToken** | [**UpdateMcpSecretBearerToken**](UpdateMcpSecretBearerToken.md) |  |  |
+
+### Return type
+
+[**UpdateSecretValOutput**](UpdateSecretValOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatemcpsecretoauthauthcode"></a>
+# **UpdateMcpSecretOAuthAuthCode**
+> UpdateSecretValOutput UpdateMcpSecretOAuthAuthCode (UpdateMcpSecretOAuthAuthCode updateMcpSecretOAuthAuthCode)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateMcpSecretOAuthAuthCodeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var updateMcpSecretOAuthAuthCode = new UpdateMcpSecretOAuthAuthCode(); // UpdateMcpSecretOAuthAuthCode | 
+
+            try
+            {
+                UpdateSecretValOutput result = apiInstance.UpdateMcpSecretOAuthAuthCode(updateMcpSecretOAuthAuthCode);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateMcpSecretOAuthAuthCode: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateMcpSecretOAuthAuthCodeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateSecretValOutput> response = apiInstance.UpdateMcpSecretOAuthAuthCodeWithHttpInfo(updateMcpSecretOAuthAuthCode);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateMcpSecretOAuthAuthCodeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **updateMcpSecretOAuthAuthCode** | [**UpdateMcpSecretOAuthAuthCode**](UpdateMcpSecretOAuthAuthCode.md) |  |  |
+
+### Return type
+
+[**UpdateSecretValOutput**](UpdateSecretValOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatemcpsecretoauthclientcreds"></a>
+# **UpdateMcpSecretOAuthClientCreds**
+> UpdateSecretValOutput UpdateMcpSecretOAuthClientCreds (UpdateMcpSecretOAuthClientCreds updateMcpSecretOAuthClientCreds)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateMcpSecretOAuthClientCredsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var updateMcpSecretOAuthClientCreds = new UpdateMcpSecretOAuthClientCreds(); // UpdateMcpSecretOAuthClientCreds | 
+
+            try
+            {
+                UpdateSecretValOutput result = apiInstance.UpdateMcpSecretOAuthClientCreds(updateMcpSecretOAuthClientCreds);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateMcpSecretOAuthClientCreds: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateMcpSecretOAuthClientCredsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateSecretValOutput> response = apiInstance.UpdateMcpSecretOAuthClientCredsWithHttpInfo(updateMcpSecretOAuthClientCreds);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateMcpSecretOAuthClientCredsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **updateMcpSecretOAuthClientCreds** | [**UpdateMcpSecretOAuthClientCreds**](UpdateMcpSecretOAuthClientCreds.md) |  |  |
+
+### Return type
+
+[**UpdateSecretValOutput**](UpdateSecretValOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -36,15 +36,17 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="HashiPayload" /> class.
         /// </summary>
         /// <param name="deleteSyncOnDeletion">deleteSyncOnDeletion.</param>
+        /// <param name="hashiTargetId">hashiTargetId.</param>
         /// <param name="importAsJson">importAsJson.</param>
         /// <param name="metadataMode">metadataMode.</param>
         /// <param name="namespaces">namespaces.</param>
         /// <param name="token">token.</param>
         /// <param name="url">url.</param>
         /// <param name="uscName">uscName.</param>
-        public HashiPayload(bool deleteSyncOnDeletion = default(bool), bool importAsJson = default(bool), string metadataMode = default(string), List<string> namespaces = default(List<string>), string token = default(string), string url = default(string), string uscName = default(string))
+        public HashiPayload(bool deleteSyncOnDeletion = default(bool), long hashiTargetId = default(long), bool importAsJson = default(bool), string metadataMode = default(string), List<string> namespaces = default(List<string>), string token = default(string), string url = default(string), string uscName = default(string))
         {
             this.DeleteSyncOnDeletion = deleteSyncOnDeletion;
+            this.HashiTargetId = hashiTargetId;
             this.ImportAsJson = importAsJson;
             this.MetadataMode = metadataMode;
             this.Namespaces = namespaces;
@@ -58,6 +60,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "delete_sync_on_deletion", EmitDefaultValue = true)]
         public bool DeleteSyncOnDeletion { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HashiTargetId
+        /// </summary>
+        [DataMember(Name = "hashi_target_id", EmitDefaultValue = false)]
+        public long HashiTargetId { get; set; }
 
         /// <summary>
         /// Gets or Sets ImportAsJson
@@ -104,6 +112,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class HashiPayload {\n");
             sb.Append("  DeleteSyncOnDeletion: ").Append(DeleteSyncOnDeletion).Append("\n");
+            sb.Append("  HashiTargetId: ").Append(HashiTargetId).Append("\n");
             sb.Append("  ImportAsJson: ").Append(ImportAsJson).Append("\n");
             sb.Append("  MetadataMode: ").Append(MetadataMode).Append("\n");
             sb.Append("  Namespaces: ").Append(Namespaces).Append("\n");

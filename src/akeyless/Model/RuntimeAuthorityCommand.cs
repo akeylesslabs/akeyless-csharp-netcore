@@ -43,10 +43,12 @@ namespace akeyless.Model
         /// <param name="agentId">Agent identifier for auditing (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Secret name (dynamic secret or rotated secret) (required).</param>
+        /// <param name="originalPrompt">Original natural-language prompt from the user (optional, for auditing).</param>
+        /// <param name="originalUser">Human end-user behind the agent (optional, for auditing).</param>
         /// <param name="payload">Query or action payload (SQL, natural language, or CLI-style) (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RuntimeAuthorityCommand(string agentId = default(string), bool json = false, string name = default(string), string payload = default(string), string token = default(string), string uidToken = default(string))
+        public RuntimeAuthorityCommand(string agentId = default(string), bool json = false, string name = default(string), string originalPrompt = default(string), string originalUser = default(string), string payload = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "agentId" is required (not null)
             if (agentId == null)
@@ -67,6 +69,8 @@ namespace akeyless.Model
             }
             this.Payload = payload;
             this.Json = json;
+            this.OriginalPrompt = originalPrompt;
+            this.OriginalUser = originalUser;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -91,6 +95,20 @@ namespace akeyless.Model
         /// <value>Secret name (dynamic secret or rotated secret)</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Original natural-language prompt from the user (optional, for auditing)
+        /// </summary>
+        /// <value>Original natural-language prompt from the user (optional, for auditing)</value>
+        [DataMember(Name = "original-prompt", EmitDefaultValue = false)]
+        public string OriginalPrompt { get; set; }
+
+        /// <summary>
+        /// Human end-user behind the agent (optional, for auditing)
+        /// </summary>
+        /// <value>Human end-user behind the agent (optional, for auditing)</value>
+        [DataMember(Name = "original-user", EmitDefaultValue = false)]
+        public string OriginalUser { get; set; }
 
         /// <summary>
         /// Query or action payload (SQL, natural language, or CLI-style)
@@ -124,6 +142,8 @@ namespace akeyless.Model
             sb.Append("  AgentId: ").Append(AgentId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  OriginalPrompt: ").Append(OriginalPrompt).Append("\n");
+            sb.Append("  OriginalUser: ").Append(OriginalUser).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

@@ -112,11 +112,12 @@ namespace akeyless.Model
         /// <param name="siUsersIgnore">Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration).</param>
         /// <param name="siUsersPathTemplate">Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) (required).</param>
         /// <param name="targetLocation">Target location in Akeyless for imported secrets (required).</param>
+        /// <param name="targetName">Name of existing target to use to create the migration.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Universal Secret Connector name.</param>
         /// <param name="useGwCloudIdentity">Use the GW&#39;s Cloud IAM.</param>
-        public GatewayUpdateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), List<string> adCertExpirationEventIn = default(List<string>), string adCertificatesPathTemplate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string aiCertificateDiscovery = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string conjurAccount = default(string), string conjurApiKey = default(string), string conjurUrl = default(string), string conjurUsername = default(string), bool deleteRemote = default(bool), List<string> expirationEventIn = default(List<string>), string gcpKey = default(string), string gcpProjectId = default(string), string hashiJson = @"true", string hashiMetadataMode = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string hosts = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string portRanges = @"443", string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string), bool useGwCloudIdentity = default(bool))
+        public GatewayUpdateMigration(string serviceAccountKeyDecoded = default(string), string adAutoRotate = default(string), List<string> adCertExpirationEventIn = default(List<string>), string adCertificatesPathTemplate = default(string), string adComputerBaseDn = default(string), string adDiscoverIisApp = @"false", string adDiscoverServices = @"false", List<string> adDiscoveryTypes = default(List<string>), string adDomainName = default(string), string adDomainUsersPathTemplate = default(string), string adLocalUsersIgnore = default(string), string adLocalUsersPathTemplate = default(string), string adOsFilter = default(string), int adRotationHour = default(int), int adRotationInterval = default(int), string adSraEnableRdp = default(string), string adSshPort = @"22", string adTargetFormat = @"linked", string adTargetName = default(string), string adTargetsPathTemplate = default(string), string adTargetsType = @"windows", string adUserBaseDn = default(string), string adUserGroups = default(string), string adWinrmOverHttp = @"false", string adWinrmPort = @"5986", string adDiscoverLocalUsers = default(string), string aiCertificateDiscovery = default(string), string awsKey = default(string), string awsKeyId = default(string), string awsRegion = @"us-east-2", string azureClientId = default(string), string azureKvName = default(string), string azureSecret = default(string), string azureTenantId = default(string), string conjurAccount = default(string), string conjurApiKey = default(string), string conjurUrl = default(string), string conjurUsername = default(string), bool deleteRemote = default(bool), List<string> expirationEventIn = default(List<string>), string gcpKey = default(string), string gcpProjectId = default(string), string hashiJson = @"true", string hashiMetadataMode = default(string), List<string> hashiNs = default(List<string>), string hashiToken = default(string), string hashiUrl = default(string), string hosts = default(string), string id = default(string), bool json = false, List<int> k8sCaCertificate = default(List<int>), List<int> k8sClientCertificate = default(List<int>), List<int> k8sClientKey = default(List<int>), string k8sNamespace = default(string), string k8sPassword = default(string), bool k8sSkipSystem = default(bool), string k8sToken = default(string), string k8sUrl = default(string), string k8sUsername = default(string), string name = default(string), string newName = default(string), string portRanges = @"443", string protectionKey = default(string), string siAutoRotate = default(string), int siRotationHour = default(int), int siRotationInterval = default(int), string siSraEnableRdp = @"false", string siTargetName = default(string), string siUserGroups = default(string), string siUsersIgnore = default(string), string siUsersPathTemplate = default(string), string targetLocation = default(string), string targetName = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "hosts" is required (not null)
             if (hosts == null)
@@ -221,6 +222,7 @@ namespace akeyless.Model
             this.SiSraEnableRdp = siSraEnableRdp ?? @"false";
             this.SiUserGroups = siUserGroups;
             this.SiUsersIgnore = siUsersIgnore;
+            this.TargetName = targetName;
             this.Token = token;
             this.UidToken = uidToken;
             this.UscName = uscName;
@@ -731,6 +733,13 @@ namespace akeyless.Model
         public string TargetLocation { get; set; }
 
         /// <summary>
+        /// Name of existing target to use to create the migration
+        /// </summary>
+        /// <value>Name of existing target to use to create the migration</value>
+        [DataMember(Name = "target-name", EmitDefaultValue = false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -838,6 +847,7 @@ namespace akeyless.Model
             sb.Append("  SiUsersIgnore: ").Append(SiUsersIgnore).Append("\n");
             sb.Append("  SiUsersPathTemplate: ").Append(SiUsersPathTemplate).Append("\n");
             sb.Append("  TargetLocation: ").Append(TargetLocation).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UscName: ").Append(UscName).Append("\n");

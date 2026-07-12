@@ -60,8 +60,9 @@ namespace akeyless.Model
         /// <param name="rulesType">rulesType.</param>
         /// <param name="samlAccessRules">samlAccessRules.</param>
         /// <param name="subClaimsDelimiters">subClaimsDelimiters.</param>
+        /// <param name="uidExpirationEvents">Relevant only for Universal Identity auth methods: token about-to-expire notification thresholds..</param>
         /// <param name="universalIdentityAccessRules">universalIdentityAccessRules.</param>
-        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), List<string> allowedClientType = default(List<string>), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), List<string> auditLogsClaims = default(List<string>), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), KerberosAccessRules kerberosAccessRules = default(KerberosAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
+        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), List<string> allowedClientType = default(List<string>), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), List<string> auditLogsClaims = default(List<string>), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), KerberosAccessRules kerberosAccessRules = default(KerberosAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), List<UidExpirationEvent> uidExpirationEvents = default(List<UidExpirationEvent>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
         {
             this.AccessExpires = accessExpires;
             this.AccessIdAlias = accessIdAlias;
@@ -88,6 +89,7 @@ namespace akeyless.Model
             this.RulesType = rulesType;
             this.SamlAccessRules = samlAccessRules;
             this.SubClaimsDelimiters = subClaimsDelimiters;
+            this.UidExpirationEvents = uidExpirationEvents;
             this.UniversalIdentityAccessRules = universalIdentityAccessRules;
         }
 
@@ -245,6 +247,13 @@ namespace akeyless.Model
         public List<string> SubClaimsDelimiters { get; set; }
 
         /// <summary>
+        /// Relevant only for Universal Identity auth methods: token about-to-expire notification thresholds.
+        /// </summary>
+        /// <value>Relevant only for Universal Identity auth methods: token about-to-expire notification thresholds.</value>
+        [DataMember(Name = "uid_expiration_events", EmitDefaultValue = false)]
+        public List<UidExpirationEvent> UidExpirationEvents { get; set; }
+
+        /// <summary>
         /// Gets or Sets UniversalIdentityAccessRules
         /// </summary>
         [DataMember(Name = "universal_identity_access_rules", EmitDefaultValue = false)]
@@ -283,6 +292,7 @@ namespace akeyless.Model
             sb.Append("  RulesType: ").Append(RulesType).Append("\n");
             sb.Append("  SamlAccessRules: ").Append(SamlAccessRules).Append("\n");
             sb.Append("  SubClaimsDelimiters: ").Append(SubClaimsDelimiters).Append("\n");
+            sb.Append("  UidExpirationEvents: ").Append(UidExpirationEvents).Append("\n");
             sb.Append("  UniversalIdentityAccessRules: ").Append(UniversalIdentityAccessRules).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

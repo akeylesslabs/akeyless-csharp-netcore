@@ -56,9 +56,10 @@ namespace akeyless.Model
         /// <param name="enableMtls">(Optional) EnableMTLS defines if mutual TLS will be used to connect to DB.</param>
         /// <param name="oracleWalletDetails">oracleWalletDetails.</param>
         /// <param name="sfAccount">sfAccount.</param>
+        /// <param name="skipServerNameValidation">(Optional) SkipServerNameValidation disables server name verification while still validating the certificate chain. Postgres treats empty as legacy \&quot;skip hostname validation\&quot;; MySQL treats empty as false..</param>
         /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
         /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
-        public DbTargetDetails(string clientCertificate = default(string), string clientKeyPassphrase = default(string), string clientPrivateKey = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string connectionType = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), bool enableMtls = default(bool), WalletDetails oracleWalletDetails = default(WalletDetails), string sfAccount = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool))
+        public DbTargetDetails(string clientCertificate = default(string), string clientKeyPassphrase = default(string), string clientPrivateKey = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string connectionType = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), bool enableMtls = default(bool), WalletDetails oracleWalletDetails = default(WalletDetails), string sfAccount = default(string), string skipServerNameValidation = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool))
         {
             this.ClientCertificate = clientCertificate;
             this.ClientKeyPassphrase = clientKeyPassphrase;
@@ -81,6 +82,7 @@ namespace akeyless.Model
             this.EnableMtls = enableMtls;
             this.OracleWalletDetails = oracleWalletDetails;
             this.SfAccount = sfAccount;
+            this.SkipServerNameValidation = skipServerNameValidation;
             this.SslConnectionCertificate = sslConnectionCertificate;
             this.SslConnectionMode = sslConnectionMode;
         }
@@ -219,6 +221,13 @@ namespace akeyless.Model
         public string SfAccount { get; set; }
 
         /// <summary>
+        /// (Optional) SkipServerNameValidation disables server name verification while still validating the certificate chain. Postgres treats empty as legacy \&quot;skip hostname validation\&quot;; MySQL treats empty as false.
+        /// </summary>
+        /// <value>(Optional) SkipServerNameValidation disables server name verification while still validating the certificate chain. Postgres treats empty as legacy \&quot;skip hostname validation\&quot;; MySQL treats empty as false.</value>
+        [DataMember(Name = "skip_server_name_validation", EmitDefaultValue = false)]
+        public string SkipServerNameValidation { get; set; }
+
+        /// <summary>
         /// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
         /// </summary>
         /// <value>(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field</value>
@@ -261,6 +270,7 @@ namespace akeyless.Model
             sb.Append("  EnableMtls: ").Append(EnableMtls).Append("\n");
             sb.Append("  OracleWalletDetails: ").Append(OracleWalletDetails).Append("\n");
             sb.Append("  SfAccount: ").Append(SfAccount).Append("\n");
+            sb.Append("  SkipServerNameValidation: ").Append(SkipServerNameValidation).Append("\n");
             sb.Append("  SslConnectionCertificate: ").Append(SslConnectionCertificate).Append("\n");
             sb.Append("  SslConnectionMode: ").Append(SslConnectionMode).Append("\n");
             sb.Append("}\n");
