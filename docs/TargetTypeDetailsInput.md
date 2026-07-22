@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AerospikeTargetDetails** | [**AerospikeTargetDetails**](AerospikeTargetDetails.md) |  | [optional] 
 **AnthropicTargetDetails** | [**AnthropicTargetDetails**](AnthropicTargetDetails.md) |  | [optional] 
 **ArtifactoryTargetDetails** | [**ArtifactoryTargetDetails**](ArtifactoryTargetDetails.md) |  | [optional] 
 **AwsTargetDetails** | [**AWSTargetDetails**](AWSTargetDetails.md) |  | [optional] 

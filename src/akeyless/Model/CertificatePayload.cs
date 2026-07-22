@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CertificatePayload" /> class.
         /// </summary>
+        /// <param name="excludeHosts">excludeHosts.</param>
         /// <param name="expirationEvents">expirationEvents.</param>
         /// <param name="folder">folder.</param>
         /// <param name="maxDialTimeout">maxDialTimeout.</param>
@@ -42,8 +43,9 @@ namespace akeyless.Model
         /// <param name="maxWorkers">maxWorkers.</param>
         /// <param name="portRanges">portRanges.</param>
         /// <param name="targets">targets.</param>
-        public CertificatePayload(List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string folder = default(string), long maxDialTimeout = default(long), long maxScanDuration = default(long), long maxWorkers = default(long), string portRanges = default(string), List<CertificateScanTarget> targets = default(List<CertificateScanTarget>))
+        public CertificatePayload(List<string> excludeHosts = default(List<string>), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string folder = default(string), long maxDialTimeout = default(long), long maxScanDuration = default(long), long maxWorkers = default(long), string portRanges = default(string), List<CertificateScanTarget> targets = default(List<CertificateScanTarget>))
         {
+            this.ExcludeHosts = excludeHosts;
             this.ExpirationEvents = expirationEvents;
             this.Folder = folder;
             this.MaxDialTimeout = maxDialTimeout;
@@ -52,6 +54,12 @@ namespace akeyless.Model
             this.PortRanges = portRanges;
             this.Targets = targets;
         }
+
+        /// <summary>
+        /// Gets or Sets ExcludeHosts
+        /// </summary>
+        [DataMember(Name = "exclude_hosts", EmitDefaultValue = false)]
+        public List<string> ExcludeHosts { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpirationEvents
@@ -103,6 +111,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CertificatePayload {\n");
+            sb.Append("  ExcludeHosts: ").Append(ExcludeHosts).Append("\n");
             sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
             sb.Append("  Folder: ").Append(Folder).Append("\n");
             sb.Append("  MaxDialTimeout: ").Append(MaxDialTimeout).Append("\n");

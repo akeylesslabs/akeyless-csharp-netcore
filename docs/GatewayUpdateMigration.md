@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **ConjurUrl** | **string** | Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path. | [optional] 
 **ConjurUsername** | **string** | Conjur username used to authenticate (relevant only for Conjur migration). | [optional] 
 **DeleteRemote** | **bool** | Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration) | [optional] 
+**ExcludeHosts** | **string** | A comma separated list of IPs, CIDR ranges, or DNS names to exclude from the scan | [optional] 
 **ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpKey** | **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
 **GcpProjectId** | **string** | GCP Project ID (cross-project override) | [optional] 

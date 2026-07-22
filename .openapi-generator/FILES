@@ -26,6 +26,7 @@ docs/ActiveDirectoryMigration.md
 docs/ActiveDirectoryPayload.md
 docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
+docs/AerospikeTargetDetails.md
 docs/AgenticRule.md
 docs/AgenticRules.md
 docs/AiInsightsConfigPart.md
@@ -990,6 +991,7 @@ docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
 docs/SystemAccessCredsSettings.md
 docs/Target.md
+docs/TargetCreateAerospike.md
 docs/TargetCreateAnthropic.md
 docs/TargetCreateArtifactory.md
 docs/TargetCreateAws.md
@@ -1038,6 +1040,7 @@ docs/TargetItemVersion.md
 docs/TargetList.md
 docs/TargetNameWithHosts.md
 docs/TargetTypeDetailsInput.md
+docs/TargetUpdateAerospike.md
 docs/TargetUpdateAnthropic.md
 docs/TargetUpdateArtifactory.md
 docs/TargetUpdateAws.md
@@ -1243,6 +1246,9 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
+src/akeyless.Test/Model/AerospikeTargetDetailsTests.cs
+src/akeyless.Test/Model/TargetCreateAerospikeTests.cs
+src/akeyless.Test/Model/TargetUpdateAerospikeTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1285,6 +1291,7 @@ src/akeyless/Model/ActiveDirectoryMigration.cs
 src/akeyless/Model/ActiveDirectoryPayload.cs
 src/akeyless/Model/AddGatewayAllowedAccessId.cs
 src/akeyless/Model/AdminsConfigPart.cs
+src/akeyless/Model/AerospikeTargetDetails.cs
 src/akeyless/Model/AgenticRule.cs
 src/akeyless/Model/AgenticRules.cs
 src/akeyless/Model/AiInsightsConfigPart.cs
@@ -2249,6 +2256,7 @@ src/akeyless/Model/SyslogLogForwardingConfig.cs
 src/akeyless/Model/SystemAccessCredentialsReplyObj.cs
 src/akeyless/Model/SystemAccessCredsSettings.cs
 src/akeyless/Model/Target.cs
+src/akeyless/Model/TargetCreateAerospike.cs
 src/akeyless/Model/TargetCreateAnthropic.cs
 src/akeyless/Model/TargetCreateArtifactory.cs
 src/akeyless/Model/TargetCreateAws.cs
@@ -2297,6 +2305,7 @@ src/akeyless/Model/TargetItemVersion.cs
 src/akeyless/Model/TargetList.cs
 src/akeyless/Model/TargetNameWithHosts.cs
 src/akeyless/Model/TargetTypeDetailsInput.cs
+src/akeyless/Model/TargetUpdateAerospike.cs
 src/akeyless/Model/TargetUpdateAnthropic.cs
 src/akeyless/Model/TargetUpdateArtifactory.cs
 src/akeyless/Model/TargetUpdateAws.cs

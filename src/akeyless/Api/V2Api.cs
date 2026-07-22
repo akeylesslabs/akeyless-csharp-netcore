@@ -9488,6 +9488,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetCreateOutput</returns>
+        TargetCreateOutput TargetCreateAerospike(TargetCreateAerospike targetCreateAerospike, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetCreateOutput</returns>
+        ApiResponse<TargetCreateOutput> TargetCreateAerospikeWithHttpInfo(TargetCreateAerospike targetCreateAerospike, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="targetCreateAnthropic"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TargetCreateOutput</returns>
@@ -10324,6 +10344,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListTargetsOutput</returns>
         ApiResponse<ListTargetsOutput> TargetListWithHttpInfo(TargetList targetList, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetUpdateOutput</returns>
+        TargetUpdateOutput TargetUpdateAerospike(TargetUpdateAerospike targetUpdateAerospike, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetUpdateOutput</returns>
+        ApiResponse<TargetUpdateOutput> TargetUpdateAerospikeWithHttpInfo(TargetUpdateAerospike targetUpdateAerospike, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -24659,6 +24699,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetCreateOutput</returns>
+        System.Threading.Tasks.Task<TargetCreateOutput> TargetCreateAerospikeAsync(TargetCreateAerospike targetCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TargetCreateOutput>> TargetCreateAerospikeWithHttpInfoAsync(TargetCreateAerospike targetCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="targetCreateAnthropic"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -25702,6 +25767,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTargetsOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListTargetsOutput>> TargetListWithHttpInfoAsync(TargetList targetList, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetUpdateOutput</returns>
+        System.Threading.Tasks.Task<TargetUpdateOutput> TargetUpdateAerospikeAsync(TargetUpdateAerospike targetUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TargetUpdateOutput>> TargetUpdateAerospikeWithHttpInfoAsync(TargetUpdateAerospike targetUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -97685,6 +97775,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetCreateOutput</returns>
+        public TargetCreateOutput TargetCreateAerospike(TargetCreateAerospike targetCreateAerospike, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<TargetCreateOutput> localVarResponse = TargetCreateAerospikeWithHttpInfo(targetCreateAerospike);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetCreateOutput</returns>
+        public akeyless.Client.ApiResponse<TargetCreateOutput> TargetCreateAerospikeWithHttpInfo(TargetCreateAerospike targetCreateAerospike, int operationIndex = 0)
+        {
+            // verify the required parameter 'targetCreateAerospike' is set
+            if (targetCreateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetCreateAerospike' when calling V2Api->TargetCreateAerospike");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetCreateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.TargetCreateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TargetCreateOutput>("/target-create-aerospike", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetCreateAerospike", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetCreateOutput</returns>
+        public async System.Threading.Tasks.Task<TargetCreateOutput> TargetCreateAerospikeAsync(TargetCreateAerospike targetCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<TargetCreateOutput> localVarResponse = await TargetCreateAerospikeWithHttpInfoAsync(targetCreateAerospike, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<TargetCreateOutput>> TargetCreateAerospikeWithHttpInfoAsync(TargetCreateAerospike targetCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'targetCreateAerospike' is set
+            if (targetCreateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetCreateAerospike' when calling V2Api->TargetCreateAerospike");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetCreateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.TargetCreateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TargetCreateOutput>("/target-create-aerospike", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetCreateAerospike", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="targetCreateAnthropic"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TargetCreateOutput</returns>
@@ -103804,6 +104040,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("TargetList", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetUpdateOutput</returns>
+        public TargetUpdateOutput TargetUpdateAerospike(TargetUpdateAerospike targetUpdateAerospike, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<TargetUpdateOutput> localVarResponse = TargetUpdateAerospikeWithHttpInfo(targetUpdateAerospike);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<TargetUpdateOutput> TargetUpdateAerospikeWithHttpInfo(TargetUpdateAerospike targetUpdateAerospike, int operationIndex = 0)
+        {
+            // verify the required parameter 'targetUpdateAerospike' is set
+            if (targetUpdateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetUpdateAerospike' when calling V2Api->TargetUpdateAerospike");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetUpdateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.TargetUpdateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TargetUpdateOutput>("/target-update-aerospike", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetUpdateAerospike", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<TargetUpdateOutput> TargetUpdateAerospikeAsync(TargetUpdateAerospike targetUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<TargetUpdateOutput> localVarResponse = await TargetUpdateAerospikeWithHttpInfoAsync(targetUpdateAerospike, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<TargetUpdateOutput>> TargetUpdateAerospikeWithHttpInfoAsync(TargetUpdateAerospike targetUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'targetUpdateAerospike' is set
+            if (targetUpdateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetUpdateAerospike' when calling V2Api->TargetUpdateAerospike");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetUpdateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.TargetUpdateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TargetUpdateOutput>("/target-update-aerospike", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetUpdateAerospike", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

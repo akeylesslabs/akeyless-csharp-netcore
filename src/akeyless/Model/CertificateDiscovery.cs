@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CertificateDiscovery" /> class.
         /// </summary>
         /// <param name="debug">Debug mode (default to false).</param>
+        /// <param name="excludeHosts">A comma separated list of IP addresses, CIDR ranges, or DNS names to exclude from the scan.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="hosts">A comma separated list of IPs, CIDR ranges, or DNS names to discovery (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -49,7 +50,7 @@ namespace akeyless.Model
         /// <param name="targetLocation">The folder where the results will be saved (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public CertificateDiscovery(bool debug = false, List<string> expirationEventIn = default(List<string>), string hosts = default(string), bool json = false, string portRanges = @"443", string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
+        public CertificateDiscovery(bool debug = false, string excludeHosts = default(string), List<string> expirationEventIn = default(List<string>), string hosts = default(string), bool json = false, string portRanges = @"443", string protectionKey = default(string), string targetLocation = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "hosts" is required (not null)
             if (hosts == null)
@@ -64,6 +65,7 @@ namespace akeyless.Model
             }
             this.TargetLocation = targetLocation;
             this.Debug = debug;
+            this.ExcludeHosts = excludeHosts;
             this.ExpirationEventIn = expirationEventIn;
             this.Json = json;
             // use default value if no "portRanges" provided
@@ -79,6 +81,13 @@ namespace akeyless.Model
         /// <value>Debug mode</value>
         [DataMember(Name = "debug", EmitDefaultValue = true)]
         public bool Debug { get; set; }
+
+        /// <summary>
+        /// A comma separated list of IP addresses, CIDR ranges, or DNS names to exclude from the scan
+        /// </summary>
+        /// <value>A comma separated list of IP addresses, CIDR ranges, or DNS names to exclude from the scan</value>
+        [DataMember(Name = "exclude-hosts", EmitDefaultValue = false)]
+        public string ExcludeHosts { get; set; }
 
         /// <summary>
         /// How many days before the expiration of the certificate would you like to be notified.
@@ -145,6 +154,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CertificateDiscovery {\n");
             sb.Append("  Debug: ").Append(Debug).Append("\n");
+            sb.Append("  ExcludeHosts: ").Append(ExcludeHosts).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  Hosts: ").Append(Hosts).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

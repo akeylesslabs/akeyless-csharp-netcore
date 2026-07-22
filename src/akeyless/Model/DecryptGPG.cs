@@ -50,7 +50,8 @@ namespace akeyless.Model
         /// <param name="passphrase">Passphrase that was used to generate the key.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DecryptGPG(string ciphertext = default(string), string displayId = default(string), string inputFormat = @"base64", long itemId = default(long), bool json = false, string keyName = default(string), string outputFormat = default(string), string passphrase = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="varVersion">key version (relevant only for classic key).</param>
+        public DecryptGPG(string ciphertext = default(string), string displayId = default(string), string inputFormat = @"base64", long itemId = default(long), bool json = false, string keyName = default(string), string outputFormat = default(string), string passphrase = default(string), string token = default(string), string uidToken = default(string), int varVersion = default(int))
         {
             // to ensure "ciphertext" is required (not null)
             if (ciphertext == null)
@@ -73,6 +74,7 @@ namespace akeyless.Model
             this.Passphrase = passphrase;
             this.Token = token;
             this.UidToken = uidToken;
+            this.VarVersion = varVersion;
         }
 
         /// <summary>
@@ -146,6 +148,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// key version (relevant only for classic key)
+        /// </summary>
+        /// <value>key version (relevant only for classic key)</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int VarVersion { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -163,6 +172,7 @@ namespace akeyless.Model
             sb.Append("  Passphrase: ").Append(Passphrase).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

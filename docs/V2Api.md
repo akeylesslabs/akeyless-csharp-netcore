@@ -477,6 +477,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**StaticCredsAuth**](V2Api.md#staticcredsauth) | **POST** /static-creds-auth |  |
 | [**StaticSecretDeleteSync**](V2Api.md#staticsecretdeletesync) | **POST** /static-secret-delete-sync |  |
 | [**StaticSecretSync**](V2Api.md#staticsecretsync) | **POST** /static-secret-sync |  |
+| [**TargetCreateAerospike**](V2Api.md#targetcreateaerospike) | **POST** /target-create-aerospike |  |
 | [**TargetCreateAnthropic**](V2Api.md#targetcreateanthropic) | **POST** /target-create-anthropic |  |
 | [**TargetCreateArtifactory**](V2Api.md#targetcreateartifactory) | **POST** /target-create-artifactory |  |
 | [**TargetCreateAws**](V2Api.md#targetcreateaws) | **POST** /target-create-aws |  |
@@ -519,6 +520,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetGet**](V2Api.md#targetget) | **POST** /target-get |  |
 | [**TargetGetDetails**](V2Api.md#targetgetdetails) | **POST** /target-get-details |  |
 | [**TargetList**](V2Api.md#targetlist) | **POST** /target-list |  |
+| [**TargetUpdateAerospike**](V2Api.md#targetupdateaerospike) | **POST** /target-update-aerospike |  |
 | [**TargetUpdateAnthropic**](V2Api.md#targetupdateanthropic) | **POST** /target-update-anthropic |  |
 | [**TargetUpdateArtifactory**](V2Api.md#targetupdateartifactory) | **POST** /target-update-artifactory |  |
 | [**TargetUpdateAws**](V2Api.md#targetupdateaws) | **POST** /target-update-aws |  |
@@ -42245,6 +42247,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetcreateaerospike"></a>
+# **TargetCreateAerospike**
+> TargetCreateOutput TargetCreateAerospike (TargetCreateAerospike targetCreateAerospike)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateAerospikeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateAerospike = new TargetCreateAerospike(); // TargetCreateAerospike | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateAerospike(targetCreateAerospike);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateAerospike: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateAerospikeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateAerospikeWithHttpInfo(targetCreateAerospike);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateAerospikeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateAerospike** | [**TargetCreateAerospike**](TargetCreateAerospike.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateAerospikeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetcreateanthropic"></a>
 # **TargetCreateAnthropic**
 > TargetCreateOutput TargetCreateAnthropic (TargetCreateAnthropic targetCreateAnthropic)
@@ -45937,6 +46027,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | targetListResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdateaerospike"></a>
+# **TargetUpdateAerospike**
+> TargetUpdateOutput TargetUpdateAerospike (TargetUpdateAerospike targetUpdateAerospike)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateAerospikeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateAerospike = new TargetUpdateAerospike(); // TargetUpdateAerospike | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateAerospike(targetUpdateAerospike);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateAerospike: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateAerospikeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateAerospikeWithHttpInfo(targetUpdateAerospike);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateAerospikeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateAerospike** | [**TargetUpdateAerospike**](TargetUpdateAerospike.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateAerospikeResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
