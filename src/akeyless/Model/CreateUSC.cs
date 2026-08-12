@@ -44,7 +44,10 @@ namespace akeyless.Model
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the Universal Secrets Connector.</param>
         /// <param name="environmentNames">The environments in repo-name/environment-name format, comma-separated (only relevant for: github-scope&#x3D;repository-environment).</param>
+        /// <param name="gcpFolderId">GCP Folder ID (Relevant only for GCP targets with folder scope).</param>
+        /// <param name="gcpOrganizationId">GCP Organization ID (Relevant only for GCP targets).</param>
         /// <param name="gcpProjectId">GCP Project ID (Relevant only for GCP targets).</param>
+        /// <param name="gcpScope">The gcp usc scope [ project / organization / folder] (default to &quot;project&quot;).</param>
         /// <param name="gcpSmRegions">GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets..</param>
         /// <param name="githubScope">The scope where secrets will be created, available options: [repository, organization, repository-environment] (default to &quot;repository&quot;).</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
@@ -62,7 +65,7 @@ namespace akeyless.Model
         /// <param name="uscTags">Comma-separated list of tags to apply to all secrets created on the remote USC.</param>
         /// <param name="usePrefixAsFilter">Whether to filter the USC secret list using the specified usc-prefix [true/false] (default to &quot;false&quot;).</param>
         /// <param name="useTagsAsFilter">Filter the USC secret list by the value(s) of - -usc-tags. [true|false].</param>
-        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string environmentNames = default(string), string gcpProjectId = default(string), string gcpSmRegions = default(string), string githubScope = @"repository", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sNamespace = default(string), string name = default(string), string organizationName = default(string), string repositoryAccess = @"public", string repositoryNames = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string uscTags = default(string), string usePrefixAsFilter = @"false", bool useTagsAsFilter = default(bool))
+        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string environmentNames = default(string), string gcpFolderId = default(string), string gcpOrganizationId = default(string), string gcpProjectId = default(string), string gcpScope = @"project", string gcpSmRegions = default(string), string githubScope = @"repository", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sNamespace = default(string), string name = default(string), string organizationName = default(string), string repositoryAccess = @"public", string repositoryNames = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string uscTags = default(string), string usePrefixAsFilter = @"false", bool useTagsAsFilter = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -80,7 +83,11 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.EnvironmentNames = environmentNames;
+            this.GcpFolderId = gcpFolderId;
+            this.GcpOrganizationId = gcpOrganizationId;
             this.GcpProjectId = gcpProjectId;
+            // use default value if no "gcpScope" provided
+            this.GcpScope = gcpScope ?? @"project";
             this.GcpSmRegions = gcpSmRegions;
             // use default value if no "githubScope" provided
             this.GithubScope = githubScope ?? @"repository";
@@ -130,11 +137,32 @@ namespace akeyless.Model
         public string EnvironmentNames { get; set; }
 
         /// <summary>
+        /// GCP Folder ID (Relevant only for GCP targets with folder scope)
+        /// </summary>
+        /// <value>GCP Folder ID (Relevant only for GCP targets with folder scope)</value>
+        [DataMember(Name = "gcp-folder-id", EmitDefaultValue = false)]
+        public string GcpFolderId { get; set; }
+
+        /// <summary>
+        /// GCP Organization ID (Relevant only for GCP targets)
+        /// </summary>
+        /// <value>GCP Organization ID (Relevant only for GCP targets)</value>
+        [DataMember(Name = "gcp-organization-id", EmitDefaultValue = false)]
+        public string GcpOrganizationId { get; set; }
+
+        /// <summary>
         /// GCP Project ID (Relevant only for GCP targets)
         /// </summary>
         /// <value>GCP Project ID (Relevant only for GCP targets)</value>
         [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
         public string GcpProjectId { get; set; }
+
+        /// <summary>
+        /// The gcp usc scope [ project / organization / folder]
+        /// </summary>
+        /// <value>The gcp usc scope [ project / organization / folder]</value>
+        [DataMember(Name = "gcp-scope", EmitDefaultValue = false)]
+        public string GcpScope { get; set; }
 
         /// <summary>
         /// GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets.
@@ -266,7 +294,10 @@ namespace akeyless.Model
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EnvironmentNames: ").Append(EnvironmentNames).Append("\n");
+            sb.Append("  GcpFolderId: ").Append(GcpFolderId).Append("\n");
+            sb.Append("  GcpOrganizationId: ").Append(GcpOrganizationId).Append("\n");
             sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
+            sb.Append("  GcpScope: ").Append(GcpScope).Append("\n");
             sb.Append("  GcpSmRegions: ").Append(GcpSmRegions).Append("\n");
             sb.Append("  GithubScope: ").Append(GithubScope).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");

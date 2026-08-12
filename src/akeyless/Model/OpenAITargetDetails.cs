@@ -37,13 +37,23 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="apiKey">apiKey.</param>
         /// <param name="apiKeyId">apiKeyId.</param>
+        /// <param name="authMode">AuthMode selects how this target authenticates. Empty (default) uses ApiKey as a static bearer token against BaseURL, matching all pre-existing behavior. OpenAIAuthModeChatGPTOAuth instead uses the OAuth* fields below..</param>
+        /// <param name="oauthAccessToken">OAuthAccessToken is the current ChatGPT-issued access token (the &#x60;tokens.access_token&#x60; field of the customer&#39;s local auth.json). Akeyless refreshes this automatically; do not treat it as long-lived..</param>
+        /// <param name="oauthAccountId">OAuthAccountID is the ChatGPT workspace/account id (&#x60;tokens.account_id&#x60; in auth.json), required on every request to the ChatGPT backend..</param>
+        /// <param name="oauthLastRefresh">OAuthLastRefresh is the RFC3339 timestamp of the last successful Akeyless-performed refresh; used as a fallback expiry heuristic when the access token&#39;s JWT exp claim can&#39;t be parsed..</param>
+        /// <param name="oauthRefreshToken">OAuthRefreshToken mints new access tokens. It rotates on every refresh - Akeyless persists the new value after each successful refresh, so the previous value becomes invalid..</param>
         /// <param name="openaiUrl">openaiUrl.</param>
         /// <param name="organizationId">organizationId.</param>
         /// <param name="projectId">projectId.</param>
-        public OpenAITargetDetails(string apiKey = default(string), string apiKeyId = default(string), string openaiUrl = default(string), string organizationId = default(string), string projectId = default(string))
+        public OpenAITargetDetails(string apiKey = default(string), string apiKeyId = default(string), string authMode = default(string), string oauthAccessToken = default(string), string oauthAccountId = default(string), string oauthLastRefresh = default(string), string oauthRefreshToken = default(string), string openaiUrl = default(string), string organizationId = default(string), string projectId = default(string))
         {
             this.ApiKey = apiKey;
             this.ApiKeyId = apiKeyId;
+            this.AuthMode = authMode;
+            this.OauthAccessToken = oauthAccessToken;
+            this.OauthAccountId = oauthAccountId;
+            this.OauthLastRefresh = oauthLastRefresh;
+            this.OauthRefreshToken = oauthRefreshToken;
             this.OpenaiUrl = openaiUrl;
             this.OrganizationId = organizationId;
             this.ProjectId = projectId;
@@ -60,6 +70,41 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "api_key_id", EmitDefaultValue = false)]
         public string ApiKeyId { get; set; }
+
+        /// <summary>
+        /// AuthMode selects how this target authenticates. Empty (default) uses ApiKey as a static bearer token against BaseURL, matching all pre-existing behavior. OpenAIAuthModeChatGPTOAuth instead uses the OAuth* fields below.
+        /// </summary>
+        /// <value>AuthMode selects how this target authenticates. Empty (default) uses ApiKey as a static bearer token against BaseURL, matching all pre-existing behavior. OpenAIAuthModeChatGPTOAuth instead uses the OAuth* fields below.</value>
+        [DataMember(Name = "auth_mode", EmitDefaultValue = false)]
+        public string AuthMode { get; set; }
+
+        /// <summary>
+        /// OAuthAccessToken is the current ChatGPT-issued access token (the &#x60;tokens.access_token&#x60; field of the customer&#39;s local auth.json). Akeyless refreshes this automatically; do not treat it as long-lived.
+        /// </summary>
+        /// <value>OAuthAccessToken is the current ChatGPT-issued access token (the &#x60;tokens.access_token&#x60; field of the customer&#39;s local auth.json). Akeyless refreshes this automatically; do not treat it as long-lived.</value>
+        [DataMember(Name = "oauth_access_token", EmitDefaultValue = false)]
+        public string OauthAccessToken { get; set; }
+
+        /// <summary>
+        /// OAuthAccountID is the ChatGPT workspace/account id (&#x60;tokens.account_id&#x60; in auth.json), required on every request to the ChatGPT backend.
+        /// </summary>
+        /// <value>OAuthAccountID is the ChatGPT workspace/account id (&#x60;tokens.account_id&#x60; in auth.json), required on every request to the ChatGPT backend.</value>
+        [DataMember(Name = "oauth_account_id", EmitDefaultValue = false)]
+        public string OauthAccountId { get; set; }
+
+        /// <summary>
+        /// OAuthLastRefresh is the RFC3339 timestamp of the last successful Akeyless-performed refresh; used as a fallback expiry heuristic when the access token&#39;s JWT exp claim can&#39;t be parsed.
+        /// </summary>
+        /// <value>OAuthLastRefresh is the RFC3339 timestamp of the last successful Akeyless-performed refresh; used as a fallback expiry heuristic when the access token&#39;s JWT exp claim can&#39;t be parsed.</value>
+        [DataMember(Name = "oauth_last_refresh", EmitDefaultValue = false)]
+        public string OauthLastRefresh { get; set; }
+
+        /// <summary>
+        /// OAuthRefreshToken mints new access tokens. It rotates on every refresh - Akeyless persists the new value after each successful refresh, so the previous value becomes invalid.
+        /// </summary>
+        /// <value>OAuthRefreshToken mints new access tokens. It rotates on every refresh - Akeyless persists the new value after each successful refresh, so the previous value becomes invalid.</value>
+        [DataMember(Name = "oauth_refresh_token", EmitDefaultValue = false)]
+        public string OauthRefreshToken { get; set; }
 
         /// <summary>
         /// Gets or Sets OpenaiUrl
@@ -89,6 +134,11 @@ namespace akeyless.Model
             sb.Append("class OpenAITargetDetails {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  ApiKeyId: ").Append(ApiKeyId).Append("\n");
+            sb.Append("  AuthMode: ").Append(AuthMode).Append("\n");
+            sb.Append("  OauthAccessToken: ").Append(OauthAccessToken).Append("\n");
+            sb.Append("  OauthAccountId: ").Append(OauthAccountId).Append("\n");
+            sb.Append("  OauthLastRefresh: ").Append(OauthLastRefresh).Append("\n");
+            sb.Append("  OauthRefreshToken: ").Append(OauthRefreshToken).Append("\n");
             sb.Append("  OpenaiUrl: ").Append(OpenaiUrl).Append("\n");
             sb.Append("  OrganizationId: ").Append(OrganizationId).Append("\n");
             sb.Append("  ProjectId: ").Append(ProjectId).Append("\n");

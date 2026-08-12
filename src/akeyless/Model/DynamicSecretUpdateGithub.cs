@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretUpdateGithub" /> class.
         /// </summary>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="githubAppId">Github app id.</param>
@@ -54,6 +55,7 @@ namespace akeyless.Model
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="newName">Dynamic secret name.</param>
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -61,7 +63,7 @@ namespace akeyless.Model
         /// <param name="tokenRepositories">Optional - installation token&#39;s allowed repositories.</param>
         /// <param name="tokenTtl">Token TTL (default to &quot;60m&quot;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DynamicSecretUpdateGithub(string deleteProtection = default(string), string description = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = @"https://api.github.com/", List<string> inputRule = default(List<string>), long installationId = default(long), string installationOrganization = default(string), string installationRepository = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string tokenTtl = @"60m", string uidToken = default(string))
+        public DynamicSecretUpdateGithub(bool araEnabled = default(bool), string deleteProtection = default(string), string description = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = @"https://api.github.com/", List<string> inputRule = default(List<string>), long installationId = default(long), string installationOrganization = default(string), string installationRepository = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), List<string> tokenPermissions = default(List<string>), List<string> tokenRepositories = default(List<string>), string tokenTtl = @"60m", string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -69,6 +71,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for DynamicSecretUpdateGithub and cannot be null");
             }
             this.Name = name;
+            this.AraEnabled = araEnabled;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.GithubAppId = githubAppId;
@@ -83,6 +86,7 @@ namespace akeyless.Model
             this.Json = json;
             this.NewName = newName;
             this.OutputRule = outputRule;
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -92,6 +96,13 @@ namespace akeyless.Model
             this.TokenTtl = tokenTtl ?? @"60m";
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Protection from accidental deletion of this object [true/false]
@@ -192,6 +203,13 @@ namespace akeyless.Model
         public List<string> OutputRule { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -248,6 +266,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretUpdateGithub {\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GithubAppId: ").Append(GithubAppId).Append("\n");
@@ -262,6 +281,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

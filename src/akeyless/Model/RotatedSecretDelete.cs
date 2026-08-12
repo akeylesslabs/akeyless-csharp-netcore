@@ -40,12 +40,13 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RotatedSecretDelete" /> class.
         /// </summary>
+        /// <param name="forceDelete">Delete the rotated secret only from Akeyless if failed to delete it from the third-party provider.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="varVersion">The specific version you want to delete, -1&#x3D;entire item with all versions (default) (default to -1).</param>
-        public RotatedSecretDelete(bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int varVersion = -1)
+        public RotatedSecretDelete(bool forceDelete = default(bool), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int varVersion = -1)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -53,11 +54,19 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for RotatedSecretDelete and cannot be null");
             }
             this.Name = name;
+            this.ForceDelete = forceDelete;
             this.Json = json;
             this.Token = token;
             this.UidToken = uidToken;
             this.VarVersion = varVersion;
         }
+
+        /// <summary>
+        /// Delete the rotated secret only from Akeyless if failed to delete it from the third-party provider
+        /// </summary>
+        /// <value>Delete the rotated secret only from Akeyless if failed to delete it from the third-party provider</value>
+        [DataMember(Name = "force-delete", EmitDefaultValue = true)]
+        public bool ForceDelete { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -102,6 +111,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class RotatedSecretDelete {\n");
+            sb.Append("  ForceDelete: ").Append(ForceDelete).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

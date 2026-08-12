@@ -37,16 +37,18 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="active">active.</param>
         /// <param name="ca">ca.</param>
+        /// <param name="cas">cas.</param>
         /// <param name="certificate">certificate.</param>
         /// <param name="certificateIssueDate">certificateIssueDate.</param>
         /// <param name="certificateTtlInSeconds">certificateTtlInSeconds.</param>
         /// <param name="expirationEvents">expirationEvents.</param>
         /// <param name="hostname">hostname.</param>
         /// <param name="root">root.</param>
-        public KMIPServer(bool active = default(bool), List<int> ca = default(List<int>), List<int> certificate = default(List<int>), DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string hostname = default(string), string root = default(string))
+        public KMIPServer(bool active = default(bool), List<int> ca = default(List<int>), List<KMIPCA> cas = default(List<KMIPCA>), List<int> certificate = default(List<int>), DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string hostname = default(string), string root = default(string))
         {
             this.Active = active;
             this.Ca = ca;
+            this.Cas = cas;
             this.Certificate = certificate;
             this.CertificateIssueDate = certificateIssueDate;
             this.CertificateTtlInSeconds = certificateTtlInSeconds;
@@ -66,6 +68,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "ca", EmitDefaultValue = false)]
         public List<int> Ca { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Cas
+        /// </summary>
+        [DataMember(Name = "cas", EmitDefaultValue = false)]
+        public List<KMIPCA> Cas { get; set; }
 
         /// <summary>
         /// Gets or Sets Certificate
@@ -113,6 +121,7 @@ namespace akeyless.Model
             sb.Append("class KMIPServer {\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  Ca: ").Append(Ca).Append("\n");
+            sb.Append("  Cas: ").Append(Cas).Append("\n");
             sb.Append("  Certificate: ").Append(Certificate).Append("\n");
             sb.Append("  CertificateIssueDate: ").Append(CertificateIssueDate).Append("\n");
             sb.Append("  CertificateTtlInSeconds: ").Append(CertificateTtlInSeconds).Append("\n");

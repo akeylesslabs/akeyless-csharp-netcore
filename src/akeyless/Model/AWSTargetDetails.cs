@@ -39,14 +39,16 @@ namespace akeyless.Model
         /// <param name="awsRegion">awsRegion.</param>
         /// <param name="awsSecretAccessKey">awsSecretAccessKey.</param>
         /// <param name="awsSessionToken">awsSessionToken.</param>
+        /// <param name="awsUserName">awsUserName.</param>
         /// <param name="gwCloudIdentityExternalIdOpt">gwCloudIdentityExternalIdOpt.</param>
         /// <param name="useGwCloudIdentity">useGwCloudIdentity.</param>
-        public AWSTargetDetails(string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), AWSGatewayCloudIdentityExternalIdOpt gwCloudIdentityExternalIdOpt = default(AWSGatewayCloudIdentityExternalIdOpt), bool useGwCloudIdentity = default(bool))
+        public AWSTargetDetails(string awsAccessKeyId = default(string), string awsRegion = default(string), string awsSecretAccessKey = default(string), string awsSessionToken = default(string), string awsUserName = default(string), AWSGatewayCloudIdentityExternalIdOpt gwCloudIdentityExternalIdOpt = default(AWSGatewayCloudIdentityExternalIdOpt), bool useGwCloudIdentity = default(bool))
         {
             this.AwsAccessKeyId = awsAccessKeyId;
             this.AwsRegion = awsRegion;
             this.AwsSecretAccessKey = awsSecretAccessKey;
             this.AwsSessionToken = awsSessionToken;
+            this.AwsUserName = awsUserName;
             this.GwCloudIdentityExternalIdOpt = gwCloudIdentityExternalIdOpt;
             this.UseGwCloudIdentity = useGwCloudIdentity;
         }
@@ -76,6 +78,12 @@ namespace akeyless.Model
         public string AwsSessionToken { get; set; }
 
         /// <summary>
+        /// Gets or Sets AwsUserName
+        /// </summary>
+        [DataMember(Name = "aws_user_name", EmitDefaultValue = false)]
+        public string AwsUserName { get; set; }
+
+        /// <summary>
         /// Gets or Sets GwCloudIdentityExternalIdOpt
         /// </summary>
         [DataMember(Name = "gw_cloud_identity_external_id_opt", EmitDefaultValue = false)]
@@ -99,6 +107,7 @@ namespace akeyless.Model
             sb.Append("  AwsRegion: ").Append(AwsRegion).Append("\n");
             sb.Append("  AwsSecretAccessKey: ").Append(AwsSecretAccessKey).Append("\n");
             sb.Append("  AwsSessionToken: ").Append(AwsSessionToken).Append("\n");
+            sb.Append("  AwsUserName: ").Append(AwsUserName).Append("\n");
             sb.Append("  GwCloudIdentityExternalIdOpt: ").Append(GwCloudIdentityExternalIdOpt).Append("\n");
             sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
             sb.Append("}\n");

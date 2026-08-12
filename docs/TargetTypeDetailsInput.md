@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **DigicertTargetDetails** | [**DigiCertTargetDetails**](DigiCertTargetDetails.md) |  | [optional] 
 **DockerhubTargetDetails** | [**DockerhubTargetDetails**](DockerhubTargetDetails.md) |  | [optional] 
 **EksTargetDetails** | [**EKSTargetDetails**](EKSTargetDetails.md) |  | [optional] 
+**F5BigIpTargetDetails** | [**F5BigIpTargetDetails**](F5BigIpTargetDetails.md) |  | [optional] 
 **GcpTargetDetails** | [**GcpTargetDetails**](GcpTargetDetails.md) |  | [optional] 
 **GeminiTargetDetails** | [**GeminiTargetDetails**](GeminiTargetDetails.md) |  | [optional] 
 **GithubTargetDetails** | [**GithubTargetDetails**](GithubTargetDetails.md) |  | [optional] 

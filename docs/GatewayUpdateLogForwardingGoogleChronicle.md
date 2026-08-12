@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **LogType** | **string** | Google chronicle log type | [optional] 
 **OutputFormat** | **string** | Logs format [text/json] | [optional] [default to "text"]
 **PullInterval** | **string** | Pull interval in seconds | [optional] [default to "10"]
-**Region** | **string** | Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv] | [optional] 
+**Region** | **string** | Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv/toronto/sydney/frankfurt/zurich/dammam/mumbai/tokyo] | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

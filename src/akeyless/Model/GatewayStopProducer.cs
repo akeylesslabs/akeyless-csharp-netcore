@@ -40,13 +40,15 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayStopProducer" /> class.
         /// </summary>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayStopProducer(List<string> inputRule = default(List<string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string token = default(string), string uidToken = default(string))
+        public GatewayStopProducer(bool araEnabled = default(bool), List<string> inputRule = default(List<string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string skipDryRun = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -54,12 +56,21 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for GatewayStopProducer and cannot be null");
             }
             this.Name = name;
+            this.AraEnabled = araEnabled;
             this.InputRule = inputRule;
             this.Json = json;
             this.OutputRule = outputRule;
+            this.SkipDryRun = skipDryRun;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
@@ -90,6 +101,13 @@ namespace akeyless.Model
         public List<string> OutputRule { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -111,10 +129,12 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayStopProducer {\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  InputRule: ").Append(InputRule).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");

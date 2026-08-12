@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DynamicSecretUpdateRedis" /> class.
         /// </summary>
         /// <param name="aclRules">A JSON array list of redis ACL rules to attach to the created user. For available rules see the ACL CAT command https://redis.io/commands/acl-cat By default the user will have permissions to read all keys &#39;[\&quot;~*\&quot;, \&quot;+@read\&quot;]&#39;.</param>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
@@ -55,6 +56,7 @@ namespace akeyless.Model
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="port">Redis Port (default to &quot;6379&quot;).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
         /// <param name="sslCertificate">SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA).</param>
         /// <param name="tags">Add tags attached to this object.</param>
@@ -67,7 +69,7 @@ namespace akeyless.Model
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Redis Username.</param>
-        public DynamicSecretUpdateRedis(string aclRules = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string host = @"127.0.0.1", List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string password = default(string), string passwordLength = default(string), string port = @"6379", string producerEncryptionKeyName = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m", string username = default(string))
+        public DynamicSecretUpdateRedis(string aclRules = default(string), bool araEnabled = default(bool), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string host = @"127.0.0.1", List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string password = default(string), string passwordLength = default(string), string port = @"6379", string producerEncryptionKeyName = default(string), string skipDryRun = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -76,6 +78,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AclRules = aclRules;
+            this.AraEnabled = araEnabled;
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
@@ -91,6 +94,7 @@ namespace akeyless.Model
             // use default value if no "port" provided
             this.Port = port ?? @"6379";
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.SkipDryRun = skipDryRun;
             this.Ssl = ssl;
             this.SslCertificate = sslCertificate;
             this.Tags = tags;
@@ -112,6 +116,13 @@ namespace akeyless.Model
         /// <value>A JSON array list of redis ACL rules to attach to the created user. For available rules see the ACL CAT command https://redis.io/commands/acl-cat By default the user will have permissions to read all keys &#39;[\&quot;~*\&quot;, \&quot;+@read\&quot;]&#39;</value>
         [DataMember(Name = "acl-rules", EmitDefaultValue = false)]
         public string AclRules { get; set; }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Customize how temporary usernames are generated using go template
@@ -212,6 +223,13 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Enable/Disable SSL [true/false]
         /// </summary>
         /// <value>Enable/Disable SSL [true/false]</value>
@@ -306,6 +324,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretUpdateRedis {\n");
             sb.Append("  AclRules: ").Append(AclRules).Append("\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
@@ -320,6 +339,7 @@ namespace akeyless.Model
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Ssl: ").Append(Ssl).Append("\n");
             sb.Append("  SslCertificate: ").Append(SslCertificate).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");

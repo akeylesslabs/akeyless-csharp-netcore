@@ -6,6 +6,7 @@ rotatedSecretUpdateSplunk is a command that updates a rotated secret for a Splun
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | **List&lt;string&gt;** | List of the new tags that will be attached to this item | [optional] 
+**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag. | [optional] 
 **Audience** | **string** | Token audience for Splunk token creation (relevant only for rotator-type&#x3D;token) | [optional] 
 **AuthenticationCredentials** | **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
 **AutoRotate** | **string** |  | [optional] 
@@ -27,6 +28,7 @@ Name | Type | Description | Notes
 **RotationEventIn** | **List&lt;string&gt;** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | **int** |  | [optional] 
 **RotationInterval** | **string** |  | [optional] 
+**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
 **SplunkToken** | **string** | For rotator-type&#x3D;token, optionally set/replace the stored Splunk authentication token value. | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenOwner** | **string** | For rotator-type&#x3D;token, specify the Splunk username that the new token should be issued for. (Splunk 10 requires name&#x3D;&lt;token-owner&gt; when creating auth tokens.) | [optional] 

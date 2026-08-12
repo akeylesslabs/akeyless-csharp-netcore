@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretUpdateRabbitMq" /> class.
         /// </summary>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
@@ -63,6 +64,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -72,7 +74,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateRabbitMq(string deleteProtection = default(string), string description = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public DynamicSecretUpdateRabbitMq(bool araEnabled = default(bool), string deleteProtection = default(string), string description = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -80,6 +82,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for DynamicSecretUpdateRabbitMq and cannot be null");
             }
             this.Name = name;
+            this.AraEnabled = araEnabled;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.InputRule = inputRule;
@@ -102,6 +105,7 @@ namespace akeyless.Model
             this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -113,6 +117,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? @"60m";
         }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Protection from accidental deletion of this object [true/false]
@@ -276,6 +287,13 @@ namespace akeyless.Model
         public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -348,6 +366,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretUpdateRabbitMq {\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  InputRule: ").Append(InputRule).Append("\n");
@@ -371,6 +390,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

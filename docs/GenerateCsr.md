@@ -6,19 +6,22 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | **string** |  | [optional] 
 **AltNames** | **string** | A comma-separated list of dns alternative names | [optional] 
-**CertificateType** | **string** | The certificate type to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing) | [optional] 
+**CertificateType** | **string** | A comma-separated list of certificate types to include in the CSR certificate (ssl-client/ssl-server/certificate-signing) | [optional] 
 **City** | **string** | The city to be included in the CSR certificate | [optional] 
 **CommonName** | **string** | The common name to be included in the CSR certificate | 
 **Country** | **string** | The country to be included in the CSR certificate | [optional] 
 **Critical** | **bool** | Add critical to the key usage extension (will be false if not added) | [optional] 
+**CustomerFrgId** | **string** | The customer fragment ID that will be used to create the key (if empty, the key will be created independently of a customer fragment) | [optional] 
 **Dep** | **string** | The department to be included in the CSR certificate | [optional] 
 **EmailAddresses** | **string** | A comma-separated list of email addresses alternative names | [optional] 
 **ExportPrivateKey** | **bool** | The flag to indicate if the private key should be exported | [optional] [default to false]
+**ExtKeyUsage** | **string** | A comma-separated list of extended key usages to include in the CSR certificate | [optional] 
 **GenerateKey** | **bool** | Generate a new classic key for the csr | [optional] 
 **HashAlgorithm** | **string** | Specifies the hash algorithm used for the encryption key&#39;s operations, available options: SHA256, SHA384, SHA512 | [optional] [default to "SHA256"]
 **IpAddresses** | **string** | A comma-separated list of ip addresses alternative names | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeyType** | **string** | The type of the key to generate (classic-key/dfc) | [default to "classic-key"]
+**KeyUsage** | **string** | A comma-separated list of key usages to include in the CSR certificate | [optional] 
 **Name** | **string** | The key name | 
 **Org** | **string** | The organization to be included in the CSR certificate | [optional] 
 **SplitLevel** | **long** | The number of fragments that the item will be split into (not includes customer fragment) | [optional] [default to 3]

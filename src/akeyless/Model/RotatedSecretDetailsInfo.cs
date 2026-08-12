@@ -35,6 +35,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RotatedSecretDetailsInfo" /> class.
         /// </summary>
+        /// <param name="awsUserName">awsUserName.</param>
         /// <param name="deletePreviousVersionInDays">deletePreviousVersionInDays.</param>
         /// <param name="enableCustomPasswordPolicy">enableCustomPasswordPolicy.</param>
         /// <param name="graceRotation">graceRotation.</param>
@@ -57,9 +58,11 @@ namespace akeyless.Model
         /// <param name="rotatorType">rotatorType.</param>
         /// <param name="samePassword">samePassword.</param>
         /// <param name="servicesDetails">servicesDetails.</param>
+        /// <param name="skipDryRun">skipDryRun.</param>
         /// <param name="timeoutSeconds">timeoutSeconds.</param>
-        public RotatedSecretDetailsInfo(int deletePreviousVersionInDays = default(int), bool enableCustomPasswordPolicy = default(bool), bool graceRotation = default(bool), int graceRotationHour = default(int), int graceRotationInterval = default(int), string graceRotationTiming = default(string), long gwClusterId = default(long), List<WindowsService> iisAppsDetails = default(List<WindowsService>), string lastRotationError = default(string), bool managedByAkeyless = default(bool), long maxVersions = default(long), string nextAutoRotateType = default(string), int numberOfVersionsToSave = default(int), string publicKeyRemotePath = default(string), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>), long timeoutSeconds = default(long))
+        public RotatedSecretDetailsInfo(string awsUserName = default(string), int deletePreviousVersionInDays = default(int), bool enableCustomPasswordPolicy = default(bool), bool graceRotation = default(bool), int graceRotationHour = default(int), int graceRotationInterval = default(int), string graceRotationTiming = default(string), long gwClusterId = default(long), List<WindowsService> iisAppsDetails = default(List<WindowsService>), string lastRotationError = default(string), bool managedByAkeyless = default(bool), long maxVersions = default(long), string nextAutoRotateType = default(string), int numberOfVersionsToSave = default(int), string publicKeyRemotePath = default(string), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>), bool skipDryRun = default(bool), long timeoutSeconds = default(long))
         {
+            this.AwsUserName = awsUserName;
             this.DeletePreviousVersionInDays = deletePreviousVersionInDays;
             this.EnableCustomPasswordPolicy = enableCustomPasswordPolicy;
             this.GraceRotation = graceRotation;
@@ -82,8 +85,15 @@ namespace akeyless.Model
             this.RotatorType = rotatorType;
             this.SamePassword = samePassword;
             this.ServicesDetails = servicesDetails;
+            this.SkipDryRun = skipDryRun;
             this.TimeoutSeconds = timeoutSeconds;
         }
+
+        /// <summary>
+        /// Gets or Sets AwsUserName
+        /// </summary>
+        [DataMember(Name = "aws_user_name", EmitDefaultValue = false)]
+        public string AwsUserName { get; set; }
 
         /// <summary>
         /// Gets or Sets DeletePreviousVersionInDays
@@ -219,6 +229,12 @@ namespace akeyless.Model
         public List<WindowsService> ServicesDetails { get; set; }
 
         /// <summary>
+        /// Gets or Sets SkipDryRun
+        /// </summary>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
+
+        /// <summary>
         /// Gets or Sets TimeoutSeconds
         /// </summary>
         [DataMember(Name = "timeout_seconds", EmitDefaultValue = false)]
@@ -232,6 +248,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class RotatedSecretDetailsInfo {\n");
+            sb.Append("  AwsUserName: ").Append(AwsUserName).Append("\n");
             sb.Append("  DeletePreviousVersionInDays: ").Append(DeletePreviousVersionInDays).Append("\n");
             sb.Append("  EnableCustomPasswordPolicy: ").Append(EnableCustomPasswordPolicy).Append("\n");
             sb.Append("  GraceRotation: ").Append(GraceRotation).Append("\n");
@@ -254,6 +271,7 @@ namespace akeyless.Model
             sb.Append("  RotatorType: ").Append(RotatorType).Append("\n");
             sb.Append("  SamePassword: ").Append(SamePassword).Append("\n");
             sb.Append("  ServicesDetails: ").Append(ServicesDetails).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  TimeoutSeconds: ").Append(TimeoutSeconds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -42,6 +42,10 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="apiKey">API key for OpenAI.</param>
         /// <param name="apiKeyId">API key ID.</param>
+        /// <param name="codexOauthAccessToken">Codex OAuth access token (auth.json tokens.access_token), used when codex-oauth-mode&#x3D;chatgpt_oauth.</param>
+        /// <param name="codexOauthAccountId">Codex OAuth account id (auth.json tokens.account_id), used when codex-oauth-mode&#x3D;chatgpt_oauth.</param>
+        /// <param name="codexOauthMode">Auth mode: empty (default, static api-key) or chatgpt_oauth.</param>
+        /// <param name="codexOauthRefreshToken">Codex OAuth refresh token (auth.json tokens.refresh_token), used when codex-oauth-mode&#x3D;chatgpt_oauth.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_comment&quot;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -56,7 +60,7 @@ namespace akeyless.Model
         /// <param name="organizationId">Organization ID.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetUpdateOpenAI(string apiKey = default(string), string apiKeyId = default(string), string deleteProtection = default(string), string description = @"default_comment", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string model = default(string), string name = default(string), string newComment = @"default_comment", string newName = default(string), string openaiUrl = @"https://api.openai.com/v1", string organizationId = default(string), string token = default(string), string uidToken = default(string))
+        public TargetUpdateOpenAI(string apiKey = default(string), string apiKeyId = default(string), string codexOauthAccessToken = default(string), string codexOauthAccountId = default(string), string codexOauthMode = default(string), string codexOauthRefreshToken = default(string), string deleteProtection = default(string), string description = @"default_comment", bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string model = default(string), string name = default(string), string newComment = @"default_comment", string newName = default(string), string openaiUrl = @"https://api.openai.com/v1", string organizationId = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -66,6 +70,10 @@ namespace akeyless.Model
             this.Name = name;
             this.ApiKey = apiKey;
             this.ApiKeyId = apiKeyId;
+            this.CodexOauthAccessToken = codexOauthAccessToken;
+            this.CodexOauthAccountId = codexOauthAccountId;
+            this.CodexOauthMode = codexOauthMode;
+            this.CodexOauthRefreshToken = codexOauthRefreshToken;
             this.DeleteProtection = deleteProtection;
             // use default value if no "description" provided
             this.Description = description ?? @"default_comment";
@@ -97,6 +105,34 @@ namespace akeyless.Model
         /// <value>API key ID</value>
         [DataMember(Name = "api-key-id", EmitDefaultValue = false)]
         public string ApiKeyId { get; set; }
+
+        /// <summary>
+        /// Codex OAuth access token (auth.json tokens.access_token), used when codex-oauth-mode&#x3D;chatgpt_oauth
+        /// </summary>
+        /// <value>Codex OAuth access token (auth.json tokens.access_token), used when codex-oauth-mode&#x3D;chatgpt_oauth</value>
+        [DataMember(Name = "codex-oauth-access-token", EmitDefaultValue = false)]
+        public string CodexOauthAccessToken { get; set; }
+
+        /// <summary>
+        /// Codex OAuth account id (auth.json tokens.account_id), used when codex-oauth-mode&#x3D;chatgpt_oauth
+        /// </summary>
+        /// <value>Codex OAuth account id (auth.json tokens.account_id), used when codex-oauth-mode&#x3D;chatgpt_oauth</value>
+        [DataMember(Name = "codex-oauth-account-id", EmitDefaultValue = false)]
+        public string CodexOauthAccountId { get; set; }
+
+        /// <summary>
+        /// Auth mode: empty (default, static api-key) or chatgpt_oauth
+        /// </summary>
+        /// <value>Auth mode: empty (default, static api-key) or chatgpt_oauth</value>
+        [DataMember(Name = "codex-oauth-mode", EmitDefaultValue = false)]
+        public string CodexOauthMode { get; set; }
+
+        /// <summary>
+        /// Codex OAuth refresh token (auth.json tokens.refresh_token), used when codex-oauth-mode&#x3D;chatgpt_oauth
+        /// </summary>
+        /// <value>Codex OAuth refresh token (auth.json tokens.refresh_token), used when codex-oauth-mode&#x3D;chatgpt_oauth</value>
+        [DataMember(Name = "codex-oauth-refresh-token", EmitDefaultValue = false)]
+        public string CodexOauthRefreshToken { get; set; }
 
         /// <summary>
         /// Protection from accidental deletion of this object [true/false]
@@ -206,6 +242,10 @@ namespace akeyless.Model
             sb.Append("class TargetUpdateOpenAI {\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  ApiKeyId: ").Append(ApiKeyId).Append("\n");
+            sb.Append("  CodexOauthAccessToken: ").Append(CodexOauthAccessToken).Append("\n");
+            sb.Append("  CodexOauthAccountId: ").Append(CodexOauthAccountId).Append("\n");
+            sb.Append("  CodexOauthMode: ").Append(CodexOauthMode).Append("\n");
+            sb.Append("  CodexOauthRefreshToken: ").Append(CodexOauthRefreshToken).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

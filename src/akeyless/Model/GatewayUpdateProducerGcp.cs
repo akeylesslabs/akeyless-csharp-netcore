@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayUpdateProducerGcp" /> class.
         /// </summary>
         /// <param name="accessType">accessType.</param>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="fixedUserClaimKeyname">For externally provided users, denotes the key-name of IdP claim to extract the username from (Relevant only when - -access-type&#x3D;external) (default to &quot;ext_email&quot;).</param>
@@ -65,12 +66,13 @@ namespace akeyless.Model
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="serviceAccountType">The type of the GCP service account. Options [fixed, dynamic] (Relevant only when - -access-type&#x3D;sa) (default to &quot;fixed&quot;).</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerGcp(string accessType = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = @"ext_email", string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpProjectId = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string roleNames = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string serviceAccountType = @"fixed", List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerGcp(string accessType = default(string), bool araEnabled = default(bool), string customUsernameTemplate = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = @"ext_email", string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpProjectId = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string roleNames = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string serviceAccountType = @"fixed", string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -79,6 +81,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AccessType = accessType;
+            this.AraEnabled = araEnabled;
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DeleteProtection = deleteProtection;
             // use default value if no "fixedUserClaimKeyname" provided
@@ -104,6 +107,7 @@ namespace akeyless.Model
             this.SecureAccessWebProxy = secureAccessWebProxy;
             // use default value if no "serviceAccountType" provided
             this.ServiceAccountType = serviceAccountType ?? @"fixed";
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -117,6 +121,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access-type", EmitDefaultValue = false)]
         public string AccessType { get; set; }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Customize how temporary usernames are generated using go template
@@ -286,6 +297,13 @@ namespace akeyless.Model
         public string ServiceAccountType { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -329,6 +347,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateProducerGcp {\n");
             sb.Append("  AccessType: ").Append(AccessType).Append("\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
@@ -353,6 +372,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  ServiceAccountType: ").Append(ServiceAccountType).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

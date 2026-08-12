@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="binaryValue">Use this option if the universal secrets value is a base64 encoded binary.</param>
         /// <param name="description">Description of the universal secrets.</param>
+        /// <param name="gcpProjectId">The GCP project to create the secret in (GCP only). Required when the connector spans multiple projects or uses folder/organization scope..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="varNamespace">The namespace (relevant for Hashi vault target).</param>
         /// <param name="objectType">objectType.</param>
@@ -57,7 +58,7 @@ namespace akeyless.Model
         /// <param name="uscEncryptionKey">Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used).</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
-        public UscCreate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string region = default(string), string remoteSecretActivationDate = default(string), string remoteSecretExpires = default(string), string secretName = default(string), string selectedRepositories = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
+        public UscCreate(bool binaryValue = default(bool), string description = default(string), string gcpProjectId = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string region = default(string), string remoteSecretActivationDate = default(string), string remoteSecretExpires = default(string), string secretName = default(string), string selectedRepositories = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
         {
             // to ensure "secretName" is required (not null)
             if (secretName == null)
@@ -79,6 +80,7 @@ namespace akeyless.Model
             this.Value = value;
             this.BinaryValue = binaryValue;
             this.Description = description;
+            this.GcpProjectId = gcpProjectId;
             this.Json = json;
             this.Namespace = varNamespace;
             this.ObjectType = objectType;
@@ -106,6 +108,13 @@ namespace akeyless.Model
         /// <value>Description of the universal secrets</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// The GCP project to create the secret in (GCP only). Required when the connector spans multiple projects or uses folder/organization scope.
+        /// </summary>
+        /// <value>The GCP project to create the secret in (GCP only). Required when the connector spans multiple projects or uses folder/organization scope.</value>
+        [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
+        public string GcpProjectId { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -220,6 +229,7 @@ namespace akeyless.Model
             sb.Append("class UscCreate {\n");
             sb.Append("  BinaryValue: ").Append(BinaryValue).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");

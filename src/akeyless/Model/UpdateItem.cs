@@ -50,7 +50,7 @@ namespace akeyless.Model
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="gcpSmRegions">GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. USC with GCP targets only..</param>
-        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items..</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="lockDuringSraSession">Lock this secret for read/update while an SRA session is active.</param>
@@ -76,6 +76,7 @@ namespace akeyless.Model
         /// <param name="secureAccessDbName">The DB name (relevant only for DB Dynamic-Secret).</param>
         /// <param name="secureAccessDbSchema">The DB schema (relevant only for DB Dynamic-Secret).</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessEnforceHostsRestriction">Enforce connections only to allowed SRA hosts.</param>
         /// <param name="secureAccessGateway">secureAccessGateway.</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdGatewayServer">RD Gateway server (relevant only for rdp).</param>
@@ -88,13 +89,14 @@ namespace akeyless.Model
         /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
         /// <param name="secureAccessUseInternalBastion">Deprecated. Use secure-access-use-internal-ssh-access.</param>
         /// <param name="secureAccessUseInternalSshAccess">Use internal SSH Access.</param>
-        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
-        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA).</param>
+        /// <param name="target">A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscTags">Comma-separated list of tags to apply to all secrets created/synced on the remote USC  USC items only..</param>
         /// <param name="useTagsAsFilter">Whether to filter the USC secret list using the specified usc-tags [true/false]  USC items only..</param>
-        public UpdateItem(string providerType = default(string), string accessibility = @"regular", List<string> addTag = default(List<string>), string certFileData = default(string), string certificateFormat = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = @"default_metadata", List<string> expirationEventIn = default(List<string>), string gcpSmRegions = default(string), string hostProvider = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessApi = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSsh = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessUseInternalSshAccess = default(bool), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string token = default(string), string uidToken = default(string), string uscTags = default(string), string useTagsAsFilter = default(string))
+        public UpdateItem(string providerType = default(string), string accessibility = @"regular", List<string> addTag = default(List<string>), string certFileData = default(string), string certificateFormat = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = @"default_metadata", List<string> expirationEventIn = default(List<string>), string gcpSmRegions = default(string), string hostProvider = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessApi = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSsh = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessUseInternalSshAccess = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string uscTags = default(string), string useTagsAsFilter = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -140,6 +142,7 @@ namespace akeyless.Model
             this.SecureAccessDbName = secureAccessDbName;
             this.SecureAccessDbSchema = secureAccessDbSchema;
             this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessEnforceHostsRestriction = secureAccessEnforceHostsRestriction;
             this.SecureAccessGateway = secureAccessGateway;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessRdGatewayServer = secureAccessRdGatewayServer;
@@ -154,6 +157,7 @@ namespace akeyless.Model
             this.SecureAccessUseInternalSshAccess = secureAccessUseInternalSshAccess;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
+            this.Target = target;
             this.Token = token;
             this.UidToken = uidToken;
             this.UscTags = uscTags;
@@ -229,9 +233,9 @@ namespace akeyless.Model
         public string GcpSmRegions { get; set; }
 
         /// <summary>
-        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
         /// </summary>
-        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
 
@@ -411,6 +415,13 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
+        /// Enforce connections only to allowed SRA hosts
+        /// </summary>
+        /// <value>Enforce connections only to allowed SRA hosts</value>
+        [DataMember(Name = "secure-access-enforce-hosts-restriction", EmitDefaultValue = true)]
+        public bool SecureAccessEnforceHostsRestriction { get; set; }
+
+        /// <summary>
         /// Gets or Sets SecureAccessGateway
         /// </summary>
         [DataMember(Name = "secure-access-gateway", EmitDefaultValue = false)]
@@ -508,6 +519,13 @@ namespace akeyless.Model
         public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
+        /// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
+        /// </summary>
+        /// <value>A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times</value>
+        [DataMember(Name = "target", EmitDefaultValue = false)]
+        public List<string> Target { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -579,6 +597,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessDbName: ").Append(SecureAccessDbName).Append("\n");
             sb.Append("  SecureAccessDbSchema: ").Append(SecureAccessDbSchema).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessEnforceHostsRestriction: ").Append(SecureAccessEnforceHostsRestriction).Append("\n");
             sb.Append("  SecureAccessGateway: ").Append(SecureAccessGateway).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessRdGatewayServer: ").Append(SecureAccessRdGatewayServer).Append("\n");
@@ -593,6 +612,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessUseInternalSshAccess: ").Append(SecureAccessUseInternalSshAccess).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
+            sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UscTags: ").Append(UscTags).Append("\n");

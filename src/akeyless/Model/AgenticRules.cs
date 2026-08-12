@@ -35,13 +35,22 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AgenticRules" /> class.
         /// </summary>
+        /// <param name="enabled">Enabled is a pointer so rules persisted before this field existed (nil) keep enforcing, rather than silently switching off..</param>
         /// <param name="inputRules">inputRules.</param>
         /// <param name="outputRules">outputRules.</param>
-        public AgenticRules(List<AgenticRule> inputRules = default(List<AgenticRule>), List<AgenticRule> outputRules = default(List<AgenticRule>))
+        public AgenticRules(bool enabled = default(bool), List<AgenticRule> inputRules = default(List<AgenticRule>), List<AgenticRule> outputRules = default(List<AgenticRule>))
         {
+            this.Enabled = enabled;
             this.InputRules = inputRules;
             this.OutputRules = outputRules;
         }
+
+        /// <summary>
+        /// Enabled is a pointer so rules persisted before this field existed (nil) keep enforcing, rather than silently switching off.
+        /// </summary>
+        /// <value>Enabled is a pointer so rules persisted before this field existed (nil) keep enforcing, rather than silently switching off.</value>
+        [DataMember(Name = "enabled", EmitDefaultValue = true)]
+        public bool Enabled { get; set; }
 
         /// <summary>
         /// Gets or Sets InputRules
@@ -63,6 +72,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AgenticRules {\n");
+            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  InputRules: ").Append(InputRules).Append("\n");
             sb.Append("  OutputRules: ").Append(OutputRules).Append("\n");
             sb.Append("}\n");

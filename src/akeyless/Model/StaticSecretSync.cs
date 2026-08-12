@@ -41,15 +41,17 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="StaticSecretSync" /> class.
         /// </summary>
         /// <param name="deleteRemote">Delete the secret from remote secret manager (for association create/update).</param>
+        /// <param name="environments">GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -environments repo1/env1,repo2/env2)..</param>
         /// <param name="filterSecretValue">JQ expression to filter or transform the secret value.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Static secret name (required).</param>
         /// <param name="varNamespace">Vault namespace, releavnt only for Hashicorp Vault Target.</param>
         /// <param name="remoteSecretName">Remote Secret Name that will be synced on the remote endpoint.</param>
+        /// <param name="repositories">GitHub repositories to sync to. Relevant only for GitHub targets. Syncs to all repositories defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -repositories repo1,repo2)..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Universal Secret Connector name, If not provided all attached USC&#39;s will be synced.</param>
-        public StaticSecretSync(bool deleteRemote = default(bool), string filterSecretValue = default(string), bool json = false, string name = default(string), string varNamespace = default(string), string remoteSecretName = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public StaticSecretSync(bool deleteRemote = default(bool), string environments = default(string), string filterSecretValue = default(string), bool json = false, string name = default(string), string varNamespace = default(string), string remoteSecretName = default(string), string repositories = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -58,10 +60,12 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.DeleteRemote = deleteRemote;
+            this.Environments = environments;
             this.FilterSecretValue = filterSecretValue;
             this.Json = json;
             this.Namespace = varNamespace;
             this.RemoteSecretName = remoteSecretName;
+            this.Repositories = repositories;
             this.Token = token;
             this.UidToken = uidToken;
             this.UscName = uscName;
@@ -73,6 +77,13 @@ namespace akeyless.Model
         /// <value>Delete the secret from remote secret manager (for association create/update)</value>
         [DataMember(Name = "delete-remote", EmitDefaultValue = true)]
         public bool DeleteRemote { get; set; }
+
+        /// <summary>
+        /// GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -environments repo1/env1,repo2/env2).
+        /// </summary>
+        /// <value>GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -environments repo1/env1,repo2/env2).</value>
+        [DataMember(Name = "environments", EmitDefaultValue = false)]
+        public string Environments { get; set; }
 
         /// <summary>
         /// JQ expression to filter or transform the secret value
@@ -110,6 +121,13 @@ namespace akeyless.Model
         public string RemoteSecretName { get; set; }
 
         /// <summary>
+        /// GitHub repositories to sync to. Relevant only for GitHub targets. Syncs to all repositories defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -repositories repo1,repo2).
+        /// </summary>
+        /// <value>GitHub repositories to sync to. Relevant only for GitHub targets. Syncs to all repositories defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -repositories repo1,repo2).</value>
+        [DataMember(Name = "repositories", EmitDefaultValue = false)]
+        public string Repositories { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -139,11 +157,13 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class StaticSecretSync {\n");
             sb.Append("  DeleteRemote: ").Append(DeleteRemote).Append("\n");
+            sb.Append("  Environments: ").Append(Environments).Append("\n");
             sb.Append("  FilterSecretValue: ").Append(FilterSecretValue).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  RemoteSecretName: ").Append(RemoteSecretName).Append("\n");
+            sb.Append("  Repositories: ").Append(Repositories).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UscName: ").Append(UscName).Append("\n");

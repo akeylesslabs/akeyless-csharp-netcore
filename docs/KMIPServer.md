@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | **bool** |  | [optional] 
 **Ca** | **List&lt;int&gt;** |  | [optional] 
+**Cas** | [**List&lt;KMIPCA&gt;**](KMIPCA.md) |  | [optional] 
 **Certificate** | **List&lt;int&gt;** |  | [optional] 
 **CertificateIssueDate** | **DateTime** |  | [optional] 
 **CertificateTtlInSeconds** | **long** |  | [optional] 

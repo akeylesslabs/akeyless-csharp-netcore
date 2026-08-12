@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretUpdateMySql" /> class.
         /// </summary>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="dbServerCertificates">(Optional) DB server certificates.</param>
         /// <param name="dbServerName">(Optional) Server name for certificate verification.</param>
@@ -67,6 +68,7 @@ namespace akeyless.Model
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts).</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
         /// <param name="sslCertificate">SSL connection certificate.</param>
         /// <param name="tags">Add tags attached to this object.</param>
@@ -78,7 +80,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateMySql(string customUsernameTemplate = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), string description = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string mysqlDbname = default(string), string mysqlHost = @"127.0.0.1", string mysqlPassword = default(string), string mysqlPort = @"3306", string mysqlRevocationStatements = default(string), string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public DynamicSecretUpdateMySql(bool araEnabled = default(bool), string customUsernameTemplate = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), string description = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string mysqlDbname = default(string), string mysqlHost = @"127.0.0.1", string mysqlPassword = default(string), string mysqlPort = @"3306", string mysqlRevocationStatements = default(string), string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, string skipDryRun = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -86,6 +88,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for DynamicSecretUpdateMySql and cannot be null");
             }
             this.Name = name;
+            this.AraEnabled = araEnabled;
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DbServerCertificates = dbServerCertificates;
             this.DbServerName = dbServerName;
@@ -114,6 +117,7 @@ namespace akeyless.Model
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessWeb = secureAccessWeb;
+            this.SkipDryRun = skipDryRun;
             this.Ssl = ssl;
             this.SslCertificate = sslCertificate;
             this.Tags = tags;
@@ -127,6 +131,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? @"60m";
         }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Customize how temporary usernames are generated using go template
@@ -318,6 +329,13 @@ namespace akeyless.Model
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Enable/Disable SSL [true/false]
         /// </summary>
         /// <value>Enable/Disable SSL [true/false]</value>
@@ -404,6 +422,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretUpdateMySql {\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DbServerCertificates: ").Append(DbServerCertificates).Append("\n");
             sb.Append("  DbServerName: ").Append(DbServerName).Append("\n");
@@ -431,6 +450,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Ssl: ").Append(Ssl).Append("\n");
             sb.Append("  SslCertificate: ").Append(SslCertificate).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");

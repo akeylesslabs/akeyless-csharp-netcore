@@ -42,6 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessMode">accessMode.</param>
         /// <param name="adminRotationIntervalDays">Admin credentials rotation interval (days) (default to 0).</param>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="awsAccessKeyId">Access Key ID.</param>
         /// <param name="awsAccessSecretKey">Secret Access Key.</param>
         /// <param name="awsExternalId">The AWS External ID associated with the AWS role (relevant only for assume_role mode).</param>
@@ -71,6 +72,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="sessionTags">String of Key value session tags comma separated, relevant only for Assumed Role.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -81,7 +83,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsExternalId = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string customUsernameTemplate = default(string), string deleteProtection = default(string), bool enableAdminRotation = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string region = @"us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sessionTags = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string transitiveTagKeys = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerAws(string accessMode = default(string), long adminRotationIntervalDays = 0, bool araEnabled = default(bool), string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsExternalId = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string customUsernameTemplate = default(string), string deleteProtection = default(string), bool enableAdminRotation = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string region = @"us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sessionTags = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string transitiveTagKeys = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -91,6 +93,7 @@ namespace akeyless.Model
             this.Name = name;
             this.AccessMode = accessMode;
             this.AdminRotationIntervalDays = adminRotationIntervalDays;
+            this.AraEnabled = araEnabled;
             this.AwsAccessKeyId = awsAccessKeyId;
             this.AwsAccessSecretKey = awsAccessSecretKey;
             this.AwsExternalId = awsExternalId;
@@ -120,6 +123,7 @@ namespace akeyless.Model
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
             this.SessionTags = sessionTags;
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -145,6 +149,13 @@ namespace akeyless.Model
         /// <value>Admin credentials rotation interval (days)</value>
         [DataMember(Name = "admin-rotation-interval-days", EmitDefaultValue = false)]
         public long AdminRotationIntervalDays { get; set; }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Access Key ID
@@ -350,6 +361,13 @@ namespace akeyless.Model
         public string SessionTags { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -431,6 +449,7 @@ namespace akeyless.Model
             sb.Append("class GatewayCreateProducerAws {\n");
             sb.Append("  AccessMode: ").Append(AccessMode).Append("\n");
             sb.Append("  AdminRotationIntervalDays: ").Append(AdminRotationIntervalDays).Append("\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  AwsAccessKeyId: ").Append(AwsAccessKeyId).Append("\n");
             sb.Append("  AwsAccessSecretKey: ").Append(AwsAccessSecretKey).Append("\n");
             sb.Append("  AwsExternalId: ").Append(AwsExternalId).Append("\n");
@@ -460,6 +479,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  SessionTags: ").Append(SessionTags).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

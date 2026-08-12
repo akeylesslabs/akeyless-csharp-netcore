@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// <param name="logType">Google chronicle log type.</param>
         /// <param name="outputFormat">Logs format [text/json] (default to &quot;text&quot;).</param>
         /// <param name="pullInterval">Pull interval in seconds (default to &quot;10&quot;).</param>
-        /// <param name="region">Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv].</param>
+        /// <param name="region">Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv/toronto/sydney/frankfurt/zurich/dammam/mumbai/tokyo].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         public GwUpdateRemoteAccessSessionLogsGoogleChronicle(string customerId = default(string), string enable = @"true", string gcpKey = default(string), bool json = false, string logType = default(string), string outputFormat = @"text", string pullInterval = @"10", string region = default(string), string token = default(string), string uidToken = default(string))
@@ -112,9 +112,9 @@ namespace akeyless.Model
         public string PullInterval { get; set; }
 
         /// <summary>
-        /// Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv]
+        /// Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv/toronto/sydney/frankfurt/zurich/dammam/mumbai/tokyo]
         /// </summary>
-        /// <value>Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv]</value>
+        /// <value>Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv/toronto/sydney/frankfurt/zurich/dammam/mumbai/tokyo]</value>
         [DataMember(Name = "region", EmitDefaultValue = false)]
         public string Region { get; set; }
 

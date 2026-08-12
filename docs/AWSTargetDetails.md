@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AwsRegion** | **string** |  | [optional] 
 **AwsSecretAccessKey** | **string** |  | [optional] 
 **AwsSessionToken** | **string** |  | [optional] 
+**AwsUserName** | **string** |  | [optional] 
 **GwCloudIdentityExternalIdOpt** | [**AWSGatewayCloudIdentityExternalIdOpt**](AWSGatewayCloudIdentityExternalIdOpt.md) |  | [optional] 
 **UseGwCloudIdentity** | **bool** |  | [optional] 
 

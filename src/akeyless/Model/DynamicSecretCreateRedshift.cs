@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretCreateRedshift" /> class.
         /// </summary>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="creationStatements">Redshift Creation statements.</param>
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
@@ -58,6 +59,7 @@ namespace akeyless.Model
         /// <param name="redshiftUsername">Redshift Username.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts).</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
@@ -68,7 +70,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateRedshift(string creationStatements = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKey = default(string), string redshiftDbName = default(string), string redshiftHost = @"127.0.0.1", string redshiftPassword = default(string), string redshiftPort = @"5439", string redshiftUsername = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool ssl = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public DynamicSecretCreateRedshift(bool araEnabled = default(bool), string creationStatements = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKey = default(string), string redshiftDbName = default(string), string redshiftHost = @"127.0.0.1", string redshiftPassword = default(string), string redshiftPort = @"5439", string redshiftUsername = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string skipDryRun = default(string), bool ssl = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -76,6 +78,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for DynamicSecretCreateRedshift and cannot be null");
             }
             this.Name = name;
+            this.AraEnabled = araEnabled;
             this.CreationStatements = creationStatements;
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DeleteProtection = deleteProtection;
@@ -95,6 +98,7 @@ namespace akeyless.Model
             this.RedshiftUsername = redshiftUsername;
             this.SecureAccessEnable = secureAccessEnable;
             this.SecureAccessHost = secureAccessHost;
+            this.SkipDryRun = skipDryRun;
             this.Ssl = ssl;
             this.Tags = tags;
             this.TargetName = targetName;
@@ -107,6 +111,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? @"60m";
         }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Redshift Creation statements
@@ -235,6 +246,13 @@ namespace akeyless.Model
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Enable/Disable SSL [true/false]
         /// </summary>
         /// <value>Enable/Disable SSL [true/false]</value>
@@ -314,6 +332,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretCreateRedshift {\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  CreationStatements: ").Append(CreationStatements).Append("\n");
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
@@ -332,6 +351,7 @@ namespace akeyless.Model
             sb.Append("  RedshiftUsername: ").Append(RedshiftUsername).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Ssl: ").Append(Ssl).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");

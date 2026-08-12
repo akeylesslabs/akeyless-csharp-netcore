@@ -75,6 +75,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CreateEKSTarget**](V2Api.md#createekstarget) | **POST** /create-eks-target |  |
 | [**CreateESM**](V2Api.md#createesm) | **POST** /create-esm |  |
 | [**CreateEventForwarder**](V2Api.md#createeventforwarder) | **POST** /create-event-forwarder |  |
+| [**CreateF5BigIpTarget**](V2Api.md#createf5bigiptarget) | **POST** /create-f5-big-ip-target |  |
 | [**CreateGKETarget**](V2Api.md#creategketarget) | **POST** /create-gke-target |  |
 | [**CreateGcpTarget**](V2Api.md#creategcptarget) | **POST** /create-gcp-target |  |
 | [**CreateGithubTarget**](V2Api.md#creategithubtarget) | **POST** /create-github-target |  |
@@ -136,6 +137,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DescribeSubClaims**](V2Api.md#describesubclaims) | **POST** /describe-sub-claims |  |
 | [**Detokenize**](V2Api.md#detokenize) | **POST** /detokenize |  |
 | [**DetokenizeBatch**](V2Api.md#detokenizebatch) | **POST** /detokenize-batch |  |
+| [**DynamicSecretCreateAerospike**](V2Api.md#dynamicsecretcreateaerospike) | **POST** /dynamic-secret-create-aerospike |  |
 | [**DynamicSecretCreateArtifactory**](V2Api.md#dynamicsecretcreateartifactory) | **POST** /dynamic-secret-create-artifactory |  |
 | [**DynamicSecretCreateAws**](V2Api.md#dynamicsecretcreateaws) | **POST** /dynamic-secret-create-aws |  |
 | [**DynamicSecretCreateAzure**](V2Api.md#dynamicsecretcreateazure) | **POST** /dynamic-secret-create-azure |  |
@@ -171,6 +173,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretTmpCredsDelete**](V2Api.md#dynamicsecrettmpcredsdelete) | **POST** /dynamic-secret-tmp-creds-delete |  |
 | [**DynamicSecretTmpCredsGet**](V2Api.md#dynamicsecrettmpcredsget) | **POST** /dynamic-secret-tmp-creds-get |  |
 | [**DynamicSecretTmpCredsUpdate**](V2Api.md#dynamicsecrettmpcredsupdate) | **POST** /dynamic-secret-tmp-creds-update |  |
+| [**DynamicSecretUpdateAerospike**](V2Api.md#dynamicsecretupdateaerospike) | **POST** /dynamic-secret-update-aerospike |  |
 | [**DynamicSecretUpdateArtifactory**](V2Api.md#dynamicsecretupdateartifactory) | **POST** /dynamic-secret-update-artifactory |  |
 | [**DynamicSecretUpdateAws**](V2Api.md#dynamicsecretupdateaws) | **POST** /dynamic-secret-update-aws |  |
 | [**DynamicSecretUpdateAzure**](V2Api.md#dynamicsecretupdateazure) | **POST** /dynamic-secret-update-azure |  |
@@ -416,11 +419,13 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotateKey**](V2Api.md#rotatekey) | **POST** /rotate-key |  |
 | [**RotateOidcClientSecret**](V2Api.md#rotateoidcclientsecret) | **POST** /rotate-oidc-client-secret |  |
 | [**RotateSecret**](V2Api.md#rotatesecret) | **POST** /gateway-rotate-secret |  |
+| [**RotatedSecretCreateAerospike**](V2Api.md#rotatedsecretcreateaerospike) | **POST** /rotated-secret-create-aerospike |  |
 | [**RotatedSecretCreateAws**](V2Api.md#rotatedsecretcreateaws) | **POST** /rotated-secret-create-aws |  |
 | [**RotatedSecretCreateAzure**](V2Api.md#rotatedsecretcreateazure) | **POST** /rotated-secret-create-azure |  |
 | [**RotatedSecretCreateCassandra**](V2Api.md#rotatedsecretcreatecassandra) | **POST** /rotated-secret-create-cassandra |  |
 | [**RotatedSecretCreateCustom**](V2Api.md#rotatedsecretcreatecustom) | **POST** /rotated-secret-create-custom |  |
 | [**RotatedSecretCreateDockerhub**](V2Api.md#rotatedsecretcreatedockerhub) | **POST** /rotated-secret-create-dockerhub |  |
+| [**RotatedSecretCreateF5BigIp**](V2Api.md#rotatedsecretcreatef5bigip) | **POST** /rotated-secret-create-f5-big-ip |  |
 | [**RotatedSecretCreateGcp**](V2Api.md#rotatedsecretcreategcp) | **POST** /rotated-secret-create-gcp |  |
 | [**RotatedSecretCreateHanadb**](V2Api.md#rotatedsecretcreatehanadb) | **POST** /rotated-secret-create-hanadb |  |
 | [**RotatedSecretCreateHashiVault**](V2Api.md#rotatedsecretcreatehashivault) | **POST** /rotated-secret-create-hashi-vault |  |
@@ -442,6 +447,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretGetValue**](V2Api.md#rotatedsecretgetvalue) | **POST** /rotated-secret-get-value |  |
 | [**RotatedSecretList**](V2Api.md#rotatedsecretlist) | **POST** /rotated-secret-list |  |
 | [**RotatedSecretSync**](V2Api.md#rotatedsecretsync) | **POST** /rotated-secret-sync |  |
+| [**RotatedSecretUpdateAerospike**](V2Api.md#rotatedsecretupdateaerospike) | **POST** /rotated-secret-update-aerospike |  |
 | [**RotatedSecretUpdateAws**](V2Api.md#rotatedsecretupdateaws) | **POST** /rotated-secret-update-aws |  |
 | [**RotatedSecretUpdateAzure**](V2Api.md#rotatedsecretupdateazure) | **POST** /rotated-secret-update-azure |  |
 | [**RotatedSecretUpdateCassandra**](V2Api.md#rotatedsecretupdatecassandra) | **POST** /rotated-secret-update-cassandra |  |
@@ -489,6 +495,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreateDigiCert**](V2Api.md#targetcreatedigicert) | **POST** /target-create-digicert |  |
 | [**TargetCreateDockerhub**](V2Api.md#targetcreatedockerhub) | **POST** /target-create-dockerhub |  |
 | [**TargetCreateEks**](V2Api.md#targetcreateeks) | **POST** /target-create-eks |  |
+| [**TargetCreateF5BigIp**](V2Api.md#targetcreatef5bigip) | **POST** /target-create-f5-big-ip |  |
 | [**TargetCreateGcp**](V2Api.md#targetcreategcp) | **POST** /target-create-gcp |  |
 | [**TargetCreateGemini**](V2Api.md#targetcreategemini) | **POST** /target-create-gemini |  |
 | [**TargetCreateGithub**](V2Api.md#targetcreategithub) | **POST** /target-create-github |  |
@@ -532,6 +539,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdateDigiCert**](V2Api.md#targetupdatedigicert) | **POST** /target-update-digicert |  |
 | [**TargetUpdateDockerhub**](V2Api.md#targetupdatedockerhub) | **POST** /target-update-dockerhub |  |
 | [**TargetUpdateEks**](V2Api.md#targetupdateeks) | **POST** /target-update-eks |  |
+| [**TargetUpdateF5BigIp**](V2Api.md#targetupdatef5bigip) | **POST** /target-update-f5-big-ip |  |
 | [**TargetUpdateGcp**](V2Api.md#targetupdategcp) | **POST** /target-update-gcp |  |
 | [**TargetUpdateGemini**](V2Api.md#targetupdategemini) | **POST** /target-update-gemini |  |
 | [**TargetUpdateGithub**](V2Api.md#targetupdategithub) | **POST** /target-update-github |  |
@@ -593,6 +601,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**UpdateDockerhubTarget**](V2Api.md#updatedockerhubtarget) | **POST** /update-dockerhub-target |  |
 | [**UpdateEKSTarget**](V2Api.md#updateekstarget) | **POST** /update-eks-target |  |
 | [**UpdateEventForwarder**](V2Api.md#updateeventforwarder) | **POST** /update-event-forwarder |  |
+| [**UpdateF5BigIpTarget**](V2Api.md#updatef5bigiptarget) | **POST** /update-f5-big-ip-target |  |
 | [**UpdateGKETarget**](V2Api.md#updategketarget) | **POST** /update-gke-target |  |
 | [**UpdateGcpTarget**](V2Api.md#updategcptarget) | **POST** /update-gcp-target |  |
 | [**UpdateGithubTarget**](V2Api.md#updategithubtarget) | **POST** /update-github-target |  |
@@ -6908,6 +6917,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="createf5bigiptarget"></a>
+# **CreateF5BigIpTarget**
+> CreateF5BigIpTargetOutput CreateF5BigIpTarget (CreateF5BigIpTarget createF5BigIpTarget)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class CreateF5BigIpTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var createF5BigIpTarget = new CreateF5BigIpTarget(); // CreateF5BigIpTarget | 
+
+            try
+            {
+                CreateF5BigIpTargetOutput result = apiInstance.CreateF5BigIpTarget(createF5BigIpTarget);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.CreateF5BigIpTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateF5BigIpTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateF5BigIpTargetOutput> response = apiInstance.CreateF5BigIpTargetWithHttpInfo(createF5BigIpTarget);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.CreateF5BigIpTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createF5BigIpTarget** | [**CreateF5BigIpTarget**](CreateF5BigIpTarget.md) |  |  |
+
+### Return type
+
+[**CreateF5BigIpTargetOutput**](CreateF5BigIpTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | createF5BigIpTargetResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="creategketarget"></a>
 # **CreateGKETarget**
 > CreateGKETargetOutput CreateGKETarget (CreateGKETarget createGKETarget)
@@ -12277,6 +12374,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="dynamicsecretcreateaerospike"></a>
+# **DynamicSecretCreateAerospike**
+> DynamicSecretCreateOutput DynamicSecretCreateAerospike (DynamicSecretCreateAerospike dynamicSecretCreateAerospike)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DynamicSecretCreateAerospikeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var dynamicSecretCreateAerospike = new DynamicSecretCreateAerospike(); // DynamicSecretCreateAerospike | 
+
+            try
+            {
+                DynamicSecretCreateOutput result = apiInstance.DynamicSecretCreateAerospike(dynamicSecretCreateAerospike);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DynamicSecretCreateAerospike: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DynamicSecretCreateAerospikeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DynamicSecretCreateOutput> response = apiInstance.DynamicSecretCreateAerospikeWithHttpInfo(dynamicSecretCreateAerospike);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DynamicSecretCreateAerospikeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **dynamicSecretCreateAerospike** | [**DynamicSecretCreateAerospike**](DynamicSecretCreateAerospike.md) |  |  |
+
+### Return type
+
+[**DynamicSecretCreateOutput**](DynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | dynamicSecretCreateAerospikeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="dynamicsecretcreateartifactory"></a>
 # **DynamicSecretCreateArtifactory**
 > DynamicSecretCreateOutput DynamicSecretCreateArtifactory (DynamicSecretCreateArtifactory dynamicSecretCreateArtifactory)
@@ -15345,6 +15530,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | dynamicSecretTmpCredsUpdateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="dynamicsecretupdateaerospike"></a>
+# **DynamicSecretUpdateAerospike**
+> DynamicSecretUpdateOutput DynamicSecretUpdateAerospike (DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DynamicSecretUpdateAerospikeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var dynamicSecretUpdateAerospike = new DynamicSecretUpdateAerospike(); // DynamicSecretUpdateAerospike | 
+
+            try
+            {
+                DynamicSecretUpdateOutput result = apiInstance.DynamicSecretUpdateAerospike(dynamicSecretUpdateAerospike);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DynamicSecretUpdateAerospike: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DynamicSecretUpdateAerospikeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DynamicSecretUpdateOutput> response = apiInstance.DynamicSecretUpdateAerospikeWithHttpInfo(dynamicSecretUpdateAerospike);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DynamicSecretUpdateAerospikeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **dynamicSecretUpdateAerospike** | [**DynamicSecretUpdateAerospike**](DynamicSecretUpdateAerospike.md) |  |  |
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](DynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | dynamicSecretUpdateAerospikeResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -36883,6 +37156,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="rotatedsecretcreateaerospike"></a>
+# **RotatedSecretCreateAerospike**
+> RotatedSecretCreateOutput RotatedSecretCreateAerospike (RotatedSecretCreateAerospike rotatedSecretCreateAerospike)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretCreateAerospikeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretCreateAerospike = new RotatedSecretCreateAerospike(); // RotatedSecretCreateAerospike | 
+
+            try
+            {
+                RotatedSecretCreateOutput result = apiInstance.RotatedSecretCreateAerospike(rotatedSecretCreateAerospike);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretCreateAerospike: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretCreateAerospikeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretCreateOutput> response = apiInstance.RotatedSecretCreateAerospikeWithHttpInfo(rotatedSecretCreateAerospike);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretCreateAerospikeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretCreateAerospike** | [**RotatedSecretCreateAerospike**](RotatedSecretCreateAerospike.md) |  |  |
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | rotatedSecretCreateAerospikeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="rotatedsecretcreateaws"></a>
 # **RotatedSecretCreateAws**
 > RotatedSecretCreateOutput RotatedSecretCreateAws (RotatedSecretCreateAws rotatedSecretCreateAws)
@@ -37319,6 +37680,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | rotatedSecretCreateDockerhubResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="rotatedsecretcreatef5bigip"></a>
+# **RotatedSecretCreateF5BigIp**
+> RotatedSecretCreateOutput RotatedSecretCreateF5BigIp (RotatedSecretCreateF5BigIp rotatedSecretCreateF5BigIp)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretCreateF5BigIpExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretCreateF5BigIp = new RotatedSecretCreateF5BigIp(); // RotatedSecretCreateF5BigIp | 
+
+            try
+            {
+                RotatedSecretCreateOutput result = apiInstance.RotatedSecretCreateF5BigIp(rotatedSecretCreateF5BigIp);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretCreateF5BigIp: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretCreateF5BigIpWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretCreateOutput> response = apiInstance.RotatedSecretCreateF5BigIpWithHttpInfo(rotatedSecretCreateF5BigIp);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretCreateF5BigIpWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretCreateF5BigIp** | [**RotatedSecretCreateF5BigIp**](RotatedSecretCreateF5BigIp.md) |  |  |
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | rotatedSecretCreateF5BigIpResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -39167,6 +39616,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | rotatedSecretSyncResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="rotatedsecretupdateaerospike"></a>
+# **RotatedSecretUpdateAerospike**
+> RotatedSecretUpdateOutput RotatedSecretUpdateAerospike (RotatedSecretUpdateAerospike rotatedSecretUpdateAerospike)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretUpdateAerospikeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretUpdateAerospike = new RotatedSecretUpdateAerospike(); // RotatedSecretUpdateAerospike | 
+
+            try
+            {
+                RotatedSecretUpdateOutput result = apiInstance.RotatedSecretUpdateAerospike(rotatedSecretUpdateAerospike);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretUpdateAerospike: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretUpdateAerospikeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretUpdateOutput> response = apiInstance.RotatedSecretUpdateAerospikeWithHttpInfo(rotatedSecretUpdateAerospike);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretUpdateAerospikeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretUpdateAerospike** | [**RotatedSecretUpdateAerospike**](RotatedSecretUpdateAerospike.md) |  |  |
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | rotatedSecretUpdateAerospikeResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -43303,6 +43840,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetcreatef5bigip"></a>
+# **TargetCreateF5BigIp**
+> TargetCreateOutput TargetCreateF5BigIp (TargetCreateF5BigIp targetCreateF5BigIp)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateF5BigIpExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateF5BigIp = new TargetCreateF5BigIp(); // TargetCreateF5BigIp | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateF5BigIp(targetCreateF5BigIp);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateF5BigIp: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateF5BigIpWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateF5BigIpWithHttpInfo(targetCreateF5BigIp);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateF5BigIpWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateF5BigIp** | [**TargetCreateF5BigIp**](TargetCreateF5BigIp.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateF5BigIpResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetcreategcp"></a>
 # **TargetCreateGcp**
 > TargetCreateOutput TargetCreateGcp (TargetCreateGcp targetCreateGcp)
@@ -47083,6 +47708,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateEksResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdatef5bigip"></a>
+# **TargetUpdateF5BigIp**
+> TargetUpdateOutput TargetUpdateF5BigIp (TargetUpdateF5BigIp targetUpdateF5BigIp)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateF5BigIpExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateF5BigIp = new TargetUpdateF5BigIp(); // TargetUpdateF5BigIp | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateF5BigIp(targetUpdateF5BigIp);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateF5BigIp: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateF5BigIpWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateF5BigIpWithHttpInfo(targetUpdateF5BigIp);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateF5BigIpWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateF5BigIp** | [**TargetUpdateF5BigIp**](TargetUpdateF5BigIp.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateF5BigIpResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -52451,6 +53164,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | updateEventForwarderResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatef5bigiptarget"></a>
+# **UpdateF5BigIpTarget**
+> UpdateF5BigIpTargetOutput UpdateF5BigIpTarget (UpdateF5BigIpTarget updateF5BigIpTarget)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class UpdateF5BigIpTargetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var updateF5BigIpTarget = new UpdateF5BigIpTarget(); // UpdateF5BigIpTarget | 
+
+            try
+            {
+                UpdateF5BigIpTargetOutput result = apiInstance.UpdateF5BigIpTarget(updateF5BigIpTarget);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.UpdateF5BigIpTarget: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateF5BigIpTargetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateF5BigIpTargetOutput> response = apiInstance.UpdateF5BigIpTargetWithHttpInfo(updateF5BigIpTarget);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.UpdateF5BigIpTargetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **updateF5BigIpTarget** | [**UpdateF5BigIpTarget**](UpdateF5BigIpTarget.md) |  |  |
+
+### Return type
+
+[**UpdateF5BigIpTargetOutput**](UpdateF5BigIpTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | updateF5BigIpTargetResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

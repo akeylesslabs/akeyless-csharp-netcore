@@ -42,19 +42,22 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="alg">alg.</param>
         /// <param name="altNames">A comma-separated list of dns alternative names.</param>
-        /// <param name="certificateType">The certificate type to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing).</param>
+        /// <param name="certificateType">A comma-separated list of certificate types to include in the CSR certificate (ssl-client/ssl-server/certificate-signing).</param>
         /// <param name="city">The city to be included in the CSR certificate.</param>
         /// <param name="commonName">The common name to be included in the CSR certificate (required).</param>
         /// <param name="country">The country to be included in the CSR certificate.</param>
         /// <param name="critical">Add critical to the key usage extension (will be false if not added).</param>
+        /// <param name="customerFrgId">The customer fragment ID that will be used to create the key (if empty, the key will be created independently of a customer fragment).</param>
         /// <param name="dep">The department to be included in the CSR certificate.</param>
         /// <param name="emailAddresses">A comma-separated list of email addresses alternative names.</param>
         /// <param name="exportPrivateKey">The flag to indicate if the private key should be exported (default to false).</param>
+        /// <param name="extKeyUsage">A comma-separated list of extended key usages to include in the CSR certificate.</param>
         /// <param name="generateKey">Generate a new classic key for the csr.</param>
         /// <param name="hashAlgorithm">Specifies the hash algorithm used for the encryption key&#39;s operations, available options: SHA256, SHA384, SHA512 (default to &quot;SHA256&quot;).</param>
         /// <param name="ipAddresses">A comma-separated list of ip addresses alternative names.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyType">The type of the key to generate (classic-key/dfc) (required) (default to &quot;classic-key&quot;).</param>
+        /// <param name="keyUsage">A comma-separated list of key usages to include in the CSR certificate.</param>
         /// <param name="name">The key name (required).</param>
         /// <param name="org">The organization to be included in the CSR certificate.</param>
         /// <param name="splitLevel">The number of fragments that the item will be split into (not includes customer fragment) (default to 3).</param>
@@ -62,7 +65,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uriSans">A comma-separated list of uri alternative names.</param>
-        public GenerateCsr(string alg = default(string), string altNames = default(string), string certificateType = default(string), string city = default(string), string commonName = default(string), string country = default(string), bool critical = default(bool), string dep = default(string), string emailAddresses = default(string), bool exportPrivateKey = false, bool generateKey = default(bool), string hashAlgorithm = @"SHA256", string ipAddresses = default(string), bool json = false, string keyType = @"classic-key", string name = default(string), string org = default(string), long splitLevel = 3, string state = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
+        public GenerateCsr(string alg = default(string), string altNames = default(string), string certificateType = default(string), string city = default(string), string commonName = default(string), string country = default(string), bool critical = default(bool), string customerFrgId = default(string), string dep = default(string), string emailAddresses = default(string), bool exportPrivateKey = false, string extKeyUsage = default(string), bool generateKey = default(bool), string hashAlgorithm = @"SHA256", string ipAddresses = default(string), bool json = false, string keyType = @"classic-key", string keyUsage = default(string), string name = default(string), string org = default(string), long splitLevel = 3, string state = default(string), string token = default(string), string uidToken = default(string), string uriSans = default(string))
         {
             // to ensure "commonName" is required (not null)
             if (commonName == null)
@@ -88,14 +91,17 @@ namespace akeyless.Model
             this.City = city;
             this.Country = country;
             this.Critical = critical;
+            this.CustomerFrgId = customerFrgId;
             this.Dep = dep;
             this.EmailAddresses = emailAddresses;
             this.ExportPrivateKey = exportPrivateKey;
+            this.ExtKeyUsage = extKeyUsage;
             this.GenerateKey = generateKey;
             // use default value if no "hashAlgorithm" provided
             this.HashAlgorithm = hashAlgorithm ?? @"SHA256";
             this.IpAddresses = ipAddresses;
             this.Json = json;
+            this.KeyUsage = keyUsage;
             this.Org = org;
             this.SplitLevel = splitLevel;
             this.State = state;
@@ -118,9 +124,9 @@ namespace akeyless.Model
         public string AltNames { get; set; }
 
         /// <summary>
-        /// The certificate type to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing)
+        /// A comma-separated list of certificate types to include in the CSR certificate (ssl-client/ssl-server/certificate-signing)
         /// </summary>
-        /// <value>The certificate type to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing)</value>
+        /// <value>A comma-separated list of certificate types to include in the CSR certificate (ssl-client/ssl-server/certificate-signing)</value>
         [DataMember(Name = "certificate-type", EmitDefaultValue = false)]
         public string CertificateType { get; set; }
 
@@ -153,6 +159,13 @@ namespace akeyless.Model
         public bool Critical { get; set; }
 
         /// <summary>
+        /// The customer fragment ID that will be used to create the key (if empty, the key will be created independently of a customer fragment)
+        /// </summary>
+        /// <value>The customer fragment ID that will be used to create the key (if empty, the key will be created independently of a customer fragment)</value>
+        [DataMember(Name = "customer-frg-id", EmitDefaultValue = false)]
+        public string CustomerFrgId { get; set; }
+
+        /// <summary>
         /// The department to be included in the CSR certificate
         /// </summary>
         /// <value>The department to be included in the CSR certificate</value>
@@ -172,6 +185,13 @@ namespace akeyless.Model
         /// <value>The flag to indicate if the private key should be exported</value>
         [DataMember(Name = "export-private-key", EmitDefaultValue = true)]
         public bool ExportPrivateKey { get; set; }
+
+        /// <summary>
+        /// A comma-separated list of extended key usages to include in the CSR certificate
+        /// </summary>
+        /// <value>A comma-separated list of extended key usages to include in the CSR certificate</value>
+        [DataMember(Name = "ext-key-usage", EmitDefaultValue = false)]
+        public string ExtKeyUsage { get; set; }
 
         /// <summary>
         /// Generate a new classic key for the csr
@@ -207,6 +227,13 @@ namespace akeyless.Model
         /// <value>The type of the key to generate (classic-key/dfc)</value>
         [DataMember(Name = "key-type", IsRequired = true, EmitDefaultValue = true)]
         public string KeyType { get; set; }
+
+        /// <summary>
+        /// A comma-separated list of key usages to include in the CSR certificate
+        /// </summary>
+        /// <value>A comma-separated list of key usages to include in the CSR certificate</value>
+        [DataMember(Name = "key-usage", EmitDefaultValue = false)]
+        public string KeyUsage { get; set; }
 
         /// <summary>
         /// The key name
@@ -272,14 +299,17 @@ namespace akeyless.Model
             sb.Append("  CommonName: ").Append(CommonName).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  Critical: ").Append(Critical).Append("\n");
+            sb.Append("  CustomerFrgId: ").Append(CustomerFrgId).Append("\n");
             sb.Append("  Dep: ").Append(Dep).Append("\n");
             sb.Append("  EmailAddresses: ").Append(EmailAddresses).Append("\n");
             sb.Append("  ExportPrivateKey: ").Append(ExportPrivateKey).Append("\n");
+            sb.Append("  ExtKeyUsage: ").Append(ExtKeyUsage).Append("\n");
             sb.Append("  GenerateKey: ").Append(GenerateKey).Append("\n");
             sb.Append("  HashAlgorithm: ").Append(HashAlgorithm).Append("\n");
             sb.Append("  IpAddresses: ").Append(IpAddresses).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyType: ").Append(KeyType).Append("\n");
+            sb.Append("  KeyUsage: ").Append(KeyUsage).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Org: ").Append(Org).Append("\n");
             sb.Append("  SplitLevel: ").Append(SplitLevel).Append("\n");

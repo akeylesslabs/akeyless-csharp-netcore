@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UscGet" /> class.
         /// </summary>
+        /// <param name="gcpProjectId">GCP Project ID (Relevant only for GCP targets).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="varNamespace">The namespace (relevant for Hashi vault target).</param>
         /// <param name="objectType">objectType.</param>
@@ -49,7 +50,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="versionId">The version id (if not specified, will retrieve the last version).</param>
-        public UscGet(bool json = false, string varNamespace = default(string), string objectType = default(string), string secretId = default(string), string selectedRepositories = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string), string versionId = default(string))
+        public UscGet(string gcpProjectId = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string secretId = default(string), string selectedRepositories = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string), string versionId = default(string))
         {
             // to ensure "secretId" is required (not null)
             if (secretId == null)
@@ -63,6 +64,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("uscName is a required property for UscGet and cannot be null");
             }
             this.UscName = uscName;
+            this.GcpProjectId = gcpProjectId;
             this.Json = json;
             this.Namespace = varNamespace;
             this.ObjectType = objectType;
@@ -71,6 +73,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.VersionId = versionId;
         }
+
+        /// <summary>
+        /// GCP Project ID (Relevant only for GCP targets)
+        /// </summary>
+        /// <value>GCP Project ID (Relevant only for GCP targets)</value>
+        [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
+        public string GcpProjectId { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -142,6 +151,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UscGet {\n");
+            sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");

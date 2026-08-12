@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretCreateGitlab" /> class.
         /// </summary>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="gitlabAccessToken">Gitlab access token.</param>
@@ -55,12 +56,13 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Access Token TTL.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DynamicSecretCreateGitlab(string deleteProtection = default(string), string description = default(string), string gitlabAccessToken = default(string), string gitlabAccessType = default(string), string gitlabCertificate = default(string), string gitlabRole = default(string), string gitlabTokenScopes = default(string), string gitlabUrl = @"https://gitlab.com/", string groupName = default(string), List<string> inputRule = default(List<string>), string installationOrganization = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public DynamicSecretCreateGitlab(bool araEnabled = default(bool), string deleteProtection = default(string), string description = default(string), string gitlabAccessToken = default(string), string gitlabAccessType = default(string), string gitlabCertificate = default(string), string gitlabRole = default(string), string gitlabTokenScopes = default(string), string gitlabUrl = @"https://gitlab.com/", string groupName = default(string), List<string> inputRule = default(List<string>), string installationOrganization = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "gitlabAccessType" is required (not null)
             if (gitlabAccessType == null)
@@ -80,6 +82,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for DynamicSecretCreateGitlab and cannot be null");
             }
             this.Name = name;
+            this.AraEnabled = araEnabled;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.GitlabAccessToken = gitlabAccessToken;
@@ -93,12 +96,20 @@ namespace akeyless.Model
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.OutputRule = outputRule;
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
             this.Ttl = ttl;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Protection from accidental deletion of this object [true/false]
@@ -206,6 +217,13 @@ namespace akeyless.Model
         public List<string> OutputRule { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -248,6 +266,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretCreateGitlab {\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  GitlabAccessToken: ").Append(GitlabAccessToken).Append("\n");
@@ -263,6 +282,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

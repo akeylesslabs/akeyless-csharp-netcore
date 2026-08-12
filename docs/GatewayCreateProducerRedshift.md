@@ -5,6 +5,7 @@ gatewayCreateProducerRedshift is a command that creates redshift producer [Depre
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CreationStatements** | **string** | Redshift Creation statements | [optional] 
 **CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 **RedshiftUsername** | **string** | Redshift Username | [optional] 
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | **List&lt;string&gt;** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] 
+**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
 **Ssl** | **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 

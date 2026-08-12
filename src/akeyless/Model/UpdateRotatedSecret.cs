@@ -45,12 +45,12 @@ namespace akeyless.Model
         /// <param name="apiId">API ID to rotate.</param>
         /// <param name="apiKey">API key to rotate.</param>
         /// <param name="autoRotate">Whether to automatically rotate every - -rotation-interval days, or disable existing automatic rotation [true/false].</param>
-        /// <param name="awsRegion">Aws Region (relevant only for aws) (default to &quot;us-east-2&quot;).</param>
+        /// <param name="awsRegion">Aws Region (relevant only for aws).</param>
         /// <param name="customPayload">Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom).</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
         /// <param name="gcpKey">Base64-encoded service account private key text.</param>
         /// <param name="graceRotation">Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false].</param>
-        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used).</param>
@@ -68,30 +68,35 @@ namespace akeyless.Model
         /// <param name="rotatorCredsType">The credentials to connect with use-self-creds/use-target-creds (default to &quot;use-self-creds&quot;).</param>
         /// <param name="rotatorCustomCmd">\&quot;Custom rotation command (relevant only for ssh target).</param>
         /// <param name="samePassword">Rotate same password for each host from the Linked Target (relevant only for Linked Target).</param>
-        /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users (relevant only for rdp) (default to false).</param>
+        /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users [true/false].</param>
+        /// <param name="secureAccessAllowPortForwading">Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret).</param>
         /// <param name="secureAccessAwsAccountId">The AWS account id (relevant only for aws).</param>
-        /// <param name="secureAccessAwsNativeCli">The AWS native cli.</param>
+        /// <param name="secureAccessAwsNativeCli">The AWS native cli (relevant only for aws).</param>
         /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
         /// <param name="secureAccessCertificateIssuer">Path to the SSH Certificate Issuer for your Akeyless Secure Access.</param>
         /// <param name="secureAccessDbName">The DB name (relevant only for DB Dynamic-Secret).</param>
         /// <param name="secureAccessDbSchema">The db schema (relevant only for mssql or postgresql).</param>
         /// <param name="secureAccessDisableConcurrentConnections">Enable this flag to prevent simultaneous use of the same secret.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessEnforceHostsRestriction">Enforce connections only to allowed SRA hosts.</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret).</param>
         /// <param name="secureAccessRdpUser">Override the RDP Domain username (relevant only for rdp).</param>
         /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
+        /// <param name="secureAccessUseInternalBastion">Deprecated. Use secure-access-use-internal-ssh-access.</param>
+        /// <param name="secureAccessUseInternalSshAccess">Use internal SSH Access.</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
-        /// <param name="secureAccessWebBrowsing">Secure browser viaAkeyless&#39;s Secure Remote Access (SRA) (relevant only for aws or azure) (default to false).</param>
-        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (relevant only for aws or azure) (default to false).</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA).</param>
         /// <param name="sshPassword">Deprecated: use RotatedPassword.</param>
         /// <param name="sshUsername">Deprecated: use RotatedUser.</param>
         /// <param name="storageAccountKeyName">The name of the storage account key to rotate [key1/key2/kerb1/kerb2].</param>
+        /// <param name="target">A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
         /// <param name="userDn">LDAP User Base DN.</param>
-        public UpdateRotatedSecret(string providerType = default(string), List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = @"us-east-2", string customPayload = default(string), string description = @"default_metadata", string gcpKey = default(string), string graceRotation = default(string), string hostProvider = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = @"use-self-creds", string rotatorCustomCmd = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string userAttribute = @"cn", string userDn = default(string))
+        public UpdateRotatedSecret(string providerType = default(string), List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string autoRotate = default(string), string awsRegion = default(string), string customPayload = default(string), string description = @"default_metadata", string gcpKey = default(string), string graceRotation = default(string), string hostProvider = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), bool newVersion = default(bool), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCredsType = @"use-self-creds", string rotatorCustomCmd = default(string), string samePassword = default(string), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessUseInternalSshAccess = default(bool), bool secureAccessWeb = false, bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), string sshPassword = default(string), string sshUsername = default(string), string storageAccountKeyName = default(string), List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string userAttribute = @"cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -104,8 +109,7 @@ namespace akeyless.Model
             this.ApiId = apiId;
             this.ApiKey = apiKey;
             this.AutoRotate = autoRotate;
-            // use default value if no "awsRegion" provided
-            this.AwsRegion = awsRegion ?? @"us-east-2";
+            this.AwsRegion = awsRegion;
             this.CustomPayload = customPayload;
             // use default value if no "description" provided
             this.Description = description ?? @"default_metadata";
@@ -131,6 +135,7 @@ namespace akeyless.Model
             this.RotatorCustomCmd = rotatorCustomCmd;
             this.SamePassword = samePassword;
             this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
+            this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
             this.SecureAccessAwsAccountId = secureAccessAwsAccountId;
             this.SecureAccessAwsNativeCli = secureAccessAwsNativeCli;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
@@ -139,16 +144,20 @@ namespace akeyless.Model
             this.SecureAccessDbSchema = secureAccessDbSchema;
             this.SecureAccessDisableConcurrentConnections = secureAccessDisableConcurrentConnections;
             this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessEnforceHostsRestriction = secureAccessEnforceHostsRestriction;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
             this.SecureAccessRdpUser = secureAccessRdpUser;
             this.SecureAccessUrl = secureAccessUrl;
+            this.SecureAccessUseInternalBastion = secureAccessUseInternalBastion;
+            this.SecureAccessUseInternalSshAccess = secureAccessUseInternalSshAccess;
             this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
             this.SshPassword = sshPassword;
             this.SshUsername = sshUsername;
             this.StorageAccountKeyName = storageAccountKeyName;
+            this.Target = target;
             this.Token = token;
             this.UidToken = uidToken;
             // use default value if no "userAttribute" provided
@@ -226,9 +235,9 @@ namespace akeyless.Model
         public string GraceRotation { get; set; }
 
         /// <summary>
-        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
         /// </summary>
-        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
 
@@ -352,11 +361,18 @@ namespace akeyless.Model
         public string SamePassword { get; set; }
 
         /// <summary>
-        /// Allow providing external user for a domain users (relevant only for rdp)
+        /// Allow providing external user for a domain users [true/false]
         /// </summary>
-        /// <value>Allow providing external user for a domain users (relevant only for rdp)</value>
-        [DataMember(Name = "secure-access-allow-external-user", EmitDefaultValue = true)]
-        public bool SecureAccessAllowExternalUser { get; set; }
+        /// <value>Allow providing external user for a domain users [true/false]</value>
+        [DataMember(Name = "secure-access-allow-external-user", EmitDefaultValue = false)]
+        public string SecureAccessAllowExternalUser { get; set; }
+
+        /// <summary>
+        /// Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)
+        /// </summary>
+        /// <value>Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)</value>
+        [DataMember(Name = "secure-access-allow-port-forwading", EmitDefaultValue = true)]
+        public bool SecureAccessAllowPortForwading { get; set; }
 
         /// <summary>
         /// The AWS account id (relevant only for aws)
@@ -366,9 +382,9 @@ namespace akeyless.Model
         public string SecureAccessAwsAccountId { get; set; }
 
         /// <summary>
-        /// The AWS native cli
+        /// The AWS native cli (relevant only for aws)
         /// </summary>
-        /// <value>The AWS native cli</value>
+        /// <value>The AWS native cli (relevant only for aws)</value>
         [DataMember(Name = "secure-access-aws-native-cli", EmitDefaultValue = true)]
         public bool SecureAccessAwsNativeCli { get; set; }
 
@@ -415,6 +431,13 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
+        /// Enforce connections only to allowed SRA hosts
+        /// </summary>
+        /// <value>Enforce connections only to allowed SRA hosts</value>
+        [DataMember(Name = "secure-access-enforce-hosts-restriction", EmitDefaultValue = true)]
+        public bool SecureAccessEnforceHostsRestriction { get; set; }
+
+        /// <summary>
         /// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
         /// </summary>
         /// <value>Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)</value>
@@ -443,6 +466,20 @@ namespace akeyless.Model
         public string SecureAccessUrl { get; set; }
 
         /// <summary>
+        /// Deprecated. Use secure-access-use-internal-ssh-access
+        /// </summary>
+        /// <value>Deprecated. Use secure-access-use-internal-ssh-access</value>
+        [DataMember(Name = "secure-access-use-internal-bastion", EmitDefaultValue = true)]
+        public bool SecureAccessUseInternalBastion { get; set; }
+
+        /// <summary>
+        /// Use internal SSH Access
+        /// </summary>
+        /// <value>Use internal SSH Access</value>
+        [DataMember(Name = "secure-access-use-internal-ssh-access", EmitDefaultValue = true)]
+        public bool SecureAccessUseInternalSshAccess { get; set; }
+
+        /// <summary>
         /// Enable Web Secure Remote Access
         /// </summary>
         /// <value>Enable Web Secure Remote Access</value>
@@ -450,16 +487,16 @@ namespace akeyless.Model
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
-        /// Secure browser viaAkeyless&#39;s Secure Remote Access (SRA) (relevant only for aws or azure)
+        /// Secure browser via Akeyless&#39;s Secure Remote Access (SRA)
         /// </summary>
-        /// <value>Secure browser viaAkeyless&#39;s Secure Remote Access (SRA) (relevant only for aws or azure)</value>
+        /// <value>Secure browser via Akeyless&#39;s Secure Remote Access (SRA)</value>
         [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
         public bool SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
-        /// Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (relevant only for aws or azure)
+        /// Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA)
         /// </summary>
-        /// <value>Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (relevant only for aws or azure)</value>
+        /// <value>Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA)</value>
         [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
         public bool SecureAccessWebProxy { get; set; }
 
@@ -483,6 +520,13 @@ namespace akeyless.Model
         /// <value>The name of the storage account key to rotate [key1/key2/kerb1/kerb2]</value>
         [DataMember(Name = "storage-account-key-name", EmitDefaultValue = false)]
         public string StorageAccountKeyName { get; set; }
+
+        /// <summary>
+        /// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
+        /// </summary>
+        /// <value>A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times</value>
+        [DataMember(Name = "target", EmitDefaultValue = false)]
+        public List<string> Target { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -549,6 +593,7 @@ namespace akeyless.Model
             sb.Append("  RotatorCustomCmd: ").Append(RotatorCustomCmd).Append("\n");
             sb.Append("  SamePassword: ").Append(SamePassword).Append("\n");
             sb.Append("  SecureAccessAllowExternalUser: ").Append(SecureAccessAllowExternalUser).Append("\n");
+            sb.Append("  SecureAccessAllowPortForwading: ").Append(SecureAccessAllowPortForwading).Append("\n");
             sb.Append("  SecureAccessAwsAccountId: ").Append(SecureAccessAwsAccountId).Append("\n");
             sb.Append("  SecureAccessAwsNativeCli: ").Append(SecureAccessAwsNativeCli).Append("\n");
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
@@ -557,16 +602,20 @@ namespace akeyless.Model
             sb.Append("  SecureAccessDbSchema: ").Append(SecureAccessDbSchema).Append("\n");
             sb.Append("  SecureAccessDisableConcurrentConnections: ").Append(SecureAccessDisableConcurrentConnections).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessEnforceHostsRestriction: ").Append(SecureAccessEnforceHostsRestriction).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
             sb.Append("  SecureAccessRdpUser: ").Append(SecureAccessRdpUser).Append("\n");
             sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
+            sb.Append("  SecureAccessUseInternalBastion: ").Append(SecureAccessUseInternalBastion).Append("\n");
+            sb.Append("  SecureAccessUseInternalSshAccess: ").Append(SecureAccessUseInternalSshAccess).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  SshPassword: ").Append(SshPassword).Append("\n");
             sb.Append("  SshUsername: ").Append(SshUsername).Append("\n");
             sb.Append("  StorageAccountKeyName: ").Append(StorageAccountKeyName).Append("\n");
+            sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UserAttribute: ").Append(UserAttribute).Append("\n");

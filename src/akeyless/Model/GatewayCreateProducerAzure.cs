@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayCreateProducerAzure" /> class.
         /// </summary>
         /// <param name="appObjId">Azure App Object Id.</param>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="azureAdministrativeUnit">Azure AD administrative unit (relevant only when azure-user-portal-access&#x3D;true).</param>
         /// <param name="azureClientId">Azure Client ID.</param>
         /// <param name="azureClientSecret">Azure Client Secret.</param>
@@ -61,6 +62,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -75,7 +77,7 @@ namespace akeyless.Model
         /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerAzure(string appObjId = default(string), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerAzure(string appObjId = default(string), bool araEnabled = default(bool), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -84,6 +86,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AppObjId = appObjId;
+            this.AraEnabled = araEnabled;
             this.AzureAdministrativeUnit = azureAdministrativeUnit;
             this.AzureClientId = azureClientId;
             this.AzureClientSecret = azureClientSecret;
@@ -104,6 +107,7 @@ namespace akeyless.Model
             this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -127,6 +131,13 @@ namespace akeyless.Model
         /// <value>Azure App Object Id</value>
         [DataMember(Name = "app-obj-id", EmitDefaultValue = false)]
         public string AppObjId { get; set; }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Azure AD administrative unit (relevant only when azure-user-portal-access&#x3D;true)
@@ -269,6 +280,13 @@ namespace akeyless.Model
         public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -377,6 +395,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerAzure {\n");
             sb.Append("  AppObjId: ").Append(AppObjId).Append("\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  AzureAdministrativeUnit: ").Append(AzureAdministrativeUnit).Append("\n");
             sb.Append("  AzureClientId: ").Append(AzureClientId).Append("\n");
             sb.Append("  AzureClientSecret: ").Append(AzureClientSecret).Append("\n");
@@ -397,6 +416,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

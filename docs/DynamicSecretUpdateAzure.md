@@ -6,6 +6,7 @@ dynamicSecretUpdateAzure is a command that updates azure dynamic secret
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppObjId** | **string** | Azure App Object Id | [optional] 
+**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **AzureAdministrativeUnit** | **string** | Azure AD administrative unit (relevant only when azure-user-portal-access&#x3D;true) | [optional] 
 **AzureClientId** | **string** | Azure Client ID | [optional] 
 **AzureClientSecret** | **string** | Azure Client Secret | [optional] 
@@ -28,6 +29,7 @@ Name | Type | Description | Notes
 **SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to true]
 **SecureAccessWebBrowsing** | **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SecureAccessWebProxy** | **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

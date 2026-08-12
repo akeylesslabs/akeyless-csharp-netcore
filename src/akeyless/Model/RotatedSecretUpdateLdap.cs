@@ -42,11 +42,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="providerType">providerType.</param>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag..</param>
         /// <param name="authenticationCredentials">The credentials to connect with use-user-creds/use-target-creds (default to &quot;use-user-creds&quot;).</param>
         /// <param name="autoRotate">autoRotate.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
-        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items..</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input).</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -68,13 +69,15 @@ namespace akeyless.Model
         /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
         /// <param name="secureAccessCertificateIssuer">Path to the SSH Certificate Issuer for your Akeyless Secure Access.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessEnforceHostsRestriction">Enforce connections only to allowed SRA hosts.</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdpDomain">Default domain name server. i.e. microsoft.com.</param>
         /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
-        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="target">A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useCapitalLetters">Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false].</param>
@@ -83,7 +86,7 @@ namespace akeyless.Model
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userAttribute">LDAP User Attribute, Default value \&quot;cn\&quot; (default to &quot;cn&quot;).</param>
         /// <param name="userDn">Base DN to Perform User Search.</param>
-        public RotatedSecretUpdateLdap(string providerType = default(string), List<string> addTag = default(List<string>), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userAttribute = @"cn", string userDn = default(string))
+        public RotatedSecretUpdateLdap(string providerType = default(string), List<string> addTag = default(List<string>), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string skipDryRun = default(string), List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userAttribute = @"cn", string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -93,6 +96,7 @@ namespace akeyless.Model
             this.Name = name;
             this.ProviderType = providerType;
             this.AddTag = addTag;
+            this.AraEnabled = araEnabled;
             // use default value if no "authenticationCredentials" provided
             this.AuthenticationCredentials = authenticationCredentials ?? @"use-user-creds";
             this.AutoRotate = autoRotate;
@@ -120,12 +124,14 @@ namespace akeyless.Model
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
             this.SecureAccessCertificateIssuer = secureAccessCertificateIssuer;
             this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessEnforceHostsRestriction = secureAccessEnforceHostsRestriction;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
             this.SecureAccessUrl = secureAccessUrl;
             this.SecureAccessWeb = secureAccessWeb;
             this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
             this.SecureAccessWebProxy = secureAccessWebProxy;
+            this.SkipDryRun = skipDryRun;
             this.Target = target;
             this.Token = token;
             this.UidToken = uidToken;
@@ -150,6 +156,13 @@ namespace akeyless.Model
         /// <value>List of the new tags that will be attached to this item</value>
         [DataMember(Name = "add-tag", EmitDefaultValue = false)]
         public List<string> AddTag { get; set; }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// The credentials to connect with use-user-creds/use-target-creds
@@ -179,9 +192,9 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
         /// </summary>
-        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
 
@@ -330,6 +343,13 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
+        /// Enforce connections only to allowed SRA hosts
+        /// </summary>
+        /// <value>Enforce connections only to allowed SRA hosts</value>
+        [DataMember(Name = "secure-access-enforce-hosts-restriction", EmitDefaultValue = true)]
+        public bool SecureAccessEnforceHostsRestriction { get; set; }
+
+        /// <summary>
         /// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
         /// </summary>
         /// <value>Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)</value>
@@ -372,9 +392,16 @@ namespace akeyless.Model
         public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
-        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
+        /// If set, dry-run will be skipped
         /// </summary>
-        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times</value>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
+        /// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
+        /// </summary>
+        /// <value>A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times</value>
         [DataMember(Name = "target", EmitDefaultValue = false)]
         public List<string> Target { get; set; }
 
@@ -446,6 +473,7 @@ namespace akeyless.Model
             sb.Append("class RotatedSecretUpdateLdap {\n");
             sb.Append("  ProviderType: ").Append(ProviderType).Append("\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  AuthenticationCredentials: ").Append(AuthenticationCredentials).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
@@ -472,12 +500,14 @@ namespace akeyless.Model
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
             sb.Append("  SecureAccessCertificateIssuer: ").Append(SecureAccessCertificateIssuer).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessEnforceHostsRestriction: ").Append(SecureAccessEnforceHostsRestriction).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
             sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
             sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
             sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
             sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

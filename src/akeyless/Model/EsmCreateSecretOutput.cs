@@ -35,19 +35,46 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EsmCreateSecretOutput" /> class.
         /// </summary>
+        /// <param name="partialFailure">PartialFailure aggregates per-target create failures when some targets still succeeded..</param>
         /// <param name="secretId">secretId.</param>
+        /// <param name="selectedEnvironments">SelectedEnvironments is the subset of GitHub environments where create succeeded (comma-separated)..</param>
+        /// <param name="selectedRepositories">SelectedRepositories is the subset of GitHub repositories where create succeeded (comma-separated)..</param>
         /// <param name="versionId">versionId.</param>
-        public EsmCreateSecretOutput(string secretId = default(string), string versionId = default(string))
+        public EsmCreateSecretOutput(string partialFailure = default(string), string secretId = default(string), string selectedEnvironments = default(string), string selectedRepositories = default(string), string versionId = default(string))
         {
+            this.PartialFailure = partialFailure;
             this.SecretId = secretId;
+            this.SelectedEnvironments = selectedEnvironments;
+            this.SelectedRepositories = selectedRepositories;
             this.VersionId = versionId;
         }
+
+        /// <summary>
+        /// PartialFailure aggregates per-target create failures when some targets still succeeded.
+        /// </summary>
+        /// <value>PartialFailure aggregates per-target create failures when some targets still succeeded.</value>
+        [DataMember(Name = "partial_failure", EmitDefaultValue = false)]
+        public string PartialFailure { get; set; }
 
         /// <summary>
         /// Gets or Sets SecretId
         /// </summary>
         [DataMember(Name = "secret_id", EmitDefaultValue = false)]
         public string SecretId { get; set; }
+
+        /// <summary>
+        /// SelectedEnvironments is the subset of GitHub environments where create succeeded (comma-separated).
+        /// </summary>
+        /// <value>SelectedEnvironments is the subset of GitHub environments where create succeeded (comma-separated).</value>
+        [DataMember(Name = "selected_environments", EmitDefaultValue = false)]
+        public string SelectedEnvironments { get; set; }
+
+        /// <summary>
+        /// SelectedRepositories is the subset of GitHub repositories where create succeeded (comma-separated).
+        /// </summary>
+        /// <value>SelectedRepositories is the subset of GitHub repositories where create succeeded (comma-separated).</value>
+        [DataMember(Name = "selected_repositories", EmitDefaultValue = false)]
+        public string SelectedRepositories { get; set; }
 
         /// <summary>
         /// Gets or Sets VersionId
@@ -63,7 +90,10 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class EsmCreateSecretOutput {\n");
+            sb.Append("  PartialFailure: ").Append(PartialFailure).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
+            sb.Append("  SelectedEnvironments: ").Append(SelectedEnvironments).Append("\n");
+            sb.Append("  SelectedRepositories: ").Append(SelectedRepositories).Append("\n");
             sb.Append("  VersionId: ").Append(VersionId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GatewayCreateProducerArtifactory" /> class.
         /// </summary>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="artifactoryAdminName">Artifactory Admin Name.</param>
         /// <param name="artifactoryAdminPwd">Artifactory Admin password.</param>
         /// <param name="artifactoryTokenAudience">Token Audience (required).</param>
@@ -53,12 +54,13 @@ namespace akeyless.Model
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerArtifactory(string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string baseUrl = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerArtifactory(bool araEnabled = default(bool), string artifactoryAdminName = default(string), string artifactoryAdminPwd = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string baseUrl = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "artifactoryTokenAudience" is required (not null)
             if (artifactoryTokenAudience == null)
@@ -78,6 +80,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for GatewayCreateProducerArtifactory and cannot be null");
             }
             this.Name = name;
+            this.AraEnabled = araEnabled;
             this.ArtifactoryAdminName = artifactoryAdminName;
             this.ArtifactoryAdminPwd = artifactoryAdminPwd;
             this.BaseUrl = baseUrl;
@@ -88,6 +91,7 @@ namespace akeyless.Model
             this.Json = json;
             this.OutputRule = outputRule;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -95,6 +99,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? @"60m";
         }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Artifactory Admin Name
@@ -188,6 +199,13 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -230,6 +248,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayCreateProducerArtifactory {\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  ArtifactoryAdminName: ").Append(ArtifactoryAdminName).Append("\n");
             sb.Append("  ArtifactoryAdminPwd: ").Append(ArtifactoryAdminPwd).Append("\n");
             sb.Append("  ArtifactoryTokenAudience: ").Append(ArtifactoryTokenAudience).Append("\n");
@@ -243,6 +262,7 @@ namespace akeyless.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

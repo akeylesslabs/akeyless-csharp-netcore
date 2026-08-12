@@ -40,15 +40,17 @@ namespace akeyless.Model
         /// <param name="certificateTtlInSeconds">certificateTtlInSeconds.</param>
         /// <param name="expirationEvents">expirationEvents.</param>
         /// <param name="id">id.</param>
+        /// <param name="issuingCaId">issuingCaId.</param>
         /// <param name="name">name.</param>
         /// <param name="rules">rules.</param>
-        public KMIPClient(bool activateKeysOnCreation = default(bool), DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string id = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
+        public KMIPClient(bool activateKeysOnCreation = default(bool), DateTime certificateIssueDate = default(DateTime), long certificateTtlInSeconds = default(long), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), string id = default(string), string issuingCaId = default(string), string name = default(string), List<PathRule> rules = default(List<PathRule>))
         {
             this.ActivateKeysOnCreation = activateKeysOnCreation;
             this.CertificateIssueDate = certificateIssueDate;
             this.CertificateTtlInSeconds = certificateTtlInSeconds;
             this.ExpirationEvents = expirationEvents;
             this.Id = id;
+            this.IssuingCaId = issuingCaId;
             this.Name = name;
             this.Rules = rules;
         }
@@ -84,6 +86,12 @@ namespace akeyless.Model
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or Sets IssuingCaId
+        /// </summary>
+        [DataMember(Name = "issuing_ca_id", EmitDefaultValue = false)]
+        public string IssuingCaId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false)]
@@ -108,6 +116,7 @@ namespace akeyless.Model
             sb.Append("  CertificateTtlInSeconds: ").Append(CertificateTtlInSeconds).Append("\n");
             sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  IssuingCaId: ").Append(IssuingCaId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Rules: ").Append(Rules).Append("\n");
             sb.Append("}\n");

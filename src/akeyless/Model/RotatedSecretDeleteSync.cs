@@ -41,13 +41,15 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="RotatedSecretDeleteSync" /> class.
         /// </summary>
         /// <param name="deleteFromUsc">Delete the secret from the remote target USC as well (default to false).</param>
+        /// <param name="environments">GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -environments repo1/env1,repo2/env2)..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="remoteSecretName">Remote Secret Name to disambiguate when multiple syncs exist under the same USC.</param>
+        /// <param name="repositories">GitHub repositories to delete from. Defaults to all repositories available on the selected USC. GitHub repositories to sync to. Relevant only for GitHub targets. Syncs to all repositories defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -repositories repo1,repo2)..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Universal Secret Connector name (required).</param>
-        public RotatedSecretDeleteSync(bool deleteFromUsc = false, bool json = false, string name = default(string), string remoteSecretName = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public RotatedSecretDeleteSync(bool deleteFromUsc = false, string environments = default(string), bool json = false, string name = default(string), string remoteSecretName = default(string), string repositories = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,8 +64,10 @@ namespace akeyless.Model
             }
             this.UscName = uscName;
             this.DeleteFromUsc = deleteFromUsc;
+            this.Environments = environments;
             this.Json = json;
             this.RemoteSecretName = remoteSecretName;
+            this.Repositories = repositories;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -74,6 +78,13 @@ namespace akeyless.Model
         /// <value>Delete the secret from the remote target USC as well</value>
         [DataMember(Name = "delete-from-usc", EmitDefaultValue = true)]
         public bool DeleteFromUsc { get; set; }
+
+        /// <summary>
+        /// GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -environments repo1/env1,repo2/env2).
+        /// </summary>
+        /// <value>GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -environments repo1/env1,repo2/env2).</value>
+        [DataMember(Name = "environments", EmitDefaultValue = false)]
+        public string Environments { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -95,6 +106,13 @@ namespace akeyless.Model
         /// <value>Remote Secret Name to disambiguate when multiple syncs exist under the same USC</value>
         [DataMember(Name = "remote-secret-name", EmitDefaultValue = false)]
         public string RemoteSecretName { get; set; }
+
+        /// <summary>
+        /// GitHub repositories to delete from. Defaults to all repositories available on the selected USC. GitHub repositories to sync to. Relevant only for GitHub targets. Syncs to all repositories defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -repositories repo1,repo2).
+        /// </summary>
+        /// <value>GitHub repositories to delete from. Defaults to all repositories available on the selected USC. GitHub repositories to sync to. Relevant only for GitHub targets. Syncs to all repositories defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -repositories repo1,repo2).</value>
+        [DataMember(Name = "repositories", EmitDefaultValue = false)]
+        public string Repositories { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -126,9 +144,11 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class RotatedSecretDeleteSync {\n");
             sb.Append("  DeleteFromUsc: ").Append(DeleteFromUsc).Append("\n");
+            sb.Append("  Environments: ").Append(Environments).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  RemoteSecretName: ").Append(RemoteSecretName).Append("\n");
+            sb.Append("  Repositories: ").Append(Repositories).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UscName: ").Append(UscName).Append("\n");

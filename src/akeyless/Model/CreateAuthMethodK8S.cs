@@ -57,7 +57,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
-        /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
+        /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara].</param>
         /// <param name="publicKey">Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -212,9 +212,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+        /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
         /// </summary>
-        /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]</value>
+        /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]</value>
         [DataMember(Name = "product-type", EmitDefaultValue = false)]
         public List<string> ProductType { get; set; }
 

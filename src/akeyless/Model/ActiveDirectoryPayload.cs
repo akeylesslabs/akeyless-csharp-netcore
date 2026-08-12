@@ -50,10 +50,13 @@ namespace akeyless.Model
         /// <param name="domainName">domainName.</param>
         /// <param name="domainServerTargetsPathTemplate">domainServerTargetsPathTemplate.</param>
         /// <param name="domainUsersRotatedSecretsPathTemplate">domainUsersRotatedSecretsPathTemplate.</param>
+        /// <param name="enablePasswordPolicy">EnablePasswordPolicy enables applying PasswordPolicy to newly created domain/local user rotated secrets. Pointer so omitted values are preserved on partial update (nil &#x3D; not provided)..</param>
         /// <param name="enableRdpSra">enableRdpSra.</param>
         /// <param name="localUsersIgnoreList">localUsersIgnoreList.</param>
         /// <param name="localUsersRotatedSecretsPathTemplate">localUsersRotatedSecretsPathTemplate.</param>
         /// <param name="osFilter">osFilter.</param>
+        /// <param name="passwordPolicy">passwordPolicy.</param>
+        /// <param name="skipDryRun">SkipDryRun enables skip_dry_run on newly created domain/local user rotated secrets. Pointer so omitted values are preserved on partial update (nil &#x3D; not provided). When false/unset, existing rotated-secret SkipDryRun values are left unchanged on sync..</param>
         /// <param name="sshPort">sshPort.</param>
         /// <param name="targetFormat">targetFormat.</param>
         /// <param name="targetsType">targetsType.</param>
@@ -61,7 +64,7 @@ namespace akeyless.Model
         /// <param name="userGroups">userGroups.</param>
         /// <param name="winrmOverHttp">winrmOverHttp.</param>
         /// <param name="winrmPort">winrmPort.</param>
-        public ActiveDirectoryPayload(long activeDirectoryTargetId = default(long), bool aiCertificateDiscovery = default(bool), bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), List<CertificateExpirationEvent> certificatesExpirationEvents = default(List<CertificateExpirationEvent>), string certificatesPathTemplate = default(string), string computerBaseDn = default(string), bool discoverIisApps = default(bool), bool discoverLocalUsers = default(bool), bool discoverServices = default(bool), List<string> discoveryTypes = default(List<string>), string domainName = default(string), string domainServerTargetsPathTemplate = default(string), string domainUsersRotatedSecretsPathTemplate = default(string), bool enableRdpSra = default(bool), Dictionary<string, bool> localUsersIgnoreList = default(Dictionary<string, bool>), string localUsersRotatedSecretsPathTemplate = default(string), string osFilter = default(string), string sshPort = default(string), string targetFormat = default(string), string targetsType = default(string), string userBaseDn = default(string), List<string> userGroups = default(List<string>), bool winrmOverHttp = default(bool), string winrmPort = default(string))
+        public ActiveDirectoryPayload(long activeDirectoryTargetId = default(long), bool aiCertificateDiscovery = default(bool), bool autoRotate = default(bool), int autoRotateIntervalInDays = default(int), int autoRotateRotationHour = default(int), List<CertificateExpirationEvent> certificatesExpirationEvents = default(List<CertificateExpirationEvent>), string certificatesPathTemplate = default(string), string computerBaseDn = default(string), bool discoverIisApps = default(bool), bool discoverLocalUsers = default(bool), bool discoverServices = default(bool), List<string> discoveryTypes = default(List<string>), string domainName = default(string), string domainServerTargetsPathTemplate = default(string), string domainUsersRotatedSecretsPathTemplate = default(string), bool enablePasswordPolicy = default(bool), bool enableRdpSra = default(bool), Dictionary<string, bool> localUsersIgnoreList = default(Dictionary<string, bool>), string localUsersRotatedSecretsPathTemplate = default(string), string osFilter = default(string), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool skipDryRun = default(bool), string sshPort = default(string), string targetFormat = default(string), string targetsType = default(string), string userBaseDn = default(string), List<string> userGroups = default(List<string>), bool winrmOverHttp = default(bool), string winrmPort = default(string))
         {
             this.ActiveDirectoryTargetId = activeDirectoryTargetId;
             this.AiCertificateDiscovery = aiCertificateDiscovery;
@@ -78,10 +81,13 @@ namespace akeyless.Model
             this.DomainName = domainName;
             this.DomainServerTargetsPathTemplate = domainServerTargetsPathTemplate;
             this.DomainUsersRotatedSecretsPathTemplate = domainUsersRotatedSecretsPathTemplate;
+            this.EnablePasswordPolicy = enablePasswordPolicy;
             this.EnableRdpSra = enableRdpSra;
             this.LocalUsersIgnoreList = localUsersIgnoreList;
             this.LocalUsersRotatedSecretsPathTemplate = localUsersRotatedSecretsPathTemplate;
             this.OsFilter = osFilter;
+            this.PasswordPolicy = passwordPolicy;
+            this.SkipDryRun = skipDryRun;
             this.SshPort = sshPort;
             this.TargetFormat = targetFormat;
             this.TargetsType = targetsType;
@@ -183,6 +189,13 @@ namespace akeyless.Model
         public string DomainUsersRotatedSecretsPathTemplate { get; set; }
 
         /// <summary>
+        /// EnablePasswordPolicy enables applying PasswordPolicy to newly created domain/local user rotated secrets. Pointer so omitted values are preserved on partial update (nil &#x3D; not provided).
+        /// </summary>
+        /// <value>EnablePasswordPolicy enables applying PasswordPolicy to newly created domain/local user rotated secrets. Pointer so omitted values are preserved on partial update (nil &#x3D; not provided).</value>
+        [DataMember(Name = "enable_password_policy", EmitDefaultValue = true)]
+        public bool EnablePasswordPolicy { get; set; }
+
+        /// <summary>
         /// Gets or Sets EnableRdpSra
         /// </summary>
         [DataMember(Name = "enable_rdp_sra", EmitDefaultValue = true)]
@@ -205,6 +218,19 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "os_filter", EmitDefaultValue = false)]
         public string OsFilter { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PasswordPolicy
+        /// </summary>
+        [DataMember(Name = "password_policy", EmitDefaultValue = false)]
+        public PasswordPolicyInfo PasswordPolicy { get; set; }
+
+        /// <summary>
+        /// SkipDryRun enables skip_dry_run on newly created domain/local user rotated secrets. Pointer so omitted values are preserved on partial update (nil &#x3D; not provided). When false/unset, existing rotated-secret SkipDryRun values are left unchanged on sync.
+        /// </summary>
+        /// <value>SkipDryRun enables skip_dry_run on newly created domain/local user rotated secrets. Pointer so omitted values are preserved on partial update (nil &#x3D; not provided). When false/unset, existing rotated-secret SkipDryRun values are left unchanged on sync.</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Gets or Sets SshPort
@@ -271,10 +297,13 @@ namespace akeyless.Model
             sb.Append("  DomainName: ").Append(DomainName).Append("\n");
             sb.Append("  DomainServerTargetsPathTemplate: ").Append(DomainServerTargetsPathTemplate).Append("\n");
             sb.Append("  DomainUsersRotatedSecretsPathTemplate: ").Append(DomainUsersRotatedSecretsPathTemplate).Append("\n");
+            sb.Append("  EnablePasswordPolicy: ").Append(EnablePasswordPolicy).Append("\n");
             sb.Append("  EnableRdpSra: ").Append(EnableRdpSra).Append("\n");
             sb.Append("  LocalUsersIgnoreList: ").Append(LocalUsersIgnoreList).Append("\n");
             sb.Append("  LocalUsersRotatedSecretsPathTemplate: ").Append(LocalUsersRotatedSecretsPathTemplate).Append("\n");
             sb.Append("  OsFilter: ").Append(OsFilter).Append("\n");
+            sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  SshPort: ").Append(SshPort).Append("\n");
             sb.Append("  TargetFormat: ").Append(TargetFormat).Append("\n");
             sb.Append("  TargetsType: ").Append(TargetsType).Append("\n");

@@ -1454,6 +1454,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CreateF5BigIpTargetOutput</returns>
+        CreateF5BigIpTargetOutput CreateF5BigIpTarget(CreateF5BigIpTarget createF5BigIpTarget, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CreateF5BigIpTargetOutput</returns>
+        ApiResponse<CreateF5BigIpTargetOutput> CreateF5BigIpTargetWithHttpInfo(CreateF5BigIpTarget createF5BigIpTarget, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createGKETarget"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CreateGKETargetOutput</returns>
@@ -2674,6 +2694,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretCreateOutput</returns>
+        DynamicSecretCreateOutput DynamicSecretCreateAerospike(DynamicSecretCreateAerospike dynamicSecretCreateAerospike, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretCreateOutput</returns>
+        ApiResponse<DynamicSecretCreateOutput> DynamicSecretCreateAerospikeWithHttpInfo(DynamicSecretCreateAerospike dynamicSecretCreateAerospike, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dynamicSecretCreateArtifactory"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DynamicSecretCreateOutput</returns>
@@ -3370,6 +3410,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DynamicSecretTmpCredsUpdateWithHttpInfo(DynamicSecretTmpCredsUpdate dynamicSecretTmpCredsUpdate, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretUpdateOutput</returns>
+        DynamicSecretUpdateOutput DynamicSecretUpdateAerospike(DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretUpdateOutput</returns>
+        ApiResponse<DynamicSecretUpdateOutput> DynamicSecretUpdateAerospikeWithHttpInfo(DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -8268,6 +8328,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretCreateOutput</returns>
+        RotatedSecretCreateOutput RotatedSecretCreateAerospike(RotatedSecretCreateAerospike rotatedSecretCreateAerospike, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretCreateOutput</returns>
+        ApiResponse<RotatedSecretCreateOutput> RotatedSecretCreateAerospikeWithHttpInfo(RotatedSecretCreateAerospike rotatedSecretCreateAerospike, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rotatedSecretCreateAws"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RotatedSecretCreateOutput</returns>
@@ -8364,6 +8444,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RotatedSecretCreateOutput</returns>
         ApiResponse<RotatedSecretCreateOutput> RotatedSecretCreateDockerhubWithHttpInfo(RotatedSecretCreateDockerhub rotatedSecretCreateDockerhub, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretCreateOutput</returns>
+        RotatedSecretCreateOutput RotatedSecretCreateF5BigIp(RotatedSecretCreateF5BigIp rotatedSecretCreateF5BigIp, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretCreateOutput</returns>
+        ApiResponse<RotatedSecretCreateOutput> RotatedSecretCreateF5BigIpWithHttpInfo(RotatedSecretCreateF5BigIp rotatedSecretCreateF5BigIp, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -8784,6 +8884,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> RotatedSecretSyncWithHttpInfo(RotatedSecretSync rotatedSecretSync, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretUpdateOutput</returns>
+        RotatedSecretUpdateOutput RotatedSecretUpdateAerospike(RotatedSecretUpdateAerospike rotatedSecretUpdateAerospike, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretUpdateOutput</returns>
+        ApiResponse<RotatedSecretUpdateOutput> RotatedSecretUpdateAerospikeWithHttpInfo(RotatedSecretUpdateAerospike rotatedSecretUpdateAerospike, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -9728,6 +9848,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetCreateOutput</returns>
+        TargetCreateOutput TargetCreateF5BigIp(TargetCreateF5BigIp targetCreateF5BigIp, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetCreateOutput</returns>
+        ApiResponse<TargetCreateOutput> TargetCreateF5BigIpWithHttpInfo(TargetCreateF5BigIp targetCreateF5BigIp, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="targetCreateGcp"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TargetCreateOutput</returns>
@@ -10584,6 +10724,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TargetUpdateOutput</returns>
         ApiResponse<TargetUpdateOutput> TargetUpdateEksWithHttpInfo(TargetUpdateEks targetUpdateEks, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetUpdateOutput</returns>
+        TargetUpdateOutput TargetUpdateF5BigIp(TargetUpdateF5BigIp targetUpdateF5BigIp, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetUpdateOutput</returns>
+        ApiResponse<TargetUpdateOutput> TargetUpdateF5BigIpWithHttpInfo(TargetUpdateF5BigIp targetUpdateF5BigIp, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -11804,6 +11964,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> UpdateEventForwarderWithHttpInfo(UpdateEventForwarder updateEventForwarder, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>UpdateF5BigIpTargetOutput</returns>
+        UpdateF5BigIpTargetOutput UpdateF5BigIpTarget(UpdateF5BigIpTarget updateF5BigIpTarget, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of UpdateF5BigIpTargetOutput</returns>
+        ApiResponse<UpdateF5BigIpTargetOutput> UpdateF5BigIpTargetWithHttpInfo(UpdateF5BigIpTarget updateF5BigIpTarget, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -14655,6 +14835,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateF5BigIpTargetOutput</returns>
+        System.Threading.Tasks.Task<CreateF5BigIpTargetOutput> CreateF5BigIpTargetAsync(CreateF5BigIpTarget createF5BigIpTarget, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateF5BigIpTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateF5BigIpTargetOutput>> CreateF5BigIpTargetWithHttpInfoAsync(CreateF5BigIpTarget createF5BigIpTarget, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createGKETarget"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -16180,6 +16385,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretCreateOutput</returns>
+        System.Threading.Tasks.Task<DynamicSecretCreateOutput> DynamicSecretCreateAerospikeAsync(DynamicSecretCreateAerospike dynamicSecretCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DynamicSecretCreateOutput>> DynamicSecretCreateAerospikeWithHttpInfoAsync(DynamicSecretCreateAerospike dynamicSecretCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dynamicSecretCreateArtifactory"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -17048,6 +17278,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DynamicSecretTmpCredsUpdateWithHttpInfoAsync(DynamicSecretTmpCredsUpdate dynamicSecretTmpCredsUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretUpdateOutput</returns>
+        System.Threading.Tasks.Task<DynamicSecretUpdateOutput> DynamicSecretUpdateAerospikeAsync(DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DynamicSecretUpdateOutput>> DynamicSecretUpdateAerospikeWithHttpInfoAsync(DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -23174,6 +23429,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretCreateOutput</returns>
+        System.Threading.Tasks.Task<RotatedSecretCreateOutput> RotatedSecretCreateAerospikeAsync(RotatedSecretCreateAerospike rotatedSecretCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RotatedSecretCreateOutput>> RotatedSecretCreateAerospikeWithHttpInfoAsync(RotatedSecretCreateAerospike rotatedSecretCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rotatedSecretCreateAws"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -23292,6 +23572,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RotatedSecretCreateOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<RotatedSecretCreateOutput>> RotatedSecretCreateDockerhubWithHttpInfoAsync(RotatedSecretCreateDockerhub rotatedSecretCreateDockerhub, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretCreateOutput</returns>
+        System.Threading.Tasks.Task<RotatedSecretCreateOutput> RotatedSecretCreateF5BigIpAsync(RotatedSecretCreateF5BigIp rotatedSecretCreateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RotatedSecretCreateOutput>> RotatedSecretCreateF5BigIpWithHttpInfoAsync(RotatedSecretCreateF5BigIp rotatedSecretCreateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -23817,6 +24122,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> RotatedSecretSyncWithHttpInfoAsync(RotatedSecretSync rotatedSecretSync, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretUpdateOutput</returns>
+        System.Threading.Tasks.Task<RotatedSecretUpdateOutput> RotatedSecretUpdateAerospikeAsync(RotatedSecretUpdateAerospike rotatedSecretUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RotatedSecretUpdateOutput>> RotatedSecretUpdateAerospikeWithHttpInfoAsync(RotatedSecretUpdateAerospike rotatedSecretUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -24999,6 +25329,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetCreateOutput</returns>
+        System.Threading.Tasks.Task<TargetCreateOutput> TargetCreateF5BigIpAsync(TargetCreateF5BigIp targetCreateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TargetCreateOutput>> TargetCreateF5BigIpWithHttpInfoAsync(TargetCreateF5BigIp targetCreateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="targetCreateGcp"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -26067,6 +26422,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<TargetUpdateOutput>> TargetUpdateEksWithHttpInfoAsync(TargetUpdateEks targetUpdateEks, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetUpdateOutput</returns>
+        System.Threading.Tasks.Task<TargetUpdateOutput> TargetUpdateF5BigIpAsync(TargetUpdateF5BigIp targetUpdateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TargetUpdateOutput>> TargetUpdateF5BigIpWithHttpInfoAsync(TargetUpdateF5BigIp targetUpdateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -27592,6 +27972,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdateEventForwarderWithHttpInfoAsync(UpdateEventForwarder updateEventForwarder, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateF5BigIpTargetOutput</returns>
+        System.Threading.Tasks.Task<UpdateF5BigIpTargetOutput> UpdateF5BigIpTargetAsync(UpdateF5BigIpTarget updateF5BigIpTarget, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateF5BigIpTargetOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateF5BigIpTargetOutput>> UpdateF5BigIpTargetWithHttpInfoAsync(UpdateF5BigIpTarget updateF5BigIpTarget, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -39407,6 +39812,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CreateF5BigIpTargetOutput</returns>
+        public CreateF5BigIpTargetOutput CreateF5BigIpTarget(CreateF5BigIpTarget createF5BigIpTarget, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<CreateF5BigIpTargetOutput> localVarResponse = CreateF5BigIpTargetWithHttpInfo(createF5BigIpTarget);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CreateF5BigIpTargetOutput</returns>
+        public akeyless.Client.ApiResponse<CreateF5BigIpTargetOutput> CreateF5BigIpTargetWithHttpInfo(CreateF5BigIpTarget createF5BigIpTarget, int operationIndex = 0)
+        {
+            // verify the required parameter 'createF5BigIpTarget' is set
+            if (createF5BigIpTarget == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'createF5BigIpTarget' when calling V2Api->CreateF5BigIpTarget");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createF5BigIpTarget;
+
+            localVarRequestOptions.Operation = "V2Api.CreateF5BigIpTarget";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateF5BigIpTargetOutput>("/create-f5-big-ip-target", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateF5BigIpTarget", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateF5BigIpTargetOutput</returns>
+        public async System.Threading.Tasks.Task<CreateF5BigIpTargetOutput> CreateF5BigIpTargetAsync(CreateF5BigIpTarget createF5BigIpTarget, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<CreateF5BigIpTargetOutput> localVarResponse = await CreateF5BigIpTargetWithHttpInfoAsync(createF5BigIpTarget, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateF5BigIpTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<CreateF5BigIpTargetOutput>> CreateF5BigIpTargetWithHttpInfoAsync(CreateF5BigIpTarget createF5BigIpTarget, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createF5BigIpTarget' is set
+            if (createF5BigIpTarget == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'createF5BigIpTarget' when calling V2Api->CreateF5BigIpTarget");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createF5BigIpTarget;
+
+            localVarRequestOptions.Operation = "V2Api.CreateF5BigIpTarget";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateF5BigIpTargetOutput>("/create-f5-big-ip-target", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateF5BigIpTarget", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createGKETarget"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CreateGKETargetOutput</returns>
@@ -48313,6 +48864,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretCreateOutput</returns>
+        public DynamicSecretCreateOutput DynamicSecretCreateAerospike(DynamicSecretCreateAerospike dynamicSecretCreateAerospike, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<DynamicSecretCreateOutput> localVarResponse = DynamicSecretCreateAerospikeWithHttpInfo(dynamicSecretCreateAerospike);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretCreateOutput</returns>
+        public akeyless.Client.ApiResponse<DynamicSecretCreateOutput> DynamicSecretCreateAerospikeWithHttpInfo(DynamicSecretCreateAerospike dynamicSecretCreateAerospike, int operationIndex = 0)
+        {
+            // verify the required parameter 'dynamicSecretCreateAerospike' is set
+            if (dynamicSecretCreateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'dynamicSecretCreateAerospike' when calling V2Api->DynamicSecretCreateAerospike");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = dynamicSecretCreateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretCreateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DynamicSecretCreateOutput>("/dynamic-secret-create-aerospike", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretCreateAerospike", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretCreateOutput</returns>
+        public async System.Threading.Tasks.Task<DynamicSecretCreateOutput> DynamicSecretCreateAerospikeAsync(DynamicSecretCreateAerospike dynamicSecretCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<DynamicSecretCreateOutput> localVarResponse = await DynamicSecretCreateAerospikeWithHttpInfoAsync(dynamicSecretCreateAerospike, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<DynamicSecretCreateOutput>> DynamicSecretCreateAerospikeWithHttpInfoAsync(DynamicSecretCreateAerospike dynamicSecretCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'dynamicSecretCreateAerospike' is set
+            if (dynamicSecretCreateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'dynamicSecretCreateAerospike' when calling V2Api->DynamicSecretCreateAerospike");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = dynamicSecretCreateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretCreateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DynamicSecretCreateOutput>("/dynamic-secret-create-aerospike", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretCreateAerospike", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dynamicSecretCreateArtifactory"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DynamicSecretCreateOutput</returns>
@@ -53394,6 +54091,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DynamicSecretTmpCredsUpdate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretUpdateOutput</returns>
+        public DynamicSecretUpdateOutput DynamicSecretUpdateAerospike(DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<DynamicSecretUpdateOutput> localVarResponse = DynamicSecretUpdateAerospikeWithHttpInfo(dynamicSecretUpdateAerospike);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<DynamicSecretUpdateOutput> DynamicSecretUpdateAerospikeWithHttpInfo(DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike, int operationIndex = 0)
+        {
+            // verify the required parameter 'dynamicSecretUpdateAerospike' is set
+            if (dynamicSecretUpdateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'dynamicSecretUpdateAerospike' when calling V2Api->DynamicSecretUpdateAerospike");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = dynamicSecretUpdateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretUpdateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DynamicSecretUpdateOutput>("/dynamic-secret-update-aerospike", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretUpdateAerospike", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<DynamicSecretUpdateOutput> DynamicSecretUpdateAerospikeAsync(DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<DynamicSecretUpdateOutput> localVarResponse = await DynamicSecretUpdateAerospikeWithHttpInfoAsync(dynamicSecretUpdateAerospike, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<DynamicSecretUpdateOutput>> DynamicSecretUpdateAerospikeWithHttpInfoAsync(DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'dynamicSecretUpdateAerospike' is set
+            if (dynamicSecretUpdateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'dynamicSecretUpdateAerospike' when calling V2Api->DynamicSecretUpdateAerospike");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = dynamicSecretUpdateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretUpdateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DynamicSecretUpdateOutput>("/dynamic-secret-update-aerospike", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretUpdateAerospike", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -88871,6 +89714,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretCreateOutput</returns>
+        public RotatedSecretCreateOutput RotatedSecretCreateAerospike(RotatedSecretCreateAerospike rotatedSecretCreateAerospike, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<RotatedSecretCreateOutput> localVarResponse = RotatedSecretCreateAerospikeWithHttpInfo(rotatedSecretCreateAerospike);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretCreateOutput</returns>
+        public akeyless.Client.ApiResponse<RotatedSecretCreateOutput> RotatedSecretCreateAerospikeWithHttpInfo(RotatedSecretCreateAerospike rotatedSecretCreateAerospike, int operationIndex = 0)
+        {
+            // verify the required parameter 'rotatedSecretCreateAerospike' is set
+            if (rotatedSecretCreateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretCreateAerospike' when calling V2Api->RotatedSecretCreateAerospike");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretCreateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretCreateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RotatedSecretCreateOutput>("/rotated-secret-create-aerospike", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretCreateAerospike", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretCreateOutput</returns>
+        public async System.Threading.Tasks.Task<RotatedSecretCreateOutput> RotatedSecretCreateAerospikeAsync(RotatedSecretCreateAerospike rotatedSecretCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<RotatedSecretCreateOutput> localVarResponse = await RotatedSecretCreateAerospikeWithHttpInfoAsync(rotatedSecretCreateAerospike, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotatedSecretCreateOutput>> RotatedSecretCreateAerospikeWithHttpInfoAsync(RotatedSecretCreateAerospike rotatedSecretCreateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rotatedSecretCreateAerospike' is set
+            if (rotatedSecretCreateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretCreateAerospike' when calling V2Api->RotatedSecretCreateAerospike");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretCreateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretCreateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotatedSecretCreateOutput>("/rotated-secret-create-aerospike", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretCreateAerospike", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rotatedSecretCreateAws"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RotatedSecretCreateOutput</returns>
@@ -89588,6 +90577,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RotatedSecretCreateDockerhub", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretCreateOutput</returns>
+        public RotatedSecretCreateOutput RotatedSecretCreateF5BigIp(RotatedSecretCreateF5BigIp rotatedSecretCreateF5BigIp, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<RotatedSecretCreateOutput> localVarResponse = RotatedSecretCreateF5BigIpWithHttpInfo(rotatedSecretCreateF5BigIp);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretCreateOutput</returns>
+        public akeyless.Client.ApiResponse<RotatedSecretCreateOutput> RotatedSecretCreateF5BigIpWithHttpInfo(RotatedSecretCreateF5BigIp rotatedSecretCreateF5BigIp, int operationIndex = 0)
+        {
+            // verify the required parameter 'rotatedSecretCreateF5BigIp' is set
+            if (rotatedSecretCreateF5BigIp == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretCreateF5BigIp' when calling V2Api->RotatedSecretCreateF5BigIp");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretCreateF5BigIp;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretCreateF5BigIp";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RotatedSecretCreateOutput>("/rotated-secret-create-f5-big-ip", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretCreateF5BigIp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretCreateOutput</returns>
+        public async System.Threading.Tasks.Task<RotatedSecretCreateOutput> RotatedSecretCreateF5BigIpAsync(RotatedSecretCreateF5BigIp rotatedSecretCreateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<RotatedSecretCreateOutput> localVarResponse = await RotatedSecretCreateF5BigIpWithHttpInfoAsync(rotatedSecretCreateF5BigIp, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotatedSecretCreateOutput>> RotatedSecretCreateF5BigIpWithHttpInfoAsync(RotatedSecretCreateF5BigIp rotatedSecretCreateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rotatedSecretCreateF5BigIp' is set
+            if (rotatedSecretCreateF5BigIp == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretCreateF5BigIp' when calling V2Api->RotatedSecretCreateF5BigIp");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretCreateF5BigIp;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretCreateF5BigIp";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotatedSecretCreateOutput>("/rotated-secret-create-f5-big-ip", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretCreateF5BigIp", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -92654,6 +93789,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RotatedSecretSync", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretUpdateOutput</returns>
+        public RotatedSecretUpdateOutput RotatedSecretUpdateAerospike(RotatedSecretUpdateAerospike rotatedSecretUpdateAerospike, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<RotatedSecretUpdateOutput> localVarResponse = RotatedSecretUpdateAerospikeWithHttpInfo(rotatedSecretUpdateAerospike);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<RotatedSecretUpdateOutput> RotatedSecretUpdateAerospikeWithHttpInfo(RotatedSecretUpdateAerospike rotatedSecretUpdateAerospike, int operationIndex = 0)
+        {
+            // verify the required parameter 'rotatedSecretUpdateAerospike' is set
+            if (rotatedSecretUpdateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretUpdateAerospike' when calling V2Api->RotatedSecretUpdateAerospike");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretUpdateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretUpdateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RotatedSecretUpdateOutput>("/rotated-secret-update-aerospike", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretUpdateAerospike", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<RotatedSecretUpdateOutput> RotatedSecretUpdateAerospikeAsync(RotatedSecretUpdateAerospike rotatedSecretUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<RotatedSecretUpdateOutput> localVarResponse = await RotatedSecretUpdateAerospikeWithHttpInfoAsync(rotatedSecretUpdateAerospike, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateAerospike"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotatedSecretUpdateOutput>> RotatedSecretUpdateAerospikeWithHttpInfoAsync(RotatedSecretUpdateAerospike rotatedSecretUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rotatedSecretUpdateAerospike' is set
+            if (rotatedSecretUpdateAerospike == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretUpdateAerospike' when calling V2Api->RotatedSecretUpdateAerospike");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretUpdateAerospike;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretUpdateAerospike";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotatedSecretUpdateOutput>("/rotated-secret-update-aerospike", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretUpdateAerospike", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -99527,6 +100808,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetCreateOutput</returns>
+        public TargetCreateOutput TargetCreateF5BigIp(TargetCreateF5BigIp targetCreateF5BigIp, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<TargetCreateOutput> localVarResponse = TargetCreateF5BigIpWithHttpInfo(targetCreateF5BigIp);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetCreateOutput</returns>
+        public akeyless.Client.ApiResponse<TargetCreateOutput> TargetCreateF5BigIpWithHttpInfo(TargetCreateF5BigIp targetCreateF5BigIp, int operationIndex = 0)
+        {
+            // verify the required parameter 'targetCreateF5BigIp' is set
+            if (targetCreateF5BigIp == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetCreateF5BigIp' when calling V2Api->TargetCreateF5BigIp");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetCreateF5BigIp;
+
+            localVarRequestOptions.Operation = "V2Api.TargetCreateF5BigIp";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TargetCreateOutput>("/target-create-f5-big-ip", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetCreateF5BigIp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetCreateOutput</returns>
+        public async System.Threading.Tasks.Task<TargetCreateOutput> TargetCreateF5BigIpAsync(TargetCreateF5BigIp targetCreateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<TargetCreateOutput> localVarResponse = await TargetCreateF5BigIpWithHttpInfoAsync(targetCreateF5BigIp, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<TargetCreateOutput>> TargetCreateF5BigIpWithHttpInfoAsync(TargetCreateF5BigIp targetCreateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'targetCreateF5BigIp' is set
+            if (targetCreateF5BigIp == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetCreateF5BigIp' when calling V2Api->TargetCreateF5BigIp");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetCreateF5BigIp;
+
+            localVarRequestOptions.Operation = "V2Api.TargetCreateF5BigIp";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TargetCreateOutput>("/target-create-f5-big-ip", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetCreateF5BigIp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="targetCreateGcp"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TargetCreateOutput</returns>
@@ -105792,6 +107219,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("TargetUpdateEks", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetUpdateOutput</returns>
+        public TargetUpdateOutput TargetUpdateF5BigIp(TargetUpdateF5BigIp targetUpdateF5BigIp, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<TargetUpdateOutput> localVarResponse = TargetUpdateF5BigIpWithHttpInfo(targetUpdateF5BigIp);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<TargetUpdateOutput> TargetUpdateF5BigIpWithHttpInfo(TargetUpdateF5BigIp targetUpdateF5BigIp, int operationIndex = 0)
+        {
+            // verify the required parameter 'targetUpdateF5BigIp' is set
+            if (targetUpdateF5BigIp == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetUpdateF5BigIp' when calling V2Api->TargetUpdateF5BigIp");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetUpdateF5BigIp;
+
+            localVarRequestOptions.Operation = "V2Api.TargetUpdateF5BigIp";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TargetUpdateOutput>("/target-update-f5-big-ip", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetUpdateF5BigIp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<TargetUpdateOutput> TargetUpdateF5BigIpAsync(TargetUpdateF5BigIp targetUpdateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<TargetUpdateOutput> localVarResponse = await TargetUpdateF5BigIpWithHttpInfoAsync(targetUpdateF5BigIp, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateF5BigIp"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<TargetUpdateOutput>> TargetUpdateF5BigIpWithHttpInfoAsync(TargetUpdateF5BigIp targetUpdateF5BigIp, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'targetUpdateF5BigIp' is set
+            if (targetUpdateF5BigIp == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetUpdateF5BigIp' when calling V2Api->TargetUpdateF5BigIp");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetUpdateF5BigIp;
+
+            localVarRequestOptions.Operation = "V2Api.TargetUpdateF5BigIp";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TargetUpdateOutput>("/target-update-f5-big-ip", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetUpdateF5BigIp", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -114698,6 +116271,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateEventForwarder", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>UpdateF5BigIpTargetOutput</returns>
+        public UpdateF5BigIpTargetOutput UpdateF5BigIpTarget(UpdateF5BigIpTarget updateF5BigIpTarget, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<UpdateF5BigIpTargetOutput> localVarResponse = UpdateF5BigIpTargetWithHttpInfo(updateF5BigIpTarget);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of UpdateF5BigIpTargetOutput</returns>
+        public akeyless.Client.ApiResponse<UpdateF5BigIpTargetOutput> UpdateF5BigIpTargetWithHttpInfo(UpdateF5BigIpTarget updateF5BigIpTarget, int operationIndex = 0)
+        {
+            // verify the required parameter 'updateF5BigIpTarget' is set
+            if (updateF5BigIpTarget == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'updateF5BigIpTarget' when calling V2Api->UpdateF5BigIpTarget");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateF5BigIpTarget;
+
+            localVarRequestOptions.Operation = "V2Api.UpdateF5BigIpTarget";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<UpdateF5BigIpTargetOutput>("/update-f5-big-ip-target", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateF5BigIpTarget", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateF5BigIpTargetOutput</returns>
+        public async System.Threading.Tasks.Task<UpdateF5BigIpTargetOutput> UpdateF5BigIpTargetAsync(UpdateF5BigIpTarget updateF5BigIpTarget, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<UpdateF5BigIpTargetOutput> localVarResponse = await UpdateF5BigIpTargetWithHttpInfoAsync(updateF5BigIpTarget, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateF5BigIpTarget"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateF5BigIpTargetOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<UpdateF5BigIpTargetOutput>> UpdateF5BigIpTargetWithHttpInfoAsync(UpdateF5BigIpTarget updateF5BigIpTarget, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateF5BigIpTarget' is set
+            if (updateF5BigIpTarget == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'updateF5BigIpTarget' when calling V2Api->UpdateF5BigIpTarget");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateF5BigIpTarget;
+
+            localVarRequestOptions.Operation = "V2Api.UpdateF5BigIpTarget";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpdateF5BigIpTargetOutput>("/update-f5-big-ip-target", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateF5BigIpTarget", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -5,6 +5,7 @@ gatewayCreateProducerCassandra is a command that creates a Cassandra producer [D
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CassandraCreationStatements** | **string** | Cassandra creation statements | [optional] 
 **CassandraHosts** | **string** | Cassandra hosts IP or addresses, comma separated | [optional] 
 **CassandraPassword** | **string** | Cassandra superuser password | [optional] 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **OutputRule** | **List&lt;string&gt;** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
+**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
 **Ssl** | **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | **string** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 

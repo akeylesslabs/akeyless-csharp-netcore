@@ -5,6 +5,7 @@ dynamicSecretCreateChef is a command that creates chef dynamic secret
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **ChefOrgs** | **string** | Organizations | [optional] 
 **ChefServerKey** | **string** | Server key | [optional] 
 **ChefServerUrl** | **string** | Server URL | [optional] 
@@ -20,6 +21,7 @@ Name | Type | Description | Notes
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **SkipSsl** | **bool** | Skip SSL | [optional] [default to true]
+**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

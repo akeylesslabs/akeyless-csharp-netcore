@@ -6,6 +6,7 @@ dynamicSecretCreateRedis is a command that creates Redis dynamic secret
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AclRules** | **string** | A JSON array list of redis ACL rules to attach to the created user. For available rules see the ACL CAT command https://redis.io/commands/acl-cat By default the user will have permissions to read all keys &#39;[\&quot;~*\&quot;, \&quot;+@read\&quot;]&#39; | [optional] 
+**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **Port** | **string** | Redis Port | [optional] [default to "6379"]
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
+**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
 **Ssl** | **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | **string** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 

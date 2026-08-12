@@ -5,6 +5,7 @@ rotatedSecretDelete is a command that deletes a rotated secret
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ForceDelete** | **bool** | Delete the rotated secret only from Akeyless if failed to delete it from the third-party provider | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Rotated secret name | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

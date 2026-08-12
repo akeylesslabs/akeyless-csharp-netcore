@@ -42,6 +42,23 @@ namespace akeyless.Model
         /// <param name="adminPwd">adminPwd.</param>
         /// <param name="adminRotationIntervalDays">adminRotationIntervalDays.</param>
         /// <param name="administrativePort">administrativePort.</param>
+        /// <param name="aerospikeAdminUsername">aerospikeAdminUsername.</param>
+        /// <param name="aerospikeClientCertificate">aerospikeClientCertificate.</param>
+        /// <param name="aerospikeClientId">aerospikeClientId.</param>
+        /// <param name="aerospikeClientPrivateKey">aerospikeClientPrivateKey.</param>
+        /// <param name="aerospikeClientSecret">aerospikeClientSecret.</param>
+        /// <param name="aerospikeCloud">aerospikeCloud.</param>
+        /// <param name="aerospikeClusterId">aerospikeClusterId.</param>
+        /// <param name="aerospikeDbServerName">aerospikeDbServerName.</param>
+        /// <param name="aerospikeEnableMtls">aerospikeEnableMtls.</param>
+        /// <param name="aerospikeHostname">aerospikeHostname.</param>
+        /// <param name="aerospikeNamespace">aerospikeNamespace.</param>
+        /// <param name="aerospikePassword">aerospikePassword.</param>
+        /// <param name="aerospikePort">aerospikePort.</param>
+        /// <param name="aerospikeRoles">aerospikeRoles.</param>
+        /// <param name="aerospikeSkipServerNameValidation">aerospikeSkipServerNameValidation.</param>
+        /// <param name="aerospikeSslConnectionCertificate">aerospikeSslConnectionCertificate.</param>
+        /// <param name="aerospikeSslConnectionMode">aerospikeSslConnectionMode.</param>
         /// <param name="agenticRules">agenticRules.</param>
         /// <param name="apiKey">apiKey.</param>
         /// <param name="apiKeyId">apiKeyId.</param>
@@ -50,6 +67,7 @@ namespace akeyless.Model
         /// <param name="artifactoryBaseUrl">artifactoryBaseUrl.</param>
         /// <param name="artifactoryTokenAudience">artifactoryTokenAudience.</param>
         /// <param name="artifactoryTokenScope">artifactoryTokenScope.</param>
+        /// <param name="authMode">AuthMode selects how this target authenticates. Empty (default) uses ApiKey as a static bearer token against BaseURL, matching all pre-existing behavior. OpenAIAuthModeChatGPTOAuth instead uses the OAuth* fields below..</param>
         /// <param name="authorizationPort">authorizationPort.</param>
         /// <param name="awsAccessKeyId">awsAccessKeyId.</param>
         /// <param name="awsAccessMode">awsAccessMode.</param>
@@ -62,6 +80,7 @@ namespace akeyless.Model
         /// <param name="awsTransitiveTagKeys">awsTransitiveTagKeys.</param>
         /// <param name="awsUserConsoleAccess">awsUserConsoleAccess.</param>
         /// <param name="awsUserGroups">awsUserGroups.</param>
+        /// <param name="awsUserName">awsUserName.</param>
         /// <param name="awsUserPolicies">awsUserPolicies.</param>
         /// <param name="awsUserProgrammaticAccess">awsUserProgrammaticAccess.</param>
         /// <param name="azureAdministrativeUnit">azureAdministrativeUnit.</param>
@@ -236,6 +255,10 @@ namespace akeyless.Model
         /// <param name="mssqlRevocationStatements">mssqlRevocationStatements.</param>
         /// <param name="mysqlCreationStatements">mysqlCreationStatements.</param>
         /// <param name="mysqlRevocationStatements">mysqlRevocationStatements.</param>
+        /// <param name="oauthAccessToken">OAuthAccessToken is the current ChatGPT-issued access token (the &#x60;tokens.access_token&#x60; field of the customer&#39;s local auth.json). Akeyless refreshes this automatically; do not treat it as long-lived..</param>
+        /// <param name="oauthAccountId">OAuthAccountID is the ChatGPT workspace/account id (&#x60;tokens.account_id&#x60; in auth.json), required on every request to the ChatGPT backend..</param>
+        /// <param name="oauthLastRefresh">OAuthLastRefresh is the RFC3339 timestamp of the last successful Akeyless-performed refresh; used as a fallback expiry heuristic when the access token&#39;s JWT exp claim can&#39;t be parsed..</param>
+        /// <param name="oauthRefreshToken">OAuthRefreshToken mints new access tokens. It rotates on every refresh - Akeyless persists the new value after each successful refresh, so the previous value becomes invalid..</param>
         /// <param name="openaiUrl">openaiUrl.</param>
         /// <param name="oracleCreationStatements">oracleCreationStatements.</param>
         /// <param name="oracleRevocationStatements">oracleRevocationStatements.</param>
@@ -276,6 +299,7 @@ namespace akeyless.Model
         /// <param name="sfWarehouseName">sfWarehouseName.</param>
         /// <param name="shouldStop">TODO delete this after migration.</param>
         /// <param name="signingAlgorithm">signingAlgorithm.</param>
+        /// <param name="skipDryRun">skipDryRun.</param>
         /// <param name="skipServerNameValidation">(Optional) SkipServerNameValidation disables server name verification while still validating the certificate chain. Postgres treats empty as legacy \&quot;skip hostname validation\&quot;; MySQL treats empty as false..</param>
         /// <param name="sslConnectionCertificate">(Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field.</param>
         /// <param name="sslConnectionMode">(Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB.</param>
@@ -308,7 +332,7 @@ namespace akeyless.Model
         /// <param name="venafiUseTpp">venafiUseTpp.</param>
         /// <param name="venafiZone">venafiZone.</param>
         /// <param name="warnBeforeUserExpirationMin">warnBeforeUserExpirationMin.</param>
-        public DSProducerDetails(string accessTokenManagerId = default(string), List<string> aclRules = default(List<string>), bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string administrativePort = default(string), AgenticRules agenticRules = default(AgenticRules), string apiKey = default(string), string apiKeyId = default(string), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsExternalId = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionTags = default(string), string awsSessionToken = default(string), string awsTransitiveTagKeys = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAdministrativeUnit = default(string), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureCloud = default(string), string azureFixedUserNameSubClaimKey = default(string), bool azureFixedUserOnly = default(bool), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string azureUsername = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientAuthenticationType = default(string), string clientCertificate = default(string), string clientKeyPassphrase = default(string), string clientPrivateKey = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string connectionType = default(string), string createSyncUrl = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), bool deleteProtection = default(bool), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), bool enableMtls = default(bool), bool enforceReplayPrevention = default(bool), DateTime expirationDate = default(DateTime), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpAccessType = default(string), string gcpFixedUserClaimKeyname = default(string), string gcpKeyAlgo = default(string), string gcpProjectId = default(string), Dictionary<string, List<string>> gcpRoleBindings = default(Dictionary<string, List<string>>), string gcpRoleNames = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), string gcpServiceAccountKeyId = default(string), string gcpServiceAccountType = default(string), string gcpTmpServiceAccountName = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubOrganizationName = default(string), string githubRepositoryPath = default(string), string gitlabAccessToken = default(string), string gitlabAccessType = default(string), string gitlabCertificate = default(string), string gitlabGroupName = default(string), string gitlabProjectName = default(string), string gitlabRole = default(string), List<string> gitlabTokenScope = default(List<string>), string gitlabUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string googleWorkspaceAccessMode = default(string), string googleWorkspaceAdminName = default(string), string googleWorkspaceFixedUserNameSubClaimKey = default(string), string googleWorkspaceGroupName = default(string), string googleWorkspaceGroupRole = default(string), string googleWorkspaceRoleName = default(string), string googleWorkspaceRoleScope = default(string), string graceRotatedSecretKey = default(string), List<string> grantTypes = default(List<string>), string groups = default(string), AWSGatewayCloudIdentityExternalIdOpt gwCloudIdentityExternalIdOpt = default(AWSGatewayCloudIdentityExternalIdOpt), string hanadbCreationStatements = default(string), string hanadbRevocationStatements = default(string), string hostName = default(string), string hostPort = default(string), string implementationType = default(string), string isFixedUser = default(string), string issuer = default(string), List<ItemCustomFieldsDetails> itemCustomFieldsDetails = default(List<ItemCustomFieldsDetails>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string jwks = default(string), string jwksUrl = default(string), string k8sAllowedNamespaces = default(string), string k8sAuthType = default(string), string k8sBearerToken = default(string), string k8sClientCertData = default(string), string k8sClientKeyData = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sClusterName = default(string), bool k8sDynamicMode = default(bool), List<int> k8sMultipleDocYamlTempDefinition = default(List<int>), string k8sNamespace = default(string), string k8sRoleName = default(string), string k8sRoleType = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapFixedUserNameSubClaimKey = default(string), string ldapFixedUserType = default(string), string ldapGroupDn = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string metadata = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbScopes = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlAllowedDbNames = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string mysqlRevocationStatements = default(string), string openaiUrl = default(string), string oracleCreationStatements = default(string), string oracleRevocationStatements = default(string), WalletDetails oracleWalletDetails = default(WalletDetails), string organizationId = default(string), string password = default(string), long passwordLength = default(long), string passwordPolicy = default(string), PasswordPolicyInfo passwordPolicyInfo = default(PasswordPolicyInfo), string payload = default(string), string pingUrl = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), bool preserveExistingPasswordSettings = default(bool), string privilegedUser = default(string), string projectId = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string rdpFixedUserNameSubClaimKey = default(string), List<string> redirectUris = default(List<string>), string redshiftCreationStatements = default(string), List<string> restrictedScopes = default(List<string>), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> scopes = default(List<string>), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), long sessionExtensionWarnIntervalMin = default(long), string sfAccount = default(string), string sfAuthMode = default(string), string sfKeyAlgo = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string signingAlgorithm = default(string), string skipServerNameValidation = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string subjectDn = default(string), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), bool useGwServiceAccount = default(bool), string userName = default(string), string userPassword = default(string), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), string usernameTemplate = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppAccessToken = default(string), string venafiTppClientId = default(string), string venafiTppPassword = default(string), string venafiTppRefreshToken = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string), long warnBeforeUserExpirationMin = default(long))
+        public DSProducerDetails(string accessTokenManagerId = default(string), List<string> aclRules = default(List<string>), bool active = default(bool), string adminName = default(string), string adminPwd = default(string), long adminRotationIntervalDays = default(long), string administrativePort = default(string), string aerospikeAdminUsername = default(string), string aerospikeClientCertificate = default(string), string aerospikeClientId = default(string), string aerospikeClientPrivateKey = default(string), string aerospikeClientSecret = default(string), bool aerospikeCloud = default(bool), string aerospikeClusterId = default(string), string aerospikeDbServerName = default(string), bool aerospikeEnableMtls = default(bool), string aerospikeHostname = default(string), string aerospikeNamespace = default(string), string aerospikePassword = default(string), string aerospikePort = default(string), List<string> aerospikeRoles = default(List<string>), string aerospikeSkipServerNameValidation = default(string), string aerospikeSslConnectionCertificate = default(string), bool aerospikeSslConnectionMode = default(bool), AgenticRules agenticRules = default(AgenticRules), string apiKey = default(string), string apiKeyId = default(string), string artifactoryAdminApikey = default(string), string artifactoryAdminUsername = default(string), string artifactoryBaseUrl = default(string), string artifactoryTokenAudience = default(string), string artifactoryTokenScope = default(string), string authMode = default(string), string authorizationPort = default(string), string awsAccessKeyId = default(string), string awsAccessMode = default(string), string awsExternalId = default(string), string awsRegion = default(string), string awsRoleArns = default(string), string awsSecretAccessKey = default(string), string awsSessionTags = default(string), string awsSessionToken = default(string), string awsTransitiveTagKeys = default(string), bool awsUserConsoleAccess = default(bool), string awsUserGroups = default(string), string awsUserName = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = default(bool), string azureAdministrativeUnit = default(string), string azureAppObjectId = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureCloud = default(string), string azureFixedUserNameSubClaimKey = default(string), bool azureFixedUserOnly = default(bool), string azureResourceGroupName = default(string), string azureResourceName = default(string), string azureSubscriptionId = default(string), string azureTenantId = default(string), string azureUserGroupsObjId = default(string), bool azureUserPortalAccess = default(bool), bool azureUserProgrammaticAccess = default(bool), string azureUserRolesTemplateId = default(string), string azureUsername = default(string), string cassandraCreationStatements = default(string), string chefOrganizations = default(string), string chefServerAccessMode = default(string), string chefServerHostName = default(string), string chefServerKey = default(string), string chefServerPort = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), bool chefSkipSsl = default(bool), string clientAuthenticationType = default(string), string clientCertificate = default(string), string clientKeyPassphrase = default(string), string clientPrivateKey = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string connectionType = default(string), string createSyncUrl = default(string), string dbClientId = default(string), string dbClientSecret = default(string), string dbHostName = default(string), string dbIsolationLevel = default(string), string dbMaxIdleConns = default(string), string dbMaxOpenConns = default(string), string dbName = default(string), string dbPort = default(string), string dbPrivateKey = default(string), string dbPrivateKeyPassphrase = default(string), string dbPwd = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbTenantId = default(string), string dbUserName = default(string), bool deleteProtection = default(bool), long dynamicSecretId = default(long), string dynamicSecretKey = default(string), string dynamicSecretName = default(string), string dynamicSecretType = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCertificate = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = default(string), string eksSecretAccessKey = default(string), bool enableAdminRotation = default(bool), bool enableMtls = default(bool), bool enforceReplayPrevention = default(bool), DateTime expirationDate = default(DateTime), string externallyProvidedUser = default(string), string failureMessage = default(string), string fixedUserOnly = default(string), string gcpAccessType = default(string), string gcpFixedUserClaimKeyname = default(string), string gcpKeyAlgo = default(string), string gcpProjectId = default(string), Dictionary<string, List<string>> gcpRoleBindings = default(Dictionary<string, List<string>>), string gcpRoleNames = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKey = default(string), string gcpServiceAccountKeyBase64 = default(string), string gcpServiceAccountKeyId = default(string), string gcpServiceAccountType = default(string), string gcpTmpServiceAccountName = default(string), string gcpTokenLifetime = default(string), string gcpTokenScope = default(string), string gcpTokenType = default(string), long githubAppId = default(long), string githubAppPrivateKey = default(string), string githubBaseUrl = default(string), long githubInstallationId = default(long), Dictionary<string, string> githubInstallationTokenPermissions = default(Dictionary<string, string>), List<string> githubInstallationTokenRepositories = default(List<string>), List<long> githubInstallationTokenRepositoriesIds = default(List<long>), string githubOrganizationName = default(string), string githubRepositoryPath = default(string), string gitlabAccessToken = default(string), string gitlabAccessType = default(string), string gitlabCertificate = default(string), string gitlabGroupName = default(string), string gitlabProjectName = default(string), string gitlabRole = default(string), List<string> gitlabTokenScope = default(List<string>), string gitlabUrl = default(string), string gkeClusterCaCertificate = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountKey = default(string), string gkeServiceAccountName = default(string), string googleWorkspaceAccessMode = default(string), string googleWorkspaceAdminName = default(string), string googleWorkspaceFixedUserNameSubClaimKey = default(string), string googleWorkspaceGroupName = default(string), string googleWorkspaceGroupRole = default(string), string googleWorkspaceRoleName = default(string), string googleWorkspaceRoleScope = default(string), string graceRotatedSecretKey = default(string), List<string> grantTypes = default(List<string>), string groups = default(string), AWSGatewayCloudIdentityExternalIdOpt gwCloudIdentityExternalIdOpt = default(AWSGatewayCloudIdentityExternalIdOpt), string hanadbCreationStatements = default(string), string hanadbRevocationStatements = default(string), string hostName = default(string), string hostPort = default(string), string implementationType = default(string), string isFixedUser = default(string), string issuer = default(string), List<ItemCustomFieldsDetails> itemCustomFieldsDetails = default(List<ItemCustomFieldsDetails>), List<ItemTargetAssociation> itemTargetsAssoc = default(List<ItemTargetAssociation>), string jwks = default(string), string jwksUrl = default(string), string k8sAllowedNamespaces = default(string), string k8sAuthType = default(string), string k8sBearerToken = default(string), string k8sClientCertData = default(string), string k8sClientKeyData = default(string), string k8sClusterCaCertificate = default(string), string k8sClusterEndpoint = default(string), string k8sClusterName = default(string), bool k8sDynamicMode = default(bool), List<int> k8sMultipleDocYamlTempDefinition = default(List<int>), string k8sNamespace = default(string), string k8sRoleName = default(string), string k8sRoleType = default(string), string k8sServiceAccount = default(string), long lastAdminRotation = default(long), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapFixedUserNameSubClaimKey = default(string), string ldapFixedUserType = default(string), string ldapGroupDn = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUserAttr = default(string), string ldapUserDn = default(string), string metadata = default(string), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbCustomData = default(string), string mongodbDbName = default(string), string mongodbDefaultAuthDb = default(string), string mongodbHostPort = default(string), bool mongodbIsAtlas = default(bool), string mongodbPassword = default(string), string mongodbRoles = default(string), string mongodbScopes = default(string), string mongodbUriConnection = default(string), string mongodbUriOptions = default(string), string mongodbUsername = default(string), string mssqlAllowedDbNames = default(string), string mssqlCreationStatements = default(string), string mssqlRevocationStatements = default(string), string mysqlCreationStatements = default(string), string mysqlRevocationStatements = default(string), string oauthAccessToken = default(string), string oauthAccountId = default(string), string oauthLastRefresh = default(string), string oauthRefreshToken = default(string), string openaiUrl = default(string), string oracleCreationStatements = default(string), string oracleRevocationStatements = default(string), WalletDetails oracleWalletDetails = default(WalletDetails), string organizationId = default(string), string password = default(string), long passwordLength = default(long), string passwordPolicy = default(string), PasswordPolicyInfo passwordPolicyInfo = default(PasswordPolicyInfo), string payload = default(string), string pingUrl = default(string), string postgresCreationStatements = default(string), string postgresRevocationStatements = default(string), bool preserveExistingPasswordSettings = default(bool), string privilegedUser = default(string), string projectId = default(string), string rabbitmqServerPassword = default(string), string rabbitmqServerUri = default(string), string rabbitmqServerUser = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string rdpFixedUserNameSubClaimKey = default(string), List<string> redirectUris = default(List<string>), string redshiftCreationStatements = default(string), List<string> restrictedScopes = default(List<string>), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> scopes = default(List<string>), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), long sessionExtensionWarnIntervalMin = default(long), string sfAccount = default(string), string sfAuthMode = default(string), string sfKeyAlgo = default(string), string sfUserRole = default(string), string sfWarehouseName = default(string), string shouldStop = default(string), string signingAlgorithm = default(string), bool skipDryRun = default(bool), string skipServerNameValidation = default(string), string sslConnectionCertificate = default(string), bool sslConnectionMode = default(bool), string subjectDn = default(string), List<string> tags = default(List<string>), long timeoutSeconds = default(long), bool useGwCloudIdentity = default(bool), bool useGwServiceAccount = default(bool), string userName = default(string), string userPassword = default(string), string userPrincipalName = default(string), string userTtl = default(string), long usernameLength = default(long), string usernamePolicy = default(string), string usernameTemplate = default(string), bool venafiAllowSubdomains = default(bool), List<string> venafiAllowedDomains = default(List<string>), string venafiApiKey = default(string), string venafiAutoGeneratedFolder = default(string), string venafiBaseUrl = default(string), bool venafiRootFirstInChain = default(bool), bool venafiSignUsingAkeylessPki = default(bool), string venafiSignerKeyName = default(string), bool venafiStorePrivateKey = default(bool), string venafiTppAccessToken = default(string), string venafiTppClientId = default(string), string venafiTppPassword = default(string), string venafiTppRefreshToken = default(string), string venafiTppUsername = default(string), bool venafiUseTpp = default(bool), string venafiZone = default(string), long warnBeforeUserExpirationMin = default(long))
         {
             this.AccessTokenManagerId = accessTokenManagerId;
             this.AclRules = aclRules;
@@ -317,6 +341,23 @@ namespace akeyless.Model
             this.AdminPwd = adminPwd;
             this.AdminRotationIntervalDays = adminRotationIntervalDays;
             this.AdministrativePort = administrativePort;
+            this.AerospikeAdminUsername = aerospikeAdminUsername;
+            this.AerospikeClientCertificate = aerospikeClientCertificate;
+            this.AerospikeClientId = aerospikeClientId;
+            this.AerospikeClientPrivateKey = aerospikeClientPrivateKey;
+            this.AerospikeClientSecret = aerospikeClientSecret;
+            this.AerospikeCloud = aerospikeCloud;
+            this.AerospikeClusterId = aerospikeClusterId;
+            this.AerospikeDbServerName = aerospikeDbServerName;
+            this.AerospikeEnableMtls = aerospikeEnableMtls;
+            this.AerospikeHostname = aerospikeHostname;
+            this.AerospikeNamespace = aerospikeNamespace;
+            this.AerospikePassword = aerospikePassword;
+            this.AerospikePort = aerospikePort;
+            this.AerospikeRoles = aerospikeRoles;
+            this.AerospikeSkipServerNameValidation = aerospikeSkipServerNameValidation;
+            this.AerospikeSslConnectionCertificate = aerospikeSslConnectionCertificate;
+            this.AerospikeSslConnectionMode = aerospikeSslConnectionMode;
             this.AgenticRules = agenticRules;
             this.ApiKey = apiKey;
             this.ApiKeyId = apiKeyId;
@@ -325,6 +366,7 @@ namespace akeyless.Model
             this.ArtifactoryBaseUrl = artifactoryBaseUrl;
             this.ArtifactoryTokenAudience = artifactoryTokenAudience;
             this.ArtifactoryTokenScope = artifactoryTokenScope;
+            this.AuthMode = authMode;
             this.AuthorizationPort = authorizationPort;
             this.AwsAccessKeyId = awsAccessKeyId;
             this.AwsAccessMode = awsAccessMode;
@@ -337,6 +379,7 @@ namespace akeyless.Model
             this.AwsTransitiveTagKeys = awsTransitiveTagKeys;
             this.AwsUserConsoleAccess = awsUserConsoleAccess;
             this.AwsUserGroups = awsUserGroups;
+            this.AwsUserName = awsUserName;
             this.AwsUserPolicies = awsUserPolicies;
             this.AwsUserProgrammaticAccess = awsUserProgrammaticAccess;
             this.AzureAdministrativeUnit = azureAdministrativeUnit;
@@ -511,6 +554,10 @@ namespace akeyless.Model
             this.MssqlRevocationStatements = mssqlRevocationStatements;
             this.MysqlCreationStatements = mysqlCreationStatements;
             this.MysqlRevocationStatements = mysqlRevocationStatements;
+            this.OauthAccessToken = oauthAccessToken;
+            this.OauthAccountId = oauthAccountId;
+            this.OauthLastRefresh = oauthLastRefresh;
+            this.OauthRefreshToken = oauthRefreshToken;
             this.OpenaiUrl = openaiUrl;
             this.OracleCreationStatements = oracleCreationStatements;
             this.OracleRevocationStatements = oracleRevocationStatements;
@@ -551,6 +598,7 @@ namespace akeyless.Model
             this.SfWarehouseName = sfWarehouseName;
             this.ShouldStop = shouldStop;
             this.SigningAlgorithm = signingAlgorithm;
+            this.SkipDryRun = skipDryRun;
             this.SkipServerNameValidation = skipServerNameValidation;
             this.SslConnectionCertificate = sslConnectionCertificate;
             this.SslConnectionMode = sslConnectionMode;
@@ -628,6 +676,108 @@ namespace akeyless.Model
         public string AdministrativePort { get; set; }
 
         /// <summary>
+        /// Gets or Sets AerospikeAdminUsername
+        /// </summary>
+        [DataMember(Name = "aerospike_admin_username", EmitDefaultValue = false)]
+        public string AerospikeAdminUsername { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeClientCertificate
+        /// </summary>
+        [DataMember(Name = "aerospike_client_certificate", EmitDefaultValue = false)]
+        public string AerospikeClientCertificate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeClientId
+        /// </summary>
+        [DataMember(Name = "aerospike_client_id", EmitDefaultValue = false)]
+        public string AerospikeClientId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeClientPrivateKey
+        /// </summary>
+        [DataMember(Name = "aerospike_client_private_key", EmitDefaultValue = false)]
+        public string AerospikeClientPrivateKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeClientSecret
+        /// </summary>
+        [DataMember(Name = "aerospike_client_secret", EmitDefaultValue = false)]
+        public string AerospikeClientSecret { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeCloud
+        /// </summary>
+        [DataMember(Name = "aerospike_cloud", EmitDefaultValue = true)]
+        public bool AerospikeCloud { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeClusterId
+        /// </summary>
+        [DataMember(Name = "aerospike_cluster_id", EmitDefaultValue = false)]
+        public string AerospikeClusterId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeDbServerName
+        /// </summary>
+        [DataMember(Name = "aerospike_db_server_name", EmitDefaultValue = false)]
+        public string AerospikeDbServerName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeEnableMtls
+        /// </summary>
+        [DataMember(Name = "aerospike_enable_mtls", EmitDefaultValue = true)]
+        public bool AerospikeEnableMtls { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeHostname
+        /// </summary>
+        [DataMember(Name = "aerospike_hostname", EmitDefaultValue = false)]
+        public string AerospikeHostname { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeNamespace
+        /// </summary>
+        [DataMember(Name = "aerospike_namespace", EmitDefaultValue = false)]
+        public string AerospikeNamespace { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikePassword
+        /// </summary>
+        [DataMember(Name = "aerospike_password", EmitDefaultValue = false)]
+        public string AerospikePassword { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikePort
+        /// </summary>
+        [DataMember(Name = "aerospike_port", EmitDefaultValue = false)]
+        public string AerospikePort { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeRoles
+        /// </summary>
+        [DataMember(Name = "aerospike_roles", EmitDefaultValue = false)]
+        public List<string> AerospikeRoles { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeSkipServerNameValidation
+        /// </summary>
+        [DataMember(Name = "aerospike_skip_server_name_validation", EmitDefaultValue = false)]
+        public string AerospikeSkipServerNameValidation { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeSslConnectionCertificate
+        /// </summary>
+        [DataMember(Name = "aerospike_ssl_connection_certificate", EmitDefaultValue = false)]
+        public string AerospikeSslConnectionCertificate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AerospikeSslConnectionMode
+        /// </summary>
+        [DataMember(Name = "aerospike_ssl_connection_mode", EmitDefaultValue = true)]
+        public bool AerospikeSslConnectionMode { get; set; }
+
+        /// <summary>
         /// Gets or Sets AgenticRules
         /// </summary>
         [DataMember(Name = "agentic_rules", EmitDefaultValue = false)]
@@ -674,6 +824,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "artifactory_token_scope", EmitDefaultValue = false)]
         public string ArtifactoryTokenScope { get; set; }
+
+        /// <summary>
+        /// AuthMode selects how this target authenticates. Empty (default) uses ApiKey as a static bearer token against BaseURL, matching all pre-existing behavior. OpenAIAuthModeChatGPTOAuth instead uses the OAuth* fields below.
+        /// </summary>
+        /// <value>AuthMode selects how this target authenticates. Empty (default) uses ApiKey as a static bearer token against BaseURL, matching all pre-existing behavior. OpenAIAuthModeChatGPTOAuth instead uses the OAuth* fields below.</value>
+        [DataMember(Name = "auth_mode", EmitDefaultValue = false)]
+        public string AuthMode { get; set; }
 
         /// <summary>
         /// Gets or Sets AuthorizationPort
@@ -746,6 +903,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "aws_user_groups", EmitDefaultValue = false)]
         public string AwsUserGroups { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AwsUserName
+        /// </summary>
+        [DataMember(Name = "aws_user_name", EmitDefaultValue = false)]
+        public string AwsUserName { get; set; }
 
         /// <summary>
         /// Gets or Sets AwsUserPolicies
@@ -1812,6 +1975,34 @@ namespace akeyless.Model
         public string MysqlRevocationStatements { get; set; }
 
         /// <summary>
+        /// OAuthAccessToken is the current ChatGPT-issued access token (the &#x60;tokens.access_token&#x60; field of the customer&#39;s local auth.json). Akeyless refreshes this automatically; do not treat it as long-lived.
+        /// </summary>
+        /// <value>OAuthAccessToken is the current ChatGPT-issued access token (the &#x60;tokens.access_token&#x60; field of the customer&#39;s local auth.json). Akeyless refreshes this automatically; do not treat it as long-lived.</value>
+        [DataMember(Name = "oauth_access_token", EmitDefaultValue = false)]
+        public string OauthAccessToken { get; set; }
+
+        /// <summary>
+        /// OAuthAccountID is the ChatGPT workspace/account id (&#x60;tokens.account_id&#x60; in auth.json), required on every request to the ChatGPT backend.
+        /// </summary>
+        /// <value>OAuthAccountID is the ChatGPT workspace/account id (&#x60;tokens.account_id&#x60; in auth.json), required on every request to the ChatGPT backend.</value>
+        [DataMember(Name = "oauth_account_id", EmitDefaultValue = false)]
+        public string OauthAccountId { get; set; }
+
+        /// <summary>
+        /// OAuthLastRefresh is the RFC3339 timestamp of the last successful Akeyless-performed refresh; used as a fallback expiry heuristic when the access token&#39;s JWT exp claim can&#39;t be parsed.
+        /// </summary>
+        /// <value>OAuthLastRefresh is the RFC3339 timestamp of the last successful Akeyless-performed refresh; used as a fallback expiry heuristic when the access token&#39;s JWT exp claim can&#39;t be parsed.</value>
+        [DataMember(Name = "oauth_last_refresh", EmitDefaultValue = false)]
+        public string OauthLastRefresh { get; set; }
+
+        /// <summary>
+        /// OAuthRefreshToken mints new access tokens. It rotates on every refresh - Akeyless persists the new value after each successful refresh, so the previous value becomes invalid.
+        /// </summary>
+        /// <value>OAuthRefreshToken mints new access tokens. It rotates on every refresh - Akeyless persists the new value after each successful refresh, so the previous value becomes invalid.</value>
+        [DataMember(Name = "oauth_refresh_token", EmitDefaultValue = false)]
+        public string OauthRefreshToken { get; set; }
+
+        /// <summary>
         /// Gets or Sets OpenaiUrl
         /// </summary>
         [DataMember(Name = "openai_url", EmitDefaultValue = false)]
@@ -2055,6 +2246,12 @@ namespace akeyless.Model
         public string SigningAlgorithm { get; set; }
 
         /// <summary>
+        /// Gets or Sets SkipDryRun
+        /// </summary>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
+
+        /// <summary>
         /// (Optional) SkipServerNameValidation disables server name verification while still validating the certificate chain. Postgres treats empty as legacy \&quot;skip hostname validation\&quot;; MySQL treats empty as false.
         /// </summary>
         /// <value>(Optional) SkipServerNameValidation disables server name verification while still validating the certificate chain. Postgres treats empty as legacy \&quot;skip hostname validation\&quot;; MySQL treats empty as false.</value>
@@ -2266,6 +2463,23 @@ namespace akeyless.Model
             sb.Append("  AdminPwd: ").Append(AdminPwd).Append("\n");
             sb.Append("  AdminRotationIntervalDays: ").Append(AdminRotationIntervalDays).Append("\n");
             sb.Append("  AdministrativePort: ").Append(AdministrativePort).Append("\n");
+            sb.Append("  AerospikeAdminUsername: ").Append(AerospikeAdminUsername).Append("\n");
+            sb.Append("  AerospikeClientCertificate: ").Append(AerospikeClientCertificate).Append("\n");
+            sb.Append("  AerospikeClientId: ").Append(AerospikeClientId).Append("\n");
+            sb.Append("  AerospikeClientPrivateKey: ").Append(AerospikeClientPrivateKey).Append("\n");
+            sb.Append("  AerospikeClientSecret: ").Append(AerospikeClientSecret).Append("\n");
+            sb.Append("  AerospikeCloud: ").Append(AerospikeCloud).Append("\n");
+            sb.Append("  AerospikeClusterId: ").Append(AerospikeClusterId).Append("\n");
+            sb.Append("  AerospikeDbServerName: ").Append(AerospikeDbServerName).Append("\n");
+            sb.Append("  AerospikeEnableMtls: ").Append(AerospikeEnableMtls).Append("\n");
+            sb.Append("  AerospikeHostname: ").Append(AerospikeHostname).Append("\n");
+            sb.Append("  AerospikeNamespace: ").Append(AerospikeNamespace).Append("\n");
+            sb.Append("  AerospikePassword: ").Append(AerospikePassword).Append("\n");
+            sb.Append("  AerospikePort: ").Append(AerospikePort).Append("\n");
+            sb.Append("  AerospikeRoles: ").Append(AerospikeRoles).Append("\n");
+            sb.Append("  AerospikeSkipServerNameValidation: ").Append(AerospikeSkipServerNameValidation).Append("\n");
+            sb.Append("  AerospikeSslConnectionCertificate: ").Append(AerospikeSslConnectionCertificate).Append("\n");
+            sb.Append("  AerospikeSslConnectionMode: ").Append(AerospikeSslConnectionMode).Append("\n");
             sb.Append("  AgenticRules: ").Append(AgenticRules).Append("\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  ApiKeyId: ").Append(ApiKeyId).Append("\n");
@@ -2274,6 +2488,7 @@ namespace akeyless.Model
             sb.Append("  ArtifactoryBaseUrl: ").Append(ArtifactoryBaseUrl).Append("\n");
             sb.Append("  ArtifactoryTokenAudience: ").Append(ArtifactoryTokenAudience).Append("\n");
             sb.Append("  ArtifactoryTokenScope: ").Append(ArtifactoryTokenScope).Append("\n");
+            sb.Append("  AuthMode: ").Append(AuthMode).Append("\n");
             sb.Append("  AuthorizationPort: ").Append(AuthorizationPort).Append("\n");
             sb.Append("  AwsAccessKeyId: ").Append(AwsAccessKeyId).Append("\n");
             sb.Append("  AwsAccessMode: ").Append(AwsAccessMode).Append("\n");
@@ -2286,6 +2501,7 @@ namespace akeyless.Model
             sb.Append("  AwsTransitiveTagKeys: ").Append(AwsTransitiveTagKeys).Append("\n");
             sb.Append("  AwsUserConsoleAccess: ").Append(AwsUserConsoleAccess).Append("\n");
             sb.Append("  AwsUserGroups: ").Append(AwsUserGroups).Append("\n");
+            sb.Append("  AwsUserName: ").Append(AwsUserName).Append("\n");
             sb.Append("  AwsUserPolicies: ").Append(AwsUserPolicies).Append("\n");
             sb.Append("  AwsUserProgrammaticAccess: ").Append(AwsUserProgrammaticAccess).Append("\n");
             sb.Append("  AzureAdministrativeUnit: ").Append(AzureAdministrativeUnit).Append("\n");
@@ -2460,6 +2676,10 @@ namespace akeyless.Model
             sb.Append("  MssqlRevocationStatements: ").Append(MssqlRevocationStatements).Append("\n");
             sb.Append("  MysqlCreationStatements: ").Append(MysqlCreationStatements).Append("\n");
             sb.Append("  MysqlRevocationStatements: ").Append(MysqlRevocationStatements).Append("\n");
+            sb.Append("  OauthAccessToken: ").Append(OauthAccessToken).Append("\n");
+            sb.Append("  OauthAccountId: ").Append(OauthAccountId).Append("\n");
+            sb.Append("  OauthLastRefresh: ").Append(OauthLastRefresh).Append("\n");
+            sb.Append("  OauthRefreshToken: ").Append(OauthRefreshToken).Append("\n");
             sb.Append("  OpenaiUrl: ").Append(OpenaiUrl).Append("\n");
             sb.Append("  OracleCreationStatements: ").Append(OracleCreationStatements).Append("\n");
             sb.Append("  OracleRevocationStatements: ").Append(OracleRevocationStatements).Append("\n");
@@ -2500,6 +2720,7 @@ namespace akeyless.Model
             sb.Append("  SfWarehouseName: ").Append(SfWarehouseName).Append("\n");
             sb.Append("  ShouldStop: ").Append(ShouldStop).Append("\n");
             sb.Append("  SigningAlgorithm: ").Append(SigningAlgorithm).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  SkipServerNameValidation: ").Append(SkipServerNameValidation).Append("\n");
             sb.Append("  SslConnectionCertificate: ").Append(SslConnectionCertificate).Append("\n");
             sb.Append("  SslConnectionMode: ").Append(SslConnectionMode).Append("\n");

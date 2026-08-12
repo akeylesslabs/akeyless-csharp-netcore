@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="UpdateMcpSecretBearerToken" /> class.
         /// </summary>
         /// <param name="accessibility">for personal password manager (default to &quot;regular&quot;).</param>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag..</param>
         /// <param name="bearerToken">Bearer token value.</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -52,7 +53,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="url">URL of the service.</param>
-        public UpdateMcpSecretBearerToken(string accessibility = @"regular", string bearerToken = default(string), List<string> inputRule = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), int lastVersion = default(int), string name = default(string), List<string> outputRule = default(List<string>), string token = default(string), string uidToken = default(string), string url = default(string))
+        public UpdateMcpSecretBearerToken(string accessibility = @"regular", bool araEnabled = default(bool), string bearerToken = default(string), List<string> inputRule = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), int lastVersion = default(int), string name = default(string), List<string> outputRule = default(List<string>), string token = default(string), string uidToken = default(string), string url = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,6 +63,7 @@ namespace akeyless.Model
             this.Name = name;
             // use default value if no "accessibility" provided
             this.Accessibility = accessibility ?? @"regular";
+            this.AraEnabled = araEnabled;
             this.BearerToken = bearerToken;
             this.InputRule = inputRule;
             this.Json = json;
@@ -80,6 +82,13 @@ namespace akeyless.Model
         /// <value>for personal password manager</value>
         [DataMember(Name = "accessibility", EmitDefaultValue = false)]
         public string Accessibility { get; set; }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Bearer token value
@@ -165,6 +174,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateMcpSecretBearerToken {\n");
             sb.Append("  Accessibility: ").Append(Accessibility).Append("\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  BearerToken: ").Append(BearerToken).Append("\n");
             sb.Append("  InputRule: ").Append(InputRule).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

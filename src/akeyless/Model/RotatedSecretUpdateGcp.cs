@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="RotatedSecretUpdateGcp" /> class.
         /// </summary>
         /// <param name="addTag">List of the new tags that will be attached to this item.</param>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag..</param>
         /// <param name="authenticationCredentials">The credentials to connect with use-user-creds/use-target-creds (default to &quot;use-user-creds&quot;).</param>
         /// <param name="autoRotate">autoRotate.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
@@ -67,13 +68,14 @@ namespace akeyless.Model
         /// <param name="rotationHour">rotationHour.</param>
         /// <param name="rotationInterval">rotationInterval.</param>
         /// <param name="rotatorType">The rotator type. options: [target/service-account-rotator] (required).</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useCapitalLetters">Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false].</param>
         /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
-        public RotatedSecretUpdateGcp(List<string> addTag = default(List<string>), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), List<string> rmTag = default(List<string>), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public RotatedSecretUpdateGcp(List<string> addTag = default(List<string>), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string gcpKey = default(string), string gcpServiceAccountEmail = default(string), string gcpServiceAccountKeyId = default(string), string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), List<string> rmTag = default(List<string>), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string skipDryRun = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -88,6 +90,7 @@ namespace akeyless.Model
             }
             this.RotatorType = rotatorType;
             this.AddTag = addTag;
+            this.AraEnabled = araEnabled;
             // use default value if no "authenticationCredentials" provided
             this.AuthenticationCredentials = authenticationCredentials ?? @"use-user-creds";
             this.AutoRotate = autoRotate;
@@ -114,6 +117,7 @@ namespace akeyless.Model
             this.RotationEventIn = rotationEventIn;
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
+            this.SkipDryRun = skipDryRun;
             this.Token = token;
             this.UidToken = uidToken;
             this.UseCapitalLetters = useCapitalLetters;
@@ -128,6 +132,13 @@ namespace akeyless.Model
         /// <value>List of the new tags that will be attached to this item</value>
         [DataMember(Name = "add-tag", EmitDefaultValue = false)]
         public List<string> AddTag { get; set; }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// The credentials to connect with use-user-creds/use-target-creds
@@ -308,6 +319,13 @@ namespace akeyless.Model
         public string RotatorType { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -360,6 +378,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class RotatedSecretUpdateGcp {\n");
             sb.Append("  AddTag: ").Append(AddTag).Append("\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  AuthenticationCredentials: ").Append(AuthenticationCredentials).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
@@ -386,6 +405,7 @@ namespace akeyless.Model
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  RotatorType: ").Append(RotatorType).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UseCapitalLetters: ").Append(UseCapitalLetters).Append("\n");

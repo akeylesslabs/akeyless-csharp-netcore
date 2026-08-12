@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessMode** | **string** |  | [optional] 
 **AdminRotationIntervalDays** | **long** | Admin credentials rotation interval (days) | [optional] [default to 0]
+**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **AwsAccessKeyId** | **string** | Access Key ID | [optional] 
 **AwsAccessSecretKey** | **string** | Secret Access Key | [optional] 
 **AwsExternalId** | **string** | The AWS External ID associated with the AWS role (relevant only for assume_role mode) | [optional] 
@@ -37,6 +38,7 @@ Name | Type | Description | Notes
 **SecureAccessWebBrowsing** | **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SecureAccessWebProxy** | **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SessionTags** | **string** | String of Key value session tags comma separated, relevant only for Assumed Role | [optional] 
+**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

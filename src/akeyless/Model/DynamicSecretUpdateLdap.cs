@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DynamicSecretUpdateLdap" /> class.
         /// </summary>
         /// <param name="providerType">providerType.</param>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="bindDn">Bind DN.</param>
         /// <param name="bindDnPassword">Bind DN Password.</param>
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
@@ -49,7 +50,7 @@ namespace akeyless.Model
         /// <param name="externalUsername">Externally provided username [true/false] (default to &quot;false&quot;).</param>
         /// <param name="fixedUserClaimKeyname">For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username&#x3D;true) (default to &quot;ext_username&quot;).</param>
         /// <param name="groupDn">Group DN which the temporary user should be added.</param>
-        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items..</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -64,11 +65,13 @@ namespace akeyless.Model
         /// <param name="secureAccessCertificateIssuer">Path to the SSH Certificate Issuer for your Akeyless Secure Access.</param>
         /// <param name="secureAccessDelay">The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
+        /// <param name="secureAccessEnforceHostsRestriction">Enforce connections only to allowed SRA hosts.</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdGatewayServer">RD Gateway server.</param>
         /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
-        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times.</param>
+        /// <param name="target">A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenExpiration">Token expiration.</param>
@@ -80,7 +83,7 @@ namespace akeyless.Model
         /// <param name="userAttribute">User Attribute.</param>
         /// <param name="userDn">User DN.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateLdap(string providerType = default(string), string bindDn = default(string), string bindDnPassword = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string externalUsername = @"false", string fixedUserClaimKeyname = @"ext_username", string groupDn = default(string), string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = @"60m")
+        public DynamicSecretUpdateLdap(string providerType = default(string), bool araEnabled = default(bool), string bindDn = default(string), string bindDnPassword = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), string externalUsername = @"false", string fixedUserClaimKeyname = @"ext_username", string groupDn = default(string), string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userAttribute = default(string), string userDn = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -89,6 +92,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.ProviderType = providerType;
+            this.AraEnabled = araEnabled;
             this.BindDn = bindDn;
             this.BindDnPassword = bindDnPassword;
             this.CustomUsernameTemplate = customUsernameTemplate;
@@ -113,9 +117,11 @@ namespace akeyless.Model
             this.SecureAccessCertificateIssuer = secureAccessCertificateIssuer;
             this.SecureAccessDelay = secureAccessDelay;
             this.SecureAccessEnable = secureAccessEnable;
+            this.SecureAccessEnforceHostsRestriction = secureAccessEnforceHostsRestriction;
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessRdGatewayServer = secureAccessRdGatewayServer;
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.Target = target;
             this.TargetName = targetName;
@@ -137,6 +143,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "ProviderType", EmitDefaultValue = false)]
         public string ProviderType { get; set; }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Bind DN
@@ -195,9 +208,9 @@ namespace akeyless.Model
         public string GroupDn { get; set; }
 
         /// <summary>
-        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
         /// </summary>
-        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
 
@@ -300,6 +313,13 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
+        /// Enforce connections only to allowed SRA hosts
+        /// </summary>
+        /// <value>Enforce connections only to allowed SRA hosts</value>
+        [DataMember(Name = "secure-access-enforce-hosts-restriction", EmitDefaultValue = true)]
+        public bool SecureAccessEnforceHostsRestriction { get; set; }
+
+        /// <summary>
         /// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
         /// </summary>
         /// <value>Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)</value>
@@ -321,6 +341,13 @@ namespace akeyless.Model
         public string SecureAccessRdpDomain { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -328,9 +355,9 @@ namespace akeyless.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
-        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
+        /// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
         /// </summary>
-        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times</value>
+        /// <value>A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times</value>
         [DataMember(Name = "target", EmitDefaultValue = false)]
         public List<string> Target { get; set; }
 
@@ -422,6 +449,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretUpdateLdap {\n");
             sb.Append("  ProviderType: ").Append(ProviderType).Append("\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  BindDn: ").Append(BindDn).Append("\n");
             sb.Append("  BindDnPassword: ").Append(BindDnPassword).Append("\n");
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
@@ -445,9 +473,11 @@ namespace akeyless.Model
             sb.Append("  SecureAccessCertificateIssuer: ").Append(SecureAccessCertificateIssuer).Append("\n");
             sb.Append("  SecureAccessDelay: ").Append(SecureAccessDelay).Append("\n");
             sb.Append("  SecureAccessEnable: ").Append(SecureAccessEnable).Append("\n");
+            sb.Append("  SecureAccessEnforceHostsRestriction: ").Append(SecureAccessEnforceHostsRestriction).Append("\n");
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessRdGatewayServer: ").Append(SecureAccessRdGatewayServer).Append("\n");
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");

@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RotatedSecretCreateSplunk" /> class.
         /// </summary>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag..</param>
         /// <param name="audience">Token audience for Splunk token creation (required for rotator-type&#x3D;token).</param>
         /// <param name="authenticationCredentials">The credentials to connect with use-user-creds/use-target-creds (default to &quot;use-user-creds&quot;).</param>
         /// <param name="autoRotate">autoRotate.</param>
@@ -62,6 +63,7 @@ namespace akeyless.Model
         /// <param name="rotationHour">rotationHour.</param>
         /// <param name="rotationInterval">rotationInterval.</param>
         /// <param name="rotatorType">The rotator type. options: [target/password/token/hec-token] (required).</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="splunkToken">Current Splunk authentication token to store (relevant only for rotator-type&#x3D;token). If not provided, a new token will be created in Splunk..</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">The target name to associate (required).</param>
@@ -72,7 +74,7 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
-        public RotatedSecretCreateSplunk(string audience = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), string expirationDate = default(string), string hecToken = default(string), string hecTokenName = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string splunkToken = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string tokenOwner = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public RotatedSecretCreateSplunk(bool araEnabled = default(bool), string audience = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), string expirationDate = default(string), string hecToken = default(string), string hecTokenName = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string skipDryRun = default(string), string splunkToken = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string tokenOwner = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -92,6 +94,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("targetName is a required property for RotatedSecretCreateSplunk and cannot be null");
             }
             this.TargetName = targetName;
+            this.AraEnabled = araEnabled;
             this.Audience = audience;
             // use default value if no "authenticationCredentials" provided
             this.AuthenticationCredentials = authenticationCredentials ?? @"use-user-creds";
@@ -113,6 +116,7 @@ namespace akeyless.Model
             this.RotationEventIn = rotationEventIn;
             this.RotationHour = rotationHour;
             this.RotationInterval = rotationInterval;
+            this.SkipDryRun = skipDryRun;
             this.SplunkToken = splunkToken;
             this.Tags = tags;
             this.Token = token;
@@ -123,6 +127,13 @@ namespace akeyless.Model
             this.UseNumbers = useNumbers;
             this.UseSpecialCharacters = useSpecialCharacters;
         }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Token audience for Splunk token creation (required for rotator-type&#x3D;token)
@@ -275,6 +286,13 @@ namespace akeyless.Model
         public string RotatorType { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Current Splunk authentication token to store (relevant only for rotator-type&#x3D;token). If not provided, a new token will be created in Splunk.
         /// </summary>
         /// <value>Current Splunk authentication token to store (relevant only for rotator-type&#x3D;token). If not provided, a new token will be created in Splunk.</value>
@@ -354,6 +372,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class RotatedSecretCreateSplunk {\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  Audience: ").Append(Audience).Append("\n");
             sb.Append("  AuthenticationCredentials: ").Append(AuthenticationCredentials).Append("\n");
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
@@ -376,6 +395,7 @@ namespace akeyless.Model
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationInterval: ").Append(RotationInterval).Append("\n");
             sb.Append("  RotatorType: ").Append(RotatorType).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  SplunkToken: ").Append(SplunkToken).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");

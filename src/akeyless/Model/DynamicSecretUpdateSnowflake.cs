@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="account">Account name.</param>
         /// <param name="accountPassword">Database Password.</param>
         /// <param name="accountUsername">Database Username.</param>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="authMode">The authentication mode for the temporary user [password/key] (default to &quot;password&quot;).</param>
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="dbName">Database name.</param>
@@ -59,6 +60,7 @@ namespace akeyless.Model
         /// <param name="privateKey">RSA Private key (base64 encoded).</param>
         /// <param name="privateKeyPassphrase">The Private key passphrase.</param>
         /// <param name="role">User role.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -69,7 +71,7 @@ namespace akeyless.Model
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public DynamicSecretUpdateSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), string authMode = @"password", string customUsernameTemplate = default(string), string dbName = default(string), string deleteProtection = default(string), string description = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyAlgo = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"24h", string warehouse = default(string))
+        public DynamicSecretUpdateSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), bool araEnabled = default(bool), string authMode = @"password", string customUsernameTemplate = default(string), string dbName = default(string), string deleteProtection = default(string), string description = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyAlgo = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -80,6 +82,7 @@ namespace akeyless.Model
             this.Account = account;
             this.AccountPassword = accountPassword;
             this.AccountUsername = accountUsername;
+            this.AraEnabled = araEnabled;
             // use default value if no "authMode" provided
             this.AuthMode = authMode ?? @"password";
             this.CustomUsernameTemplate = customUsernameTemplate;
@@ -96,6 +99,7 @@ namespace akeyless.Model
             this.PrivateKey = privateKey;
             this.PrivateKeyPassphrase = privateKeyPassphrase;
             this.Role = role;
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -129,6 +133,13 @@ namespace akeyless.Model
         /// <value>Database Username</value>
         [DataMember(Name = "account-username", EmitDefaultValue = false)]
         public string AccountUsername { get; set; }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// The authentication mode for the temporary user [password/key]
@@ -242,6 +253,13 @@ namespace akeyless.Model
         public string Role { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -324,6 +342,7 @@ namespace akeyless.Model
             sb.Append("  Account: ").Append(Account).Append("\n");
             sb.Append("  AccountPassword: ").Append(AccountPassword).Append("\n");
             sb.Append("  AccountUsername: ").Append(AccountUsername).Append("\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  AuthMode: ").Append(AuthMode).Append("\n");
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DbName: ").Append(DbName).Append("\n");
@@ -340,6 +359,7 @@ namespace akeyless.Model
             sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
             sb.Append("  PrivateKeyPassphrase: ").Append(PrivateKeyPassphrase).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

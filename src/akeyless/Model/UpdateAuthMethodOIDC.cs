@@ -58,7 +58,7 @@ namespace akeyless.Model
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
-        /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca].</param>
+        /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara].</param>
         /// <param name="requiredScopes">RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve.</param>
         /// <param name="requiredScopesPrefix">RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures&#39; Application ID URI).</param>
         /// <param name="subclaimsDelimiters">A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT).</param>
@@ -231,9 +231,9 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
-        /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+        /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
         /// </summary>
-        /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]</value>
+        /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]</value>
         [DataMember(Name = "product-type", EmitDefaultValue = false)]
         public List<string> ProductType { get; set; }
 

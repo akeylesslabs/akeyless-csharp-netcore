@@ -38,14 +38,16 @@ namespace akeyless.Model
         /// <param name="emailError">emailError.</param>
         /// <param name="itemsError">itemsError.</param>
         /// <param name="sToken">sToken.</param>
+        /// <param name="sharedTokenId">sharedTokenId.</param>
         /// <param name="sharedUsers">sharedUsers.</param>
         /// <param name="sharedUsersFullInfo">sharedUsersFullInfo.</param>
         /// <param name="sharingUrl">sharingUrl.</param>
-        public ShareItemOutput(Dictionary<string, string> emailError = default(Dictionary<string, string>), List<ResponseStopShareItem> itemsError = default(List<ResponseStopShareItem>), string sToken = default(string), List<string> sharedUsers = default(List<string>), List<SharingItemFullInfo> sharedUsersFullInfo = default(List<SharingItemFullInfo>), string sharingUrl = default(string))
+        public ShareItemOutput(Dictionary<string, string> emailError = default(Dictionary<string, string>), List<ResponseStopShareItem> itemsError = default(List<ResponseStopShareItem>), string sToken = default(string), string sharedTokenId = default(string), List<string> sharedUsers = default(List<string>), List<SharingItemFullInfo> sharedUsersFullInfo = default(List<SharingItemFullInfo>), string sharingUrl = default(string))
         {
             this.EmailError = emailError;
             this.ItemsError = itemsError;
             this.SToken = sToken;
+            this.SharedTokenId = sharedTokenId;
             this.SharedUsers = sharedUsers;
             this.SharedUsersFullInfo = sharedUsersFullInfo;
             this.SharingUrl = sharingUrl;
@@ -68,6 +70,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "s_token", EmitDefaultValue = false)]
         public string SToken { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SharedTokenId
+        /// </summary>
+        [DataMember(Name = "shared_token_id", EmitDefaultValue = false)]
+        public string SharedTokenId { get; set; }
 
         /// <summary>
         /// Gets or Sets SharedUsers
@@ -98,6 +106,7 @@ namespace akeyless.Model
             sb.Append("  EmailError: ").Append(EmailError).Append("\n");
             sb.Append("  ItemsError: ").Append(ItemsError).Append("\n");
             sb.Append("  SToken: ").Append(SToken).Append("\n");
+            sb.Append("  SharedTokenId: ").Append(SharedTokenId).Append("\n");
             sb.Append("  SharedUsers: ").Append(SharedUsers).Append("\n");
             sb.Append("  SharedUsersFullInfo: ").Append(SharedUsersFullInfo).Append("\n");
             sb.Append("  SharingUrl: ").Append(SharingUrl).Append("\n");

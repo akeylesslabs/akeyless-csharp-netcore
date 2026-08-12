@@ -41,7 +41,9 @@ namespace akeyless.Model
         /// <param name="varNamespace">varNamespace.</param>
         /// <param name="secretId">secretId.</param>
         /// <param name="secretName">secretName.</param>
-        public UscSyncInfo(bool deleteRemote = default(bool), string jqSecretFilter = default(string), string lastError = default(string), string varNamespace = default(string), string secretId = default(string), string secretName = default(string))
+        /// <param name="selectedEnvironments">selectedEnvironments.</param>
+        /// <param name="selectedRepositories">selectedRepositories.</param>
+        public UscSyncInfo(bool deleteRemote = default(bool), string jqSecretFilter = default(string), string lastError = default(string), string varNamespace = default(string), string secretId = default(string), string secretName = default(string), string selectedEnvironments = default(string), string selectedRepositories = default(string))
         {
             this.DeleteRemote = deleteRemote;
             this.JqSecretFilter = jqSecretFilter;
@@ -49,6 +51,8 @@ namespace akeyless.Model
             this.Namespace = varNamespace;
             this.SecretId = secretId;
             this.SecretName = secretName;
+            this.SelectedEnvironments = selectedEnvironments;
+            this.SelectedRepositories = selectedRepositories;
         }
 
         /// <summary>
@@ -88,6 +92,18 @@ namespace akeyless.Model
         public string SecretName { get; set; }
 
         /// <summary>
+        /// Gets or Sets SelectedEnvironments
+        /// </summary>
+        [DataMember(Name = "selected_environments", EmitDefaultValue = false)]
+        public string SelectedEnvironments { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SelectedRepositories
+        /// </summary>
+        [DataMember(Name = "selected_repositories", EmitDefaultValue = false)]
+        public string SelectedRepositories { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -101,6 +117,8 @@ namespace akeyless.Model
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
             sb.Append("  SecretName: ").Append(SecretName).Append("\n");
+            sb.Append("  SelectedEnvironments: ").Append(SelectedEnvironments).Append("\n");
+            sb.Append("  SelectedRepositories: ").Append(SelectedRepositories).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **ConjurUrl** | **string** | Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path. | [optional] 
 **ConjurUsername** | **string** | Conjur username used to authenticate (relevant only for Conjur migration). | [optional] 
 **DeleteRemote** | **bool** | Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration) | [optional] 
+**EnablePasswordPolicy** | **string** | Enable password policy for rotated secrets created for Local and Domain users (Relevant only for Active Directory migration) | [optional] [default to "false"]
 **ExcludeHosts** | **string** | A comma separated list of IPs, CIDR ranges, or DNS names to exclude from the scan | [optional] 
 **ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpKey** | **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
@@ -67,6 +68,7 @@ Name | Type | Description | Notes
 **K8sUsername** | **string** | For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method) | [optional] 
 **Name** | **string** | Migration name | [optional] 
 **NewName** | **string** | New migration name | [optional] 
+**PasswordLength** | **string** | The length of the password to be generated (between 8 and 50). Relevant only for Active Directory migration when enable-password-policy is true. | [optional] 
 **PortRanges** | **string** | A comma separated list of port ranges Examples: \&quot;80,443\&quot; or \&quot;80,443,8080-8090\&quot; or \&quot;443\&quot; | [optional] [default to "443"]
 **ProtectionKey** | **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
 **SiAutoRotate** | **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -si-rotation-interval and - -si-rotation-hour parameters (Relevant only for Server Inventory migration) | [optional] 
@@ -77,6 +79,7 @@ Name | Type | Description | Notes
 **SiUserGroups** | **string** | Comma-separated list of groups to migrate users from. If empty, all users from all groups will be migrated (Relevant only for Server Inventory migration) | [optional] 
 **SiUsersIgnore** | **string** | Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration) | [optional] 
 **SiUsersPathTemplate** | **string** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) | 
+**SkipDryRun** | **string** | Skip dry-run validation for rotated secrets created for Local and Domain users (Relevant only for Active Directory migration) | [optional] [default to "false"]
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **TargetName** | **string** | Name of existing target to use to create the migration | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

@@ -5,6 +5,7 @@ dynamicSecretUpdateMySql is a command that updates mysql dynamic secret
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DbServerCertificates** | **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | **string** | (Optional) Server name for certificate verification | [optional] 
@@ -32,6 +33,7 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | **List&lt;string&gt;** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] 
 **SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to false]
+**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
 **Ssl** | **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | **string** | SSL connection certificate | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 

@@ -47,7 +47,7 @@ namespace akeyless.Model
         /// <param name="extensions">Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot;.</param>
         /// <param name="externalUsername">Externally provided username [true/false] (default to &quot;false&quot;).</param>
         /// <param name="fixedUserClaimKeyname">For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username&#x3D;true).</param>
-        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret.</param>
+        /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items..</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
@@ -57,7 +57,7 @@ namespace akeyless.Model
         /// <param name="secureAccessBastionApi">Deprecated. use secure-access-api.</param>
         /// <param name="secureAccessBastionSsh">Deprecated. use secure-access-ssh.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
-        /// <param name="secureAccessEnforceHostsRestriction">Enable this flag to enforce connections only to the hosts listed in - -secure-access-host.</param>
+        /// <param name="secureAccessEnforceHostsRestriction">Enforce connections only to allowed SRA hosts.</param>
         /// <param name="secureAccessGateway">secureAccessGateway.</param>
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessSsh">Bastion&#39;s SSH server. E.g. my.sra-server:22.</param>
@@ -66,7 +66,7 @@ namespace akeyless.Model
         /// <param name="secureAccessUseInternalSshAccess">Use internal SSH Access.</param>
         /// <param name="signerKeyName">A key to sign the certificate with (required).</param>
         /// <param name="tag">List of the tags attached to this key.</param>
-        /// <param name="target">A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times.</param>
+        /// <param name="target">A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The requested Time To Live for the certificate, in seconds (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -169,9 +169,9 @@ namespace akeyless.Model
         public string FixedUserClaimKeyname { get; set; }
 
         /// <summary>
-        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+        /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
         /// </summary>
-        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret</value>
+        /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.</value>
         [DataMember(Name = "host-provider", EmitDefaultValue = false)]
         public string HostProvider { get; set; }
 
@@ -239,9 +239,9 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// Enable this flag to enforce connections only to the hosts listed in - -secure-access-host
+        /// Enforce connections only to allowed SRA hosts
         /// </summary>
-        /// <value>Enable this flag to enforce connections only to the hosts listed in - -secure-access-host</value>
+        /// <value>Enforce connections only to allowed SRA hosts</value>
         [DataMember(Name = "secure-access-enforce-hosts-restriction", EmitDefaultValue = true)]
         public bool SecureAccessEnforceHostsRestriction { get; set; }
 
@@ -301,9 +301,9 @@ namespace akeyless.Model
         public List<string> Tag { get; set; }
 
         /// <summary>
-        /// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
+        /// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
         /// </summary>
-        /// <value>A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times</value>
+        /// <value>A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times</value>
         [DataMember(Name = "target", EmitDefaultValue = false)]
         public List<string> Target { get; set; }
 

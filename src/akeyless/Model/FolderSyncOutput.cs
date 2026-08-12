@@ -35,41 +35,17 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FolderSyncOutput" /> class.
         /// </summary>
-        /// <param name="failedItems">failedItems.</param>
         /// <param name="folderName">folderName.</param>
-        /// <param name="skippedItems">skippedItems.</param>
-        /// <param name="syncedItems">syncedItems.</param>
-        public FolderSyncOutput(Dictionary<string, string> failedItems = default(Dictionary<string, string>), string folderName = default(string), List<string> skippedItems = default(List<string>), List<string> syncedItems = default(List<string>))
+        public FolderSyncOutput(string folderName = default(string))
         {
-            this.FailedItems = failedItems;
             this.FolderName = folderName;
-            this.SkippedItems = skippedItems;
-            this.SyncedItems = syncedItems;
         }
-
-        /// <summary>
-        /// Gets or Sets FailedItems
-        /// </summary>
-        [DataMember(Name = "failed_items", EmitDefaultValue = false)]
-        public Dictionary<string, string> FailedItems { get; set; }
 
         /// <summary>
         /// Gets or Sets FolderName
         /// </summary>
         [DataMember(Name = "folder_name", EmitDefaultValue = false)]
         public string FolderName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SkippedItems
-        /// </summary>
-        [DataMember(Name = "skipped_items", EmitDefaultValue = false)]
-        public List<string> SkippedItems { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SyncedItems
-        /// </summary>
-        [DataMember(Name = "synced_items", EmitDefaultValue = false)]
-        public List<string> SyncedItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,10 +55,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class FolderSyncOutput {\n");
-            sb.Append("  FailedItems: ").Append(FailedItems).Append("\n");
             sb.Append("  FolderName: ").Append(FolderName).Append("\n");
-            sb.Append("  SkippedItems: ").Append(SkippedItems).Append("\n");
-            sb.Append("  SyncedItems: ").Append(SyncedItems).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

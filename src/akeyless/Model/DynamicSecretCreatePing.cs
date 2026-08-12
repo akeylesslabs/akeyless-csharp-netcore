@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretCreatePing" /> class.
         /// </summary>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
@@ -64,12 +65,13 @@ namespace akeyless.Model
         /// <param name="pingSigningAlgo">The signing algorithm that the client must use to sign its request objects [RS256,RS384,RS512,ES256,ES384,ES512,PS256,PS384,PS512] If no explicit value is given, the client can use any of the supported signing algorithms (relevant for PRIVATE_KEY_JWT authentication method).</param>
         /// <param name="pingUrl">Ping URL.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">The time from dynamic secret creation to expiration. (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreatePing(string deleteProtection = default(string), string description = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string pingAdministrativePort = @"9999", string pingAtmId = default(string), string pingAuthorizationPort = @"9031", string pingCertSubjectDn = default(string), string pingClientAuthenticationType = @"CLIENT_SECRET", string pingEnforceReplayPrevention = @"false", List<string> pingGrantTypes = default(List<string>), string pingIssuerDn = default(string), string pingJwks = default(string), string pingJwksUrl = default(string), string pingPassword = default(string), string pingPrivilegedUser = default(string), List<string> pingRedirectUris = default(List<string>), List<string> pingRestrictedScopes = default(List<string>), string pingSigningAlgo = default(string), string pingUrl = default(string), string producerEncryptionKeyName = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public DynamicSecretCreatePing(bool araEnabled = default(bool), string deleteProtection = default(string), string description = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string pingAdministrativePort = @"9999", string pingAtmId = default(string), string pingAuthorizationPort = @"9031", string pingCertSubjectDn = default(string), string pingClientAuthenticationType = @"CLIENT_SECRET", string pingEnforceReplayPrevention = @"false", List<string> pingGrantTypes = default(List<string>), string pingIssuerDn = default(string), string pingJwks = default(string), string pingJwksUrl = default(string), string pingPassword = default(string), string pingPrivilegedUser = default(string), List<string> pingRedirectUris = default(List<string>), List<string> pingRestrictedScopes = default(List<string>), string pingSigningAlgo = default(string), string pingUrl = default(string), string producerEncryptionKeyName = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -77,6 +79,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for DynamicSecretCreatePing and cannot be null");
             }
             this.Name = name;
+            this.AraEnabled = araEnabled;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.InputRule = inputRule;
@@ -104,6 +107,7 @@ namespace akeyless.Model
             this.PingSigningAlgo = pingSigningAlgo;
             this.PingUrl = pingUrl;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -111,6 +115,13 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? @"60m";
         }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// Protection from accidental deletion of this object [true/false]
@@ -281,6 +292,13 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -323,6 +341,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretCreatePing {\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  InputRule: ").Append(InputRule).Append("\n");
@@ -347,6 +366,7 @@ namespace akeyless.Model
             sb.Append("  PingSigningAlgo: ").Append(PingSigningAlgo).Append("\n");
             sb.Append("  PingUrl: ").Append(PingUrl).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

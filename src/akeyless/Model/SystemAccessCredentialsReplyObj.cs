@@ -41,10 +41,11 @@ namespace akeyless.Model
         /// <param name="expiry">Credentials expiration date.</param>
         /// <param name="kfmCreds">Temporary credentials for accessing the KFMs instances.</param>
         /// <param name="needMfaAppFirstConfig">If the user didn&#39;t complete to configure the MFA app.</param>
+        /// <param name="recoveryKeyId">RecoveryKeyID identifies the DPoP-bound recovery key for WebUI session recovery..</param>
         /// <param name="requiredMfa">requiredMfa.</param>
         /// <param name="token">Credentials tmp token.</param>
         /// <param name="uamCreds">Temporary credentials for accessing the UAM service.</param>
-        public SystemAccessCredentialsReplyObj(string accessId = default(string), string authCreds = default(string), string csrfToken = default(string), long expiry = default(long), string kfmCreds = default(string), bool needMfaAppFirstConfig = default(bool), string requiredMfa = default(string), string token = default(string), string uamCreds = default(string))
+        public SystemAccessCredentialsReplyObj(string accessId = default(string), string authCreds = default(string), string csrfToken = default(string), long expiry = default(long), string kfmCreds = default(string), bool needMfaAppFirstConfig = default(bool), string recoveryKeyId = default(string), string requiredMfa = default(string), string token = default(string), string uamCreds = default(string))
         {
             this.AccessId = accessId;
             this.AuthCreds = authCreds;
@@ -52,6 +53,7 @@ namespace akeyless.Model
             this.Expiry = expiry;
             this.KfmCreds = kfmCreds;
             this.NeedMfaAppFirstConfig = needMfaAppFirstConfig;
+            this.RecoveryKeyId = recoveryKeyId;
             this.RequiredMfa = requiredMfa;
             this.Token = token;
             this.UamCreds = uamCreds;
@@ -99,6 +101,13 @@ namespace akeyless.Model
         public bool NeedMfaAppFirstConfig { get; set; }
 
         /// <summary>
+        /// RecoveryKeyID identifies the DPoP-bound recovery key for WebUI session recovery.
+        /// </summary>
+        /// <value>RecoveryKeyID identifies the DPoP-bound recovery key for WebUI session recovery.</value>
+        [DataMember(Name = "recovery_key_id", EmitDefaultValue = false)]
+        public string RecoveryKeyId { get; set; }
+
+        /// <summary>
         /// Gets or Sets RequiredMfa
         /// </summary>
         [DataMember(Name = "required_mfa", EmitDefaultValue = false)]
@@ -132,6 +141,7 @@ namespace akeyless.Model
             sb.Append("  Expiry: ").Append(Expiry).Append("\n");
             sb.Append("  KfmCreds: ").Append(KfmCreds).Append("\n");
             sb.Append("  NeedMfaAppFirstConfig: ").Append(NeedMfaAppFirstConfig).Append("\n");
+            sb.Append("  RecoveryKeyId: ").Append(RecoveryKeyId).Append("\n");
             sb.Append("  RequiredMfa: ").Append(RequiredMfa).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UamCreds: ").Append(UamCreds).Append("\n");

@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UscList" /> class.
         /// </summary>
+        /// <param name="gcpProjectId">The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="objectType">objectType.</param>
         /// <param name="pageSize">Optional: number of items requested per response (Azure KV). When set, response may include next_token.</param>
@@ -47,7 +48,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
-        public UscList(bool json = false, string objectType = default(string), long pageSize = default(long), string pageToken = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public UscList(string gcpProjectId = default(string), bool json = false, string objectType = default(string), long pageSize = default(long), string pageToken = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "uscName" is required (not null)
             if (uscName == null)
@@ -55,6 +56,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("uscName is a required property for UscList and cannot be null");
             }
             this.UscName = uscName;
+            this.GcpProjectId = gcpProjectId;
             this.Json = json;
             this.ObjectType = objectType;
             this.PageSize = pageSize;
@@ -62,6 +64,13 @@ namespace akeyless.Model
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope.
+        /// </summary>
+        /// <value>The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope.</value>
+        [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
+        public string GcpProjectId { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -119,6 +128,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UscList {\n");
+            sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
             sb.Append("  PageSize: ").Append(PageSize).Append("\n");

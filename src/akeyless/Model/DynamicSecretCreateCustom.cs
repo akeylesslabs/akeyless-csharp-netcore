@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DynamicSecretCreateCustom" /> class.
         /// </summary>
         /// <param name="adminRotationIntervalDays">Define rotation interval in days.</param>
+        /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="createSyncUrl">URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create (required).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
@@ -54,12 +55,13 @@ namespace akeyless.Model
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="revokeSyncUrl">URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke (required).</param>
         /// <param name="rotateSyncUrl">URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="timeoutSec">Maximum allowed time in seconds for the webhook to return the results (default to 60).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateCustom(long adminRotationIntervalDays = default(long), string createSyncUrl = default(string), string deleteProtection = default(string), string description = default(string), bool enableAdminRotation = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public DynamicSecretCreateCustom(long adminRotationIntervalDays = default(long), bool araEnabled = default(bool), string createSyncUrl = default(string), string deleteProtection = default(string), string description = default(string), bool enableAdminRotation = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "createSyncUrl" is required (not null)
             if (createSyncUrl == null)
@@ -80,6 +82,7 @@ namespace akeyless.Model
             }
             this.RevokeSyncUrl = revokeSyncUrl;
             this.AdminRotationIntervalDays = adminRotationIntervalDays;
+            this.AraEnabled = araEnabled;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.EnableAdminRotation = enableAdminRotation;
@@ -90,6 +93,7 @@ namespace akeyless.Model
             this.Payload = payload;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.RotateSyncUrl = rotateSyncUrl;
+            this.SkipDryRun = skipDryRun;
             this.Tags = tags;
             this.TimeoutSec = timeoutSec;
             this.Token = token;
@@ -104,6 +108,13 @@ namespace akeyless.Model
         /// <value>Define rotation interval in days</value>
         [DataMember(Name = "admin-rotation-interval-days", EmitDefaultValue = false)]
         public long AdminRotationIntervalDays { get; set; }
+
+        /// <summary>
+        /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+        /// </summary>
+        /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
+        [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
+        public bool AraEnabled { get; set; }
 
         /// <summary>
         /// URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
@@ -197,6 +208,13 @@ namespace akeyless.Model
         public string RotateSyncUrl { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped
+        /// </summary>
+        /// <value>If set, dry-run will be skipped</value>
+        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
+        public string SkipDryRun { get; set; }
+
+        /// <summary>
         /// Add tags attached to this object
         /// </summary>
         /// <value>Add tags attached to this object</value>
@@ -240,6 +258,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretCreateCustom {\n");
             sb.Append("  AdminRotationIntervalDays: ").Append(AdminRotationIntervalDays).Append("\n");
+            sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  CreateSyncUrl: ").Append(CreateSyncUrl).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
@@ -253,6 +272,7 @@ namespace akeyless.Model
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  RevokeSyncUrl: ").Append(RevokeSyncUrl).Append("\n");
             sb.Append("  RotateSyncUrl: ").Append(RotateSyncUrl).Append("\n");
+            sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TimeoutSec: ").Append(TimeoutSec).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
