@@ -53,6 +53,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">key.</param>
+        /// <param name="keyAlgorithm">The key algorithm to generate with when no private key is supplied, leave empty to keep the current algorithm. options: [ED25519/RSA2048/RSA3072/RSA4096/ECDSA256/ECDSA384/ECDSA521].</param>
         /// <param name="keyDataBase64">Private key file contents encoded using base64.</param>
         /// <param name="lockDuringSraSession">Lock this secret for read/update while an SRA session is active.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
@@ -79,8 +80,13 @@ namespace akeyless.Model
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdpDomain">Default domain name server. i.e. microsoft.com.</param>
         /// <param name="secureAccessRdpUser">Override the RDP Domain username.</param>
+        /// <param name="secureAccessSshCreds">Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret).</param>
         /// <param name="secureAccessSshUser">Override the SSH username as indicated in SSH Certificate Issuer.</param>
         /// <param name="secureAccessTargetType">Specify target type. Options are ssh or rdp (default to &quot;false&quot;).</param>
+        /// <param name="secureAccessUrl">Destination URL to inject secrets.</param>
+        /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
+        /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
+        /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="target">A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -89,7 +95,7 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
-        public RotatedSecretUpdateSsh(string providerType = default(string), List<string> addTag = default(List<string>), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string keyDataBase64 = default(string), string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string publicKeyRemotePath = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshUser = default(string), string secureAccessTargetType = @"false", string skipDryRun = default(string), List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public RotatedSecretUpdateSsh(string providerType = default(string), List<string> addTag = default(List<string>), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string keyAlgorithm = default(string), string keyDataBase64 = default(string), string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string publicKeyRemotePath = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorCustomCmd = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessTargetType = @"false", string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string skipDryRun = default(string), List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -118,6 +124,7 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.KeyAlgorithm = keyAlgorithm;
             this.KeyDataBase64 = keyDataBase64;
             this.LockDuringSraSession = lockDuringSraSession;
             this.MaxVersions = maxVersions;
@@ -142,9 +149,14 @@ namespace akeyless.Model
             this.SecureAccessHost = secureAccessHost;
             this.SecureAccessRdpDomain = secureAccessRdpDomain;
             this.SecureAccessRdpUser = secureAccessRdpUser;
+            this.SecureAccessSshCreds = secureAccessSshCreds;
             this.SecureAccessSshUser = secureAccessSshUser;
             // use default value if no "secureAccessTargetType" provided
             this.SecureAccessTargetType = secureAccessTargetType ?? @"false";
+            this.SecureAccessUrl = secureAccessUrl;
+            this.SecureAccessWeb = secureAccessWeb;
+            this.SecureAccessWebBrowsing = secureAccessWebBrowsing;
+            this.SecureAccessWebProxy = secureAccessWebProxy;
             this.SkipDryRun = skipDryRun;
             this.Target = target;
             this.Token = token;
@@ -242,6 +254,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "key", EmitDefaultValue = false)]
         public string Key { get; set; }
+
+        /// <summary>
+        /// The key algorithm to generate with when no private key is supplied, leave empty to keep the current algorithm. options: [ED25519/RSA2048/RSA3072/RSA4096/ECDSA256/ECDSA384/ECDSA521]
+        /// </summary>
+        /// <value>The key algorithm to generate with when no private key is supplied, leave empty to keep the current algorithm. options: [ED25519/RSA2048/RSA3072/RSA4096/ECDSA256/ECDSA384/ECDSA521]</value>
+        [DataMember(Name = "key-algorithm", EmitDefaultValue = false)]
+        public string KeyAlgorithm { get; set; }
 
         /// <summary>
         /// Private key file contents encoded using base64
@@ -424,6 +443,13 @@ namespace akeyless.Model
         public string SecureAccessRdpUser { get; set; }
 
         /// <summary>
+        /// Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret)
+        /// </summary>
+        /// <value>Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret)</value>
+        [DataMember(Name = "secure-access-ssh-creds", EmitDefaultValue = false)]
+        public string SecureAccessSshCreds { get; set; }
+
+        /// <summary>
         /// Override the SSH username as indicated in SSH Certificate Issuer
         /// </summary>
         /// <value>Override the SSH username as indicated in SSH Certificate Issuer</value>
@@ -436,6 +462,34 @@ namespace akeyless.Model
         /// <value>Specify target type. Options are ssh or rdp</value>
         [DataMember(Name = "secure-access-target-type", EmitDefaultValue = false)]
         public string SecureAccessTargetType { get; set; }
+
+        /// <summary>
+        /// Destination URL to inject secrets
+        /// </summary>
+        /// <value>Destination URL to inject secrets</value>
+        [DataMember(Name = "secure-access-url", EmitDefaultValue = false)]
+        public string SecureAccessUrl { get; set; }
+
+        /// <summary>
+        /// Enable Web Secure Remote Access
+        /// </summary>
+        /// <value>Enable Web Secure Remote Access</value>
+        [DataMember(Name = "secure-access-web", EmitDefaultValue = true)]
+        public bool SecureAccessWeb { get; set; }
+
+        /// <summary>
+        /// Secure browser via Akeyless&#39;s Secure Remote Access (SRA)
+        /// </summary>
+        /// <value>Secure browser via Akeyless&#39;s Secure Remote Access (SRA)</value>
+        [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
+        public bool SecureAccessWebBrowsing { get; set; }
+
+        /// <summary>
+        /// Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA)
+        /// </summary>
+        /// <value>Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA)</value>
+        [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
+        public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
         /// If set, dry-run will be skipped
@@ -516,6 +570,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  KeyAlgorithm: ").Append(KeyAlgorithm).Append("\n");
             sb.Append("  KeyDataBase64: ").Append(KeyDataBase64).Append("\n");
             sb.Append("  LockDuringSraSession: ").Append(LockDuringSraSession).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
@@ -542,8 +597,13 @@ namespace akeyless.Model
             sb.Append("  SecureAccessHost: ").Append(SecureAccessHost).Append("\n");
             sb.Append("  SecureAccessRdpDomain: ").Append(SecureAccessRdpDomain).Append("\n");
             sb.Append("  SecureAccessRdpUser: ").Append(SecureAccessRdpUser).Append("\n");
+            sb.Append("  SecureAccessSshCreds: ").Append(SecureAccessSshCreds).Append("\n");
             sb.Append("  SecureAccessSshUser: ").Append(SecureAccessSshUser).Append("\n");
             sb.Append("  SecureAccessTargetType: ").Append(SecureAccessTargetType).Append("\n");
+            sb.Append("  SecureAccessUrl: ").Append(SecureAccessUrl).Append("\n");
+            sb.Append("  SecureAccessWeb: ").Append(SecureAccessWeb).Append("\n");
+            sb.Append("  SecureAccessWebBrowsing: ").Append(SecureAccessWebBrowsing).Append("\n");
+            sb.Append("  SecureAccessWebProxy: ").Append(SecureAccessWebProxy).Append("\n");
             sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

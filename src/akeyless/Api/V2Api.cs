@@ -7552,6 +7552,46 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipGetCABundle"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KmipGetCABundleOutput</returns>
+        KmipGetCABundleOutput KmipGetCABundle(KmipGetCABundle? kmipGetCABundle = default(KmipGetCABundle?), int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipGetCABundle"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KmipGetCABundleOutput</returns>
+        ApiResponse<KmipGetCABundleOutput> KmipGetCABundleWithHttpInfo(KmipGetCABundle? kmipGetCABundle = default(KmipGetCABundle?), int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipListCAs"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KmipListCAsOutput</returns>
+        KmipListCAsOutput KmipListCAs(KmipListCAs? kmipListCAs = default(KmipListCAs?), int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipListCAs"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KmipListCAsOutput</returns>
+        ApiResponse<KmipListCAsOutput> KmipListCAsWithHttpInfo(KmipListCAs? kmipListCAs = default(KmipListCAs?), int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kmipListClients"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>KMIPClientListResponse</returns>
@@ -7632,6 +7672,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipRotateCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KmipRotateCAOutput</returns>
+        KmipRotateCAOutput KmipRotateCA(KmipRotateCA? kmipRotateCA = default(KmipRotateCA?), int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipRotateCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KmipRotateCAOutput</returns>
+        ApiResponse<KmipRotateCAOutput> KmipRotateCAWithHttpInfo(KmipRotateCA? kmipRotateCA = default(KmipRotateCA?), int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kmipServerSetup"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>KMIPEnvironmentCreateResponse</returns>
@@ -7688,6 +7748,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of KmipSetServerStateOutput</returns>
         ApiResponse<KmipSetServerStateOutput> KmipSetServerStateWithHttpInfo(KmipSetServerState? kmipSetServerState = default(KmipSetServerState?), int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipSunsetCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KmipSunsetCAOutput</returns>
+        KmipSunsetCAOutput KmipSunsetCA(KmipSunsetCA? kmipSunsetCA = default(KmipSunsetCA?), int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipSunsetCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KmipSunsetCAOutput</returns>
+        ApiResponse<KmipSunsetCAOutput> KmipSunsetCAWithHttpInfo(KmipSunsetCA? kmipSunsetCA = default(KmipSunsetCA?), int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -22458,6 +22538,56 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipGetCABundle"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KmipGetCABundleOutput</returns>
+        System.Threading.Tasks.Task<KmipGetCABundleOutput> KmipGetCABundleAsync(KmipGetCABundle? kmipGetCABundle = default(KmipGetCABundle?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipGetCABundle"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KmipGetCABundleOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KmipGetCABundleOutput>> KmipGetCABundleWithHttpInfoAsync(KmipGetCABundle? kmipGetCABundle = default(KmipGetCABundle?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipListCAs"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KmipListCAsOutput</returns>
+        System.Threading.Tasks.Task<KmipListCAsOutput> KmipListCAsAsync(KmipListCAs? kmipListCAs = default(KmipListCAs?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipListCAs"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KmipListCAsOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KmipListCAsOutput>> KmipListCAsWithHttpInfoAsync(KmipListCAs? kmipListCAs = default(KmipListCAs?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kmipListClients"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -22558,6 +22688,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipRotateCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KmipRotateCAOutput</returns>
+        System.Threading.Tasks.Task<KmipRotateCAOutput> KmipRotateCAAsync(KmipRotateCA? kmipRotateCA = default(KmipRotateCA?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipRotateCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KmipRotateCAOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KmipRotateCAOutput>> KmipRotateCAWithHttpInfoAsync(KmipRotateCA? kmipRotateCA = default(KmipRotateCA?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kmipServerSetup"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -22626,6 +22781,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (KmipSetServerStateOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<KmipSetServerStateOutput>> KmipSetServerStateWithHttpInfoAsync(KmipSetServerState? kmipSetServerState = default(KmipSetServerState?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipSunsetCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KmipSunsetCAOutput</returns>
+        System.Threading.Tasks.Task<KmipSunsetCAOutput> KmipSunsetCAAsync(KmipSunsetCA? kmipSunsetCA = default(KmipSunsetCA?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipSunsetCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KmipSunsetCAOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KmipSunsetCAOutput>> KmipSunsetCAWithHttpInfoAsync(KmipSunsetCA? kmipSunsetCA = default(KmipSunsetCA?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -84158,6 +84338,274 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipGetCABundle"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KmipGetCABundleOutput</returns>
+        public KmipGetCABundleOutput KmipGetCABundle(KmipGetCABundle? kmipGetCABundle = default(KmipGetCABundle?), int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<KmipGetCABundleOutput> localVarResponse = KmipGetCABundleWithHttpInfo(kmipGetCABundle);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipGetCABundle"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KmipGetCABundleOutput</returns>
+        public akeyless.Client.ApiResponse<KmipGetCABundleOutput> KmipGetCABundleWithHttpInfo(KmipGetCABundle? kmipGetCABundle = default(KmipGetCABundle?), int operationIndex = 0)
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = kmipGetCABundle;
+
+            localVarRequestOptions.Operation = "V2Api.KmipGetCABundle";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<KmipGetCABundleOutput>("/kmip-get-ca-bundle", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipGetCABundle", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipGetCABundle"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KmipGetCABundleOutput</returns>
+        public async System.Threading.Tasks.Task<KmipGetCABundleOutput> KmipGetCABundleAsync(KmipGetCABundle? kmipGetCABundle = default(KmipGetCABundle?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<KmipGetCABundleOutput> localVarResponse = await KmipGetCABundleWithHttpInfoAsync(kmipGetCABundle, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipGetCABundle"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KmipGetCABundleOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KmipGetCABundleOutput>> KmipGetCABundleWithHttpInfoAsync(KmipGetCABundle? kmipGetCABundle = default(KmipGetCABundle?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = kmipGetCABundle;
+
+            localVarRequestOptions.Operation = "V2Api.KmipGetCABundle";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipGetCABundleOutput>("/kmip-get-ca-bundle", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipGetCABundle", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipListCAs"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KmipListCAsOutput</returns>
+        public KmipListCAsOutput KmipListCAs(KmipListCAs? kmipListCAs = default(KmipListCAs?), int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<KmipListCAsOutput> localVarResponse = KmipListCAsWithHttpInfo(kmipListCAs);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipListCAs"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KmipListCAsOutput</returns>
+        public akeyless.Client.ApiResponse<KmipListCAsOutput> KmipListCAsWithHttpInfo(KmipListCAs? kmipListCAs = default(KmipListCAs?), int operationIndex = 0)
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = kmipListCAs;
+
+            localVarRequestOptions.Operation = "V2Api.KmipListCAs";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<KmipListCAsOutput>("/kmip-list-cas", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipListCAs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipListCAs"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KmipListCAsOutput</returns>
+        public async System.Threading.Tasks.Task<KmipListCAsOutput> KmipListCAsAsync(KmipListCAs? kmipListCAs = default(KmipListCAs?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<KmipListCAsOutput> localVarResponse = await KmipListCAsWithHttpInfoAsync(kmipListCAs, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipListCAs"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KmipListCAsOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KmipListCAsOutput>> KmipListCAsWithHttpInfoAsync(KmipListCAs? kmipListCAs = default(KmipListCAs?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = kmipListCAs;
+
+            localVarRequestOptions.Operation = "V2Api.KmipListCAs";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipListCAsOutput>("/kmip-list-cas", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipListCAs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kmipListClients"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>KMIPClientListResponse</returns>
@@ -84474,7 +84922,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<KmipRenewClientCertificateOutput>("/kmip-renew-client", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<KmipRenewClientCertificateOutput>("/kmip-renew-client-certificate", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("KmipRenewClientCertificate", localVarResponse);
@@ -84542,7 +84990,7 @@ namespace akeyless.Api
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipRenewClientCertificateOutput>("/kmip-renew-client", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipRenewClientCertificateOutput>("/kmip-renew-client-certificate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -84681,6 +85129,140 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("KmipRenewServerCertificate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipRotateCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KmipRotateCAOutput</returns>
+        public KmipRotateCAOutput KmipRotateCA(KmipRotateCA? kmipRotateCA = default(KmipRotateCA?), int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<KmipRotateCAOutput> localVarResponse = KmipRotateCAWithHttpInfo(kmipRotateCA);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipRotateCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KmipRotateCAOutput</returns>
+        public akeyless.Client.ApiResponse<KmipRotateCAOutput> KmipRotateCAWithHttpInfo(KmipRotateCA? kmipRotateCA = default(KmipRotateCA?), int operationIndex = 0)
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = kmipRotateCA;
+
+            localVarRequestOptions.Operation = "V2Api.KmipRotateCA";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<KmipRotateCAOutput>("/kmip-rotate-ca", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipRotateCA", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipRotateCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KmipRotateCAOutput</returns>
+        public async System.Threading.Tasks.Task<KmipRotateCAOutput> KmipRotateCAAsync(KmipRotateCA? kmipRotateCA = default(KmipRotateCA?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<KmipRotateCAOutput> localVarResponse = await KmipRotateCAWithHttpInfoAsync(kmipRotateCA, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipRotateCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KmipRotateCAOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KmipRotateCAOutput>> KmipRotateCAWithHttpInfoAsync(KmipRotateCA? kmipRotateCA = default(KmipRotateCA?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = kmipRotateCA;
+
+            localVarRequestOptions.Operation = "V2Api.KmipRotateCA";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipRotateCAOutput>("/kmip-rotate-ca", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipRotateCA", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -85083,6 +85665,140 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("KmipSetServerState", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipSunsetCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KmipSunsetCAOutput</returns>
+        public KmipSunsetCAOutput KmipSunsetCA(KmipSunsetCA? kmipSunsetCA = default(KmipSunsetCA?), int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<KmipSunsetCAOutput> localVarResponse = KmipSunsetCAWithHttpInfo(kmipSunsetCA);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipSunsetCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KmipSunsetCAOutput</returns>
+        public akeyless.Client.ApiResponse<KmipSunsetCAOutput> KmipSunsetCAWithHttpInfo(KmipSunsetCA? kmipSunsetCA = default(KmipSunsetCA?), int operationIndex = 0)
+        {
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = kmipSunsetCA;
+
+            localVarRequestOptions.Operation = "V2Api.KmipSunsetCA";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<KmipSunsetCAOutput>("/kmip-sunset-ca", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipSunsetCA", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipSunsetCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KmipSunsetCAOutput</returns>
+        public async System.Threading.Tasks.Task<KmipSunsetCAOutput> KmipSunsetCAAsync(KmipSunsetCA? kmipSunsetCA = default(KmipSunsetCA?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<KmipSunsetCAOutput> localVarResponse = await KmipSunsetCAWithHttpInfoAsync(kmipSunsetCA, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kmipSunsetCA"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KmipSunsetCAOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<KmipSunsetCAOutput>> KmipSunsetCAWithHttpInfoAsync(KmipSunsetCA? kmipSunsetCA = default(KmipSunsetCA?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = kmipSunsetCA;
+
+            localVarRequestOptions.Operation = "V2Api.KmipSunsetCA";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KmipSunsetCAOutput>("/kmip-sunset-ca", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("KmipSunsetCA", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

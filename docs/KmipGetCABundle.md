@@ -1,13 +1,10 @@
-# akeyless.Model.KmipRenewClientCertificate
+# akeyless.Model.KmipGetCABundle
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CertificateTtl** | **long** | Client certificate TTL in days. If unset, the existing client TTL is kept. | [optional] 
-**ClientId** | **string** |  | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** |  | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

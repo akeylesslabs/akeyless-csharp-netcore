@@ -27,42 +27,23 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// KmipRenewClientCertificate
+    /// KmipGetCABundle
     /// </summary>
-    [DataContract(Name = "kmipRenewClientCertificate")]
-    public partial class KmipRenewClientCertificate : IValidatableObject
+    [DataContract(Name = "kmipGetCABundle")]
+    public partial class KmipGetCABundle : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="KmipRenewClientCertificate" /> class.
+        /// Initializes a new instance of the <see cref="KmipGetCABundle" /> class.
         /// </summary>
-        /// <param name="certificateTtl">Client certificate TTL in days. If unset, the existing client TTL is kept..</param>
-        /// <param name="clientId">clientId.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="name">name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public KmipRenewClientCertificate(long certificateTtl = default(long), string clientId = default(string), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
+        public KmipGetCABundle(bool json = false, string token = default(string), string uidToken = default(string))
         {
-            this.CertificateTtl = certificateTtl;
-            this.ClientId = clientId;
             this.Json = json;
-            this.Name = name;
             this.Token = token;
             this.UidToken = uidToken;
         }
-
-        /// <summary>
-        /// Client certificate TTL in days. If unset, the existing client TTL is kept.
-        /// </summary>
-        /// <value>Client certificate TTL in days. If unset, the existing client TTL is kept.</value>
-        [DataMember(Name = "certificate-ttl", EmitDefaultValue = false)]
-        public long CertificateTtl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClientId
-        /// </summary>
-        [DataMember(Name = "client-id", EmitDefaultValue = false)]
-        public string ClientId { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -70,12 +51,6 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -98,11 +73,8 @@ namespace akeyless.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class KmipRenewClientCertificate {\n");
-            sb.Append("  CertificateTtl: ").Append(CertificateTtl).Append("\n");
-            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
+            sb.Append("class KmipGetCABundle {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");

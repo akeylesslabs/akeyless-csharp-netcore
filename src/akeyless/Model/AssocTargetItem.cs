@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AssocTargetItem" /> class.
         /// </summary>
+        /// <param name="bindSslProfiles">Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. Repeat the parameter to bind several profiles..</param>
         /// <param name="certificatePath">A path on the target to store the certificate pem file (relevant only for certificate provisioning).</param>
         /// <param name="chainPath">A path on the target to store the full chain pem file (relevant only for certificate provisioning).</param>
         /// <param name="disablePreviousKeyVersion">Automatically disable previous key version (required for azure targets) (default to false).</param>
@@ -51,7 +52,7 @@ namespace akeyless.Model
         /// <param name="locationId">Location id of the GCP KMS (required for gcp targets).</param>
         /// <param name="multiRegion">Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) (default to &quot;false&quot;).</param>
         /// <param name="name">The item to associate (required).</param>
-        /// <param name="postProvisionCommand">A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning).</param>
+        /// <param name="postProvisionCommand">A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP).</param>
         /// <param name="privateKeyPath">A path on the target to store the private key (relevant only for certificate provisioning).</param>
         /// <param name="projectId">Project id of the GCP KMS (required for gcp targets).</param>
         /// <param name="protectionLevel">Protection level of the key [software/hardware] (relevant for gcp targets) (default to &quot;software&quot;).</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public AssocTargetItem(string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, string externalKeyName = default(string), bool json = false, List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = @"false", string name = default(string), string postProvisionCommand = default(string), string privateKeyPath = default(string), string projectId = default(string), string protectionLevel = @"software", string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public AssocTargetItem(List<string> bindSslProfiles = default(List<string>), string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, string externalKeyName = default(string), bool json = false, List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = @"false", string name = default(string), string postProvisionCommand = default(string), string privateKeyPath = default(string), string projectId = default(string), string protectionLevel = @"software", string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -77,6 +78,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("targetName is a required property for AssocTargetItem and cannot be null");
             }
             this.TargetName = targetName;
+            this.BindSslProfiles = bindSslProfiles;
             this.CertificatePath = certificatePath;
             this.ChainPath = chainPath;
             this.DisablePreviousKeyVersion = disablePreviousKeyVersion;
@@ -101,6 +103,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.VaultName = vaultName;
         }
+
+        /// <summary>
+        /// Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. Repeat the parameter to bind several profiles.
+        /// </summary>
+        /// <value>Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. Repeat the parameter to bind several profiles.</value>
+        [DataMember(Name = "bind-ssl-profiles", EmitDefaultValue = false)]
+        public List<string> BindSslProfiles { get; set; }
 
         /// <summary>
         /// A path on the target to store the certificate pem file (relevant only for certificate provisioning)
@@ -180,9 +189,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning)
+        /// A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP)
         /// </summary>
-        /// <value>A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning)</value>
+        /// <value>A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP)</value>
         [DataMember(Name = "post-provision-command", EmitDefaultValue = false)]
         public string PostProvisionCommand { get; set; }
 
@@ -271,6 +280,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AssocTargetItem {\n");
+            sb.Append("  BindSslProfiles: ").Append(BindSslProfiles).Append("\n");
             sb.Append("  CertificatePath: ").Append(CertificatePath).Append("\n");
             sb.Append("  ChainPath: ").Append(ChainPath).Append("\n");
             sb.Append("  DisablePreviousKeyVersion: ").Append(DisablePreviousKeyVersion).Append("\n");

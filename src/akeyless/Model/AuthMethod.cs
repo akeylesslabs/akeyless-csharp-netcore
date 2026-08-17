@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="authMethodId">authMethodId.</param>
         /// <param name="authMethodName">authMethodName.</param>
         /// <param name="authMethodRolesAssoc">authMethodRolesAssoc.</param>
+        /// <param name="bookmarkLoginUrlTemplate">BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback..</param>
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="creationDate">creationDate.</param>
         /// <param name="deleteProtection">deleteProtection.</param>
@@ -53,7 +54,7 @@ namespace akeyless.Model
         /// <param name="isApproved">isApproved.</param>
         /// <param name="modificationDate">modificationDate.</param>
         /// <param name="uidExpirationEvents">uidExpirationEvents.</param>
-        public AuthMethod(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), AuthMethodAdditionalData authMethodAdditionalData = default(AuthMethodAdditionalData), long authMethodId = default(long), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool deleteProtection = default(bool), string description = default(string), List<AuthExpirationEvent> expirationEvents = default(List<AuthExpirationEvent>), bool isApproved = default(bool), DateTime modificationDate = default(DateTime), List<UidExpirationEvent> uidExpirationEvents = default(List<UidExpirationEvent>))
+        public AuthMethod(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), AuthMethodAdditionalData authMethodAdditionalData = default(AuthMethodAdditionalData), long authMethodId = default(long), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), string bookmarkLoginUrlTemplate = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool deleteProtection = default(bool), string description = default(string), List<AuthExpirationEvent> expirationEvents = default(List<AuthExpirationEvent>), bool isApproved = default(bool), DateTime modificationDate = default(DateTime), List<UidExpirationEvent> uidExpirationEvents = default(List<UidExpirationEvent>))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
@@ -65,6 +66,7 @@ namespace akeyless.Model
             this.AuthMethodId = authMethodId;
             this.AuthMethodName = authMethodName;
             this.AuthMethodRolesAssoc = authMethodRolesAssoc;
+            this.BookmarkLoginUrlTemplate = bookmarkLoginUrlTemplate;
             this.ClientPermissions = clientPermissions;
             this.CreationDate = creationDate;
             this.DeleteProtection = deleteProtection;
@@ -136,6 +138,13 @@ namespace akeyless.Model
         public List<AuthMethodRoleAssociation> AuthMethodRolesAssoc { get; set; }
 
         /// <summary>
+        /// BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback.
+        /// </summary>
+        /// <value>BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback.</value>
+        [DataMember(Name = "bookmark_login_url_template", EmitDefaultValue = false)]
+        public string BookmarkLoginUrlTemplate { get; set; }
+
+        /// <summary>
         /// Gets or Sets ClientPermissions
         /// </summary>
         [DataMember(Name = "client_permissions", EmitDefaultValue = false)]
@@ -201,6 +210,7 @@ namespace akeyless.Model
             sb.Append("  AuthMethodId: ").Append(AuthMethodId).Append("\n");
             sb.Append("  AuthMethodName: ").Append(AuthMethodName).Append("\n");
             sb.Append("  AuthMethodRolesAssoc: ").Append(AuthMethodRolesAssoc).Append("\n");
+            sb.Append("  BookmarkLoginUrlTemplate: ").Append(BookmarkLoginUrlTemplate).Append("\n");
             sb.Append("  ClientPermissions: ").Append(ClientPermissions).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");

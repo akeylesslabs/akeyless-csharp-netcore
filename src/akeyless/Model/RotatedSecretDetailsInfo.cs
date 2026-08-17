@@ -44,6 +44,7 @@ namespace akeyless.Model
         /// <param name="graceRotationTiming">graceRotationTiming.</param>
         /// <param name="gwClusterId">gwClusterId.</param>
         /// <param name="iisAppsDetails">iisAppsDetails.</param>
+        /// <param name="keyAlgorithm">SSHKeyAlgorithm identifies the key algorithm an SSH rotated secret uses. Kept apart from Algorithm, which is an encryption-key enum and has no ECDSA-384 or ECDSA-521..</param>
         /// <param name="lastRotationError">lastRotationError.</param>
         /// <param name="managedByAkeyless">managedByAkeyless.</param>
         /// <param name="maxVersions">maxVersions.</param>
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// <param name="servicesDetails">servicesDetails.</param>
         /// <param name="skipDryRun">skipDryRun.</param>
         /// <param name="timeoutSeconds">timeoutSeconds.</param>
-        public RotatedSecretDetailsInfo(string awsUserName = default(string), int deletePreviousVersionInDays = default(int), bool enableCustomPasswordPolicy = default(bool), bool graceRotation = default(bool), int graceRotationHour = default(int), int graceRotationInterval = default(int), string graceRotationTiming = default(string), long gwClusterId = default(long), List<WindowsService> iisAppsDetails = default(List<WindowsService>), string lastRotationError = default(string), bool managedByAkeyless = default(bool), long maxVersions = default(long), string nextAutoRotateType = default(string), int numberOfVersionsToSave = default(int), string publicKeyRemotePath = default(string), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>), bool skipDryRun = default(bool), long timeoutSeconds = default(long))
+        public RotatedSecretDetailsInfo(string awsUserName = default(string), int deletePreviousVersionInDays = default(int), bool enableCustomPasswordPolicy = default(bool), bool graceRotation = default(bool), int graceRotationHour = default(int), int graceRotationInterval = default(int), string graceRotationTiming = default(string), long gwClusterId = default(long), List<WindowsService> iisAppsDetails = default(List<WindowsService>), string keyAlgorithm = default(string), string lastRotationError = default(string), bool managedByAkeyless = default(bool), long maxVersions = default(long), string nextAutoRotateType = default(string), int numberOfVersionsToSave = default(int), string publicKeyRemotePath = default(string), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>), bool skipDryRun = default(bool), long timeoutSeconds = default(long))
         {
             this.AwsUserName = awsUserName;
             this.DeletePreviousVersionInDays = deletePreviousVersionInDays;
@@ -71,6 +72,7 @@ namespace akeyless.Model
             this.GraceRotationTiming = graceRotationTiming;
             this.GwClusterId = gwClusterId;
             this.IisAppsDetails = iisAppsDetails;
+            this.KeyAlgorithm = keyAlgorithm;
             this.LastRotationError = lastRotationError;
             this.ManagedByAkeyless = managedByAkeyless;
             this.MaxVersions = maxVersions;
@@ -142,6 +144,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "iis_apps_details", EmitDefaultValue = false)]
         public List<WindowsService> IisAppsDetails { get; set; }
+
+        /// <summary>
+        /// SSHKeyAlgorithm identifies the key algorithm an SSH rotated secret uses. Kept apart from Algorithm, which is an encryption-key enum and has no ECDSA-384 or ECDSA-521.
+        /// </summary>
+        /// <value>SSHKeyAlgorithm identifies the key algorithm an SSH rotated secret uses. Kept apart from Algorithm, which is an encryption-key enum and has no ECDSA-384 or ECDSA-521.</value>
+        [DataMember(Name = "key_algorithm", EmitDefaultValue = false)]
+        public string KeyAlgorithm { get; set; }
 
         /// <summary>
         /// Gets or Sets LastRotationError
@@ -257,6 +266,7 @@ namespace akeyless.Model
             sb.Append("  GraceRotationTiming: ").Append(GraceRotationTiming).Append("\n");
             sb.Append("  GwClusterId: ").Append(GwClusterId).Append("\n");
             sb.Append("  IisAppsDetails: ").Append(IisAppsDetails).Append("\n");
+            sb.Append("  KeyAlgorithm: ").Append(KeyAlgorithm).Append("\n");
             sb.Append("  LastRotationError: ").Append(LastRotationError).Append("\n");
             sb.Append("  ManagedByAkeyless: ").Append(ManagedByAkeyless).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowedRedirectURIs** | **List&lt;string&gt;** | Allowed redirect URIs after the authentication | [optional] 
+**AuthorizedGwClusterName** | **string** | AuthorizedGwClusterName binds the access method to a single GW cluster. When empty (or whitespace-only), GW-driven auth is disabled. | [optional] 
 **BoundAttributes** | [**List&lt;SAMLAttribute&gt;**](SAMLAttribute.md) | The attributes that login is restricted to. | [optional] 
 **IdpMetadataUrl** | **string** | IDP metadata url | [optional] 
 **IdpMetadataXml** | **string** | IDP metadata XML | [optional] 

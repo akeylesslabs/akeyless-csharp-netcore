@@ -36,14 +36,16 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="SAMLAccessRules" /> class.
         /// </summary>
         /// <param name="allowedRedirectURIs">Allowed redirect URIs after the authentication.</param>
+        /// <param name="authorizedGwClusterName">AuthorizedGwClusterName binds the access method to a single GW cluster. When empty (or whitespace-only), GW-driven auth is disabled..</param>
         /// <param name="boundAttributes">The attributes that login is restricted to..</param>
         /// <param name="idpMetadataUrl">IDP metadata url.</param>
         /// <param name="idpMetadataXml">IDP metadata XML.</param>
         /// <param name="uniqueIdentifier">A unique identifier to distinguish different users.</param>
         /// <param name="useDedicatedSamlUrls">When true, the login AuthnRequest is signed with this access method&#39;s dedicated SP identity (Entity ID https://&lt;sp&gt;/saml/sp/{access_id} and ACS https://&lt;sp&gt;/saml/acs/{access_id}) instead of the shared global identity. Default false keeps the legacy global identity for backward compatibility..</param>
-        public SAMLAccessRules(List<string> allowedRedirectURIs = default(List<string>), List<SAMLAttribute> boundAttributes = default(List<SAMLAttribute>), string idpMetadataUrl = default(string), string idpMetadataXml = default(string), string uniqueIdentifier = default(string), bool useDedicatedSamlUrls = default(bool))
+        public SAMLAccessRules(List<string> allowedRedirectURIs = default(List<string>), string authorizedGwClusterName = default(string), List<SAMLAttribute> boundAttributes = default(List<SAMLAttribute>), string idpMetadataUrl = default(string), string idpMetadataXml = default(string), string uniqueIdentifier = default(string), bool useDedicatedSamlUrls = default(bool))
         {
             this.AllowedRedirectURIs = allowedRedirectURIs;
+            this.AuthorizedGwClusterName = authorizedGwClusterName;
             this.BoundAttributes = boundAttributes;
             this.IdpMetadataUrl = idpMetadataUrl;
             this.IdpMetadataXml = idpMetadataXml;
@@ -57,6 +59,13 @@ namespace akeyless.Model
         /// <value>Allowed redirect URIs after the authentication</value>
         [DataMember(Name = "allowed_redirect_URIs", EmitDefaultValue = false)]
         public List<string> AllowedRedirectURIs { get; set; }
+
+        /// <summary>
+        /// AuthorizedGwClusterName binds the access method to a single GW cluster. When empty (or whitespace-only), GW-driven auth is disabled.
+        /// </summary>
+        /// <value>AuthorizedGwClusterName binds the access method to a single GW cluster. When empty (or whitespace-only), GW-driven auth is disabled.</value>
+        [DataMember(Name = "authorized_gw_cluster_name", EmitDefaultValue = false)]
+        public string AuthorizedGwClusterName { get; set; }
 
         /// <summary>
         /// The attributes that login is restricted to.
@@ -102,6 +111,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class SAMLAccessRules {\n");
             sb.Append("  AllowedRedirectURIs: ").Append(AllowedRedirectURIs).Append("\n");
+            sb.Append("  AuthorizedGwClusterName: ").Append(AuthorizedGwClusterName).Append("\n");
             sb.Append("  BoundAttributes: ").Append(BoundAttributes).Append("\n");
             sb.Append("  IdpMetadataUrl: ").Append(IdpMetadataUrl).Append("\n");
             sb.Append("  IdpMetadataXml: ").Append(IdpMetadataXml).Append("\n");

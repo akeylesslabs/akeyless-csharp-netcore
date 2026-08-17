@@ -5,6 +5,7 @@ assocTargetItem is a command that creates an association between target and item
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BindSslProfiles** | **List&lt;string&gt;** | Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. Repeat the parameter to bind several profiles. | [optional] 
 **CertificatePath** | **string** | A path on the target to store the certificate pem file (relevant only for certificate provisioning) | [optional] 
 **ChainPath** | **string** | A path on the target to store the full chain pem file (relevant only for certificate provisioning) | [optional] 
 **DisablePreviousKeyVersion** | **bool** | Automatically disable previous key version (required for azure targets) | [optional] [default to false]
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 **LocationId** | **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
 **MultiRegion** | **string** | Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
-**PostProvisionCommand** | **string** | A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning) | [optional] 
+**PostProvisionCommand** | **string** | A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP) | [optional] 
 **PrivateKeyPath** | **string** | A path on the target to store the private key (relevant only for certificate provisioning) | [optional] 
 **ProjectId** | **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
 **ProtectionLevel** | **string** | Protection level of the key [software/hardware] (relevant for gcp targets) | [optional] [default to "software"]

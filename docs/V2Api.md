@@ -380,13 +380,17 @@ All URIs are relative to *https://api.akeyless.io*
 | [**KmipDeleteServer**](V2Api.md#kmipdeleteserver) | **DELETE** /kmip-delete-environment |  |
 | [**KmipDescribeClient**](V2Api.md#kmipdescribeclient) | **POST** /kmip-get-client |  |
 | [**KmipDescribeServer**](V2Api.md#kmipdescribeserver) | **POST** /kmip-get-environment |  |
+| [**KmipGetCABundle**](V2Api.md#kmipgetcabundle) | **POST** /kmip-get-ca-bundle |  |
+| [**KmipListCAs**](V2Api.md#kmiplistcas) | **POST** /kmip-list-cas |  |
 | [**KmipListClients**](V2Api.md#kmiplistclients) | **POST** /kmip-list-clients |  |
 | [**KmipMoveServer**](V2Api.md#kmipmoveserver) | **POST** /kmip-move-environment |  |
-| [**KmipRenewClientCertificate**](V2Api.md#kmiprenewclientcertificate) | **POST** /kmip-renew-client |  |
+| [**KmipRenewClientCertificate**](V2Api.md#kmiprenewclientcertificate) | **POST** /kmip-renew-client-certificate |  |
 | [**KmipRenewServerCertificate**](V2Api.md#kmiprenewservercertificate) | **POST** /kmip-renew-environment |  |
+| [**KmipRotateCA**](V2Api.md#kmiprotateca) | **POST** /kmip-rotate-ca |  |
 | [**KmipServerSetup**](V2Api.md#kmipserversetup) | **POST** /kmip-create-environment |  |
 | [**KmipServerUpdate**](V2Api.md#kmipserverupdate) | **POST** /kmip-server-update |  |
 | [**KmipSetServerState**](V2Api.md#kmipsetserverstate) | **POST** /kmip-set-environment-state |  |
+| [**KmipSunsetCA**](V2Api.md#kmipsunsetca) | **POST** /kmip-sunset-ca |  |
 | [**KubeconfigGenerate**](V2Api.md#kubeconfiggenerate) | **POST** /kubeconfig-generate |  |
 | [**ListAcmeAccounts**](V2Api.md#listacmeaccounts) | **POST** /list-acme-accounts |  |
 | [**ListAuthMethods**](V2Api.md#listauthmethods) | **POST** /list-auth-methods |  |
@@ -33738,6 +33742,182 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="kmipgetcabundle"></a>
+# **KmipGetCABundle**
+> KmipGetCABundleOutput KmipGetCABundle (KmipGetCABundle? kmipGetCABundle = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipGetCABundleExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var kmipGetCABundle = new KmipGetCABundle?(); // KmipGetCABundle? |  (optional) 
+
+            try
+            {
+                KmipGetCABundleOutput result = apiInstance.KmipGetCABundle(kmipGetCABundle);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipGetCABundle: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the KmipGetCABundleWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipGetCABundleOutput> response = apiInstance.KmipGetCABundleWithHttpInfo(kmipGetCABundle);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipGetCABundleWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **kmipGetCABundle** | [**KmipGetCABundle?**](KmipGetCABundle?.md) |  | [optional]  |
+
+### Return type
+
+[**KmipGetCABundleOutput**](KmipGetCABundleOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipGetCABundleResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="kmiplistcas"></a>
+# **KmipListCAs**
+> KmipListCAsOutput KmipListCAs (KmipListCAs? kmipListCAs = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipListCAsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var kmipListCAs = new KmipListCAs?(); // KmipListCAs? |  (optional) 
+
+            try
+            {
+                KmipListCAsOutput result = apiInstance.KmipListCAs(kmipListCAs);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipListCAs: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the KmipListCAsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipListCAsOutput> response = apiInstance.KmipListCAsWithHttpInfo(kmipListCAs);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipListCAsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **kmipListCAs** | [**KmipListCAs?**](KmipListCAs?.md) |  | [optional]  |
+
+### Return type
+
+[**KmipListCAsOutput**](KmipListCAsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipListCAsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="kmiplistclients"></a>
 # **KmipListClients**
 > KMIPClientListResponse KmipListClients (KmipListClients? kmipListClients = null)
@@ -34090,6 +34270,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="kmiprotateca"></a>
+# **KmipRotateCA**
+> KmipRotateCAOutput KmipRotateCA (KmipRotateCA? kmipRotateCA = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipRotateCAExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var kmipRotateCA = new KmipRotateCA?(); // KmipRotateCA? |  (optional) 
+
+            try
+            {
+                KmipRotateCAOutput result = apiInstance.KmipRotateCA(kmipRotateCA);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipRotateCA: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the KmipRotateCAWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipRotateCAOutput> response = apiInstance.KmipRotateCAWithHttpInfo(kmipRotateCA);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipRotateCAWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **kmipRotateCA** | [**KmipRotateCA?**](KmipRotateCA?.md) |  | [optional]  |
+
+### Return type
+
+[**KmipRotateCAOutput**](KmipRotateCAOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipRotateCAResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="kmipserversetup"></a>
 # **KmipServerSetup**
 > KMIPEnvironmentCreateResponse KmipServerSetup (KmipServerSetup? kmipServerSetup = null)
@@ -34350,6 +34618,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | kmipSetServerStateResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="kmipsunsetca"></a>
+# **KmipSunsetCA**
+> KmipSunsetCAOutput KmipSunsetCA (KmipSunsetCA? kmipSunsetCA = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class KmipSunsetCAExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var kmipSunsetCA = new KmipSunsetCA?(); // KmipSunsetCA? |  (optional) 
+
+            try
+            {
+                KmipSunsetCAOutput result = apiInstance.KmipSunsetCA(kmipSunsetCA);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.KmipSunsetCA: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the KmipSunsetCAWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<KmipSunsetCAOutput> response = apiInstance.KmipSunsetCAWithHttpInfo(kmipSunsetCA);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.KmipSunsetCAWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **kmipSunsetCA** | [**KmipSunsetCA?**](KmipSunsetCA?.md) |  | [optional]  |
+
+### Return type
+
+[**KmipSunsetCAOutput**](KmipSunsetCAOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | kmipSunsetCAResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
