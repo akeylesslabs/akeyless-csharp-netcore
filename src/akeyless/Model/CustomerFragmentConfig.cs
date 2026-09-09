@@ -41,7 +41,10 @@ namespace akeyless.Model
         /// <param name="keyLabel">keyLabel.</param>
         /// <param name="name">name.</param>
         /// <param name="value">value.</param>
-        public CustomerFragmentConfig(string description = default(string), string fragmentType = default(string), string id = default(string), string keyLabel = default(string), string name = default(string), string value = default(string))
+        /// <param name="wrapAlg">WrapAlg selects the HSM wrap algorithm for hsm_wrap_encrypt (e.g. rsa-oaep-sha256, aes-gcm, aes-cbc, aes-cbc-pad). RSA uses only WrapAlg; AES modes may require WrapIV and/or WrapTag..</param>
+        /// <param name="wrapIv">WrapIV is the base64 IV for AES modes that require it (GCM/CBC). Empty for RSA and modes without IV metadata..</param>
+        /// <param name="wrapTag">WrapTag is the base64 auth tag for AES-GCM only. Empty for RSA and other modes..</param>
+        public CustomerFragmentConfig(string description = default(string), string fragmentType = default(string), string id = default(string), string keyLabel = default(string), string name = default(string), string value = default(string), string wrapAlg = default(string), string wrapIv = default(string), string wrapTag = default(string))
         {
             this.Description = description;
             this.FragmentType = fragmentType;
@@ -49,6 +52,9 @@ namespace akeyless.Model
             this.KeyLabel = keyLabel;
             this.Name = name;
             this.Value = value;
+            this.WrapAlg = wrapAlg;
+            this.WrapIv = wrapIv;
+            this.WrapTag = wrapTag;
         }
 
         /// <summary>
@@ -88,6 +94,27 @@ namespace akeyless.Model
         public string Value { get; set; }
 
         /// <summary>
+        /// WrapAlg selects the HSM wrap algorithm for hsm_wrap_encrypt (e.g. rsa-oaep-sha256, aes-gcm, aes-cbc, aes-cbc-pad). RSA uses only WrapAlg; AES modes may require WrapIV and/or WrapTag.
+        /// </summary>
+        /// <value>WrapAlg selects the HSM wrap algorithm for hsm_wrap_encrypt (e.g. rsa-oaep-sha256, aes-gcm, aes-cbc, aes-cbc-pad). RSA uses only WrapAlg; AES modes may require WrapIV and/or WrapTag.</value>
+        [DataMember(Name = "wrap_alg", EmitDefaultValue = false)]
+        public string WrapAlg { get; set; }
+
+        /// <summary>
+        /// WrapIV is the base64 IV for AES modes that require it (GCM/CBC). Empty for RSA and modes without IV metadata.
+        /// </summary>
+        /// <value>WrapIV is the base64 IV for AES modes that require it (GCM/CBC). Empty for RSA and modes without IV metadata.</value>
+        [DataMember(Name = "wrap_iv", EmitDefaultValue = false)]
+        public string WrapIv { get; set; }
+
+        /// <summary>
+        /// WrapTag is the base64 auth tag for AES-GCM only. Empty for RSA and other modes.
+        /// </summary>
+        /// <value>WrapTag is the base64 auth tag for AES-GCM only. Empty for RSA and other modes.</value>
+        [DataMember(Name = "wrap_tag", EmitDefaultValue = false)]
+        public string WrapTag { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -101,6 +128,9 @@ namespace akeyless.Model
             sb.Append("  KeyLabel: ").Append(KeyLabel).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  WrapAlg: ").Append(WrapAlg).Append("\n");
+            sb.Append("  WrapIv: ").Append(WrapIv).Append("\n");
+            sb.Append("  WrapTag: ").Append(WrapTag).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

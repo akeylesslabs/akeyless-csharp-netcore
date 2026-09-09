@@ -47,6 +47,8 @@ namespace akeyless.Model
         /// <param name="autoRotate">autoRotate.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object (default to &quot;default_metadata&quot;).</param>
+        /// <param name="enableAgenticRuntimeAuthority">EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working..</param>
+        /// <param name="enableAiQuorum">Turns on AI Quorum checks for this item..</param>
         /// <param name="hostProvider">Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items..</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input).</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
@@ -54,6 +56,8 @@ namespace akeyless.Model
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">key.</param>
         /// <param name="lockDuringSraSession">Lock this secret for read/update while an SRA session is active.</param>
+        /// <param name="lockOnRead">Lock this secret after each successful value read.</param>
+        /// <param name="lockTtl">Lock TTL in minutes.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="newName">New item name.</param>
@@ -61,6 +65,7 @@ namespace akeyless.Model
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
         /// <param name="rotateAfterDisconnect">StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect..</param>
+        /// <param name="rotateOnUnlock">Rotate this secret after it is unlocked.</param>
         /// <param name="rotatedPassword">rotated-username password (relevant only for rotator-type&#x3D;password).</param>
         /// <param name="rotatedUsername">username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password).</param>
         /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
@@ -84,7 +89,7 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
-        public RotatedSecretUpdateWindows(string providerType = default(string), List<string> addTag = default(List<string>), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string skipDryRun = default(string), List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public RotatedSecretUpdateWindows(string providerType = default(string), List<string> addTag = default(List<string>), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotateOnUnlock = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string skipDryRun = default(string), List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -107,6 +112,8 @@ namespace akeyless.Model
             this.DeleteProtection = deleteProtection;
             // use default value if no "description" provided
             this.Description = description ?? @"default_metadata";
+            this.EnableAgenticRuntimeAuthority = enableAgenticRuntimeAuthority;
+            this.EnableAiQuorum = enableAiQuorum;
             this.HostProvider = hostProvider;
             this.InputRule = inputRule;
             this.ItemCustomFields = itemCustomFields;
@@ -114,12 +121,15 @@ namespace akeyless.Model
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
             this.LockDuringSraSession = lockDuringSraSession;
+            this.LockOnRead = lockOnRead;
+            this.LockTtl = lockTtl;
             this.MaxVersions = maxVersions;
             this.NewName = newName;
             this.OutputRule = outputRule;
             this.PasswordLength = passwordLength;
             this.RmTag = rmTag;
             this.RotateAfterDisconnect = rotateAfterDisconnect;
+            this.RotateOnUnlock = rotateOnUnlock;
             this.RotatedPassword = rotatedPassword;
             this.RotatedUsername = rotatedUsername;
             this.RotationEventIn = rotationEventIn;
@@ -192,6 +202,20 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.
+        /// </summary>
+        /// <value>EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.</value>
+        [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
+        public bool EnableAgenticRuntimeAuthority { get; set; }
+
+        /// <summary>
+        /// Turns on AI Quorum checks for this item.
+        /// </summary>
+        /// <value>Turns on AI Quorum checks for this item.</value>
+        [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
+        public bool EnableAiQuorum { get; set; }
+
+        /// <summary>
         /// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
         /// </summary>
         /// <value>Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.</value>
@@ -238,6 +262,20 @@ namespace akeyless.Model
         /// <value>Lock this secret for read/update while an SRA session is active</value>
         [DataMember(Name = "lock-during-sra-session", EmitDefaultValue = false)]
         public string LockDuringSraSession { get; set; }
+
+        /// <summary>
+        /// Lock this secret after each successful value read
+        /// </summary>
+        /// <value>Lock this secret after each successful value read</value>
+        [DataMember(Name = "lock-on-read", EmitDefaultValue = false)]
+        public string LockOnRead { get; set; }
+
+        /// <summary>
+        /// Lock TTL in minutes
+        /// </summary>
+        /// <value>Lock TTL in minutes</value>
+        [DataMember(Name = "lock-ttl", EmitDefaultValue = false)]
+        public string LockTtl { get; set; }
 
         /// <summary>
         /// Set the maximum number of versions, limited by the account settings defaults.
@@ -287,6 +325,13 @@ namespace akeyless.Model
         /// <value>StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.</value>
         [DataMember(Name = "rotate-after-disconnect", EmitDefaultValue = false)]
         public string RotateAfterDisconnect { get; set; }
+
+        /// <summary>
+        /// Rotate this secret after it is unlocked
+        /// </summary>
+        /// <value>Rotate this secret after it is unlocked</value>
+        [DataMember(Name = "rotate-on-unlock", EmitDefaultValue = false)]
+        public string RotateOnUnlock { get; set; }
 
         /// <summary>
         /// rotated-username password (relevant only for rotator-type&#x3D;password)
@@ -464,6 +509,8 @@ namespace akeyless.Model
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  EnableAgenticRuntimeAuthority: ").Append(EnableAgenticRuntimeAuthority).Append("\n");
+            sb.Append("  EnableAiQuorum: ").Append(EnableAiQuorum).Append("\n");
             sb.Append("  HostProvider: ").Append(HostProvider).Append("\n");
             sb.Append("  InputRule: ").Append(InputRule).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
@@ -471,6 +518,8 @@ namespace akeyless.Model
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  LockDuringSraSession: ").Append(LockDuringSraSession).Append("\n");
+            sb.Append("  LockOnRead: ").Append(LockOnRead).Append("\n");
+            sb.Append("  LockTtl: ").Append(LockTtl).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
@@ -478,6 +527,7 @@ namespace akeyless.Model
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
             sb.Append("  RotateAfterDisconnect: ").Append(RotateAfterDisconnect).Append("\n");
+            sb.Append("  RotateOnUnlock: ").Append(RotateOnUnlock).Append("\n");
             sb.Append("  RotatedPassword: ").Append(RotatedPassword).Append("\n");
             sb.Append("  RotatedUsername: ").Append(RotatedUsername).Append("\n");
             sb.Append("  RotationEventIn: ").Append(RotationEventIn).Append("\n");

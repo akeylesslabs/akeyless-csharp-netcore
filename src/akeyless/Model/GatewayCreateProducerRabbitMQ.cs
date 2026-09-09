@@ -42,6 +42,8 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
+        /// <param name="enableAgenticRuntimeAuthority">EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias..</param>
+        /// <param name="enableAiQuorum">Turns on AI Quorum checks for this item..</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -72,7 +74,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerRabbitMQ(bool araEnabled = default(bool), string deleteProtection = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerRabbitMQ(bool araEnabled = default(bool), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string rabbitmqAdminPwd = default(string), string rabbitmqAdminUser = default(string), string rabbitmqServerUri = default(string), string rabbitmqUserConfPermission = default(string), string rabbitmqUserReadPermission = default(string), string rabbitmqUserTags = default(string), string rabbitmqUserVhost = default(string), string rabbitmqUserWritePermission = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -82,6 +84,8 @@ namespace akeyless.Model
             this.Name = name;
             this.AraEnabled = araEnabled;
             this.DeleteProtection = deleteProtection;
+            this.EnableAgenticRuntimeAuthority = enableAgenticRuntimeAuthority;
+            this.EnableAiQuorum = enableAiQuorum;
             this.InputRule = inputRule;
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
@@ -127,6 +131,20 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.
+        /// </summary>
+        /// <value>EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.</value>
+        [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
+        public bool EnableAgenticRuntimeAuthority { get; set; }
+
+        /// <summary>
+        /// Turns on AI Quorum checks for this item.
+        /// </summary>
+        /// <value>Turns on AI Quorum checks for this item.</value>
+        [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
+        public bool EnableAiQuorum { get; set; }
 
         /// <summary>
         /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
@@ -350,6 +368,8 @@ namespace akeyless.Model
             sb.Append("class GatewayCreateProducerRabbitMQ {\n");
             sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  EnableAgenticRuntimeAuthority: ").Append(EnableAgenticRuntimeAuthority).Append("\n");
+            sb.Append("  EnableAiQuorum: ").Append(EnableAiQuorum).Append("\n");
             sb.Append("  InputRule: ").Append(InputRule).Append("\n");
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

@@ -48,6 +48,8 @@ namespace akeyless.Model
         /// <param name="azureTenantId">Azure Tenant ID.</param>
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
+        /// <param name="enableAgenticRuntimeAuthority">EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias..</param>
+        /// <param name="enableAiQuorum">Turns on AI Quorum checks for this item..</param>
         /// <param name="fixedUserClaimKeyname">FixedUserClaimKeyname (default to &quot;false&quot;).</param>
         /// <param name="fixedUserOnly">Fixed user (default to false).</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
@@ -77,7 +79,7 @@ namespace akeyless.Model
         /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerAzure(string appObjId = default(string), bool araEnabled = default(bool), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerAzure(string appObjId = default(string), bool araEnabled = default(bool), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -93,6 +95,8 @@ namespace akeyless.Model
             this.AzureTenantId = azureTenantId;
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DeleteProtection = deleteProtection;
+            this.EnableAgenticRuntimeAuthority = enableAgenticRuntimeAuthority;
+            this.EnableAiQuorum = enableAiQuorum;
             // use default value if no "fixedUserClaimKeyname" provided
             this.FixedUserClaimKeyname = fixedUserClaimKeyname ?? @"false";
             this.FixedUserOnly = fixedUserOnly;
@@ -180,6 +184,20 @@ namespace akeyless.Model
         /// <value>Protection from accidental deletion of this object [true/false]</value>
         [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
         public string DeleteProtection { get; set; }
+
+        /// <summary>
+        /// EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.
+        /// </summary>
+        /// <value>EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.</value>
+        [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
+        public bool EnableAgenticRuntimeAuthority { get; set; }
+
+        /// <summary>
+        /// Turns on AI Quorum checks for this item.
+        /// </summary>
+        /// <value>Turns on AI Quorum checks for this item.</value>
+        [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
+        public bool EnableAiQuorum { get; set; }
 
         /// <summary>
         /// FixedUserClaimKeyname
@@ -402,6 +420,8 @@ namespace akeyless.Model
             sb.Append("  AzureTenantId: ").Append(AzureTenantId).Append("\n");
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
+            sb.Append("  EnableAgenticRuntimeAuthority: ").Append(EnableAgenticRuntimeAuthority).Append("\n");
+            sb.Append("  EnableAiQuorum: ").Append(EnableAiQuorum).Append("\n");
             sb.Append("  FixedUserClaimKeyname: ").Append(FixedUserClaimKeyname).Append("\n");
             sb.Append("  FixedUserOnly: ").Append(FixedUserOnly).Append("\n");
             sb.Append("  InputRule: ").Append(InputRule).Append("\n");

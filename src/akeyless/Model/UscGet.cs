@@ -40,7 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UscGet" /> class.
         /// </summary>
-        /// <param name="gcpProjectId">GCP Project ID (Relevant only for GCP targets).</param>
+        /// <param name="gcpProjectId">The GCP project the secret resides in (GCP only). Used when getting a secret by name in a connector that spans multiple projects or uses folder/organization scope..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="varNamespace">The namespace (relevant for Hashi vault target).</param>
         /// <param name="objectType">objectType.</param>
@@ -75,9 +75,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// GCP Project ID (Relevant only for GCP targets)
+        /// The GCP project the secret resides in (GCP only). Used when getting a secret by name in a connector that spans multiple projects or uses folder/organization scope.
         /// </summary>
-        /// <value>GCP Project ID (Relevant only for GCP targets)</value>
+        /// <value>The GCP project the secret resides in (GCP only). Used when getting a secret by name in a connector that spans multiple projects or uses folder/organization scope.</value>
         [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
         public string GcpProjectId { get; set; }
 

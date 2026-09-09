@@ -48,9 +48,12 @@ namespace akeyless.Model
         /// <param name="startTime">startTime.</param>
         /// <param name="status">status.</param>
         /// <param name="targetHost">targetHost.</param>
+        /// <param name="targetId">targetId.</param>
+        /// <param name="targetName">targetName.</param>
+        /// <param name="targetType">targetType.</param>
         /// <param name="ttl">ttl.</param>
         /// <param name="userIdentifier">userIdentifier.</param>
-        public SraSessionEntryOut(string accessId = default(string), string clientType = default(string), long clusterUniqueId = default(long), string connectionType = default(string), DateTime endTime = default(DateTime), string errorMsg = default(string), GatewayNameInfo gatewayInfo = default(GatewayNameInfo), string instanceId = default(string), string secretName = default(string), string sessionId = default(string), DateTime startTime = default(DateTime), string status = default(string), string targetHost = default(string), string ttl = default(string), string userIdentifier = default(string))
+        public SraSessionEntryOut(string accessId = default(string), string clientType = default(string), long clusterUniqueId = default(long), string connectionType = default(string), DateTime endTime = default(DateTime), string errorMsg = default(string), GatewayNameInfo gatewayInfo = default(GatewayNameInfo), string instanceId = default(string), string secretName = default(string), string sessionId = default(string), DateTime startTime = default(DateTime), string status = default(string), string targetHost = default(string), long targetId = default(long), string targetName = default(string), string targetType = default(string), string ttl = default(string), string userIdentifier = default(string))
         {
             this.AccessId = accessId;
             this.ClientType = clientType;
@@ -65,6 +68,9 @@ namespace akeyless.Model
             this.StartTime = startTime;
             this.Status = status;
             this.TargetHost = targetHost;
+            this.TargetId = targetId;
+            this.TargetName = targetName;
+            this.TargetType = targetType;
             this.Ttl = ttl;
             this.UserIdentifier = userIdentifier;
         }
@@ -148,6 +154,24 @@ namespace akeyless.Model
         public string TargetHost { get; set; }
 
         /// <summary>
+        /// Gets or Sets TargetId
+        /// </summary>
+        [DataMember(Name = "target_id", EmitDefaultValue = false)]
+        public long TargetId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TargetName
+        /// </summary>
+        [DataMember(Name = "target_name", EmitDefaultValue = false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TargetType
+        /// </summary>
+        [DataMember(Name = "target_type", EmitDefaultValue = false)]
+        public string TargetType { get; set; }
+
+        /// <summary>
         /// Gets or Sets Ttl
         /// </summary>
         [DataMember(Name = "ttl", EmitDefaultValue = false)]
@@ -180,6 +204,9 @@ namespace akeyless.Model
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  TargetHost: ").Append(TargetHost).Append("\n");
+            sb.Append("  TargetId: ").Append(TargetId).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
+            sb.Append("  TargetType: ").Append(TargetType).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");
             sb.Append("  UserIdentifier: ").Append(UserIdentifier).Append("\n");
             sb.Append("}\n");

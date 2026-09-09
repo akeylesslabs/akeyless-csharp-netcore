@@ -43,6 +43,7 @@ namespace akeyless.Model
         /// <param name="deleteRemote">Delete the secret from remote secret manager (for association create/update).</param>
         /// <param name="environments">GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. - -environments repo1/env1,repo2/env2)..</param>
         /// <param name="filterSecretValue">JQ expression to filter or transform the secret value.</param>
+        /// <param name="gcpProjectId">GCP project to sync the secret to. Relevant only for GCP USCs; must be a project available on the USC.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Static secret name (required).</param>
         /// <param name="varNamespace">Vault namespace, releavnt only for Hashicorp Vault Target.</param>
@@ -51,7 +52,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Universal Secret Connector name, If not provided all attached USC&#39;s will be synced.</param>
-        public StaticSecretSync(bool deleteRemote = default(bool), string environments = default(string), string filterSecretValue = default(string), bool json = false, string name = default(string), string varNamespace = default(string), string remoteSecretName = default(string), string repositories = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public StaticSecretSync(bool deleteRemote = default(bool), string environments = default(string), string filterSecretValue = default(string), string gcpProjectId = default(string), bool json = false, string name = default(string), string varNamespace = default(string), string remoteSecretName = default(string), string repositories = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,6 +63,7 @@ namespace akeyless.Model
             this.DeleteRemote = deleteRemote;
             this.Environments = environments;
             this.FilterSecretValue = filterSecretValue;
+            this.GcpProjectId = gcpProjectId;
             this.Json = json;
             this.Namespace = varNamespace;
             this.RemoteSecretName = remoteSecretName;
@@ -91,6 +93,13 @@ namespace akeyless.Model
         /// <value>JQ expression to filter or transform the secret value</value>
         [DataMember(Name = "filter-secret-value", EmitDefaultValue = false)]
         public string FilterSecretValue { get; set; }
+
+        /// <summary>
+        /// GCP project to sync the secret to. Relevant only for GCP USCs; must be a project available on the USC
+        /// </summary>
+        /// <value>GCP project to sync the secret to. Relevant only for GCP USCs; must be a project available on the USC</value>
+        [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
+        public string GcpProjectId { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -159,6 +168,7 @@ namespace akeyless.Model
             sb.Append("  DeleteRemote: ").Append(DeleteRemote).Append("\n");
             sb.Append("  Environments: ").Append(Environments).Append("\n");
             sb.Append("  FilterSecretValue: ").Append(FilterSecretValue).Append("\n");
+            sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");

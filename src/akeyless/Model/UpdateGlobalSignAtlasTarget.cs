@@ -47,16 +47,19 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="lockOnRead">Lock this secret after each successful value read.</param>
+        /// <param name="lockTtl">Lock TTL in minutes.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="mtlsCertDataBase64">Mutual TLS Certificate contents of the GlobalSign Atlas account encoded in base64, either mtls-cert-file-path or mtls-cert-data-base64 must be supplied.</param>
         /// <param name="mtlsKeyDataBase64">Mutual TLS Key contents of the GlobalSign Atlas account encoded in base64, either mtls-key-file-path or mtls-data-base64 must be supplied.</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="newName">New target name.</param>
+        /// <param name="rotateOnUnlock">Rotate this secret after it is unlocked.</param>
         /// <param name="timeout">Timeout waiting for certificate validation in Duration format (1h - 1 Hour, 20m - 20 Minutes, 33m3s - 33 Minutes and 3 Seconds), maximum 1h. (default to &quot;5m&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateGlobalSignAtlasTarget(string apiKey = default(string), string apiSecret = default(string), string comment = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string mtlsCertDataBase64 = default(string), string mtlsKeyDataBase64 = default(string), string name = default(string), string newName = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        public UpdateGlobalSignAtlasTarget(string apiKey = default(string), string apiSecret = default(string), string comment = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string mtlsCertDataBase64 = default(string), string mtlsKeyDataBase64 = default(string), string name = default(string), string newName = default(string), string rotateOnUnlock = default(string), string timeout = @"5m", string token = default(string), string uidToken = default(string), bool updateVersion = default(bool))
         {
             // to ensure "apiKey" is required (not null)
             if (apiKey == null)
@@ -81,10 +84,13 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.LockOnRead = lockOnRead;
+            this.LockTtl = lockTtl;
             this.MaxVersions = maxVersions;
             this.MtlsCertDataBase64 = mtlsCertDataBase64;
             this.MtlsKeyDataBase64 = mtlsKeyDataBase64;
             this.NewName = newName;
+            this.RotateOnUnlock = rotateOnUnlock;
             // use default value if no "timeout" provided
             this.Timeout = timeout ?? @"5m";
             this.Token = token;
@@ -142,6 +148,20 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Lock this secret after each successful value read
+        /// </summary>
+        /// <value>Lock this secret after each successful value read</value>
+        [DataMember(Name = "lock-on-read", EmitDefaultValue = false)]
+        public string LockOnRead { get; set; }
+
+        /// <summary>
+        /// Lock TTL in minutes
+        /// </summary>
+        /// <value>Lock TTL in minutes</value>
+        [DataMember(Name = "lock-ttl", EmitDefaultValue = false)]
+        public string LockTtl { get; set; }
+
+        /// <summary>
         /// Set the maximum number of versions, limited by the account settings defaults.
         /// </summary>
         /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
@@ -175,6 +195,13 @@ namespace akeyless.Model
         /// <value>New target name</value>
         [DataMember(Name = "new-name", EmitDefaultValue = false)]
         public string NewName { get; set; }
+
+        /// <summary>
+        /// Rotate this secret after it is unlocked
+        /// </summary>
+        /// <value>Rotate this secret after it is unlocked</value>
+        [DataMember(Name = "rotate-on-unlock", EmitDefaultValue = false)]
+        public string RotateOnUnlock { get; set; }
 
         /// <summary>
         /// Timeout waiting for certificate validation in Duration format (1h - 1 Hour, 20m - 20 Minutes, 33m3s - 33 Minutes and 3 Seconds), maximum 1h.
@@ -219,11 +246,14 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  LockOnRead: ").Append(LockOnRead).Append("\n");
+            sb.Append("  LockTtl: ").Append(LockTtl).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  MtlsCertDataBase64: ").Append(MtlsCertDataBase64).Append("\n");
             sb.Append("  MtlsKeyDataBase64: ").Append(MtlsKeyDataBase64).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  RotateOnUnlock: ").Append(RotateOnUnlock).Append("\n");
             sb.Append("  Timeout: ").Append(Timeout).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

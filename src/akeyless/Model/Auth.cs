@@ -37,14 +37,14 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessId">Access ID.</param>
         /// <param name="accessKey">Access key (relevant only for access-type&#x3D;access_key).</param>
-        /// <param name="accessType">Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert/oci/kerberos) (default to &quot;access_key&quot;).</param>
+        /// <param name="accessType">Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/alicloud/universal_identity/jwt/gcp/cert/oci/kerberos) (default to &quot;access_key&quot;).</param>
         /// <param name="accountId">Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
         /// <param name="azureCloud">Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud. (default to &quot;AzureCloud&quot;).</param>
         /// <param name="certChallenge">Certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert).</param>
         /// <param name="certData">Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert).</param>
-        /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp).</param>
+        /// <param name="cloudId">The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,alicloud,gcp,oci).</param>
         /// <param name="debug">debug.</param>
         /// <param name="disablePafxfast">Disable the FAST negotiation in the Kerberos authentication method.</param>
         /// <param name="gatewaySpn">The service principal name of the gateway as registered in LDAP (i.e., HTTP/gateway).</param>
@@ -122,9 +122,9 @@ namespace akeyless.Model
         public string AccessKey { get; set; }
 
         /// <summary>
-        /// Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert/oci/kerberos)
+        /// Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/alicloud/universal_identity/jwt/gcp/cert/oci/kerberos)
         /// </summary>
-        /// <value>Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert/oci/kerberos)</value>
+        /// <value>Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/alicloud/universal_identity/jwt/gcp/cert/oci/kerberos)</value>
         [DataMember(Name = "access-type", EmitDefaultValue = false)]
         public string AccessType { get; set; }
 
@@ -171,9 +171,9 @@ namespace akeyless.Model
         public string CertData { get; set; }
 
         /// <summary>
-        /// The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp)
+        /// The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,alicloud,gcp,oci)
         /// </summary>
-        /// <value>The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp)</value>
+        /// <value>The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,alicloud,gcp,oci)</value>
         [DataMember(Name = "cloud-id", EmitDefaultValue = false)]
         public string CloudId { get; set; }
 

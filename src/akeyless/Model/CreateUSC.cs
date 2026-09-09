@@ -45,9 +45,9 @@ namespace akeyless.Model
         /// <param name="description">Description of the Universal Secrets Connector.</param>
         /// <param name="environmentNames">The environments in repo-name/environment-name format, comma-separated (only relevant for: github-scope&#x3D;repository-environment).</param>
         /// <param name="gcpFolderId">GCP Folder ID (Relevant only for GCP targets with folder scope).</param>
-        /// <param name="gcpOrganizationId">GCP Organization ID (Relevant only for GCP targets).</param>
-        /// <param name="gcpProjectId">GCP Project ID (Relevant only for GCP targets).</param>
-        /// <param name="gcpScope">The gcp usc scope [ project / organization / folder] (default to &quot;project&quot;).</param>
+        /// <param name="gcpOrganizationId">GCP Organization ID (Relevant only for GCP targets with folder or organization scope).</param>
+        /// <param name="gcpProjectId">GCP Project ID to manage secrets in (Relevant only for GCP targets with project scope). If empty, the project is taken from the target..</param>
+        /// <param name="gcpScope">The GCP USC scope [project/folder/organization]. With folder/organization, all projects under the folder/org are manageable. Relevant only for GCP targets. Defaults to project when empty. (default to &quot;project&quot;).</param>
         /// <param name="gcpSmRegions">GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets..</param>
         /// <param name="githubScope">The scope where secrets will be created, available options: [repository, organization, repository-environment] (default to &quot;repository&quot;).</param>
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
@@ -144,23 +144,23 @@ namespace akeyless.Model
         public string GcpFolderId { get; set; }
 
         /// <summary>
-        /// GCP Organization ID (Relevant only for GCP targets)
+        /// GCP Organization ID (Relevant only for GCP targets with folder or organization scope)
         /// </summary>
-        /// <value>GCP Organization ID (Relevant only for GCP targets)</value>
+        /// <value>GCP Organization ID (Relevant only for GCP targets with folder or organization scope)</value>
         [DataMember(Name = "gcp-organization-id", EmitDefaultValue = false)]
         public string GcpOrganizationId { get; set; }
 
         /// <summary>
-        /// GCP Project ID (Relevant only for GCP targets)
+        /// GCP Project ID to manage secrets in (Relevant only for GCP targets with project scope). If empty, the project is taken from the target.
         /// </summary>
-        /// <value>GCP Project ID (Relevant only for GCP targets)</value>
+        /// <value>GCP Project ID to manage secrets in (Relevant only for GCP targets with project scope). If empty, the project is taken from the target.</value>
         [DataMember(Name = "gcp-project-id", EmitDefaultValue = false)]
         public string GcpProjectId { get; set; }
 
         /// <summary>
-        /// The gcp usc scope [ project / organization / folder]
+        /// The GCP USC scope [project/folder/organization]. With folder/organization, all projects under the folder/org are manageable. Relevant only for GCP targets. Defaults to project when empty.
         /// </summary>
-        /// <value>The gcp usc scope [ project / organization / folder]</value>
+        /// <value>The GCP USC scope [project/folder/organization]. With folder/organization, all projects under the folder/org are manageable. Relevant only for GCP targets. Defaults to project when empty.</value>
         [DataMember(Name = "gcp-scope", EmitDefaultValue = false)]
         public string GcpScope { get; set; }
 

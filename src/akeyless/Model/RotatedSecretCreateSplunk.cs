@@ -46,6 +46,8 @@ namespace akeyless.Model
         /// <param name="autoRotate">autoRotate.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="enableAgenticRuntimeAuthority">EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working..</param>
+        /// <param name="enableAiQuorum">Turns on AI Quorum checks for this item..</param>
         /// <param name="expirationDate">Token expiration date in YYYY-MM-DD format (required for rotator-type&#x3D;token when manual rotation is selected and no existing token is provided). Time will be set to 00:00 UTC..</param>
         /// <param name="hecToken">Current Splunk HEC token value to store (relevant only for rotator-type&#x3D;hec-token). If not provided, a new HEC input will be created in Splunk..</param>
         /// <param name="hecTokenName">Splunk HEC input name to manage  (required for rotator-type&#x3D;hec-token).</param>
@@ -53,10 +55,13 @@ namespace akeyless.Model
         /// <param name="itemCustomFields">Additional custom fields to associate with the item.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">key.</param>
+        /// <param name="lockOnRead">Lock this secret after each successful value read.</param>
+        /// <param name="lockTtl">Lock TTL in minutes.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Rotated secret name (required).</param>
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
+        /// <param name="rotateOnUnlock">Rotate this secret after it is unlocked.</param>
         /// <param name="rotatedPassword">rotated-username password (relevant only for rotator-type&#x3D;password).</param>
         /// <param name="rotatedUsername">username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password).</param>
         /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
@@ -74,7 +79,7 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
-        public RotatedSecretCreateSplunk(bool araEnabled = default(bool), string audience = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), string expirationDate = default(string), string hecToken = default(string), string hecTokenName = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string skipDryRun = default(string), string splunkToken = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string tokenOwner = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public RotatedSecretCreateSplunk(bool araEnabled = default(bool), string audience = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string expirationDate = default(string), string hecToken = default(string), string hecTokenName = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string rotateOnUnlock = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string skipDryRun = default(string), string splunkToken = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string tokenOwner = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -101,6 +106,8 @@ namespace akeyless.Model
             this.AutoRotate = autoRotate;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            this.EnableAgenticRuntimeAuthority = enableAgenticRuntimeAuthority;
+            this.EnableAiQuorum = enableAiQuorum;
             this.ExpirationDate = expirationDate;
             this.HecToken = hecToken;
             this.HecTokenName = hecTokenName;
@@ -108,9 +115,12 @@ namespace akeyless.Model
             this.ItemCustomFields = itemCustomFields;
             this.Json = json;
             this.Key = key;
+            this.LockOnRead = lockOnRead;
+            this.LockTtl = lockTtl;
             this.MaxVersions = maxVersions;
             this.OutputRule = outputRule;
             this.PasswordLength = passwordLength;
+            this.RotateOnUnlock = rotateOnUnlock;
             this.RotatedPassword = rotatedPassword;
             this.RotatedUsername = rotatedUsername;
             this.RotationEventIn = rotationEventIn;
@@ -170,6 +180,20 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.
+        /// </summary>
+        /// <value>EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.</value>
+        [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
+        public bool EnableAgenticRuntimeAuthority { get; set; }
+
+        /// <summary>
+        /// Turns on AI Quorum checks for this item.
+        /// </summary>
+        /// <value>Turns on AI Quorum checks for this item.</value>
+        [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
+        public bool EnableAiQuorum { get; set; }
+
+        /// <summary>
         /// Token expiration date in YYYY-MM-DD format (required for rotator-type&#x3D;token when manual rotation is selected and no existing token is provided). Time will be set to 00:00 UTC.
         /// </summary>
         /// <value>Token expiration date in YYYY-MM-DD format (required for rotator-type&#x3D;token when manual rotation is selected and no existing token is provided). Time will be set to 00:00 UTC.</value>
@@ -218,6 +242,20 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Lock this secret after each successful value read
+        /// </summary>
+        /// <value>Lock this secret after each successful value read</value>
+        [DataMember(Name = "lock-on-read", EmitDefaultValue = false)]
+        public string LockOnRead { get; set; }
+
+        /// <summary>
+        /// Lock TTL in minutes
+        /// </summary>
+        /// <value>Lock TTL in minutes</value>
+        [DataMember(Name = "lock-ttl", EmitDefaultValue = false)]
+        public string LockTtl { get; set; }
+
+        /// <summary>
         /// Set the maximum number of versions, limited by the account settings defaults.
         /// </summary>
         /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
@@ -244,6 +282,13 @@ namespace akeyless.Model
         /// <value>The length of the password to be generated</value>
         [DataMember(Name = "password-length", EmitDefaultValue = false)]
         public string PasswordLength { get; set; }
+
+        /// <summary>
+        /// Rotate this secret after it is unlocked
+        /// </summary>
+        /// <value>Rotate this secret after it is unlocked</value>
+        [DataMember(Name = "rotate-on-unlock", EmitDefaultValue = false)]
+        public string RotateOnUnlock { get; set; }
 
         /// <summary>
         /// rotated-username password (relevant only for rotator-type&#x3D;password)
@@ -378,6 +423,8 @@ namespace akeyless.Model
             sb.Append("  AutoRotate: ").Append(AutoRotate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  EnableAgenticRuntimeAuthority: ").Append(EnableAgenticRuntimeAuthority).Append("\n");
+            sb.Append("  EnableAiQuorum: ").Append(EnableAiQuorum).Append("\n");
             sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
             sb.Append("  HecToken: ").Append(HecToken).Append("\n");
             sb.Append("  HecTokenName: ").Append(HecTokenName).Append("\n");
@@ -385,10 +432,13 @@ namespace akeyless.Model
             sb.Append("  ItemCustomFields: ").Append(ItemCustomFields).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  LockOnRead: ").Append(LockOnRead).Append("\n");
+            sb.Append("  LockTtl: ").Append(LockTtl).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
+            sb.Append("  RotateOnUnlock: ").Append(RotateOnUnlock).Append("\n");
             sb.Append("  RotatedPassword: ").Append(RotatedPassword).Append("\n");
             sb.Append("  RotatedUsername: ").Append(RotatedUsername).Append("\n");
             sb.Append("  RotationEventIn: ").Append(RotationEventIn).Append("\n");

@@ -45,6 +45,7 @@ namespace akeyless.Model
         /// <param name="location">location.</param>
         /// <param name="name">name.</param>
         /// <param name="varNamespace">varNamespace.</param>
+        /// <param name="project">project.</param>
         /// <param name="region">region.</param>
         /// <param name="secretId">secretId.</param>
         /// <param name="status">status.</param>
@@ -54,7 +55,7 @@ namespace akeyless.Model
         /// <param name="varVersion">varVersion.</param>
         /// <param name="versionId">versionId.</param>
         /// <param name="versionIds">versionIds.</param>
-        public SecretInfo(DateTime activationDate = default(DateTime), DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), GithubMetadata github = default(GithubMetadata), string keyId = default(string), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string varNamespace = default(string), string region = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long), string versionId = default(string), List<string> versionIds = default(List<string>))
+        public SecretInfo(DateTime activationDate = default(DateTime), DateTime created = default(DateTime), string description = default(string), DateTime expiration = default(DateTime), GithubMetadata github = default(GithubMetadata), string keyId = default(string), DateTime lastRetrieved = default(DateTime), Object location = default(Object), string name = default(string), string varNamespace = default(string), string project = default(string), string region = default(string), string secretId = default(string), bool status = default(bool), Dictionary<string, string> tags = default(Dictionary<string, string>), string thumbprint = default(string), string type = default(string), long varVersion = default(long), string versionId = default(string), List<string> versionIds = default(List<string>))
         {
             this.ActivationDate = activationDate;
             this.Created = created;
@@ -66,6 +67,7 @@ namespace akeyless.Model
             this.Location = location;
             this.Name = name;
             this.Namespace = varNamespace;
+            this.Project = project;
             this.Region = region;
             this.SecretId = secretId;
             this.Status = status;
@@ -136,6 +138,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "namespace", EmitDefaultValue = false)]
         public string Namespace { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Project
+        /// </summary>
+        [DataMember(Name = "project", EmitDefaultValue = false)]
+        public string Project { get; set; }
 
         /// <summary>
         /// Gets or Sets Region
@@ -209,6 +217,7 @@ namespace akeyless.Model
             sb.Append("  Location: ").Append(Location).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
+            sb.Append("  Project: ").Append(Project).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");

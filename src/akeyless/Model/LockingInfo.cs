@@ -37,12 +37,16 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="actions">actions.</param>
         /// <param name="expireAt">expireAt.</param>
+        /// <param name="lockOrigin">lockOrigin.</param>
+        /// <param name="lockedAt">lockedAt.</param>
         /// <param name="lockedBy">lockedBy.</param>
         /// <param name="uniqueIdentifier">uniqueIdentifier.</param>
-        public LockingInfo(List<string> actions = default(List<string>), long expireAt = default(long), string lockedBy = default(string), string uniqueIdentifier = default(string))
+        public LockingInfo(List<string> actions = default(List<string>), long expireAt = default(long), string lockOrigin = default(string), long lockedAt = default(long), string lockedBy = default(string), string uniqueIdentifier = default(string))
         {
             this.Actions = actions;
             this.ExpireAt = expireAt;
+            this.LockOrigin = lockOrigin;
+            this.LockedAt = lockedAt;
             this.LockedBy = lockedBy;
             this.UniqueIdentifier = uniqueIdentifier;
         }
@@ -58,6 +62,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "expire_at", EmitDefaultValue = false)]
         public long ExpireAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LockOrigin
+        /// </summary>
+        [DataMember(Name = "lock_origin", EmitDefaultValue = false)]
+        public string LockOrigin { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LockedAt
+        /// </summary>
+        [DataMember(Name = "locked_at", EmitDefaultValue = false)]
+        public long LockedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets LockedBy
@@ -81,6 +97,8 @@ namespace akeyless.Model
             sb.Append("class LockingInfo {\n");
             sb.Append("  Actions: ").Append(Actions).Append("\n");
             sb.Append("  ExpireAt: ").Append(ExpireAt).Append("\n");
+            sb.Append("  LockOrigin: ").Append(LockOrigin).Append("\n");
+            sb.Append("  LockedAt: ").Append(LockedAt).Append("\n");
             sb.Append("  LockedBy: ").Append(LockedBy).Append("\n");
             sb.Append("  UniqueIdentifier: ").Append(UniqueIdentifier).Append("\n");
             sb.Append("}\n");

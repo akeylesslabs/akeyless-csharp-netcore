@@ -45,7 +45,7 @@ namespace akeyless.Model
         /// <param name="authMethodId">authMethodId.</param>
         /// <param name="authMethodName">authMethodName.</param>
         /// <param name="authMethodRolesAssoc">authMethodRolesAssoc.</param>
-        /// <param name="bookmarkLoginUrlTemplate">BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback..</param>
+        /// <param name="bookmarkLoginUrlTemplate">BookmarkLoginURLTemplate is an OIDC/SAML login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback..</param>
         /// <param name="clientPermissions">clientPermissions.</param>
         /// <param name="creationDate">creationDate.</param>
         /// <param name="deleteProtection">deleteProtection.</param>
@@ -138,9 +138,9 @@ namespace akeyless.Model
         public List<AuthMethodRoleAssociation> AuthMethodRolesAssoc { get; set; }
 
         /// <summary>
-        /// BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback.
+        /// BookmarkLoginURLTemplate is an OIDC/SAML login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback.
         /// </summary>
-        /// <value>BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback.</value>
+        /// <value>BookmarkLoginURLTemplate is an OIDC/SAML login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback.</value>
         [DataMember(Name = "bookmark_login_url_template", EmitDefaultValue = false)]
         public string BookmarkLoginUrlTemplate { get; set; }
 

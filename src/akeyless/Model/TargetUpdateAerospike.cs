@@ -55,6 +55,8 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="lockOnRead">Lock this secret after each successful value read.</param>
+        /// <param name="lockTtl">Lock TTL in minutes.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="varNamespace">Namespace name (relevant only for Aerospike db).</param>
@@ -62,12 +64,13 @@ namespace akeyless.Model
         /// <param name="newName">New target name.</param>
         /// <param name="password">Password for the admin user.</param>
         /// <param name="port">Database connection port.</param>
+        /// <param name="rotateOnUnlock">Rotate this secret after it is unlocked.</param>
         /// <param name="skipServerNameValidation">Skip server name verification while still validating the certificate chain (true/false). Empty means do not skip..</param>
         /// <param name="ssl">Enable SSL encryption (true/false).</param>
         /// <param name="sslCertificate">Base64-encoded SSL CA certificate from a trusted Certificate Authority (CA).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetUpdateAerospike(string adminUsername = default(string), string aerospikeClientId = default(string), string aerospikeClientSecret = default(string), bool aerospikeCloud = default(bool), string aerospikeClusterId = default(string), string clientCertificate = default(string), string clientPrivateKey = default(string), string dbServerName = default(string), string deleteProtection = default(string), string description = @"default_comment", bool enableMtls = default(bool), string hostname = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), string name = default(string), string varNamespace = default(string), string newComment = @"default_comment", string newName = default(string), string password = default(string), string port = default(string), string skipServerNameValidation = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string))
+        public TargetUpdateAerospike(string adminUsername = default(string), string aerospikeClientId = default(string), string aerospikeClientSecret = default(string), bool aerospikeCloud = default(bool), string aerospikeClusterId = default(string), string clientCertificate = default(string), string clientPrivateKey = default(string), string dbServerName = default(string), string deleteProtection = default(string), string description = @"default_comment", bool enableMtls = default(bool), string hostname = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string varNamespace = default(string), string newComment = @"default_comment", string newName = default(string), string password = default(string), string port = default(string), string rotateOnUnlock = default(string), string skipServerNameValidation = default(string), bool ssl = default(bool), string sslCertificate = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -91,6 +94,8 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.LockOnRead = lockOnRead;
+            this.LockTtl = lockTtl;
             this.MaxVersions = maxVersions;
             this.Namespace = varNamespace;
             // use default value if no "newComment" provided
@@ -98,6 +103,7 @@ namespace akeyless.Model
             this.NewName = newName;
             this.Password = password;
             this.Port = port;
+            this.RotateOnUnlock = rotateOnUnlock;
             this.SkipServerNameValidation = skipServerNameValidation;
             this.Ssl = ssl;
             this.SslCertificate = sslCertificate;
@@ -211,6 +217,20 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Lock this secret after each successful value read
+        /// </summary>
+        /// <value>Lock this secret after each successful value read</value>
+        [DataMember(Name = "lock-on-read", EmitDefaultValue = false)]
+        public string LockOnRead { get; set; }
+
+        /// <summary>
+        /// Lock TTL in minutes
+        /// </summary>
+        /// <value>Lock TTL in minutes</value>
+        [DataMember(Name = "lock-ttl", EmitDefaultValue = false)]
+        public string LockTtl { get; set; }
+
+        /// <summary>
         /// Set the maximum number of versions, limited by the account settings defaults.
         /// </summary>
         /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
@@ -258,6 +278,13 @@ namespace akeyless.Model
         /// <value>Database connection port</value>
         [DataMember(Name = "port", EmitDefaultValue = false)]
         public string Port { get; set; }
+
+        /// <summary>
+        /// Rotate this secret after it is unlocked
+        /// </summary>
+        /// <value>Rotate this secret after it is unlocked</value>
+        [DataMember(Name = "rotate-on-unlock", EmitDefaultValue = false)]
+        public string RotateOnUnlock { get; set; }
 
         /// <summary>
         /// Skip server name verification while still validating the certificate chain (true/false). Empty means do not skip.
@@ -317,6 +344,8 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  LockOnRead: ").Append(LockOnRead).Append("\n");
+            sb.Append("  LockTtl: ").Append(LockTtl).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
@@ -324,6 +353,7 @@ namespace akeyless.Model
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
+            sb.Append("  RotateOnUnlock: ").Append(RotateOnUnlock).Append("\n");
             sb.Append("  SkipServerNameValidation: ").Append(SkipServerNameValidation).Append("\n");
             sb.Append("  Ssl: ").Append(Ssl).Append("\n");
             sb.Append("  SslCertificate: ").Append(SslCertificate).Append("\n");

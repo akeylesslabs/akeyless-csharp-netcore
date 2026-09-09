@@ -13,6 +13,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**AssocRoleAuthMethod**](V2Api.md#assocroleauthmethod) | **POST** /assoc-role-am |  |
 | [**AssocTargetItem**](V2Api.md#assoctargetitem) | **POST** /assoc-target-item |  |
 | [**Auth**](V2Api.md#auth) | **POST** /auth |  |
+| [**AuthMethodCreateAliCloud**](V2Api.md#authmethodcreatealicloud) | **POST** /auth-method-create-alicloud |  |
 | [**AuthMethodCreateApiKey**](V2Api.md#authmethodcreateapikey) | **POST** /auth-method-create-api-key |  |
 | [**AuthMethodCreateAwsIam**](V2Api.md#authmethodcreateawsiam) | **POST** /auth-method-create-aws-iam |  |
 | [**AuthMethodCreateAzureAD**](V2Api.md#authmethodcreateazuread) | **POST** /auth-method-create-azure-ad |  |
@@ -30,6 +31,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**AuthMethodDelete**](V2Api.md#authmethoddelete) | **POST** /auth-method-delete |  |
 | [**AuthMethodGet**](V2Api.md#authmethodget) | **POST** /auth-method-get |  |
 | [**AuthMethodList**](V2Api.md#authmethodlist) | **POST** /auth-method-list |  |
+| [**AuthMethodUpdateAliCloud**](V2Api.md#authmethodupdatealicloud) | **POST** /auth-method-update-alicloud |  |
 | [**AuthMethodUpdateApiKey**](V2Api.md#authmethodupdateapikey) | **POST** /auth-method-update-api-key |  |
 | [**AuthMethodUpdateAwsIam**](V2Api.md#authmethodupdateawsiam) | **POST** /auth-method-update-aws-iam |  |
 | [**AuthMethodUpdateAzureAD**](V2Api.md#authmethodupdateazuread) | **POST** /auth-method-update-azure-ad |  |
@@ -1461,6 +1463,94 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | authResponse wraps response body. |  -  |
 | **401** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="authmethodcreatealicloud"></a>
+# **AuthMethodCreateAliCloud**
+> AuthMethodCreateOutput AuthMethodCreateAliCloud (AuthMethodCreateAliCloud authMethodCreateAliCloud)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class AuthMethodCreateAliCloudExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var authMethodCreateAliCloud = new AuthMethodCreateAliCloud(); // AuthMethodCreateAliCloud | 
+
+            try
+            {
+                AuthMethodCreateOutput result = apiInstance.AuthMethodCreateAliCloud(authMethodCreateAliCloud);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.AuthMethodCreateAliCloud: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AuthMethodCreateAliCloudWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AuthMethodCreateOutput> response = apiInstance.AuthMethodCreateAliCloudWithHttpInfo(authMethodCreateAliCloud);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AuthMethodCreateAliCloudWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **authMethodCreateAliCloud** | [**AuthMethodCreateAliCloud**](AuthMethodCreateAliCloud.md) |  |  |
+
+### Return type
+
+[**AuthMethodCreateOutput**](AuthMethodCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | authMethodCreateAliCloudResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2957,6 +3047,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | authMethodListResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="authmethodupdatealicloud"></a>
+# **AuthMethodUpdateAliCloud**
+> AuthMethodUpdateOutput AuthMethodUpdateAliCloud (AuthMethodUpdateAliCloud authMethodUpdateAliCloud)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class AuthMethodUpdateAliCloudExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var authMethodUpdateAliCloud = new AuthMethodUpdateAliCloud(); // AuthMethodUpdateAliCloud | 
+
+            try
+            {
+                AuthMethodUpdateOutput result = apiInstance.AuthMethodUpdateAliCloud(authMethodUpdateAliCloud);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.AuthMethodUpdateAliCloud: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AuthMethodUpdateAliCloudWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<AuthMethodUpdateOutput> response = apiInstance.AuthMethodUpdateAliCloudWithHttpInfo(authMethodUpdateAliCloud);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.AuthMethodUpdateAliCloudWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **authMethodUpdateAliCloud** | [**AuthMethodUpdateAliCloud**](AuthMethodUpdateAliCloud.md) |  |  |
+
+### Return type
+
+[**AuthMethodUpdateOutput**](AuthMethodUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | authMethodUpdateAliCloudResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

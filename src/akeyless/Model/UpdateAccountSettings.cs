@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="dynamicSecretMaxTtl">Set the maximum ttl for dynamic secrets.</param>
         /// <param name="dynamicSecretMaxTtlEnable">Set a maximum ttl for dynamic secrets [true/false].</param>
         /// <param name="enableAiInsights">Enable AI insights [true/false].</param>
+        /// <param name="enableAiQuorum">Enable AI Quorum checks account-wide [true/false].</param>
         /// <param name="enableDefaultCertificateExpirationEvent">How many days before the expiration of the certificate would you like to be notified. [true/false].</param>
         /// <param name="enableItemSharing">Enable sharing items [true/false].</param>
         /// <param name="enablePasswordExpiration">Enable password expiration policy [true/false].</param>
@@ -87,7 +88,7 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
-        public UpdateAccountSettings(string address = default(string), List<string> allowedClientType = default(List<string>), List<string> allowedEmailDomains = default(List<string>), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), List<string> defaultCertificateExpirationNotificationDays = default(List<string>), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableAiInsights = default(string), string enableDefaultCertificateExpirationEvent = default(string), string enableItemSharing = default(string), string enablePasswordExpiration = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string hidePersonalFolder = default(string), string hideStaticPassword = default(string), string invalidCharacters = @"notReceivedInvalidCharacter", string itemLockingEnabled = default(string), string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockAllowedClientType = default(string), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), long lockMaxTtl = default(long), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), string passwordExpirationDays = default(string), string passwordExpirationNotificationDays = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public UpdateAccountSettings(string address = default(string), List<string> allowedClientType = default(List<string>), List<string> allowedEmailDomains = default(List<string>), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), List<string> defaultCertificateExpirationNotificationDays = default(List<string>), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableAiInsights = default(string), string enableAiQuorum = default(string), string enableDefaultCertificateExpirationEvent = default(string), string enableItemSharing = default(string), string enablePasswordExpiration = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string hidePersonalFolder = default(string), string hideStaticPassword = default(string), string invalidCharacters = @"notReceivedInvalidCharacter", string itemLockingEnabled = default(string), string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockAllowedClientType = default(string), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), long lockMaxTtl = default(long), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), string passwordExpirationDays = default(string), string passwordExpirationNotificationDays = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             this.Address = address;
             this.AllowedClientType = allowedClientType;
@@ -104,6 +105,7 @@ namespace akeyless.Model
             this.DynamicSecretMaxTtl = dynamicSecretMaxTtl;
             this.DynamicSecretMaxTtlEnable = dynamicSecretMaxTtlEnable;
             this.EnableAiInsights = enableAiInsights;
+            this.EnableAiQuorum = enableAiQuorum;
             this.EnableDefaultCertificateExpirationEvent = enableDefaultCertificateExpirationEvent;
             this.EnableItemSharing = enableItemSharing;
             this.EnablePasswordExpiration = enablePasswordExpiration;
@@ -248,6 +250,13 @@ namespace akeyless.Model
         /// <value>Enable AI insights [true/false]</value>
         [DataMember(Name = "enable-ai-insights", EmitDefaultValue = false)]
         public string EnableAiInsights { get; set; }
+
+        /// <summary>
+        /// Enable AI Quorum checks account-wide [true/false]
+        /// </summary>
+        /// <value>Enable AI Quorum checks account-wide [true/false]</value>
+        [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = false)]
+        public string EnableAiQuorum { get; set; }
 
         /// <summary>
         /// How many days before the expiration of the certificate would you like to be notified. [true/false]
@@ -533,6 +542,7 @@ namespace akeyless.Model
             sb.Append("  DynamicSecretMaxTtl: ").Append(DynamicSecretMaxTtl).Append("\n");
             sb.Append("  DynamicSecretMaxTtlEnable: ").Append(DynamicSecretMaxTtlEnable).Append("\n");
             sb.Append("  EnableAiInsights: ").Append(EnableAiInsights).Append("\n");
+            sb.Append("  EnableAiQuorum: ").Append(EnableAiQuorum).Append("\n");
             sb.Append("  EnableDefaultCertificateExpirationEvent: ").Append(EnableDefaultCertificateExpirationEvent).Append("\n");
             sb.Append("  EnableItemSharing: ").Append(EnableItemSharing).Append("\n");
             sb.Append("  EnablePasswordExpiration: ").Append(EnablePasswordExpiration).Append("\n");

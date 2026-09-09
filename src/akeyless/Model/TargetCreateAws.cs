@@ -47,15 +47,18 @@ namespace akeyless.Model
         /// <param name="generateExternalId">A unique auto-generated value used in your AWS account when configuring your AWS IAM role to securely delegate access to Akeyless. Relevant only when using GW cloud ID.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="lockOnRead">Lock this secret after each successful value read.</param>
+        /// <param name="lockTtl">Lock TTL in minutes.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Target name (required).</param>
         /// <param name="region">AWS region (default to &quot;us-east-2&quot;).</param>
         /// <param name="roleArn">AWS IAM role identifier that Gateway will assume in your AWS account, relevant only when using external ID.</param>
+        /// <param name="rotateOnUnlock">Rotate this secret after it is unlocked.</param>
         /// <param name="sessionToken">Required only for temporary security credentials retrieved using STS.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useGwCloudIdentity">Use the GW&#39;s Cloud IAM.</param>
-        public TargetCreateAws(string accessKey = default(string), string accessKeyId = default(string), string deleteProtection = default(string), string description = default(string), bool generateExternalId = default(bool), bool json = false, string key = default(string), string maxVersions = default(string), string name = default(string), string region = @"us-east-2", string roleArn = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
+        public TargetCreateAws(string accessKey = default(string), string accessKeyId = default(string), string deleteProtection = default(string), string description = default(string), bool generateExternalId = default(bool), bool json = false, string key = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string region = @"us-east-2", string roleArn = default(string), string rotateOnUnlock = default(string), string sessionToken = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool))
         {
             // to ensure "accessKey" is required (not null)
             if (accessKey == null)
@@ -80,10 +83,13 @@ namespace akeyless.Model
             this.GenerateExternalId = generateExternalId;
             this.Json = json;
             this.Key = key;
+            this.LockOnRead = lockOnRead;
+            this.LockTtl = lockTtl;
             this.MaxVersions = maxVersions;
             // use default value if no "region" provided
             this.Region = region ?? @"us-east-2";
             this.RoleArn = roleArn;
+            this.RotateOnUnlock = rotateOnUnlock;
             this.SessionToken = sessionToken;
             this.Token = token;
             this.UidToken = uidToken;
@@ -140,6 +146,20 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Lock this secret after each successful value read
+        /// </summary>
+        /// <value>Lock this secret after each successful value read</value>
+        [DataMember(Name = "lock-on-read", EmitDefaultValue = false)]
+        public string LockOnRead { get; set; }
+
+        /// <summary>
+        /// Lock TTL in minutes
+        /// </summary>
+        /// <value>Lock TTL in minutes</value>
+        [DataMember(Name = "lock-ttl", EmitDefaultValue = false)]
+        public string LockTtl { get; set; }
+
+        /// <summary>
         /// Set the maximum number of versions, limited by the account settings defaults.
         /// </summary>
         /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
@@ -166,6 +186,13 @@ namespace akeyless.Model
         /// <value>AWS IAM role identifier that Gateway will assume in your AWS account, relevant only when using external ID</value>
         [DataMember(Name = "role-arn", EmitDefaultValue = false)]
         public string RoleArn { get; set; }
+
+        /// <summary>
+        /// Rotate this secret after it is unlocked
+        /// </summary>
+        /// <value>Rotate this secret after it is unlocked</value>
+        [DataMember(Name = "rotate-on-unlock", EmitDefaultValue = false)]
+        public string RotateOnUnlock { get; set; }
 
         /// <summary>
         /// Required only for temporary security credentials retrieved using STS
@@ -210,10 +237,13 @@ namespace akeyless.Model
             sb.Append("  GenerateExternalId: ").Append(GenerateExternalId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  LockOnRead: ").Append(LockOnRead).Append("\n");
+            sb.Append("  LockTtl: ").Append(LockTtl).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  RoleArn: ").Append(RoleArn).Append("\n");
+            sb.Append("  RotateOnUnlock: ").Append(RotateOnUnlock).Append("\n");
             sb.Append("  SessionToken: ").Append(SessionToken).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

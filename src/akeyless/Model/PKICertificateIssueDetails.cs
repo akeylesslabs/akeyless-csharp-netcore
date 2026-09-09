@@ -79,8 +79,9 @@ namespace akeyless.Model
         /// <param name="renewBeforeExpirationInDays">renewBeforeExpirationInDays.</param>
         /// <param name="requireCn">requireCn.</param>
         /// <param name="serverFlag">serverFlag.</param>
+        /// <param name="splitCertificateChain">SplitCertificateChain, when enabled, separates the leaf certificate from the certificate chain..</param>
         /// <param name="streetAddress">streetAddress.</param>
-        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedIpSans = default(List<string>), List<string> allowedUriSans = default(List<string>), bool autoRenewCertificate = default(bool), string basicConstraints = default(string), bool basicConstraintsCritical = default(bool), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string destinationPath = default(string), bool disableWildcards = default(bool), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long maxPathLen = default(long), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), long ocspNextUpdate = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), string pkiIssuerType = default(string), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), long renewBeforeExpirationInDays = default(long), bool requireCn = default(bool), bool serverFlag = default(bool), List<string> streetAddress = default(List<string>))
+        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedIpSans = default(List<string>), List<string> allowedUriSans = default(List<string>), bool autoRenewCertificate = default(bool), string basicConstraints = default(string), bool basicConstraintsCritical = default(bool), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string destinationPath = default(string), bool disableWildcards = default(bool), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long maxPathLen = default(long), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), long ocspNextUpdate = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), string pkiIssuerType = default(string), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), long renewBeforeExpirationInDays = default(long), bool requireCn = default(bool), bool serverFlag = default(bool), bool splitCertificateChain = default(bool), List<string> streetAddress = default(List<string>))
         {
             this.AcmeEnabled = acmeEnabled;
             this.AllowAnyName = allowAnyName;
@@ -126,6 +127,7 @@ namespace akeyless.Model
             this.RenewBeforeExpirationInDays = renewBeforeExpirationInDays;
             this.RequireCn = requireCn;
             this.ServerFlag = serverFlag;
+            this.SplitCertificateChain = splitCertificateChain;
             this.StreetAddress = streetAddress;
         }
 
@@ -402,6 +404,13 @@ namespace akeyless.Model
         public bool ServerFlag { get; set; }
 
         /// <summary>
+        /// SplitCertificateChain, when enabled, separates the leaf certificate from the certificate chain.
+        /// </summary>
+        /// <value>SplitCertificateChain, when enabled, separates the leaf certificate from the certificate chain.</value>
+        [DataMember(Name = "split_certificate_chain", EmitDefaultValue = true)]
+        public bool SplitCertificateChain { get; set; }
+
+        /// <summary>
         /// Gets or Sets StreetAddress
         /// </summary>
         [DataMember(Name = "street_address", EmitDefaultValue = false)]
@@ -459,6 +468,7 @@ namespace akeyless.Model
             sb.Append("  RenewBeforeExpirationInDays: ").Append(RenewBeforeExpirationInDays).Append("\n");
             sb.Append("  RequireCn: ").Append(RequireCn).Append("\n");
             sb.Append("  ServerFlag: ").Append(ServerFlag).Append("\n");
+            sb.Append("  SplitCertificateChain: ").Append(SplitCertificateChain).Append("\n");
             sb.Append("  StreetAddress: ").Append(StreetAddress).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

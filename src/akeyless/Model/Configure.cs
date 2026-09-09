@@ -37,7 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accessId">Access ID.</param>
         /// <param name="accessKey">Access Key.</param>
-        /// <param name="accessType">Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/gcp/k8s/cert) (default to &quot;access_key&quot;).</param>
+        /// <param name="accessType">Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/alicloud/gcp/k8s/cert/oci/kerberos) (default to &quot;access_key&quot;).</param>
         /// <param name="accountId">Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account).</param>
         /// <param name="adminEmail">Email (relevant only for access-type&#x3D;password).</param>
         /// <param name="adminPassword">Password (relevant only for access-type&#x3D;password).</param>
@@ -108,9 +108,9 @@ namespace akeyless.Model
         public string AccessKey { get; set; }
 
         /// <summary>
-        /// Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/gcp/k8s/cert)
+        /// Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/alicloud/gcp/k8s/cert/oci/kerberos)
         /// </summary>
-        /// <value>Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/gcp/k8s/cert)</value>
+        /// <value>Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/alicloud/gcp/k8s/cert/oci/kerberos)</value>
         [DataMember(Name = "access-type", EmitDefaultValue = false)]
         public string AccessType { get; set; }
 

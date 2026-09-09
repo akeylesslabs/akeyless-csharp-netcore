@@ -50,6 +50,7 @@ Name | Type | Description | Notes
 **ScheduledRenew** | **long** | Number of days before expiration to renew certificates | [optional] 
 **ServerFlag** | **bool** | If set, certificates will be flagged for server auth use | [optional] 
 **SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [optional] 
+**SplitCertificateChain** | **bool** | If set, separates the leaf certificate from the certificate chain. | [optional] 
 **StreetAddress** | **string** | A comma-separated list of street addresses that will be set in the issued certificate | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **string** | The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs. Not supported for Let&#39;s Encrypt, which always uses the CA default lifetime (about 90 days). | 

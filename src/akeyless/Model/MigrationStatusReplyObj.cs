@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certificates">certificates.</param>
         /// <param name="computers">computers.</param>
+        /// <param name="downloadReport">downloadReport.</param>
         /// <param name="durationTime">durationTime.</param>
         /// <param name="error">error.</param>
         /// <param name="lastStatusMessage">lastStatusMessage.</param>
@@ -52,10 +53,11 @@ namespace akeyless.Model
         /// <param name="startTime">startTime.</param>
         /// <param name="sync">sync.</param>
         /// <param name="targets">targets.</param>
-        public MigrationStatusReplyObj(MigrationItems certificates = default(MigrationItems), long computers = default(long), string durationTime = default(string), string error = default(string), string lastStatusMessage = default(string), long maxNameLength = default(long), long maxValueLength = default(long), string migrationId = default(string), MigrationItems migrationItems = default(MigrationItems), string migrationName = default(string), string migrationState = default(string), string migrationType = default(string), string migrationTypeName = default(string), MigrationItems rotatedSecrets = default(MigrationItems), string startTime = default(string), SyncCounters sync = default(SyncCounters), MigrationItems targets = default(MigrationItems))
+        public MigrationStatusReplyObj(MigrationItems certificates = default(MigrationItems), long computers = default(long), MigrationDownloadReport downloadReport = default(MigrationDownloadReport), string durationTime = default(string), string error = default(string), string lastStatusMessage = default(string), long maxNameLength = default(long), long maxValueLength = default(long), string migrationId = default(string), MigrationItems migrationItems = default(MigrationItems), string migrationName = default(string), string migrationState = default(string), string migrationType = default(string), string migrationTypeName = default(string), MigrationItems rotatedSecrets = default(MigrationItems), string startTime = default(string), SyncCounters sync = default(SyncCounters), MigrationItems targets = default(MigrationItems))
         {
             this.Certificates = certificates;
             this.Computers = computers;
+            this.DownloadReport = downloadReport;
             this.DurationTime = durationTime;
             this.Error = error;
             this.LastStatusMessage = lastStatusMessage;
@@ -84,6 +86,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "computers", EmitDefaultValue = false)]
         public long Computers { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DownloadReport
+        /// </summary>
+        [DataMember(Name = "download_report", EmitDefaultValue = false)]
+        public MigrationDownloadReport DownloadReport { get; set; }
 
         /// <summary>
         /// Gets or Sets DurationTime
@@ -185,6 +193,7 @@ namespace akeyless.Model
             sb.Append("class MigrationStatusReplyObj {\n");
             sb.Append("  Certificates: ").Append(Certificates).Append("\n");
             sb.Append("  Computers: ").Append(Computers).Append("\n");
+            sb.Append("  DownloadReport: ").Append(DownloadReport).Append("\n");
             sb.Append("  DurationTime: ").Append(DurationTime).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  LastStatusMessage: ").Append(LastStatusMessage).Append("\n");

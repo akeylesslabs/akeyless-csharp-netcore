@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Actions** | **List&lt;string&gt;** |  | [optional] 
 **ExpireAt** | **long** |  | [optional] 
+**LockOrigin** | **string** |  | [optional] 
+**LockedAt** | **long** |  | [optional] 
 **LockedBy** | **string** |  | [optional] 
 **UniqueIdentifier** | **string** |  | [optional] 
 

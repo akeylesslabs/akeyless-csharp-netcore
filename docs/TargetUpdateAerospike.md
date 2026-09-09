@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**LockOnRead** | **string** | Lock this secret after each successful value read | [optional] 
+**LockTtl** | **string** | Lock TTL in minutes | [optional] 
 **MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Target name | 
 **Namespace** | **string** | Namespace name (relevant only for Aerospike db) | [optional] 
@@ -26,6 +28,7 @@ Name | Type | Description | Notes
 **NewName** | **string** | New target name | [optional] 
 **Password** | **string** | Password for the admin user | [optional] 
 **Port** | **string** | Database connection port | [optional] 
+**RotateOnUnlock** | **string** | Rotate this secret after it is unlocked | [optional] 
 **SkipServerNameValidation** | **string** | Skip server name verification while still validating the certificate chain (true/false). Empty means do not skip. | [optional] 
 **Ssl** | **bool** | Enable SSL encryption (true/false) | [optional] 
 **SslCertificate** | **string** | Base64-encoded SSL CA certificate from a trusted Certificate Authority (CA) | [optional] 

@@ -60,6 +60,8 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
         /// <param name="key">The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used).</param>
+        /// <param name="lockOnRead">Lock this secret after each successful value read.</param>
+        /// <param name="lockTtl">Lock TTL in minutes.</param>
         /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="mongodbAtlas">mongodbAtlas.</param>
         /// <param name="mongodbAtlasApiPrivateKey">MongoDB Atlas private key.</param>
@@ -76,6 +78,7 @@ namespace akeyless.Model
         /// <param name="parentTargetName">Name of the parent target, relevant only when connection-type is parent-target.</param>
         /// <param name="port">port.</param>
         /// <param name="pwd">pwd.</param>
+        /// <param name="rotateOnUnlock">Rotate this secret after it is unlocked.</param>
         /// <param name="skipServerNameValidation">(Optional) Skip server name verification.</param>
         /// <param name="snowflakeAccount">snowflakeAccount.</param>
         /// <param name="snowflakeApiPrivateKey">RSA Private key (base64 encoded).</param>
@@ -86,7 +89,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
         /// <param name="userName">userName.</param>
-        public UpdateDBTarget(string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string clientCertificate = default(string), string clientKeyPassphrase = default(string), string clientPrivateKey = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string comment = default(string), string connectionType = @"credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), bool enableMtls = default(bool), string host = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string oracleWalletLoginType = default(string), string oracleWalletP12FileData = default(string), string oracleWalletSsoFileData = default(string), string parentTargetName = default(string), string port = default(string), string pwd = default(string), string skipServerNameValidation = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
+        public UpdateDBTarget(string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string clientCertificate = default(string), string clientKeyPassphrase = default(string), string clientPrivateKey = default(string), string cloudServiceProvider = default(string), bool clusterMode = default(bool), string comment = default(string), string connectionType = @"credentials", string dbName = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string dbType = default(string), string description = default(string), bool enableMtls = default(bool), string host = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), bool mongodbAtlas = default(bool), string mongodbAtlasApiPrivateKey = default(string), string mongodbAtlasApiPublicKey = default(string), string mongodbAtlasProjectId = default(string), string mongodbDefaultAuthDb = default(string), string mongodbUriOptions = default(string), string name = default(string), string newName = default(string), string oracleServiceName = default(string), string oracleWalletLoginType = default(string), string oracleWalletP12FileData = default(string), string oracleWalletSsoFileData = default(string), string parentTargetName = default(string), string port = default(string), string pwd = default(string), string rotateOnUnlock = default(string), string skipServerNameValidation = default(string), string snowflakeAccount = default(string), string snowflakeApiPrivateKey = default(string), string snowflakeApiPrivateKeyPassword = default(string), bool ssl = false, string sslCertificate = default(string), string token = default(string), string uidToken = default(string), bool updateVersion = default(bool), string userName = default(string))
         {
             // to ensure "connectionType" is required (not null)
             if (connectionType == null)
@@ -124,6 +127,8 @@ namespace akeyless.Model
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
             this.Key = key;
+            this.LockOnRead = lockOnRead;
+            this.LockTtl = lockTtl;
             this.MaxVersions = maxVersions;
             this.MongodbAtlas = mongodbAtlas;
             this.MongodbAtlasApiPrivateKey = mongodbAtlasApiPrivateKey;
@@ -139,6 +144,7 @@ namespace akeyless.Model
             this.ParentTargetName = parentTargetName;
             this.Port = port;
             this.Pwd = pwd;
+            this.RotateOnUnlock = rotateOnUnlock;
             this.SkipServerNameValidation = skipServerNameValidation;
             this.SnowflakeAccount = snowflakeAccount;
             this.SnowflakeApiPrivateKey = snowflakeApiPrivateKey;
@@ -289,6 +295,20 @@ namespace akeyless.Model
         public string Key { get; set; }
 
         /// <summary>
+        /// Lock this secret after each successful value read
+        /// </summary>
+        /// <value>Lock this secret after each successful value read</value>
+        [DataMember(Name = "lock-on-read", EmitDefaultValue = false)]
+        public string LockOnRead { get; set; }
+
+        /// <summary>
+        /// Lock TTL in minutes
+        /// </summary>
+        /// <value>Lock TTL in minutes</value>
+        [DataMember(Name = "lock-ttl", EmitDefaultValue = false)]
+        public string LockTtl { get; set; }
+
+        /// <summary>
         /// Set the maximum number of versions, limited by the account settings defaults.
         /// </summary>
         /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
@@ -398,6 +418,13 @@ namespace akeyless.Model
         public string Pwd { get; set; }
 
         /// <summary>
+        /// Rotate this secret after it is unlocked
+        /// </summary>
+        /// <value>Rotate this secret after it is unlocked</value>
+        [DataMember(Name = "rotate-on-unlock", EmitDefaultValue = false)]
+        public string RotateOnUnlock { get; set; }
+
+        /// <summary>
         /// (Optional) Skip server name verification
         /// </summary>
         /// <value>(Optional) Skip server name verification</value>
@@ -493,6 +520,8 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  LockOnRead: ").Append(LockOnRead).Append("\n");
+            sb.Append("  LockTtl: ").Append(LockTtl).Append("\n");
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  MongodbAtlas: ").Append(MongodbAtlas).Append("\n");
             sb.Append("  MongodbAtlasApiPrivateKey: ").Append(MongodbAtlasApiPrivateKey).Append("\n");
@@ -509,6 +538,7 @@ namespace akeyless.Model
             sb.Append("  ParentTargetName: ").Append(ParentTargetName).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  Pwd: ").Append(Pwd).Append("\n");
+            sb.Append("  RotateOnUnlock: ").Append(RotateOnUnlock).Append("\n");
             sb.Append("  SkipServerNameValidation: ").Append(SkipServerNameValidation).Append("\n");
             sb.Append("  SnowflakeAccount: ").Append(SnowflakeAccount).Append("\n");
             sb.Append("  SnowflakeApiPrivateKey: ").Append(SnowflakeApiPrivateKey).Append("\n");

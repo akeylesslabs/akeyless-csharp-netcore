@@ -37,22 +37,31 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="certIssuerName">The parent PKI Certificate Issuer&#39;s name of the certificate, required when used with display-id and token.</param>
         /// <param name="displayId">Certificate display ID.</param>
+        /// <param name="format">Format to download the certificate in [pem/pfx/jks], pfx/jks require a password (default to &quot;pem&quot;).</param>
         /// <param name="ignoreCache">Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI (default to &quot;false&quot;).</param>
+        /// <param name="includePrivateKey">If set, includes the private key in the pfx/jks file, only relevant when format is pfx or jks.</param>
         /// <param name="issuanceToken">Token for getting the issued certificate.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="leafOnly">If set, downloads only the leaf certificate instead of the full chain, only available for certificates issued with split certificate chain enabled.</param>
         /// <param name="name">Certificate name.</param>
+        /// <param name="password">Password to protect the pfx/jks file, required when format is pfx or jks.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="varVersion">Certificate version.</param>
-        public GetCertificateValue(string certIssuerName = default(string), string displayId = default(string), string ignoreCache = @"false", string issuanceToken = default(string), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string), int varVersion = default(int))
+        public GetCertificateValue(string certIssuerName = default(string), string displayId = default(string), string format = @"pem", string ignoreCache = @"false", bool includePrivateKey = default(bool), string issuanceToken = default(string), bool json = false, bool leafOnly = default(bool), string name = default(string), string password = default(string), string token = default(string), string uidToken = default(string), int varVersion = default(int))
         {
             this.CertIssuerName = certIssuerName;
             this.DisplayId = displayId;
+            // use default value if no "format" provided
+            this.Format = format ?? @"pem";
             // use default value if no "ignoreCache" provided
             this.IgnoreCache = ignoreCache ?? @"false";
+            this.IncludePrivateKey = includePrivateKey;
             this.IssuanceToken = issuanceToken;
             this.Json = json;
+            this.LeafOnly = leafOnly;
             this.Name = name;
+            this.Password = password;
             this.Token = token;
             this.UidToken = uidToken;
             this.VarVersion = varVersion;
@@ -73,11 +82,25 @@ namespace akeyless.Model
         public string DisplayId { get; set; }
 
         /// <summary>
+        /// Format to download the certificate in [pem/pfx/jks], pfx/jks require a password
+        /// </summary>
+        /// <value>Format to download the certificate in [pem/pfx/jks], pfx/jks require a password</value>
+        [DataMember(Name = "format", EmitDefaultValue = false)]
+        public string Format { get; set; }
+
+        /// <summary>
         /// Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI
         /// </summary>
         /// <value>Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI</value>
         [DataMember(Name = "ignore-cache", EmitDefaultValue = false)]
         public string IgnoreCache { get; set; }
+
+        /// <summary>
+        /// If set, includes the private key in the pfx/jks file, only relevant when format is pfx or jks
+        /// </summary>
+        /// <value>If set, includes the private key in the pfx/jks file, only relevant when format is pfx or jks</value>
+        [DataMember(Name = "include-private-key", EmitDefaultValue = true)]
+        public bool IncludePrivateKey { get; set; }
 
         /// <summary>
         /// Token for getting the issued certificate
@@ -94,11 +117,25 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
+        /// If set, downloads only the leaf certificate instead of the full chain, only available for certificates issued with split certificate chain enabled
+        /// </summary>
+        /// <value>If set, downloads only the leaf certificate instead of the full chain, only available for certificates issued with split certificate chain enabled</value>
+        [DataMember(Name = "leaf-only", EmitDefaultValue = true)]
+        public bool LeafOnly { get; set; }
+
+        /// <summary>
         /// Certificate name
         /// </summary>
         /// <value>Certificate name</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Password to protect the pfx/jks file, required when format is pfx or jks
+        /// </summary>
+        /// <value>Password to protect the pfx/jks file, required when format is pfx or jks</value>
+        [DataMember(Name = "password", EmitDefaultValue = false)]
+        public string Password { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -131,10 +168,14 @@ namespace akeyless.Model
             sb.Append("class GetCertificateValue {\n");
             sb.Append("  CertIssuerName: ").Append(CertIssuerName).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
+            sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  IgnoreCache: ").Append(IgnoreCache).Append("\n");
+            sb.Append("  IncludePrivateKey: ").Append(IncludePrivateKey).Append("\n");
             sb.Append("  IssuanceToken: ").Append(IssuanceToken).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  LeafOnly: ").Append(LeafOnly).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");

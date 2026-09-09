@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Location** | **Object** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **Namespace** | **string** |  | [optional] 
+**Project** | **string** |  | [optional] 
 **Region** | **string** |  | [optional] 
 **SecretId** | **string** |  | [optional] 
 **Status** | **bool** |  | [optional] 

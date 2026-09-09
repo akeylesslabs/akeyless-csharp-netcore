@@ -41,6 +41,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="CreateRole" /> class.
         /// </summary>
         /// <param name="analyticsAccess">Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods..</param>
+        /// <param name="approveAccessRequest">Allow this role to approve Access Requests for items. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported. The tier controls how broadly the approver may list Auth Methods; neither tier lets them grant permissions they do not already hold on the requested item or target..</param>
         /// <param name="araReportsAccess">Allow this role to view Agentic Runtime Authority Dashboard. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="auditAccess">Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods..</param>
         /// <param name="comment">Deprecated - use description.</param>
@@ -57,8 +58,9 @@ namespace akeyless.Model
         /// <param name="sraReportsAccess">Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
+        /// <param name="unlockSecrets">Allow this role to force-unlock locked secrets. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported..</param>
         /// <param name="usageReportsAccess">Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported..</param>
-        public CreateRole(string analyticsAccess = default(string), string araReportsAccess = default(string), string auditAccess = default(string), string comment = default(string), string deleteProtection = default(string), string description = default(string), string eventCenterAccess = default(string), string eventForwardersAccess = default(string), List<string> eventForwardersName = default(List<string>), string gwAnalyticsAccess = default(string), string isiAccess = default(string), bool json = false, string name = default(string), string reverseRbacAccess = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string usageReportsAccess = default(string))
+        public CreateRole(string analyticsAccess = default(string), string approveAccessRequest = default(string), string araReportsAccess = default(string), string auditAccess = default(string), string comment = default(string), string deleteProtection = default(string), string description = default(string), string eventCenterAccess = default(string), string eventForwardersAccess = default(string), List<string> eventForwardersName = default(List<string>), string gwAnalyticsAccess = default(string), string isiAccess = default(string), bool json = false, string name = default(string), string reverseRbacAccess = default(string), string sraReportsAccess = default(string), string token = default(string), string uidToken = default(string), string unlockSecrets = default(string), string usageReportsAccess = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -67,6 +69,7 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AnalyticsAccess = analyticsAccess;
+            this.ApproveAccessRequest = approveAccessRequest;
             this.AraReportsAccess = araReportsAccess;
             this.AuditAccess = auditAccess;
             this.Comment = comment;
@@ -82,6 +85,7 @@ namespace akeyless.Model
             this.SraReportsAccess = sraReportsAccess;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UnlockSecrets = unlockSecrets;
             this.UsageReportsAccess = usageReportsAccess;
         }
 
@@ -91,6 +95,13 @@ namespace akeyless.Model
         /// <value>Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods.</value>
         [DataMember(Name = "analytics-access", EmitDefaultValue = false)]
         public string AnalyticsAccess { get; set; }
+
+        /// <summary>
+        /// Allow this role to approve Access Requests for items. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported. The tier controls how broadly the approver may list Auth Methods; neither tier lets them grant permissions they do not already hold on the requested item or target.
+        /// </summary>
+        /// <value>Allow this role to approve Access Requests for items. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported. The tier controls how broadly the approver may list Auth Methods; neither tier lets them grant permissions they do not already hold on the requested item or target.</value>
+        [DataMember(Name = "approve-access-request", EmitDefaultValue = false)]
+        public string ApproveAccessRequest { get; set; }
 
         /// <summary>
         /// Allow this role to view Agentic Runtime Authority Dashboard. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported.
@@ -205,6 +216,13 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Allow this role to force-unlock locked secrets. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported.
+        /// </summary>
+        /// <value>Allow this role to force-unlock locked secrets. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported.</value>
+        [DataMember(Name = "unlock-secrets", EmitDefaultValue = false)]
+        public string UnlockSecrets { get; set; }
+
+        /// <summary>
         /// Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported.
         /// </summary>
         /// <value>Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported.</value>
@@ -220,6 +238,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateRole {\n");
             sb.Append("  AnalyticsAccess: ").Append(AnalyticsAccess).Append("\n");
+            sb.Append("  ApproveAccessRequest: ").Append(ApproveAccessRequest).Append("\n");
             sb.Append("  AraReportsAccess: ").Append(AraReportsAccess).Append("\n");
             sb.Append("  AuditAccess: ").Append(AuditAccess).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
@@ -236,6 +255,7 @@ namespace akeyless.Model
             sb.Append("  SraReportsAccess: ").Append(SraReportsAccess).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UnlockSecrets: ").Append(UnlockSecrets).Append("\n");
             sb.Append("  UsageReportsAccess: ").Append(UsageReportsAccess).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

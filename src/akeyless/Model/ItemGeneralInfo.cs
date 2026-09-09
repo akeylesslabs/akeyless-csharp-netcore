@@ -47,14 +47,18 @@ namespace akeyless.Model
         /// <param name="expirationEvents">expirationEvents.</param>
         /// <param name="importerInfo">importerInfo.</param>
         /// <param name="issuerOverviewInfo">issuerOverviewInfo.</param>
+        /// <param name="lockOnRead">lockOnRead.</param>
+        /// <param name="lockTtl">lockTtl.</param>
         /// <param name="nextRotationEvents">nextRotationEvents.</param>
         /// <param name="oidcClientInfo">oidcClientInfo.</param>
         /// <param name="passwordPolicy">passwordPolicy.</param>
+        /// <param name="pendingRotateOnUnlock">pendingRotateOnUnlock.</param>
+        /// <param name="rotateOnUnlock">rotateOnUnlock.</param>
         /// <param name="rotatedSecretDetails">rotatedSecretDetails.</param>
         /// <param name="secureRemoteAccessDetails">secureRemoteAccessDetails.</param>
         /// <param name="staticSecretInfo">staticSecretInfo.</param>
         /// <param name="tokenizerInfo">tokenizerInfo.</param>
-        public ItemGeneralInfo(AgenticRules agenticRules = default(AgenticRules), CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), CertificateChainInfo certificateChainInfo = default(CertificateChainInfo), string certificateFormat = default(string), CertificateTemplateInfo certificatesTemplateInfo = default(CertificateTemplateInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), ImporterInfo importerInfo = default(ImporterInfo), IssuerOverviewInfo issuerOverviewInfo = default(IssuerOverviewInfo), List<NextAutoRotationEvent> nextRotationEvents = default(List<NextAutoRotationEvent>), OidcClientInfo oidcClientInfo = default(OidcClientInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
+        public ItemGeneralInfo(AgenticRules agenticRules = default(AgenticRules), CertificateIssueInfo certIssueDetails = default(CertificateIssueInfo), CertificateChainInfo certificateChainInfo = default(CertificateChainInfo), string certificateFormat = default(string), CertificateTemplateInfo certificatesTemplateInfo = default(CertificateTemplateInfo), ClassicKeyDetailsInfo classicKeyDetails = default(ClassicKeyDetailsInfo), string clusterGwUrl = default(string), string displayMetadata = default(string), DynamicSecretProducerInfo dynamicSecretProducerDetails = default(DynamicSecretProducerInfo), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), ImporterInfo importerInfo = default(ImporterInfo), IssuerOverviewInfo issuerOverviewInfo = default(IssuerOverviewInfo), bool lockOnRead = default(bool), long lockTtl = default(long), List<NextAutoRotationEvent> nextRotationEvents = default(List<NextAutoRotationEvent>), OidcClientInfo oidcClientInfo = default(OidcClientInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), bool pendingRotateOnUnlock = default(bool), bool rotateOnUnlock = default(bool), RotatedSecretDetailsInfo rotatedSecretDetails = default(RotatedSecretDetailsInfo), SecureRemoteAccess secureRemoteAccessDetails = default(SecureRemoteAccess), StaticSecretDetailsInfo staticSecretInfo = default(StaticSecretDetailsInfo), TokenizerInfo tokenizerInfo = default(TokenizerInfo))
         {
             this.AgenticRules = agenticRules;
             this.CertIssueDetails = certIssueDetails;
@@ -68,9 +72,13 @@ namespace akeyless.Model
             this.ExpirationEvents = expirationEvents;
             this.ImporterInfo = importerInfo;
             this.IssuerOverviewInfo = issuerOverviewInfo;
+            this.LockOnRead = lockOnRead;
+            this.LockTtl = lockTtl;
             this.NextRotationEvents = nextRotationEvents;
             this.OidcClientInfo = oidcClientInfo;
             this.PasswordPolicy = passwordPolicy;
+            this.PendingRotateOnUnlock = pendingRotateOnUnlock;
+            this.RotateOnUnlock = rotateOnUnlock;
             this.RotatedSecretDetails = rotatedSecretDetails;
             this.SecureRemoteAccessDetails = secureRemoteAccessDetails;
             this.StaticSecretInfo = staticSecretInfo;
@@ -150,6 +158,18 @@ namespace akeyless.Model
         public IssuerOverviewInfo IssuerOverviewInfo { get; set; }
 
         /// <summary>
+        /// Gets or Sets LockOnRead
+        /// </summary>
+        [DataMember(Name = "lock_on_read", EmitDefaultValue = true)]
+        public bool LockOnRead { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LockTtl
+        /// </summary>
+        [DataMember(Name = "lock_ttl", EmitDefaultValue = false)]
+        public long LockTtl { get; set; }
+
+        /// <summary>
         /// Gets or Sets NextRotationEvents
         /// </summary>
         [DataMember(Name = "next_rotation_events", EmitDefaultValue = false)]
@@ -166,6 +186,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "password_policy", EmitDefaultValue = false)]
         public PasswordPolicyInfo PasswordPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PendingRotateOnUnlock
+        /// </summary>
+        [DataMember(Name = "pending_rotate_on_unlock", EmitDefaultValue = true)]
+        public bool PendingRotateOnUnlock { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RotateOnUnlock
+        /// </summary>
+        [DataMember(Name = "rotate_on_unlock", EmitDefaultValue = true)]
+        public bool RotateOnUnlock { get; set; }
 
         /// <summary>
         /// Gets or Sets RotatedSecretDetails
@@ -211,9 +243,13 @@ namespace akeyless.Model
             sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
             sb.Append("  ImporterInfo: ").Append(ImporterInfo).Append("\n");
             sb.Append("  IssuerOverviewInfo: ").Append(IssuerOverviewInfo).Append("\n");
+            sb.Append("  LockOnRead: ").Append(LockOnRead).Append("\n");
+            sb.Append("  LockTtl: ").Append(LockTtl).Append("\n");
             sb.Append("  NextRotationEvents: ").Append(NextRotationEvents).Append("\n");
             sb.Append("  OidcClientInfo: ").Append(OidcClientInfo).Append("\n");
             sb.Append("  PasswordPolicy: ").Append(PasswordPolicy).Append("\n");
+            sb.Append("  PendingRotateOnUnlock: ").Append(PendingRotateOnUnlock).Append("\n");
+            sb.Append("  RotateOnUnlock: ").Append(RotateOnUnlock).Append("\n");
             sb.Append("  RotatedSecretDetails: ").Append(RotatedSecretDetails).Append("\n");
             sb.Append("  SecureRemoteAccessDetails: ").Append(SecureRemoteAccessDetails).Append("\n");
             sb.Append("  StaticSecretInfo: ").Append(StaticSecretInfo).Append("\n");

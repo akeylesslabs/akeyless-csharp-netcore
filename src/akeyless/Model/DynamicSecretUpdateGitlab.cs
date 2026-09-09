@@ -43,6 +43,8 @@ namespace akeyless.Model
         /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
+        /// <param name="enableAgenticRuntimeAuthority">EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias..</param>
+        /// <param name="enableAiQuorum">Turns on AI Quorum checks for this item..</param>
         /// <param name="gitlabAccessToken">Gitlab access token.</param>
         /// <param name="gitlabAccessType">Gitlab access token type [project,group] (required).</param>
         /// <param name="gitlabCertificate">Gitlab tls certificate (base64 encoded).</param>
@@ -63,7 +65,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Access Token TTL.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DynamicSecretUpdateGitlab(bool araEnabled = default(bool), string deleteProtection = default(string), string description = default(string), string gitlabAccessToken = default(string), string gitlabAccessType = default(string), string gitlabCertificate = default(string), string gitlabRole = default(string), string gitlabTokenScopes = default(string), string gitlabUrl = @"https://gitlab.com/", string groupName = default(string), List<string> inputRule = default(List<string>), string installationOrganization = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public DynamicSecretUpdateGitlab(bool araEnabled = default(bool), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string gitlabAccessToken = default(string), string gitlabAccessType = default(string), string gitlabCertificate = default(string), string gitlabRole = default(string), string gitlabTokenScopes = default(string), string gitlabUrl = @"https://gitlab.com/", string groupName = default(string), List<string> inputRule = default(List<string>), string installationOrganization = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "gitlabAccessType" is required (not null)
             if (gitlabAccessType == null)
@@ -86,6 +88,8 @@ namespace akeyless.Model
             this.AraEnabled = araEnabled;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
+            this.EnableAgenticRuntimeAuthority = enableAgenticRuntimeAuthority;
+            this.EnableAiQuorum = enableAiQuorum;
             this.GitlabAccessToken = gitlabAccessToken;
             this.GitlabCertificate = gitlabCertificate;
             this.GitlabRole = gitlabRole;
@@ -126,6 +130,20 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.
+        /// </summary>
+        /// <value>EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.</value>
+        [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
+        public bool EnableAgenticRuntimeAuthority { get; set; }
+
+        /// <summary>
+        /// Turns on AI Quorum checks for this item.
+        /// </summary>
+        /// <value>Turns on AI Quorum checks for this item.</value>
+        [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
+        public bool EnableAiQuorum { get; set; }
 
         /// <summary>
         /// Gitlab access token
@@ -278,6 +296,8 @@ namespace akeyless.Model
             sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  EnableAgenticRuntimeAuthority: ").Append(EnableAgenticRuntimeAuthority).Append("\n");
+            sb.Append("  EnableAiQuorum: ").Append(EnableAiQuorum).Append("\n");
             sb.Append("  GitlabAccessToken: ").Append(GitlabAccessToken).Append("\n");
             sb.Append("  GitlabAccessType: ").Append(GitlabAccessType).Append("\n");
             sb.Append("  GitlabCertificate: ").Append(GitlabCertificate).Append("\n");

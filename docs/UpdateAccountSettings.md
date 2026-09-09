@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **DynamicSecretMaxTtl** | **long** | Set the maximum ttl for dynamic secrets | [optional] 
 **DynamicSecretMaxTtlEnable** | **string** | Set a maximum ttl for dynamic secrets [true/false] | [optional] 
 **EnableAiInsights** | **string** | Enable AI insights [true/false] | [optional] 
+**EnableAiQuorum** | **string** | Enable AI Quorum checks account-wide [true/false] | [optional] 
 **EnableDefaultCertificateExpirationEvent** | **string** | How many days before the expiration of the certificate would you like to be notified. [true/false] | [optional] 
 **EnableItemSharing** | **string** | Enable sharing items [true/false] | [optional] 
 **EnablePasswordExpiration** | **string** | Enable password expiration policy [true/false] | [optional] 

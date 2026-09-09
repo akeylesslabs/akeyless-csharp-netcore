@@ -52,9 +52,11 @@ namespace akeyless.Model
         /// <param name="expirationEvents">expirationEvents.</param>
         /// <param name="externalCaId">externalCaId.</param>
         /// <param name="issuanceStatus">issuanceStatus.</param>
+        /// <param name="leafCertificatePem">LeafCertificatePem contains only the leaf certificate, derived from CertificatePem. Populated only when the certificate was issued with SplitCertificateChain enabled..</param>
         /// <param name="notBefore">notBefore.</param>
         /// <param name="renewBeforeExpirationInDays">renewBeforeExpirationInDays.</param>
-        public CertificateChainInfo(bool autoRenewCertificate = default(bool), List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), bool certificateHasPrivateKey = default(bool), long certificateIssuerGwClusterId = default(long), string certificateIssuerGwClusterUrl = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), string commonName = default(string), string csrPem = default(string), string errorMessage = default(string), DateTime expirationDate = default(DateTime), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), NullString externalCaId = default(NullString), string issuanceStatus = default(string), DateTime notBefore = default(DateTime), long renewBeforeExpirationInDays = default(long))
+        /// <param name="splitCertificateChain">SplitCertificateChain reflects whether this certificate was issued while its PKI Cert Issuer had split-certificate-chain enabled. When true, LeafCertificatePem is populated in addition to CertificatePem (which always holds the full chain)..</param>
+        public CertificateChainInfo(bool autoRenewCertificate = default(bool), List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), bool certificateHasPrivateKey = default(bool), long certificateIssuerGwClusterId = default(long), string certificateIssuerGwClusterUrl = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), string commonName = default(string), string csrPem = default(string), string errorMessage = default(string), DateTime expirationDate = default(DateTime), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), NullString externalCaId = default(NullString), string issuanceStatus = default(string), string leafCertificatePem = default(string), DateTime notBefore = default(DateTime), long renewBeforeExpirationInDays = default(long), bool splitCertificateChain = default(bool))
         {
             this.AutoRenewCertificate = autoRenewCertificate;
             this.CertificateChain = certificateChain;
@@ -73,8 +75,10 @@ namespace akeyless.Model
             this.ExpirationEvents = expirationEvents;
             this.ExternalCaId = externalCaId;
             this.IssuanceStatus = issuanceStatus;
+            this.LeafCertificatePem = leafCertificatePem;
             this.NotBefore = notBefore;
             this.RenewBeforeExpirationInDays = renewBeforeExpirationInDays;
+            this.SplitCertificateChain = splitCertificateChain;
         }
 
         /// <summary>
@@ -181,6 +185,13 @@ namespace akeyless.Model
         public string IssuanceStatus { get; set; }
 
         /// <summary>
+        /// LeafCertificatePem contains only the leaf certificate, derived from CertificatePem. Populated only when the certificate was issued with SplitCertificateChain enabled.
+        /// </summary>
+        /// <value>LeafCertificatePem contains only the leaf certificate, derived from CertificatePem. Populated only when the certificate was issued with SplitCertificateChain enabled.</value>
+        [DataMember(Name = "leaf_certificate_pem", EmitDefaultValue = false)]
+        public string LeafCertificatePem { get; set; }
+
+        /// <summary>
         /// Gets or Sets NotBefore
         /// </summary>
         [DataMember(Name = "not_before", EmitDefaultValue = false)]
@@ -191,6 +202,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "renew_before_expiration_in_days", EmitDefaultValue = false)]
         public long RenewBeforeExpirationInDays { get; set; }
+
+        /// <summary>
+        /// SplitCertificateChain reflects whether this certificate was issued while its PKI Cert Issuer had split-certificate-chain enabled. When true, LeafCertificatePem is populated in addition to CertificatePem (which always holds the full chain).
+        /// </summary>
+        /// <value>SplitCertificateChain reflects whether this certificate was issued while its PKI Cert Issuer had split-certificate-chain enabled. When true, LeafCertificatePem is populated in addition to CertificatePem (which always holds the full chain).</value>
+        [DataMember(Name = "split_certificate_chain", EmitDefaultValue = true)]
+        public bool SplitCertificateChain { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -217,8 +235,10 @@ namespace akeyless.Model
             sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
             sb.Append("  ExternalCaId: ").Append(ExternalCaId).Append("\n");
             sb.Append("  IssuanceStatus: ").Append(IssuanceStatus).Append("\n");
+            sb.Append("  LeafCertificatePem: ").Append(LeafCertificatePem).Append("\n");
             sb.Append("  NotBefore: ").Append(NotBefore).Append("\n");
             sb.Append("  RenewBeforeExpirationInDays: ").Append(RenewBeforeExpirationInDays).Append("\n");
+            sb.Append("  SplitCertificateChain: ").Append(SplitCertificateChain).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

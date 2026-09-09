@@ -38,11 +38,13 @@ namespace akeyless.Model
         /// <param name="enabled">Enabled is a pointer so rules persisted before this field existed (nil) keep enforcing, rather than silently switching off..</param>
         /// <param name="inputRules">inputRules.</param>
         /// <param name="outputRules">outputRules.</param>
-        public AgenticRules(bool enabled = default(bool), List<AgenticRule> inputRules = default(List<AgenticRule>), List<AgenticRule> outputRules = default(List<AgenticRule>))
+        /// <param name="quorumEnabled">QuorumEnabled asks for this item&#39;s policy decisions to be evaluated by every model configured on the gateway rather than the Default alone.  Also a pointer, but with the opposite nil meaning to Enabled above: nil is OFF. Enabled defaults on because it governs rules that were already being enforced before the field existed, whereas quorum is new behavior that multiplies latency and denies fail-closed - an item that never asked for it must not acquire it by upgrade..</param>
+        public AgenticRules(bool enabled = default(bool), List<AgenticRule> inputRules = default(List<AgenticRule>), List<AgenticRule> outputRules = default(List<AgenticRule>), bool quorumEnabled = default(bool))
         {
             this.Enabled = enabled;
             this.InputRules = inputRules;
             this.OutputRules = outputRules;
+            this.QuorumEnabled = quorumEnabled;
         }
 
         /// <summary>
@@ -65,6 +67,13 @@ namespace akeyless.Model
         public List<AgenticRule> OutputRules { get; set; }
 
         /// <summary>
+        /// QuorumEnabled asks for this item&#39;s policy decisions to be evaluated by every model configured on the gateway rather than the Default alone.  Also a pointer, but with the opposite nil meaning to Enabled above: nil is OFF. Enabled defaults on because it governs rules that were already being enforced before the field existed, whereas quorum is new behavior that multiplies latency and denies fail-closed - an item that never asked for it must not acquire it by upgrade.
+        /// </summary>
+        /// <value>QuorumEnabled asks for this item&#39;s policy decisions to be evaluated by every model configured on the gateway rather than the Default alone.  Also a pointer, but with the opposite nil meaning to Enabled above: nil is OFF. Enabled defaults on because it governs rules that were already being enforced before the field existed, whereas quorum is new behavior that multiplies latency and denies fail-closed - an item that never asked for it must not acquire it by upgrade.</value>
+        [DataMember(Name = "quorum_enabled", EmitDefaultValue = true)]
+        public bool QuorumEnabled { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -75,6 +84,7 @@ namespace akeyless.Model
             sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  InputRules: ").Append(InputRules).Append("\n");
             sb.Append("  OutputRules: ").Append(OutputRules).Append("\n");
+            sb.Append("  QuorumEnabled: ").Append(QuorumEnabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

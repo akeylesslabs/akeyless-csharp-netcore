@@ -86,11 +86,12 @@ namespace akeyless.Model
         /// <param name="scheduledRenew">Number of days before expiration to renew certificates.</param>
         /// <param name="serverFlag">If set, certificates will be flagged for server auth use.</param>
         /// <param name="signerKeyName">A key to sign the certificate with, required in Private CA mode.</param>
+        /// <param name="splitCertificateChain">If set, separates the leaf certificate from the certificate chain..</param>
         /// <param name="streetAddress">A comma-separated list of street addresses that will be set in the issued certificate.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs. Not supported for Let&#39;s Encrypt, which always uses the CA default lifetime (about 90 days). (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedIpSans = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), string basicConstraints = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string criticalKeyUsage = @"true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool disableWildcards = default(bool), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyUsage = @"DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), long maxPathLen = -1, string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string ocspTtl = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = default(string), string streetAddress = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedIpSans = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), string basicConstraints = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string criticalKeyUsage = @"true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool disableWildcards = default(bool), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyUsage = @"DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), long maxPathLen = -1, string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string ocspTtl = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = default(string), bool splitCertificateChain = default(bool), string streetAddress = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -151,6 +152,7 @@ namespace akeyless.Model
             this.ScheduledRenew = scheduledRenew;
             this.ServerFlag = serverFlag;
             this.SignerKeyName = signerKeyName;
+            this.SplitCertificateChain = splitCertificateChain;
             this.StreetAddress = streetAddress;
             this.Token = token;
             this.UidToken = uidToken;
@@ -479,6 +481,13 @@ namespace akeyless.Model
         public string SignerKeyName { get; set; }
 
         /// <summary>
+        /// If set, separates the leaf certificate from the certificate chain.
+        /// </summary>
+        /// <value>If set, separates the leaf certificate from the certificate chain.</value>
+        [DataMember(Name = "split-certificate-chain", EmitDefaultValue = true)]
+        public bool SplitCertificateChain { get; set; }
+
+        /// <summary>
         /// A comma-separated list of street addresses that will be set in the issued certificate
         /// </summary>
         /// <value>A comma-separated list of street addresses that will be set in the issued certificate</value>
@@ -560,6 +569,7 @@ namespace akeyless.Model
             sb.Append("  ScheduledRenew: ").Append(ScheduledRenew).Append("\n");
             sb.Append("  ServerFlag: ").Append(ServerFlag).Append("\n");
             sb.Append("  SignerKeyName: ").Append(SignerKeyName).Append("\n");
+            sb.Append("  SplitCertificateChain: ").Append(SplitCertificateChain).Append("\n");
             sb.Append("  StreetAddress: ").Append(StreetAddress).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Ttl: ").Append(Ttl).Append("\n");

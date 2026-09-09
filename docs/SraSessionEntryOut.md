@@ -17,6 +17,9 @@ Name | Type | Description | Notes
 **StartTime** | **DateTime** |  | [optional] 
 **Status** | **string** |  | [optional] 
 **TargetHost** | **string** |  | [optional] 
+**TargetId** | **long** |  | [optional] 
+**TargetName** | **string** |  | [optional] 
+**TargetType** | **string** |  | [optional] 
 **Ttl** | **string** |  | [optional] 
 **UserIdentifier** | **string** |  | [optional] 
 

@@ -52,8 +52,9 @@ namespace akeyless.Model
         /// <param name="producersStatus">producersStatus.</param>
         /// <param name="rotators">rotators.</param>
         /// <param name="saml">saml.</param>
+        /// <param name="samlSp">samlSp.</param>
         /// <param name="universalIdentity">universalIdentity.</param>
-        public ConfigHash(string admins = default(string), string aiInsights = default(string), string cache = default(string), string customerFragements = default(string), string general = default(string), string k8sAuths = default(string), string kmip = default(string), string ldap = default(string), string leadership = default(string), string logForwarding = default(string), string mQueue = default(string), string migrationStatus = default(string), string migrations = default(string), Object producers = default(Object), string producersStatus = default(string), Object rotators = default(Object), string saml = default(string), string universalIdentity = default(string))
+        public ConfigHash(string admins = default(string), string aiInsights = default(string), string cache = default(string), string customerFragements = default(string), string general = default(string), string k8sAuths = default(string), string kmip = default(string), string ldap = default(string), string leadership = default(string), string logForwarding = default(string), string mQueue = default(string), string migrationStatus = default(string), string migrations = default(string), Object producers = default(Object), string producersStatus = default(string), Object rotators = default(Object), string saml = default(string), string samlSp = default(string), string universalIdentity = default(string))
         {
             this.Admins = admins;
             this.AiInsights = aiInsights;
@@ -72,6 +73,7 @@ namespace akeyless.Model
             this.ProducersStatus = producersStatus;
             this.Rotators = rotators;
             this.Saml = saml;
+            this.SamlSp = samlSp;
             this.UniversalIdentity = universalIdentity;
         }
 
@@ -178,6 +180,12 @@ namespace akeyless.Model
         public string Saml { get; set; }
 
         /// <summary>
+        /// Gets or Sets SamlSp
+        /// </summary>
+        [DataMember(Name = "saml_sp", EmitDefaultValue = false)]
+        public string SamlSp { get; set; }
+
+        /// <summary>
         /// Gets or Sets UniversalIdentity
         /// </summary>
         [DataMember(Name = "universal_identity", EmitDefaultValue = false)]
@@ -208,6 +216,7 @@ namespace akeyless.Model
             sb.Append("  ProducersStatus: ").Append(ProducersStatus).Append("\n");
             sb.Append("  Rotators: ").Append(Rotators).Append("\n");
             sb.Append("  Saml: ").Append(Saml).Append("\n");
+            sb.Append("  SamlSp: ").Append(SamlSp).Append("\n");
             sb.Append("  UniversalIdentity: ").Append(UniversalIdentity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

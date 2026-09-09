@@ -39,16 +39,18 @@ namespace akeyless.Model
         /// <param name="jqSecretFilter">jqSecretFilter.</param>
         /// <param name="lastError">lastError.</param>
         /// <param name="varNamespace">varNamespace.</param>
+        /// <param name="project">project.</param>
         /// <param name="secretId">secretId.</param>
         /// <param name="secretName">secretName.</param>
         /// <param name="selectedEnvironments">selectedEnvironments.</param>
         /// <param name="selectedRepositories">selectedRepositories.</param>
-        public UscSyncInfo(bool deleteRemote = default(bool), string jqSecretFilter = default(string), string lastError = default(string), string varNamespace = default(string), string secretId = default(string), string secretName = default(string), string selectedEnvironments = default(string), string selectedRepositories = default(string))
+        public UscSyncInfo(bool deleteRemote = default(bool), string jqSecretFilter = default(string), string lastError = default(string), string varNamespace = default(string), string project = default(string), string secretId = default(string), string secretName = default(string), string selectedEnvironments = default(string), string selectedRepositories = default(string))
         {
             this.DeleteRemote = deleteRemote;
             this.JqSecretFilter = jqSecretFilter;
             this.LastError = lastError;
             this.Namespace = varNamespace;
+            this.Project = project;
             this.SecretId = secretId;
             this.SecretName = secretName;
             this.SelectedEnvironments = selectedEnvironments;
@@ -78,6 +80,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "namespace", EmitDefaultValue = false)]
         public string Namespace { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Project
+        /// </summary>
+        [DataMember(Name = "project", EmitDefaultValue = false)]
+        public string Project { get; set; }
 
         /// <summary>
         /// Gets or Sets SecretId
@@ -115,6 +123,7 @@ namespace akeyless.Model
             sb.Append("  JqSecretFilter: ").Append(JqSecretFilter).Append("\n");
             sb.Append("  LastError: ").Append(LastError).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
+            sb.Append("  Project: ").Append(Project).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
             sb.Append("  SecretName: ").Append(SecretName).Append("\n");
             sb.Append("  SelectedEnvironments: ").Append(SelectedEnvironments).Append("\n");

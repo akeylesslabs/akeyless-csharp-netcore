@@ -68,6 +68,7 @@ Name | Type | Description | Notes
 **AzureUserProgrammaticAccess** | **bool** |  | [optional] 
 **AzureUserRolesTemplateId** | **string** |  | [optional] 
 **AzureUsername** | **string** |  | [optional] 
+**BlockParentTargetAccess** | **bool** |  | [optional] 
 **CassandraCreationStatements** | **string** |  | [optional] 
 **ChefOrganizations** | **string** |  | [optional] 
 **ChefServerAccessMode** | **string** |  | [optional] 

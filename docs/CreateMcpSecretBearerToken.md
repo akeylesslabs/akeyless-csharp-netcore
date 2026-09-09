@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **BearerToken** | **string** | Bearer token value | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
+**EnableAgenticRuntimeAuthority** | **bool** | EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working. | [optional] 
+**EnableAiQuorum** | **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | **List&lt;string&gt;** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 

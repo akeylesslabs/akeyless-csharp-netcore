@@ -14,9 +14,12 @@ Name | Type | Description | Notes
 **Key** | **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **LdapCaCert** | **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | **string** | LDAP Server URL | 
+**LockOnRead** | **string** | Lock this secret after each successful value read | [optional] 
+**LockTtl** | **string** | Lock TTL in minutes | [optional] 
 **MaxVersions** | **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | **string** | New target name | [optional] 
+**RotateOnUnlock** | **string** | Rotate this secret after it is unlocked | [optional] 
 **ServerType** | **string** | Set Ldap server type, Options:[OpenLDAP, ActiveDirectory] | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExpiration** | **string** | Token expiration | [optional] 

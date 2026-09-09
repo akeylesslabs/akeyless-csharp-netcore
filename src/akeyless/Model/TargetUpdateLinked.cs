@@ -41,18 +41,23 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="TargetUpdateLinked" /> class.
         /// </summary>
         /// <param name="addHosts">A comma seperated list of new server hosts and server descriptions joined by semicolon &#39;;&#39; that will be added to the Linked Target hosts..</param>
+        /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
         /// <param name="hosts">A comma seperated list of server hosts and server descriptions joined by semicolon &#39;;&#39; (i.e. &#39;server-dev.com;My Dev server,server-prod.com;My Prod server description&#39;).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keepPrevVersion">Whether to keep previous version [true/false]. If not set, use default according to account settings.</param>
+        /// <param name="lockOnRead">Lock this secret after each successful value read.</param>
+        /// <param name="lockTtl">Lock TTL in minutes.</param>
+        /// <param name="maxVersions">Set the maximum number of versions, limited by the account settings defaults..</param>
         /// <param name="name">Linked Target name (required).</param>
         /// <param name="newName">New Linked Target name.</param>
         /// <param name="parentTargetName">The parent Target name.</param>
         /// <param name="rmHosts">Comma separated list of existing hosts that will be removed from Linked Target hosts..</param>
+        /// <param name="rotateOnUnlock">Rotate this secret after it is unlocked.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Specifies the hosts type, relevant only when working without parent target.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetUpdateLinked(string addHosts = default(string), string description = default(string), string hosts = default(string), bool json = false, string keepPrevVersion = default(string), string name = default(string), string newName = default(string), string parentTargetName = default(string), string rmHosts = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public TargetUpdateLinked(string addHosts = default(string), string deleteProtection = default(string), string description = default(string), string hosts = default(string), bool json = false, string keepPrevVersion = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string parentTargetName = default(string), string rmHosts = default(string), string rotateOnUnlock = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -61,13 +66,18 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AddHosts = addHosts;
+            this.DeleteProtection = deleteProtection;
             this.Description = description;
             this.Hosts = hosts;
             this.Json = json;
             this.KeepPrevVersion = keepPrevVersion;
+            this.LockOnRead = lockOnRead;
+            this.LockTtl = lockTtl;
+            this.MaxVersions = maxVersions;
             this.NewName = newName;
             this.ParentTargetName = parentTargetName;
             this.RmHosts = rmHosts;
+            this.RotateOnUnlock = rotateOnUnlock;
             this.Token = token;
             this.Type = type;
             this.UidToken = uidToken;
@@ -79,6 +89,13 @@ namespace akeyless.Model
         /// <value>A comma seperated list of new server hosts and server descriptions joined by semicolon &#39;;&#39; that will be added to the Linked Target hosts.</value>
         [DataMember(Name = "add-hosts", EmitDefaultValue = false)]
         public string AddHosts { get; set; }
+
+        /// <summary>
+        /// Protection from accidental deletion of this object [true/false]
+        /// </summary>
+        /// <value>Protection from accidental deletion of this object [true/false]</value>
+        [DataMember(Name = "delete_protection", EmitDefaultValue = false)]
+        public string DeleteProtection { get; set; }
 
         /// <summary>
         /// Description of the object
@@ -109,6 +126,27 @@ namespace akeyless.Model
         public string KeepPrevVersion { get; set; }
 
         /// <summary>
+        /// Lock this secret after each successful value read
+        /// </summary>
+        /// <value>Lock this secret after each successful value read</value>
+        [DataMember(Name = "lock-on-read", EmitDefaultValue = false)]
+        public string LockOnRead { get; set; }
+
+        /// <summary>
+        /// Lock TTL in minutes
+        /// </summary>
+        /// <value>Lock TTL in minutes</value>
+        [DataMember(Name = "lock-ttl", EmitDefaultValue = false)]
+        public string LockTtl { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of versions, limited by the account settings defaults.
+        /// </summary>
+        /// <value>Set the maximum number of versions, limited by the account settings defaults.</value>
+        [DataMember(Name = "max-versions", EmitDefaultValue = false)]
+        public string MaxVersions { get; set; }
+
+        /// <summary>
         /// Linked Target name
         /// </summary>
         /// <value>Linked Target name</value>
@@ -135,6 +173,13 @@ namespace akeyless.Model
         /// <value>Comma separated list of existing hosts that will be removed from Linked Target hosts.</value>
         [DataMember(Name = "rm-hosts", EmitDefaultValue = false)]
         public string RmHosts { get; set; }
+
+        /// <summary>
+        /// Rotate this secret after it is unlocked
+        /// </summary>
+        /// <value>Rotate this secret after it is unlocked</value>
+        [DataMember(Name = "rotate-on-unlock", EmitDefaultValue = false)]
+        public string RotateOnUnlock { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -166,14 +211,19 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class TargetUpdateLinked {\n");
             sb.Append("  AddHosts: ").Append(AddHosts).Append("\n");
+            sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Hosts: ").Append(Hosts).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeepPrevVersion: ").Append(KeepPrevVersion).Append("\n");
+            sb.Append("  LockOnRead: ").Append(LockOnRead).Append("\n");
+            sb.Append("  LockTtl: ").Append(LockTtl).Append("\n");
+            sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  ParentTargetName: ").Append(ParentTargetName).Append("\n");
             sb.Append("  RmHosts: ").Append(RmHosts).Append("\n");
+            sb.Append("  RotateOnUnlock: ").Append(RotateOnUnlock).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

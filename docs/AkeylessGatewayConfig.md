@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Producers** | [**ProducersConfigPart**](ProducersConfigPart.md) |  | [optional] 
 **Rotators** | [**RotatorsConfigPart**](RotatorsConfigPart.md) |  | [optional] 
 **Saml** | [**DefaultConfigPart**](DefaultConfigPart.md) |  | [optional] 
+**SamlSp** | [**SamlSpConfigPart**](SamlSpConfigPart.md) |  | [optional] 
 **VarVersion** | **int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

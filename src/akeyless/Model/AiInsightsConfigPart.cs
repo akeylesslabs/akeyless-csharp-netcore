@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// AiInsightsConfigPart
+    /// TargetId/TargetName/Model predate multi-model support and are retained for backward compatibility in both directions - they mirror the Default entry on write, and are adopted as a synthesized Default entry on read when Models is empty. See EffectiveModels and syncLegacyFields in types_ai_insights_config.go, where all the model-list behavior lives.
     /// </summary>
     [DataContract(Name = "AiInsightsConfigPart")]
     public partial class AiInsightsConfigPart : IValidatableObject
@@ -37,14 +37,18 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="enable">enable.</param>
         /// <param name="model">model.</param>
+        /// <param name="models">Models holds every configured model, in whatever order and with whatever Default flag was stored - it is NOT canonicalized on write, so nothing may assume the Default sits at index 0. Empty on configs written before multi-model support. Never read it directly: use EffectiveModels for the list as stored (which also handles the legacy case), or PolicyModels for exactly one Default in row 1 followed by the Quorum models..</param>
         /// <param name="targetId">targetId.</param>
         /// <param name="targetName">targetName.</param>
-        public AiInsightsConfigPart(bool enable = default(bool), string model = default(string), long targetId = default(long), string targetName = default(string))
+        /// <param name="varVersion">Version is an optimistic-concurrency token, bumped by gator on every accepted write.  Every mutation of this part is a read-modify-write across the network (the gateway reads the whole part, edits one entry, writes it back), and the write replaces the part wholesale. Without a token, two admins adding a quorum model at the same time silently lose one of the two - which, since the list must always carry exactly one Default, can also change which model serves every other AI feature.  Zero means \&quot;unversioned\&quot;: a client that predates this field, whose write gator accepts rather than rejecting outright. See updateGatewayAiInsightsConfig..</param>
+        public AiInsightsConfigPart(bool enable = default(bool), string model = default(string), List<AiModelEntry> models = default(List<AiModelEntry>), long targetId = default(long), string targetName = default(string), long varVersion = default(long))
         {
             this.Enable = enable;
             this.Model = model;
+            this.Models = models;
             this.TargetId = targetId;
             this.TargetName = targetName;
+            this.VarVersion = varVersion;
         }
 
         /// <summary>
@@ -60,6 +64,13 @@ namespace akeyless.Model
         public string Model { get; set; }
 
         /// <summary>
+        /// Models holds every configured model, in whatever order and with whatever Default flag was stored - it is NOT canonicalized on write, so nothing may assume the Default sits at index 0. Empty on configs written before multi-model support. Never read it directly: use EffectiveModels for the list as stored (which also handles the legacy case), or PolicyModels for exactly one Default in row 1 followed by the Quorum models.
+        /// </summary>
+        /// <value>Models holds every configured model, in whatever order and with whatever Default flag was stored - it is NOT canonicalized on write, so nothing may assume the Default sits at index 0. Empty on configs written before multi-model support. Never read it directly: use EffectiveModels for the list as stored (which also handles the legacy case), or PolicyModels for exactly one Default in row 1 followed by the Quorum models.</value>
+        [DataMember(Name = "models", EmitDefaultValue = false)]
+        public List<AiModelEntry> Models { get; set; }
+
+        /// <summary>
         /// Gets or Sets TargetId
         /// </summary>
         [DataMember(Name = "target_id", EmitDefaultValue = false)]
@@ -72,6 +83,13 @@ namespace akeyless.Model
         public string TargetName { get; set; }
 
         /// <summary>
+        /// Version is an optimistic-concurrency token, bumped by gator on every accepted write.  Every mutation of this part is a read-modify-write across the network (the gateway reads the whole part, edits one entry, writes it back), and the write replaces the part wholesale. Without a token, two admins adding a quorum model at the same time silently lose one of the two - which, since the list must always carry exactly one Default, can also change which model serves every other AI feature.  Zero means \&quot;unversioned\&quot;: a client that predates this field, whose write gator accepts rather than rejecting outright. See updateGatewayAiInsightsConfig.
+        /// </summary>
+        /// <value>Version is an optimistic-concurrency token, bumped by gator on every accepted write.  Every mutation of this part is a read-modify-write across the network (the gateway reads the whole part, edits one entry, writes it back), and the write replaces the part wholesale. Without a token, two admins adding a quorum model at the same time silently lose one of the two - which, since the list must always carry exactly one Default, can also change which model serves every other AI feature.  Zero means \&quot;unversioned\&quot;: a client that predates this field, whose write gator accepts rather than rejecting outright. See updateGatewayAiInsightsConfig.</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public long VarVersion { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -81,8 +99,10 @@ namespace akeyless.Model
             sb.Append("class AiInsightsConfigPart {\n");
             sb.Append("  Enable: ").Append(Enable).Append("\n");
             sb.Append("  Model: ").Append(Model).Append("\n");
+            sb.Append("  Models: ").Append(Models).Append("\n");
             sb.Append("  TargetId: ").Append(TargetId).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

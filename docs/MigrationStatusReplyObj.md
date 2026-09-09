@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificates** | [**MigrationItems**](MigrationItems.md) |  | [optional] 
 **Computers** | **long** |  | [optional] 
+**DownloadReport** | [**MigrationDownloadReport**](MigrationDownloadReport.md) |  | [optional] 
 **DurationTime** | **string** |  | [optional] 
 **Error** | **string** |  | [optional] 
 **LastStatusMessage** | **string** |  | [optional] 

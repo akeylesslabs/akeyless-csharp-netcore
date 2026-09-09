@@ -36,10 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GetCertificateValueOutput" /> class.
         /// </summary>
         /// <param name="certificatePem">certificatePem.</param>
+        /// <param name="encodedCertificate">encodedCertificate.</param>
         /// <param name="privateKeyPem">privateKeyPem.</param>
-        public GetCertificateValueOutput(string certificatePem = default(string), string privateKeyPem = default(string))
+        public GetCertificateValueOutput(string certificatePem = default(string), string encodedCertificate = default(string), string privateKeyPem = default(string))
         {
             this.CertificatePem = certificatePem;
+            this.EncodedCertificate = encodedCertificate;
             this.PrivateKeyPem = privateKeyPem;
         }
 
@@ -48,6 +50,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "certificate_pem", EmitDefaultValue = false)]
         public string CertificatePem { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EncodedCertificate
+        /// </summary>
+        [DataMember(Name = "encoded_certificate", EmitDefaultValue = false)]
+        public string EncodedCertificate { get; set; }
 
         /// <summary>
         /// Gets or Sets PrivateKeyPem
@@ -64,6 +72,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetCertificateValueOutput {\n");
             sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
+            sb.Append("  EncodedCertificate: ").Append(EncodedCertificate).Append("\n");
             sb.Append("  PrivateKeyPem: ").Append(PrivateKeyPem).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **JqSecretFilter** | **string** |  | [optional] 
 **LastError** | **string** |  | [optional] 
 **Namespace** | **string** |  | [optional] 
+**Project** | **string** |  | [optional] 
 **SecretId** | **string** |  | [optional] 
 **SecretName** | **string** |  | [optional] 
 **SelectedEnvironments** | **string** |  | [optional] 

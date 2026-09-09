@@ -44,8 +44,9 @@ namespace akeyless.Model
         /// <param name="eventId">The Event ID (required).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
+        /// <param name="ttlInMin">The access TTL in minutes granted by the approver, overriding the requested one.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public EventAction(string action = default(string), long eventId = default(long), bool json = false, string token = default(string), string uidToken = default(string))
+        public EventAction(string action = default(string), long eventId = default(long), bool json = false, string token = default(string), long ttlInMin = default(long), string uidToken = default(string))
         {
             // to ensure "action" is required (not null)
             if (action == null)
@@ -56,6 +57,7 @@ namespace akeyless.Model
             this.EventId = eventId;
             this.Json = json;
             this.Token = token;
+            this.TtlInMin = ttlInMin;
             this.UidToken = uidToken;
         }
 
@@ -88,6 +90,13 @@ namespace akeyless.Model
         public string Token { get; set; }
 
         /// <summary>
+        /// The access TTL in minutes granted by the approver, overriding the requested one
+        /// </summary>
+        /// <value>The access TTL in minutes granted by the approver, overriding the requested one</value>
+        [DataMember(Name = "ttl-in-min", EmitDefaultValue = false)]
+        public long TtlInMin { get; set; }
+
+        /// <summary>
         /// The universal identity token, Required only for universal_identity authentication
         /// </summary>
         /// <value>The universal identity token, Required only for universal_identity authentication</value>
@@ -106,6 +115,7 @@ namespace akeyless.Model
             sb.Append("  EventId: ").Append(EventId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  TtlInMin: ").Append(TtlInMin).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

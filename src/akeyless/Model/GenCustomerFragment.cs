@@ -36,15 +36,20 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GenCustomerFragment" /> class.
         /// </summary>
         /// <param name="description">Description of the object.</param>
-        /// <param name="hsmKeyLabel">The label of the hsm key to use for customer fragment operations (relevant for hsm_wrapped/hsm_protected customer fragments).</param>
+        /// <param name="hsmKeyLabel">The label of the hsm key to use for customer fragment operations (relevant for hsm wrap customer fragments).</param>
+        /// <param name="hsmProvider">The HSM provider to use for hsm wrap customer fragments (default to &quot;pkcs11&quot;).</param>
+        /// <param name="hsmWrapAlg">The HSM wrap algorithm to use for hsm_wrap_encrypt  default for hsm_wrap_encrypt: rsa-oaep-sha256.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="metadata">Deprecated - use description.</param>
         /// <param name="name">Customer fragment name.</param>
-        /// <param name="type">Customer fragment type [standard/hsm_wrapped/hsm_secured] (default to &quot;standard&quot;).</param>
-        public GenCustomerFragment(string description = default(string), string hsmKeyLabel = default(string), bool json = false, string metadata = default(string), string name = default(string), string type = @"standard")
+        /// <param name="type">Customer fragment type [standard/hsm_wrap_hmac/hsm_wrap_encrypt/hsm_secured] (default to &quot;standard&quot;).</param>
+        public GenCustomerFragment(string description = default(string), string hsmKeyLabel = default(string), string hsmProvider = @"pkcs11", string hsmWrapAlg = default(string), bool json = false, string metadata = default(string), string name = default(string), string type = @"standard")
         {
             this.Description = description;
             this.HsmKeyLabel = hsmKeyLabel;
+            // use default value if no "hsmProvider" provided
+            this.HsmProvider = hsmProvider ?? @"pkcs11";
+            this.HsmWrapAlg = hsmWrapAlg;
             this.Json = json;
             this.Metadata = metadata;
             this.Name = name;
@@ -60,11 +65,25 @@ namespace akeyless.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// The label of the hsm key to use for customer fragment operations (relevant for hsm_wrapped/hsm_protected customer fragments)
+        /// The label of the hsm key to use for customer fragment operations (relevant for hsm wrap customer fragments)
         /// </summary>
-        /// <value>The label of the hsm key to use for customer fragment operations (relevant for hsm_wrapped/hsm_protected customer fragments)</value>
+        /// <value>The label of the hsm key to use for customer fragment operations (relevant for hsm wrap customer fragments)</value>
         [DataMember(Name = "hsm-key-label", EmitDefaultValue = false)]
         public string HsmKeyLabel { get; set; }
+
+        /// <summary>
+        /// The HSM provider to use for hsm wrap customer fragments
+        /// </summary>
+        /// <value>The HSM provider to use for hsm wrap customer fragments</value>
+        [DataMember(Name = "hsm-provider", EmitDefaultValue = false)]
+        public string HsmProvider { get; set; }
+
+        /// <summary>
+        /// The HSM wrap algorithm to use for hsm_wrap_encrypt  default for hsm_wrap_encrypt: rsa-oaep-sha256
+        /// </summary>
+        /// <value>The HSM wrap algorithm to use for hsm_wrap_encrypt  default for hsm_wrap_encrypt: rsa-oaep-sha256</value>
+        [DataMember(Name = "hsm-wrap-alg", EmitDefaultValue = false)]
+        public string HsmWrapAlg { get; set; }
 
         /// <summary>
         /// Set output format to JSON
@@ -88,9 +107,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Customer fragment type [standard/hsm_wrapped/hsm_secured]
+        /// Customer fragment type [standard/hsm_wrap_hmac/hsm_wrap_encrypt/hsm_secured]
         /// </summary>
-        /// <value>Customer fragment type [standard/hsm_wrapped/hsm_secured]</value>
+        /// <value>Customer fragment type [standard/hsm_wrap_hmac/hsm_wrap_encrypt/hsm_secured]</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
@@ -104,6 +123,8 @@ namespace akeyless.Model
             sb.Append("class GenCustomerFragment {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  HsmKeyLabel: ").Append(HsmKeyLabel).Append("\n");
+            sb.Append("  HsmProvider: ").Append(HsmProvider).Append("\n");
+            sb.Append("  HsmWrapAlg: ").Append(HsmWrapAlg).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");

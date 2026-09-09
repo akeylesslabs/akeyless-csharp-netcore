@@ -31,7 +31,10 @@ docs/AgenticRule.md
 docs/AgenticRules.md
 docs/AiInsightsConfigPart.md
 docs/AiInsightsSetting.md
+docs/AiModelEntry.md
+docs/AiQuorumSetting.md
 docs/AkeylessGatewayConfig.md
+docs/AliCloudAccessRules.md
 docs/AliasDetails.md
 docs/AliasDetailsOutput.md
 docs/AllAnalyticsData.md
@@ -49,6 +52,7 @@ docs/AuthExpirationEvent.md
 docs/AuthMethod.md
 docs/AuthMethodAccessInfo.md
 docs/AuthMethodAdditionalData.md
+docs/AuthMethodCreateAliCloud.md
 docs/AuthMethodCreateApiKey.md
 docs/AuthMethodCreateAwsIam.md
 docs/AuthMethodCreateAzureAD.md
@@ -69,6 +73,7 @@ docs/AuthMethodDeleteOutput.md
 docs/AuthMethodGet.md
 docs/AuthMethodList.md
 docs/AuthMethodRoleAssociation.md
+docs/AuthMethodUpdateAliCloud.md
 docs/AuthMethodUpdateApiKey.md
 docs/AuthMethodUpdateAwsIam.md
 docs/AuthMethodUpdateAzureAD.md
@@ -813,6 +818,10 @@ docs/LockingInfo.md
 docs/LogForwardingConfigPart.md
 docs/LogstashLogForwardingConfig.md
 docs/LogzIoLogForwardingConfig.md
+docs/MigrationDownloadJob.md
+docs/MigrationDownloadReport.md
+docs/MigrationDownloadSecret.md
+docs/MigrationDownloadSummary.md
 docs/MigrationGeneral.md
 docs/MigrationItems.md
 docs/MigrationStatus.md
@@ -958,6 +967,7 @@ docs/SAMLAttribute.md
 docs/SSHCertificateIssueDetails.md
 docs/SSHTargetDetails.md
 docs/SalesforceTargetDetails.md
+docs/SamlSpConfigPart.md
 docs/ScanResults.md
 docs/SecretInfo.md
 docs/SecretSyncOutput.md
@@ -1268,15 +1278,16 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/KMIPCAListEntryTests.cs
-src/akeyless.Test/Model/KmipGetCABundleOutputTests.cs
-src/akeyless.Test/Model/KmipGetCABundleTests.cs
-src/akeyless.Test/Model/KmipListCAsOutputTests.cs
-src/akeyless.Test/Model/KmipListCAsTests.cs
-src/akeyless.Test/Model/KmipRotateCAOutputTests.cs
-src/akeyless.Test/Model/KmipRotateCATests.cs
-src/akeyless.Test/Model/KmipSunsetCAOutputTests.cs
-src/akeyless.Test/Model/KmipSunsetCATests.cs
+src/akeyless.Test/Model/AiModelEntryTests.cs
+src/akeyless.Test/Model/AiQuorumSettingTests.cs
+src/akeyless.Test/Model/AliCloudAccessRulesTests.cs
+src/akeyless.Test/Model/AuthMethodCreateAliCloudTests.cs
+src/akeyless.Test/Model/AuthMethodUpdateAliCloudTests.cs
+src/akeyless.Test/Model/MigrationDownloadJobTests.cs
+src/akeyless.Test/Model/MigrationDownloadReportTests.cs
+src/akeyless.Test/Model/MigrationDownloadSecretTests.cs
+src/akeyless.Test/Model/MigrationDownloadSummaryTests.cs
+src/akeyless.Test/Model/SamlSpConfigPartTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1324,7 +1335,10 @@ src/akeyless/Model/AgenticRule.cs
 src/akeyless/Model/AgenticRules.cs
 src/akeyless/Model/AiInsightsConfigPart.cs
 src/akeyless/Model/AiInsightsSetting.cs
+src/akeyless/Model/AiModelEntry.cs
+src/akeyless/Model/AiQuorumSetting.cs
 src/akeyless/Model/AkeylessGatewayConfig.cs
+src/akeyless/Model/AliCloudAccessRules.cs
 src/akeyless/Model/AliasDetails.cs
 src/akeyless/Model/AliasDetailsOutput.cs
 src/akeyless/Model/AllAnalyticsData.cs
@@ -1342,6 +1356,7 @@ src/akeyless/Model/AuthExpirationEvent.cs
 src/akeyless/Model/AuthMethod.cs
 src/akeyless/Model/AuthMethodAccessInfo.cs
 src/akeyless/Model/AuthMethodAdditionalData.cs
+src/akeyless/Model/AuthMethodCreateAliCloud.cs
 src/akeyless/Model/AuthMethodCreateApiKey.cs
 src/akeyless/Model/AuthMethodCreateAwsIam.cs
 src/akeyless/Model/AuthMethodCreateAzureAD.cs
@@ -1362,6 +1377,7 @@ src/akeyless/Model/AuthMethodDeleteOutput.cs
 src/akeyless/Model/AuthMethodGet.cs
 src/akeyless/Model/AuthMethodList.cs
 src/akeyless/Model/AuthMethodRoleAssociation.cs
+src/akeyless/Model/AuthMethodUpdateAliCloud.cs
 src/akeyless/Model/AuthMethodUpdateApiKey.cs
 src/akeyless/Model/AuthMethodUpdateAwsIam.cs
 src/akeyless/Model/AuthMethodUpdateAzureAD.cs
@@ -2106,6 +2122,10 @@ src/akeyless/Model/LockingInfo.cs
 src/akeyless/Model/LogForwardingConfigPart.cs
 src/akeyless/Model/LogstashLogForwardingConfig.cs
 src/akeyless/Model/LogzIoLogForwardingConfig.cs
+src/akeyless/Model/MigrationDownloadJob.cs
+src/akeyless/Model/MigrationDownloadReport.cs
+src/akeyless/Model/MigrationDownloadSecret.cs
+src/akeyless/Model/MigrationDownloadSummary.cs
 src/akeyless/Model/MigrationGeneral.cs
 src/akeyless/Model/MigrationItems.cs
 src/akeyless/Model/MigrationStatus.cs
@@ -2251,6 +2271,7 @@ src/akeyless/Model/SAMLAttribute.cs
 src/akeyless/Model/SSHCertificateIssueDetails.cs
 src/akeyless/Model/SSHTargetDetails.cs
 src/akeyless/Model/SalesforceTargetDetails.cs
+src/akeyless/Model/SamlSpConfigPart.cs
 src/akeyless/Model/ScanResults.cs
 src/akeyless/Model/SecretInfo.cs
 src/akeyless/Model/SecretSyncOutput.cs

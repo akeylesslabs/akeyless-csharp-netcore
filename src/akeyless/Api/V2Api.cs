@@ -214,6 +214,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AuthMethodCreateOutput</returns>
+        AuthMethodCreateOutput AuthMethodCreateAliCloud(AuthMethodCreateAliCloud authMethodCreateAliCloud, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AuthMethodCreateOutput</returns>
+        ApiResponse<AuthMethodCreateOutput> AuthMethodCreateAliCloudWithHttpInfo(AuthMethodCreateAliCloud authMethodCreateAliCloud, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authMethodCreateApiKey"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AuthMethodCreateOutput</returns>
@@ -550,6 +570,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListAuthMethodsOutput</returns>
         ApiResponse<ListAuthMethodsOutput> AuthMethodListWithHttpInfo(AuthMethodList authMethodList, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AuthMethodUpdateOutput</returns>
+        AuthMethodUpdateOutput AuthMethodUpdateAliCloud(AuthMethodUpdateAliCloud authMethodUpdateAliCloud, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AuthMethodUpdateOutput</returns>
+        ApiResponse<AuthMethodUpdateOutput> AuthMethodUpdateAliCloudWithHttpInfo(AuthMethodUpdateAliCloud authMethodUpdateAliCloud, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -13365,6 +13405,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AuthMethodCreateOutput</returns>
+        System.Threading.Tasks.Task<AuthMethodCreateOutput> AuthMethodCreateAliCloudAsync(AuthMethodCreateAliCloud authMethodCreateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AuthMethodCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AuthMethodCreateOutput>> AuthMethodCreateAliCloudWithHttpInfoAsync(AuthMethodCreateAliCloud authMethodCreateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authMethodCreateApiKey"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -13783,6 +13848,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAuthMethodsOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListAuthMethodsOutput>> AuthMethodListWithHttpInfoAsync(AuthMethodList authMethodList, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AuthMethodUpdateOutput</returns>
+        System.Threading.Tasks.Task<AuthMethodUpdateOutput> AuthMethodUpdateAliCloudAsync(AuthMethodUpdateAliCloud authMethodUpdateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AuthMethodUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AuthMethodUpdateOutput>> AuthMethodUpdateAliCloudWithHttpInfoAsync(AuthMethodUpdateAliCloud authMethodUpdateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -30940,6 +31030,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AuthMethodCreateOutput</returns>
+        public AuthMethodCreateOutput AuthMethodCreateAliCloud(AuthMethodCreateAliCloud authMethodCreateAliCloud, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<AuthMethodCreateOutput> localVarResponse = AuthMethodCreateAliCloudWithHttpInfo(authMethodCreateAliCloud);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AuthMethodCreateOutput</returns>
+        public akeyless.Client.ApiResponse<AuthMethodCreateOutput> AuthMethodCreateAliCloudWithHttpInfo(AuthMethodCreateAliCloud authMethodCreateAliCloud, int operationIndex = 0)
+        {
+            // verify the required parameter 'authMethodCreateAliCloud' is set
+            if (authMethodCreateAliCloud == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'authMethodCreateAliCloud' when calling V2Api->AuthMethodCreateAliCloud");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = authMethodCreateAliCloud;
+
+            localVarRequestOptions.Operation = "V2Api.AuthMethodCreateAliCloud";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AuthMethodCreateOutput>("/auth-method-create-alicloud", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AuthMethodCreateAliCloud", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AuthMethodCreateOutput</returns>
+        public async System.Threading.Tasks.Task<AuthMethodCreateOutput> AuthMethodCreateAliCloudAsync(AuthMethodCreateAliCloud authMethodCreateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<AuthMethodCreateOutput> localVarResponse = await AuthMethodCreateAliCloudWithHttpInfoAsync(authMethodCreateAliCloud, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AuthMethodCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<AuthMethodCreateOutput>> AuthMethodCreateAliCloudWithHttpInfoAsync(AuthMethodCreateAliCloud authMethodCreateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'authMethodCreateAliCloud' is set
+            if (authMethodCreateAliCloud == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'authMethodCreateAliCloud' when calling V2Api->AuthMethodCreateAliCloud");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = authMethodCreateAliCloud;
+
+            localVarRequestOptions.Operation = "V2Api.AuthMethodCreateAliCloud";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AuthMethodCreateOutput>("/auth-method-create-alicloud", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AuthMethodCreateAliCloud", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authMethodCreateApiKey"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AuthMethodCreateOutput</returns>
@@ -33409,6 +33645,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("AuthMethodList", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AuthMethodUpdateOutput</returns>
+        public AuthMethodUpdateOutput AuthMethodUpdateAliCloud(AuthMethodUpdateAliCloud authMethodUpdateAliCloud, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<AuthMethodUpdateOutput> localVarResponse = AuthMethodUpdateAliCloudWithHttpInfo(authMethodUpdateAliCloud);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AuthMethodUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<AuthMethodUpdateOutput> AuthMethodUpdateAliCloudWithHttpInfo(AuthMethodUpdateAliCloud authMethodUpdateAliCloud, int operationIndex = 0)
+        {
+            // verify the required parameter 'authMethodUpdateAliCloud' is set
+            if (authMethodUpdateAliCloud == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'authMethodUpdateAliCloud' when calling V2Api->AuthMethodUpdateAliCloud");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = authMethodUpdateAliCloud;
+
+            localVarRequestOptions.Operation = "V2Api.AuthMethodUpdateAliCloud";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AuthMethodUpdateOutput>("/auth-method-update-alicloud", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AuthMethodUpdateAliCloud", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AuthMethodUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<AuthMethodUpdateOutput> AuthMethodUpdateAliCloudAsync(AuthMethodUpdateAliCloud authMethodUpdateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<AuthMethodUpdateOutput> localVarResponse = await AuthMethodUpdateAliCloudWithHttpInfoAsync(authMethodUpdateAliCloud, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="authMethodUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AuthMethodUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<AuthMethodUpdateOutput>> AuthMethodUpdateAliCloudWithHttpInfoAsync(AuthMethodUpdateAliCloud authMethodUpdateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'authMethodUpdateAliCloud' is set
+            if (authMethodUpdateAliCloud == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'authMethodUpdateAliCloud' when calling V2Api->AuthMethodUpdateAliCloud");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = authMethodUpdateAliCloud;
+
+            localVarRequestOptions.Operation = "V2Api.AuthMethodUpdateAliCloud";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AuthMethodUpdateOutput>("/auth-method-update-alicloud", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AuthMethodUpdateAliCloud", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
