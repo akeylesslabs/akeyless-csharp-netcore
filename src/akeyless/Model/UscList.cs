@@ -43,12 +43,13 @@ namespace akeyless.Model
         /// <param name="gcpProjectId">The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="objectType">objectType.</param>
-        /// <param name="pageSize">Optional: number of items requested per response (Azure KV). When set, response may include next_token.</param>
+        /// <param name="pageSize">Optional: number of items requested per response. When set, response may include next_token.</param>
         /// <param name="pageToken">Optional: continuation token returned by a previous usc list - -page-size call.</param>
+        /// <param name="search">Search query used to match secret names and paths..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
-        public UscList(string gcpProjectId = default(string), bool json = false, string objectType = default(string), long pageSize = default(long), string pageToken = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public UscList(string gcpProjectId = default(string), bool json = false, string objectType = default(string), long pageSize = default(long), string pageToken = default(string), string search = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "uscName" is required (not null)
             if (uscName == null)
@@ -61,6 +62,7 @@ namespace akeyless.Model
             this.ObjectType = objectType;
             this.PageSize = pageSize;
             this.PageToken = pageToken;
+            this.Search = search;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -86,9 +88,9 @@ namespace akeyless.Model
         public string ObjectType { get; set; }
 
         /// <summary>
-        /// Optional: number of items requested per response (Azure KV). When set, response may include next_token
+        /// Optional: number of items requested per response. When set, response may include next_token
         /// </summary>
-        /// <value>Optional: number of items requested per response (Azure KV). When set, response may include next_token</value>
+        /// <value>Optional: number of items requested per response. When set, response may include next_token</value>
         [DataMember(Name = "page-size", EmitDefaultValue = false)]
         public long PageSize { get; set; }
 
@@ -98,6 +100,13 @@ namespace akeyless.Model
         /// <value>Optional: continuation token returned by a previous usc list - -page-size call</value>
         [DataMember(Name = "page-token", EmitDefaultValue = false)]
         public string PageToken { get; set; }
+
+        /// <summary>
+        /// Search query used to match secret names and paths.
+        /// </summary>
+        /// <value>Search query used to match secret names and paths.</value>
+        [DataMember(Name = "search", EmitDefaultValue = false)]
+        public string Search { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
@@ -133,6 +142,7 @@ namespace akeyless.Model
             sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
             sb.Append("  PageSize: ").Append(PageSize).Append("\n");
             sb.Append("  PageToken: ").Append(PageToken).Append("\n");
+            sb.Append("  Search: ").Append(Search).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UscName: ").Append(UscName).Append("\n");
