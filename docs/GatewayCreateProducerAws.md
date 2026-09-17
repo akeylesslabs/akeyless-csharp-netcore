@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 **SecureAccessWebBrowsing** | **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SecureAccessWebProxy** | **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SessionTags** | **string** | String of Key value session tags comma separated, relevant only for Assumed Role | [optional] 
-**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

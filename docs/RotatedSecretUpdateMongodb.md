@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | **List&lt;string&gt;** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessWeb** | **bool** | Enable Web Secure Remote Access | [optional] [default to false]
-**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UseCapitalLetters** | **string** | Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false] | [optional] 

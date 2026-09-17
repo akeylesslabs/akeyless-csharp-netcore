@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Dynamic secret name | 
 **NewTtlMin** | **long** | New TTL in Minutes | 
 **OutputRule** | **List&lt;string&gt;** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
-**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **TmpCredsId** | **string** | Tmp Creds ID | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

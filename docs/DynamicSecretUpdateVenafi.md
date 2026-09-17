@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **RootFirstInChain** | **bool** | Root first in chain | [optional] 
 **SignUsingAkeylessPki** | **bool** | Use Akeyless PKI issuer or Venafi issuer | [optional] 
 **SignerKeyName** | **string** | Signer key name | [optional] 
-**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **StorePrivateKey** | **bool** | Store private key | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 

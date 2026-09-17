@@ -46,6 +46,7 @@ namespace akeyless.Model
         /// <param name="certAccessRules">certAccessRules.</param>
         /// <param name="cidrWhitelist">cidrWhitelist.</param>
         /// <param name="emailPassAccessRules">emailPassAccessRules.</param>
+        /// <param name="enforceClientType">EnforceClientType mirrors the SaaS Auth client-type enforcement decision (GwAuthEligibilityReply.EnforceClientType) captured online, so Gateway-owned offline auth and cached-creds usage honor the same enforce flag SaaS uses (see base_access.AuthenticateClientType). When false, client-type mismatches are not rejected..</param>
         /// <param name="forceSubClaims">if true the role associated with this auth method must include sub claims.</param>
         /// <param name="gcpAccessRules">gcpAccessRules.</param>
         /// <param name="gwCidrWhitelist">gwCidrWhitelist.</param>
@@ -63,7 +64,7 @@ namespace akeyless.Model
         /// <param name="subClaimsDelimiters">subClaimsDelimiters.</param>
         /// <param name="uidExpirationEvents">Relevant only for Universal Identity auth methods: token about-to-expire notification thresholds..</param>
         /// <param name="universalIdentityAccessRules">universalIdentityAccessRules.</param>
-        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), AliCloudAccessRules alicloudAccessRules = default(AliCloudAccessRules), List<string> allowedClientType = default(List<string>), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), List<string> auditLogsClaims = default(List<string>), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), KerberosAccessRules kerberosAccessRules = default(KerberosAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), List<UidExpirationEvent> uidExpirationEvents = default(List<UidExpirationEvent>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
+        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), AliCloudAccessRules alicloudAccessRules = default(AliCloudAccessRules), List<string> allowedClientType = default(List<string>), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), List<string> auditLogsClaims = default(List<string>), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool enforceClientType = default(bool), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), KerberosAccessRules kerberosAccessRules = default(KerberosAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), List<UidExpirationEvent> uidExpirationEvents = default(List<UidExpirationEvent>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
         {
             this.AccessExpires = accessExpires;
             this.AccessIdAlias = accessIdAlias;
@@ -76,6 +77,7 @@ namespace akeyless.Model
             this.CertAccessRules = certAccessRules;
             this.CidrWhitelist = cidrWhitelist;
             this.EmailPassAccessRules = emailPassAccessRules;
+            this.EnforceClientType = enforceClientType;
             this.ForceSubClaims = forceSubClaims;
             this.GcpAccessRules = gcpAccessRules;
             this.GwCidrWhitelist = gwCidrWhitelist;
@@ -161,6 +163,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "email_pass_access_rules", EmitDefaultValue = false)]
         public EmailPassAccessRules EmailPassAccessRules { get; set; }
+
+        /// <summary>
+        /// EnforceClientType mirrors the SaaS Auth client-type enforcement decision (GwAuthEligibilityReply.EnforceClientType) captured online, so Gateway-owned offline auth and cached-creds usage honor the same enforce flag SaaS uses (see base_access.AuthenticateClientType). When false, client-type mismatches are not rejected.
+        /// </summary>
+        /// <value>EnforceClientType mirrors the SaaS Auth client-type enforcement decision (GwAuthEligibilityReply.EnforceClientType) captured online, so Gateway-owned offline auth and cached-creds usage honor the same enforce flag SaaS uses (see base_access.AuthenticateClientType). When false, client-type mismatches are not rejected.</value>
+        [DataMember(Name = "enforce_client_type", EmitDefaultValue = true)]
+        public bool EnforceClientType { get; set; }
 
         /// <summary>
         /// if true the role associated with this auth method must include sub claims
@@ -286,6 +295,7 @@ namespace akeyless.Model
             sb.Append("  CertAccessRules: ").Append(CertAccessRules).Append("\n");
             sb.Append("  CidrWhitelist: ").Append(CidrWhitelist).Append("\n");
             sb.Append("  EmailPassAccessRules: ").Append(EmailPassAccessRules).Append("\n");
+            sb.Append("  EnforceClientType: ").Append(EnforceClientType).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
             sb.Append("  GcpAccessRules: ").Append(GcpAccessRules).Append("\n");
             sb.Append("  GwCidrWhitelist: ").Append(GwCidrWhitelist).Append("\n");

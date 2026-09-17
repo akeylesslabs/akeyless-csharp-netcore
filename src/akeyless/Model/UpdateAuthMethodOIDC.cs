@@ -52,6 +52,7 @@ namespace akeyless.Model
         /// <param name="description">Auth Method description.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the auth method would you like to be notified..</param>
         /// <param name="forceSubClaims">if true: enforce role-association must include sub claims.</param>
+        /// <param name="gatewayUrl">Akeyless Gateway URL (Configuration Management port). Relevant only when working with Gateway mode.</param>
         /// <param name="gwBoundIps">A CIDR whitelist with the GW IPs that the access is restricted to.</param>
         /// <param name="issuer">Issuer URL.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -65,7 +66,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OIDC, OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public UpdateAuthMethodOIDC(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> allowedRedirectUri = default(List<string>), string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public UpdateAuthMethodOIDC(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> allowedRedirectUri = default(List<string>), string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -91,6 +92,7 @@ namespace akeyless.Model
             this.Description = description;
             this.ExpirationEventIn = expirationEventIn;
             this.ForceSubClaims = forceSubClaims;
+            this.GatewayUrl = gatewayUrl;
             this.GwBoundIps = gwBoundIps;
             this.Issuer = issuer;
             this.Json = json;
@@ -187,6 +189,13 @@ namespace akeyless.Model
         /// <value>if true: enforce role-association must include sub claims</value>
         [DataMember(Name = "force-sub-claims", EmitDefaultValue = true)]
         public bool ForceSubClaims { get; set; }
+
+        /// <summary>
+        /// Akeyless Gateway URL (Configuration Management port). Relevant only when working with Gateway mode
+        /// </summary>
+        /// <value>Akeyless Gateway URL (Configuration Management port). Relevant only when working with Gateway mode</value>
+        [DataMember(Name = "gateway-url", EmitDefaultValue = false)]
+        public string GatewayUrl { get; set; }
 
         /// <summary>
         /// A CIDR whitelist with the GW IPs that the access is restricted to
@@ -299,6 +308,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  ForceSubClaims: ").Append(ForceSubClaims).Append("\n");
+            sb.Append("  GatewayUrl: ").Append(GatewayUrl).Append("\n");
             sb.Append("  GwBoundIps: ").Append(GwBoundIps).Append("\n");
             sb.Append("  Issuer: ").Append(Issuer).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

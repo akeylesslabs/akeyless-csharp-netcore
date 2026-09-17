@@ -63,13 +63,13 @@ namespace akeyless.Model
         /// <param name="secureAccessDelay">The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerGke(bool araEnabled = default(bool), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerGke(bool araEnabled = default(bool), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string gkeAccountKey = default(string), string gkeClusterCert = default(string), string gkeClusterEndpoint = default(string), string gkeClusterName = default(string), string gkeServiceAccountEmail = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -270,11 +270,11 @@ namespace akeyless.Model
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

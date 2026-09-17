@@ -68,7 +68,7 @@ namespace akeyless.Model
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts).</param>
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
         /// <param name="sslCertificate">SSL connection certificate.</param>
         /// <param name="tags">Add tags attached to this object.</param>
@@ -80,7 +80,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerMySQL(bool araEnabled = default(bool), string customUsernameTemplate = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string mysqlDbname = default(string), string mysqlHost = @"127.0.0.1", string mysqlPassword = default(string), string mysqlPort = @"3306", string mysqlRevocationStatements = default(string), string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, string skipDryRun = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerMySQL(bool araEnabled = default(bool), string customUsernameTemplate = default(string), string dbServerCertificates = default(string), string dbServerName = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string mysqlDbname = default(string), string mysqlHost = @"127.0.0.1", string mysqlPassword = default(string), string mysqlPort = @"3306", string mysqlRevocationStatements = default(string), string mysqlScreationStatements = default(string), string mysqlUsername = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessDbName = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool secureAccessWeb = false, bool skipDryRun = default(bool), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -329,11 +329,11 @@ namespace akeyless.Model
         public bool SecureAccessWeb { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Enable/Disable SSL [true/false]

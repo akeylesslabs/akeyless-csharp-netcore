@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **RotationHour** | **int** |  | [optional] 
 **RotationInterval** | **string** |  | [optional] 
 **RotatorType** | **string** | The rotator type. options: [target/api-key] | 
-**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | The target name to associate | 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

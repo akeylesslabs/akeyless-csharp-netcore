@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **RotationHour** | **int** |  | [optional] 
 **RotationInterval** | **string** |  | [optional] 
 **RotatorType** | **string** | The rotator type. options: [target/password/token/hec-token] | 
-**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **SplunkToken** | **string** | Current Splunk authentication token to store (relevant only for rotator-type&#x3D;token). If not provided, a new token will be created in Splunk. | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | The target name to associate | 

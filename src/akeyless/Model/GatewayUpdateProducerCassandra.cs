@@ -58,7 +58,7 @@ namespace akeyless.Model
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
         /// <param name="sslCertificate">SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA).</param>
         /// <param name="tags">Add tags attached to this object.</param>
@@ -70,7 +70,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerCassandra(bool araEnabled = default(bool), string cassandraCreationStatements = default(string), string cassandraHosts = default(string), string cassandraPassword = default(string), string cassandraPort = @"9042", string cassandraUsername = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string skipDryRun = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerCassandra(bool araEnabled = default(bool), string cassandraCreationStatements = default(string), string cassandraHosts = default(string), string cassandraPassword = default(string), string cassandraPort = @"9042", string cassandraUsername = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), bool skipDryRun = default(bool), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -238,11 +238,11 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Enable/Disable SSL [true/false]

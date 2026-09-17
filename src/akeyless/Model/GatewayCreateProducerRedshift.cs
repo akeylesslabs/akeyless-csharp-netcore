@@ -60,7 +60,7 @@ namespace akeyless.Model
         /// <param name="redshiftUsername">Redshift Username.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
         /// <param name="secureAccessHost">Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts).</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
@@ -71,7 +71,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayCreateProducerRedshift(bool araEnabled = default(bool), string creationStatements = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKey = default(string), string redshiftDbName = default(string), string redshiftHost = @"127.0.0.1", string redshiftPassword = default(string), string redshiftPort = @"5439", string redshiftUsername = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), string skipDryRun = default(string), bool ssl = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public GatewayCreateProducerRedshift(bool araEnabled = default(bool), string creationStatements = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKey = default(string), string redshiftDbName = default(string), string redshiftHost = @"127.0.0.1", string redshiftPassword = default(string), string redshiftPort = @"5439", string redshiftUsername = default(string), string secureAccessEnable = default(string), List<string> secureAccessHost = default(List<string>), bool skipDryRun = default(bool), bool ssl = false, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -255,11 +255,11 @@ namespace akeyless.Model
         public List<string> SecureAccessHost { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Enable/Disable SSL [true/false]

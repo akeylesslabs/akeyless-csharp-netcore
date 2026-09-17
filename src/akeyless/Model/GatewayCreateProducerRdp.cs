@@ -73,7 +73,7 @@ namespace akeyless.Model
         /// <param name="secureAccessRdGatewayServer">RD Gateway server.</param>
         /// <param name="secureAccessRdpDomain">Required when the Dynamic Secret is used for a domain user.</param>
         /// <param name="secureAccessRdpUser">Override the RDP Domain username.</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="target">A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times.</param>
         /// <param name="targetName">Target name.</param>
@@ -85,7 +85,7 @@ namespace akeyless.Model
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="warnUserBeforeExpiration">WarnBeforeUserExpiration.</param>
-        public GatewayCreateProducerRdp(string providerType = default(string), long allowUserExtendSession = default(long), bool araEnabled = default(bool), string blockParentTargetAccess = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string fixedUserClaimKeyname = @"ext_username", string fixedUserOnly = @"false", string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = @"22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m", long warnUserBeforeExpiration = default(long))
+        public GatewayCreateProducerRdp(string providerType = default(string), long allowUserExtendSession = default(long), bool araEnabled = default(bool), string blockParentTargetAccess = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string fixedUserClaimKeyname = @"ext_username", string fixedUserOnly = @"false", string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string rdpAdminName = default(string), string rdpAdminPwd = default(string), string rdpHostName = default(string), string rdpHostPort = @"22", string rdpUserGroups = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m", long warnUserBeforeExpiration = default(long))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -374,11 +374,11 @@ namespace akeyless.Model
         public string SecureAccessRdpUser { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

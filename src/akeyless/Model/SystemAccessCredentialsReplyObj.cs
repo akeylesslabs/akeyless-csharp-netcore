@@ -43,9 +43,11 @@ namespace akeyless.Model
         /// <param name="needMfaAppFirstConfig">If the user didn&#39;t complete to configure the MFA app.</param>
         /// <param name="recoveryKeyId">RecoveryKeyID identifies the DPoP-bound recovery key for WebUI session recovery..</param>
         /// <param name="requiredMfa">requiredMfa.</param>
+        /// <param name="subClaims">SubClaims carries the IdP-verified RBAC claims for offline placeholder creds (empty UAM JWT); parsed from the ID token at callback time..</param>
         /// <param name="token">Credentials tmp token.</param>
         /// <param name="uamCreds">Temporary credentials for accessing the UAM service.</param>
-        public SystemAccessCredentialsReplyObj(string accessId = default(string), string authCreds = default(string), string csrfToken = default(string), long expiry = default(long), string kfmCreds = default(string), bool needMfaAppFirstConfig = default(bool), string recoveryKeyId = default(string), string requiredMfa = default(string), string token = default(string), string uamCreds = default(string))
+        /// <param name="uniqueId">UniqueId is set only on Gateway-minted offline placeholder creds (empty UAM JWT), carrying the IdP unique identifier so usage-time RBAC can resolve identity..</param>
+        public SystemAccessCredentialsReplyObj(string accessId = default(string), string authCreds = default(string), string csrfToken = default(string), long expiry = default(long), string kfmCreds = default(string), bool needMfaAppFirstConfig = default(bool), string recoveryKeyId = default(string), string requiredMfa = default(string), Dictionary<string, List<string>> subClaims = default(Dictionary<string, List<string>>), string token = default(string), string uamCreds = default(string), string uniqueId = default(string))
         {
             this.AccessId = accessId;
             this.AuthCreds = authCreds;
@@ -55,8 +57,10 @@ namespace akeyless.Model
             this.NeedMfaAppFirstConfig = needMfaAppFirstConfig;
             this.RecoveryKeyId = recoveryKeyId;
             this.RequiredMfa = requiredMfa;
+            this.SubClaims = subClaims;
             this.Token = token;
             this.UamCreds = uamCreds;
+            this.UniqueId = uniqueId;
         }
 
         /// <summary>
@@ -114,6 +118,13 @@ namespace akeyless.Model
         public string RequiredMfa { get; set; }
 
         /// <summary>
+        /// SubClaims carries the IdP-verified RBAC claims for offline placeholder creds (empty UAM JWT); parsed from the ID token at callback time.
+        /// </summary>
+        /// <value>SubClaims carries the IdP-verified RBAC claims for offline placeholder creds (empty UAM JWT); parsed from the ID token at callback time.</value>
+        [DataMember(Name = "sub_claims", EmitDefaultValue = false)]
+        public Dictionary<string, List<string>> SubClaims { get; set; }
+
+        /// <summary>
         /// Credentials tmp token
         /// </summary>
         /// <value>Credentials tmp token</value>
@@ -126,6 +137,13 @@ namespace akeyless.Model
         /// <value>Temporary credentials for accessing the UAM service</value>
         [DataMember(Name = "uam_creds", EmitDefaultValue = false)]
         public string UamCreds { get; set; }
+
+        /// <summary>
+        /// UniqueId is set only on Gateway-minted offline placeholder creds (empty UAM JWT), carrying the IdP unique identifier so usage-time RBAC can resolve identity.
+        /// </summary>
+        /// <value>UniqueId is set only on Gateway-minted offline placeholder creds (empty UAM JWT), carrying the IdP unique identifier so usage-time RBAC can resolve identity.</value>
+        [DataMember(Name = "unique_id", EmitDefaultValue = false)]
+        public string UniqueId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -143,8 +161,10 @@ namespace akeyless.Model
             sb.Append("  NeedMfaAppFirstConfig: ").Append(NeedMfaAppFirstConfig).Append("\n");
             sb.Append("  RecoveryKeyId: ").Append(RecoveryKeyId).Append("\n");
             sb.Append("  RequiredMfa: ").Append(RequiredMfa).Append("\n");
+            sb.Append("  SubClaims: ").Append(SubClaims).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UamCreds: ").Append(UamCreds).Append("\n");
+            sb.Append("  UniqueId: ").Append(UniqueId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

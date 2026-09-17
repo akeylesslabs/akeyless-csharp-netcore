@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **PrivateKey** | **string** | RSA Private key (base64 encoded) | [optional] 
 **PrivateKeyPassphrase** | **string** | The Private key passphrase | [optional] 
 **Role** | **string** | User role | [optional] 
-**SkipDryRun** | **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

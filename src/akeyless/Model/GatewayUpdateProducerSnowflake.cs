@@ -61,7 +61,7 @@ namespace akeyless.Model
         /// <param name="privateKey">RSA Private key (base64 encoded).</param>
         /// <param name="privateKeyPassphrase">The Private key passphrase.</param>
         /// <param name="role">User role.</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -72,7 +72,7 @@ namespace akeyless.Model
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayUpdateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), bool araEnabled = default(bool), string authMode = @"password", string customUsernameTemplate = default(string), string dbName = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyAlgo = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"24h", string warehouse = default(string))
+        public GatewayUpdateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), bool araEnabled = default(bool), string authMode = @"password", string customUsernameTemplate = default(string), string dbName = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyAlgo = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -262,11 +262,11 @@ namespace akeyless.Model
         public string Role { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

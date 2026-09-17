@@ -84,7 +84,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to false).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="storageAccountKeyName">The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -93,7 +93,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="username">The user principal name to rotate his password (relevant only for rotator-type&#x3D;password).</param>
-        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string explicitlySetSa = @"false", string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string password = default(string), string passwordLength = default(string), string resourceGroupName = default(string), string resourceName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotateOnUnlock = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string skipDryRun = default(string), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string username = default(string))
+        public RotatedSecretUpdateAzure(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), string applicationId = default(string), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string explicitlySetSa = @"false", string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string password = default(string), string passwordLength = default(string), string resourceGroupName = default(string), string resourceName = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotateOnUnlock = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool secureAccessDisableConcurrentConnections = default(bool), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = false, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, bool skipDryRun = default(bool), string storageAccountKeyName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -463,11 +463,11 @@ namespace akeyless.Model
         public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account)

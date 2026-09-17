@@ -58,13 +58,13 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">Access Token TTL.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public DynamicSecretCreateGitlab(bool araEnabled = default(bool), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string gitlabAccessToken = default(string), string gitlabAccessType = default(string), string gitlabCertificate = default(string), string gitlabRole = default(string), string gitlabTokenScopes = default(string), string gitlabUrl = @"https://gitlab.com/", string groupName = default(string), List<string> inputRule = default(List<string>), string installationOrganization = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public DynamicSecretCreateGitlab(bool araEnabled = default(bool), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string gitlabAccessToken = default(string), string gitlabAccessType = default(string), string gitlabCertificate = default(string), string gitlabRole = default(string), string gitlabTokenScopes = default(string), string gitlabUrl = @"https://gitlab.com/", string groupName = default(string), List<string> inputRule = default(List<string>), string installationOrganization = default(string), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "gitlabAccessType" is required (not null)
             if (gitlabAccessType == null)
@@ -235,11 +235,11 @@ namespace akeyless.Model
         public List<string> OutputRule { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

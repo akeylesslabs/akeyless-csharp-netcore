@@ -57,8 +57,8 @@ namespace akeyless.Model
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="skipSsl">Skip SSL (default to true).</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -68,7 +68,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateChef(bool araEnabled = default(bool), string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), bool skipSsl = true, string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public DynamicSecretCreateChef(bool araEnabled = default(bool), string chefOrgs = default(string), string chefServerKey = default(string), string chefServerUrl = default(string), string chefServerUsername = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), bool skipDryRun = default(bool), bool skipSsl = true, List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -92,8 +92,8 @@ namespace akeyless.Model
             this.OutputRule = outputRule;
             this.PasswordLength = passwordLength;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
-            this.SkipSsl = skipSsl;
             this.SkipDryRun = skipDryRun;
+            this.SkipSsl = skipSsl;
             this.Tags = tags;
             this.TargetName = targetName;
             this.Token = token;
@@ -226,18 +226,18 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// If set, dry-run will be skipped [true/false]
+        /// </summary>
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
+
+        /// <summary>
         /// Skip SSL
         /// </summary>
         /// <value>Skip SSL</value>
         [DataMember(Name = "skip-ssl", EmitDefaultValue = true)]
         public bool SkipSsl { get; set; }
-
-        /// <summary>
-        /// If set, dry-run will be skipped
-        /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object
@@ -329,8 +329,8 @@ namespace akeyless.Model
             sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
-            sb.Append("  SkipSsl: ").Append(SkipSsl).Append("\n");
             sb.Append("  SkipDryRun: ").Append(SkipDryRun).Append("\n");
+            sb.Append("  SkipSsl: ").Append(SkipSsl).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

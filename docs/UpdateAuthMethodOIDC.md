@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Auth Method description | [optional] 
 **ExpirationEventIn** | **List&lt;string&gt;** | How many days before the expiration of the auth method would you like to be notified. | [optional] 
 **ForceSubClaims** | **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GatewayUrl** | **string** | Akeyless Gateway URL (Configuration Management port). Relevant only when working with Gateway mode | [optional] 
 **GwBoundIps** | **List&lt;string&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | **string** | Issuer URL | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

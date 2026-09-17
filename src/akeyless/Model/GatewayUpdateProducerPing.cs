@@ -67,13 +67,13 @@ namespace akeyless.Model
         /// <param name="pingSigningAlgo">The signing algorithm that the client must use to sign its request objects [RS256,RS384,RS512,ES256,ES384,ES512,PS256,PS384,PS512] If no explicit value is given, the client can use any of the supported signing algorithms (relevant for PRIVATE_KEY_JWT authentication method).</param>
         /// <param name="pingUrl">Ping URL.</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">The time from dynamic secret creation to expiration. (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerPing(bool araEnabled = default(bool), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string pingAdministrativePort = @"9999", string pingAtmId = default(string), string pingAuthorizationPort = @"9031", string pingCertSubjectDn = default(string), string pingClientAuthenticationType = @"CLIENT_SECRET", string pingEnforceReplayPrevention = @"false", List<string> pingGrantTypes = default(List<string>), string pingIssuerDn = default(string), string pingJwks = default(string), string pingJwksUrl = default(string), string pingPassword = default(string), string pingPrivilegedUser = default(string), List<string> pingRedirectUris = default(List<string>), List<string> pingRestrictedScopes = default(List<string>), string pingSigningAlgo = default(string), string pingUrl = default(string), string producerEncryptionKeyName = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerPing(bool araEnabled = default(bool), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string pingAdministrativePort = @"9999", string pingAtmId = default(string), string pingAuthorizationPort = @"9031", string pingCertSubjectDn = default(string), string pingClientAuthenticationType = @"CLIENT_SECRET", string pingEnforceReplayPrevention = @"false", List<string> pingGrantTypes = default(List<string>), string pingIssuerDn = default(string), string pingJwks = default(string), string pingJwksUrl = default(string), string pingPassword = default(string), string pingPrivilegedUser = default(string), List<string> pingRedirectUris = default(List<string>), List<string> pingRestrictedScopes = default(List<string>), string pingSigningAlgo = default(string), string pingUrl = default(string), string producerEncryptionKeyName = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -310,11 +310,11 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

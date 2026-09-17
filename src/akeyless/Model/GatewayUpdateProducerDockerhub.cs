@@ -54,13 +54,13 @@ namespace akeyless.Model
         /// <param name="newName">Dynamic secret name.</param>
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerDockerhub(bool araEnabled = default(bool), string deleteProtection = default(string), string dockerhubPassword = default(string), string dockerhubTokenScopes = default(string), string dockerhubUsername = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerDockerhub(bool araEnabled = default(bool), string deleteProtection = default(string), string dockerhubPassword = default(string), string dockerhubTokenScopes = default(string), string dockerhubUsername = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -189,11 +189,11 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

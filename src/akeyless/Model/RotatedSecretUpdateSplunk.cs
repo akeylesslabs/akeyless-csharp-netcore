@@ -68,7 +68,7 @@ namespace akeyless.Model
         /// <param name="rotationEventIn">How many days before the rotation of the item would you like to be notified.</param>
         /// <param name="rotationHour">rotationHour.</param>
         /// <param name="rotationInterval">rotationInterval.</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="splunkToken">For rotator-type&#x3D;token, optionally set/replace the stored Splunk authentication token value..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="tokenOwner">For rotator-type&#x3D;token, specify the Splunk username that the new token should be issued for. (Splunk 10 requires name&#x3D;&lt;token-owner&gt; when creating auth tokens.).</param>
@@ -77,7 +77,7 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
-        public RotatedSecretUpdateSplunk(List<string> addTag = default(List<string>), bool araEnabled = default(bool), string audience = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string expirationDate = default(string), string hecToken = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateOnUnlock = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string skipDryRun = default(string), string splunkToken = default(string), string token = default(string), string tokenOwner = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public RotatedSecretUpdateSplunk(List<string> addTag = default(List<string>), bool araEnabled = default(bool), string audience = default(string), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = @"default_metadata", bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string expirationDate = default(string), string hecToken = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateOnUnlock = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), bool skipDryRun = default(bool), string splunkToken = default(string), string token = default(string), string tokenOwner = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -318,11 +318,11 @@ namespace akeyless.Model
         public string RotationInterval { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// For rotator-type&#x3D;token, optionally set/replace the stored Splunk authentication token value.

@@ -57,13 +57,13 @@ namespace akeyless.Model
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
         /// <param name="revokeSyncUrl">URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke (required).</param>
         /// <param name="rotateSyncUrl">URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate.</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="timeoutSec">Maximum allowed time in seconds for the webhook to return the results (default to 60).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public GatewayUpdateProducerCustom(long adminRotationIntervalDays = default(long), bool araEnabled = default(bool), string createSyncUrl = default(string), string deleteProtection = default(string), bool enableAdminRotation = false, bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public GatewayUpdateProducerCustom(long adminRotationIntervalDays = default(long), bool araEnabled = default(bool), string createSyncUrl = default(string), string deleteProtection = default(string), bool enableAdminRotation = false, bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string payload = default(string), string producerEncryptionKeyName = default(string), string revokeSyncUrl = default(string), string rotateSyncUrl = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), long timeoutSec = 60, string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "createSyncUrl" is required (not null)
             if (createSyncUrl == null)
@@ -226,11 +226,11 @@ namespace akeyless.Model
         public string RotateSyncUrl { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

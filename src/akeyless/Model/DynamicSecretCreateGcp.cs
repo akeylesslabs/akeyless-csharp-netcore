@@ -68,13 +68,13 @@ namespace akeyless.Model
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="serviceAccountType">The type of the GCP service account. Options [fixed, dynamic] (Relevant only when - -access-type&#x3D;sa) (default to &quot;fixed&quot;).</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateGcp(string accessType = default(string), bool araEnabled = default(bool), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string fixedUserClaimKeyname = @"ext_email", string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpProjectId = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string roleNames = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string serviceAccountType = @"fixed", string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
+        public DynamicSecretCreateGcp(string accessType = default(string), bool araEnabled = default(bool), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string fixedUserClaimKeyname = @"ext_email", string gcpCredType = default(string), string gcpKey = default(string), string gcpKeyAlgo = default(string), string gcpProjectId = default(string), string gcpSaEmail = default(string), string gcpTokenScopes = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), string roleBinding = default(string), string roleNames = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string serviceAccountType = @"fixed", bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -315,11 +315,11 @@ namespace akeyless.Model
         public string ServiceAccountType { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

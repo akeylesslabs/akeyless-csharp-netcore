@@ -77,7 +77,7 @@ namespace akeyless.Model
         /// <param name="secureAccessHost">Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers).</param>
         /// <param name="secureAccessRdpDomain">Default domain name server. i.e. microsoft.com.</param>
         /// <param name="secureAccessRdpUser">Override the RDP Domain username.</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="target">A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times.</param>
         /// <param name="targetName">The target name to associate (required).</param>
@@ -87,7 +87,7 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
-        public RotatedSecretCreateWindows(string providerType = default(string), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string rotateAfterDisconnect = default(string), string rotateOnUnlock = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), string skipDryRun = default(string), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public RotatedSecretCreateWindows(string providerType = default(string), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string key = default(string), string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string rotateAfterDisconnect = default(string), string rotateOnUnlock = default(string), string rotatedPassword = default(string), string rotatedUsername = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string rotatorType = default(string), string samePassword = default(string), bool secureAccessAllowExternalUser = false, string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), List<string> secureAccessHost = default(List<string>), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), List<string> target = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -409,11 +409,11 @@ namespace akeyless.Model
         public string SecureAccessRdpUser { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

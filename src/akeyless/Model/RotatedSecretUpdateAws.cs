@@ -79,14 +79,14 @@ namespace akeyless.Model
         /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
         /// <param name="secureAccessCertificateIssuer">Path to the SSH Certificate Issuer for your Akeyless Secure Access.</param>
         /// <param name="secureAccessEnable">Enable/Disable secure remote access [true/false].</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="useCapitalLetters">Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false].</param>
         /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
-        public RotatedSecretUpdateAws(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string awsRegion = @"us-east-2", string deleteProtection = default(string), string description = @"default_metadata", bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotateOnUnlock = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), string skipDryRun = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public RotatedSecretUpdateAws(List<string> addTag = default(List<string>), string apiId = default(string), string apiKey = default(string), bool araEnabled = default(bool), string authenticationCredentials = @"use-user-creds", string autoRotate = default(string), string awsRegion = @"us-east-2", string deleteProtection = default(string), string description = @"default_metadata", bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string graceRotation = default(string), int graceRotationHour = default(int), string graceRotationInterval = default(string), string graceRotationTiming = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotateOnUnlock = default(string), List<string> rotationEventIn = default(List<string>), int rotationHour = default(int), string rotationInterval = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), bool skipDryRun = default(bool), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -414,11 +414,11 @@ namespace akeyless.Model
         public string SecureAccessEnable { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)

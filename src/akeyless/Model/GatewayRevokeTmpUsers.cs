@@ -49,12 +49,12 @@ namespace akeyless.Model
         /// <param name="name">Dynamic secret name (required).</param>
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="revokeAll">Revoke All Temp Creds.</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="softDelete">Soft Delete.</param>
         /// <param name="tmpCredsId">Tmp Creds ID.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayRevokeTmpUsers(bool araEnabled = default(bool), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string host = default(string), List<string> inputRule = default(List<string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), bool revokeAll = default(bool), string skipDryRun = default(string), bool softDelete = default(bool), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayRevokeTmpUsers(bool araEnabled = default(bool), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string host = default(string), List<string> inputRule = default(List<string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), bool revokeAll = default(bool), bool skipDryRun = default(bool), bool softDelete = default(bool), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -141,11 +141,11 @@ namespace akeyless.Model
         public bool RevokeAll { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Soft Delete

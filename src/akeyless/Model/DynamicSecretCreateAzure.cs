@@ -65,7 +65,7 @@ namespace akeyless.Model
         /// <param name="secureAccessWeb">Enable Web Secure Remote Access (default to true).</param>
         /// <param name="secureAccessWebBrowsing">Secure browser via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
         /// <param name="secureAccessWebProxy">Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (default to false).</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="tags">Add tags attached to this object.</param>
         /// <param name="targetName">Target name.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -80,7 +80,7 @@ namespace akeyless.Model
         /// <param name="userProgrammaticAccess">Azure User programmatic access (default to false).</param>
         /// <param name="userRoleTemplateId">User Role Template Id.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateAzure(string appObjId = default(string), bool araEnabled = default(bool), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string skipDryRun = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
+        public DynamicSecretCreateAzure(string appObjId = default(string), bool araEnabled = default(bool), string azureAdministrativeUnit = default(string), string azureClientId = default(string), string azureClientSecret = default(string), string azureTenantId = default(string), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string fixedUserClaimKeyname = @"false", bool fixedUserOnly = false, List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string secureAccessEnable = default(string), string secureAccessUrl = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userGroupObjId = default(string), bool userPortalAccess = false, string userPrincipalName = default(string), bool userProgrammaticAccess = false, string userRoleTemplateId = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -307,11 +307,11 @@ namespace akeyless.Model
         public bool SecureAccessWebProxy { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

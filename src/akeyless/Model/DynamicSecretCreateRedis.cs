@@ -57,7 +57,7 @@ namespace akeyless.Model
         /// <param name="passwordLength">The length of the password to be generated.</param>
         /// <param name="port">Redis Port (default to &quot;6379&quot;).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="skipDryRun">If set, dry-run will be skipped.</param>
+        /// <param name="skipDryRun">If set, dry-run will be skipped [true/false].</param>
         /// <param name="ssl">Enable/Disable SSL [true/false] (default to false).</param>
         /// <param name="sslCertificate">SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA).</param>
         /// <param name="tags">Add tags attached to this object.</param>
@@ -70,7 +70,7 @@ namespace akeyless.Model
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
         /// <param name="username">Redis Username.</param>
-        public DynamicSecretCreateRedis(string aclRules = default(string), bool araEnabled = default(bool), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string host = @"127.0.0.1", List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string password = default(string), string passwordLength = default(string), string port = @"6379", string producerEncryptionKeyName = default(string), string skipDryRun = default(string), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m", string username = default(string))
+        public DynamicSecretCreateRedis(string aclRules = default(string), bool araEnabled = default(bool), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string host = @"127.0.0.1", List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string password = default(string), string passwordLength = default(string), string port = @"6379", string producerEncryptionKeyName = default(string), bool skipDryRun = default(bool), bool ssl = false, string sslCertificate = default(string), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m", string username = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -232,11 +232,11 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// If set, dry-run will be skipped
+        /// If set, dry-run will be skipped [true/false]
         /// </summary>
-        /// <value>If set, dry-run will be skipped</value>
-        [DataMember(Name = "skip_dry_run", EmitDefaultValue = false)]
-        public string SkipDryRun { get; set; }
+        /// <value>If set, dry-run will be skipped [true/false]</value>
+        [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
+        public bool SkipDryRun { get; set; }
 
         /// <summary>
         /// Enable/Disable SSL [true/false]
