@@ -1285,13 +1285,6 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/ClientEventOutputTests.cs
-src/akeyless.Test/Model/ClientEventTests.cs
-src/akeyless.Test/Model/GenerateIntermediateCAOutputTests.cs
-src/akeyless.Test/Model/GenerateIntermediateCATests.cs
-src/akeyless.Test/Model/InjectorCertificateEventTests.cs
-src/akeyless.Test/Model/RotatedSecretCreateOktaTests.cs
-src/akeyless.Test/Model/RotatedSecretUpdateOktaTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
