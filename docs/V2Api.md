@@ -49,6 +49,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**CalcPasswordSecurityInfo**](V2Api.md#calcpasswordsecurityinfo) | **POST** /calc-password-security-info |  |
 | [**CertificateDiscovery**](V2Api.md#certificatediscovery) | **POST** /certificate-discovery |  |
 | [**ChangeAdminAccountPassword**](V2Api.md#changeadminaccountpassword) | **POST** /change-admin-account-password |  |
+| [**ClientEvent**](V2Api.md#clientevent) | **POST** /client-event |  |
 | [**Configure**](V2Api.md#configure) | **POST** /configure |  |
 | [**Connect**](V2Api.md#connect) | **POST** /connect |  |
 | [**CreateAWSTarget**](V2Api.md#createawstarget) | **POST** /create-aws-target |  |
@@ -341,6 +342,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GenerateAcmeEab**](V2Api.md#generateacmeeab) | **POST** /generate-acme-eab |  |
 | [**GenerateCA**](V2Api.md#generateca) | **POST** /generate-ca |  |
 | [**GenerateCsr**](V2Api.md#generatecsr) | **POST** /generate-csr |  |
+| [**GenerateIntermediateCA**](V2Api.md#generateintermediateca) | **POST** /generate-intermediate-ca |  |
 | [**GetAccountLogo**](V2Api.md#getaccountlogo) | **POST** /get-account-logo |  |
 | [**GetAccountSettings**](V2Api.md#getaccountsettings) | **POST** /get-account-settings |  |
 | [**GetAnalyticsData**](V2Api.md#getanalyticsdata) | **POST** /get-analytics-data |  |
@@ -401,7 +403,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**ListItems**](V2Api.md#listitems) | **POST** /list-items |  |
 | [**ListRoles**](V2Api.md#listroles) | **POST** /list-roles |  |
 | [**ListSRABastions**](V2Api.md#listsrabastions) | **POST** /list-sra-bastions |  |
-| [**ListSRASessions**](V2Api.md#listsrasessions) | **POST** /list-sra-sessions |  |
+| [**ListSRASessions**](V2Api.md#listsrasessions) | **POST** /list-sra-sessions | Lists SRA sessions. |
 | [**ListSharedItems**](V2Api.md#listshareditems) | **POST** /list-shared-items |  |
 | [**ListTargets**](V2Api.md#listtargets) | **POST** /list-targets |  |
 | [**LockItem**](V2Api.md#lockitem) | **POST** /lock-item |  |
@@ -439,6 +441,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretCreateMongodb**](V2Api.md#rotatedsecretcreatemongodb) | **POST** /rotated-secret-create-mongodb |  |
 | [**RotatedSecretCreateMssql**](V2Api.md#rotatedsecretcreatemssql) | **POST** /rotated-secret-create-mssql |  |
 | [**RotatedSecretCreateMysql**](V2Api.md#rotatedsecretcreatemysql) | **POST** /rotated-secret-create-mysql |  |
+| [**RotatedSecretCreateOkta**](V2Api.md#rotatedsecretcreateokta) | **POST** /rotated-secret-create-okta |  |
 | [**RotatedSecretCreateOpenAI**](V2Api.md#rotatedsecretcreateopenai) | **POST** /rotated-secret-create-openai |  |
 | [**RotatedSecretCreateOracledb**](V2Api.md#rotatedsecretcreateoracledb) | **POST** /rotated-secret-create-oracledb |  |
 | [**RotatedSecretCreatePostgresql**](V2Api.md#rotatedsecretcreatepostgresql) | **POST** /rotated-secret-create-postgresql |  |
@@ -466,6 +469,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretUpdateMongodb**](V2Api.md#rotatedsecretupdatemongodb) | **POST** /rotated-secret-update-mongodb |  |
 | [**RotatedSecretUpdateMssql**](V2Api.md#rotatedsecretupdatemssql) | **POST** /rotated-secret-update-mssql |  |
 | [**RotatedSecretUpdateMysql**](V2Api.md#rotatedsecretupdatemysql) | **POST** /rotated-secret-update-mysql |  |
+| [**RotatedSecretUpdateOkta**](V2Api.md#rotatedsecretupdateokta) | **POST** /rotated-secret-update-okta |  |
 | [**RotatedSecretUpdateOpenAI**](V2Api.md#rotatedsecretupdateopenai) | **POST** /rotated-secret-update-openai |  |
 | [**RotatedSecretUpdateOracledb**](V2Api.md#rotatedsecretupdateoracledb) | **POST** /rotated-secret-update-oracledb |  |
 | [**RotatedSecretUpdatePostgresql**](V2Api.md#rotatedsecretupdatepostgresql) | **POST** /rotated-secret-update-postgresql |  |
@@ -4631,6 +4635,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | changeAdminAccountPasswordResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="clientevent"></a>
+# **ClientEvent**
+> ClientEventOutput ClientEvent (ClientEvent clientEvent)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class ClientEventExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var clientEvent = new ClientEvent(); // ClientEvent | 
+
+            try
+            {
+                ClientEventOutput result = apiInstance.ClientEvent(clientEvent);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.ClientEvent: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ClientEventWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ClientEventOutput> response = apiInstance.ClientEventWithHttpInfo(clientEvent);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.ClientEventWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **clientEvent** | [**ClientEvent**](ClientEvent.md) |  |  |
+
+### Return type
+
+[**ClientEventOutput**](ClientEventOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | clientEventResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -30316,6 +30408,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="generateintermediateca"></a>
+# **GenerateIntermediateCA**
+> GenerateIntermediateCAOutput GenerateIntermediateCA (GenerateIntermediateCA generateIntermediateCA)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GenerateIntermediateCAExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var generateIntermediateCA = new GenerateIntermediateCA(); // GenerateIntermediateCA | 
+
+            try
+            {
+                GenerateIntermediateCAOutput result = apiInstance.GenerateIntermediateCA(generateIntermediateCA);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GenerateIntermediateCA: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GenerateIntermediateCAWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<GenerateIntermediateCAOutput> response = apiInstance.GenerateIntermediateCAWithHttpInfo(generateIntermediateCA);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GenerateIntermediateCAWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **generateIntermediateCA** | [**GenerateIntermediateCA**](GenerateIntermediateCA.md) |  |  |
+
+### Return type
+
+[**GenerateIntermediateCAOutput**](GenerateIntermediateCAOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | GenerateIntermediateCAResponse wraps the response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="getaccountlogo"></a>
 # **GetAccountLogo**
 > Dictionary&lt;string, string&gt; GetAccountLogo ()
@@ -35591,7 +35771,9 @@ No authorization required
 # **ListSRASessions**
 > ListSraSessionsOutput ListSRASessions (ListSRASessions listSRASessions)
 
+Lists SRA sessions.
 
+Results are returned newest first, ordered by start time, then by session ID. Responses contain up to 1000 sessions.  Pagination: Pass the response's `next_page` value as the `pagination-token` in subsequent requests to fetch the next page. Pagination is complete when `next_page` is empty. Sending an empty `pagination-token` retrieves the first page. Filters must remain identical across paginated requests to maintain cursor validity.
 
 ### Example
 ```csharp
@@ -35614,6 +35796,7 @@ namespace Example
 
             try
             {
+                // Lists SRA sessions.
                 ListSraSessionsOutput result = apiInstance.ListSRASessions(listSRASessions);
                 Debug.WriteLine(result);
             }
@@ -35634,6 +35817,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
+    // Lists SRA sessions.
     ApiResponse<ListSraSessionsOutput> response = apiInstance.ListSRASessionsWithHttpInfo(listSRASessions);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -38922,6 +39106,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="rotatedsecretcreateokta"></a>
+# **RotatedSecretCreateOkta**
+> RotatedSecretCreateOutput RotatedSecretCreateOkta (RotatedSecretCreateOkta rotatedSecretCreateOkta)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretCreateOktaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretCreateOkta = new RotatedSecretCreateOkta(); // RotatedSecretCreateOkta | 
+
+            try
+            {
+                RotatedSecretCreateOutput result = apiInstance.RotatedSecretCreateOkta(rotatedSecretCreateOkta);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretCreateOkta: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretCreateOktaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretCreateOutput> response = apiInstance.RotatedSecretCreateOktaWithHttpInfo(rotatedSecretCreateOkta);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretCreateOktaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretCreateOkta** | [**RotatedSecretCreateOkta**](RotatedSecretCreateOkta.md) |  |  |
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | rotatedSecretCreateOktaResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="rotatedsecretcreateopenai"></a>
 # **RotatedSecretCreateOpenAI**
 > RotatedSecretCreateOutput RotatedSecretCreateOpenAI (RotatedSecretCreateOpenAI rotatedSecretCreateOpenAI)
@@ -41294,6 +41566,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | rotatedSecretUpdateMysqlResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="rotatedsecretupdateokta"></a>
+# **RotatedSecretUpdateOkta**
+> RotatedSecretUpdateOutput RotatedSecretUpdateOkta (RotatedSecretUpdateOkta rotatedSecretUpdateOkta)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretUpdateOktaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretUpdateOkta = new RotatedSecretUpdateOkta(); // RotatedSecretUpdateOkta | 
+
+            try
+            {
+                RotatedSecretUpdateOutput result = apiInstance.RotatedSecretUpdateOkta(rotatedSecretUpdateOkta);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretUpdateOkta: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretUpdateOktaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretUpdateOutput> response = apiInstance.RotatedSecretUpdateOktaWithHttpInfo(rotatedSecretUpdateOkta);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretUpdateOktaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretUpdateOkta** | [**RotatedSecretUpdateOkta**](RotatedSecretUpdateOkta.md) |  |  |
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | rotatedSecretUpdateOktaResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

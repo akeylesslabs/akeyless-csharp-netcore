@@ -42,7 +42,8 @@ namespace akeyless.Model
         /// <param name="ldapCertificate">ldapCertificate.</param>
         /// <param name="ldapTokenExpiration">ldapTokenExpiration.</param>
         /// <param name="ldapUrl">ldapUrl.</param>
-        public LdapTargetDetails(string implementationType = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string))
+        /// <param name="ldapUsername">ldapUsername.</param>
+        public LdapTargetDetails(string implementationType = default(string), string ldapAudience = default(string), string ldapBindDn = default(string), string ldapBindPassword = default(string), string ldapCertificate = default(string), string ldapTokenExpiration = default(string), string ldapUrl = default(string), string ldapUsername = default(string))
         {
             this.ImplementationType = implementationType;
             this.LdapAudience = ldapAudience;
@@ -51,6 +52,7 @@ namespace akeyless.Model
             this.LdapCertificate = ldapCertificate;
             this.LdapTokenExpiration = ldapTokenExpiration;
             this.LdapUrl = ldapUrl;
+            this.LdapUsername = ldapUsername;
         }
 
         /// <summary>
@@ -96,6 +98,12 @@ namespace akeyless.Model
         public string LdapUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets LdapUsername
+        /// </summary>
+        [DataMember(Name = "ldap_username", EmitDefaultValue = false)]
+        public string LdapUsername { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -110,6 +118,7 @@ namespace akeyless.Model
             sb.Append("  LdapCertificate: ").Append(LdapCertificate).Append("\n");
             sb.Append("  LdapTokenExpiration: ").Append(LdapTokenExpiration).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
+            sb.Append("  LdapUsername: ").Append(LdapUsername).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

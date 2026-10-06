@@ -47,6 +47,7 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="justification">justification.</param>
         /// <param name="name">The Secret name (for database and AWS producers - producer name).</param>
+        /// <param name="requestedTtl">For how long to grant the requested access, in minutes.</param>
         /// <param name="sraCtrlPath">The Bastion API path.</param>
         /// <param name="sraCtrlPort">The Bastion API Port (default to &quot;9900&quot;).</param>
         /// <param name="sraCtrlProto">The SRA API protocol (default to &quot;http&quot;).</param>
@@ -60,7 +61,7 @@ namespace akeyless.Model
         /// <param name="useSshAgent">Deprecated.</param>
         /// <param name="viaBastion">Deprecated. Use via-sra.</param>
         /// <param name="viaSra">The jump box server.</param>
-        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = default(string), string bastionCtrlProto = default(string), string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string gatewayUrl = default(string), string identityFile = default(string), bool json = false, string justification = default(string), string name = default(string), string sraCtrlPath = default(string), string sraCtrlPort = @"9900", string sraCtrlProto = @"http", string sraCtrlSubdomain = default(string), string sshCommand = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = false, string target = default(string), string token = default(string), string uidToken = default(string), bool useSshAgent = default(bool), string viaBastion = default(string), string viaSra = default(string))
+        public Connect(Object helper = default(Object), string rcFileOverride = default(string), string bastionCtrlPath = default(string), string bastionCtrlPort = default(string), string bastionCtrlProto = default(string), string bastionCtrlSubdomain = default(string), string certIssuerName = default(string), string gatewayUrl = default(string), string identityFile = default(string), bool json = false, string justification = default(string), string name = default(string), long requestedTtl = default(long), string sraCtrlPath = default(string), string sraCtrlPort = @"9900", string sraCtrlProto = @"http", string sraCtrlSubdomain = default(string), string sshCommand = default(string), string sshExtraArgs = default(string), bool sshLegacySigningAlg = false, string target = default(string), string token = default(string), string uidToken = default(string), bool useSshAgent = default(bool), string viaBastion = default(string), string viaSra = default(string))
         {
             this.Helper = helper;
             this.RcFileOverride = rcFileOverride;
@@ -74,6 +75,7 @@ namespace akeyless.Model
             this.Json = json;
             this.Justification = justification;
             this.Name = name;
+            this.RequestedTtl = requestedTtl;
             this.SraCtrlPath = sraCtrlPath;
             // use default value if no "sraCtrlPort" provided
             this.SraCtrlPort = sraCtrlPort ?? @"9900";
@@ -172,6 +174,13 @@ namespace akeyless.Model
         /// <value>The Secret name (for database and AWS producers - producer name)</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// For how long to grant the requested access, in minutes
+        /// </summary>
+        /// <value>For how long to grant the requested access, in minutes</value>
+        [DataMember(Name = "requested-ttl", EmitDefaultValue = false)]
+        public long RequestedTtl { get; set; }
 
         /// <summary>
         /// The Bastion API path
@@ -284,6 +293,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Justification: ").Append(Justification).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RequestedTtl: ").Append(RequestedTtl).Append("\n");
             sb.Append("  SraCtrlPath: ").Append(SraCtrlPath).Append("\n");
             sb.Append("  SraCtrlPort: ").Append(SraCtrlPort).Append("\n");
             sb.Append("  SraCtrlProto: ").Append(SraCtrlProto).Append("\n");

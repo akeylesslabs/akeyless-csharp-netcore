@@ -35,9 +35,9 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListSraSessionsOutput" /> class.
         /// </summary>
-        /// <param name="allowedGateways">allowedGateways.</param>
-        /// <param name="nextPage">nextPage.</param>
-        /// <param name="sessions">sessions.</param>
+        /// <param name="allowedGateways">Gateways whose sessions the caller may see in full. Omitted when the request asks for own sessions only, and when it carries a pagination token.</param>
+        /// <param name="nextPage">Cursor for the following page, sent back as the pagination token. Empty when the result set is exhausted, so stop when it is empty rather than waiting for the field to disappear.</param>
+        /// <param name="sessions">The requested page of sessions, newest first by start time then session id.</param>
         public ListSraSessionsOutput(List<GatewayNameInfo> allowedGateways = default(List<GatewayNameInfo>), string nextPage = default(string), List<SraSessionEntryOut> sessions = default(List<SraSessionEntryOut>))
         {
             this.AllowedGateways = allowedGateways;
@@ -46,20 +46,23 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Gets or Sets AllowedGateways
+        /// Gateways whose sessions the caller may see in full. Omitted when the request asks for own sessions only, and when it carries a pagination token
         /// </summary>
+        /// <value>Gateways whose sessions the caller may see in full. Omitted when the request asks for own sessions only, and when it carries a pagination token</value>
         [DataMember(Name = "allowed_gateways", EmitDefaultValue = false)]
         public List<GatewayNameInfo> AllowedGateways { get; set; }
 
         /// <summary>
-        /// Gets or Sets NextPage
+        /// Cursor for the following page, sent back as the pagination token. Empty when the result set is exhausted, so stop when it is empty rather than waiting for the field to disappear
         /// </summary>
+        /// <value>Cursor for the following page, sent back as the pagination token. Empty when the result set is exhausted, so stop when it is empty rather than waiting for the field to disappear</value>
         [DataMember(Name = "next_page", EmitDefaultValue = false)]
         public string NextPage { get; set; }
 
         /// <summary>
-        /// Gets or Sets Sessions
+        /// The requested page of sessions, newest first by start time then session id
         /// </summary>
+        /// <value>The requested page of sessions, newest first by start time then session id</value>
         [DataMember(Name = "sessions", EmitDefaultValue = false)]
         public List<SraSessionEntryOut> Sessions { get; set; }
 

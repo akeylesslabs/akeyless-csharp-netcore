@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **TokenExpiration** | **string** | Token expiration | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UpdateVersion** | **bool** | Deprecated | [optional] 
+**Username** | **string** | Username returned for Rotated Secrets. Use the format required by your application, such as sAMAccountName, with or without the domain. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

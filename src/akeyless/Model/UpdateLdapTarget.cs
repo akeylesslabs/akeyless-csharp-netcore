@@ -60,7 +60,8 @@ namespace akeyless.Model
         /// <param name="tokenExpiration">Token expiration.</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="updateVersion">Deprecated.</param>
-        public UpdateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string rotateOnUnlock = default(string), string serverType = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), bool updateVersion = default(bool))
+        /// <param name="username">Username returned for Rotated Secrets. Use the format required by your application, such as sAMAccountName, with or without the domain..</param>
+        public UpdateLdapTarget(string bindDn = default(string), string bindDnPassword = default(string), string comment = default(string), string description = default(string), bool json = false, string keepPrevVersion = default(string), string key = default(string), string ldapCaCert = default(string), string ldapUrl = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newName = default(string), string rotateOnUnlock = default(string), string serverType = default(string), string token = default(string), string tokenExpiration = default(string), string uidToken = default(string), bool updateVersion = default(bool), string username = default(string))
         {
             // to ensure "bindDn" is required (not null)
             if (bindDn == null)
@@ -102,6 +103,7 @@ namespace akeyless.Model
             this.TokenExpiration = tokenExpiration;
             this.UidToken = uidToken;
             this.UpdateVersion = updateVersion;
+            this.Username = username;
         }
 
         /// <summary>
@@ -245,6 +247,13 @@ namespace akeyless.Model
         public bool UpdateVersion { get; set; }
 
         /// <summary>
+        /// Username returned for Rotated Secrets. Use the format required by your application, such as sAMAccountName, with or without the domain.
+        /// </summary>
+        /// <value>Username returned for Rotated Secrets. Use the format required by your application, such as sAMAccountName, with or without the domain.</value>
+        [DataMember(Name = "username", EmitDefaultValue = false)]
+        public string Username { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -272,6 +281,7 @@ namespace akeyless.Model
             sb.Append("  TokenExpiration: ").Append(TokenExpiration).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UpdateVersion: ").Append(UpdateVersion).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

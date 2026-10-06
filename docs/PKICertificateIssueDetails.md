@@ -47,6 +47,8 @@ Name | Type | Description | Notes
 **Province** | **List&lt;string&gt;** |  | [optional] 
 **RenewBeforeExpirationInDays** | **long** |  | [optional] 
 **RequireCn** | **bool** |  | [optional] 
+**ScepChallengeMode** | **string** | ScepChallengeMode is the SCEP challenge mode. Stage 1 supports only \&quot;static\&quot;. | [optional] 
+**ScepEnabled** | **bool** | ScepEnabled turns on SCEP enrollment for this dedicated PKI issuer. | [optional] 
 **ServerFlag** | **bool** |  | [optional] 
 **SplitCertificateChain** | **bool** | SplitCertificateChain, when enabled, separates the leaf certificate from the certificate chain. | [optional] 
 **StreetAddress** | **List&lt;string&gt;** |  | [optional] 

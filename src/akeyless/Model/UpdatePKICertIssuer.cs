@@ -63,6 +63,7 @@ namespace akeyless.Model
         /// <param name="destinationPath">A path in which to save generated certificates.</param>
         /// <param name="disableWildcards">If set, generation of wildcard certificates will be disabled..</param>
         /// <param name="enableAcme">If set, the cert issuer will support the acme protocol.</param>
+        /// <param name="enableScep">If set, the cert issuer will support the scep protocol.</param>
         /// <param name="expirationEventIn">How many days before the expiration of the certificate would you like to be notified..</param>
         /// <param name="gwClusterUrl">The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME.</param>
         /// <param name="isCa">If set, the basic constraints extension will be added to certificate.</param>
@@ -83,6 +84,8 @@ namespace akeyless.Model
         /// <param name="protectCertificates">Whether to protect generated certificates from deletion.</param>
         /// <param name="province">A comma-separated list of provinces that will be set in the issued certificate.</param>
         /// <param name="rmTag">List of the existent tags that will be removed from this item.</param>
+        /// <param name="scepChallengeType">SCEP challenge type. Only static is supported in this stage.</param>
+        /// <param name="scepPassword">SCEP static challenge password. Request-only; never returned by Describe.</param>
         /// <param name="scheduledRenew">Number of days before expiration to renew certificates.</param>
         /// <param name="serverFlag">If set, certificates will be flagged for server auth use.</param>
         /// <param name="signerKeyName">A key to sign the certificate with, required in Private CA mode.</param>
@@ -91,7 +94,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="ttl">The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs. Not supported for Let&#39;s Encrypt, which always uses the CA default lifetime (about 90 days). (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedIpSans = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), string basicConstraints = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string criticalKeyUsage = @"true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool disableWildcards = default(bool), bool enableAcme = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyUsage = @"DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), long maxPathLen = -1, string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string ocspTtl = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = default(string), bool splitCertificateChain = default(bool), string streetAddress = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
+        public UpdatePKICertIssuer(List<string> addTag = default(List<string>), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), string allowedDomains = default(string), string allowedExtraExtensions = default(string), string allowedIpSans = default(string), string allowedUriSans = default(string), bool autoRenew = default(bool), string basicConstraints = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), string country = default(string), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string criticalKeyUsage = @"true", string deleteProtection = default(string), string description = default(string), string destinationPath = default(string), bool disableWildcards = default(bool), bool enableAcme = default(bool), bool enableScep = default(bool), List<string> expirationEventIn = default(List<string>), string gwClusterUrl = default(string), bool isCa = default(bool), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyUsage = @"DigitalSignature,KeyAgreement,KeyEncipherment", string locality = default(string), long maxPathLen = -1, string metadata = default(string), string name = default(string), string newName = default(string), bool notEnforceHostnames = default(bool), bool notRequireCn = default(bool), string ocspTtl = default(string), string organizationalUnits = default(string), string organizations = default(string), string postalCode = default(string), bool protectCertificates = default(bool), string province = default(string), List<string> rmTag = default(List<string>), string scepChallengeType = default(string), string scepPassword = default(string), long scheduledRenew = default(long), bool serverFlag = default(bool), string signerKeyName = default(string), bool splitCertificateChain = default(bool), string streetAddress = default(string), string token = default(string), string ttl = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -129,6 +132,7 @@ namespace akeyless.Model
             this.DestinationPath = destinationPath;
             this.DisableWildcards = disableWildcards;
             this.EnableAcme = enableAcme;
+            this.EnableScep = enableScep;
             this.ExpirationEventIn = expirationEventIn;
             this.GwClusterUrl = gwClusterUrl;
             this.IsCa = isCa;
@@ -149,6 +153,8 @@ namespace akeyless.Model
             this.ProtectCertificates = protectCertificates;
             this.Province = province;
             this.RmTag = rmTag;
+            this.ScepChallengeType = scepChallengeType;
+            this.ScepPassword = scepPassword;
             this.ScheduledRenew = scheduledRenew;
             this.ServerFlag = serverFlag;
             this.SignerKeyName = signerKeyName;
@@ -320,6 +326,13 @@ namespace akeyless.Model
         public bool EnableAcme { get; set; }
 
         /// <summary>
+        /// If set, the cert issuer will support the scep protocol
+        /// </summary>
+        /// <value>If set, the cert issuer will support the scep protocol</value>
+        [DataMember(Name = "enable-scep", EmitDefaultValue = true)]
+        public bool EnableScep { get; set; }
+
+        /// <summary>
         /// How many days before the expiration of the certificate would you like to be notified.
         /// </summary>
         /// <value>How many days before the expiration of the certificate would you like to be notified.</value>
@@ -460,6 +473,20 @@ namespace akeyless.Model
         public List<string> RmTag { get; set; }
 
         /// <summary>
+        /// SCEP challenge type. Only static is supported in this stage
+        /// </summary>
+        /// <value>SCEP challenge type. Only static is supported in this stage</value>
+        [DataMember(Name = "scep-challenge-type", EmitDefaultValue = false)]
+        public string ScepChallengeType { get; set; }
+
+        /// <summary>
+        /// SCEP static challenge password. Request-only; never returned by Describe
+        /// </summary>
+        /// <value>SCEP static challenge password. Request-only; never returned by Describe</value>
+        [DataMember(Name = "scep-password", EmitDefaultValue = false)]
+        public string ScepPassword { get; set; }
+
+        /// <summary>
         /// Number of days before expiration to renew certificates
         /// </summary>
         /// <value>Number of days before expiration to renew certificates</value>
@@ -546,6 +573,7 @@ namespace akeyless.Model
             sb.Append("  DestinationPath: ").Append(DestinationPath).Append("\n");
             sb.Append("  DisableWildcards: ").Append(DisableWildcards).Append("\n");
             sb.Append("  EnableAcme: ").Append(EnableAcme).Append("\n");
+            sb.Append("  EnableScep: ").Append(EnableScep).Append("\n");
             sb.Append("  ExpirationEventIn: ").Append(ExpirationEventIn).Append("\n");
             sb.Append("  GwClusterUrl: ").Append(GwClusterUrl).Append("\n");
             sb.Append("  IsCa: ").Append(IsCa).Append("\n");
@@ -566,6 +594,8 @@ namespace akeyless.Model
             sb.Append("  ProtectCertificates: ").Append(ProtectCertificates).Append("\n");
             sb.Append("  Province: ").Append(Province).Append("\n");
             sb.Append("  RmTag: ").Append(RmTag).Append("\n");
+            sb.Append("  ScepChallengeType: ").Append(ScepChallengeType).Append("\n");
+            sb.Append("  ScepPassword: ").Append(ScepPassword).Append("\n");
             sb.Append("  ScheduledRenew: ").Append(ScheduledRenew).Append("\n");
             sb.Append("  ServerFlag: ").Append(ServerFlag).Append("\n");
             sb.Append("  SignerKeyName: ").Append(SignerKeyName).Append("\n");

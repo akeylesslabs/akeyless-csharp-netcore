@@ -5,7 +5,8 @@ assocTargetItem is a command that creates an association between target and item
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BindSslProfiles** | **List&lt;string&gt;** | Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. Repeat the parameter to bind several profiles. | [optional] 
+**BindSslProfiles** | **List&lt;string&gt;** | Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. For a profile in a folder, add the folder to the partition, for example client-ssl:Common/Shared:my-profile. Repeat the parameter to bind several profiles. | [optional] 
+**CertificateFormat** | **string** | The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning) | [optional] [default to "pem"]
 **CertificatePath** | **string** | A path on the target to store the certificate pem file (relevant only for certificate provisioning) | [optional] 
 **ChainPath** | **string** | A path on the target to store the full chain pem file (relevant only for certificate provisioning) | [optional] 
 **DisablePreviousKeyVersion** | **bool** | Automatically disable previous key version (required for azure targets) | [optional] [default to false]
@@ -17,6 +18,7 @@ Name | Type | Description | Notes
 **LocationId** | **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
 **MultiRegion** | **string** | Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
+**PfxPassword** | **string** | Password used to protect the provisioned PFX file. Required when - -certificate-format&#x3D;pfx (relevant only for certificate provisioning) | [optional] 
 **PostProvisionCommand** | **string** | A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP) | [optional] 
 **PrivateKeyPath** | **string** | A path on the target to store the private key (relevant only for certificate provisioning) | [optional] 
 **ProjectId** | **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 

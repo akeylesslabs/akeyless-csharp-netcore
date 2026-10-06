@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="actions">Comma-separated blocked actions (read, update).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
-        /// <param name="lockTtl">Lock TTL in minutes.</param>
+        /// <param name="lockTtl">Lock TTL in minutes..</param>
         /// <param name="name">Item name (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -76,9 +76,9 @@ namespace akeyless.Model
         public bool Json { get; set; }
 
         /// <summary>
-        /// Lock TTL in minutes
+        /// Lock TTL in minutes.
         /// </summary>
-        /// <value>Lock TTL in minutes</value>
+        /// <value>Lock TTL in minutes.</value>
         [DataMember(Name = "lock-ttl", EmitDefaultValue = false)]
         public long LockTtl { get; set; }
 

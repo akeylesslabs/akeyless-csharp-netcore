@@ -934,6 +934,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clientEvent"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ClientEventOutput</returns>
+        ClientEventOutput ClientEvent(ClientEvent clientEvent, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clientEvent"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ClientEventOutput</returns>
+        ApiResponse<ClientEventOutput> ClientEventWithHttpInfo(ClientEvent clientEvent, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configure"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ConfigureOutput</returns>
@@ -6774,6 +6794,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="generateIntermediateCA"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>GenerateIntermediateCAOutput</returns>
+        GenerateIntermediateCAOutput GenerateIntermediateCA(GenerateIntermediateCA generateIntermediateCA, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="generateIntermediateCA"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of GenerateIntermediateCAOutput</returns>
+        ApiResponse<GenerateIntermediateCAOutput> GenerateIntermediateCAWithHttpInfo(GenerateIntermediateCA generateIntermediateCA, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Dictionary&lt;string, string&gt;</returns>
         Dictionary<string, string> GetAccountLogo(int operationIndex = 0);
@@ -7967,8 +8007,11 @@ namespace akeyless.Api
         /// <returns>ApiResponse of BastionsList</returns>
         ApiResponse<BastionsList> ListSRABastionsWithHttpInfo(ListSRABastions listSRABastions, int operationIndex = 0);
         /// <summary>
-        /// 
+        /// Lists SRA sessions.
         /// </summary>
+        /// <remarks>
+        /// Results are returned newest first, ordered by start time, then by session ID. Responses contain up to 1000 sessions.  Pagination: Pass the response&#39;s &#x60;next_page&#x60; value as the &#x60;pagination-token&#x60; in subsequent requests to fetch the next page. Pagination is complete when &#x60;next_page&#x60; is empty. Sending an empty &#x60;pagination-token&#x60; retrieves the first page. Filters must remain identical across paginated requests to maintain cursor validity.
+        /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listSRASessions"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -7976,10 +8019,10 @@ namespace akeyless.Api
         ListSraSessionsOutput ListSRASessions(ListSRASessions listSRASessions, int operationIndex = 0);
 
         /// <summary>
-        /// 
+        /// Lists SRA sessions.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Results are returned newest first, ordered by start time, then by session ID. Responses contain up to 1000 sessions.  Pagination: Pass the response&#39;s &#x60;next_page&#x60; value as the &#x60;pagination-token&#x60; in subsequent requests to fetch the next page. Pagination is complete when &#x60;next_page&#x60; is empty. Sending an empty &#x60;pagination-token&#x60; retrieves the first page. Filters must remain identical across paginated requests to maintain cursor validity.
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listSRASessions"></param>
@@ -8728,6 +8771,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretCreateOutput</returns>
+        RotatedSecretCreateOutput RotatedSecretCreateOkta(RotatedSecretCreateOkta rotatedSecretCreateOkta, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretCreateOutput</returns>
+        ApiResponse<RotatedSecretCreateOutput> RotatedSecretCreateOktaWithHttpInfo(RotatedSecretCreateOkta rotatedSecretCreateOkta, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rotatedSecretCreateOpenAI"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RotatedSecretCreateOutput</returns>
@@ -9264,6 +9327,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RotatedSecretUpdateOutput</returns>
         ApiResponse<RotatedSecretUpdateOutput> RotatedSecretUpdateMysqlWithHttpInfo(RotatedSecretUpdateMysql rotatedSecretUpdateMysql, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretUpdateOutput</returns>
+        RotatedSecretUpdateOutput RotatedSecretUpdateOkta(RotatedSecretUpdateOkta rotatedSecretUpdateOkta, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretUpdateOutput</returns>
+        ApiResponse<RotatedSecretUpdateOutput> RotatedSecretUpdateOktaWithHttpInfo(RotatedSecretUpdateOkta rotatedSecretUpdateOkta, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -14298,6 +14381,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> ChangeAdminAccountPasswordWithHttpInfoAsync(ChangeAdminAccountPassword changeAdminAccountPassword, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clientEvent"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ClientEventOutput</returns>
+        System.Threading.Tasks.Task<ClientEventOutput> ClientEventAsync(ClientEvent clientEvent, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clientEvent"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ClientEventOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ClientEventOutput>> ClientEventWithHttpInfoAsync(ClientEvent clientEvent, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -21605,6 +21713,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="generateIntermediateCA"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GenerateIntermediateCAOutput</returns>
+        System.Threading.Tasks.Task<GenerateIntermediateCAOutput> GenerateIntermediateCAAsync(GenerateIntermediateCA generateIntermediateCA, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="generateIntermediateCA"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GenerateIntermediateCAOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GenerateIntermediateCAOutput>> GenerateIntermediateCAWithHttpInfoAsync(GenerateIntermediateCA generateIntermediateCA, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
@@ -23095,10 +23228,10 @@ namespace akeyless.Api
         /// <returns>Task of ApiResponse (BastionsList)</returns>
         System.Threading.Tasks.Task<ApiResponse<BastionsList>> ListSRABastionsWithHttpInfoAsync(ListSRABastions listSRABastions, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
-        /// 
+        /// Lists SRA sessions.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Results are returned newest first, ordered by start time, then by session ID. Responses contain up to 1000 sessions.  Pagination: Pass the response&#39;s &#x60;next_page&#x60; value as the &#x60;pagination-token&#x60; in subsequent requests to fetch the next page. Pagination is complete when &#x60;next_page&#x60; is empty. Sending an empty &#x60;pagination-token&#x60; retrieves the first page. Filters must remain identical across paginated requests to maintain cursor validity.
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listSRASessions"></param>
@@ -23108,10 +23241,10 @@ namespace akeyless.Api
         System.Threading.Tasks.Task<ListSraSessionsOutput> ListSRASessionsAsync(ListSRASessions listSRASessions, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// Lists SRA sessions.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Results are returned newest first, ordered by start time, then by session ID. Responses contain up to 1000 sessions.  Pagination: Pass the response&#39;s &#x60;next_page&#x60; value as the &#x60;pagination-token&#x60; in subsequent requests to fetch the next page. Pagination is complete when &#x60;next_page&#x60; is empty. Sending an empty &#x60;pagination-token&#x60; retrieves the first page. Filters must remain identical across paginated requests to maintain cursor validity.
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listSRASessions"></param>
@@ -24049,6 +24182,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretCreateOutput</returns>
+        System.Threading.Tasks.Task<RotatedSecretCreateOutput> RotatedSecretCreateOktaAsync(RotatedSecretCreateOkta rotatedSecretCreateOkta, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RotatedSecretCreateOutput>> RotatedSecretCreateOktaWithHttpInfoAsync(RotatedSecretCreateOkta rotatedSecretCreateOkta, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rotatedSecretCreateOpenAI"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -24717,6 +24875,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RotatedSecretUpdateOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<RotatedSecretUpdateOutput>> RotatedSecretUpdateMysqlWithHttpInfoAsync(RotatedSecretUpdateMysql rotatedSecretUpdateMysql, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretUpdateOutput</returns>
+        System.Threading.Tasks.Task<RotatedSecretUpdateOutput> RotatedSecretUpdateOktaAsync(RotatedSecretUpdateOkta rotatedSecretUpdateOkta, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RotatedSecretUpdateOutput>> RotatedSecretUpdateOktaWithHttpInfoAsync(RotatedSecretUpdateOkta rotatedSecretUpdateOkta, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -36273,6 +36456,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ChangeAdminAccountPassword", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clientEvent"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ClientEventOutput</returns>
+        public ClientEventOutput ClientEvent(ClientEvent clientEvent, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<ClientEventOutput> localVarResponse = ClientEventWithHttpInfo(clientEvent);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clientEvent"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ClientEventOutput</returns>
+        public akeyless.Client.ApiResponse<ClientEventOutput> ClientEventWithHttpInfo(ClientEvent clientEvent, int operationIndex = 0)
+        {
+            // verify the required parameter 'clientEvent' is set
+            if (clientEvent == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'clientEvent' when calling V2Api->ClientEvent");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = clientEvent;
+
+            localVarRequestOptions.Operation = "V2Api.ClientEvent";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ClientEventOutput>("/client-event", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ClientEvent", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clientEvent"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ClientEventOutput</returns>
+        public async System.Threading.Tasks.Task<ClientEventOutput> ClientEventAsync(ClientEvent clientEvent, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<ClientEventOutput> localVarResponse = await ClientEventWithHttpInfoAsync(clientEvent, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clientEvent"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ClientEventOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<ClientEventOutput>> ClientEventWithHttpInfoAsync(ClientEvent clientEvent, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'clientEvent' is set
+            if (clientEvent == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'clientEvent' when calling V2Api->ClientEvent");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = clientEvent;
+
+            localVarRequestOptions.Operation = "V2Api.ClientEvent";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ClientEventOutput>("/client-event", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ClientEvent", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -78850,6 +79179,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="generateIntermediateCA"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>GenerateIntermediateCAOutput</returns>
+        public GenerateIntermediateCAOutput GenerateIntermediateCA(GenerateIntermediateCA generateIntermediateCA, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<GenerateIntermediateCAOutput> localVarResponse = GenerateIntermediateCAWithHttpInfo(generateIntermediateCA);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="generateIntermediateCA"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of GenerateIntermediateCAOutput</returns>
+        public akeyless.Client.ApiResponse<GenerateIntermediateCAOutput> GenerateIntermediateCAWithHttpInfo(GenerateIntermediateCA generateIntermediateCA, int operationIndex = 0)
+        {
+            // verify the required parameter 'generateIntermediateCA' is set
+            if (generateIntermediateCA == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'generateIntermediateCA' when calling V2Api->GenerateIntermediateCA");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = generateIntermediateCA;
+
+            localVarRequestOptions.Operation = "V2Api.GenerateIntermediateCA";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GenerateIntermediateCAOutput>("/generate-intermediate-ca", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GenerateIntermediateCA", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="generateIntermediateCA"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GenerateIntermediateCAOutput</returns>
+        public async System.Threading.Tasks.Task<GenerateIntermediateCAOutput> GenerateIntermediateCAAsync(GenerateIntermediateCA generateIntermediateCA, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<GenerateIntermediateCAOutput> localVarResponse = await GenerateIntermediateCAWithHttpInfoAsync(generateIntermediateCA, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="generateIntermediateCA"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GenerateIntermediateCAOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<GenerateIntermediateCAOutput>> GenerateIntermediateCAWithHttpInfoAsync(GenerateIntermediateCA generateIntermediateCA, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'generateIntermediateCA' is set
+            if (generateIntermediateCA == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'generateIntermediateCA' when calling V2Api->GenerateIntermediateCA");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = generateIntermediateCA;
+
+            localVarRequestOptions.Operation = "V2Api.GenerateIntermediateCA";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GenerateIntermediateCAOutput>("/generate-intermediate-ca", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GenerateIntermediateCA", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Dictionary&lt;string, string&gt;</returns>
         public Dictionary<string, string> GetAccountLogo(int operationIndex = 0)
@@ -87339,7 +87814,7 @@ namespace akeyless.Api
         }
 
         /// <summary>
-        ///  
+        /// Lists SRA sessions. Results are returned newest first, ordered by start time, then by session ID. Responses contain up to 1000 sessions.  Pagination: Pass the response&#39;s &#x60;next_page&#x60; value as the &#x60;pagination-token&#x60; in subsequent requests to fetch the next page. Pagination is complete when &#x60;next_page&#x60; is empty. Sending an empty &#x60;pagination-token&#x60; retrieves the first page. Filters must remain identical across paginated requests to maintain cursor validity.
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listSRASessions"></param>
@@ -87352,7 +87827,7 @@ namespace akeyless.Api
         }
 
         /// <summary>
-        ///  
+        /// Lists SRA sessions. Results are returned newest first, ordered by start time, then by session ID. Responses contain up to 1000 sessions.  Pagination: Pass the response&#39;s &#x60;next_page&#x60; value as the &#x60;pagination-token&#x60; in subsequent requests to fetch the next page. Pagination is complete when &#x60;next_page&#x60; is empty. Sending an empty &#x60;pagination-token&#x60; retrieves the first page. Filters must remain identical across paginated requests to maintain cursor validity.
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listSRASessions"></param>
@@ -87410,7 +87885,7 @@ namespace akeyless.Api
         }
 
         /// <summary>
-        ///  
+        /// Lists SRA sessions. Results are returned newest first, ordered by start time, then by session ID. Responses contain up to 1000 sessions.  Pagination: Pass the response&#39;s &#x60;next_page&#x60; value as the &#x60;pagination-token&#x60; in subsequent requests to fetch the next page. Pagination is complete when &#x60;next_page&#x60; is empty. Sending an empty &#x60;pagination-token&#x60; retrieves the first page. Filters must remain identical across paginated requests to maintain cursor validity.
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listSRASessions"></param>
@@ -87424,7 +87899,7 @@ namespace akeyless.Api
         }
 
         /// <summary>
-        ///  
+        /// Lists SRA sessions. Results are returned newest first, ordered by start time, then by session ID. Responses contain up to 1000 sessions.  Pagination: Pass the response&#39;s &#x60;next_page&#x60; value as the &#x60;pagination-token&#x60; in subsequent requests to fetch the next page. Pagination is complete when &#x60;next_page&#x60; is empty. Sending an empty &#x60;pagination-token&#x60; retrieves the first page. Filters must remain identical across paginated requests to maintain cursor validity.
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listSRASessions"></param>
@@ -92856,6 +93331,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretCreateOutput</returns>
+        public RotatedSecretCreateOutput RotatedSecretCreateOkta(RotatedSecretCreateOkta rotatedSecretCreateOkta, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<RotatedSecretCreateOutput> localVarResponse = RotatedSecretCreateOktaWithHttpInfo(rotatedSecretCreateOkta);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretCreateOutput</returns>
+        public akeyless.Client.ApiResponse<RotatedSecretCreateOutput> RotatedSecretCreateOktaWithHttpInfo(RotatedSecretCreateOkta rotatedSecretCreateOkta, int operationIndex = 0)
+        {
+            // verify the required parameter 'rotatedSecretCreateOkta' is set
+            if (rotatedSecretCreateOkta == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretCreateOkta' when calling V2Api->RotatedSecretCreateOkta");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretCreateOkta;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretCreateOkta";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RotatedSecretCreateOutput>("/rotated-secret-create-okta", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretCreateOkta", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretCreateOutput</returns>
+        public async System.Threading.Tasks.Task<RotatedSecretCreateOutput> RotatedSecretCreateOktaAsync(RotatedSecretCreateOkta rotatedSecretCreateOkta, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<RotatedSecretCreateOutput> localVarResponse = await RotatedSecretCreateOktaWithHttpInfoAsync(rotatedSecretCreateOkta, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretCreateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotatedSecretCreateOutput>> RotatedSecretCreateOktaWithHttpInfoAsync(RotatedSecretCreateOkta rotatedSecretCreateOkta, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rotatedSecretCreateOkta' is set
+            if (rotatedSecretCreateOkta == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretCreateOkta' when calling V2Api->RotatedSecretCreateOkta");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretCreateOkta;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretCreateOkta";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotatedSecretCreateOutput>("/rotated-secret-create-okta", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretCreateOkta", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rotatedSecretCreateOpenAI"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RotatedSecretCreateOutput</returns>
@@ -96785,6 +97406,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RotatedSecretUpdateMysql", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretUpdateOutput</returns>
+        public RotatedSecretUpdateOutput RotatedSecretUpdateOkta(RotatedSecretUpdateOkta rotatedSecretUpdateOkta, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<RotatedSecretUpdateOutput> localVarResponse = RotatedSecretUpdateOktaWithHttpInfo(rotatedSecretUpdateOkta);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<RotatedSecretUpdateOutput> RotatedSecretUpdateOktaWithHttpInfo(RotatedSecretUpdateOkta rotatedSecretUpdateOkta, int operationIndex = 0)
+        {
+            // verify the required parameter 'rotatedSecretUpdateOkta' is set
+            if (rotatedSecretUpdateOkta == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretUpdateOkta' when calling V2Api->RotatedSecretUpdateOkta");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretUpdateOkta;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretUpdateOkta";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RotatedSecretUpdateOutput>("/rotated-secret-update-okta", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretUpdateOkta", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<RotatedSecretUpdateOutput> RotatedSecretUpdateOktaAsync(RotatedSecretUpdateOkta rotatedSecretUpdateOkta, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<RotatedSecretUpdateOutput> localVarResponse = await RotatedSecretUpdateOktaWithHttpInfoAsync(rotatedSecretUpdateOkta, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretUpdateOkta"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotatedSecretUpdateOutput>> RotatedSecretUpdateOktaWithHttpInfoAsync(RotatedSecretUpdateOkta rotatedSecretUpdateOkta, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rotatedSecretUpdateOkta' is set
+            if (rotatedSecretUpdateOkta == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretUpdateOkta' when calling V2Api->RotatedSecretUpdateOkta");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretUpdateOkta;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretUpdateOkta";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotatedSecretUpdateOutput>("/rotated-secret-update-okta", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretUpdateOkta", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

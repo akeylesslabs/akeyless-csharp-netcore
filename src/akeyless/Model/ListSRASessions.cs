@@ -27,7 +27,7 @@ using OpenAPIDateConverter = akeyless.Client.OpenAPIDateConverter;
 namespace akeyless.Model
 {
     /// <summary>
-    /// listSRASessions is a command that returns sra sessions of the given user
+    /// listSRASessions is a command that returns the sra sessions the caller is entitled to see
     /// </summary>
     [DataContract(Name = "listSRASessions")]
     public partial class ListSRASessions : IValidatableObject
@@ -36,13 +36,15 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ListSRASessions" /> class.
         /// </summary>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="paginationToken">Next page reference.</param>
         /// <param name="resourceType">session resource type. In case it is empty, all resources type will be returned. options: [mysql, k8s, ssh, mongodb, mssql, postgres, aws, eks, gke, rdp].</param>
         /// <param name="statusType">session status type. In case it is empty, only active sessions will be returned. options: [connecting, connected, failed, completed, terminated].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ListSRASessions(bool json = false, List<string> resourceType = default(List<string>), List<string> statusType = default(List<string>), string token = default(string), string uidToken = default(string))
+        public ListSRASessions(bool json = false, string paginationToken = default(string), List<string> resourceType = default(List<string>), List<string> statusType = default(List<string>), string token = default(string), string uidToken = default(string))
         {
             this.Json = json;
+            this.PaginationToken = paginationToken;
             this.ResourceType = resourceType;
             this.StatusType = statusType;
             this.Token = token;
@@ -55,6 +57,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// Next page reference
+        /// </summary>
+        /// <value>Next page reference</value>
+        [DataMember(Name = "pagination-token", EmitDefaultValue = false)]
+        public string PaginationToken { get; set; }
 
         /// <summary>
         /// session resource type. In case it is empty, all resources type will be returned. options: [mysql, k8s, ssh, mongodb, mssql, postgres, aws, eks, gke, rdp]
@@ -93,6 +102,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListSRASessions {\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
             sb.Append("  ResourceType: ").Append(ResourceType).Append("\n");
             sb.Append("  StatusType: ").Append(StatusType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

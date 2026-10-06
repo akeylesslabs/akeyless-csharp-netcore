@@ -133,6 +133,8 @@ docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
 docs/ClassicKeyTargetInfo.md
 docs/ClientData.md
+docs/ClientEvent.md
+docs/ClientEventOutput.md
 docs/ClientUsageInfo.md
 docs/ClientsUsageReport.md
 docs/CloudflareTargetDetails.md
@@ -652,6 +654,8 @@ docs/GenerateCA.md
 docs/GenerateCAOutput.md
 docs/GenerateCsr.md
 docs/GenerateCsrOutput.md
+docs/GenerateIntermediateCA.md
+docs/GenerateIntermediateCAOutput.md
 docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAnalyticsData.md
@@ -716,6 +720,7 @@ docs/HuaweiAccessRules.md
 docs/ImportPasswords.md
 docs/ImportPasswordsOutput.md
 docs/ImporterInfo.md
+docs/InjectorCertificateEvent.md
 docs/IssuerOverviewInfo.md
 docs/Item.md
 docs/ItemCustomFieldsDetails.md
@@ -915,6 +920,7 @@ docs/RotatedSecretCreateLdap.md
 docs/RotatedSecretCreateMongodb.md
 docs/RotatedSecretCreateMssql.md
 docs/RotatedSecretCreateMysql.md
+docs/RotatedSecretCreateOkta.md
 docs/RotatedSecretCreateOpenAI.md
 docs/RotatedSecretCreateOracledb.md
 docs/RotatedSecretCreateOutput.md
@@ -946,6 +952,7 @@ docs/RotatedSecretUpdateLdap.md
 docs/RotatedSecretUpdateMongodb.md
 docs/RotatedSecretUpdateMssql.md
 docs/RotatedSecretUpdateMysql.md
+docs/RotatedSecretUpdateOkta.md
 docs/RotatedSecretUpdateOpenAI.md
 docs/RotatedSecretUpdateOracledb.md
 docs/RotatedSecretUpdateOutput.md
@@ -1278,6 +1285,13 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
+src/akeyless.Test/Model/ClientEventOutputTests.cs
+src/akeyless.Test/Model/ClientEventTests.cs
+src/akeyless.Test/Model/GenerateIntermediateCAOutputTests.cs
+src/akeyless.Test/Model/GenerateIntermediateCATests.cs
+src/akeyless.Test/Model/InjectorCertificateEventTests.cs
+src/akeyless.Test/Model/RotatedSecretCreateOktaTests.cs
+src/akeyless.Test/Model/RotatedSecretUpdateOktaTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1427,6 +1441,8 @@ src/akeyless/Model/ClassicKeyDetailsInfo.cs
 src/akeyless/Model/ClassicKeyStatusInfo.cs
 src/akeyless/Model/ClassicKeyTargetInfo.cs
 src/akeyless/Model/ClientData.cs
+src/akeyless/Model/ClientEvent.cs
+src/akeyless/Model/ClientEventOutput.cs
 src/akeyless/Model/ClientUsageInfo.cs
 src/akeyless/Model/ClientsUsageReport.cs
 src/akeyless/Model/CloudflareTargetDetails.cs
@@ -1946,6 +1962,8 @@ src/akeyless/Model/GenerateCA.cs
 src/akeyless/Model/GenerateCAOutput.cs
 src/akeyless/Model/GenerateCsr.cs
 src/akeyless/Model/GenerateCsrOutput.cs
+src/akeyless/Model/GenerateIntermediateCA.cs
+src/akeyless/Model/GenerateIntermediateCAOutput.cs
 src/akeyless/Model/GetAccountSettings.cs
 src/akeyless/Model/GetAccountSettingsCommandOutput.cs
 src/akeyless/Model/GetAnalyticsData.cs
@@ -2010,6 +2028,7 @@ src/akeyless/Model/HuaweiAccessRules.cs
 src/akeyless/Model/ImportPasswords.cs
 src/akeyless/Model/ImportPasswordsOutput.cs
 src/akeyless/Model/ImporterInfo.cs
+src/akeyless/Model/InjectorCertificateEvent.cs
 src/akeyless/Model/IssuerOverviewInfo.cs
 src/akeyless/Model/Item.cs
 src/akeyless/Model/ItemCustomFieldsDetails.cs
@@ -2209,6 +2228,7 @@ src/akeyless/Model/RotatedSecretCreateLdap.cs
 src/akeyless/Model/RotatedSecretCreateMongodb.cs
 src/akeyless/Model/RotatedSecretCreateMssql.cs
 src/akeyless/Model/RotatedSecretCreateMysql.cs
+src/akeyless/Model/RotatedSecretCreateOkta.cs
 src/akeyless/Model/RotatedSecretCreateOpenAI.cs
 src/akeyless/Model/RotatedSecretCreateOracledb.cs
 src/akeyless/Model/RotatedSecretCreateOutput.cs
@@ -2240,6 +2260,7 @@ src/akeyless/Model/RotatedSecretUpdateLdap.cs
 src/akeyless/Model/RotatedSecretUpdateMongodb.cs
 src/akeyless/Model/RotatedSecretUpdateMssql.cs
 src/akeyless/Model/RotatedSecretUpdateMysql.cs
+src/akeyless/Model/RotatedSecretUpdateOkta.cs
 src/akeyless/Model/RotatedSecretUpdateOpenAI.cs
 src/akeyless/Model/RotatedSecretUpdateOracledb.cs
 src/akeyless/Model/RotatedSecretUpdateOutput.cs

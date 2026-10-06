@@ -37,20 +37,26 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="id">id.</param>
         /// <param name="lastMigration">lastMigration.</param>
+        /// <param name="lastModified">lastModified.</param>
+        /// <param name="message">message.</param>
         /// <param name="name">name.</param>
         /// <param name="newName">newName.</param>
         /// <param name="prefix">prefix.</param>
         /// <param name="protectionKey">protectionKey.</param>
+        /// <param name="schedule">schedule.</param>
         /// <param name="status">status.</param>
         /// <param name="type">type.</param>
-        public MigrationGeneral(string id = default(string), string lastMigration = default(string), string name = default(string), string newName = default(string), string prefix = default(string), string protectionKey = default(string), string status = default(string), string type = default(string))
+        public MigrationGeneral(string id = default(string), string lastMigration = default(string), DateTime lastModified = default(DateTime), string message = default(string), string name = default(string), string newName = default(string), string prefix = default(string), string protectionKey = default(string), string schedule = default(string), string status = default(string), string type = default(string))
         {
             this.Id = id;
             this.LastMigration = lastMigration;
+            this.LastModified = lastModified;
+            this.Message = message;
             this.Name = name;
             this.NewName = newName;
             this.Prefix = prefix;
             this.ProtectionKey = protectionKey;
+            this.Schedule = schedule;
             this.Status = status;
             this.Type = type;
         }
@@ -66,6 +72,18 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "last_migration", EmitDefaultValue = false)]
         public string LastMigration { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastModified
+        /// </summary>
+        [DataMember(Name = "last_modified", EmitDefaultValue = false)]
+        public DateTime LastModified { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Message
+        /// </summary>
+        [DataMember(Name = "message", EmitDefaultValue = false)]
+        public string Message { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -92,6 +110,12 @@ namespace akeyless.Model
         public string ProtectionKey { get; set; }
 
         /// <summary>
+        /// Gets or Sets Schedule
+        /// </summary>
+        [DataMember(Name = "schedule", EmitDefaultValue = false)]
+        public string Schedule { get; set; }
+
+        /// <summary>
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name = "status", EmitDefaultValue = false)]
@@ -113,10 +137,13 @@ namespace akeyless.Model
             sb.Append("class MigrationGeneral {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LastMigration: ").Append(LastMigration).Append("\n");
+            sb.Append("  LastModified: ").Append(LastModified).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
             sb.Append("  Prefix: ").Append(Prefix).Append("\n");
             sb.Append("  ProtectionKey: ").Append(ProtectionKey).Append("\n");
+            sb.Append("  Schedule: ").Append(Schedule).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");

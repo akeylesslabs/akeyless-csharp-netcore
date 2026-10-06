@@ -6,10 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | [optional] 
 **LastMigration** | **string** |  | [optional] 
+**LastModified** | **DateTime** |  | [optional] 
+**Message** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **NewName** | **string** |  | [optional] 
 **Prefix** | **string** |  | [optional] 
 **ProtectionKey** | **string** |  | [optional] 
+**Schedule** | **string** |  | [optional] 
 **Status** | **string** |  | [optional] 
 **Type** | **string** |  | [optional] 
 

@@ -45,10 +45,11 @@ namespace akeyless.Model
         /// <param name="description">Description of the object.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Item name (required).</param>
+        /// <param name="requestedTtl">Requested access TTL in minutes. Allowed range is 1 to 1440. Defaults to 60 when omitted..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Item type (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public RequestAccess(List<string> capability = default(List<string>), string comment = default(string), string description = default(string), bool json = false, string name = default(string), string token = default(string), string type = default(string), string uidToken = default(string))
+        public RequestAccess(List<string> capability = default(List<string>), string comment = default(string), string description = default(string), bool json = false, string name = default(string), long requestedTtl = default(long), string token = default(string), string type = default(string), string uidToken = default(string))
         {
             // to ensure "capability" is required (not null)
             if (capability == null)
@@ -71,6 +72,7 @@ namespace akeyless.Model
             this.Comment = comment;
             this.Description = description;
             this.Json = json;
+            this.RequestedTtl = requestedTtl;
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -111,6 +113,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Requested access TTL in minutes. Allowed range is 1 to 1440. Defaults to 60 when omitted.
+        /// </summary>
+        /// <value>Requested access TTL in minutes. Allowed range is 1 to 1440. Defaults to 60 when omitted.</value>
+        [DataMember(Name = "requested_ttl", EmitDefaultValue = false)]
+        public long RequestedTtl { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -144,6 +153,7 @@ namespace akeyless.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RequestedTtl: ").Append(RequestedTtl).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

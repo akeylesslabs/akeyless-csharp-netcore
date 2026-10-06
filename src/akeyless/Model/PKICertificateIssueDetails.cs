@@ -78,10 +78,12 @@ namespace akeyless.Model
         /// <param name="province">province.</param>
         /// <param name="renewBeforeExpirationInDays">renewBeforeExpirationInDays.</param>
         /// <param name="requireCn">requireCn.</param>
+        /// <param name="scepChallengeMode">ScepChallengeMode is the SCEP challenge mode. Stage 1 supports only \&quot;static\&quot;..</param>
+        /// <param name="scepEnabled">ScepEnabled turns on SCEP enrollment for this dedicated PKI issuer..</param>
         /// <param name="serverFlag">serverFlag.</param>
         /// <param name="splitCertificateChain">SplitCertificateChain, when enabled, separates the leaf certificate from the certificate chain..</param>
         /// <param name="streetAddress">streetAddress.</param>
-        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedIpSans = default(List<string>), List<string> allowedUriSans = default(List<string>), bool autoRenewCertificate = default(bool), string basicConstraints = default(string), bool basicConstraintsCritical = default(bool), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string destinationPath = default(string), bool disableWildcards = default(bool), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long maxPathLen = default(long), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), long ocspNextUpdate = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), string pkiIssuerType = default(string), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), long renewBeforeExpirationInDays = default(long), bool requireCn = default(bool), bool serverFlag = default(bool), bool splitCertificateChain = default(bool), List<string> streetAddress = default(List<string>))
+        public PKICertificateIssueDetails(bool acmeEnabled = default(bool), bool allowAnyName = default(bool), bool allowCopyExtFromCsr = default(bool), bool allowSubdomains = default(bool), List<string> allowedDomainsList = default(List<string>), Dictionary<string, List<string>> allowedExtraExtensions = default(Dictionary<string, List<string>>), List<string> allowedIpSans = default(List<string>), List<string> allowedUriSans = default(List<string>), bool autoRenewCertificate = default(bool), string basicConstraints = default(string), bool basicConstraintsCritical = default(bool), bool basicConstraintsValidForNonCa = default(bool), string certificateAuthorityMode = default(string), bool clientFlag = default(bool), bool codeSigningFlag = default(bool), List<string> country = default(List<string>), bool createPrivateCrl = default(bool), bool createPrivateOcsp = default(bool), bool createPublicCrl = default(bool), bool createPublicOcsp = default(bool), string destinationPath = default(string), bool disableWildcards = default(bool), bool enforceHostnames = default(bool), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), long gwClusterId = default(long), string gwClusterUrl = default(string), bool isCa = default(bool), long keyBits = default(long), string keyType = default(string), List<string> keyUsageList = default(List<string>), List<string> locality = default(List<string>), long maxPathLen = default(long), bool nonCriticalKeyUsage = default(bool), long notBeforeDuration = default(long), long ocspNextUpdate = default(long), List<string> organizationList = default(List<string>), List<string> organizationUnitList = default(List<string>), string pkiIssuerType = default(string), List<string> postalCode = default(List<string>), bool protectGeneratedCertificates = default(bool), List<string> province = default(List<string>), long renewBeforeExpirationInDays = default(long), bool requireCn = default(bool), string scepChallengeMode = default(string), bool scepEnabled = default(bool), bool serverFlag = default(bool), bool splitCertificateChain = default(bool), List<string> streetAddress = default(List<string>))
         {
             this.AcmeEnabled = acmeEnabled;
             this.AllowAnyName = allowAnyName;
@@ -126,6 +128,8 @@ namespace akeyless.Model
             this.Province = province;
             this.RenewBeforeExpirationInDays = renewBeforeExpirationInDays;
             this.RequireCn = requireCn;
+            this.ScepChallengeMode = scepChallengeMode;
+            this.ScepEnabled = scepEnabled;
             this.ServerFlag = serverFlag;
             this.SplitCertificateChain = splitCertificateChain;
             this.StreetAddress = streetAddress;
@@ -398,6 +402,20 @@ namespace akeyless.Model
         public bool RequireCn { get; set; }
 
         /// <summary>
+        /// ScepChallengeMode is the SCEP challenge mode. Stage 1 supports only \&quot;static\&quot;.
+        /// </summary>
+        /// <value>ScepChallengeMode is the SCEP challenge mode. Stage 1 supports only \&quot;static\&quot;.</value>
+        [DataMember(Name = "scep_challenge_mode", EmitDefaultValue = false)]
+        public string ScepChallengeMode { get; set; }
+
+        /// <summary>
+        /// ScepEnabled turns on SCEP enrollment for this dedicated PKI issuer.
+        /// </summary>
+        /// <value>ScepEnabled turns on SCEP enrollment for this dedicated PKI issuer.</value>
+        [DataMember(Name = "scep_enabled", EmitDefaultValue = true)]
+        public bool ScepEnabled { get; set; }
+
+        /// <summary>
         /// Gets or Sets ServerFlag
         /// </summary>
         [DataMember(Name = "server_flag", EmitDefaultValue = true)]
@@ -467,6 +485,8 @@ namespace akeyless.Model
             sb.Append("  Province: ").Append(Province).Append("\n");
             sb.Append("  RenewBeforeExpirationInDays: ").Append(RenewBeforeExpirationInDays).Append("\n");
             sb.Append("  RequireCn: ").Append(RequireCn).Append("\n");
+            sb.Append("  ScepChallengeMode: ").Append(ScepChallengeMode).Append("\n");
+            sb.Append("  ScepEnabled: ").Append(ScepEnabled).Append("\n");
             sb.Append("  ServerFlag: ").Append(ServerFlag).Append("\n");
             sb.Append("  SplitCertificateChain: ").Append(SplitCertificateChain).Append("\n");
             sb.Append("  StreetAddress: ").Append(StreetAddress).Append("\n");
