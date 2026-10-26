@@ -23,6 +23,10 @@ Name | Type | Description | Notes
 **Name** | **string** | Auth Method name | 
 **NewName** | **string** | Auth Method new name | [optional] 
 **ProductType** | **List&lt;string&gt;** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara] | [optional] 
+**ScimBearerAccessId** | **string** | Access ID of the API Key auth method the IdP uses as the SCIM bearer | [optional] 
+**ScimEnabled** | **string** | Enable SCIM provisioning for this auth method [true/false] | [optional] 
+**ScimEndpoint** | **string** | Where the IdP reaches the SCIM endpoint [public/private]. public is served by Akeyless, private by your own Akeyless Gateway | [optional] 
+**ScimGatewayUrl** | **string** | URL of the Akeyless Gateway that serves the SCIM endpoint to the IdP, for example https://gateway.example.com:8000. Required for the private endpoint | [optional] 
 **SubclaimsDelimiters** | **List&lt;string&gt;** | A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT) | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 

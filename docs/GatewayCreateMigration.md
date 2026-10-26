@@ -69,6 +69,7 @@ Name | Type | Description | Notes
 **PasswordLength** | **string** | The length of the password to be generated (between 8 and 50). Relevant only for Active Directory migration when enable-password-policy is true. | [optional] 
 **PortRanges** | **string** | A comma separated list of port ranges Examples: \&quot;80,443\&quot; or \&quot;80,443,8080-8090\&quot; or \&quot;443\&quot; | [optional] [default to "443"]
 **ProtectionKey** | **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
+**ScheduleSync** | **string** | Runs the migration automatically on the specified schedule in UTC. Accepts standard cron syntax. Limited to at most once every 24 hours. | [optional] 
 **SiAutoRotate** | **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with - -si-rotation-interval and - -si-rotation-hour parameters (Relevant only for Server Inventory migration) | [optional] 
 **SiRotationHour** | **int** | The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration) | [optional] 
 **SiRotationInterval** | **int** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Server Inventory migration) | [optional] 

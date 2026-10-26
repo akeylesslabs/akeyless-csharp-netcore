@@ -40,12 +40,14 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UscUpdate" /> class.
         /// </summary>
+        /// <param name="awsAccountId">The AWS account ID that contains the secret. Required when the connector spans multiple account IDs..</param>
         /// <param name="binaryValue">Use this option if the universal secrets value is a base64 encoded binary.</param>
         /// <param name="description">Description of the universal secrets.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="varNamespace">The namespace (relevant for Hashi vault target).</param>
         /// <param name="objectType">objectType.</param>
         /// <param name="pfxPassword">Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates).</param>
+        /// <param name="region">The AWS region that contains the secret (AWS only). If empty, uses the target region..</param>
         /// <param name="remoteSecretActivationDate">Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ.</param>
         /// <param name="remoteSecretExpires">Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ.</param>
         /// <param name="secretId">The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update (required).</param>
@@ -56,7 +58,7 @@ namespace akeyless.Model
         /// <param name="uscEncryptionKey">Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used).</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
         /// <param name="value">Value of the universal secrets item, either text or base64 encoded binary (required).</param>
-        public UscUpdate(bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string remoteSecretActivationDate = default(string), string remoteSecretExpires = default(string), string secretId = default(string), string selectedRepositories = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
+        public UscUpdate(string awsAccountId = default(string), bool binaryValue = default(bool), string description = default(string), bool json = false, string varNamespace = default(string), string objectType = default(string), string pfxPassword = default(string), string region = default(string), string remoteSecretActivationDate = default(string), string remoteSecretExpires = default(string), string secretId = default(string), string selectedRepositories = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>), string token = default(string), string uidToken = default(string), string uscEncryptionKey = default(string), string uscName = default(string), string value = default(string))
         {
             // to ensure "secretId" is required (not null)
             if (secretId == null)
@@ -76,12 +78,14 @@ namespace akeyless.Model
                 throw new ArgumentNullException("value is a required property for UscUpdate and cannot be null");
             }
             this.Value = value;
+            this.AwsAccountId = awsAccountId;
             this.BinaryValue = binaryValue;
             this.Description = description;
             this.Json = json;
             this.Namespace = varNamespace;
             this.ObjectType = objectType;
             this.PfxPassword = pfxPassword;
+            this.Region = region;
             this.RemoteSecretActivationDate = remoteSecretActivationDate;
             this.RemoteSecretExpires = remoteSecretExpires;
             this.SelectedRepositories = selectedRepositories;
@@ -90,6 +94,13 @@ namespace akeyless.Model
             this.UidToken = uidToken;
             this.UscEncryptionKey = uscEncryptionKey;
         }
+
+        /// <summary>
+        /// The AWS account ID that contains the secret. Required when the connector spans multiple account IDs.
+        /// </summary>
+        /// <value>The AWS account ID that contains the secret. Required when the connector spans multiple account IDs.</value>
+        [DataMember(Name = "aws-account-id", EmitDefaultValue = false)]
+        public string AwsAccountId { get; set; }
 
         /// <summary>
         /// Use this option if the universal secrets value is a base64 encoded binary
@@ -131,6 +142,13 @@ namespace akeyless.Model
         /// <value>Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)</value>
         [DataMember(Name = "pfx-password", EmitDefaultValue = false)]
         public string PfxPassword { get; set; }
+
+        /// <summary>
+        /// The AWS region that contains the secret (AWS only). If empty, uses the target region.
+        /// </summary>
+        /// <value>The AWS region that contains the secret (AWS only). If empty, uses the target region.</value>
+        [DataMember(Name = "region", EmitDefaultValue = false)]
+        public string Region { get; set; }
 
         /// <summary>
         /// Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
@@ -210,12 +228,14 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UscUpdate {\n");
+            sb.Append("  AwsAccountId: ").Append(AwsAccountId).Append("\n");
             sb.Append("  BinaryValue: ").Append(BinaryValue).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
             sb.Append("  PfxPassword: ").Append(PfxPassword).Append("\n");
+            sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  RemoteSecretActivationDate: ").Append(RemoteSecretActivationDate).Append("\n");
             sb.Append("  RemoteSecretExpires: ").Append(RemoteSecretExpires).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");

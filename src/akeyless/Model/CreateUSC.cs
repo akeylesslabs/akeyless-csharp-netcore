@@ -40,6 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateUSC" /> class.
         /// </summary>
+        /// <param name="awsOrganizationId">The AWS Organization ID to use for a multi-account connector. Requires a target in the AWS Management Account or a delegated administrator account..</param>
         /// <param name="azureKvName">Azure Key Vault name (Relevant only for Azure targets).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the Universal Secrets Connector.</param>
@@ -65,7 +66,7 @@ namespace akeyless.Model
         /// <param name="uscTags">Comma-separated list of tags to apply to all secrets created on the remote USC.</param>
         /// <param name="usePrefixAsFilter">Whether to filter the USC secret list using the specified usc-prefix [true/false] (default to &quot;false&quot;).</param>
         /// <param name="useTagsAsFilter">Filter the USC secret list by the value(s) of - -usc-tags. [true|false].</param>
-        public CreateUSC(string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string environmentNames = default(string), string gcpFolderId = default(string), string gcpOrganizationId = default(string), string gcpProjectId = default(string), string gcpScope = @"project", string gcpSmRegions = default(string), string githubScope = @"repository", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sNamespace = default(string), string name = default(string), string organizationName = default(string), string repositoryAccess = @"public", string repositoryNames = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string uscTags = default(string), string usePrefixAsFilter = @"false", bool useTagsAsFilter = default(bool))
+        public CreateUSC(string awsOrganizationId = default(string), string azureKvName = default(string), string deleteProtection = default(string), string description = default(string), string environmentNames = default(string), string gcpFolderId = default(string), string gcpOrganizationId = default(string), string gcpProjectId = default(string), string gcpScope = @"project", string gcpSmRegions = default(string), string githubScope = @"repository", Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string k8sNamespace = default(string), string name = default(string), string organizationName = default(string), string repositoryAccess = @"public", string repositoryNames = default(string), List<string> tags = default(List<string>), string targetToAssociate = default(string), string token = default(string), string uidToken = default(string), string uscPrefix = default(string), string uscTags = default(string), string usePrefixAsFilter = @"false", bool useTagsAsFilter = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -79,6 +80,7 @@ namespace akeyless.Model
                 throw new ArgumentNullException("targetToAssociate is a required property for CreateUSC and cannot be null");
             }
             this.TargetToAssociate = targetToAssociate;
+            this.AwsOrganizationId = awsOrganizationId;
             this.AzureKvName = azureKvName;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
@@ -107,6 +109,13 @@ namespace akeyless.Model
             this.UsePrefixAsFilter = usePrefixAsFilter ?? @"false";
             this.UseTagsAsFilter = useTagsAsFilter;
         }
+
+        /// <summary>
+        /// The AWS Organization ID to use for a multi-account connector. Requires a target in the AWS Management Account or a delegated administrator account.
+        /// </summary>
+        /// <value>The AWS Organization ID to use for a multi-account connector. Requires a target in the AWS Management Account or a delegated administrator account.</value>
+        [DataMember(Name = "aws-organization-id", EmitDefaultValue = false)]
+        public string AwsOrganizationId { get; set; }
 
         /// <summary>
         /// Azure Key Vault name (Relevant only for Azure targets)
@@ -290,6 +299,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateUSC {\n");
+            sb.Append("  AwsOrganizationId: ").Append(AwsOrganizationId).Append("\n");
             sb.Append("  AzureKvName: ").Append(AzureKvName).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");

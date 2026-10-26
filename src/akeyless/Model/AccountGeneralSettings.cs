@@ -54,6 +54,7 @@ namespace akeyless.Model
         /// <param name="emailCustomization">emailCustomization.</param>
         /// <param name="enableRequestForAccess">enableRequestForAccess.</param>
         /// <param name="enableSearchHistory">enableSearchHistory.</param>
+        /// <param name="eventForwarderAllowedEmailDomains">EventForwarderAllowedEmailDomains lists extra recipient domains for email event forwarders. The signup email domain is always allowed as well. Account-settings updates leave this field unchanged..</param>
         /// <param name="hidePersonalFolder">hidePersonalFolder.</param>
         /// <param name="hideSecretRevealCopy">hideSecretRevealCopy.</param>
         /// <param name="hideStaticPassword">hideStaticPassword.</param>
@@ -68,7 +69,7 @@ namespace akeyless.Model
         /// <param name="protectItemsByDefault">protectItemsByDefault.</param>
         /// <param name="rotationSecretMaxInterval">rotationSecretMaxInterval.</param>
         /// <param name="sharingPolicy">sharingPolicy.</param>
-        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), long accountFileBytesUsed = default(long), AiInsightsSetting aiInsights = default(AiInsightsSetting), AiQuorumSetting aiQuorum = default(AiQuorumSetting), bool allowAutoFill = default(bool), bool allowPasskeys = default(bool), AllowedClientType allowedClientTypes = default(AllowedClientType), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), CertificateExpirationEventsSettings certificateExpirationEvents = default(CertificateExpirationEventsSettings), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DefaultAuthMethodSettings defaultAuthMethod = default(DefaultAuthMethodSettings), DefaultHomePage defaultHomePage = default(DefaultHomePage), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), EmailCustomization emailCustomization = default(EmailCustomization), bool enableRequestForAccess = default(bool), bool enableSearchHistory = default(bool), bool hidePersonalFolder = default(bool), bool hideSecretRevealCopy = default(bool), bool hideStaticPassword = default(bool), string invalidCharacters = default(string), ItemLockingSetting itemLocking = default(ItemLockingSetting), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), PasswordScoreSetting passwordScore = default(PasswordScoreSetting), PersonalFolderGlobalMappingSettings personalFolderGlobalMapping = default(PersonalFolderGlobalMappingSettings), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
+        public AccountGeneralSettings(long accountDefaultKeyItemId = default(long), string accountDefaultKeyName = default(string), long accountFileBytesUsed = default(long), AiInsightsSetting aiInsights = default(AiInsightsSetting), AiQuorumSetting aiQuorum = default(AiQuorumSetting), bool allowAutoFill = default(bool), bool allowPasskeys = default(bool), AllowedClientType allowedClientTypes = default(AllowedClientType), AllowedIpSettings allowedClientsIps = default(AllowedIpSettings), AllowedIpSettings allowedGatewaysIps = default(AllowedIpSettings), UsageEventSetting authUsageEvent = default(UsageEventSetting), CertificateExpirationEventsSettings certificateExpirationEvents = default(CertificateExpirationEventsSettings), DataProtectionSection dataProtectionSection = default(DataProtectionSection), DefaultAuthMethodSettings defaultAuthMethod = default(DefaultAuthMethodSettings), DefaultHomePage defaultHomePage = default(DefaultHomePage), DynamicSecretMaxTtl dynamicSecretMaxTtl = default(DynamicSecretMaxTtl), EmailCustomization emailCustomization = default(EmailCustomization), bool enableRequestForAccess = default(bool), bool enableSearchHistory = default(bool), List<string> eventForwarderAllowedEmailDomains = default(List<string>), bool hidePersonalFolder = default(bool), bool hideSecretRevealCopy = default(bool), bool hideStaticPassword = default(bool), string invalidCharacters = default(string), ItemLockingSetting itemLocking = default(ItemLockingSetting), UsageEventSetting itemUsageEvent = default(UsageEventSetting), bool lockDefaultKey = default(bool), PasswordExpirationInfo passwordExpirationInfo = default(PasswordExpirationInfo), PasswordPolicyInfo passwordPolicy = default(PasswordPolicyInfo), PasswordScoreSetting passwordScore = default(PasswordScoreSetting), PersonalFolderGlobalMappingSettings personalFolderGlobalMapping = default(PersonalFolderGlobalMappingSettings), bool protectItemsByDefault = default(bool), RotationSecretMaxInterval rotationSecretMaxInterval = default(RotationSecretMaxInterval), SharingPolicyInfo sharingPolicy = default(SharingPolicyInfo))
         {
             this.AccountDefaultKeyItemId = accountDefaultKeyItemId;
             this.AccountDefaultKeyName = accountDefaultKeyName;
@@ -89,6 +90,7 @@ namespace akeyless.Model
             this.EmailCustomization = emailCustomization;
             this.EnableRequestForAccess = enableRequestForAccess;
             this.EnableSearchHistory = enableSearchHistory;
+            this.EventForwarderAllowedEmailDomains = eventForwarderAllowedEmailDomains;
             this.HidePersonalFolder = hidePersonalFolder;
             this.HideSecretRevealCopy = hideSecretRevealCopy;
             this.HideStaticPassword = hideStaticPassword;
@@ -223,6 +225,13 @@ namespace akeyless.Model
         public bool EnableSearchHistory { get; set; }
 
         /// <summary>
+        /// EventForwarderAllowedEmailDomains lists extra recipient domains for email event forwarders. The signup email domain is always allowed as well. Account-settings updates leave this field unchanged.
+        /// </summary>
+        /// <value>EventForwarderAllowedEmailDomains lists extra recipient domains for email event forwarders. The signup email domain is always allowed as well. Account-settings updates leave this field unchanged.</value>
+        [DataMember(Name = "event_forwarder_allowed_email_domains", EmitDefaultValue = false)]
+        public List<string> EventForwarderAllowedEmailDomains { get; set; }
+
+        /// <summary>
         /// Gets or Sets HidePersonalFolder
         /// </summary>
         [DataMember(Name = "hide_personal_folder", EmitDefaultValue = true)]
@@ -335,6 +344,7 @@ namespace akeyless.Model
             sb.Append("  EmailCustomization: ").Append(EmailCustomization).Append("\n");
             sb.Append("  EnableRequestForAccess: ").Append(EnableRequestForAccess).Append("\n");
             sb.Append("  EnableSearchHistory: ").Append(EnableSearchHistory).Append("\n");
+            sb.Append("  EventForwarderAllowedEmailDomains: ").Append(EventForwarderAllowedEmailDomains).Append("\n");
             sb.Append("  HidePersonalFolder: ").Append(HidePersonalFolder).Append("\n");
             sb.Append("  HideSecretRevealCopy: ").Append(HideSecretRevealCopy).Append("\n");
             sb.Append("  HideStaticPassword: ").Append(HideStaticPassword).Append("\n");

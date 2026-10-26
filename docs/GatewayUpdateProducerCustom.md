@@ -6,12 +6,12 @@ gatewayUpdateProducerCustom is a command that updates a custom producer. [Deprec
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdminRotationIntervalDays** | **long** | Define rotation interval in days | [optional] 
-**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
+**AraEnabled** | **bool?** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CreateSyncUrl** | **string** | URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create | 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **EnableAdminRotation** | **bool** | Should admin credentials be rotated | [optional] [default to false]
-**EnableAgenticRuntimeAuthority** | **bool** | EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias. | [optional] 
-**EnableAiQuorum** | **bool** | Turns on AI Quorum checks for this item. | [optional] 
+**EnableAgenticRuntimeAuthority** | **bool?** | EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | **bool?** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | **List&lt;string&gt;** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
 **RevokeSyncUrl** | **string** | URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke | 
 **RotateSyncUrl** | **string** | URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate | [optional] 
-**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
+**SkipDryRun** | **bool?** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TimeoutSec** | **long** | Maximum allowed time in seconds for the webhook to return the results | [optional] [default to 60]
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

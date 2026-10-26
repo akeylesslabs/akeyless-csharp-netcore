@@ -84,7 +84,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="username">For Password Management use.</param>
         /// <param name="value">The secret value (relevant only for type &#39;generic&#39;) (required).</param>
-        public CreateSecret(string providerType = default(string), string accessibility = @"regular", bool araEnabled = default(bool), string changeEvent = default(string), Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string format = @"text", string hostProvider = default(string), List<string> injectUrl = default(List<string>), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), List<string> outputRule = default(List<string>), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), List<string> target = default(List<string>), string token = default(string), string type = @"generic", string uidToken = default(string), string username = default(string), string value = default(string))
+        public CreateSecret(string providerType = default(string), string accessibility = @"regular", bool? araEnabled = default(bool?), string changeEvent = default(string), Dictionary<string, string> customField = default(Dictionary<string, string>), string deleteProtection = default(string), string description = default(string), bool? enableAgenticRuntimeAuthority = default(bool?), bool? enableAiQuorum = default(bool?), string format = @"text", string hostProvider = default(string), List<string> injectUrl = default(List<string>), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string metadata = default(string), bool multilineValue = default(bool), string name = default(string), List<string> outputRule = default(List<string>), string password = default(string), string protectionKey = default(string), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdpUser = default(string), string secureAccessSshCreds = default(string), string secureAccessSshUser = default(string), string secureAccessUrl = default(string), bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, List<string> tags = default(List<string>), List<string> target = default(List<string>), string token = default(string), string type = @"generic", string uidToken = default(string), string username = default(string), string value = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -163,7 +163,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.</value>
         [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
-        public bool AraEnabled { get; set; }
+        public bool? AraEnabled { get; set; }
 
         /// <summary>
         /// Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret)
@@ -198,14 +198,14 @@ namespace akeyless.Model
         /// </summary>
         /// <value>EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.</value>
         [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
-        public bool EnableAgenticRuntimeAuthority { get; set; }
+        public bool? EnableAgenticRuntimeAuthority { get; set; }
 
         /// <summary>
         /// Turns on AI Quorum checks for this item.
         /// </summary>
         /// <value>Turns on AI Quorum checks for this item.</value>
         [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
-        public bool EnableAiQuorum { get; set; }
+        public bool? EnableAiQuorum { get; set; }
 
         /// <summary>
         /// Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;)

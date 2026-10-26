@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **ProductTypes** | **List&lt;string&gt;** | List of product types this auth method will be in use of | [optional] 
 **RulesType** | **string** |  | [optional] 
 **SamlAccessRules** | [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] 
+**Scim** | [**ScimSettings**](ScimSettings.md) |  | [optional] 
 **SubClaimsDelimiters** | **List&lt;string&gt;** |  | [optional] 
 **UidExpirationEvents** | [**List&lt;UidExpirationEvent&gt;**](UidExpirationEvent.md) | Relevant only for Universal Identity auth methods: token about-to-expire notification thresholds. | [optional] 
 **UniversalIdentityAccessRules** | [**UniversalIdentityAccessRules**](UniversalIdentityAccessRules.md) |  | [optional] 

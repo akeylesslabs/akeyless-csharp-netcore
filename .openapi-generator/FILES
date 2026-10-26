@@ -35,6 +35,7 @@ docs/AiModelEntry.md
 docs/AiQuorumSetting.md
 docs/AkeylessGatewayConfig.md
 docs/AliCloudAccessRules.md
+docs/AliCloudTargetDetails.md
 docs/AliasDetails.md
 docs/AliasDetailsOutput.md
 docs/AllAnalyticsData.md
@@ -682,6 +683,7 @@ docs/GetRole.md
 docs/GetRotatedSecretValue.md
 docs/GetSSHCertificate.md
 docs/GetSSHCertificateOutput.md
+docs/GetScimStatus.md
 docs/GetSecretValue.md
 docs/GetTags.md
 docs/GetTarget.md
@@ -696,6 +698,7 @@ docs/GlobalSignGCCTargetDetails.md
 docs/GodaddyTargetDetails.md
 docs/GoogleChronicleForwardingConfig.md
 docs/GoogleTrustTargetDetails.md
+docs/GrantedRole.md
 docs/GrokTargetDetails.md
 docs/Group.md
 docs/GwClusterIdentity.md
@@ -907,6 +910,7 @@ docs/RotateOidcClientOutput.md
 docs/RotateOidcClientSecret.md
 docs/RotateSecret.md
 docs/RotatedSecretCreateAerospike.md
+docs/RotatedSecretCreateAliCloud.md
 docs/RotatedSecretCreateAws.md
 docs/RotatedSecretCreateAzure.md
 docs/RotatedSecretCreateCassandra.md
@@ -940,6 +944,7 @@ docs/RotatedSecretList.md
 docs/RotatedSecretOutput.md
 docs/RotatedSecretSync.md
 docs/RotatedSecretUpdateAerospike.md
+docs/RotatedSecretUpdateAliCloud.md
 docs/RotatedSecretUpdateAws.md
 docs/RotatedSecretUpdateAzure.md
 docs/RotatedSecretUpdateCassandra.md
@@ -976,6 +981,8 @@ docs/SSHTargetDetails.md
 docs/SalesforceTargetDetails.md
 docs/SamlSpConfigPart.md
 docs/ScanResults.md
+docs/ScimSettings.md
+docs/ScimStatus.md
 docs/SecretInfo.md
 docs/SecretSyncOutput.md
 docs/SectigoTargetDetails.md
@@ -1027,6 +1034,7 @@ docs/SystemAccessCredentialsReplyObj.md
 docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetCreateAerospike.md
+docs/TargetCreateAliCloud.md
 docs/TargetCreateAnthropic.md
 docs/TargetCreateArtifactory.md
 docs/TargetCreateAws.md
@@ -1077,6 +1085,7 @@ docs/TargetList.md
 docs/TargetNameWithHosts.md
 docs/TargetTypeDetailsInput.md
 docs/TargetUpdateAerospike.md
+docs/TargetUpdateAliCloud.md
 docs/TargetUpdateAnthropic.md
 docs/TargetUpdateArtifactory.md
 docs/TargetUpdateAws.md
@@ -1285,6 +1294,15 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
+src/akeyless.Test/Model/AliCloudTargetDetailsTests.cs
+src/akeyless.Test/Model/GetScimStatusTests.cs
+src/akeyless.Test/Model/GrantedRoleTests.cs
+src/akeyless.Test/Model/RotatedSecretCreateAliCloudTests.cs
+src/akeyless.Test/Model/RotatedSecretUpdateAliCloudTests.cs
+src/akeyless.Test/Model/ScimSettingsTests.cs
+src/akeyless.Test/Model/ScimStatusTests.cs
+src/akeyless.Test/Model/TargetCreateAliCloudTests.cs
+src/akeyless.Test/Model/TargetUpdateAliCloudTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1336,6 +1354,7 @@ src/akeyless/Model/AiModelEntry.cs
 src/akeyless/Model/AiQuorumSetting.cs
 src/akeyless/Model/AkeylessGatewayConfig.cs
 src/akeyless/Model/AliCloudAccessRules.cs
+src/akeyless/Model/AliCloudTargetDetails.cs
 src/akeyless/Model/AliasDetails.cs
 src/akeyless/Model/AliasDetailsOutput.cs
 src/akeyless/Model/AllAnalyticsData.cs
@@ -1983,6 +2002,7 @@ src/akeyless/Model/GetRole.cs
 src/akeyless/Model/GetRotatedSecretValue.cs
 src/akeyless/Model/GetSSHCertificate.cs
 src/akeyless/Model/GetSSHCertificateOutput.cs
+src/akeyless/Model/GetScimStatus.cs
 src/akeyless/Model/GetSecretValue.cs
 src/akeyless/Model/GetTags.cs
 src/akeyless/Model/GetTarget.cs
@@ -1997,6 +2017,7 @@ src/akeyless/Model/GlobalSignGCCTargetDetails.cs
 src/akeyless/Model/GodaddyTargetDetails.cs
 src/akeyless/Model/GoogleChronicleForwardingConfig.cs
 src/akeyless/Model/GoogleTrustTargetDetails.cs
+src/akeyless/Model/GrantedRole.cs
 src/akeyless/Model/GrokTargetDetails.cs
 src/akeyless/Model/Group.cs
 src/akeyless/Model/GwClusterIdentity.cs
@@ -2208,6 +2229,7 @@ src/akeyless/Model/RotateOidcClientOutput.cs
 src/akeyless/Model/RotateOidcClientSecret.cs
 src/akeyless/Model/RotateSecret.cs
 src/akeyless/Model/RotatedSecretCreateAerospike.cs
+src/akeyless/Model/RotatedSecretCreateAliCloud.cs
 src/akeyless/Model/RotatedSecretCreateAws.cs
 src/akeyless/Model/RotatedSecretCreateAzure.cs
 src/akeyless/Model/RotatedSecretCreateCassandra.cs
@@ -2241,6 +2263,7 @@ src/akeyless/Model/RotatedSecretList.cs
 src/akeyless/Model/RotatedSecretOutput.cs
 src/akeyless/Model/RotatedSecretSync.cs
 src/akeyless/Model/RotatedSecretUpdateAerospike.cs
+src/akeyless/Model/RotatedSecretUpdateAliCloud.cs
 src/akeyless/Model/RotatedSecretUpdateAws.cs
 src/akeyless/Model/RotatedSecretUpdateAzure.cs
 src/akeyless/Model/RotatedSecretUpdateCassandra.cs
@@ -2277,6 +2300,8 @@ src/akeyless/Model/SSHTargetDetails.cs
 src/akeyless/Model/SalesforceTargetDetails.cs
 src/akeyless/Model/SamlSpConfigPart.cs
 src/akeyless/Model/ScanResults.cs
+src/akeyless/Model/ScimSettings.cs
+src/akeyless/Model/ScimStatus.cs
 src/akeyless/Model/SecretInfo.cs
 src/akeyless/Model/SecretSyncOutput.cs
 src/akeyless/Model/SectigoTargetDetails.cs
@@ -2328,6 +2353,7 @@ src/akeyless/Model/SystemAccessCredentialsReplyObj.cs
 src/akeyless/Model/SystemAccessCredsSettings.cs
 src/akeyless/Model/Target.cs
 src/akeyless/Model/TargetCreateAerospike.cs
+src/akeyless/Model/TargetCreateAliCloud.cs
 src/akeyless/Model/TargetCreateAnthropic.cs
 src/akeyless/Model/TargetCreateArtifactory.cs
 src/akeyless/Model/TargetCreateAws.cs
@@ -2378,6 +2404,7 @@ src/akeyless/Model/TargetList.cs
 src/akeyless/Model/TargetNameWithHosts.cs
 src/akeyless/Model/TargetTypeDetailsInput.cs
 src/akeyless/Model/TargetUpdateAerospike.cs
+src/akeyless/Model/TargetUpdateAliCloud.cs
 src/akeyless/Model/TargetUpdateAnthropic.cs
 src/akeyless/Model/TargetUpdateArtifactory.cs
 src/akeyless/Model/TargetUpdateAws.cs

@@ -40,16 +40,18 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UscDelete" /> class.
         /// </summary>
+        /// <param name="awsAccountId">The AWS account ID that contains the secret. Required when the connector spans multiple account IDs..</param>
         /// <param name="forceDelete">Force delete objects that are soft deleted by default (relavent only for Azure target).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="varNamespace">The namespace (relevant for Hashi vault target).</param>
         /// <param name="objectType">objectType.</param>
+        /// <param name="region">The AWS region that contains the secret (AWS only). If empty, uses the target region..</param>
         /// <param name="secretId">The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete (required).</param>
         /// <param name="selectedRepositories">GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
-        public UscDelete(bool forceDelete = default(bool), bool json = false, string varNamespace = default(string), string objectType = default(string), string secretId = default(string), string selectedRepositories = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public UscDelete(string awsAccountId = default(string), bool forceDelete = default(bool), bool json = false, string varNamespace = default(string), string objectType = default(string), string region = default(string), string secretId = default(string), string selectedRepositories = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "secretId" is required (not null)
             if (secretId == null)
@@ -63,14 +65,23 @@ namespace akeyless.Model
                 throw new ArgumentNullException("uscName is a required property for UscDelete and cannot be null");
             }
             this.UscName = uscName;
+            this.AwsAccountId = awsAccountId;
             this.ForceDelete = forceDelete;
             this.Json = json;
             this.Namespace = varNamespace;
             this.ObjectType = objectType;
+            this.Region = region;
             this.SelectedRepositories = selectedRepositories;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// The AWS account ID that contains the secret. Required when the connector spans multiple account IDs.
+        /// </summary>
+        /// <value>The AWS account ID that contains the secret. Required when the connector spans multiple account IDs.</value>
+        [DataMember(Name = "aws-account-id", EmitDefaultValue = false)]
+        public string AwsAccountId { get; set; }
 
         /// <summary>
         /// Force delete objects that are soft deleted by default (relavent only for Azure target)
@@ -98,6 +109,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "object-type", EmitDefaultValue = false)]
         public string ObjectType { get; set; }
+
+        /// <summary>
+        /// The AWS region that contains the secret (AWS only). If empty, uses the target region.
+        /// </summary>
+        /// <value>The AWS region that contains the secret (AWS only). If empty, uses the target region.</value>
+        [DataMember(Name = "region", EmitDefaultValue = false)]
+        public string Region { get; set; }
 
         /// <summary>
         /// The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete
@@ -142,10 +160,12 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UscDelete {\n");
+            sb.Append("  AwsAccountId: ").Append(AwsAccountId).Append("\n");
             sb.Append("  ForceDelete: ").Append(ForceDelete).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Namespace: ").Append(Namespace).Append("\n");
             sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
+            sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  SecretId: ").Append(SecretId).Append("\n");
             sb.Append("  SelectedRepositories: ").Append(SelectedRepositories).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

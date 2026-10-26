@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="tmpCredsId">Tmp Creds ID (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateTmpUsers(bool araEnabled = default(bool), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), string host = default(string), List<string> inputRule = default(List<string>), bool json = false, string name = default(string), long newTtlMin = default(long), List<string> outputRule = default(List<string>), bool skipDryRun = default(bool), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string))
+        public GatewayUpdateTmpUsers(bool? araEnabled = default(bool?), bool? enableAgenticRuntimeAuthority = default(bool?), bool? enableAiQuorum = default(bool?), string host = default(string), List<string> inputRule = default(List<string>), bool json = false, string name = default(string), long newTtlMin = default(long), List<string> outputRule = default(List<string>), bool? skipDryRun = default(bool?), string tmpCredsId = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "host" is required (not null)
             if (host == null)
@@ -90,21 +90,21 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
         [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
-        public bool AraEnabled { get; set; }
+        public bool? AraEnabled { get; set; }
 
         /// <summary>
         /// EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.
         /// </summary>
         /// <value>EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.</value>
         [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
-        public bool EnableAgenticRuntimeAuthority { get; set; }
+        public bool? EnableAgenticRuntimeAuthority { get; set; }
 
         /// <summary>
         /// Turns on AI Quorum checks for this item.
         /// </summary>
         /// <value>Turns on AI Quorum checks for this item.</value>
         [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
-        public bool EnableAiQuorum { get; set; }
+        public bool? EnableAiQuorum { get; set; }
 
         /// <summary>
         /// Host
@@ -153,7 +153,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>If set, dry-run will be skipped [true/false]</value>
         [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
-        public bool SkipDryRun { get; set; }
+        public bool? SkipDryRun { get; set; }
 
         /// <summary>
         /// Tmp Creds ID

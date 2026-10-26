@@ -5,10 +5,12 @@ uscGet is a command that gets the value and internal details of a secret from a 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsAccountId** | **string** | The AWS account ID that contains the secret. Required when the connector spans multiple account IDs. | [optional] 
 **GcpProjectId** | **string** | The GCP project the secret resides in (GCP only). Used when getting a secret by name in a connector that spans multiple projects or uses folder/organization scope. | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **ObjectType** | **string** |  | [optional] 
+**Region** | **string** | The AWS region that contains the secret (AWS only). If empty, uses the target region. | [optional] 
 **SecretId** | **string** | The secret id (or name, for AWS, Azure, K8s or Hashi vault targets) to get from the Universal Secrets Connector | 
 **SelectedRepositories** | **string** | GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured. | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

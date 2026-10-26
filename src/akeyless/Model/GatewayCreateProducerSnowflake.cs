@@ -71,7 +71,7 @@ namespace akeyless.Model
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;24h&quot;).</param>
         /// <param name="warehouse">Warehouse name.</param>
-        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), bool araEnabled = default(bool), string authMode = @"password", string customUsernameTemplate = default(string), string dbName = default(string), string deleteProtection = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyAlgo = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"24h", string warehouse = default(string))
+        public GatewayCreateProducerSnowflake(string account = default(string), string accountPassword = default(string), string accountUsername = default(string), bool? araEnabled = default(bool?), string authMode = @"password", string customUsernameTemplate = default(string), string dbName = default(string), string deleteProtection = default(string), bool? enableAgenticRuntimeAuthority = default(bool?), bool? enableAiQuorum = default(bool?), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string keyAlgo = default(string), string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string privateKey = default(string), string privateKeyPassphrase = default(string), string role = default(string), bool? skipDryRun = default(bool?), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"24h", string warehouse = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -139,7 +139,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
         [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
-        public bool AraEnabled { get; set; }
+        public bool? AraEnabled { get; set; }
 
         /// <summary>
         /// The authentication mode for the temporary user [password/key]
@@ -174,14 +174,14 @@ namespace akeyless.Model
         /// </summary>
         /// <value>EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.</value>
         [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
-        public bool EnableAgenticRuntimeAuthority { get; set; }
+        public bool? EnableAgenticRuntimeAuthority { get; set; }
 
         /// <summary>
         /// Turns on AI Quorum checks for this item.
         /// </summary>
         /// <value>Turns on AI Quorum checks for this item.</value>
         [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
-        public bool EnableAiQuorum { get; set; }
+        public bool? EnableAiQuorum { get; set; }
 
         /// <summary>
         /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
@@ -257,7 +257,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>If set, dry-run will be skipped [true/false]</value>
         [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
-        public bool SkipDryRun { get; set; }
+        public bool? SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object

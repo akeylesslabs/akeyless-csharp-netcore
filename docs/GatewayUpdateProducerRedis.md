@@ -6,11 +6,11 @@ gatewayUpdateProducerRedis is a command that updates redis producer [Deprecated:
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AclRules** | **string** | A JSON array list of redis ACL rules to attach to the created user. For available rules see the ACL CAT command https://redis.io/commands/acl-cat By default the user will have permissions to read all keys &#39;[\&quot;~*\&quot;, \&quot;+@read\&quot;]&#39; | [optional] 
-**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
+**AraEnabled** | **bool?** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
-**EnableAgenticRuntimeAuthority** | **bool** | EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias. | [optional] 
-**EnableAiQuorum** | **bool** | Turns on AI Quorum checks for this item. | [optional] 
+**EnableAgenticRuntimeAuthority** | **bool?** | EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | **bool?** | Turns on AI Quorum checks for this item. | [optional] 
 **Host** | **string** | Redis Host | [optional] [default to "127.0.0.1"]
 **InputRule** | **List&lt;string&gt;** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **PasswordLength** | **string** | The length of the password to be generated | [optional] 
 **Port** | **string** | Redis Port | [optional] [default to "6379"]
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
-**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
+**SkipDryRun** | **bool?** | If set, dry-run will be skipped [true/false] | [optional] 
 **Ssl** | **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | **string** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 

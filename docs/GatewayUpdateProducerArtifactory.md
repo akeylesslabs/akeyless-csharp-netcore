@@ -5,7 +5,7 @@ gatewayUpdateProducerArtifactory is a command that updates artifactory producer 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
+**AraEnabled** | **bool?** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **ArtifactoryAdminName** | **string** | Artifactory Admin Name | [optional] 
 **ArtifactoryAdminPwd** | **string** | Artifactory Admin password | [optional] 
 **ArtifactoryTokenAudience** | **string** | Token Audience | 
@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **BaseUrl** | **string** | Base URL | [optional] 
 **CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
-**EnableAgenticRuntimeAuthority** | **bool** | EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias. | [optional] 
-**EnableAiQuorum** | **bool** | Turns on AI Quorum checks for this item. | [optional] 
+**EnableAgenticRuntimeAuthority** | **bool?** | EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | **bool?** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | **List&lt;string&gt;** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | **Dictionary&lt;string, string&gt;** | Additional custom fields to associate with the item | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **NewName** | **string** | Dynamic secret name | [optional] 
 **OutputRule** | **List&lt;string&gt;** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
-**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
+**SkipDryRun** | **bool?** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

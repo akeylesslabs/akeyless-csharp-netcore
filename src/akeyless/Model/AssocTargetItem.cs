@@ -41,16 +41,22 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="AssocTargetItem" /> class.
         /// </summary>
         /// <param name="bindSslProfiles">Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. For a profile in a folder, add the folder to the partition, for example client-ssl:Common/Shared:my-profile. Repeat the parameter to bind several profiles..</param>
+        /// <param name="certificateArn">The ARN of an existing imported ACM certificate to re-import into, which replaces its certificate and key; if empty, a new ACM certificate is created on every provisioning, including after renewal (relevant only for AWS certificate provisioning).</param>
         /// <param name="certificateFormat">The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning) (default to &quot;pem&quot;).</param>
+        /// <param name="certificateName">The name of the certificate object in the cloud provider (relevant only for AWS, Azure, and GCP certificate provisioning).</param>
         /// <param name="certificatePath">A path on the target to store the certificate pem file (relevant only for certificate provisioning).</param>
         /// <param name="chainPath">A path on the target to store the full chain pem file (relevant only for certificate provisioning).</param>
         /// <param name="disablePreviousKeyVersion">Automatically disable previous key version (required for azure targets) (default to false).</param>
         /// <param name="externalKeyName">The external key name to associate with the classic key (Relevant only for Classic Key AWS/Azure/GCP targets).</param>
+        /// <param name="f5SaveConfig">Save the F5 running configuration after each successful provisioning, so the certificate survives a reboot. This also saves any other unsaved change on the device (relevant only for F5 BIG-IP certificate provisioning) (default to false).</param>
+        /// <param name="f5SyncDeviceGroup">Sync the F5 configuration to this device group after each successful provisioning, so the HA peer serves the same certificate. This overwrites unsynced changes on the other members of the group. Implies f5-save-config (relevant only for F5 BIG-IP certificate provisioning).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="keyOperations">A list of allowed operations for the key (required for azure targets).</param>
+        /// <param name="keyVault">The Azure Key Vault name to provision the certificate to (relevant only for Azure certificate provisioning).</param>
         /// <param name="keyringName">Keyring name of the GCP KMS (required for gcp targets).</param>
         /// <param name="kmsAlgorithm">Algorithm of the key in GCP KMS (required for gcp targets).</param>
         /// <param name="locationId">Location id of the GCP KMS (required for gcp targets).</param>
+        /// <param name="locationScope">The GCP Certificate Manager location to provision the certificate to: global or a region such as us-central1 (relevant only for GCP certificate provisioning).</param>
         /// <param name="multiRegion">Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) (default to &quot;false&quot;).</param>
         /// <param name="name">The item to associate (required).</param>
         /// <param name="pfxPassword">Password used to protect the provisioned PFX file. Required when - -certificate-format&#x3D;pfx (relevant only for certificate provisioning).</param>
@@ -66,7 +72,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public AssocTargetItem(List<string> bindSslProfiles = default(List<string>), string certificateFormat = @"pem", string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, string externalKeyName = default(string), bool json = false, List<string> keyOperations = default(List<string>), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string multiRegion = @"false", string name = default(string), string pfxPassword = default(string), string postProvisionCommand = default(string), string privateKeyPath = default(string), string projectId = default(string), string protectionLevel = @"software", string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public AssocTargetItem(List<string> bindSslProfiles = default(List<string>), string certificateArn = default(string), string certificateFormat = @"pem", string certificateName = default(string), string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, string externalKeyName = default(string), bool f5SaveConfig = false, string f5SyncDeviceGroup = default(string), bool json = false, List<string> keyOperations = default(List<string>), string keyVault = default(string), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string locationScope = default(string), string multiRegion = @"false", string name = default(string), string pfxPassword = default(string), string postProvisionCommand = default(string), string privateKeyPath = default(string), string projectId = default(string), string protectionLevel = @"software", string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -81,17 +87,23 @@ namespace akeyless.Model
             }
             this.TargetName = targetName;
             this.BindSslProfiles = bindSslProfiles;
+            this.CertificateArn = certificateArn;
             // use default value if no "certificateFormat" provided
             this.CertificateFormat = certificateFormat ?? @"pem";
+            this.CertificateName = certificateName;
             this.CertificatePath = certificatePath;
             this.ChainPath = chainPath;
             this.DisablePreviousKeyVersion = disablePreviousKeyVersion;
             this.ExternalKeyName = externalKeyName;
+            this.F5SaveConfig = f5SaveConfig;
+            this.F5SyncDeviceGroup = f5SyncDeviceGroup;
             this.Json = json;
             this.KeyOperations = keyOperations;
+            this.KeyVault = keyVault;
             this.KeyringName = keyringName;
             this.KmsAlgorithm = kmsAlgorithm;
             this.LocationId = locationId;
+            this.LocationScope = locationScope;
             // use default value if no "multiRegion" provided
             this.MultiRegion = multiRegion ?? @"false";
             this.PfxPassword = pfxPassword;
@@ -117,11 +129,25 @@ namespace akeyless.Model
         public List<string> BindSslProfiles { get; set; }
 
         /// <summary>
+        /// The ARN of an existing imported ACM certificate to re-import into, which replaces its certificate and key; if empty, a new ACM certificate is created on every provisioning, including after renewal (relevant only for AWS certificate provisioning)
+        /// </summary>
+        /// <value>The ARN of an existing imported ACM certificate to re-import into, which replaces its certificate and key; if empty, a new ACM certificate is created on every provisioning, including after renewal (relevant only for AWS certificate provisioning)</value>
+        [DataMember(Name = "certificate-arn", EmitDefaultValue = false)]
+        public string CertificateArn { get; set; }
+
+        /// <summary>
         /// The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning)
         /// </summary>
         /// <value>The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning)</value>
         [DataMember(Name = "certificate-format", EmitDefaultValue = false)]
         public string CertificateFormat { get; set; }
+
+        /// <summary>
+        /// The name of the certificate object in the cloud provider (relevant only for AWS, Azure, and GCP certificate provisioning)
+        /// </summary>
+        /// <value>The name of the certificate object in the cloud provider (relevant only for AWS, Azure, and GCP certificate provisioning)</value>
+        [DataMember(Name = "certificate-name", EmitDefaultValue = false)]
+        public string CertificateName { get; set; }
 
         /// <summary>
         /// A path on the target to store the certificate pem file (relevant only for certificate provisioning)
@@ -152,6 +178,20 @@ namespace akeyless.Model
         public string ExternalKeyName { get; set; }
 
         /// <summary>
+        /// Save the F5 running configuration after each successful provisioning, so the certificate survives a reboot. This also saves any other unsaved change on the device (relevant only for F5 BIG-IP certificate provisioning)
+        /// </summary>
+        /// <value>Save the F5 running configuration after each successful provisioning, so the certificate survives a reboot. This also saves any other unsaved change on the device (relevant only for F5 BIG-IP certificate provisioning)</value>
+        [DataMember(Name = "f5-save-config", EmitDefaultValue = true)]
+        public bool F5SaveConfig { get; set; }
+
+        /// <summary>
+        /// Sync the F5 configuration to this device group after each successful provisioning, so the HA peer serves the same certificate. This overwrites unsynced changes on the other members of the group. Implies f5-save-config (relevant only for F5 BIG-IP certificate provisioning)
+        /// </summary>
+        /// <value>Sync the F5 configuration to this device group after each successful provisioning, so the HA peer serves the same certificate. This overwrites unsynced changes on the other members of the group. Implies f5-save-config (relevant only for F5 BIG-IP certificate provisioning)</value>
+        [DataMember(Name = "f5-sync-device-group", EmitDefaultValue = false)]
+        public string F5SyncDeviceGroup { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
@@ -164,6 +204,13 @@ namespace akeyless.Model
         /// <value>A list of allowed operations for the key (required for azure targets)</value>
         [DataMember(Name = "key-operations", EmitDefaultValue = false)]
         public List<string> KeyOperations { get; set; }
+
+        /// <summary>
+        /// The Azure Key Vault name to provision the certificate to (relevant only for Azure certificate provisioning)
+        /// </summary>
+        /// <value>The Azure Key Vault name to provision the certificate to (relevant only for Azure certificate provisioning)</value>
+        [DataMember(Name = "key-vault", EmitDefaultValue = false)]
+        public string KeyVault { get; set; }
 
         /// <summary>
         /// Keyring name of the GCP KMS (required for gcp targets)
@@ -185,6 +232,13 @@ namespace akeyless.Model
         /// <value>Location id of the GCP KMS (required for gcp targets)</value>
         [DataMember(Name = "location-id", EmitDefaultValue = false)]
         public string LocationId { get; set; }
+
+        /// <summary>
+        /// The GCP Certificate Manager location to provision the certificate to: global or a region such as us-central1 (relevant only for GCP certificate provisioning)
+        /// </summary>
+        /// <value>The GCP Certificate Manager location to provision the certificate to: global or a region such as us-central1 (relevant only for GCP certificate provisioning)</value>
+        [DataMember(Name = "location-scope", EmitDefaultValue = false)]
+        public string LocationScope { get; set; }
 
         /// <summary>
         /// Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets)
@@ -300,16 +354,22 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AssocTargetItem {\n");
             sb.Append("  BindSslProfiles: ").Append(BindSslProfiles).Append("\n");
+            sb.Append("  CertificateArn: ").Append(CertificateArn).Append("\n");
             sb.Append("  CertificateFormat: ").Append(CertificateFormat).Append("\n");
+            sb.Append("  CertificateName: ").Append(CertificateName).Append("\n");
             sb.Append("  CertificatePath: ").Append(CertificatePath).Append("\n");
             sb.Append("  ChainPath: ").Append(ChainPath).Append("\n");
             sb.Append("  DisablePreviousKeyVersion: ").Append(DisablePreviousKeyVersion).Append("\n");
             sb.Append("  ExternalKeyName: ").Append(ExternalKeyName).Append("\n");
+            sb.Append("  F5SaveConfig: ").Append(F5SaveConfig).Append("\n");
+            sb.Append("  F5SyncDeviceGroup: ").Append(F5SyncDeviceGroup).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  KeyOperations: ").Append(KeyOperations).Append("\n");
+            sb.Append("  KeyVault: ").Append(KeyVault).Append("\n");
             sb.Append("  KeyringName: ").Append(KeyringName).Append("\n");
             sb.Append("  KmsAlgorithm: ").Append(KmsAlgorithm).Append("\n");
             sb.Append("  LocationId: ").Append(LocationId).Append("\n");
+            sb.Append("  LocationScope: ").Append(LocationScope).Append("\n");
             sb.Append("  MultiRegion: ").Append(MultiRegion).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PfxPassword: ").Append(PfxPassword).Append("\n");

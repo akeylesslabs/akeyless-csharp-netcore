@@ -60,7 +60,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="url">URL of the service.</param>
-        public UpdateMcpSecretOAuthAuthCode(string accessibility = @"regular", bool araEnabled = default(bool), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), int lastVersion = default(int), string name = default(string), string oauthClientId = default(string), string oauthClientSecret = default(string), string oauthRedirectUri = default(string), string oauthRefreshToken = default(string), List<string> oauthScopes = default(List<string>), string oauthTokenUrl = default(string), List<string> outputRule = default(List<string>), string token = default(string), string uidToken = default(string), string url = default(string))
+        public UpdateMcpSecretOAuthAuthCode(string accessibility = @"regular", bool? araEnabled = default(bool?), bool? enableAgenticRuntimeAuthority = default(bool?), bool? enableAiQuorum = default(bool?), List<string> inputRule = default(List<string>), bool json = false, string keepPrevVersion = default(string), string key = default(string), int lastVersion = default(int), string name = default(string), string oauthClientId = default(string), string oauthClientSecret = default(string), string oauthRedirectUri = default(string), string oauthRefreshToken = default(string), List<string> oauthScopes = default(List<string>), string oauthTokenUrl = default(string), List<string> outputRule = default(List<string>), string token = default(string), string uidToken = default(string), string url = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -102,21 +102,21 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.</value>
         [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
-        public bool AraEnabled { get; set; }
+        public bool? AraEnabled { get; set; }
 
         /// <summary>
         /// EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.
         /// </summary>
         /// <value>EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.</value>
         [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
-        public bool EnableAgenticRuntimeAuthority { get; set; }
+        public bool? EnableAgenticRuntimeAuthority { get; set; }
 
         /// <summary>
         /// Turns on AI Quorum checks for this item.
         /// </summary>
         /// <value>Turns on AI Quorum checks for this item.</value>
         [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
-        public bool EnableAiQuorum { get; set; }
+        public bool? EnableAiQuorum { get; set; }
 
         /// <summary>
         /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input)

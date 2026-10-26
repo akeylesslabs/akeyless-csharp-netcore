@@ -6,11 +6,11 @@ gatewayCreateProducerGcp is a command that creates a GCP producer [Deprecated: U
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessType** | **string** |  | [optional] 
-**AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
+**AraEnabled** | **bool?** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
-**EnableAgenticRuntimeAuthority** | **bool** | EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias. | [optional] 
-**EnableAiQuorum** | **bool** | Turns on AI Quorum checks for this item. | [optional] 
+**EnableAgenticRuntimeAuthority** | **bool?** | EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | **bool?** | Turns on AI Quorum checks for this item. | [optional] 
 **FixedUserClaimKeyname** | **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (Relevant only when - -access-type&#x3D;external) | [optional] [default to "ext_email"]
 **GcpCredType** | **string** |  | [optional] 
 **GcpKey** | **string** | Base64-encoded service account private key text | [optional] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **SecureAccessWebBrowsing** | **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SecureAccessWebProxy** | **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **ServiceAccountType** | **string** | The type of the GCP service account. Options [fixed, dynamic] (Relevant only when - -access-type&#x3D;sa) | [optional] [default to "fixed"]
-**SkipDryRun** | **bool** | If set, dry-run will be skipped [true/false] | [optional] 
+**SkipDryRun** | **bool?** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | **List&lt;string&gt;** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 

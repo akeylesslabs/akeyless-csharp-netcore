@@ -61,10 +61,11 @@ namespace akeyless.Model
         /// <param name="productTypes">List of product types this auth method will be in use of.</param>
         /// <param name="rulesType">rulesType.</param>
         /// <param name="samlAccessRules">samlAccessRules.</param>
+        /// <param name="scim">scim.</param>
         /// <param name="subClaimsDelimiters">subClaimsDelimiters.</param>
         /// <param name="uidExpirationEvents">Relevant only for Universal Identity auth methods: token about-to-expire notification thresholds..</param>
         /// <param name="universalIdentityAccessRules">universalIdentityAccessRules.</param>
-        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), AliCloudAccessRules alicloudAccessRules = default(AliCloudAccessRules), List<string> allowedClientType = default(List<string>), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), List<string> auditLogsClaims = default(List<string>), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool enforceClientType = default(bool), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), KerberosAccessRules kerberosAccessRules = default(KerberosAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), List<string> subClaimsDelimiters = default(List<string>), List<UidExpirationEvent> uidExpirationEvents = default(List<UidExpirationEvent>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
+        public AuthMethodAccessInfo(long accessExpires = default(long), string accessIdAlias = default(string), AliCloudAccessRules alicloudAccessRules = default(AliCloudAccessRules), List<string> allowedClientType = default(List<string>), APIKeyAccessRules apiKeyAccessRules = default(APIKeyAccessRules), List<string> auditLogsClaims = default(List<string>), AWSIAMAccessRules awsIamAccessRules = default(AWSIAMAccessRules), AzureADAccessRules azureAdAccessRules = default(AzureADAccessRules), CertAccessRules certAccessRules = default(CertAccessRules), string cidrWhitelist = default(string), EmailPassAccessRules emailPassAccessRules = default(EmailPassAccessRules), bool enforceClientType = default(bool), bool forceSubClaims = default(bool), GCPAccessRules gcpAccessRules = default(GCPAccessRules), string gwCidrWhitelist = default(string), HuaweiAccessRules huaweiAccessRules = default(HuaweiAccessRules), long jwtTtl = default(long), KubernetesAccessRules k8sAccessRules = default(KubernetesAccessRules), KerberosAccessRules kerberosAccessRules = default(KerberosAccessRules), LDAPAccessRules ldapAccessRules = default(LDAPAccessRules), OAuth2AccessRules oauth2AccessRules = default(OAuth2AccessRules), OCIAccessRules ociAccessRules = default(OCIAccessRules), OIDCAccessRules oidcAccessRules = default(OIDCAccessRules), List<string> productTypes = default(List<string>), string rulesType = default(string), SAMLAccessRules samlAccessRules = default(SAMLAccessRules), ScimSettings scim = default(ScimSettings), List<string> subClaimsDelimiters = default(List<string>), List<UidExpirationEvent> uidExpirationEvents = default(List<UidExpirationEvent>), UniversalIdentityAccessRules universalIdentityAccessRules = default(UniversalIdentityAccessRules))
         {
             this.AccessExpires = accessExpires;
             this.AccessIdAlias = accessIdAlias;
@@ -92,6 +93,7 @@ namespace akeyless.Model
             this.ProductTypes = productTypes;
             this.RulesType = rulesType;
             this.SamlAccessRules = samlAccessRules;
+            this.Scim = scim;
             this.SubClaimsDelimiters = subClaimsDelimiters;
             this.UidExpirationEvents = uidExpirationEvents;
             this.UniversalIdentityAccessRules = universalIdentityAccessRules;
@@ -258,6 +260,12 @@ namespace akeyless.Model
         public SAMLAccessRules SamlAccessRules { get; set; }
 
         /// <summary>
+        /// Gets or Sets Scim
+        /// </summary>
+        [DataMember(Name = "scim", EmitDefaultValue = false)]
+        public ScimSettings Scim { get; set; }
+
+        /// <summary>
         /// Gets or Sets SubClaimsDelimiters
         /// </summary>
         [DataMember(Name = "sub_claims_delimiters", EmitDefaultValue = false)]
@@ -310,6 +318,7 @@ namespace akeyless.Model
             sb.Append("  ProductTypes: ").Append(ProductTypes).Append("\n");
             sb.Append("  RulesType: ").Append(RulesType).Append("\n");
             sb.Append("  SamlAccessRules: ").Append(SamlAccessRules).Append("\n");
+            sb.Append("  Scim: ").Append(Scim).Append("\n");
             sb.Append("  SubClaimsDelimiters: ").Append(SubClaimsDelimiters).Append("\n");
             sb.Append("  UidExpirationEvents: ").Append(UidExpirationEvents).Append("\n");
             sb.Append("  UniversalIdentityAccessRules: ").Append(UniversalIdentityAccessRules).Append("\n");

@@ -359,6 +359,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**GetRole**](V2Api.md#getrole) | **POST** /get-role |  |
 | [**GetRotatedSecretValue**](V2Api.md#getrotatedsecretvalue) | **POST** /get-rotated-secret-value |  |
 | [**GetSSHCertificate**](V2Api.md#getsshcertificate) | **POST** /get-ssh-certificate |  |
+| [**GetScimStatus**](V2Api.md#getscimstatus) | **POST** /get-scim-status |  |
 | [**GetSecretValue**](V2Api.md#getsecretvalue) | **POST** /get-secret-value |  |
 | [**GetTags**](V2Api.md#gettags) | **POST** /get-tags |  |
 | [**GetTarget**](V2Api.md#gettarget) | **POST** /get-target |  |
@@ -428,6 +429,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotateOidcClientSecret**](V2Api.md#rotateoidcclientsecret) | **POST** /rotate-oidc-client-secret |  |
 | [**RotateSecret**](V2Api.md#rotatesecret) | **POST** /gateway-rotate-secret |  |
 | [**RotatedSecretCreateAerospike**](V2Api.md#rotatedsecretcreateaerospike) | **POST** /rotated-secret-create-aerospike |  |
+| [**RotatedSecretCreateAliCloud**](V2Api.md#rotatedsecretcreatealicloud) | **POST** /rotated-secret-create-alicloud |  |
 | [**RotatedSecretCreateAws**](V2Api.md#rotatedsecretcreateaws) | **POST** /rotated-secret-create-aws |  |
 | [**RotatedSecretCreateAzure**](V2Api.md#rotatedsecretcreateazure) | **POST** /rotated-secret-create-azure |  |
 | [**RotatedSecretCreateCassandra**](V2Api.md#rotatedsecretcreatecassandra) | **POST** /rotated-secret-create-cassandra |  |
@@ -457,6 +459,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretList**](V2Api.md#rotatedsecretlist) | **POST** /rotated-secret-list |  |
 | [**RotatedSecretSync**](V2Api.md#rotatedsecretsync) | **POST** /rotated-secret-sync |  |
 | [**RotatedSecretUpdateAerospike**](V2Api.md#rotatedsecretupdateaerospike) | **POST** /rotated-secret-update-aerospike |  |
+| [**RotatedSecretUpdateAliCloud**](V2Api.md#rotatedsecretupdatealicloud) | **POST** /rotated-secret-update-alicloud |  |
 | [**RotatedSecretUpdateAws**](V2Api.md#rotatedsecretupdateaws) | **POST** /rotated-secret-update-aws |  |
 | [**RotatedSecretUpdateAzure**](V2Api.md#rotatedsecretupdateazure) | **POST** /rotated-secret-update-azure |  |
 | [**RotatedSecretUpdateCassandra**](V2Api.md#rotatedsecretupdatecassandra) | **POST** /rotated-secret-update-cassandra |  |
@@ -494,6 +497,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**StaticSecretDeleteSync**](V2Api.md#staticsecretdeletesync) | **POST** /static-secret-delete-sync |  |
 | [**StaticSecretSync**](V2Api.md#staticsecretsync) | **POST** /static-secret-sync |  |
 | [**TargetCreateAerospike**](V2Api.md#targetcreateaerospike) | **POST** /target-create-aerospike |  |
+| [**TargetCreateAliCloud**](V2Api.md#targetcreatealicloud) | **POST** /target-create-alicloud |  |
 | [**TargetCreateAnthropic**](V2Api.md#targetcreateanthropic) | **POST** /target-create-anthropic |  |
 | [**TargetCreateArtifactory**](V2Api.md#targetcreateartifactory) | **POST** /target-create-artifactory |  |
 | [**TargetCreateAws**](V2Api.md#targetcreateaws) | **POST** /target-create-aws |  |
@@ -538,6 +542,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetGetDetails**](V2Api.md#targetgetdetails) | **POST** /target-get-details |  |
 | [**TargetList**](V2Api.md#targetlist) | **POST** /target-list |  |
 | [**TargetUpdateAerospike**](V2Api.md#targetupdateaerospike) | **POST** /target-update-aerospike |  |
+| [**TargetUpdateAliCloud**](V2Api.md#targetupdatealicloud) | **POST** /target-update-alicloud |  |
 | [**TargetUpdateAnthropic**](V2Api.md#targetupdateanthropic) | **POST** /target-update-anthropic |  |
 | [**TargetUpdateArtifactory**](V2Api.md#targetupdateartifactory) | **POST** /target-update-artifactory |  |
 | [**TargetUpdateAws**](V2Api.md#targetupdateaws) | **POST** /target-update-aws |  |
@@ -31900,6 +31905,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="getscimstatus"></a>
+# **GetScimStatus**
+> ScimStatus GetScimStatus (GetScimStatus getScimStatus)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class GetScimStatusExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var getScimStatus = new GetScimStatus(); // GetScimStatus | 
+
+            try
+            {
+                ScimStatus result = apiInstance.GetScimStatus(getScimStatus);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.GetScimStatus: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetScimStatusWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ScimStatus> response = apiInstance.GetScimStatusWithHttpInfo(getScimStatus);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.GetScimStatusWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **getScimStatus** | [**GetScimStatus**](GetScimStatus.md) |  |  |
+
+### Return type
+
+[**ScimStatus**](ScimStatus.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | getScimStatusResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="getsecretvalue"></a>
 # **GetSecretValue**
 > Dictionary&lt;string, Object&gt; GetSecretValue (GetSecretValue getSecretValue)
@@ -37962,6 +38055,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="rotatedsecretcreatealicloud"></a>
+# **RotatedSecretCreateAliCloud**
+> RotatedSecretCreateOutput RotatedSecretCreateAliCloud (RotatedSecretCreateAliCloud rotatedSecretCreateAliCloud)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretCreateAliCloudExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretCreateAliCloud = new RotatedSecretCreateAliCloud(); // RotatedSecretCreateAliCloud | 
+
+            try
+            {
+                RotatedSecretCreateOutput result = apiInstance.RotatedSecretCreateAliCloud(rotatedSecretCreateAliCloud);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretCreateAliCloud: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretCreateAliCloudWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretCreateOutput> response = apiInstance.RotatedSecretCreateAliCloudWithHttpInfo(rotatedSecretCreateAliCloud);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretCreateAliCloudWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretCreateAliCloud** | [**RotatedSecretCreateAliCloud**](RotatedSecretCreateAliCloud.md) |  |  |
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | rotatedSecretCreateAliCloudResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="rotatedsecretcreateaws"></a>
 # **RotatedSecretCreateAws**
 > RotatedSecretCreateOutput RotatedSecretCreateAws (RotatedSecretCreateAws rotatedSecretCreateAws)
@@ -40514,6 +40695,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="rotatedsecretupdatealicloud"></a>
+# **RotatedSecretUpdateAliCloud**
+> RotatedSecretUpdateOutput RotatedSecretUpdateAliCloud (RotatedSecretUpdateAliCloud rotatedSecretUpdateAliCloud)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretUpdateAliCloudExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretUpdateAliCloud = new RotatedSecretUpdateAliCloud(); // RotatedSecretUpdateAliCloud | 
+
+            try
+            {
+                RotatedSecretUpdateOutput result = apiInstance.RotatedSecretUpdateAliCloud(rotatedSecretUpdateAliCloud);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretUpdateAliCloud: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretUpdateAliCloudWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretUpdateOutput> response = apiInstance.RotatedSecretUpdateAliCloudWithHttpInfo(rotatedSecretUpdateAliCloud);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretUpdateAliCloudWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretUpdateAliCloud** | [**RotatedSecretUpdateAliCloud**](RotatedSecretUpdateAliCloud.md) |  |  |
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | rotatedSecretUpdateAliCloudResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="rotatedsecretupdateaws"></a>
 # **RotatedSecretUpdateAws**
 > RotatedSecretUpdateOutput RotatedSecretUpdateAws (RotatedSecretUpdateAws rotatedSecretUpdateAws)
@@ -42452,7 +42721,7 @@ No authorization required
 
 <a id="runtimeauthority"></a>
 # **RuntimeAuthority**
-> void RuntimeAuthority (RuntimeAuthorityCommand runtimeAuthorityCommand)
+> List&lt;int&gt; RuntimeAuthority (RuntimeAuthorityCommand runtimeAuthorityCommand)
 
 
 
@@ -42477,7 +42746,8 @@ namespace Example
 
             try
             {
-                apiInstance.RuntimeAuthority(runtimeAuthorityCommand);
+                List<int> result = apiInstance.RuntimeAuthority(runtimeAuthorityCommand);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
@@ -42496,7 +42766,10 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    apiInstance.RuntimeAuthorityWithHttpInfo(runtimeAuthorityCommand);
+    ApiResponse<List<int>> response = apiInstance.RuntimeAuthorityWithHttpInfo(runtimeAuthorityCommand);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
@@ -42514,7 +42787,7 @@ catch (ApiException e)
 
 ### Return type
 
-void (empty response body)
+**List<int>**
 
 ### Authorization
 
@@ -43762,6 +44035,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetCreateAerospikeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetcreatealicloud"></a>
+# **TargetCreateAliCloud**
+> TargetCreateOutput TargetCreateAliCloud (TargetCreateAliCloud targetCreateAliCloud)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateAliCloudExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateAliCloud = new TargetCreateAliCloud(); // TargetCreateAliCloud | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateAliCloud(targetCreateAliCloud);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateAliCloud: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateAliCloudWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateAliCloudWithHttpInfo(targetCreateAliCloud);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateAliCloudWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateAliCloud** | [**TargetCreateAliCloud**](TargetCreateAliCloud.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateAliCloudResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -47634,6 +47995,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateAerospikeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdatealicloud"></a>
+# **TargetUpdateAliCloud**
+> TargetUpdateOutput TargetUpdateAliCloud (TargetUpdateAliCloud targetUpdateAliCloud)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateAliCloudExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateAliCloud = new TargetUpdateAliCloud(); // TargetUpdateAliCloud | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateAliCloud(targetUpdateAliCloud);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateAliCloud: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateAliCloudWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateAliCloudWithHttpInfo(targetUpdateAliCloud);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateAliCloudWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateAliCloud** | [**TargetUpdateAliCloud**](TargetUpdateAliCloud.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateAliCloudResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

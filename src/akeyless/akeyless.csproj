@@ -10,9 +10,10 @@
     <Company>OpenAPI</Company>
     <AssemblyTitle>OpenAPI Library</AssemblyTitle>
     <Description>A library generated from a OpenAPI doc</Description>
-    <Copyright>No Copyright</Copyright>
+    <Copyright>Copyright 2019-2026 Akeyless Security, Inc.</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RootNamespace>akeyless</RootNamespace>
-    <Version>5.0.39</Version>
+    <Version>5.0.40</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\akeyless.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/akeylesslabs/akeyless-csharp-netcore.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

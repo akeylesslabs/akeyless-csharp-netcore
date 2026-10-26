@@ -21,7 +21,8 @@ Name | Type | Description | Notes
 **Name** | **string** | Dynamic secret name | 
 **OutputRule** | **List&lt;string&gt;** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **ProducerEncryptionKeyName** | **string** | Dynamic producer encryption key | [optional] 
-**SecureAccessAllowPortForwading** | **bool** | Enable Port forwarding while using CLI access | [optional] 
+**SecureAccessAllowPortForwading** | **bool** | Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead. | [optional] 
+**SecureAccessAllowPortForwarding** | **bool** | Enable Port forwarding while using CLI access | [optional] 
 **SecureAccessBastionIssuer** | **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessClusterEndpoint** | **string** | The K8s cluster endpoint URL | [optional] 

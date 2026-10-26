@@ -38,23 +38,35 @@ namespace akeyless.Model
         /// <param name="accountId">accountId.</param>
         /// <param name="creationDate">creationDate.</param>
         /// <param name="description">description.</param>
+        /// <param name="grantedRoles">GrantedRoles are the roles a member of this group gets at login, through the group&#39;s akeyless_groups claim. Read-only, and filled only for the SCIM bearer that owns the group: a group name on its own says nothing about the access it carries, which is what a reviewer certifying the entitlement has to judge..</param>
+        /// <param name="grantedRolesKnown">GrantedRolesKnown is set when GrantedRoles was computed, so an empty list means \&quot;grants no role\&quot; rather than \&quot;not computed\&quot; (another caller, or an older UAM)..</param>
         /// <param name="groupAlias">groupAlias.</param>
         /// <param name="groupId">groupId.</param>
         /// <param name="groupName">groupName.</param>
         /// <param name="isSubclaimsWithOperator">isSubclaimsWithOperator.</param>
         /// <param name="modificationDate">modificationDate.</param>
+        /// <param name="scimExternalId">scimExternalId.</param>
+        /// <param name="scimManaged">scimManaged.</param>
+        /// <param name="scimProvisionedAccessId">scimProvisionedAccessId.</param>
         /// <param name="userAssignments">userAssignments.</param>
-        public Group(string accountId = default(string), DateTime creationDate = default(DateTime), string description = default(string), string groupAlias = default(string), string groupId = default(string), string groupName = default(string), bool isSubclaimsWithOperator = default(bool), DateTime modificationDate = default(DateTime), List<AccessPermissionAssignment> userAssignments = default(List<AccessPermissionAssignment>))
+        /// <param name="varVersion">Version identifies the member assignments this group was read with. Pass it back as UpdateGroupInput.ExpectedVersion to make the update conditional..</param>
+        public Group(string accountId = default(string), DateTime creationDate = default(DateTime), string description = default(string), List<GrantedRole> grantedRoles = default(List<GrantedRole>), bool grantedRolesKnown = default(bool), string groupAlias = default(string), string groupId = default(string), string groupName = default(string), bool isSubclaimsWithOperator = default(bool), DateTime modificationDate = default(DateTime), string scimExternalId = default(string), bool scimManaged = default(bool), string scimProvisionedAccessId = default(string), List<AccessPermissionAssignment> userAssignments = default(List<AccessPermissionAssignment>), string varVersion = default(string))
         {
             this.AccountId = accountId;
             this.CreationDate = creationDate;
             this.Description = description;
+            this.GrantedRoles = grantedRoles;
+            this.GrantedRolesKnown = grantedRolesKnown;
             this.GroupAlias = groupAlias;
             this.GroupId = groupId;
             this.GroupName = groupName;
             this.IsSubclaimsWithOperator = isSubclaimsWithOperator;
             this.ModificationDate = modificationDate;
+            this.ScimExternalId = scimExternalId;
+            this.ScimManaged = scimManaged;
+            this.ScimProvisionedAccessId = scimProvisionedAccessId;
             this.UserAssignments = userAssignments;
+            this.VarVersion = varVersion;
         }
 
         /// <summary>
@@ -74,6 +86,20 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// GrantedRoles are the roles a member of this group gets at login, through the group&#39;s akeyless_groups claim. Read-only, and filled only for the SCIM bearer that owns the group: a group name on its own says nothing about the access it carries, which is what a reviewer certifying the entitlement has to judge.
+        /// </summary>
+        /// <value>GrantedRoles are the roles a member of this group gets at login, through the group&#39;s akeyless_groups claim. Read-only, and filled only for the SCIM bearer that owns the group: a group name on its own says nothing about the access it carries, which is what a reviewer certifying the entitlement has to judge.</value>
+        [DataMember(Name = "granted_roles", EmitDefaultValue = false)]
+        public List<GrantedRole> GrantedRoles { get; set; }
+
+        /// <summary>
+        /// GrantedRolesKnown is set when GrantedRoles was computed, so an empty list means \&quot;grants no role\&quot; rather than \&quot;not computed\&quot; (another caller, or an older UAM).
+        /// </summary>
+        /// <value>GrantedRolesKnown is set when GrantedRoles was computed, so an empty list means \&quot;grants no role\&quot; rather than \&quot;not computed\&quot; (another caller, or an older UAM).</value>
+        [DataMember(Name = "granted_roles_known", EmitDefaultValue = true)]
+        public bool GrantedRolesKnown { get; set; }
 
         /// <summary>
         /// Gets or Sets GroupAlias
@@ -106,10 +132,35 @@ namespace akeyless.Model
         public DateTime ModificationDate { get; set; }
 
         /// <summary>
+        /// Gets or Sets ScimExternalId
+        /// </summary>
+        [DataMember(Name = "scim_external_id", EmitDefaultValue = false)]
+        public string ScimExternalId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ScimManaged
+        /// </summary>
+        [DataMember(Name = "scim_managed", EmitDefaultValue = true)]
+        public bool ScimManaged { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ScimProvisionedAccessId
+        /// </summary>
+        [DataMember(Name = "scim_provisioned_access_id", EmitDefaultValue = false)]
+        public string ScimProvisionedAccessId { get; set; }
+
+        /// <summary>
         /// Gets or Sets UserAssignments
         /// </summary>
         [DataMember(Name = "user_assignments", EmitDefaultValue = false)]
         public List<AccessPermissionAssignment> UserAssignments { get; set; }
+
+        /// <summary>
+        /// Version identifies the member assignments this group was read with. Pass it back as UpdateGroupInput.ExpectedVersion to make the update conditional.
+        /// </summary>
+        /// <value>Version identifies the member assignments this group was read with. Pass it back as UpdateGroupInput.ExpectedVersion to make the update conditional.</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public string VarVersion { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -122,12 +173,18 @@ namespace akeyless.Model
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  GrantedRoles: ").Append(GrantedRoles).Append("\n");
+            sb.Append("  GrantedRolesKnown: ").Append(GrantedRolesKnown).Append("\n");
             sb.Append("  GroupAlias: ").Append(GroupAlias).Append("\n");
             sb.Append("  GroupId: ").Append(GroupId).Append("\n");
             sb.Append("  GroupName: ").Append(GroupName).Append("\n");
             sb.Append("  IsSubclaimsWithOperator: ").Append(IsSubclaimsWithOperator).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
+            sb.Append("  ScimExternalId: ").Append(ScimExternalId).Append("\n");
+            sb.Append("  ScimManaged: ").Append(ScimManaged).Append("\n");
+            sb.Append("  ScimProvisionedAccessId: ").Append(ScimProvisionedAccessId).Append("\n");
             sb.Append("  UserAssignments: ").Append(UserAssignments).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

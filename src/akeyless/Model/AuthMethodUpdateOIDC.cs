@@ -62,11 +62,15 @@ namespace akeyless.Model
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara].</param>
         /// <param name="requiredScopes">RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve.</param>
         /// <param name="requiredScopesPrefix">RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures&#39; Application ID URI).</param>
+        /// <param name="scimBearerAccessId">Access ID of the API Key auth method the IdP uses as the SCIM bearer.</param>
+        /// <param name="scimEnabled">Enable SCIM provisioning for this auth method [true/false].</param>
+        /// <param name="scimEndpoint">Where the IdP reaches the SCIM endpoint [public/private]. public is served by Akeyless, private by your own Akeyless Gateway.</param>
+        /// <param name="scimGatewayUrl">URL of the Akeyless Gateway that serves the SCIM endpoint to the IdP, for example https://gateway.example.com:8000. Required for the private endpoint.</param>
         /// <param name="subclaimsDelimiters">A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OIDC, OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public AuthMethodUpdateOIDC(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> allowedRedirectUri = default(List<string>), string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public AuthMethodUpdateOIDC(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> allowedRedirectUri = default(List<string>), string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string clientId = default(string), string clientSecret = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), List<string> requiredScopes = default(List<string>), string requiredScopesPrefix = default(string), string scimBearerAccessId = default(string), string scimEnabled = default(string), string scimEndpoint = default(string), string scimGatewayUrl = default(string), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -101,6 +105,10 @@ namespace akeyless.Model
             this.ProductType = productType;
             this.RequiredScopes = requiredScopes;
             this.RequiredScopesPrefix = requiredScopesPrefix;
+            this.ScimBearerAccessId = scimBearerAccessId;
+            this.ScimEnabled = scimEnabled;
+            this.ScimEndpoint = scimEndpoint;
+            this.ScimGatewayUrl = scimGatewayUrl;
             this.SubclaimsDelimiters = subclaimsDelimiters;
             this.Token = token;
             this.UidToken = uidToken;
@@ -261,6 +269,34 @@ namespace akeyless.Model
         public string RequiredScopesPrefix { get; set; }
 
         /// <summary>
+        /// Access ID of the API Key auth method the IdP uses as the SCIM bearer
+        /// </summary>
+        /// <value>Access ID of the API Key auth method the IdP uses as the SCIM bearer</value>
+        [DataMember(Name = "scim-bearer-access-id", EmitDefaultValue = false)]
+        public string ScimBearerAccessId { get; set; }
+
+        /// <summary>
+        /// Enable SCIM provisioning for this auth method [true/false]
+        /// </summary>
+        /// <value>Enable SCIM provisioning for this auth method [true/false]</value>
+        [DataMember(Name = "scim-enabled", EmitDefaultValue = false)]
+        public string ScimEnabled { get; set; }
+
+        /// <summary>
+        /// Where the IdP reaches the SCIM endpoint [public/private]. public is served by Akeyless, private by your own Akeyless Gateway
+        /// </summary>
+        /// <value>Where the IdP reaches the SCIM endpoint [public/private]. public is served by Akeyless, private by your own Akeyless Gateway</value>
+        [DataMember(Name = "scim-endpoint", EmitDefaultValue = false)]
+        public string ScimEndpoint { get; set; }
+
+        /// <summary>
+        /// URL of the Akeyless Gateway that serves the SCIM endpoint to the IdP, for example https://gateway.example.com:8000. Required for the private endpoint
+        /// </summary>
+        /// <value>URL of the Akeyless Gateway that serves the SCIM endpoint to the IdP, for example https://gateway.example.com:8000. Required for the private endpoint</value>
+        [DataMember(Name = "scim-gateway-url", EmitDefaultValue = false)]
+        public string ScimGatewayUrl { get; set; }
+
+        /// <summary>
         /// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
         /// </summary>
         /// <value>A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)</value>
@@ -318,6 +354,10 @@ namespace akeyless.Model
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  RequiredScopes: ").Append(RequiredScopes).Append("\n");
             sb.Append("  RequiredScopesPrefix: ").Append(RequiredScopesPrefix).Append("\n");
+            sb.Append("  ScimBearerAccessId: ").Append(ScimBearerAccessId).Append("\n");
+            sb.Append("  ScimEnabled: ").Append(ScimEnabled).Append("\n");
+            sb.Append("  ScimEndpoint: ").Append(ScimEndpoint).Append("\n");
+            sb.Append("  ScimGatewayUrl: ").Append(ScimGatewayUrl).Append("\n");
             sb.Append("  SubclaimsDelimiters: ").Append(SubclaimsDelimiters).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

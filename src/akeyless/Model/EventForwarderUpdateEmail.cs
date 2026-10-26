@@ -53,7 +53,7 @@ namespace akeyless.Model
         /// <param name="key">The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used).</param>
         /// <param name="name">EventForwarder name (required).</param>
         /// <param name="newName">New EventForwarder name.</param>
-        /// <param name="overrideUrl">Override Akeyless default URL with your Gateway url (port 18888).</param>
+        /// <param name="overrideUrl">Override the Akeyless event link with the cluster URL of an active gateway in this account.</param>
         /// <param name="targetsEventSourceLocations">Targets Event sources.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
@@ -181,9 +181,9 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
-        /// Override Akeyless default URL with your Gateway url (port 18888)
+        /// Override the Akeyless event link with the cluster URL of an active gateway in this account
         /// </summary>
-        /// <value>Override Akeyless default URL with your Gateway url (port 18888)</value>
+        /// <value>Override the Akeyless event link with the cluster URL of an active gateway in this account</value>
         [DataMember(Name = "override-url", EmitDefaultValue = false)]
         public string OverrideUrl { get; set; }
 

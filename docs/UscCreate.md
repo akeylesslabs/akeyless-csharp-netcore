@@ -5,6 +5,7 @@ uscCreate is a command that creates a new secret in a Universal Secrets Connecto
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsAccountId** | **string** | The AWS account ID to create the secret in. Required when the connector spans multiple account IDs. | [optional] 
 **BinaryValue** | **bool** | Use this option if the universal secrets value is a base64 encoded binary | [optional] 
 **Description** | **string** | Description of the universal secrets | [optional] 
 **GcpProjectId** | **string** | The GCP project to create the secret in (GCP only). Required when the connector spans multiple projects or uses folder/organization scope. | [optional] 
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 **Namespace** | **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **ObjectType** | **string** |  | [optional] 
 **PfxPassword** | **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
-**Region** | **string** | Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default). | [optional] 
+**Region** | **string** | AWS Organization scope region or GCP regional secret location. GCP creates a global secret when empty. | [optional] 
 **RemoteSecretActivationDate** | **string** | Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
 **RemoteSecretExpires** | **string** | Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
 **SecretName** | **string** | Name for the new universal secrets | 

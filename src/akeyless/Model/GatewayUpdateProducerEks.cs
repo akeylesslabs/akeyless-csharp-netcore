@@ -58,7 +58,8 @@ namespace akeyless.Model
         /// <param name="newName">Dynamic secret name.</param>
         /// <param name="outputRule">Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets).</param>
         /// <param name="producerEncryptionKeyName">Dynamic producer encryption key.</param>
-        /// <param name="secureAccessAllowPortForwading">Enable Port forwarding while using CLI access.</param>
+        /// <param name="secureAccessAllowPortForwading">Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead..</param>
+        /// <param name="secureAccessAllowPortForwarding">Enable Port forwarding while using CLI access.</param>
         /// <param name="secureAccessBastionIssuer">Deprecated. use secure-access-certificate-issuer.</param>
         /// <param name="secureAccessCertificateIssuer">Path to the SSH Certificate Issuer for your Akeyless Secure Access.</param>
         /// <param name="secureAccessClusterEndpoint">The K8s cluster endpoint URL.</param>
@@ -71,7 +72,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="userTtl">User TTL (default to &quot;15m&quot;).</param>
-        public GatewayUpdateProducerEks(bool araEnabled = default(bool), string deleteProtection = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = @"us-east-2", string eksSecretAccessKey = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"15m")
+        public GatewayUpdateProducerEks(bool? araEnabled = default(bool?), string deleteProtection = default(string), string eksAccessKeyId = default(string), string eksAssumeRole = default(string), string eksClusterCaCert = default(string), string eksClusterEndpoint = default(string), string eksClusterName = default(string), string eksRegion = @"us-east-2", string eksSecretAccessKey = default(string), bool? enableAgenticRuntimeAuthority = default(bool?), bool? enableAiQuorum = default(bool?), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string producerEncryptionKeyName = default(string), bool secureAccessAllowPortForwading = default(bool), bool secureAccessAllowPortForwarding = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = false, bool? skipDryRun = default(bool?), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string userTtl = @"15m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -98,6 +99,7 @@ namespace akeyless.Model
             this.OutputRule = outputRule;
             this.ProducerEncryptionKeyName = producerEncryptionKeyName;
             this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
+            this.SecureAccessAllowPortForwarding = secureAccessAllowPortForwarding;
             this.SecureAccessBastionIssuer = secureAccessBastionIssuer;
             this.SecureAccessCertificateIssuer = secureAccessCertificateIssuer;
             this.SecureAccessClusterEndpoint = secureAccessClusterEndpoint;
@@ -118,7 +120,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.</value>
         [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
-        public bool AraEnabled { get; set; }
+        public bool? AraEnabled { get; set; }
 
         /// <summary>
         /// Protection from accidental deletion of this object [true/false]
@@ -181,14 +183,14 @@ namespace akeyless.Model
         /// </summary>
         /// <value>EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.</value>
         [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
-        public bool EnableAgenticRuntimeAuthority { get; set; }
+        public bool? EnableAgenticRuntimeAuthority { get; set; }
 
         /// <summary>
         /// Turns on AI Quorum checks for this item.
         /// </summary>
         /// <value>Turns on AI Quorum checks for this item.</value>
         [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
-        public bool EnableAiQuorum { get; set; }
+        public bool? EnableAiQuorum { get; set; }
 
         /// <summary>
         /// Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
@@ -240,11 +242,18 @@ namespace akeyless.Model
         public string ProducerEncryptionKeyName { get; set; }
 
         /// <summary>
+        /// Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead.
+        /// </summary>
+        /// <value>Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead.</value>
+        [DataMember(Name = "secure-access-allow-port-forwading", EmitDefaultValue = true)]
+        public bool SecureAccessAllowPortForwading { get; set; }
+
+        /// <summary>
         /// Enable Port forwarding while using CLI access
         /// </summary>
         /// <value>Enable Port forwarding while using CLI access</value>
-        [DataMember(Name = "secure-access-allow-port-forwading", EmitDefaultValue = true)]
-        public bool SecureAccessAllowPortForwading { get; set; }
+        [DataMember(Name = "secure-access-allow-port-forwarding", EmitDefaultValue = true)]
+        public bool SecureAccessAllowPortForwarding { get; set; }
 
         /// <summary>
         /// Deprecated. use secure-access-certificate-issuer
@@ -293,7 +302,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>If set, dry-run will be skipped [true/false]</value>
         [DataMember(Name = "skip-dry-run", EmitDefaultValue = true)]
-        public bool SkipDryRun { get; set; }
+        public bool? SkipDryRun { get; set; }
 
         /// <summary>
         /// Add tags attached to this object
@@ -357,6 +366,7 @@ namespace akeyless.Model
             sb.Append("  OutputRule: ").Append(OutputRule).Append("\n");
             sb.Append("  ProducerEncryptionKeyName: ").Append(ProducerEncryptionKeyName).Append("\n");
             sb.Append("  SecureAccessAllowPortForwading: ").Append(SecureAccessAllowPortForwading).Append("\n");
+            sb.Append("  SecureAccessAllowPortForwarding: ").Append(SecureAccessAllowPortForwarding).Append("\n");
             sb.Append("  SecureAccessBastionIssuer: ").Append(SecureAccessBastionIssuer).Append("\n");
             sb.Append("  SecureAccessCertificateIssuer: ").Append(SecureAccessCertificateIssuer).Append("\n");
             sb.Append("  SecureAccessClusterEndpoint: ").Append(SecureAccessClusterEndpoint).Append("\n");

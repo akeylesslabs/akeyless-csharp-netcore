@@ -40,16 +40,18 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UscList" /> class.
         /// </summary>
+        /// <param name="awsAccountId">The AWS account ID to list secrets from. Required when the connector spans multiple account IDs..</param>
         /// <param name="gcpProjectId">The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope..</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="objectType">objectType.</param>
         /// <param name="pageSize">Optional: number of items requested per response. When set, response may include next_token.</param>
         /// <param name="pageToken">Optional: continuation token returned by a previous usc list - -page-size call.</param>
+        /// <param name="region">The AWS region to list secrets from (AWS only). If empty, the target&#39;s region is used..</param>
         /// <param name="search">Search query used to match secret names and paths..</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscName">Name of the Universal Secrets Connector item (required).</param>
-        public UscList(string gcpProjectId = default(string), bool json = false, string objectType = default(string), long pageSize = default(long), string pageToken = default(string), string search = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
+        public UscList(string awsAccountId = default(string), string gcpProjectId = default(string), bool json = false, string objectType = default(string), long pageSize = default(long), string pageToken = default(string), string region = default(string), string search = default(string), string token = default(string), string uidToken = default(string), string uscName = default(string))
         {
             // to ensure "uscName" is required (not null)
             if (uscName == null)
@@ -57,15 +59,24 @@ namespace akeyless.Model
                 throw new ArgumentNullException("uscName is a required property for UscList and cannot be null");
             }
             this.UscName = uscName;
+            this.AwsAccountId = awsAccountId;
             this.GcpProjectId = gcpProjectId;
             this.Json = json;
             this.ObjectType = objectType;
             this.PageSize = pageSize;
             this.PageToken = pageToken;
+            this.Region = region;
             this.Search = search;
             this.Token = token;
             this.UidToken = uidToken;
         }
+
+        /// <summary>
+        /// The AWS account ID to list secrets from. Required when the connector spans multiple account IDs.
+        /// </summary>
+        /// <value>The AWS account ID to list secrets from. Required when the connector spans multiple account IDs.</value>
+        [DataMember(Name = "aws-account-id", EmitDefaultValue = false)]
+        public string AwsAccountId { get; set; }
 
         /// <summary>
         /// The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope.
@@ -100,6 +111,13 @@ namespace akeyless.Model
         /// <value>Optional: continuation token returned by a previous usc list - -page-size call</value>
         [DataMember(Name = "page-token", EmitDefaultValue = false)]
         public string PageToken { get; set; }
+
+        /// <summary>
+        /// The AWS region to list secrets from (AWS only). If empty, the target&#39;s region is used.
+        /// </summary>
+        /// <value>The AWS region to list secrets from (AWS only). If empty, the target&#39;s region is used.</value>
+        [DataMember(Name = "region", EmitDefaultValue = false)]
+        public string Region { get; set; }
 
         /// <summary>
         /// Search query used to match secret names and paths.
@@ -137,11 +155,13 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UscList {\n");
+            sb.Append("  AwsAccountId: ").Append(AwsAccountId).Append("\n");
             sb.Append("  GcpProjectId: ").Append(GcpProjectId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
             sb.Append("  PageSize: ").Append(PageSize).Append("\n");
             sb.Append("  PageToken: ").Append(PageToken).Append("\n");
+            sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  Search: ").Append(Search).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");

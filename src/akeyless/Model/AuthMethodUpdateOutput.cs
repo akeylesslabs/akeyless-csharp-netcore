@@ -37,10 +37,12 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="name">name.</param>
         /// <param name="prvKey">prvKey.</param>
-        public AuthMethodUpdateOutput(string name = default(string), string prvKey = default(string))
+        /// <param name="scimBaseUrl">SCIM Base URL the IdP calls, set when SCIM flags were given.</param>
+        public AuthMethodUpdateOutput(string name = default(string), string prvKey = default(string), string scimBaseUrl = default(string))
         {
             this.Name = name;
             this.PrvKey = prvKey;
+            this.ScimBaseUrl = scimBaseUrl;
         }
 
         /// <summary>
@@ -56,6 +58,13 @@ namespace akeyless.Model
         public string PrvKey { get; set; }
 
         /// <summary>
+        /// SCIM Base URL the IdP calls, set when SCIM flags were given
+        /// </summary>
+        /// <value>SCIM Base URL the IdP calls, set when SCIM flags were given</value>
+        [DataMember(Name = "scim_base_url", EmitDefaultValue = false)]
+        public string ScimBaseUrl { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -65,6 +74,7 @@ namespace akeyless.Model
             sb.Append("class AuthMethodUpdateOutput {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PrvKey: ").Append(PrvKey).Append("\n");
+            sb.Append("  ScimBaseUrl: ").Append(ScimBaseUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

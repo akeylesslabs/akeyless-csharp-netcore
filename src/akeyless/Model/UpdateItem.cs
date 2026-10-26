@@ -70,7 +70,8 @@ namespace akeyless.Model
         /// <param name="rotateOnUnlock">Rotate this secret after it is unlocked.</param>
         /// <param name="secureAccessAddHost">List of the new hosts that will be attached to SRA servers host.</param>
         /// <param name="secureAccessAllowExternalUser">Allow providing external user for a domain users [true/false].</param>
-        /// <param name="secureAccessAllowPortForwading">Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret).</param>
+        /// <param name="secureAccessAllowPortForwading">Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead..</param>
+        /// <param name="secureAccessAllowPortForwarding">Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret).</param>
         /// <param name="secureAccessApi">Bastion&#39;s SSH control API endpoint. E.g. https://my.sra-server:9900 (relevant only for ssh cert issuer).</param>
         /// <param name="secureAccessAwsAccountId">The AWS account id (relevant only for aws).</param>
         /// <param name="secureAccessAwsNativeCli">The AWS native cli (relevant only for aws).</param>
@@ -104,7 +105,7 @@ namespace akeyless.Model
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uscTags">Comma-separated list of tags to apply to all secrets created/synced on the remote USC  USC items only..</param>
         /// <param name="useTagsAsFilter">Whether to filter the USC secret list using the specified usc-tags [true/false]  USC items only..</param>
-        public UpdateItem(string providerType = default(string), string accessibility = @"regular", List<string> addTag = default(List<string>), bool araEnabled = default(bool), string certFileData = default(string), string certificateFormat = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = @"default_metadata", bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> expirationEventIn = default(List<string>), string gcpSmRegions = default(string), string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), List<string> outputRule = default(List<string>), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotateOnUnlock = default(string), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool secureAccessAllowPortForwading = default(bool), string secureAccessApi = default(string), string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), bool secureAccessEnforceHostsRestriction = default(bool), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSsh = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool secureAccessUseInternalBastion = default(bool), bool secureAccessUseInternalSshAccess = default(bool), bool secureAccessWebBrowsing = default(bool), bool secureAccessWebProxy = default(bool), List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string uscTags = default(string), string useTagsAsFilter = default(string))
+        public UpdateItem(string providerType = default(string), string accessibility = @"regular", List<string> addTag = default(List<string>), bool? araEnabled = default(bool?), string certFileData = default(string), string certificateFormat = default(string), string changeEvent = default(string), string deleteProtection = default(string), string description = @"default_metadata", bool? enableAgenticRuntimeAuthority = default(bool?), bool? enableAiQuorum = default(bool?), List<string> expirationEventIn = default(List<string>), string gcpSmRegions = default(string), string hostProvider = default(string), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string lockDuringSraSession = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string newMetadata = @"default_metadata", string newName = default(string), List<string> outputRule = default(List<string>), List<string> rmTag = default(List<string>), string rotateAfterDisconnect = default(string), string rotateOnUnlock = default(string), List<string> secureAccessAddHost = default(List<string>), string secureAccessAllowExternalUser = default(string), bool? secureAccessAllowPortForwading = default(bool?), bool? secureAccessAllowPortForwarding = default(bool?), string secureAccessApi = default(string), string secureAccessAwsAccountId = default(string), bool? secureAccessAwsNativeCli = default(bool?), string secureAccessAwsRegion = default(string), string secureAccessBastionApi = default(string), string secureAccessBastionIssuer = default(string), string secureAccessBastionSsh = default(string), string secureAccessCertificateIssuer = default(string), string secureAccessClusterEndpoint = default(string), string secureAccessDashboardUrl = default(string), string secureAccessDbName = default(string), string secureAccessDbSchema = default(string), string secureAccessEnable = default(string), bool? secureAccessEnforceHostsRestriction = default(bool?), string secureAccessGateway = default(string), List<string> secureAccessHost = default(List<string>), string secureAccessRdGatewayServer = default(string), string secureAccessRdpDomain = default(string), string secureAccessRdpUser = default(string), List<string> secureAccessRmHost = default(List<string>), string secureAccessSsh = default(string), string secureAccessSshCreds = default(string), string secureAccessSshCredsUser = default(string), string secureAccessUrl = default(string), bool? secureAccessUseInternalBastion = default(bool?), bool? secureAccessUseInternalSshAccess = default(bool?), bool? secureAccessWebBrowsing = default(bool?), bool? secureAccessWebProxy = default(bool?), List<string> target = default(List<string>), string token = default(string), string uidToken = default(string), string uscTags = default(string), string useTagsAsFilter = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -145,6 +146,7 @@ namespace akeyless.Model
             this.SecureAccessAddHost = secureAccessAddHost;
             this.SecureAccessAllowExternalUser = secureAccessAllowExternalUser;
             this.SecureAccessAllowPortForwading = secureAccessAllowPortForwading;
+            this.SecureAccessAllowPortForwarding = secureAccessAllowPortForwarding;
             this.SecureAccessApi = secureAccessApi;
             this.SecureAccessAwsAccountId = secureAccessAwsAccountId;
             this.SecureAccessAwsNativeCli = secureAccessAwsNativeCli;
@@ -205,7 +207,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.</value>
         [DataMember(Name = "ara-enabled", EmitDefaultValue = true)]
-        public bool AraEnabled { get; set; }
+        public bool? AraEnabled { get; set; }
 
         /// <summary>
         /// PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates.
@@ -246,14 +248,14 @@ namespace akeyless.Model
         /// </summary>
         /// <value>EnableAra is the documented spelling of AraEnabled. Both set the same field; - -ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.</value>
         [DataMember(Name = "enable-agentic-runtime-authority", EmitDefaultValue = true)]
-        public bool EnableAgenticRuntimeAuthority { get; set; }
+        public bool? EnableAgenticRuntimeAuthority { get; set; }
 
         /// <summary>
         /// Turns on AI Quorum checks for this item.
         /// </summary>
         /// <value>Turns on AI Quorum checks for this item.</value>
         [DataMember(Name = "enable-ai-quorum", EmitDefaultValue = true)]
-        public bool EnableAiQuorum { get; set; }
+        public bool? EnableAiQuorum { get; set; }
 
         /// <summary>
         /// How many days before the expiration of the certificate would you like to be notified.
@@ -389,11 +391,18 @@ namespace akeyless.Model
         public string SecureAccessAllowExternalUser { get; set; }
 
         /// <summary>
+        /// Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead.
+        /// </summary>
+        /// <value>Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead.</value>
+        [DataMember(Name = "secure-access-allow-port-forwading", EmitDefaultValue = true)]
+        public bool? SecureAccessAllowPortForwading { get; set; }
+
+        /// <summary>
         /// Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)
         /// </summary>
         /// <value>Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)</value>
-        [DataMember(Name = "secure-access-allow-port-forwading", EmitDefaultValue = true)]
-        public bool SecureAccessAllowPortForwading { get; set; }
+        [DataMember(Name = "secure-access-allow-port-forwarding", EmitDefaultValue = true)]
+        public bool? SecureAccessAllowPortForwarding { get; set; }
 
         /// <summary>
         /// Bastion&#39;s SSH control API endpoint. E.g. https://my.sra-server:9900 (relevant only for ssh cert issuer)
@@ -414,7 +423,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>The AWS native cli (relevant only for aws)</value>
         [DataMember(Name = "secure-access-aws-native-cli", EmitDefaultValue = true)]
-        public bool SecureAccessAwsNativeCli { get; set; }
+        public bool? SecureAccessAwsNativeCli { get; set; }
 
         /// <summary>
         /// The AWS region (relevant only for aws)
@@ -491,7 +500,7 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Enforce connections only to allowed SRA hosts</value>
         [DataMember(Name = "secure-access-enforce-hosts-restriction", EmitDefaultValue = true)]
-        public bool SecureAccessEnforceHostsRestriction { get; set; }
+        public bool? SecureAccessEnforceHostsRestriction { get; set; }
 
         /// <summary>
         /// Gets or Sets SecureAccessGateway
@@ -567,28 +576,28 @@ namespace akeyless.Model
         /// </summary>
         /// <value>Deprecated. Use secure-access-use-internal-ssh-access</value>
         [DataMember(Name = "secure-access-use-internal-bastion", EmitDefaultValue = true)]
-        public bool SecureAccessUseInternalBastion { get; set; }
+        public bool? SecureAccessUseInternalBastion { get; set; }
 
         /// <summary>
         /// Use internal SSH Access
         /// </summary>
         /// <value>Use internal SSH Access</value>
         [DataMember(Name = "secure-access-use-internal-ssh-access", EmitDefaultValue = true)]
-        public bool SecureAccessUseInternalSshAccess { get; set; }
+        public bool? SecureAccessUseInternalSshAccess { get; set; }
 
         /// <summary>
         /// Secure browser via Akeyless&#39;s Secure Remote Access (SRA)
         /// </summary>
         /// <value>Secure browser via Akeyless&#39;s Secure Remote Access (SRA)</value>
         [DataMember(Name = "secure-access-web-browsing", EmitDefaultValue = true)]
-        public bool SecureAccessWebBrowsing { get; set; }
+        public bool? SecureAccessWebBrowsing { get; set; }
 
         /// <summary>
         /// Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA)
         /// </summary>
         /// <value>Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA)</value>
         [DataMember(Name = "secure-access-web-proxy", EmitDefaultValue = true)]
-        public bool SecureAccessWebProxy { get; set; }
+        public bool? SecureAccessWebProxy { get; set; }
 
         /// <summary>
         /// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
@@ -664,6 +673,7 @@ namespace akeyless.Model
             sb.Append("  SecureAccessAddHost: ").Append(SecureAccessAddHost).Append("\n");
             sb.Append("  SecureAccessAllowExternalUser: ").Append(SecureAccessAllowExternalUser).Append("\n");
             sb.Append("  SecureAccessAllowPortForwading: ").Append(SecureAccessAllowPortForwading).Append("\n");
+            sb.Append("  SecureAccessAllowPortForwarding: ").Append(SecureAccessAllowPortForwarding).Append("\n");
             sb.Append("  SecureAccessApi: ").Append(SecureAccessApi).Append("\n");
             sb.Append("  SecureAccessAwsAccountId: ").Append(SecureAccessAwsAccountId).Append("\n");
             sb.Append("  SecureAccessAwsNativeCli: ").Append(SecureAccessAwsNativeCli).Append("\n");

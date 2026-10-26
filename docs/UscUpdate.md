@@ -5,12 +5,14 @@ uscUpdate is a command that updates a secret in a Universal Secrets Connector
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsAccountId** | **string** | The AWS account ID that contains the secret. Required when the connector spans multiple account IDs. | [optional] 
 **BinaryValue** | **bool** | Use this option if the universal secrets value is a base64 encoded binary | [optional] 
 **Description** | **string** | Description of the universal secrets | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **ObjectType** | **string** |  | [optional] 
 **PfxPassword** | **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
+**Region** | **string** | The AWS region that contains the secret (AWS only). If empty, uses the target region. | [optional] 
 **RemoteSecretActivationDate** | **string** | Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
 **RemoteSecretExpires** | **string** | Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
 **SecretId** | **string** | The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update | 
