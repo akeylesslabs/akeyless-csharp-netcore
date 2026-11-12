@@ -1,4 +1,4 @@
-# Dependabot version updates: checked weekly for every package ecosystem found in
+# Dependabot version updates: checked daily for every package ecosystem found in
 # this repo, one PR per available bump, up to 100 open PRs per update entry. Where an
 # entry lists several directories the limit applies per directory, so the total can be
 # higher. Dependabot pauses opening more once a limit is hit. GitHub's default 3-day cooldown on
@@ -8,12 +8,12 @@ updates:
 - package-ecosystem: github-actions
   directory: /
   schedule:
-    interval: weekly
+    interval: daily
   open-pull-requests-limit: 100
 - package-ecosystem: nuget
   directories:
   - /src/akeyless
   - /src/akeyless.Test
   schedule:
-    interval: weekly
+    interval: daily
   open-pull-requests-limit: 100
