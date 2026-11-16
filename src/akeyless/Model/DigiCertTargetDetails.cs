@@ -37,6 +37,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="accountKeyPem">ACME Account Private Key (PEM-encoded). Supports ECDSA (P-256, P-384, P-521), RSA (2048+), and Ed25519. Auto-generated as ECDSA P-256 during first certificate issuance bootstrap. Stored encrypted, required for certificate operations and revocation..</param>
         /// <param name="accountUrl">ACME Account URL (returned after registration with DigiCert ACME). Used to retrieve existing account instead of re-registering..</param>
+        /// <param name="certCentralApiKey">DigiCert CertCentral API key (X-DC-DEVKEY). Optional. When set, renewals look up the DigiCert order of the existing certificate and ask DigiCert to reissue it (free, uses the existing order) instead of placing a new, billable ACME order..</param>
         /// <param name="challengeType">ACMEChallengeType defines ACME challenge type for Let&#39;s Encrypt.</param>
         /// <param name="digicertDirectoryType">digicertDirectoryType.</param>
         /// <param name="dnsPropagationWait">A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years..</param>
@@ -53,10 +54,11 @@ namespace akeyless.Model
         /// <param name="hostedZone">AWS Route53: Hosted zone ID. Required when DNSTargetType is AWS..</param>
         /// <param name="resourceGroup">Azure DNS: Resource group name. Required when DNSTargetType is Azure..</param>
         /// <param name="timeout">A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years..</param>
-        public DigiCertTargetDetails(string accountKeyPem = default(string), string accountUrl = default(string), string challengeType = default(string), string digicertDirectoryType = default(string), long dnsPropagationWait = default(long), List<string> dnsResolvers = default(List<string>), bool dnsSkipPrecheck = default(bool), string dnsTargetName = default(string), string dnsTargetType = default(string), long dnsTimeout = default(long), string dnsZone = default(string), string eabHmacKey = default(string), string eabKeyId = default(string), string email = default(string), string gcpProject = default(string), string hostedZone = default(string), string resourceGroup = default(string), long timeout = default(long))
+        public DigiCertTargetDetails(string accountKeyPem = default(string), string accountUrl = default(string), string certCentralApiKey = default(string), string challengeType = default(string), string digicertDirectoryType = default(string), long dnsPropagationWait = default(long), List<string> dnsResolvers = default(List<string>), bool dnsSkipPrecheck = default(bool), string dnsTargetName = default(string), string dnsTargetType = default(string), long dnsTimeout = default(long), string dnsZone = default(string), string eabHmacKey = default(string), string eabKeyId = default(string), string email = default(string), string gcpProject = default(string), string hostedZone = default(string), string resourceGroup = default(string), long timeout = default(long))
         {
             this.AccountKeyPem = accountKeyPem;
             this.AccountUrl = accountUrl;
+            this.CertCentralApiKey = certCentralApiKey;
             this.ChallengeType = challengeType;
             this.DigicertDirectoryType = digicertDirectoryType;
             this.DnsPropagationWait = dnsPropagationWait;
@@ -88,6 +90,13 @@ namespace akeyless.Model
         /// <value>ACME Account URL (returned after registration with DigiCert ACME). Used to retrieve existing account instead of re-registering.</value>
         [DataMember(Name = "account_url", EmitDefaultValue = false)]
         public string AccountUrl { get; set; }
+
+        /// <summary>
+        /// DigiCert CertCentral API key (X-DC-DEVKEY). Optional. When set, renewals look up the DigiCert order of the existing certificate and ask DigiCert to reissue it (free, uses the existing order) instead of placing a new, billable ACME order.
+        /// </summary>
+        /// <value>DigiCert CertCentral API key (X-DC-DEVKEY). Optional. When set, renewals look up the DigiCert order of the existing certificate and ask DigiCert to reissue it (free, uses the existing order) instead of placing a new, billable ACME order.</value>
+        [DataMember(Name = "cert_central_api_key", EmitDefaultValue = false)]
+        public string CertCentralApiKey { get; set; }
 
         /// <summary>
         /// ACMEChallengeType defines ACME challenge type for Let&#39;s Encrypt
@@ -209,6 +218,7 @@ namespace akeyless.Model
             sb.Append("class DigiCertTargetDetails {\n");
             sb.Append("  AccountKeyPem: ").Append(AccountKeyPem).Append("\n");
             sb.Append("  AccountUrl: ").Append(AccountUrl).Append("\n");
+            sb.Append("  CertCentralApiKey: ").Append(CertCentralApiKey).Append("\n");
             sb.Append("  ChallengeType: ").Append(ChallengeType).Append("\n");
             sb.Append("  DigicertDirectoryType: ").Append(DigicertDirectoryType).Append("\n");
             sb.Append("  DnsPropagationWait: ").Append(DnsPropagationWait).Append("\n");

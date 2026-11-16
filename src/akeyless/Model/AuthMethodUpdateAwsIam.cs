@@ -60,12 +60,13 @@ namespace akeyless.Model
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
+        /// <param name="owner">Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it.</param>
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara].</param>
         /// <param name="stsUrl">sts URL (default to &quot;https://sts.amazonaws.com&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities..</param>
-        public AuthMethodUpdateAwsIam(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string stsUrl = @"https://sts.amazonaws.com", string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public AuthMethodUpdateAwsIam(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundArn = default(List<string>), List<string> boundAwsAccountId = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundResourceId = default(List<string>), List<string> boundRoleId = default(List<string>), List<string> boundRoleName = default(List<string>), List<string> boundUserId = default(List<string>), List<string> boundUserName = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string owner = default(string), List<string> productType = default(List<string>), string stsUrl = @"https://sts.amazonaws.com", string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "boundAwsAccountId" is required (not null)
             if (boundAwsAccountId == null)
@@ -97,6 +98,7 @@ namespace akeyless.Model
             this.Json = json;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
+            this.Owner = owner;
             this.ProductType = productType;
             // use default value if no "stsUrl" provided
             this.StsUrl = stsUrl ?? @"https://sts.amazonaws.com";
@@ -246,6 +248,13 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+        /// </summary>
+        /// <value>Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it</value>
+        [DataMember(Name = "owner", EmitDefaultValue = false)]
+        public string Owner { get; set; }
+
+        /// <summary>
         /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
         /// </summary>
         /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]</value>
@@ -308,6 +317,7 @@ namespace akeyless.Model
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  StsUrl: ").Append(StsUrl).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

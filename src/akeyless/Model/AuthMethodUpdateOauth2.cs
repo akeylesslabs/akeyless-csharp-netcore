@@ -61,12 +61,13 @@ namespace akeyless.Model
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
+        /// <param name="owner">Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it.</param>
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara].</param>
         /// <param name="subclaimsDelimiters">A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public AuthMethodUpdateOauth2(long accessExpires = 0, List<string> allowedClientType = default(List<string>), string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), string cert = default(string), string certFileData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksUri = default(string), long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public AuthMethodUpdateOauth2(long accessExpires = 0, List<string> allowedClientType = default(List<string>), string audience = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundClientIds = default(List<string>), List<string> boundIps = default(List<string>), string cert = default(string), string certFileData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string gatewayUrl = default(string), List<string> gwBoundIps = default(List<string>), string issuer = default(string), bool json = false, string jwksJsonData = default(string), string jwksUri = default(string), long jwtTtl = 0, string name = default(string), string newName = default(string), string owner = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -100,6 +101,7 @@ namespace akeyless.Model
             this.JwksUri = jwksUri;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
+            this.Owner = owner;
             this.ProductType = productType;
             this.SubclaimsDelimiters = subclaimsDelimiters;
             this.Token = token;
@@ -254,6 +256,13 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+        /// </summary>
+        /// <value>Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it</value>
+        [DataMember(Name = "owner", EmitDefaultValue = false)]
+        public string Owner { get; set; }
+
+        /// <summary>
         /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
         /// </summary>
         /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]</value>
@@ -317,6 +326,7 @@ namespace akeyless.Model
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  SubclaimsDelimiters: ").Append(SubclaimsDelimiters).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

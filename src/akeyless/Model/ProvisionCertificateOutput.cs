@@ -37,14 +37,20 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="failMessage">failMessage.</param>
         /// <param name="successMessage">successMessage.</param>
+        /// <param name="associationId">AssociationID and TargetName identify the row of a Results entry..</param>
         /// <param name="hostNames">hostNames.</param>
         /// <param name="provisionedAt">provisionedAt.</param>
-        public ProvisionCertificateOutput(string failMessage = default(string), string successMessage = default(string), List<string> hostNames = default(List<string>), DateTime provisionedAt = default(DateTime))
+        /// <param name="results">Results holds one entry per row. It is set only when several rows were handled; the top-level fields then summarize them..</param>
+        /// <param name="targetName">targetName.</param>
+        public ProvisionCertificateOutput(string failMessage = default(string), string successMessage = default(string), string associationId = default(string), List<string> hostNames = default(List<string>), DateTime provisionedAt = default(DateTime), List<ProvisionCertificateOutput> results = default(List<ProvisionCertificateOutput>), string targetName = default(string))
         {
             this.FailMessage = failMessage;
             this.SuccessMessage = successMessage;
+            this.AssociationId = associationId;
             this.HostNames = hostNames;
             this.ProvisionedAt = provisionedAt;
+            this.Results = results;
+            this.TargetName = targetName;
         }
 
         /// <summary>
@@ -60,6 +66,13 @@ namespace akeyless.Model
         public string SuccessMessage { get; set; }
 
         /// <summary>
+        /// AssociationID and TargetName identify the row of a Results entry.
+        /// </summary>
+        /// <value>AssociationID and TargetName identify the row of a Results entry.</value>
+        [DataMember(Name = "association_id", EmitDefaultValue = false)]
+        public string AssociationId { get; set; }
+
+        /// <summary>
         /// Gets or Sets HostNames
         /// </summary>
         [DataMember(Name = "host_names", EmitDefaultValue = false)]
@@ -72,6 +85,19 @@ namespace akeyless.Model
         public DateTime ProvisionedAt { get; set; }
 
         /// <summary>
+        /// Results holds one entry per row. It is set only when several rows were handled; the top-level fields then summarize them.
+        /// </summary>
+        /// <value>Results holds one entry per row. It is set only when several rows were handled; the top-level fields then summarize them.</value>
+        [DataMember(Name = "results", EmitDefaultValue = false)]
+        public List<ProvisionCertificateOutput> Results { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TargetName
+        /// </summary>
+        [DataMember(Name = "target_name", EmitDefaultValue = false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -81,8 +107,11 @@ namespace akeyless.Model
             sb.Append("class ProvisionCertificateOutput {\n");
             sb.Append("  FailMessage: ").Append(FailMessage).Append("\n");
             sb.Append("  SuccessMessage: ").Append(SuccessMessage).Append("\n");
+            sb.Append("  AssociationId: ").Append(AssociationId).Append("\n");
             sb.Append("  HostNames: ").Append(HostNames).Append("\n");
             sb.Append("  ProvisionedAt: ").Append(ProvisionedAt).Append("\n");
+            sb.Append("  Results: ").Append(Results).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

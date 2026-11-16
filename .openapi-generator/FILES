@@ -47,6 +47,7 @@ docs/AnthropicTargetDetails.md
 docs/ArtifactoryTargetDetails.md
 docs/AssocRoleAuthMethod.md
 docs/AssocTargetItem.md
+docs/AtlassianTargetDetails.md
 docs/AttributeTypeAndValue.md
 docs/Auth.md
 docs/AuthExpirationEvent.md
@@ -321,6 +322,7 @@ docs/DetokenizeOutput.md
 docs/DigiCertTargetDetails.md
 docs/DockerhubTargetDetails.md
 docs/DynamicSecretCreateAerospike.md
+docs/DynamicSecretCreateAliCloud.md
 docs/DynamicSecretCreateArtifactory.md
 docs/DynamicSecretCreateAws.md
 docs/DynamicSecretCreateAzure.md
@@ -362,6 +364,7 @@ docs/DynamicSecretTmpCredsDelete.md
 docs/DynamicSecretTmpCredsGet.md
 docs/DynamicSecretTmpCredsUpdate.md
 docs/DynamicSecretUpdateAerospike.md
+docs/DynamicSecretUpdateAliCloud.md
 docs/DynamicSecretUpdateArtifactory.md
 docs/DynamicSecretUpdateAws.md
 docs/DynamicSecretUpdateAzure.md
@@ -881,6 +884,7 @@ docs/Producer.md
 docs/ProducersConfigPart.md
 docs/ProvisionCertificate.md
 docs/ProvisionCertificateOutput.md
+docs/ProvisionSSHRotatedSecretOutput.md
 docs/RabbitMQTargetDetails.md
 docs/RawCreds.md
 docs/RefreshKey.md
@@ -942,6 +946,11 @@ docs/RotatedSecretDetailsInfo.md
 docs/RotatedSecretGetValue.md
 docs/RotatedSecretList.md
 docs/RotatedSecretOutput.md
+docs/RotatedSecretProvisionAssocOutput.md
+docs/RotatedSecretProvisionCreate.md
+docs/RotatedSecretProvisionDelete.md
+docs/RotatedSecretProvisionPush.md
+docs/RotatedSecretProvisionUpdate.md
 docs/RotatedSecretSync.md
 docs/RotatedSecretUpdateAerospike.md
 docs/RotatedSecretUpdateAliCloud.md
@@ -1037,6 +1046,7 @@ docs/TargetCreateAerospike.md
 docs/TargetCreateAliCloud.md
 docs/TargetCreateAnthropic.md
 docs/TargetCreateArtifactory.md
+docs/TargetCreateAtlassian.md
 docs/TargetCreateAws.md
 docs/TargetCreateAzure.md
 docs/TargetCreateBedrock.md
@@ -1088,6 +1098,7 @@ docs/TargetUpdateAerospike.md
 docs/TargetUpdateAliCloud.md
 docs/TargetUpdateAnthropic.md
 docs/TargetUpdateArtifactory.md
+docs/TargetUpdateAtlassian.md
 docs/TargetUpdateAws.md
 docs/TargetUpdateAzure.md
 docs/TargetUpdateBedrock.md
@@ -1294,15 +1305,17 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/AliCloudTargetDetailsTests.cs
-src/akeyless.Test/Model/GetScimStatusTests.cs
-src/akeyless.Test/Model/GrantedRoleTests.cs
-src/akeyless.Test/Model/RotatedSecretCreateAliCloudTests.cs
-src/akeyless.Test/Model/RotatedSecretUpdateAliCloudTests.cs
-src/akeyless.Test/Model/ScimSettingsTests.cs
-src/akeyless.Test/Model/ScimStatusTests.cs
-src/akeyless.Test/Model/TargetCreateAliCloudTests.cs
-src/akeyless.Test/Model/TargetUpdateAliCloudTests.cs
+src/akeyless.Test/Model/AtlassianTargetDetailsTests.cs
+src/akeyless.Test/Model/DynamicSecretCreateAliCloudTests.cs
+src/akeyless.Test/Model/DynamicSecretUpdateAliCloudTests.cs
+src/akeyless.Test/Model/ProvisionSSHRotatedSecretOutputTests.cs
+src/akeyless.Test/Model/RotatedSecretProvisionAssocOutputTests.cs
+src/akeyless.Test/Model/RotatedSecretProvisionCreateTests.cs
+src/akeyless.Test/Model/RotatedSecretProvisionDeleteTests.cs
+src/akeyless.Test/Model/RotatedSecretProvisionPushTests.cs
+src/akeyless.Test/Model/RotatedSecretProvisionUpdateTests.cs
+src/akeyless.Test/Model/TargetCreateAtlassianTests.cs
+src/akeyless.Test/Model/TargetUpdateAtlassianTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1366,6 +1379,7 @@ src/akeyless/Model/AnthropicTargetDetails.cs
 src/akeyless/Model/ArtifactoryTargetDetails.cs
 src/akeyless/Model/AssocRoleAuthMethod.cs
 src/akeyless/Model/AssocTargetItem.cs
+src/akeyless/Model/AtlassianTargetDetails.cs
 src/akeyless/Model/AttributeTypeAndValue.cs
 src/akeyless/Model/Auth.cs
 src/akeyless/Model/AuthExpirationEvent.cs
@@ -1640,6 +1654,7 @@ src/akeyless/Model/DetokenizeOutput.cs
 src/akeyless/Model/DigiCertTargetDetails.cs
 src/akeyless/Model/DockerhubTargetDetails.cs
 src/akeyless/Model/DynamicSecretCreateAerospike.cs
+src/akeyless/Model/DynamicSecretCreateAliCloud.cs
 src/akeyless/Model/DynamicSecretCreateArtifactory.cs
 src/akeyless/Model/DynamicSecretCreateAws.cs
 src/akeyless/Model/DynamicSecretCreateAzure.cs
@@ -1681,6 +1696,7 @@ src/akeyless/Model/DynamicSecretTmpCredsDelete.cs
 src/akeyless/Model/DynamicSecretTmpCredsGet.cs
 src/akeyless/Model/DynamicSecretTmpCredsUpdate.cs
 src/akeyless/Model/DynamicSecretUpdateAerospike.cs
+src/akeyless/Model/DynamicSecretUpdateAliCloud.cs
 src/akeyless/Model/DynamicSecretUpdateArtifactory.cs
 src/akeyless/Model/DynamicSecretUpdateAws.cs
 src/akeyless/Model/DynamicSecretUpdateAzure.cs
@@ -2200,6 +2216,7 @@ src/akeyless/Model/Producer.cs
 src/akeyless/Model/ProducersConfigPart.cs
 src/akeyless/Model/ProvisionCertificate.cs
 src/akeyless/Model/ProvisionCertificateOutput.cs
+src/akeyless/Model/ProvisionSSHRotatedSecretOutput.cs
 src/akeyless/Model/RabbitMQTargetDetails.cs
 src/akeyless/Model/RawCreds.cs
 src/akeyless/Model/RefreshKey.cs
@@ -2261,6 +2278,11 @@ src/akeyless/Model/RotatedSecretDetailsInfo.cs
 src/akeyless/Model/RotatedSecretGetValue.cs
 src/akeyless/Model/RotatedSecretList.cs
 src/akeyless/Model/RotatedSecretOutput.cs
+src/akeyless/Model/RotatedSecretProvisionAssocOutput.cs
+src/akeyless/Model/RotatedSecretProvisionCreate.cs
+src/akeyless/Model/RotatedSecretProvisionDelete.cs
+src/akeyless/Model/RotatedSecretProvisionPush.cs
+src/akeyless/Model/RotatedSecretProvisionUpdate.cs
 src/akeyless/Model/RotatedSecretSync.cs
 src/akeyless/Model/RotatedSecretUpdateAerospike.cs
 src/akeyless/Model/RotatedSecretUpdateAliCloud.cs
@@ -2356,6 +2378,7 @@ src/akeyless/Model/TargetCreateAerospike.cs
 src/akeyless/Model/TargetCreateAliCloud.cs
 src/akeyless/Model/TargetCreateAnthropic.cs
 src/akeyless/Model/TargetCreateArtifactory.cs
+src/akeyless/Model/TargetCreateAtlassian.cs
 src/akeyless/Model/TargetCreateAws.cs
 src/akeyless/Model/TargetCreateAzure.cs
 src/akeyless/Model/TargetCreateBedrock.cs
@@ -2407,6 +2430,7 @@ src/akeyless/Model/TargetUpdateAerospike.cs
 src/akeyless/Model/TargetUpdateAliCloud.cs
 src/akeyless/Model/TargetUpdateAnthropic.cs
 src/akeyless/Model/TargetUpdateArtifactory.cs
+src/akeyless/Model/TargetUpdateAtlassian.cs
 src/akeyless/Model/TargetUpdateAws.cs
 src/akeyless/Model/TargetUpdateAzure.cs
 src/akeyless/Model/TargetUpdateBedrock.cs

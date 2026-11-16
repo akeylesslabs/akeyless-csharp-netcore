@@ -53,7 +53,14 @@ namespace akeyless.Model
         /// <param name="rotateOnUnlock">Rotate this secret after it is unlocked.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public TargetCreateAnthropic(string anthropicUrl = @"https://api.anthropic.com", string apiKey = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string rotateOnUnlock = default(string), string token = default(string), string uidToken = default(string))
+        /// <param name="useGwCloudIdentity">Use the Gateway&#39;s cloud identity (Anthropic Workload Identity Federation) instead of an API key.</param>
+        /// <param name="wifAzureAudience">Identifier URI (api://&lt;app-id&gt;) of the Entra app registration for the Claude API audience, required with the azure source.</param>
+        /// <param name="wifFederationRuleId">Federation rule ID (fdrl_...), required with use-gw-cloud-identity.</param>
+        /// <param name="wifIdentityTokenSource">Where the Gateway reads its identity token: file (default), gcp, aws or azure.</param>
+        /// <param name="wifOrganizationId">Anthropic organization ID (UUID), required with use-gw-cloud-identity.</param>
+        /// <param name="wifServiceAccountId">Claude service account ID (svac_...), required with use-gw-cloud-identity.</param>
+        /// <param name="wifWorkspaceId">Workspace ID (wrkspc_...), needed only when the federation rule covers more than one workspace.</param>
+        public TargetCreateAnthropic(string anthropicUrl = @"https://api.anthropic.com", string apiKey = default(string), string deleteProtection = default(string), string description = default(string), bool json = false, string key = default(string), string lockOnRead = default(string), string lockTtl = default(string), string maxVersions = default(string), string name = default(string), string rotateOnUnlock = default(string), string token = default(string), string uidToken = default(string), bool useGwCloudIdentity = default(bool), string wifAzureAudience = default(string), string wifFederationRuleId = default(string), string wifIdentityTokenSource = default(string), string wifOrganizationId = default(string), string wifServiceAccountId = default(string), string wifWorkspaceId = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -74,6 +81,13 @@ namespace akeyless.Model
             this.RotateOnUnlock = rotateOnUnlock;
             this.Token = token;
             this.UidToken = uidToken;
+            this.UseGwCloudIdentity = useGwCloudIdentity;
+            this.WifAzureAudience = wifAzureAudience;
+            this.WifFederationRuleId = wifFederationRuleId;
+            this.WifIdentityTokenSource = wifIdentityTokenSource;
+            this.WifOrganizationId = wifOrganizationId;
+            this.WifServiceAccountId = wifServiceAccountId;
+            this.WifWorkspaceId = wifWorkspaceId;
         }
 
         /// <summary>
@@ -168,6 +182,55 @@ namespace akeyless.Model
         public string UidToken { get; set; }
 
         /// <summary>
+        /// Use the Gateway&#39;s cloud identity (Anthropic Workload Identity Federation) instead of an API key
+        /// </summary>
+        /// <value>Use the Gateway&#39;s cloud identity (Anthropic Workload Identity Federation) instead of an API key</value>
+        [DataMember(Name = "use-gw-cloud-identity", EmitDefaultValue = true)]
+        public bool UseGwCloudIdentity { get; set; }
+
+        /// <summary>
+        /// Identifier URI (api://&lt;app-id&gt;) of the Entra app registration for the Claude API audience, required with the azure source
+        /// </summary>
+        /// <value>Identifier URI (api://&lt;app-id&gt;) of the Entra app registration for the Claude API audience, required with the azure source</value>
+        [DataMember(Name = "wif-azure-audience", EmitDefaultValue = false)]
+        public string WifAzureAudience { get; set; }
+
+        /// <summary>
+        /// Federation rule ID (fdrl_...), required with use-gw-cloud-identity
+        /// </summary>
+        /// <value>Federation rule ID (fdrl_...), required with use-gw-cloud-identity</value>
+        [DataMember(Name = "wif-federation-rule-id", EmitDefaultValue = false)]
+        public string WifFederationRuleId { get; set; }
+
+        /// <summary>
+        /// Where the Gateway reads its identity token: file (default), gcp, aws or azure
+        /// </summary>
+        /// <value>Where the Gateway reads its identity token: file (default), gcp, aws or azure</value>
+        [DataMember(Name = "wif-identity-token-source", EmitDefaultValue = false)]
+        public string WifIdentityTokenSource { get; set; }
+
+        /// <summary>
+        /// Anthropic organization ID (UUID), required with use-gw-cloud-identity
+        /// </summary>
+        /// <value>Anthropic organization ID (UUID), required with use-gw-cloud-identity</value>
+        [DataMember(Name = "wif-organization-id", EmitDefaultValue = false)]
+        public string WifOrganizationId { get; set; }
+
+        /// <summary>
+        /// Claude service account ID (svac_...), required with use-gw-cloud-identity
+        /// </summary>
+        /// <value>Claude service account ID (svac_...), required with use-gw-cloud-identity</value>
+        [DataMember(Name = "wif-service-account-id", EmitDefaultValue = false)]
+        public string WifServiceAccountId { get; set; }
+
+        /// <summary>
+        /// Workspace ID (wrkspc_...), needed only when the federation rule covers more than one workspace
+        /// </summary>
+        /// <value>Workspace ID (wrkspc_...), needed only when the federation rule covers more than one workspace</value>
+        [DataMember(Name = "wif-workspace-id", EmitDefaultValue = false)]
+        public string WifWorkspaceId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -188,6 +251,13 @@ namespace akeyless.Model
             sb.Append("  RotateOnUnlock: ").Append(RotateOnUnlock).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
+            sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
+            sb.Append("  WifAzureAudience: ").Append(WifAzureAudience).Append("\n");
+            sb.Append("  WifFederationRuleId: ").Append(WifFederationRuleId).Append("\n");
+            sb.Append("  WifIdentityTokenSource: ").Append(WifIdentityTokenSource).Append("\n");
+            sb.Append("  WifOrganizationId: ").Append(WifOrganizationId).Append("\n");
+            sb.Append("  WifServiceAccountId: ").Append(WifServiceAccountId).Append("\n");
+            sb.Append("  WifWorkspaceId: ").Append(WifWorkspaceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

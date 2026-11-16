@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | **string** | Auth Method new name | [optional] 
+**Owner** | **string** | Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it | [optional] 
 **ProductType** | **List&lt;string&gt;** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara] | [optional] 
 **ScimBearerAccessId** | **string** | Access ID of the API Key auth method the IdP uses as the SCIM bearer | [optional] 
 **ScimEnabled** | **string** | Enable SCIM provisioning for this auth method [true/false] | [optional] 

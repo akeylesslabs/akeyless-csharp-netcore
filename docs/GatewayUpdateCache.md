@@ -6,6 +6,7 @@ gatewayUpdateCache is a command that updates cache settings
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BackupInterval** | **string** | Secure backup interval in minutes. To ensure service continuity in case of power cycle and network outage secrets will be backed up periodically per backup interval | [optional] [default to "1"]
+**CacheItemMetadata** | **string** | Serve item metadata (describe-item and classic key details) from an on-demand cache, refreshed after the minimum fetching interval [true/false] | [optional] 
 **EnableCache** | **string** | Enable cache [true/false] | [optional] 
 **EnableProactive** | **string** | Enable proactive caching [true/false] | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]

@@ -37,15 +37,17 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="cacheEnable">cacheEnable.</param>
         /// <param name="cacheEncryptionKey">cacheEncryptionKey.</param>
+        /// <param name="cacheItemMetadata">cacheItemMetadata.</param>
         /// <param name="cacheTtl">cacheTtl.</param>
         /// <param name="newProactiveCacheEnable">newProactiveCacheEnable.</param>
         /// <param name="proactiveCacheDumpInterval">proactiveCacheDumpInterval.</param>
         /// <param name="proactiveCacheEnable">proactiveCacheEnable.</param>
         /// <param name="proactiveCacheMinimumFetchingTime">proactiveCacheMinimumFetchingTime.</param>
-        public CacheConfigPart(bool cacheEnable = default(bool), string cacheEncryptionKey = default(string), string cacheTtl = default(string), bool newProactiveCacheEnable = default(bool), string proactiveCacheDumpInterval = default(string), bool proactiveCacheEnable = default(bool), string proactiveCacheMinimumFetchingTime = default(string))
+        public CacheConfigPart(bool cacheEnable = default(bool), string cacheEncryptionKey = default(string), bool cacheItemMetadata = default(bool), string cacheTtl = default(string), bool newProactiveCacheEnable = default(bool), string proactiveCacheDumpInterval = default(string), bool proactiveCacheEnable = default(bool), string proactiveCacheMinimumFetchingTime = default(string))
         {
             this.CacheEnable = cacheEnable;
             this.CacheEncryptionKey = cacheEncryptionKey;
+            this.CacheItemMetadata = cacheItemMetadata;
             this.CacheTtl = cacheTtl;
             this.NewProactiveCacheEnable = newProactiveCacheEnable;
             this.ProactiveCacheDumpInterval = proactiveCacheDumpInterval;
@@ -64,6 +66,12 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "cache_encryption_key", EmitDefaultValue = false)]
         public string CacheEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CacheItemMetadata
+        /// </summary>
+        [DataMember(Name = "cache_item_metadata", EmitDefaultValue = true)]
+        public bool CacheItemMetadata { get; set; }
 
         /// <summary>
         /// Gets or Sets CacheTtl
@@ -105,6 +113,7 @@ namespace akeyless.Model
             sb.Append("class CacheConfigPart {\n");
             sb.Append("  CacheEnable: ").Append(CacheEnable).Append("\n");
             sb.Append("  CacheEncryptionKey: ").Append(CacheEncryptionKey).Append("\n");
+            sb.Append("  CacheItemMetadata: ").Append(CacheItemMetadata).Append("\n");
             sb.Append("  CacheTtl: ").Append(CacheTtl).Append("\n");
             sb.Append("  NewProactiveCacheEnable: ").Append(NewProactiveCacheEnable).Append("\n");
             sb.Append("  ProactiveCacheDumpInterval: ").Append(ProactiveCacheDumpInterval).Append("\n");

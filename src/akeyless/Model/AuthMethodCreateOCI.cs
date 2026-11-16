@@ -53,11 +53,12 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="owner">Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it.</param>
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara].</param>
         /// <param name="tenantOcid">The Oracle Cloud tenant ID (required).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AuthMethodCreateOCI(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> groupOcid = default(List<string>), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string tenantOcid = default(string), string token = default(string), string uidToken = default(string))
+        public AuthMethodCreateOCI(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> groupOcid = default(List<string>), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string owner = default(string), List<string> productType = default(List<string>), string tenantOcid = default(string), string token = default(string), string uidToken = default(string))
         {
             // to ensure "groupOcid" is required (not null)
             if (groupOcid == null)
@@ -88,6 +89,7 @@ namespace akeyless.Model
             this.GwBoundIps = gwBoundIps;
             this.Json = json;
             this.JwtTtl = jwtTtl;
+            this.Owner = owner;
             this.ProductType = productType;
             this.Token = token;
             this.UidToken = uidToken;
@@ -185,6 +187,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+        /// </summary>
+        /// <value>Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it</value>
+        [DataMember(Name = "owner", EmitDefaultValue = false)]
+        public string Owner { get; set; }
+
+        /// <summary>
         /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
         /// </summary>
         /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]</value>
@@ -233,6 +242,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  TenantOcid: ").Append(TenantOcid).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

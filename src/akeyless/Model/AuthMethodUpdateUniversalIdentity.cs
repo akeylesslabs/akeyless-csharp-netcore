@@ -44,7 +44,7 @@ namespace akeyless.Model
         /// <param name="allowedClientType">limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension].</param>
         /// <param name="auditLogsClaims">Subclaims to include in audit logs, e.g \&quot;- -audit-logs-claims email - -audit-logs-claims username\&quot;.</param>
         /// <param name="boundIps">A CIDR whitelist with the IPs that the access is restricted to.</param>
-        /// <param name="childTtlLimit">Maximum child token ttl allowed in uid-create-child-token (default to 43200).</param>
+        /// <param name="childTtlLimit">Maximum child token ttl allowed in uid-create-child-token. A struct tag cannot hold a constant, so dft must stay equal to types.UniversalIdentityDefaultTTLChildLimit (default to 43200).</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="denyInheritance">Deny from root to create children.</param>
         /// <param name="denyRotate">Deny from the token to rotate.</param>
@@ -56,13 +56,14 @@ namespace akeyless.Model
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
         /// <param name="newName">Auth Method new name.</param>
+        /// <param name="owner">Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it.</param>
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="treeLength">Maximum UID tree depth allowed (child of child of ...) (default to 200).</param>
         /// <param name="ttl">Token ttl (default to 60).</param>
         /// <param name="uidExpirationEventAt">Notify when this percent of the token TTL has elapsed (1-99)..</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AuthMethodUpdateUniversalIdentity(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), int childTtlLimit = 43200, string deleteProtection = default(string), bool denyInheritance = default(bool), bool denyRotate = default(bool), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), List<string> productType = default(List<string>), string token = default(string), int treeLength = 200, int ttl = 60, List<string> uidExpirationEventAt = default(List<string>), string uidToken = default(string))
+        public AuthMethodUpdateUniversalIdentity(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), int childTtlLimit = 43200, string deleteProtection = default(string), bool denyInheritance = default(bool), bool denyRotate = default(bool), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string newName = default(string), string owner = default(string), List<string> productType = default(List<string>), string token = default(string), int treeLength = 200, int ttl = 60, List<string> uidExpirationEventAt = default(List<string>), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -85,6 +86,7 @@ namespace akeyless.Model
             this.Json = json;
             this.JwtTtl = jwtTtl;
             this.NewName = newName;
+            this.Owner = owner;
             this.ProductType = productType;
             this.Token = token;
             this.TreeLength = treeLength;
@@ -122,9 +124,9 @@ namespace akeyless.Model
         public List<string> BoundIps { get; set; }
 
         /// <summary>
-        /// Maximum child token ttl allowed in uid-create-child-token
+        /// Maximum child token ttl allowed in uid-create-child-token. A struct tag cannot hold a constant, so dft must stay equal to types.UniversalIdentityDefaultTTLChildLimit
         /// </summary>
-        /// <value>Maximum child token ttl allowed in uid-create-child-token</value>
+        /// <value>Maximum child token ttl allowed in uid-create-child-token. A struct tag cannot hold a constant, so dft must stay equal to types.UniversalIdentityDefaultTTLChildLimit</value>
         [DataMember(Name = "child-ttl-limit", EmitDefaultValue = false)]
         public int ChildTtlLimit { get; set; }
 
@@ -206,6 +208,13 @@ namespace akeyless.Model
         public string NewName { get; set; }
 
         /// <summary>
+        /// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+        /// </summary>
+        /// <value>Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it</value>
+        [DataMember(Name = "owner", EmitDefaultValue = false)]
+        public string Owner { get; set; }
+
+        /// <summary>
         /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
         /// </summary>
         /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]</value>
@@ -271,6 +280,7 @@ namespace akeyless.Model
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NewName: ").Append(NewName).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TreeLength: ").Append(TreeLength).Append("\n");

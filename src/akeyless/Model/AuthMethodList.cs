@@ -37,14 +37,16 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="filter">Filter by auth method name or part of it.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="owner">Filter by auth method owner or part of it.</param>
         /// <param name="paginationToken">Next page reference.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, alicloud, oidc, universal_identity, gcp, k8s, cert].</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public AuthMethodList(string filter = default(string), bool json = false, string paginationToken = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
+        public AuthMethodList(string filter = default(string), bool json = false, string owner = default(string), string paginationToken = default(string), string token = default(string), List<string> type = default(List<string>), string uidToken = default(string))
         {
             this.Filter = filter;
             this.Json = json;
+            this.Owner = owner;
             this.PaginationToken = paginationToken;
             this.Token = token;
             this.Type = type;
@@ -64,6 +66,13 @@ namespace akeyless.Model
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// Filter by auth method owner or part of it
+        /// </summary>
+        /// <value>Filter by auth method owner or part of it</value>
+        [DataMember(Name = "owner", EmitDefaultValue = false)]
+        public string Owner { get; set; }
 
         /// <summary>
         /// Next page reference
@@ -103,6 +112,7 @@ namespace akeyless.Model
             sb.Append("class AuthMethodList {\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  PaginationToken: ").Append(PaginationToken).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");

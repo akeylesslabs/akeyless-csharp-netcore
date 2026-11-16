@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **MaxVersions** | **long** |  | [optional] 
 **NextAutoRotateType** | **string** |  | [optional] 
 **NumberOfVersionsToSave** | **int** |  | [optional] 
+**PublicKey** | **string** | PublicKey is the OpenSSH authorized_keys line for an SSH rotated secret. Stored in the clear on item attributes so describe-item can return it under list permission. | [optional] 
 **PublicKeyRemotePath** | **string** |  | [optional] 
 **RotationHour** | **int** |  | [optional] 
 **RotationIntervalMin** | **bool** |  | [optional] 

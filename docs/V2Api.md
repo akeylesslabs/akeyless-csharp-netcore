@@ -141,6 +141,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**Detokenize**](V2Api.md#detokenize) | **POST** /detokenize |  |
 | [**DetokenizeBatch**](V2Api.md#detokenizebatch) | **POST** /detokenize-batch |  |
 | [**DynamicSecretCreateAerospike**](V2Api.md#dynamicsecretcreateaerospike) | **POST** /dynamic-secret-create-aerospike |  |
+| [**DynamicSecretCreateAliCloud**](V2Api.md#dynamicsecretcreatealicloud) | **POST** /dynamic-secret-create-alicloud |  |
 | [**DynamicSecretCreateArtifactory**](V2Api.md#dynamicsecretcreateartifactory) | **POST** /dynamic-secret-create-artifactory |  |
 | [**DynamicSecretCreateAws**](V2Api.md#dynamicsecretcreateaws) | **POST** /dynamic-secret-create-aws |  |
 | [**DynamicSecretCreateAzure**](V2Api.md#dynamicsecretcreateazure) | **POST** /dynamic-secret-create-azure |  |
@@ -177,6 +178,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**DynamicSecretTmpCredsGet**](V2Api.md#dynamicsecrettmpcredsget) | **POST** /dynamic-secret-tmp-creds-get |  |
 | [**DynamicSecretTmpCredsUpdate**](V2Api.md#dynamicsecrettmpcredsupdate) | **POST** /dynamic-secret-tmp-creds-update |  |
 | [**DynamicSecretUpdateAerospike**](V2Api.md#dynamicsecretupdateaerospike) | **POST** /dynamic-secret-update-aerospike |  |
+| [**DynamicSecretUpdateAliCloud**](V2Api.md#dynamicsecretupdatealicloud) | **POST** /dynamic-secret-update-alicloud |  |
 | [**DynamicSecretUpdateArtifactory**](V2Api.md#dynamicsecretupdateartifactory) | **POST** /dynamic-secret-update-artifactory |  |
 | [**DynamicSecretUpdateAws**](V2Api.md#dynamicsecretupdateaws) | **POST** /dynamic-secret-update-aws |  |
 | [**DynamicSecretUpdateAzure**](V2Api.md#dynamicsecretupdateazure) | **POST** /dynamic-secret-update-azure |  |
@@ -457,6 +459,10 @@ All URIs are relative to *https://api.akeyless.io*
 | [**RotatedSecretDeleteSync**](V2Api.md#rotatedsecretdeletesync) | **POST** /rotated-secret-delete-sync |  |
 | [**RotatedSecretGetValue**](V2Api.md#rotatedsecretgetvalue) | **POST** /rotated-secret-get-value |  |
 | [**RotatedSecretList**](V2Api.md#rotatedsecretlist) | **POST** /rotated-secret-list |  |
+| [**RotatedSecretProvisionCreate**](V2Api.md#rotatedsecretprovisioncreate) | **POST** /rotated-secret-provision-create |  |
+| [**RotatedSecretProvisionDelete**](V2Api.md#rotatedsecretprovisiondelete) | **POST** /rotated-secret-provision-delete |  |
+| [**RotatedSecretProvisionPush**](V2Api.md#rotatedsecretprovisionpush) | **POST** /rotated-secret-provision-push |  |
+| [**RotatedSecretProvisionUpdate**](V2Api.md#rotatedsecretprovisionupdate) | **POST** /rotated-secret-provision-update |  |
 | [**RotatedSecretSync**](V2Api.md#rotatedsecretsync) | **POST** /rotated-secret-sync |  |
 | [**RotatedSecretUpdateAerospike**](V2Api.md#rotatedsecretupdateaerospike) | **POST** /rotated-secret-update-aerospike |  |
 | [**RotatedSecretUpdateAliCloud**](V2Api.md#rotatedsecretupdatealicloud) | **POST** /rotated-secret-update-alicloud |  |
@@ -500,6 +506,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreateAliCloud**](V2Api.md#targetcreatealicloud) | **POST** /target-create-alicloud |  |
 | [**TargetCreateAnthropic**](V2Api.md#targetcreateanthropic) | **POST** /target-create-anthropic |  |
 | [**TargetCreateArtifactory**](V2Api.md#targetcreateartifactory) | **POST** /target-create-artifactory |  |
+| [**TargetCreateAtlassian**](V2Api.md#targetcreateatlassian) | **POST** /target-create-atlassian |  |
 | [**TargetCreateAws**](V2Api.md#targetcreateaws) | **POST** /target-create-aws |  |
 | [**TargetCreateAzure**](V2Api.md#targetcreateazure) | **POST** /target-create-azure |  |
 | [**TargetCreateBedrock**](V2Api.md#targetcreatebedrock) | **POST** /target-create-bedrock |  |
@@ -545,6 +552,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdateAliCloud**](V2Api.md#targetupdatealicloud) | **POST** /target-update-alicloud |  |
 | [**TargetUpdateAnthropic**](V2Api.md#targetupdateanthropic) | **POST** /target-update-anthropic |  |
 | [**TargetUpdateArtifactory**](V2Api.md#targetupdateartifactory) | **POST** /target-update-artifactory |  |
+| [**TargetUpdateAtlassian**](V2Api.md#targetupdateatlassian) | **POST** /target-update-atlassian |  |
 | [**TargetUpdateAws**](V2Api.md#targetupdateaws) | **POST** /target-update-aws |  |
 | [**TargetUpdateAzure**](V2Api.md#targetupdateazure) | **POST** /target-update-azure |  |
 | [**TargetUpdateBedrock**](V2Api.md#targetupdatebedrock) | **POST** /target-update-bedrock |  |
@@ -12741,6 +12749,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="dynamicsecretcreatealicloud"></a>
+# **DynamicSecretCreateAliCloud**
+> DynamicSecretCreateOutput DynamicSecretCreateAliCloud (DynamicSecretCreateAliCloud dynamicSecretCreateAliCloud)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DynamicSecretCreateAliCloudExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var dynamicSecretCreateAliCloud = new DynamicSecretCreateAliCloud(); // DynamicSecretCreateAliCloud | 
+
+            try
+            {
+                DynamicSecretCreateOutput result = apiInstance.DynamicSecretCreateAliCloud(dynamicSecretCreateAliCloud);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DynamicSecretCreateAliCloud: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DynamicSecretCreateAliCloudWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DynamicSecretCreateOutput> response = apiInstance.DynamicSecretCreateAliCloudWithHttpInfo(dynamicSecretCreateAliCloud);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DynamicSecretCreateAliCloudWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **dynamicSecretCreateAliCloud** | [**DynamicSecretCreateAliCloud**](DynamicSecretCreateAliCloud.md) |  |  |
+
+### Return type
+
+[**DynamicSecretCreateOutput**](DynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | dynamicSecretCreateAliCloudResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="dynamicsecretcreateartifactory"></a>
 # **DynamicSecretCreateArtifactory**
 > DynamicSecretCreateOutput DynamicSecretCreateArtifactory (DynamicSecretCreateArtifactory dynamicSecretCreateArtifactory)
@@ -15897,6 +15993,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | dynamicSecretUpdateAerospikeResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="dynamicsecretupdatealicloud"></a>
+# **DynamicSecretUpdateAliCloud**
+> DynamicSecretUpdateOutput DynamicSecretUpdateAliCloud (DynamicSecretUpdateAliCloud dynamicSecretUpdateAliCloud)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class DynamicSecretUpdateAliCloudExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var dynamicSecretUpdateAliCloud = new DynamicSecretUpdateAliCloud(); // DynamicSecretUpdateAliCloud | 
+
+            try
+            {
+                DynamicSecretUpdateOutput result = apiInstance.DynamicSecretUpdateAliCloud(dynamicSecretUpdateAliCloud);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.DynamicSecretUpdateAliCloud: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DynamicSecretUpdateAliCloudWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<DynamicSecretUpdateOutput> response = apiInstance.DynamicSecretUpdateAliCloudWithHttpInfo(dynamicSecretUpdateAliCloud);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.DynamicSecretUpdateAliCloudWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **dynamicSecretUpdateAliCloud** | [**DynamicSecretUpdateAliCloud**](DynamicSecretUpdateAliCloud.md) |  |  |
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](DynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | dynamicSecretUpdateAliCloudResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -40519,6 +40703,358 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="rotatedsecretprovisioncreate"></a>
+# **RotatedSecretProvisionCreate**
+> RotatedSecretProvisionAssocOutput RotatedSecretProvisionCreate (RotatedSecretProvisionCreate rotatedSecretProvisionCreate)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretProvisionCreateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretProvisionCreate = new RotatedSecretProvisionCreate(); // RotatedSecretProvisionCreate | 
+
+            try
+            {
+                RotatedSecretProvisionAssocOutput result = apiInstance.RotatedSecretProvisionCreate(rotatedSecretProvisionCreate);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretProvisionCreate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretProvisionCreateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretProvisionAssocOutput> response = apiInstance.RotatedSecretProvisionCreateWithHttpInfo(rotatedSecretProvisionCreate);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretProvisionCreateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretProvisionCreate** | [**RotatedSecretProvisionCreate**](RotatedSecretProvisionCreate.md) |  |  |
+
+### Return type
+
+[**RotatedSecretProvisionAssocOutput**](RotatedSecretProvisionAssocOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="rotatedsecretprovisiondelete"></a>
+# **RotatedSecretProvisionDelete**
+> RotatedSecretProvisionAssocOutput RotatedSecretProvisionDelete (RotatedSecretProvisionDelete rotatedSecretProvisionDelete)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretProvisionDeleteExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretProvisionDelete = new RotatedSecretProvisionDelete(); // RotatedSecretProvisionDelete | 
+
+            try
+            {
+                RotatedSecretProvisionAssocOutput result = apiInstance.RotatedSecretProvisionDelete(rotatedSecretProvisionDelete);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretProvisionDelete: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretProvisionDeleteWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretProvisionAssocOutput> response = apiInstance.RotatedSecretProvisionDeleteWithHttpInfo(rotatedSecretProvisionDelete);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretProvisionDeleteWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretProvisionDelete** | [**RotatedSecretProvisionDelete**](RotatedSecretProvisionDelete.md) |  |  |
+
+### Return type
+
+[**RotatedSecretProvisionAssocOutput**](RotatedSecretProvisionAssocOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="rotatedsecretprovisionpush"></a>
+# **RotatedSecretProvisionPush**
+> ProvisionSSHRotatedSecretOutput RotatedSecretProvisionPush (RotatedSecretProvisionPush rotatedSecretProvisionPush)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretProvisionPushExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretProvisionPush = new RotatedSecretProvisionPush(); // RotatedSecretProvisionPush | 
+
+            try
+            {
+                ProvisionSSHRotatedSecretOutput result = apiInstance.RotatedSecretProvisionPush(rotatedSecretProvisionPush);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretProvisionPush: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretProvisionPushWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ProvisionSSHRotatedSecretOutput> response = apiInstance.RotatedSecretProvisionPushWithHttpInfo(rotatedSecretProvisionPush);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretProvisionPushWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretProvisionPush** | [**RotatedSecretProvisionPush**](RotatedSecretProvisionPush.md) |  |  |
+
+### Return type
+
+[**ProvisionSSHRotatedSecretOutput**](ProvisionSSHRotatedSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="rotatedsecretprovisionupdate"></a>
+# **RotatedSecretProvisionUpdate**
+> RotatedSecretProvisionAssocOutput RotatedSecretProvisionUpdate (RotatedSecretProvisionUpdate rotatedSecretProvisionUpdate)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class RotatedSecretProvisionUpdateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var rotatedSecretProvisionUpdate = new RotatedSecretProvisionUpdate(); // RotatedSecretProvisionUpdate | 
+
+            try
+            {
+                RotatedSecretProvisionAssocOutput result = apiInstance.RotatedSecretProvisionUpdate(rotatedSecretProvisionUpdate);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.RotatedSecretProvisionUpdate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RotatedSecretProvisionUpdateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<RotatedSecretProvisionAssocOutput> response = apiInstance.RotatedSecretProvisionUpdateWithHttpInfo(rotatedSecretProvisionUpdate);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.RotatedSecretProvisionUpdateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **rotatedSecretProvisionUpdate** | [**RotatedSecretProvisionUpdate**](RotatedSecretProvisionUpdate.md) |  |  |
+
+### Return type
+
+[**RotatedSecretProvisionAssocOutput**](RotatedSecretProvisionAssocOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="rotatedsecretsync"></a>
 # **RotatedSecretSync**
 > Object RotatedSecretSync (RotatedSecretSync rotatedSecretSync)
@@ -44299,6 +44835,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetCreateArtifactoryResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetcreateatlassian"></a>
+# **TargetCreateAtlassian**
+> TargetCreateOutput TargetCreateAtlassian (TargetCreateAtlassian targetCreateAtlassian)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateAtlassianExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateAtlassian = new TargetCreateAtlassian(); // TargetCreateAtlassian | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateAtlassian(targetCreateAtlassian);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateAtlassian: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateAtlassianWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateAtlassianWithHttpInfo(targetCreateAtlassian);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateAtlassianWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateAtlassian** | [**TargetCreateAtlassian**](TargetCreateAtlassian.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateAtlassianResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -48259,6 +48883,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateArtifactoryResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdateatlassian"></a>
+# **TargetUpdateAtlassian**
+> TargetUpdateOutput TargetUpdateAtlassian (TargetUpdateAtlassian targetUpdateAtlassian)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateAtlassianExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateAtlassian = new TargetUpdateAtlassian(); // TargetUpdateAtlassian | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateAtlassian(targetUpdateAtlassian);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateAtlassian: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateAtlassianWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateAtlassianWithHttpInfo(targetUpdateAtlassian);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateAtlassianWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateAtlassian** | [**TargetUpdateAtlassian**](TargetUpdateAtlassian.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateAtlassianResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

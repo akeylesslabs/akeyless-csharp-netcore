@@ -79,6 +79,7 @@ namespace akeyless.Model
         /// <param name="passwordLength">Password length between 5 - to 50 characters.</param>
         /// <param name="phone">Phone number.</param>
         /// <param name="postalCode">Postal code.</param>
+        /// <param name="requireAuthMethodOwner">Require an owner when creating or updating authentication methods [true/false].</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="usageEventEnable">Enable event for objects that have not been used or changed [true/false].</param>
@@ -88,7 +89,7 @@ namespace akeyless.Model
         /// <param name="useLowerLetters">Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false].</param>
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
-        public UpdateAccountSettings(string address = default(string), List<string> allowedClientType = default(List<string>), List<string> allowedEmailDomains = default(List<string>), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), List<string> defaultCertificateExpirationNotificationDays = default(List<string>), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableAiInsights = default(string), string enableAiQuorum = default(string), string enableDefaultCertificateExpirationEvent = default(string), string enableItemSharing = default(string), string enablePasswordExpiration = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string hidePersonalFolder = default(string), string hideStaticPassword = default(string), string invalidCharacters = @"notReceivedInvalidCharacter", string itemLockingEnabled = default(string), string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockAllowedClientType = default(string), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), long lockMaxTtl = default(long), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), string passwordExpirationDays = default(string), string passwordExpirationNotificationDays = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
+        public UpdateAccountSettings(string address = default(string), List<string> allowedClientType = default(List<string>), List<string> allowedEmailDomains = default(List<string>), List<string> boundIps = default(List<string>), string city = default(string), string companyName = default(string), string country = default(string), List<string> defaultCertificateExpirationNotificationDays = default(List<string>), string defaultKeyName = default(string), string defaultShareLinkTtlMinutes = default(string), string defaultVersioning = default(string), string dpEnableClassicKeyProtection = default(string), long dynamicSecretMaxTtl = default(long), string dynamicSecretMaxTtlEnable = default(string), string enableAiInsights = default(string), string enableAiQuorum = default(string), string enableDefaultCertificateExpirationEvent = default(string), string enableItemSharing = default(string), string enablePasswordExpiration = default(string), string forceNewVersions = default(string), List<string> gwBoundIps = default(List<string>), string hidePersonalFolder = default(string), string hideStaticPassword = default(string), string invalidCharacters = @"notReceivedInvalidCharacter", string itemLockingEnabled = default(string), string itemType = default(string), string itemsDeletionProtection = default(string), bool json = false, long jwtTtlDefault = default(long), long jwtTtlMax = default(long), long jwtTtlMin = default(long), string lockAllowedClientType = default(string), string lockBoundIps = default(string), string lockDefaultKey = default(string), string lockGwBoundIps = default(string), long lockMaxTtl = default(long), int maxRotationInterval = default(int), string maxRotationIntervalEnable = default(string), string maxVersions = default(string), string passwordExpirationDays = default(string), string passwordExpirationNotificationDays = default(string), long passwordLength = default(long), string phone = default(string), string postalCode = default(string), string requireAuthMethodOwner = default(string), string token = default(string), string uidToken = default(string), string usageEventEnable = default(string), long usageEventInterval = default(long), string usageEventObjectType = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string))
         {
             this.Address = address;
             this.AllowedClientType = allowedClientType;
@@ -135,6 +136,7 @@ namespace akeyless.Model
             this.PasswordLength = passwordLength;
             this.Phone = phone;
             this.PostalCode = postalCode;
+            this.RequireAuthMethodOwner = requireAuthMethodOwner;
             this.Token = token;
             this.UidToken = uidToken;
             this.UsageEventEnable = usageEventEnable;
@@ -455,6 +457,13 @@ namespace akeyless.Model
         public string PostalCode { get; set; }
 
         /// <summary>
+        /// Require an owner when creating or updating authentication methods [true/false]
+        /// </summary>
+        /// <value>Require an owner when creating or updating authentication methods [true/false]</value>
+        [DataMember(Name = "require-auth-method-owner", EmitDefaultValue = false)]
+        public string RequireAuthMethodOwner { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -571,6 +580,7 @@ namespace akeyless.Model
             sb.Append("  PasswordLength: ").Append(PasswordLength).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
+            sb.Append("  RequireAuthMethodOwner: ").Append(RequireAuthMethodOwner).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("  UsageEventEnable: ").Append(UsageEventEnable).Append("\n");

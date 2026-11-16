@@ -36,7 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="Connect" /> class.
         /// </summary>
         /// <param name="helper">helper.</param>
-        /// <param name="rcFileOverride">used to override .akeyless-connect.rc in tests.</param>
+        /// <param name="rcFileOverride">test only: the rc file to read instead of the home rc files.</param>
         /// <param name="bastionCtrlPath">Deprecated. use bastion-ctrl-path.</param>
         /// <param name="bastionCtrlPort">Deprecated. use sra-ctrl-port.</param>
         /// <param name="bastionCtrlProto">Deprecated. use sra-ctrl-proto.</param>
@@ -100,9 +100,9 @@ namespace akeyless.Model
         public Object Helper { get; set; }
 
         /// <summary>
-        /// used to override .akeyless-connect.rc in tests
+        /// test only: the rc file to read instead of the home rc files
         /// </summary>
-        /// <value>used to override .akeyless-connect.rc in tests</value>
+        /// <value>test only: the rc file to read instead of the home rc files</value>
         [DataMember(Name = "RcFileOverride", EmitDefaultValue = false)]
         public string RcFileOverride { get; set; }
 

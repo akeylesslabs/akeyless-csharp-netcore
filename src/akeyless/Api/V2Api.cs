@@ -2774,6 +2774,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretCreateOutput</returns>
+        DynamicSecretCreateOutput DynamicSecretCreateAliCloud(DynamicSecretCreateAliCloud dynamicSecretCreateAliCloud, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretCreateOutput</returns>
+        ApiResponse<DynamicSecretCreateOutput> DynamicSecretCreateAliCloudWithHttpInfo(DynamicSecretCreateAliCloud dynamicSecretCreateAliCloud, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dynamicSecretCreateArtifactory"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DynamicSecretCreateOutput</returns>
@@ -3490,6 +3510,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DynamicSecretUpdateOutput</returns>
         ApiResponse<DynamicSecretUpdateOutput> DynamicSecretUpdateAerospikeWithHttpInfo(DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretUpdateOutput</returns>
+        DynamicSecretUpdateOutput DynamicSecretUpdateAliCloud(DynamicSecretUpdateAliCloud dynamicSecretUpdateAliCloud, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretUpdateOutput</returns>
+        ApiResponse<DynamicSecretUpdateOutput> DynamicSecretUpdateAliCloudWithHttpInfo(DynamicSecretUpdateAliCloud dynamicSecretUpdateAliCloud, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -9091,6 +9131,86 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionCreate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretProvisionAssocOutput</returns>
+        RotatedSecretProvisionAssocOutput RotatedSecretProvisionCreate(RotatedSecretProvisionCreate rotatedSecretProvisionCreate, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionCreate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretProvisionAssocOutput</returns>
+        ApiResponse<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionCreateWithHttpInfo(RotatedSecretProvisionCreate rotatedSecretProvisionCreate, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionDelete"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretProvisionAssocOutput</returns>
+        RotatedSecretProvisionAssocOutput RotatedSecretProvisionDelete(RotatedSecretProvisionDelete rotatedSecretProvisionDelete, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionDelete"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretProvisionAssocOutput</returns>
+        ApiResponse<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionDeleteWithHttpInfo(RotatedSecretProvisionDelete rotatedSecretProvisionDelete, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionPush"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ProvisionSSHRotatedSecretOutput</returns>
+        ProvisionSSHRotatedSecretOutput RotatedSecretProvisionPush(RotatedSecretProvisionPush rotatedSecretProvisionPush, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionPush"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ProvisionSSHRotatedSecretOutput</returns>
+        ApiResponse<ProvisionSSHRotatedSecretOutput> RotatedSecretProvisionPushWithHttpInfo(RotatedSecretProvisionPush rotatedSecretProvisionPush, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionUpdate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretProvisionAssocOutput</returns>
+        RotatedSecretProvisionAssocOutput RotatedSecretProvisionUpdate(RotatedSecretProvisionUpdate rotatedSecretProvisionUpdate, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionUpdate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretProvisionAssocOutput</returns>
+        ApiResponse<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionUpdateWithHttpInfo(RotatedSecretProvisionUpdate rotatedSecretProvisionUpdate, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rotatedSecretSync"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Object</returns>
@@ -9947,6 +10067,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TargetCreateOutput</returns>
         ApiResponse<TargetCreateOutput> TargetCreateArtifactoryWithHttpInfo(TargetCreateArtifactory targetCreateArtifactory, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetCreateOutput</returns>
+        TargetCreateOutput TargetCreateAtlassian(TargetCreateAtlassian targetCreateAtlassian, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetCreateOutput</returns>
+        ApiResponse<TargetCreateOutput> TargetCreateAtlassianWithHttpInfo(TargetCreateAtlassian targetCreateAtlassian, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -10847,6 +10987,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TargetUpdateOutput</returns>
         ApiResponse<TargetUpdateOutput> TargetUpdateArtifactoryWithHttpInfo(TargetUpdateArtifactory targetUpdateArtifactory, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetUpdateOutput</returns>
+        TargetUpdateOutput TargetUpdateAtlassian(TargetUpdateAtlassian targetUpdateAtlassian, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetUpdateOutput</returns>
+        ApiResponse<TargetUpdateOutput> TargetUpdateAtlassianWithHttpInfo(TargetUpdateAtlassian targetUpdateAtlassian, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -16788,6 +16948,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretCreateOutput</returns>
+        System.Threading.Tasks.Task<DynamicSecretCreateOutput> DynamicSecretCreateAliCloudAsync(DynamicSecretCreateAliCloud dynamicSecretCreateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DynamicSecretCreateOutput>> DynamicSecretCreateAliCloudWithHttpInfoAsync(DynamicSecretCreateAliCloud dynamicSecretCreateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dynamicSecretCreateArtifactory"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -17681,6 +17866,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DynamicSecretUpdateOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<DynamicSecretUpdateOutput>> DynamicSecretUpdateAerospikeWithHttpInfoAsync(DynamicSecretUpdateAerospike dynamicSecretUpdateAerospike, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretUpdateOutput</returns>
+        System.Threading.Tasks.Task<DynamicSecretUpdateOutput> DynamicSecretUpdateAliCloudAsync(DynamicSecretUpdateAliCloud dynamicSecretUpdateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DynamicSecretUpdateOutput>> DynamicSecretUpdateAliCloudWithHttpInfoAsync(DynamicSecretUpdateAliCloud dynamicSecretUpdateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -24682,6 +24892,106 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionCreate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretProvisionAssocOutput</returns>
+        System.Threading.Tasks.Task<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionCreateAsync(RotatedSecretProvisionCreate rotatedSecretProvisionCreate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionCreate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretProvisionAssocOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RotatedSecretProvisionAssocOutput>> RotatedSecretProvisionCreateWithHttpInfoAsync(RotatedSecretProvisionCreate rotatedSecretProvisionCreate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionDelete"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretProvisionAssocOutput</returns>
+        System.Threading.Tasks.Task<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionDeleteAsync(RotatedSecretProvisionDelete rotatedSecretProvisionDelete, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionDelete"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretProvisionAssocOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RotatedSecretProvisionAssocOutput>> RotatedSecretProvisionDeleteWithHttpInfoAsync(RotatedSecretProvisionDelete rotatedSecretProvisionDelete, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionPush"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ProvisionSSHRotatedSecretOutput</returns>
+        System.Threading.Tasks.Task<ProvisionSSHRotatedSecretOutput> RotatedSecretProvisionPushAsync(RotatedSecretProvisionPush rotatedSecretProvisionPush, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionPush"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ProvisionSSHRotatedSecretOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ProvisionSSHRotatedSecretOutput>> RotatedSecretProvisionPushWithHttpInfoAsync(RotatedSecretProvisionPush rotatedSecretProvisionPush, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionUpdate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretProvisionAssocOutput</returns>
+        System.Threading.Tasks.Task<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionUpdateAsync(RotatedSecretProvisionUpdate rotatedSecretProvisionUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionUpdate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretProvisionAssocOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RotatedSecretProvisionAssocOutput>> RotatedSecretProvisionUpdateWithHttpInfoAsync(RotatedSecretProvisionUpdate rotatedSecretProvisionUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rotatedSecretSync"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -25750,6 +26060,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TargetCreateOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<TargetCreateOutput>> TargetCreateArtifactoryWithHttpInfoAsync(TargetCreateArtifactory targetCreateArtifactory, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetCreateOutput</returns>
+        System.Threading.Tasks.Task<TargetCreateOutput> TargetCreateAtlassianAsync(TargetCreateAtlassian targetCreateAtlassian, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TargetCreateOutput>> TargetCreateAtlassianWithHttpInfoAsync(TargetCreateAtlassian targetCreateAtlassian, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -26875,6 +27210,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<TargetUpdateOutput>> TargetUpdateArtifactoryWithHttpInfoAsync(TargetUpdateArtifactory targetUpdateArtifactory, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetUpdateOutput</returns>
+        System.Threading.Tasks.Task<TargetUpdateOutput> TargetUpdateAtlassianAsync(TargetUpdateAtlassian targetUpdateAtlassian, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TargetUpdateOutput>> TargetUpdateAtlassianWithHttpInfoAsync(TargetUpdateAtlassian targetUpdateAtlassian, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -50126,6 +50486,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretCreateOutput</returns>
+        public DynamicSecretCreateOutput DynamicSecretCreateAliCloud(DynamicSecretCreateAliCloud dynamicSecretCreateAliCloud, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<DynamicSecretCreateOutput> localVarResponse = DynamicSecretCreateAliCloudWithHttpInfo(dynamicSecretCreateAliCloud);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretCreateOutput</returns>
+        public akeyless.Client.ApiResponse<DynamicSecretCreateOutput> DynamicSecretCreateAliCloudWithHttpInfo(DynamicSecretCreateAliCloud dynamicSecretCreateAliCloud, int operationIndex = 0)
+        {
+            // verify the required parameter 'dynamicSecretCreateAliCloud' is set
+            if (dynamicSecretCreateAliCloud == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'dynamicSecretCreateAliCloud' when calling V2Api->DynamicSecretCreateAliCloud");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = dynamicSecretCreateAliCloud;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretCreateAliCloud";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DynamicSecretCreateOutput>("/dynamic-secret-create-alicloud", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretCreateAliCloud", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretCreateOutput</returns>
+        public async System.Threading.Tasks.Task<DynamicSecretCreateOutput> DynamicSecretCreateAliCloudAsync(DynamicSecretCreateAliCloud dynamicSecretCreateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<DynamicSecretCreateOutput> localVarResponse = await DynamicSecretCreateAliCloudWithHttpInfoAsync(dynamicSecretCreateAliCloud, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretCreateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<DynamicSecretCreateOutput>> DynamicSecretCreateAliCloudWithHttpInfoAsync(DynamicSecretCreateAliCloud dynamicSecretCreateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'dynamicSecretCreateAliCloud' is set
+            if (dynamicSecretCreateAliCloud == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'dynamicSecretCreateAliCloud' when calling V2Api->DynamicSecretCreateAliCloud");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = dynamicSecretCreateAliCloud;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretCreateAliCloud";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DynamicSecretCreateOutput>("/dynamic-secret-create-alicloud", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretCreateAliCloud", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dynamicSecretCreateArtifactory"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DynamicSecretCreateOutput</returns>
@@ -55353,6 +55859,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DynamicSecretUpdateAerospike", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DynamicSecretUpdateOutput</returns>
+        public DynamicSecretUpdateOutput DynamicSecretUpdateAliCloud(DynamicSecretUpdateAliCloud dynamicSecretUpdateAliCloud, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<DynamicSecretUpdateOutput> localVarResponse = DynamicSecretUpdateAliCloudWithHttpInfo(dynamicSecretUpdateAliCloud);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DynamicSecretUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<DynamicSecretUpdateOutput> DynamicSecretUpdateAliCloudWithHttpInfo(DynamicSecretUpdateAliCloud dynamicSecretUpdateAliCloud, int operationIndex = 0)
+        {
+            // verify the required parameter 'dynamicSecretUpdateAliCloud' is set
+            if (dynamicSecretUpdateAliCloud == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'dynamicSecretUpdateAliCloud' when calling V2Api->DynamicSecretUpdateAliCloud");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = dynamicSecretUpdateAliCloud;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretUpdateAliCloud";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DynamicSecretUpdateOutput>("/dynamic-secret-update-alicloud", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretUpdateAliCloud", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DynamicSecretUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<DynamicSecretUpdateOutput> DynamicSecretUpdateAliCloudAsync(DynamicSecretUpdateAliCloud dynamicSecretUpdateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<DynamicSecretUpdateOutput> localVarResponse = await DynamicSecretUpdateAliCloudWithHttpInfoAsync(dynamicSecretUpdateAliCloud, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="dynamicSecretUpdateAliCloud"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DynamicSecretUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<DynamicSecretUpdateOutput>> DynamicSecretUpdateAliCloudWithHttpInfoAsync(DynamicSecretUpdateAliCloud dynamicSecretUpdateAliCloud, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'dynamicSecretUpdateAliCloud' is set
+            if (dynamicSecretUpdateAliCloud == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'dynamicSecretUpdateAliCloud' when calling V2Api->DynamicSecretUpdateAliCloud");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = dynamicSecretUpdateAliCloud;
+
+            localVarRequestOptions.Operation = "V2Api.DynamicSecretUpdateAliCloud";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DynamicSecretUpdateOutput>("/dynamic-secret-update-alicloud", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DynamicSecretUpdateAliCloud", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -95892,6 +96544,590 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionCreate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretProvisionAssocOutput</returns>
+        public RotatedSecretProvisionAssocOutput RotatedSecretProvisionCreate(RotatedSecretProvisionCreate rotatedSecretProvisionCreate, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput> localVarResponse = RotatedSecretProvisionCreateWithHttpInfo(rotatedSecretProvisionCreate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionCreate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretProvisionAssocOutput</returns>
+        public akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionCreateWithHttpInfo(RotatedSecretProvisionCreate rotatedSecretProvisionCreate, int operationIndex = 0)
+        {
+            // verify the required parameter 'rotatedSecretProvisionCreate' is set
+            if (rotatedSecretProvisionCreate == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretProvisionCreate' when calling V2Api->RotatedSecretProvisionCreate");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretProvisionCreate;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretProvisionCreate";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RotatedSecretProvisionAssocOutput>("/rotated-secret-provision-create", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretProvisionCreate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionCreate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretProvisionAssocOutput</returns>
+        public async System.Threading.Tasks.Task<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionCreateAsync(RotatedSecretProvisionCreate rotatedSecretProvisionCreate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput> localVarResponse = await RotatedSecretProvisionCreateWithHttpInfoAsync(rotatedSecretProvisionCreate, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionCreate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretProvisionAssocOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput>> RotatedSecretProvisionCreateWithHttpInfoAsync(RotatedSecretProvisionCreate rotatedSecretProvisionCreate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rotatedSecretProvisionCreate' is set
+            if (rotatedSecretProvisionCreate == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretProvisionCreate' when calling V2Api->RotatedSecretProvisionCreate");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretProvisionCreate;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretProvisionCreate";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotatedSecretProvisionAssocOutput>("/rotated-secret-provision-create", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretProvisionCreate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionDelete"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretProvisionAssocOutput</returns>
+        public RotatedSecretProvisionAssocOutput RotatedSecretProvisionDelete(RotatedSecretProvisionDelete rotatedSecretProvisionDelete, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput> localVarResponse = RotatedSecretProvisionDeleteWithHttpInfo(rotatedSecretProvisionDelete);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionDelete"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretProvisionAssocOutput</returns>
+        public akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionDeleteWithHttpInfo(RotatedSecretProvisionDelete rotatedSecretProvisionDelete, int operationIndex = 0)
+        {
+            // verify the required parameter 'rotatedSecretProvisionDelete' is set
+            if (rotatedSecretProvisionDelete == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretProvisionDelete' when calling V2Api->RotatedSecretProvisionDelete");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretProvisionDelete;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretProvisionDelete";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RotatedSecretProvisionAssocOutput>("/rotated-secret-provision-delete", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretProvisionDelete", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionDelete"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretProvisionAssocOutput</returns>
+        public async System.Threading.Tasks.Task<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionDeleteAsync(RotatedSecretProvisionDelete rotatedSecretProvisionDelete, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput> localVarResponse = await RotatedSecretProvisionDeleteWithHttpInfoAsync(rotatedSecretProvisionDelete, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionDelete"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretProvisionAssocOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput>> RotatedSecretProvisionDeleteWithHttpInfoAsync(RotatedSecretProvisionDelete rotatedSecretProvisionDelete, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rotatedSecretProvisionDelete' is set
+            if (rotatedSecretProvisionDelete == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretProvisionDelete' when calling V2Api->RotatedSecretProvisionDelete");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretProvisionDelete;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretProvisionDelete";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotatedSecretProvisionAssocOutput>("/rotated-secret-provision-delete", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretProvisionDelete", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionPush"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ProvisionSSHRotatedSecretOutput</returns>
+        public ProvisionSSHRotatedSecretOutput RotatedSecretProvisionPush(RotatedSecretProvisionPush rotatedSecretProvisionPush, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<ProvisionSSHRotatedSecretOutput> localVarResponse = RotatedSecretProvisionPushWithHttpInfo(rotatedSecretProvisionPush);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionPush"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ProvisionSSHRotatedSecretOutput</returns>
+        public akeyless.Client.ApiResponse<ProvisionSSHRotatedSecretOutput> RotatedSecretProvisionPushWithHttpInfo(RotatedSecretProvisionPush rotatedSecretProvisionPush, int operationIndex = 0)
+        {
+            // verify the required parameter 'rotatedSecretProvisionPush' is set
+            if (rotatedSecretProvisionPush == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretProvisionPush' when calling V2Api->RotatedSecretProvisionPush");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretProvisionPush;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretProvisionPush";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ProvisionSSHRotatedSecretOutput>("/rotated-secret-provision-push", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretProvisionPush", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionPush"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ProvisionSSHRotatedSecretOutput</returns>
+        public async System.Threading.Tasks.Task<ProvisionSSHRotatedSecretOutput> RotatedSecretProvisionPushAsync(RotatedSecretProvisionPush rotatedSecretProvisionPush, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<ProvisionSSHRotatedSecretOutput> localVarResponse = await RotatedSecretProvisionPushWithHttpInfoAsync(rotatedSecretProvisionPush, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionPush"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ProvisionSSHRotatedSecretOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<ProvisionSSHRotatedSecretOutput>> RotatedSecretProvisionPushWithHttpInfoAsync(RotatedSecretProvisionPush rotatedSecretProvisionPush, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rotatedSecretProvisionPush' is set
+            if (rotatedSecretProvisionPush == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretProvisionPush' when calling V2Api->RotatedSecretProvisionPush");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretProvisionPush;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretProvisionPush";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ProvisionSSHRotatedSecretOutput>("/rotated-secret-provision-push", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretProvisionPush", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionUpdate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>RotatedSecretProvisionAssocOutput</returns>
+        public RotatedSecretProvisionAssocOutput RotatedSecretProvisionUpdate(RotatedSecretProvisionUpdate rotatedSecretProvisionUpdate, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput> localVarResponse = RotatedSecretProvisionUpdateWithHttpInfo(rotatedSecretProvisionUpdate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionUpdate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of RotatedSecretProvisionAssocOutput</returns>
+        public akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionUpdateWithHttpInfo(RotatedSecretProvisionUpdate rotatedSecretProvisionUpdate, int operationIndex = 0)
+        {
+            // verify the required parameter 'rotatedSecretProvisionUpdate' is set
+            if (rotatedSecretProvisionUpdate == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretProvisionUpdate' when calling V2Api->RotatedSecretProvisionUpdate");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretProvisionUpdate;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretProvisionUpdate";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<RotatedSecretProvisionAssocOutput>("/rotated-secret-provision-update", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretProvisionUpdate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionUpdate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RotatedSecretProvisionAssocOutput</returns>
+        public async System.Threading.Tasks.Task<RotatedSecretProvisionAssocOutput> RotatedSecretProvisionUpdateAsync(RotatedSecretProvisionUpdate rotatedSecretProvisionUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput> localVarResponse = await RotatedSecretProvisionUpdateWithHttpInfoAsync(rotatedSecretProvisionUpdate, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rotatedSecretProvisionUpdate"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RotatedSecretProvisionAssocOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<RotatedSecretProvisionAssocOutput>> RotatedSecretProvisionUpdateWithHttpInfoAsync(RotatedSecretProvisionUpdate rotatedSecretProvisionUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rotatedSecretProvisionUpdate' is set
+            if (rotatedSecretProvisionUpdate == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'rotatedSecretProvisionUpdate' when calling V2Api->RotatedSecretProvisionUpdate");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = rotatedSecretProvisionUpdate;
+
+            localVarRequestOptions.Operation = "V2Api.RotatedSecretProvisionUpdate";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotatedSecretProvisionAssocOutput>("/rotated-secret-provision-update", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RotatedSecretProvisionUpdate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="rotatedSecretSync"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Object</returns>
@@ -102157,6 +103393,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("TargetCreateArtifactory", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetCreateOutput</returns>
+        public TargetCreateOutput TargetCreateAtlassian(TargetCreateAtlassian targetCreateAtlassian, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<TargetCreateOutput> localVarResponse = TargetCreateAtlassianWithHttpInfo(targetCreateAtlassian);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetCreateOutput</returns>
+        public akeyless.Client.ApiResponse<TargetCreateOutput> TargetCreateAtlassianWithHttpInfo(TargetCreateAtlassian targetCreateAtlassian, int operationIndex = 0)
+        {
+            // verify the required parameter 'targetCreateAtlassian' is set
+            if (targetCreateAtlassian == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetCreateAtlassian' when calling V2Api->TargetCreateAtlassian");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetCreateAtlassian;
+
+            localVarRequestOptions.Operation = "V2Api.TargetCreateAtlassian";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TargetCreateOutput>("/target-create-atlassian", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetCreateAtlassian", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetCreateOutput</returns>
+        public async System.Threading.Tasks.Task<TargetCreateOutput> TargetCreateAtlassianAsync(TargetCreateAtlassian targetCreateAtlassian, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<TargetCreateOutput> localVarResponse = await TargetCreateAtlassianWithHttpInfoAsync(targetCreateAtlassian, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<TargetCreateOutput>> TargetCreateAtlassianWithHttpInfoAsync(TargetCreateAtlassian targetCreateAtlassian, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'targetCreateAtlassian' is set
+            if (targetCreateAtlassian == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetCreateAtlassian' when calling V2Api->TargetCreateAtlassian");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetCreateAtlassian;
+
+            localVarRequestOptions.Operation = "V2Api.TargetCreateAtlassian";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TargetCreateOutput>("/target-create-atlassian", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetCreateAtlassian", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -108727,6 +110109,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("TargetUpdateArtifactory", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetUpdateOutput</returns>
+        public TargetUpdateOutput TargetUpdateAtlassian(TargetUpdateAtlassian targetUpdateAtlassian, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<TargetUpdateOutput> localVarResponse = TargetUpdateAtlassianWithHttpInfo(targetUpdateAtlassian);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<TargetUpdateOutput> TargetUpdateAtlassianWithHttpInfo(TargetUpdateAtlassian targetUpdateAtlassian, int operationIndex = 0)
+        {
+            // verify the required parameter 'targetUpdateAtlassian' is set
+            if (targetUpdateAtlassian == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetUpdateAtlassian' when calling V2Api->TargetUpdateAtlassian");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetUpdateAtlassian;
+
+            localVarRequestOptions.Operation = "V2Api.TargetUpdateAtlassian";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TargetUpdateOutput>("/target-update-atlassian", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetUpdateAtlassian", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<TargetUpdateOutput> TargetUpdateAtlassianAsync(TargetUpdateAtlassian targetUpdateAtlassian, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<TargetUpdateOutput> localVarResponse = await TargetUpdateAtlassianWithHttpInfoAsync(targetUpdateAtlassian, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateAtlassian"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<TargetUpdateOutput>> TargetUpdateAtlassianWithHttpInfoAsync(TargetUpdateAtlassian targetUpdateAtlassian, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'targetUpdateAtlassian' is set
+            if (targetUpdateAtlassian == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetUpdateAtlassian' when calling V2Api->TargetUpdateAtlassian");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetUpdateAtlassian;
+
+            localVarRequestOptions.Operation = "V2Api.TargetUpdateAtlassian";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TargetUpdateOutput>("/target-update-atlassian", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetUpdateAtlassian", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

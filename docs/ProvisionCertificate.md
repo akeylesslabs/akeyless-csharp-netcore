@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ItemId** | **long** | Certificate item ID | [optional] 
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Certificate name | 
+**TargetName** | **string** |  | [optional] [default to "all targets associated with the certificate)"]
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

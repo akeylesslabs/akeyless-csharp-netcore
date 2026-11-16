@@ -53,8 +53,9 @@ namespace akeyless.Model
         /// <param name="expirationEvents">expirationEvents.</param>
         /// <param name="isApproved">isApproved.</param>
         /// <param name="modificationDate">modificationDate.</param>
+        /// <param name="owner">owner.</param>
         /// <param name="uidExpirationEvents">uidExpirationEvents.</param>
-        public AuthMethod(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), AuthMethodAdditionalData authMethodAdditionalData = default(AuthMethodAdditionalData), long authMethodId = default(long), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), string bookmarkLoginUrlTemplate = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool deleteProtection = default(bool), string description = default(string), List<AuthExpirationEvent> expirationEvents = default(List<AuthExpirationEvent>), bool isApproved = default(bool), DateTime modificationDate = default(DateTime), List<UidExpirationEvent> uidExpirationEvents = default(List<UidExpirationEvent>))
+        public AuthMethod(DateTime accessDate = default(DateTime), string accessDateDisplay = default(string), AuthMethodAccessInfo accessInfo = default(AuthMethodAccessInfo), string accountId = default(string), List<long> associatedGwIds = default(List<long>), string authMethodAccessId = default(string), AuthMethodAdditionalData authMethodAdditionalData = default(AuthMethodAdditionalData), long authMethodId = default(long), string authMethodName = default(string), List<AuthMethodRoleAssociation> authMethodRolesAssoc = default(List<AuthMethodRoleAssociation>), string bookmarkLoginUrlTemplate = default(string), List<string> clientPermissions = default(List<string>), DateTime creationDate = default(DateTime), bool deleteProtection = default(bool), string description = default(string), List<AuthExpirationEvent> expirationEvents = default(List<AuthExpirationEvent>), bool isApproved = default(bool), DateTime modificationDate = default(DateTime), string owner = default(string), List<UidExpirationEvent> uidExpirationEvents = default(List<UidExpirationEvent>))
         {
             this.AccessDate = accessDate;
             this.AccessDateDisplay = accessDateDisplay;
@@ -74,6 +75,7 @@ namespace akeyless.Model
             this.ExpirationEvents = expirationEvents;
             this.IsApproved = isApproved;
             this.ModificationDate = modificationDate;
+            this.Owner = owner;
             this.UidExpirationEvents = uidExpirationEvents;
         }
 
@@ -187,6 +189,12 @@ namespace akeyless.Model
         public DateTime ModificationDate { get; set; }
 
         /// <summary>
+        /// Gets or Sets Owner
+        /// </summary>
+        [DataMember(Name = "owner", EmitDefaultValue = false)]
+        public string Owner { get; set; }
+
+        /// <summary>
         /// Gets or Sets UidExpirationEvents
         /// </summary>
         [DataMember(Name = "uid_expiration_events", EmitDefaultValue = false)]
@@ -218,6 +226,7 @@ namespace akeyless.Model
             sb.Append("  ExpirationEvents: ").Append(ExpirationEvents).Append("\n");
             sb.Append("  IsApproved: ").Append(IsApproved).Append("\n");
             sb.Append("  ModificationDate: ").Append(ModificationDate).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  UidExpirationEvents: ").Append(UidExpirationEvents).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

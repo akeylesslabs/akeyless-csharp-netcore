@@ -18,6 +18,13 @@ Name | Type | Description | Notes
 **RotateOnUnlock** | **string** | Rotate this secret after it is unlocked | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseGwCloudIdentity** | **bool** | Use the Gateway&#39;s cloud identity (Anthropic Workload Identity Federation) instead of an API key | [optional] 
+**WifAzureAudience** | **string** | Identifier URI (api://&lt;app-id&gt;) of the Entra app registration for the Claude API audience, required with the azure source | [optional] 
+**WifFederationRuleId** | **string** | Federation rule ID (fdrl_...), required with use-gw-cloud-identity | [optional] 
+**WifIdentityTokenSource** | **string** | Where the Gateway reads its identity token: file (default), gcp, aws or azure | [optional] 
+**WifOrganizationId** | **string** | Anthropic organization ID (UUID), required with use-gw-cloud-identity | [optional] 
+**WifServiceAccountId** | **string** | Claude service account ID (svac_...), required with use-gw-cloud-identity | [optional] 
+**WifWorkspaceId** | **string** | Workspace ID (wrkspc_...), needed only when the federation rule covers more than one workspace | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

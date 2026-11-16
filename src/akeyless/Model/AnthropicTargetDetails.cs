@@ -37,10 +37,24 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="anthropicUrl">anthropicUrl.</param>
         /// <param name="apiKey">apiKey.</param>
-        public AnthropicTargetDetails(string anthropicUrl = default(string), string apiKey = default(string))
+        /// <param name="useGwCloudIdentity">UseGatewayCloudIdentity authenticates with Anthropic Workload Identity Federation instead of ApiKey: the Gateway exchanges its own identity token for a short-lived Anthropic access token. ApiKey must be empty. See go/src/targets/llm/anthropic_wif_client.go..</param>
+        /// <param name="wifAzureAudience">WIFAzureAudience is the identifier URI (api://&lt;app-id&gt;) of the Entra app registration that represents the Claude API audience. Required with the azure source, empty with every other source..</param>
+        /// <param name="wifFederationRuleId">WIFFederationRuleID is the federation rule ID (fdrl_...)..</param>
+        /// <param name="wifIdentityTokenSource">WIFIdentityTokenSource selects where the Gateway takes its identity token: file (default, projected Kubernetes or SPIFFE token), gcp (Google Cloud metadata server), aws (STS web identity token) or azure (Microsoft Entra ID)..</param>
+        /// <param name="wifOrganizationId">WIFOrganizationID is the UUID of the Anthropic organization..</param>
+        /// <param name="wifServiceAccountId">WIFServiceAccountID is the Claude service account ID (svac_...)..</param>
+        /// <param name="wifWorkspaceId">WIFWorkspaceID is the optional workspace ID (wrkspc_...). Required by Anthropic only when the rule is enabled for more than one workspace..</param>
+        public AnthropicTargetDetails(string anthropicUrl = default(string), string apiKey = default(string), bool useGwCloudIdentity = default(bool), string wifAzureAudience = default(string), string wifFederationRuleId = default(string), string wifIdentityTokenSource = default(string), string wifOrganizationId = default(string), string wifServiceAccountId = default(string), string wifWorkspaceId = default(string))
         {
             this.AnthropicUrl = anthropicUrl;
             this.ApiKey = apiKey;
+            this.UseGwCloudIdentity = useGwCloudIdentity;
+            this.WifAzureAudience = wifAzureAudience;
+            this.WifFederationRuleId = wifFederationRuleId;
+            this.WifIdentityTokenSource = wifIdentityTokenSource;
+            this.WifOrganizationId = wifOrganizationId;
+            this.WifServiceAccountId = wifServiceAccountId;
+            this.WifWorkspaceId = wifWorkspaceId;
         }
 
         /// <summary>
@@ -56,6 +70,55 @@ namespace akeyless.Model
         public string ApiKey { get; set; }
 
         /// <summary>
+        /// UseGatewayCloudIdentity authenticates with Anthropic Workload Identity Federation instead of ApiKey: the Gateway exchanges its own identity token for a short-lived Anthropic access token. ApiKey must be empty. See go/src/targets/llm/anthropic_wif_client.go.
+        /// </summary>
+        /// <value>UseGatewayCloudIdentity authenticates with Anthropic Workload Identity Federation instead of ApiKey: the Gateway exchanges its own identity token for a short-lived Anthropic access token. ApiKey must be empty. See go/src/targets/llm/anthropic_wif_client.go.</value>
+        [DataMember(Name = "use_gw_cloud_identity", EmitDefaultValue = true)]
+        public bool UseGwCloudIdentity { get; set; }
+
+        /// <summary>
+        /// WIFAzureAudience is the identifier URI (api://&lt;app-id&gt;) of the Entra app registration that represents the Claude API audience. Required with the azure source, empty with every other source.
+        /// </summary>
+        /// <value>WIFAzureAudience is the identifier URI (api://&lt;app-id&gt;) of the Entra app registration that represents the Claude API audience. Required with the azure source, empty with every other source.</value>
+        [DataMember(Name = "wif_azure_audience", EmitDefaultValue = false)]
+        public string WifAzureAudience { get; set; }
+
+        /// <summary>
+        /// WIFFederationRuleID is the federation rule ID (fdrl_...).
+        /// </summary>
+        /// <value>WIFFederationRuleID is the federation rule ID (fdrl_...).</value>
+        [DataMember(Name = "wif_federation_rule_id", EmitDefaultValue = false)]
+        public string WifFederationRuleId { get; set; }
+
+        /// <summary>
+        /// WIFIdentityTokenSource selects where the Gateway takes its identity token: file (default, projected Kubernetes or SPIFFE token), gcp (Google Cloud metadata server), aws (STS web identity token) or azure (Microsoft Entra ID).
+        /// </summary>
+        /// <value>WIFIdentityTokenSource selects where the Gateway takes its identity token: file (default, projected Kubernetes or SPIFFE token), gcp (Google Cloud metadata server), aws (STS web identity token) or azure (Microsoft Entra ID).</value>
+        [DataMember(Name = "wif_identity_token_source", EmitDefaultValue = false)]
+        public string WifIdentityTokenSource { get; set; }
+
+        /// <summary>
+        /// WIFOrganizationID is the UUID of the Anthropic organization.
+        /// </summary>
+        /// <value>WIFOrganizationID is the UUID of the Anthropic organization.</value>
+        [DataMember(Name = "wif_organization_id", EmitDefaultValue = false)]
+        public string WifOrganizationId { get; set; }
+
+        /// <summary>
+        /// WIFServiceAccountID is the Claude service account ID (svac_...).
+        /// </summary>
+        /// <value>WIFServiceAccountID is the Claude service account ID (svac_...).</value>
+        [DataMember(Name = "wif_service_account_id", EmitDefaultValue = false)]
+        public string WifServiceAccountId { get; set; }
+
+        /// <summary>
+        /// WIFWorkspaceID is the optional workspace ID (wrkspc_...). Required by Anthropic only when the rule is enabled for more than one workspace.
+        /// </summary>
+        /// <value>WIFWorkspaceID is the optional workspace ID (wrkspc_...). Required by Anthropic only when the rule is enabled for more than one workspace.</value>
+        [DataMember(Name = "wif_workspace_id", EmitDefaultValue = false)]
+        public string WifWorkspaceId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -65,6 +128,13 @@ namespace akeyless.Model
             sb.Append("class AnthropicTargetDetails {\n");
             sb.Append("  AnthropicUrl: ").Append(AnthropicUrl).Append("\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
+            sb.Append("  UseGwCloudIdentity: ").Append(UseGwCloudIdentity).Append("\n");
+            sb.Append("  WifAzureAudience: ").Append(WifAzureAudience).Append("\n");
+            sb.Append("  WifFederationRuleId: ").Append(WifFederationRuleId).Append("\n");
+            sb.Append("  WifIdentityTokenSource: ").Append(WifIdentityTokenSource).Append("\n");
+            sb.Append("  WifOrganizationId: ").Append(WifOrganizationId).Append("\n");
+            sb.Append("  WifServiceAccountId: ").Append(WifServiceAccountId).Append("\n");
+            sb.Append("  WifWorkspaceId: ").Append(WifWorkspaceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -48,6 +48,7 @@ Name | Type | Description | Notes
 **PasswordLength** | **long** | Password length between 5 - to 50 characters | [optional] 
 **Phone** | **string** | Phone number | [optional] 
 **PostalCode** | **string** | Postal code | [optional] 
+**RequireAuthMethodOwner** | **string** | Require an owner when creating or updating authentication methods [true/false] | [optional] 
 **Token** | **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UsageEventEnable** | **string** | Enable event for objects that have not been used or changed [true/false] | [optional] 

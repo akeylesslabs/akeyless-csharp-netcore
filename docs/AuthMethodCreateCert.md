@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **Json** | **bool** | Set output format to JSON | [optional] [default to false]
 **JwtTtl** | **long** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
+**Owner** | **string** | Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it | [optional] 
 **ProductType** | **List&lt;string&gt;** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara] | [optional] 
 **RequireCrlDp** | **bool** | Require certificate CRL distribution points (CDP) and enforce CRL validation during authentication. | [optional] 
 **RevokedCertIds** | **List&lt;string&gt;** | A list of revoked cert ids | [optional] 

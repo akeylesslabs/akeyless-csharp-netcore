@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CacheEnable** | **bool** |  | [optional] 
 **CacheEncryptionKey** | **string** |  | [optional] 
+**CacheItemMetadata** | **bool** |  | [optional] 
 **CacheTtl** | **string** |  | [optional] 
 **NewProactiveCacheEnable** | **bool** |  | [optional] 
 **ProactiveCacheDumpInterval** | **string** |  | [optional] 

@@ -50,6 +50,7 @@ namespace akeyless.Model
         /// <param name="maxVersions">maxVersions.</param>
         /// <param name="nextAutoRotateType">nextAutoRotateType.</param>
         /// <param name="numberOfVersionsToSave">numberOfVersionsToSave.</param>
+        /// <param name="publicKey">PublicKey is the OpenSSH authorized_keys line for an SSH rotated secret. Stored in the clear on item attributes so describe-item can return it under list permission..</param>
         /// <param name="publicKeyRemotePath">publicKeyRemotePath.</param>
         /// <param name="rotationHour">rotationHour.</param>
         /// <param name="rotationIntervalMin">rotationIntervalMin.</param>
@@ -61,7 +62,7 @@ namespace akeyless.Model
         /// <param name="servicesDetails">servicesDetails.</param>
         /// <param name="skipDryRun">skipDryRun.</param>
         /// <param name="timeoutSeconds">timeoutSeconds.</param>
-        public RotatedSecretDetailsInfo(string awsUserName = default(string), int deletePreviousVersionInDays = default(int), bool enableCustomPasswordPolicy = default(bool), bool graceRotation = default(bool), int graceRotationHour = default(int), int graceRotationInterval = default(int), string graceRotationTiming = default(string), long gwClusterId = default(long), List<WindowsService> iisAppsDetails = default(List<WindowsService>), string keyAlgorithm = default(string), string lastRotationError = default(string), bool managedByAkeyless = default(bool), long maxVersions = default(long), string nextAutoRotateType = default(string), int numberOfVersionsToSave = default(int), string publicKeyRemotePath = default(string), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>), bool skipDryRun = default(bool), long timeoutSeconds = default(long))
+        public RotatedSecretDetailsInfo(string awsUserName = default(string), int deletePreviousVersionInDays = default(int), bool enableCustomPasswordPolicy = default(bool), bool graceRotation = default(bool), int graceRotationHour = default(int), int graceRotationInterval = default(int), string graceRotationTiming = default(string), long gwClusterId = default(long), List<WindowsService> iisAppsDetails = default(List<WindowsService>), string keyAlgorithm = default(string), string lastRotationError = default(string), bool managedByAkeyless = default(bool), long maxVersions = default(long), string nextAutoRotateType = default(string), int numberOfVersionsToSave = default(int), string publicKey = default(string), string publicKeyRemotePath = default(string), int rotationHour = default(int), bool rotationIntervalMin = default(bool), string rotationStatement = default(string), string rotatorCredsType = default(string), string rotatorStatus = default(string), string rotatorType = default(string), bool samePassword = default(bool), List<WindowsService> servicesDetails = default(List<WindowsService>), bool skipDryRun = default(bool), long timeoutSeconds = default(long))
         {
             this.AwsUserName = awsUserName;
             this.DeletePreviousVersionInDays = deletePreviousVersionInDays;
@@ -78,6 +79,7 @@ namespace akeyless.Model
             this.MaxVersions = maxVersions;
             this.NextAutoRotateType = nextAutoRotateType;
             this.NumberOfVersionsToSave = numberOfVersionsToSave;
+            this.PublicKey = publicKey;
             this.PublicKeyRemotePath = publicKeyRemotePath;
             this.RotationHour = rotationHour;
             this.RotationIntervalMin = rotationIntervalMin;
@@ -183,6 +185,13 @@ namespace akeyless.Model
         public int NumberOfVersionsToSave { get; set; }
 
         /// <summary>
+        /// PublicKey is the OpenSSH authorized_keys line for an SSH rotated secret. Stored in the clear on item attributes so describe-item can return it under list permission.
+        /// </summary>
+        /// <value>PublicKey is the OpenSSH authorized_keys line for an SSH rotated secret. Stored in the clear on item attributes so describe-item can return it under list permission.</value>
+        [DataMember(Name = "public_key", EmitDefaultValue = false)]
+        public string PublicKey { get; set; }
+
+        /// <summary>
         /// Gets or Sets PublicKeyRemotePath
         /// </summary>
         [DataMember(Name = "public_key_remote_path", EmitDefaultValue = false)]
@@ -272,6 +281,7 @@ namespace akeyless.Model
             sb.Append("  MaxVersions: ").Append(MaxVersions).Append("\n");
             sb.Append("  NextAutoRotateType: ").Append(NextAutoRotateType).Append("\n");
             sb.Append("  NumberOfVersionsToSave: ").Append(NumberOfVersionsToSave).Append("\n");
+            sb.Append("  PublicKey: ").Append(PublicKey).Append("\n");
             sb.Append("  PublicKeyRemotePath: ").Append(PublicKeyRemotePath).Append("\n");
             sb.Append("  RotationHour: ").Append(RotationHour).Append("\n");
             sb.Append("  RotationIntervalMin: ").Append(RotationIntervalMin).Append("\n");

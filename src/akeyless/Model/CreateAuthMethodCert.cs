@@ -60,13 +60,14 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="owner">Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it.</param>
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara].</param>
         /// <param name="requireCrlDp">Require certificate CRL distribution points (CDP) and enforce CRL validation during authentication..</param>
         /// <param name="revokedCertIds">A list of revoked cert ids.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value should be configured, such as common_name or organizational_unit Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. (required).</param>
-        public CreateAuthMethodCert(long accessExpires = 0, List<string> allowedClientType = default(List<string>), string allowedCors = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), bool requireCrlDp = default(bool), List<string> revokedCertIds = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public CreateAuthMethodCert(long accessExpires = 0, List<string> allowedClientType = default(List<string>), string allowedCors = default(string), List<string> auditLogsClaims = default(List<string>), List<string> boundCommonNames = default(List<string>), List<string> boundDnsSans = default(List<string>), List<string> boundEmailSans = default(List<string>), List<string> boundExtensions = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundOrganizationalUnits = default(List<string>), List<string> boundUriSans = default(List<string>), string certificateData = default(string), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string owner = default(string), List<string> productType = default(List<string>), bool requireCrlDp = default(bool), List<string> revokedCertIds = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -99,6 +100,7 @@ namespace akeyless.Model
             this.GwBoundIps = gwBoundIps;
             this.Json = json;
             this.JwtTtl = jwtTtl;
+            this.Owner = owner;
             this.ProductType = productType;
             this.RequireCrlDp = requireCrlDp;
             this.RevokedCertIds = revokedCertIds;
@@ -247,6 +249,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+        /// </summary>
+        /// <value>Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it</value>
+        [DataMember(Name = "owner", EmitDefaultValue = true)]
+        public string Owner { get; set; }
+
+        /// <summary>
         /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
         /// </summary>
         /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]</value>
@@ -316,6 +325,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  RequireCrlDp: ").Append(RequireCrlDp).Append("\n");
             sb.Append("  RevokedCertIds: ").Append(RevokedCertIds).Append("\n");

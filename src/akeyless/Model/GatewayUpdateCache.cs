@@ -36,6 +36,7 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="GatewayUpdateCache" /> class.
         /// </summary>
         /// <param name="backupInterval">Secure backup interval in minutes. To ensure service continuity in case of power cycle and network outage secrets will be backed up periodically per backup interval (default to &quot;1&quot;).</param>
+        /// <param name="cacheItemMetadata">Serve item metadata (describe-item and classic key details) from an on-demand cache, refreshed after the minimum fetching interval [true/false].</param>
         /// <param name="enableCache">Enable cache [true/false].</param>
         /// <param name="enableProactive">Enable proactive caching [true/false].</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
@@ -43,10 +44,11 @@ namespace akeyless.Model
         /// <param name="staleTimeout">Stale timeout in minutes, cache entries which are not accessed within timeout will be removed from cache (default to &quot;60&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public GatewayUpdateCache(string backupInterval = @"1", string enableCache = default(string), string enableProactive = default(string), bool json = false, string minimumFetchInterval = @"5", string staleTimeout = @"60", string token = default(string), string uidToken = default(string))
+        public GatewayUpdateCache(string backupInterval = @"1", string cacheItemMetadata = default(string), string enableCache = default(string), string enableProactive = default(string), bool json = false, string minimumFetchInterval = @"5", string staleTimeout = @"60", string token = default(string), string uidToken = default(string))
         {
             // use default value if no "backupInterval" provided
             this.BackupInterval = backupInterval ?? @"1";
+            this.CacheItemMetadata = cacheItemMetadata;
             this.EnableCache = enableCache;
             this.EnableProactive = enableProactive;
             this.Json = json;
@@ -64,6 +66,13 @@ namespace akeyless.Model
         /// <value>Secure backup interval in minutes. To ensure service continuity in case of power cycle and network outage secrets will be backed up periodically per backup interval</value>
         [DataMember(Name = "backup-interval", EmitDefaultValue = false)]
         public string BackupInterval { get; set; }
+
+        /// <summary>
+        /// Serve item metadata (describe-item and classic key details) from an on-demand cache, refreshed after the minimum fetching interval [true/false]
+        /// </summary>
+        /// <value>Serve item metadata (describe-item and classic key details) from an on-demand cache, refreshed after the minimum fetching interval [true/false]</value>
+        [DataMember(Name = "cache-item-metadata", EmitDefaultValue = false)]
+        public string CacheItemMetadata { get; set; }
 
         /// <summary>
         /// Enable cache [true/false]
@@ -123,6 +132,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GatewayUpdateCache {\n");
             sb.Append("  BackupInterval: ").Append(BackupInterval).Append("\n");
+            sb.Append("  CacheItemMetadata: ").Append(CacheItemMetadata).Append("\n");
             sb.Append("  EnableCache: ").Append(EnableCache).Append("\n");
             sb.Append("  EnableProactive: ").Append(EnableProactive).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");

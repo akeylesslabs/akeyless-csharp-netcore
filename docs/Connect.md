@@ -6,7 +6,7 @@ Connect is a command that performs secure remote access
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Helper** | **Object** |  | [optional] 
-**RcFileOverride** | **string** | used to override .akeyless-connect.rc in tests | [optional] 
+**RcFileOverride** | **string** | test only: the rc file to read instead of the home rc files | [optional] 
 **BastionCtrlPath** | **string** | Deprecated. use bastion-ctrl-path | [optional] 
 **BastionCtrlPort** | **string** | Deprecated. use sra-ctrl-port | [optional] 
 **BastionCtrlProto** | **string** | Deprecated. use sra-ctrl-proto | [optional] 

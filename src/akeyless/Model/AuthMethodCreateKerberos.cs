@@ -64,6 +64,7 @@ namespace akeyless.Model
         /// <param name="ldapCaCert">ldapCaCert.</param>
         /// <param name="ldapUrl">ldapUrl.</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="owner">Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it.</param>
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara].</param>
         /// <param name="subclaimsDelimiters">A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
@@ -71,7 +72,7 @@ namespace akeyless.Model
         /// <param name="uniqueIdentifier">A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities..</param>
         /// <param name="userAttribute">userAttribute.</param>
         /// <param name="userDn">userDn.</param>
-        public AuthMethodCreateKerberos(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), string bindDn = default(string), string bindDnPassword = default(string), List<string> boundIps = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string groupAttr = default(string), string groupDn = default(string), string groupFilter = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string keytabFileData = default(string), string keytabFilePath = default(string), string krb5ConfData = default(string), string krb5ConfPath = default(string), bool ldapAnonymousSearch = default(bool), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string userAttribute = default(string), string userDn = default(string))
+        public AuthMethodCreateKerberos(long accessExpires = 0, List<string> allowedClientType = default(List<string>), List<string> auditLogsClaims = default(List<string>), string bindDn = default(string), string bindDnPassword = default(string), List<string> boundIps = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), string groupAttr = default(string), string groupDn = default(string), string groupFilter = default(string), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string keytabFileData = default(string), string keytabFilePath = default(string), string krb5ConfData = default(string), string krb5ConfPath = default(string), bool ldapAnonymousSearch = default(bool), string ldapCaCert = default(string), string ldapUrl = default(string), string name = default(string), string owner = default(string), List<string> productType = default(List<string>), List<string> subclaimsDelimiters = default(List<string>), string token = default(string), string uidToken = default(string), string uniqueIdentifier = default(string), string userAttribute = default(string), string userDn = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -102,6 +103,7 @@ namespace akeyless.Model
             this.LdapAnonymousSearch = ldapAnonymousSearch;
             this.LdapCaCert = ldapCaCert;
             this.LdapUrl = ldapUrl;
+            this.Owner = owner;
             this.ProductType = productType;
             this.SubclaimsDelimiters = subclaimsDelimiters;
             this.Token = token;
@@ -268,6 +270,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+        /// </summary>
+        /// <value>Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it</value>
+        [DataMember(Name = "owner", EmitDefaultValue = false)]
+        public string Owner { get; set; }
+
+        /// <summary>
         /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
         /// </summary>
         /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]</value>
@@ -346,6 +355,7 @@ namespace akeyless.Model
             sb.Append("  LdapCaCert: ").Append(LdapCaCert).Append("\n");
             sb.Append("  LdapUrl: ").Append(LdapUrl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  SubclaimsDelimiters: ").Append(SubclaimsDelimiters).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

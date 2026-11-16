@@ -58,13 +58,14 @@ namespace akeyless.Model
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="jwtTtl">Jwt TTL (default to 0).</param>
         /// <param name="name">Auth Method name (required).</param>
+        /// <param name="owner">Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it.</param>
         /// <param name="productType">Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara].</param>
         /// <param name="serviceAccountCredsData">ServiceAccount credentials data instead of giving a file path, base64 encoded.</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="type">Type of the GCP Access Rules (required).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="uniqueIdentifier">A unique identifier (ID) value which is a \&quot;sub claim\&quot; name that contains details uniquely identifying that resource. This \&quot;sub claim\&quot; is used to distinguish between different identities..</param>
-        public AuthMethodCreateGcp(long accessExpires = 0, List<string> allowedClientType = default(List<string>), string audience = @"akeyless.io", List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), List<string> productType = default(List<string>), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
+        public AuthMethodCreateGcp(long accessExpires = 0, List<string> allowedClientType = default(List<string>), string audience = @"akeyless.io", List<string> auditLogsClaims = default(List<string>), List<string> boundIps = default(List<string>), List<string> boundLabels = default(List<string>), List<string> boundProjects = default(List<string>), List<string> boundRegions = default(List<string>), List<string> boundServiceAccounts = default(List<string>), List<string> boundZones = default(List<string>), string deleteProtection = default(string), string description = default(string), List<string> expirationEventIn = default(List<string>), bool forceSubClaims = default(bool), List<string> gwBoundIps = default(List<string>), bool json = false, long jwtTtl = 0, string name = default(string), string owner = default(string), List<string> productType = default(List<string>), string serviceAccountCredsData = default(string), string token = default(string), string type = default(string), string uidToken = default(string), string uniqueIdentifier = default(string))
         {
             // to ensure "audience" is required (not null)
             if (audience == null)
@@ -100,6 +101,7 @@ namespace akeyless.Model
             this.GwBoundIps = gwBoundIps;
             this.Json = json;
             this.JwtTtl = jwtTtl;
+            this.Owner = owner;
             this.ProductType = productType;
             this.ServiceAccountCredsData = serviceAccountCredsData;
             this.Token = token;
@@ -234,6 +236,13 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+        /// </summary>
+        /// <value>Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it</value>
+        [DataMember(Name = "owner", EmitDefaultValue = false)]
+        public string Owner { get; set; }
+
+        /// <summary>
         /// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
         /// </summary>
         /// <value>Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]</value>
@@ -301,6 +310,7 @@ namespace akeyless.Model
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  JwtTtl: ").Append(JwtTtl).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  ServiceAccountCredsData: ").Append(ServiceAccountCredsData).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");

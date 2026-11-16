@@ -44,9 +44,10 @@ namespace akeyless.Model
         /// <param name="itemId">Certificate item ID.</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
         /// <param name="name">Certificate name (required).</param>
+        /// <param name="targetName">targetName (default to &quot;all targets associated with the certificate)&quot;).</param>
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
-        public ProvisionCertificate(string displayId = default(string), long itemId = default(long), bool json = false, string name = default(string), string token = default(string), string uidToken = default(string))
+        public ProvisionCertificate(string displayId = default(string), long itemId = default(long), bool json = false, string name = default(string), string targetName = @"all targets associated with the certificate)", string token = default(string), string uidToken = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -57,6 +58,8 @@ namespace akeyless.Model
             this.DisplayId = displayId;
             this.ItemId = itemId;
             this.Json = json;
+            // use default value if no "targetName" provided
+            this.TargetName = targetName ?? @"all targets associated with the certificate)";
             this.Token = token;
             this.UidToken = uidToken;
         }
@@ -90,6 +93,12 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or Sets TargetName
+        /// </summary>
+        [DataMember(Name = "target-name", EmitDefaultValue = false)]
+        public string TargetName { get; set; }
+
+        /// <summary>
         /// Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)
         /// </summary>
         /// <value>Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;)</value>
@@ -115,6 +124,7 @@ namespace akeyless.Model
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  TargetName: ").Append(TargetName).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  UidToken: ").Append(UidToken).Append("\n");
             sb.Append("}\n");
