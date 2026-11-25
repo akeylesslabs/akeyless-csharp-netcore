@@ -1309,10 +1309,6 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/CustomLLMTargetDetailsTests.cs
-src/akeyless.Test/Model/DomainCoverageTests.cs
-src/akeyless.Test/Model/TargetCreateCustomLLMTests.cs
-src/akeyless.Test/Model/TargetUpdateCustomLLMTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
