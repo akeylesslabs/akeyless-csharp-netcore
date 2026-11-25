@@ -10191,6 +10191,26 @@ namespace akeyless.Api
         /// 
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetCreateOutput</returns>
+        TargetCreateOutput TargetCreateCustomLLM(TargetCreateCustomLLM targetCreateCustomLLM, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetCreateOutput</returns>
+        ApiResponse<TargetCreateOutput> TargetCreateCustomLLMWithHttpInfo(TargetCreateCustomLLM targetCreateCustomLLM, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="targetCreateDB"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TargetCreateOutput</returns>
@@ -11107,6 +11127,26 @@ namespace akeyless.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TargetUpdateOutput</returns>
         ApiResponse<TargetUpdateOutput> TargetUpdateCustomDnsWithHttpInfo(TargetUpdateCustomDns targetUpdateCustomDns, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetUpdateOutput</returns>
+        TargetUpdateOutput TargetUpdateCustomLLM(TargetUpdateCustomLLM targetUpdateCustomLLM, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetUpdateOutput</returns>
+        ApiResponse<TargetUpdateOutput> TargetUpdateCustomLLMWithHttpInfo(TargetUpdateCustomLLM targetUpdateCustomLLM, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -26217,6 +26257,31 @@ namespace akeyless.Api
         /// 
         /// </remarks>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetCreateOutput</returns>
+        System.Threading.Tasks.Task<TargetCreateOutput> TargetCreateCustomLLMAsync(TargetCreateCustomLLM targetCreateCustomLLM, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetCreateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TargetCreateOutput>> TargetCreateCustomLLMWithHttpInfoAsync(TargetCreateCustomLLM targetCreateCustomLLM, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="targetCreateDB"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -27360,6 +27425,31 @@ namespace akeyless.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<TargetUpdateOutput>> TargetUpdateCustomDnsWithHttpInfoAsync(TargetUpdateCustomDns targetUpdateCustomDns, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetUpdateOutput</returns>
+        System.Threading.Tasks.Task<TargetUpdateOutput> TargetUpdateCustomLLMAsync(TargetUpdateCustomLLM targetUpdateCustomLLM, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TargetUpdateOutput>> TargetUpdateCustomLLMWithHttpInfoAsync(TargetUpdateCustomLLM targetUpdateCustomLLM, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -104282,6 +104372,152 @@ namespace akeyless.Api
         ///  
         /// </summary>
         /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetCreateOutput</returns>
+        public TargetCreateOutput TargetCreateCustomLLM(TargetCreateCustomLLM targetCreateCustomLLM, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<TargetCreateOutput> localVarResponse = TargetCreateCustomLLMWithHttpInfo(targetCreateCustomLLM);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetCreateOutput</returns>
+        public akeyless.Client.ApiResponse<TargetCreateOutput> TargetCreateCustomLLMWithHttpInfo(TargetCreateCustomLLM targetCreateCustomLLM, int operationIndex = 0)
+        {
+            // verify the required parameter 'targetCreateCustomLLM' is set
+            if (targetCreateCustomLLM == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetCreateCustomLLM' when calling V2Api->TargetCreateCustomLLM");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetCreateCustomLLM;
+
+            localVarRequestOptions.Operation = "V2Api.TargetCreateCustomLLM";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TargetCreateOutput>("/target-create-custom-llm", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetCreateCustomLLM", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetCreateOutput</returns>
+        public async System.Threading.Tasks.Task<TargetCreateOutput> TargetCreateCustomLLMAsync(TargetCreateCustomLLM targetCreateCustomLLM, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<TargetCreateOutput> localVarResponse = await TargetCreateCustomLLMWithHttpInfoAsync(targetCreateCustomLLM, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetCreateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetCreateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<TargetCreateOutput>> TargetCreateCustomLLMWithHttpInfoAsync(TargetCreateCustomLLM targetCreateCustomLLM, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'targetCreateCustomLLM' is set
+            if (targetCreateCustomLLM == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetCreateCustomLLM' when calling V2Api->TargetCreateCustomLLM");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetCreateCustomLLM;
+
+            localVarRequestOptions.Operation = "V2Api.TargetCreateCustomLLM";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TargetCreateOutput>("/target-create-custom-llm", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetCreateCustomLLM", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="targetCreateDB"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TargetCreateOutput</returns>
@@ -110985,6 +111221,152 @@ namespace akeyless.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("TargetUpdateCustomDns", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TargetUpdateOutput</returns>
+        public TargetUpdateOutput TargetUpdateCustomLLM(TargetUpdateCustomLLM targetUpdateCustomLLM, int operationIndex = 0)
+        {
+            akeyless.Client.ApiResponse<TargetUpdateOutput> localVarResponse = TargetUpdateCustomLLMWithHttpInfo(targetUpdateCustomLLM);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TargetUpdateOutput</returns>
+        public akeyless.Client.ApiResponse<TargetUpdateOutput> TargetUpdateCustomLLMWithHttpInfo(TargetUpdateCustomLLM targetUpdateCustomLLM, int operationIndex = 0)
+        {
+            // verify the required parameter 'targetUpdateCustomLLM' is set
+            if (targetUpdateCustomLLM == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetUpdateCustomLLM' when calling V2Api->TargetUpdateCustomLLM");
+            }
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetUpdateCustomLLM;
+
+            localVarRequestOptions.Operation = "V2Api.TargetUpdateCustomLLM";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TargetUpdateOutput>("/target-update-custom-llm", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetUpdateCustomLLM", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TargetUpdateOutput</returns>
+        public async System.Threading.Tasks.Task<TargetUpdateOutput> TargetUpdateCustomLLMAsync(TargetUpdateCustomLLM targetUpdateCustomLLM, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            akeyless.Client.ApiResponse<TargetUpdateOutput> localVarResponse = await TargetUpdateCustomLLMWithHttpInfoAsync(targetUpdateCustomLLM, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="akeyless.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetUpdateCustomLLM"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TargetUpdateOutput)</returns>
+        public async System.Threading.Tasks.Task<akeyless.Client.ApiResponse<TargetUpdateOutput>> TargetUpdateCustomLLMWithHttpInfoAsync(TargetUpdateCustomLLM targetUpdateCustomLLM, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'targetUpdateCustomLLM' is set
+            if (targetUpdateCustomLLM == null)
+            {
+                throw new akeyless.Client.ApiException(400, "Missing required parameter 'targetUpdateCustomLLM' when calling V2Api->TargetUpdateCustomLLM");
+            }
+
+
+            akeyless.Client.RequestOptions localVarRequestOptions = new akeyless.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = akeyless.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = akeyless.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = targetUpdateCustomLLM;
+
+            localVarRequestOptions.Operation = "V2Api.TargetUpdateCustomLLM";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TargetUpdateOutput>("/target-update-custom-llm", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TargetUpdateCustomLLM", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

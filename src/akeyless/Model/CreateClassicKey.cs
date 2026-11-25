@@ -40,7 +40,7 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateClassicKey" /> class.
         /// </summary>
-        /// <param name="alg">Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG] (required).</param>
+        /// <param name="alg">Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG, MLDSA44, MLDSA65, MLDSA87, MLKEM768, MLKEM1024, MLKEM768X25519] (required).</param>
         /// <param name="autoRotate">Whether to automatically rotate every rotation_interval days, or disable existing automatic rotation [true/false].</param>
         /// <param name="certFileData">Certificate in a PEM format..</param>
         /// <param name="certificateCommonName">Common name for the generated certificate. Relevant only for generate-self-signed-certificate..</param>
@@ -114,9 +114,9 @@ namespace akeyless.Model
         }
 
         /// <summary>
-        /// Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG]
+        /// Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG, MLDSA44, MLDSA65, MLDSA87, MLKEM768, MLKEM1024, MLKEM768X25519]
         /// </summary>
-        /// <value>Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG]</value>
+        /// <value>Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG, MLDSA44, MLDSA65, MLDSA87, MLKEM768, MLKEM1024, MLKEM768X25519]</value>
         [DataMember(Name = "alg", IsRequired = true, EmitDefaultValue = true)]
         public string Alg { get; set; }
 

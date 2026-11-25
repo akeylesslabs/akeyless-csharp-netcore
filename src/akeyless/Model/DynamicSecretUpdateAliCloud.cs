@@ -40,7 +40,6 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicSecretUpdateAliCloud" /> class.
         /// </summary>
-        /// <param name="adminRotationIntervalDays">Admin credentials rotation interval (days) (default to 0).</param>
         /// <param name="alicloudAccessKeyId">AliCloud RAM access key ID.</param>
         /// <param name="alicloudAccessMode">alicloudAccessMode.</param>
         /// <param name="alicloudAccessSecretKey">AliCloud RAM access key secret.</param>
@@ -59,7 +58,6 @@ namespace akeyless.Model
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="enableAdminRotation">Automatic admin credentials rotation (default to false).</param>
         /// <param name="enableAgenticRuntimeAuthority">EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias..</param>
         /// <param name="enableAiQuorum">Turns on AI Quorum checks for this item..</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
@@ -80,7 +78,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretUpdateAliCloud(long adminRotationIntervalDays = 0, string alicloudAccessKeyId = default(string), string alicloudAccessMode = default(string), string alicloudAccessSecretKey = default(string), string alicloudExternalId = default(string), string alicloudRegion = default(string), string alicloudRoleArns = default(string), string alicloudSessionPolicy = default(string), bool alicloudSetSourceIdentity = false, string alicloudSite = @"international", bool alicloudUserConsoleAccess = false, string alicloudUserGroups = default(string), string alicloudUserInlinePolicy = default(string), string alicloudUserPolicies = default(string), bool alicloudUserProgrammaticAccess = true, bool araEnabled = default(bool), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAdminRotation = false, bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public DynamicSecretUpdateAliCloud(string alicloudAccessKeyId = default(string), string alicloudAccessMode = default(string), string alicloudAccessSecretKey = default(string), string alicloudExternalId = default(string), string alicloudRegion = default(string), string alicloudRoleArns = default(string), string alicloudSessionPolicy = default(string), bool alicloudSetSourceIdentity = false, string alicloudSite = @"international", bool alicloudUserConsoleAccess = false, string alicloudUserGroups = default(string), string alicloudUserInlinePolicy = default(string), string alicloudUserPolicies = default(string), bool alicloudUserProgrammaticAccess = true, bool araEnabled = default(bool), string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), string newName = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -88,7 +86,6 @@ namespace akeyless.Model
                 throw new ArgumentNullException("name is a required property for DynamicSecretUpdateAliCloud and cannot be null");
             }
             this.Name = name;
-            this.AdminRotationIntervalDays = adminRotationIntervalDays;
             this.AlicloudAccessKeyId = alicloudAccessKeyId;
             this.AlicloudAccessMode = alicloudAccessMode;
             this.AlicloudAccessSecretKey = alicloudAccessSecretKey;
@@ -108,7 +105,6 @@ namespace akeyless.Model
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
-            this.EnableAdminRotation = enableAdminRotation;
             this.EnableAgenticRuntimeAuthority = enableAgenticRuntimeAuthority;
             this.EnableAiQuorum = enableAiQuorum;
             this.InputRule = inputRule;
@@ -130,13 +126,6 @@ namespace akeyless.Model
             // use default value if no "userTtl" provided
             this.UserTtl = userTtl ?? @"60m";
         }
-
-        /// <summary>
-        /// Admin credentials rotation interval (days)
-        /// </summary>
-        /// <value>Admin credentials rotation interval (days)</value>
-        [DataMember(Name = "admin-rotation-interval-days", EmitDefaultValue = false)]
-        public long AdminRotationIntervalDays { get; set; }
 
         /// <summary>
         /// AliCloud RAM access key ID
@@ -262,13 +251,6 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
-
-        /// <summary>
-        /// Automatic admin credentials rotation
-        /// </summary>
-        /// <value>Automatic admin credentials rotation</value>
-        [DataMember(Name = "enable-admin-rotation", EmitDefaultValue = true)]
-        public bool EnableAdminRotation { get; set; }
 
         /// <summary>
         /// EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.
@@ -420,7 +402,6 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretUpdateAliCloud {\n");
-            sb.Append("  AdminRotationIntervalDays: ").Append(AdminRotationIntervalDays).Append("\n");
             sb.Append("  AlicloudAccessKeyId: ").Append(AlicloudAccessKeyId).Append("\n");
             sb.Append("  AlicloudAccessMode: ").Append(AlicloudAccessMode).Append("\n");
             sb.Append("  AlicloudAccessSecretKey: ").Append(AlicloudAccessSecretKey).Append("\n");
@@ -439,7 +420,6 @@ namespace akeyless.Model
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  EnableAdminRotation: ").Append(EnableAdminRotation).Append("\n");
             sb.Append("  EnableAgenticRuntimeAuthority: ").Append(EnableAgenticRuntimeAuthority).Append("\n");
             sb.Append("  EnableAiQuorum: ").Append(EnableAiQuorum).Append("\n");
             sb.Append("  InputRule: ").Append(InputRule).Append("\n");

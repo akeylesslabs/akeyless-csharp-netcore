@@ -512,6 +512,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetCreateBedrock**](V2Api.md#targetcreatebedrock) | **POST** /target-create-bedrock |  |
 | [**TargetCreateCloudflare**](V2Api.md#targetcreatecloudflare) | **POST** /target-create-cloudflare |  |
 | [**TargetCreateCustomDns**](V2Api.md#targetcreatecustomdns) | **POST** /target-create-custom-dns |  |
+| [**TargetCreateCustomLLM**](V2Api.md#targetcreatecustomllm) | **POST** /target-create-custom-llm |  |
 | [**TargetCreateDB**](V2Api.md#targetcreatedb) | **POST** /target-create-db |  |
 | [**TargetCreateDigiCert**](V2Api.md#targetcreatedigicert) | **POST** /target-create-digicert |  |
 | [**TargetCreateDockerhub**](V2Api.md#targetcreatedockerhub) | **POST** /target-create-dockerhub |  |
@@ -558,6 +559,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**TargetUpdateBedrock**](V2Api.md#targetupdatebedrock) | **POST** /target-update-bedrock |  |
 | [**TargetUpdateCloudflare**](V2Api.md#targetupdatecloudflare) | **POST** /target-update-cloudflare |  |
 | [**TargetUpdateCustomDns**](V2Api.md#targetupdatecustomdns) | **POST** /target-update-custom-dns |  |
+| [**TargetUpdateCustomLLM**](V2Api.md#targetupdatecustomllm) | **POST** /target-update-custom-llm |  |
 | [**TargetUpdateDB**](V2Api.md#targetupdatedb) | **POST** /target-update-db |  |
 | [**TargetUpdateDigiCert**](V2Api.md#targetupdatedigicert) | **POST** /target-update-digicert |  |
 | [**TargetUpdateDockerhub**](V2Api.md#targetupdatedockerhub) | **POST** /target-update-dockerhub |  |
@@ -45367,6 +45369,94 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="targetcreatecustomllm"></a>
+# **TargetCreateCustomLLM**
+> TargetCreateOutput TargetCreateCustomLLM (TargetCreateCustomLLM targetCreateCustomLLM)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetCreateCustomLLMExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetCreateCustomLLM = new TargetCreateCustomLLM(); // TargetCreateCustomLLM | 
+
+            try
+            {
+                TargetCreateOutput result = apiInstance.TargetCreateCustomLLM(targetCreateCustomLLM);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetCreateCustomLLM: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetCreateCustomLLMWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetCreateOutput> response = apiInstance.TargetCreateCustomLLMWithHttpInfo(targetCreateCustomLLM);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetCreateCustomLLMWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetCreateCustomLLM** | [**TargetCreateCustomLLM**](TargetCreateCustomLLM.md) |  |  |
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetCreateCustomLLMResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="targetcreatedb"></a>
 # **TargetCreateDB**
 > TargetCreateOutput TargetCreateDB (TargetCreateDB targetCreateDB)
@@ -49411,6 +49501,94 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | targetUpdateCustomDnsResponse wraps response body. |  -  |
+| **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="targetupdatecustomllm"></a>
+# **TargetUpdateCustomLLM**
+> TargetUpdateOutput TargetUpdateCustomLLM (TargetUpdateCustomLLM targetUpdateCustomLLM)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using akeyless.Api;
+using akeyless.Client;
+using akeyless.Model;
+
+namespace Example
+{
+    public class TargetUpdateCustomLLMExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.akeyless.io";
+            var apiInstance = new V2Api(config);
+            var targetUpdateCustomLLM = new TargetUpdateCustomLLM(); // TargetUpdateCustomLLM | 
+
+            try
+            {
+                TargetUpdateOutput result = apiInstance.TargetUpdateCustomLLM(targetUpdateCustomLLM);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling V2Api.TargetUpdateCustomLLM: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the TargetUpdateCustomLLMWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<TargetUpdateOutput> response = apiInstance.TargetUpdateCustomLLMWithHttpInfo(targetUpdateCustomLLM);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling V2Api.TargetUpdateCustomLLMWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **targetUpdateCustomLLM** | [**TargetUpdateCustomLLM**](TargetUpdateCustomLLM.md) |  |  |
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | targetUpdateCustomLLMResponse wraps response body. |  -  |
 | **0** | errorResponse wraps any error to return it as a JSON object with one \&quot;error\&quot; field. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

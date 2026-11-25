@@ -265,6 +265,7 @@ docs/CreateWindowsTargetOutput.md
 docs/CreateZeroSSLTarget.md
 docs/CreateZeroSSLTargetOutput.md
 docs/CustomDnsTargetDetails.md
+docs/CustomLLMTargetDetails.md
 docs/CustomTargetDetails.md
 docs/CustomerFragmentConfig.md
 docs/CustomerFragmentsConfigJson.md
@@ -321,6 +322,7 @@ docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DigiCertTargetDetails.md
 docs/DockerhubTargetDetails.md
+docs/DomainCoverage.md
 docs/DynamicSecretCreateAerospike.md
 docs/DynamicSecretCreateAliCloud.md
 docs/DynamicSecretCreateArtifactory.md
@@ -1052,6 +1054,7 @@ docs/TargetCreateAzure.md
 docs/TargetCreateBedrock.md
 docs/TargetCreateCloudflare.md
 docs/TargetCreateCustomDns.md
+docs/TargetCreateCustomLLM.md
 docs/TargetCreateDB.md
 docs/TargetCreateDigiCert.md
 docs/TargetCreateDockerhub.md
@@ -1104,6 +1107,7 @@ docs/TargetUpdateAzure.md
 docs/TargetUpdateBedrock.md
 docs/TargetUpdateCloudflare.md
 docs/TargetUpdateCustomDns.md
+docs/TargetUpdateCustomLLM.md
 docs/TargetUpdateDB.md
 docs/TargetUpdateDigiCert.md
 docs/TargetUpdateDockerhub.md
@@ -1305,17 +1309,10 @@ docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
-src/akeyless.Test/Model/AtlassianTargetDetailsTests.cs
-src/akeyless.Test/Model/DynamicSecretCreateAliCloudTests.cs
-src/akeyless.Test/Model/DynamicSecretUpdateAliCloudTests.cs
-src/akeyless.Test/Model/ProvisionSSHRotatedSecretOutputTests.cs
-src/akeyless.Test/Model/RotatedSecretProvisionAssocOutputTests.cs
-src/akeyless.Test/Model/RotatedSecretProvisionCreateTests.cs
-src/akeyless.Test/Model/RotatedSecretProvisionDeleteTests.cs
-src/akeyless.Test/Model/RotatedSecretProvisionPushTests.cs
-src/akeyless.Test/Model/RotatedSecretProvisionUpdateTests.cs
-src/akeyless.Test/Model/TargetCreateAtlassianTests.cs
-src/akeyless.Test/Model/TargetUpdateAtlassianTests.cs
+src/akeyless.Test/Model/CustomLLMTargetDetailsTests.cs
+src/akeyless.Test/Model/DomainCoverageTests.cs
+src/akeyless.Test/Model/TargetCreateCustomLLMTests.cs
+src/akeyless.Test/Model/TargetUpdateCustomLLMTests.cs
 src/akeyless.Test/akeyless.Test.csproj
 src/akeyless/Api/V2Api.cs
 src/akeyless/Client/ApiClient.cs
@@ -1597,6 +1594,7 @@ src/akeyless/Model/CreateWindowsTargetOutput.cs
 src/akeyless/Model/CreateZeroSSLTarget.cs
 src/akeyless/Model/CreateZeroSSLTargetOutput.cs
 src/akeyless/Model/CustomDnsTargetDetails.cs
+src/akeyless/Model/CustomLLMTargetDetails.cs
 src/akeyless/Model/CustomTargetDetails.cs
 src/akeyless/Model/CustomerFragmentConfig.cs
 src/akeyless/Model/CustomerFragmentsConfigJson.cs
@@ -1653,6 +1651,7 @@ src/akeyless/Model/Detokenize.cs
 src/akeyless/Model/DetokenizeOutput.cs
 src/akeyless/Model/DigiCertTargetDetails.cs
 src/akeyless/Model/DockerhubTargetDetails.cs
+src/akeyless/Model/DomainCoverage.cs
 src/akeyless/Model/DynamicSecretCreateAerospike.cs
 src/akeyless/Model/DynamicSecretCreateAliCloud.cs
 src/akeyless/Model/DynamicSecretCreateArtifactory.cs
@@ -2384,6 +2383,7 @@ src/akeyless/Model/TargetCreateAzure.cs
 src/akeyless/Model/TargetCreateBedrock.cs
 src/akeyless/Model/TargetCreateCloudflare.cs
 src/akeyless/Model/TargetCreateCustomDns.cs
+src/akeyless/Model/TargetCreateCustomLLM.cs
 src/akeyless/Model/TargetCreateDB.cs
 src/akeyless/Model/TargetCreateDigiCert.cs
 src/akeyless/Model/TargetCreateDockerhub.cs
@@ -2436,6 +2436,7 @@ src/akeyless/Model/TargetUpdateAzure.cs
 src/akeyless/Model/TargetUpdateBedrock.cs
 src/akeyless/Model/TargetUpdateCloudflare.cs
 src/akeyless/Model/TargetUpdateCustomDns.cs
+src/akeyless/Model/TargetUpdateCustomLLM.cs
 src/akeyless/Model/TargetUpdateDB.cs
 src/akeyless/Model/TargetUpdateDigiCert.cs
 src/akeyless/Model/TargetUpdateDockerhub.cs

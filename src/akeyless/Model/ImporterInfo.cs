@@ -36,10 +36,12 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="ImporterInfo" /> class.
         /// </summary>
         /// <param name="externalItemId">externalItemId.</param>
+        /// <param name="sourceVersion">SourceVersion is the last version imported from the source system (Vault KV v2). 0 means not tracked..</param>
         /// <param name="varVersion">varVersion.</param>
-        public ImporterInfo(string externalItemId = default(string), long varVersion = default(long))
+        public ImporterInfo(string externalItemId = default(string), long sourceVersion = default(long), long varVersion = default(long))
         {
             this.ExternalItemId = externalItemId;
+            this.SourceVersion = sourceVersion;
             this.VarVersion = varVersion;
         }
 
@@ -48,6 +50,13 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "external_item_id", EmitDefaultValue = false)]
         public string ExternalItemId { get; set; }
+
+        /// <summary>
+        /// SourceVersion is the last version imported from the source system (Vault KV v2). 0 means not tracked.
+        /// </summary>
+        /// <value>SourceVersion is the last version imported from the source system (Vault KV v2). 0 means not tracked.</value>
+        [DataMember(Name = "source_version", EmitDefaultValue = false)]
+        public long SourceVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets VarVersion
@@ -64,6 +73,7 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ImporterInfo {\n");
             sb.Append("  ExternalItemId: ").Append(ExternalItemId).Append("\n");
+            sb.Append("  SourceVersion: ").Append(SourceVersion).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -40,16 +40,18 @@ namespace akeyless.Model
         /// <param name="countHosts">countHosts.</param>
         /// <param name="countNew">countNew.</param>
         /// <param name="countSubdomains">countSubdomains.</param>
+        /// <param name="domainCoverage">DomainCoverage says, per public domain, how much of it subdomain discovery managed to cover. Clients that predate it ignore it, and a scan with no public domain omits it..</param>
         /// <param name="error">error.</param>
         /// <param name="failedTargets">failedTargets.</param>
         /// <param name="itemNames">itemNames.</param>
-        public ScanResults(long countExisting = default(long), long countFailed = default(long), long countHosts = default(long), long countNew = default(long), long countSubdomains = default(long), string error = default(string), List<TargetError> failedTargets = default(List<TargetError>), List<string> itemNames = default(List<string>))
+        public ScanResults(long countExisting = default(long), long countFailed = default(long), long countHosts = default(long), long countNew = default(long), long countSubdomains = default(long), List<DomainCoverage> domainCoverage = default(List<DomainCoverage>), string error = default(string), List<TargetError> failedTargets = default(List<TargetError>), List<string> itemNames = default(List<string>))
         {
             this.CountExisting = countExisting;
             this.CountFailed = countFailed;
             this.CountHosts = countHosts;
             this.CountNew = countNew;
             this.CountSubdomains = countSubdomains;
+            this.DomainCoverage = domainCoverage;
             this.Error = error;
             this.FailedTargets = failedTargets;
             this.ItemNames = itemNames;
@@ -86,6 +88,13 @@ namespace akeyless.Model
         public long CountSubdomains { get; set; }
 
         /// <summary>
+        /// DomainCoverage says, per public domain, how much of it subdomain discovery managed to cover. Clients that predate it ignore it, and a scan with no public domain omits it.
+        /// </summary>
+        /// <value>DomainCoverage says, per public domain, how much of it subdomain discovery managed to cover. Clients that predate it ignore it, and a scan with no public domain omits it.</value>
+        [DataMember(Name = "DomainCoverage", EmitDefaultValue = false)]
+        public List<DomainCoverage> DomainCoverage { get; set; }
+
+        /// <summary>
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name = "Error", EmitDefaultValue = false)]
@@ -116,6 +125,7 @@ namespace akeyless.Model
             sb.Append("  CountHosts: ").Append(CountHosts).Append("\n");
             sb.Append("  CountNew: ").Append(CountNew).Append("\n");
             sb.Append("  CountSubdomains: ").Append(CountSubdomains).Append("\n");
+            sb.Append("  DomainCoverage: ").Append(DomainCoverage).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  FailedTargets: ").Append(FailedTargets).Append("\n");
             sb.Append("  ItemNames: ").Append(ItemNames).Append("\n");

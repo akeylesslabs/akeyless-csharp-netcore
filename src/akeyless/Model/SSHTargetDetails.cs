@@ -35,14 +35,16 @@ namespace akeyless.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SSHTargetDetails" /> class.
         /// </summary>
+        /// <param name="authType">AuthType is a non-secret auth indication (password | private_key). Prefer Target.Attributes[auth_type] for list responses; this field may be populated on get-target-details for convenience..</param>
         /// <param name="host">host.</param>
         /// <param name="password">password.</param>
         /// <param name="port">port.</param>
         /// <param name="privateKey">privateKey.</param>
         /// <param name="privateKeyPassword">privateKeyPassword.</param>
         /// <param name="username">username.</param>
-        public SSHTargetDetails(string host = default(string), string password = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string username = default(string))
+        public SSHTargetDetails(string authType = default(string), string host = default(string), string password = default(string), string port = default(string), string privateKey = default(string), string privateKeyPassword = default(string), string username = default(string))
         {
+            this.AuthType = authType;
             this.Host = host;
             this.Password = password;
             this.Port = port;
@@ -50,6 +52,13 @@ namespace akeyless.Model
             this.PrivateKeyPassword = privateKeyPassword;
             this.Username = username;
         }
+
+        /// <summary>
+        /// AuthType is a non-secret auth indication (password | private_key). Prefer Target.Attributes[auth_type] for list responses; this field may be populated on get-target-details for convenience.
+        /// </summary>
+        /// <value>AuthType is a non-secret auth indication (password | private_key). Prefer Target.Attributes[auth_type] for list responses; this field may be populated on get-target-details for convenience.</value>
+        [DataMember(Name = "auth_type", EmitDefaultValue = false)]
+        public string AuthType { get; set; }
 
         /// <summary>
         /// Gets or Sets Host
@@ -95,6 +104,7 @@ namespace akeyless.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SSHTargetDetails {\n");
+            sb.Append("  AuthType: ").Append(AuthType).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");

@@ -53,10 +53,11 @@ namespace akeyless.Model
         /// <param name="externalCaId">externalCaId.</param>
         /// <param name="issuanceStatus">issuanceStatus.</param>
         /// <param name="leafCertificatePem">LeafCertificatePem contains only the leaf certificate, derived from CertificatePem. Populated only when the certificate was issued with SplitCertificateChain enabled..</param>
+        /// <param name="nextAutoRenewalDate">NextAutoRenewalDate is when auto-renewal will next renew the certificate. It is worked out when the certificate is described and never stored, and it is empty when the certificate will not be auto-renewed..</param>
         /// <param name="notBefore">notBefore.</param>
         /// <param name="renewBeforeExpirationInDays">renewBeforeExpirationInDays.</param>
         /// <param name="splitCertificateChain">SplitCertificateChain reflects whether this certificate was issued while its PKI Cert Issuer had split-certificate-chain enabled. When true, LeafCertificatePem is populated in addition to CertificatePem (which always holds the full chain)..</param>
-        public CertificateChainInfo(bool autoRenewCertificate = default(bool), List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), bool certificateHasPrivateKey = default(bool), long certificateIssuerGwClusterId = default(long), string certificateIssuerGwClusterUrl = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), string commonName = default(string), string csrPem = default(string), string errorMessage = default(string), DateTime expirationDate = default(DateTime), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), NullString externalCaId = default(NullString), string issuanceStatus = default(string), string leafCertificatePem = default(string), DateTime notBefore = default(DateTime), long renewBeforeExpirationInDays = default(long), bool splitCertificateChain = default(bool))
+        public CertificateChainInfo(bool autoRenewCertificate = default(bool), List<CertificateInfo> certificateChain = default(List<CertificateInfo>), string certificateFormat = default(string), bool certificateHasPrivateKey = default(bool), long certificateIssuerGwClusterId = default(long), string certificateIssuerGwClusterUrl = default(string), long certificateIssuerItemId = default(long), string certificateIssuerName = default(string), string certificatePem = default(string), string certificateStatus = default(string), string commonName = default(string), string csrPem = default(string), string errorMessage = default(string), DateTime expirationDate = default(DateTime), List<CertificateExpirationEvent> expirationEvents = default(List<CertificateExpirationEvent>), NullString externalCaId = default(NullString), string issuanceStatus = default(string), string leafCertificatePem = default(string), DateTime nextAutoRenewalDate = default(DateTime), DateTime notBefore = default(DateTime), long renewBeforeExpirationInDays = default(long), bool splitCertificateChain = default(bool))
         {
             this.AutoRenewCertificate = autoRenewCertificate;
             this.CertificateChain = certificateChain;
@@ -76,6 +77,7 @@ namespace akeyless.Model
             this.ExternalCaId = externalCaId;
             this.IssuanceStatus = issuanceStatus;
             this.LeafCertificatePem = leafCertificatePem;
+            this.NextAutoRenewalDate = nextAutoRenewalDate;
             this.NotBefore = notBefore;
             this.RenewBeforeExpirationInDays = renewBeforeExpirationInDays;
             this.SplitCertificateChain = splitCertificateChain;
@@ -192,6 +194,13 @@ namespace akeyless.Model
         public string LeafCertificatePem { get; set; }
 
         /// <summary>
+        /// NextAutoRenewalDate is when auto-renewal will next renew the certificate. It is worked out when the certificate is described and never stored, and it is empty when the certificate will not be auto-renewed.
+        /// </summary>
+        /// <value>NextAutoRenewalDate is when auto-renewal will next renew the certificate. It is worked out when the certificate is described and never stored, and it is empty when the certificate will not be auto-renewed.</value>
+        [DataMember(Name = "next_auto_renewal_date", EmitDefaultValue = false)]
+        public DateTime NextAutoRenewalDate { get; set; }
+
+        /// <summary>
         /// Gets or Sets NotBefore
         /// </summary>
         [DataMember(Name = "not_before", EmitDefaultValue = false)]
@@ -236,6 +245,7 @@ namespace akeyless.Model
             sb.Append("  ExternalCaId: ").Append(ExternalCaId).Append("\n");
             sb.Append("  IssuanceStatus: ").Append(IssuanceStatus).Append("\n");
             sb.Append("  LeafCertificatePem: ").Append(LeafCertificatePem).Append("\n");
+            sb.Append("  NextAutoRenewalDate: ").Append(NextAutoRenewalDate).Append("\n");
             sb.Append("  NotBefore: ").Append(NotBefore).Append("\n");
             sb.Append("  RenewBeforeExpirationInDays: ").Append(RenewBeforeExpirationInDays).Append("\n");
             sb.Append("  SplitCertificateChain: ").Append(SplitCertificateChain).Append("\n");

@@ -41,7 +41,6 @@ namespace akeyless.Model
         /// Initializes a new instance of the <see cref="DynamicSecretCreateAws" /> class.
         /// </summary>
         /// <param name="accessMode">accessMode.</param>
-        /// <param name="adminRotationIntervalDays">Admin credentials rotation interval (days) (default to 0).</param>
         /// <param name="araEnabled">Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled..</param>
         /// <param name="awsAccessKeyId">Access Key ID.</param>
         /// <param name="awsAccessSecretKey">Secret Access Key.</param>
@@ -54,7 +53,6 @@ namespace akeyless.Model
         /// <param name="customUsernameTemplate">Customize how temporary usernames are generated using go template.</param>
         /// <param name="deleteProtection">Protection from accidental deletion of this object [true/false].</param>
         /// <param name="description">Description of the object.</param>
-        /// <param name="enableAdminRotation">Automatic admin credentials rotation (default to false).</param>
         /// <param name="enableAgenticRuntimeAuthority">EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias..</param>
         /// <param name="enableAiQuorum">Turns on AI Quorum checks for this item..</param>
         /// <param name="inputRule">Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout)..</param>
@@ -86,7 +84,7 @@ namespace akeyless.Model
         /// <param name="useNumbers">Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false].</param>
         /// <param name="useSpecialCharacters">useSpecialCharacters.</param>
         /// <param name="userTtl">User TTL (default to &quot;60m&quot;).</param>
-        public DynamicSecretCreateAws(string accessMode = default(string), long adminRotationIntervalDays = 0, bool araEnabled = default(bool), string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsExternalId = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAdminRotation = false, bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string region = @"us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sessionTags = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string transitiveTagKeys = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
+        public DynamicSecretCreateAws(string accessMode = default(string), bool araEnabled = default(bool), string awsAccessKeyId = default(string), string awsAccessSecretKey = default(string), string awsExternalId = default(string), string awsRoleArns = default(string), bool awsUserConsoleAccess = false, string awsUserGroups = default(string), string awsUserPolicies = default(string), bool awsUserProgrammaticAccess = true, string customUsernameTemplate = default(string), string deleteProtection = default(string), string description = default(string), bool enableAgenticRuntimeAuthority = default(bool), bool enableAiQuorum = default(bool), List<string> inputRule = default(List<string>), Dictionary<string, string> itemCustomFields = default(Dictionary<string, string>), bool json = false, string name = default(string), List<string> outputRule = default(List<string>), string passwordLength = default(string), string producerEncryptionKeyName = default(string), string region = @"us-east-2", string secureAccessAwsAccountId = default(string), bool secureAccessAwsNativeCli = default(bool), string secureAccessBastionIssuer = default(string), string secureAccessCertificateIssuer = default(string), long secureAccessDelay = default(long), string secureAccessEnable = default(string), bool secureAccessWeb = true, bool secureAccessWebBrowsing = false, bool secureAccessWebProxy = false, string sessionTags = default(string), bool skipDryRun = default(bool), List<string> tags = default(List<string>), string targetName = default(string), string token = default(string), string transitiveTagKeys = default(string), string uidToken = default(string), string useCapitalLetters = default(string), string useLowerLetters = default(string), string useNumbers = default(string), string useSpecialCharacters = default(string), string userTtl = @"60m")
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -95,7 +93,6 @@ namespace akeyless.Model
             }
             this.Name = name;
             this.AccessMode = accessMode;
-            this.AdminRotationIntervalDays = adminRotationIntervalDays;
             this.AraEnabled = araEnabled;
             this.AwsAccessKeyId = awsAccessKeyId;
             this.AwsAccessSecretKey = awsAccessSecretKey;
@@ -108,7 +105,6 @@ namespace akeyless.Model
             this.CustomUsernameTemplate = customUsernameTemplate;
             this.DeleteProtection = deleteProtection;
             this.Description = description;
-            this.EnableAdminRotation = enableAdminRotation;
             this.EnableAgenticRuntimeAuthority = enableAgenticRuntimeAuthority;
             this.EnableAiQuorum = enableAiQuorum;
             this.InputRule = inputRule;
@@ -148,13 +144,6 @@ namespace akeyless.Model
         /// </summary>
         [DataMember(Name = "access-mode", EmitDefaultValue = false)]
         public string AccessMode { get; set; }
-
-        /// <summary>
-        /// Admin credentials rotation interval (days)
-        /// </summary>
-        /// <value>Admin credentials rotation interval (days)</value>
-        [DataMember(Name = "admin-rotation-interval-days", EmitDefaultValue = false)]
-        public long AdminRotationIntervalDays { get; set; }
 
         /// <summary>
         /// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
@@ -239,13 +228,6 @@ namespace akeyless.Model
         /// <value>Description of the object</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
-
-        /// <summary>
-        /// Automatic admin credentials rotation
-        /// </summary>
-        /// <value>Automatic admin credentials rotation</value>
-        [DataMember(Name = "enable-admin-rotation", EmitDefaultValue = true)]
-        public bool EnableAdminRotation { get; set; }
 
         /// <summary>
         /// EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias.
@@ -475,7 +457,6 @@ namespace akeyless.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class DynamicSecretCreateAws {\n");
             sb.Append("  AccessMode: ").Append(AccessMode).Append("\n");
-            sb.Append("  AdminRotationIntervalDays: ").Append(AdminRotationIntervalDays).Append("\n");
             sb.Append("  AraEnabled: ").Append(AraEnabled).Append("\n");
             sb.Append("  AwsAccessKeyId: ").Append(AwsAccessKeyId).Append("\n");
             sb.Append("  AwsAccessSecretKey: ").Append(AwsAccessSecretKey).Append("\n");
@@ -488,7 +469,6 @@ namespace akeyless.Model
             sb.Append("  CustomUsernameTemplate: ").Append(CustomUsernameTemplate).Append("\n");
             sb.Append("  DeleteProtection: ").Append(DeleteProtection).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  EnableAdminRotation: ").Append(EnableAdminRotation).Append("\n");
             sb.Append("  EnableAgenticRuntimeAuthority: ").Append(EnableAgenticRuntimeAuthority).Append("\n");
             sb.Append("  EnableAiQuorum: ").Append(EnableAiQuorum).Append("\n");
             sb.Append("  InputRule: ").Append(InputRule).Append("\n");

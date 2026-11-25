@@ -40,14 +40,16 @@ namespace akeyless.Model
         /// <param name="itemId">itemId.</param>
         /// <param name="parentCert">parentCert.</param>
         /// <param name="privateKey">privateKey.</param>
+        /// <param name="provisioningScheduleErrors">ProvisioningScheduleErrors lists the targets whose provisioning could not be scheduled, as \&quot;&lt;target&gt;: &lt;error&gt;\&quot;. The renewal itself succeeded..</param>
         /// <param name="readingToken">readingToken.</param>
-        public RenewCertificateOutput(string cert = default(string), string certDisplayId = default(string), string itemId = default(string), string parentCert = default(string), string privateKey = default(string), string readingToken = default(string))
+        public RenewCertificateOutput(string cert = default(string), string certDisplayId = default(string), string itemId = default(string), string parentCert = default(string), string privateKey = default(string), List<string> provisioningScheduleErrors = default(List<string>), string readingToken = default(string))
         {
             this.Cert = cert;
             this.CertDisplayId = certDisplayId;
             this.ItemId = itemId;
             this.ParentCert = parentCert;
             this.PrivateKey = privateKey;
+            this.ProvisioningScheduleErrors = provisioningScheduleErrors;
             this.ReadingToken = readingToken;
         }
 
@@ -82,6 +84,13 @@ namespace akeyless.Model
         public string PrivateKey { get; set; }
 
         /// <summary>
+        /// ProvisioningScheduleErrors lists the targets whose provisioning could not be scheduled, as \&quot;&lt;target&gt;: &lt;error&gt;\&quot;. The renewal itself succeeded.
+        /// </summary>
+        /// <value>ProvisioningScheduleErrors lists the targets whose provisioning could not be scheduled, as \&quot;&lt;target&gt;: &lt;error&gt;\&quot;. The renewal itself succeeded.</value>
+        [DataMember(Name = "provisioning_schedule_errors", EmitDefaultValue = false)]
+        public List<string> ProvisioningScheduleErrors { get; set; }
+
+        /// <summary>
         /// Gets or Sets ReadingToken
         /// </summary>
         [DataMember(Name = "reading_token", EmitDefaultValue = false)]
@@ -100,6 +109,7 @@ namespace akeyless.Model
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  ParentCert: ").Append(ParentCert).Append("\n");
             sb.Append("  PrivateKey: ").Append(PrivateKey).Append("\n");
+            sb.Append("  ProvisioningScheduleErrors: ").Append(ProvisioningScheduleErrors).Append("\n");
             sb.Append("  ReadingToken: ").Append(ReadingToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

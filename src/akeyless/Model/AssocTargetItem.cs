@@ -42,7 +42,7 @@ namespace akeyless.Model
         /// </summary>
         /// <param name="bindSslProfiles">Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. For a profile in a folder, add the folder to the partition, for example client-ssl:Common/Shared:my-profile. Repeat the parameter to bind several profiles..</param>
         /// <param name="certificateArn">The ARN of an existing imported ACM certificate to re-import into, which replaces its certificate and key; if empty, a new ACM certificate is created on every provisioning, including after renewal (relevant only for AWS certificate provisioning).</param>
-        /// <param name="certificateFormat">The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning) (default to &quot;pem&quot;).</param>
+        /// <param name="certificateFormat">The format the certificate will be provisioned with, available options: pem,pfx,jks (jks uses - -jks-password); pfx requires gateway version 5.5.0 or higher, and jks and pfx for Azure Key Vault require 5.8.0 or higher, or the association is rejected (relevant only for certificate provisioning) (default to &quot;pem&quot;).</param>
         /// <param name="certificateName">The name of the certificate object in the cloud provider (relevant only for AWS, Azure, and GCP certificate provisioning).</param>
         /// <param name="certificatePath">A path on the target to store the certificate pem file (relevant only for certificate provisioning).</param>
         /// <param name="chainPath">A path on the target to store the full chain pem file (relevant only for certificate provisioning).</param>
@@ -50,7 +50,15 @@ namespace akeyless.Model
         /// <param name="externalKeyName">The external key name to associate with the classic key (Relevant only for Classic Key AWS/Azure/GCP targets).</param>
         /// <param name="f5SaveConfig">Save the F5 running configuration after each successful provisioning, so the certificate survives a reboot. This also saves any other unsaved change on the device (relevant only for F5 BIG-IP certificate provisioning) (default to false).</param>
         /// <param name="f5SyncDeviceGroup">Sync the F5 configuration to this device group after each successful provisioning, so the HA peer serves the same certificate. This overwrites unsynced changes on the other members of the group. Implies f5-save-config (relevant only for F5 BIG-IP certificate provisioning).</param>
+        /// <param name="iisBindingHostname">The optional host name of the IIS binding, which enables SNI for a binding that is created (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My).</param>
+        /// <param name="iisBindingIpAddress">Comma-separated IP addresses of the IIS bindings to update (or create with - -iis-create-binding), one binding per address, or * for all unassigned addresses; required with - -iis-website-name (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My).</param>
+        /// <param name="iisBindingPort">The port of the IIS binding, 443 when omitted (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My).</param>
+        /// <param name="iisCreateBinding">Create the IIS https binding if the website has none matching the given IP addresses, port and host name; without it the run fails when such a binding does not exist (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My) (default to false).</param>
+        /// <param name="iisRestartWebsite">Restart the IIS website after the certificate is bound (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My) (default to false).</param>
+        /// <param name="iisWebsiteName">The IIS website to bind the provisioned certificate to (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My).</param>
+        /// <param name="jksPassword">JKS file password; required when certificate-format is jks (relevant only for certificate provisioning).</param>
         /// <param name="json">Set output format to JSON (default to false).</param>
+        /// <param name="keyAlias">Alias the entry is stored under in the JKS file, default certificate (max 128 characters). Only relevant when - -certificate-format&#x3D;jks.</param>
         /// <param name="keyOperations">A list of allowed operations for the key (required for azure targets).</param>
         /// <param name="keyVault">The Azure Key Vault name to provision the certificate to (relevant only for Azure certificate provisioning).</param>
         /// <param name="keyringName">Keyring name of the GCP KMS (required for gcp targets).</param>
@@ -59,11 +67,13 @@ namespace akeyless.Model
         /// <param name="locationScope">The GCP Certificate Manager location to provision the certificate to: global or a region such as us-central1 (relevant only for GCP certificate provisioning).</param>
         /// <param name="multiRegion">Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) (default to &quot;false&quot;).</param>
         /// <param name="name">The item to associate (required).</param>
-        /// <param name="pfxPassword">Password used to protect the provisioned PFX file. Required when - -certificate-format&#x3D;pfx (relevant only for certificate provisioning).</param>
+        /// <param name="pfxPassword">PFX file password; required when certificate-format is pfx (relevant only for certificate provisioning).</param>
         /// <param name="postProvisionCommand">A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP).</param>
         /// <param name="privateKeyPath">A path on the target to store the private key (relevant only for certificate provisioning).</param>
         /// <param name="projectId">Project id of the GCP KMS (required for gcp targets).</param>
         /// <param name="protectionLevel">Protection level of the key [software/hardware] (relevant for gcp targets) (default to &quot;software&quot;).</param>
+        /// <param name="provisioningScheduleDays">Comma-separated UTC weekdays (sun,mon,tue,wed,thu,fri,sat) on which the certificate is provisioned after a renewal, together with provisioning-schedule-time. Provisioning is not run when the association is created. Without a schedule, provisioning runs right away (relevant only for certificate provisioning).</param>
+        /// <param name="provisioningScheduleTime">The UTC time of day, as HH:MM, at which the certificate is provisioned on the scheduled days. A renewed certificate waits for the first such time (relevant only for certificate provisioning).</param>
         /// <param name="purpose">Purpose of the key in GCP KMS (required for gcp targets).</param>
         /// <param name="regions">The list of regions to create a copy of the key in (relevant for aws targets).</param>
         /// <param name="sraAssociation">Is the target to associate is for sra, relevant only for linked target association for ldap rotated secret (default to false).</param>
@@ -72,7 +82,7 @@ namespace akeyless.Model
         /// <param name="token">Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;).</param>
         /// <param name="uidToken">The universal identity token, Required only for universal_identity authentication.</param>
         /// <param name="vaultName">Name of the vault used (required for azure targets).</param>
-        public AssocTargetItem(List<string> bindSslProfiles = default(List<string>), string certificateArn = default(string), string certificateFormat = @"pem", string certificateName = default(string), string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, string externalKeyName = default(string), bool f5SaveConfig = false, string f5SyncDeviceGroup = default(string), bool json = false, List<string> keyOperations = default(List<string>), string keyVault = default(string), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string locationScope = default(string), string multiRegion = @"false", string name = default(string), string pfxPassword = default(string), string postProvisionCommand = default(string), string privateKeyPath = default(string), string projectId = default(string), string protectionLevel = @"software", string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
+        public AssocTargetItem(List<string> bindSslProfiles = default(List<string>), string certificateArn = default(string), string certificateFormat = @"pem", string certificateName = default(string), string certificatePath = default(string), string chainPath = default(string), bool disablePreviousKeyVersion = false, string externalKeyName = default(string), bool f5SaveConfig = false, string f5SyncDeviceGroup = default(string), string iisBindingHostname = default(string), string iisBindingIpAddress = default(string), long iisBindingPort = default(long), bool iisCreateBinding = false, bool iisRestartWebsite = false, string iisWebsiteName = default(string), string jksPassword = default(string), bool json = false, string keyAlias = default(string), List<string> keyOperations = default(List<string>), string keyVault = default(string), string keyringName = default(string), string kmsAlgorithm = default(string), string locationId = default(string), string locationScope = default(string), string multiRegion = @"false", string name = default(string), string pfxPassword = default(string), string postProvisionCommand = default(string), string privateKeyPath = default(string), string projectId = default(string), string protectionLevel = @"software", string provisioningScheduleDays = default(string), string provisioningScheduleTime = default(string), string purpose = default(string), List<string> regions = default(List<string>), bool sraAssociation = false, string targetName = default(string), string tenantSecretType = default(string), string token = default(string), string uidToken = default(string), string vaultName = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -97,7 +107,15 @@ namespace akeyless.Model
             this.ExternalKeyName = externalKeyName;
             this.F5SaveConfig = f5SaveConfig;
             this.F5SyncDeviceGroup = f5SyncDeviceGroup;
+            this.IisBindingHostname = iisBindingHostname;
+            this.IisBindingIpAddress = iisBindingIpAddress;
+            this.IisBindingPort = iisBindingPort;
+            this.IisCreateBinding = iisCreateBinding;
+            this.IisRestartWebsite = iisRestartWebsite;
+            this.IisWebsiteName = iisWebsiteName;
+            this.JksPassword = jksPassword;
             this.Json = json;
+            this.KeyAlias = keyAlias;
             this.KeyOperations = keyOperations;
             this.KeyVault = keyVault;
             this.KeyringName = keyringName;
@@ -112,6 +130,8 @@ namespace akeyless.Model
             this.ProjectId = projectId;
             // use default value if no "protectionLevel" provided
             this.ProtectionLevel = protectionLevel ?? @"software";
+            this.ProvisioningScheduleDays = provisioningScheduleDays;
+            this.ProvisioningScheduleTime = provisioningScheduleTime;
             this.Purpose = purpose;
             this.Regions = regions;
             this.SraAssociation = sraAssociation;
@@ -136,9 +156,9 @@ namespace akeyless.Model
         public string CertificateArn { get; set; }
 
         /// <summary>
-        /// The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning)
+        /// The format the certificate will be provisioned with, available options: pem,pfx,jks (jks uses - -jks-password); pfx requires gateway version 5.5.0 or higher, and jks and pfx for Azure Key Vault require 5.8.0 or higher, or the association is rejected (relevant only for certificate provisioning)
         /// </summary>
-        /// <value>The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning)</value>
+        /// <value>The format the certificate will be provisioned with, available options: pem,pfx,jks (jks uses - -jks-password); pfx requires gateway version 5.5.0 or higher, and jks and pfx for Azure Key Vault require 5.8.0 or higher, or the association is rejected (relevant only for certificate provisioning)</value>
         [DataMember(Name = "certificate-format", EmitDefaultValue = false)]
         public string CertificateFormat { get; set; }
 
@@ -192,11 +212,67 @@ namespace akeyless.Model
         public string F5SyncDeviceGroup { get; set; }
 
         /// <summary>
+        /// The optional host name of the IIS binding, which enables SNI for a binding that is created (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)
+        /// </summary>
+        /// <value>The optional host name of the IIS binding, which enables SNI for a binding that is created (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)</value>
+        [DataMember(Name = "iis-binding-hostname", EmitDefaultValue = false)]
+        public string IisBindingHostname { get; set; }
+
+        /// <summary>
+        /// Comma-separated IP addresses of the IIS bindings to update (or create with - -iis-create-binding), one binding per address, or * for all unassigned addresses; required with - -iis-website-name (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)
+        /// </summary>
+        /// <value>Comma-separated IP addresses of the IIS bindings to update (or create with - -iis-create-binding), one binding per address, or * for all unassigned addresses; required with - -iis-website-name (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)</value>
+        [DataMember(Name = "iis-binding-ip-address", EmitDefaultValue = false)]
+        public string IisBindingIpAddress { get; set; }
+
+        /// <summary>
+        /// The port of the IIS binding, 443 when omitted (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)
+        /// </summary>
+        /// <value>The port of the IIS binding, 443 when omitted (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)</value>
+        [DataMember(Name = "iis-binding-port", EmitDefaultValue = false)]
+        public long IisBindingPort { get; set; }
+
+        /// <summary>
+        /// Create the IIS https binding if the website has none matching the given IP addresses, port and host name; without it the run fails when such a binding does not exist (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)
+        /// </summary>
+        /// <value>Create the IIS https binding if the website has none matching the given IP addresses, port and host name; without it the run fails when such a binding does not exist (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)</value>
+        [DataMember(Name = "iis-create-binding", EmitDefaultValue = true)]
+        public bool IisCreateBinding { get; set; }
+
+        /// <summary>
+        /// Restart the IIS website after the certificate is bound (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)
+        /// </summary>
+        /// <value>Restart the IIS website after the certificate is bound (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)</value>
+        [DataMember(Name = "iis-restart-website", EmitDefaultValue = true)]
+        public bool IisRestartWebsite { get; set; }
+
+        /// <summary>
+        /// The IIS website to bind the provisioned certificate to (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)
+        /// </summary>
+        /// <value>The IIS website to bind the provisioned certificate to (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires - -certificate-format pfx and a - -certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My)</value>
+        [DataMember(Name = "iis-website-name", EmitDefaultValue = false)]
+        public string IisWebsiteName { get; set; }
+
+        /// <summary>
+        /// JKS file password; required when certificate-format is jks (relevant only for certificate provisioning)
+        /// </summary>
+        /// <value>JKS file password; required when certificate-format is jks (relevant only for certificate provisioning)</value>
+        [DataMember(Name = "jks-password", EmitDefaultValue = false)]
+        public string JksPassword { get; set; }
+
+        /// <summary>
         /// Set output format to JSON
         /// </summary>
         /// <value>Set output format to JSON</value>
         [DataMember(Name = "json", EmitDefaultValue = true)]
         public bool Json { get; set; }
+
+        /// <summary>
+        /// Alias the entry is stored under in the JKS file, default certificate (max 128 characters). Only relevant when - -certificate-format&#x3D;jks
+        /// </summary>
+        /// <value>Alias the entry is stored under in the JKS file, default certificate (max 128 characters). Only relevant when - -certificate-format&#x3D;jks</value>
+        [DataMember(Name = "key-alias", EmitDefaultValue = false)]
+        public string KeyAlias { get; set; }
 
         /// <summary>
         /// A list of allowed operations for the key (required for azure targets)
@@ -255,9 +331,9 @@ namespace akeyless.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Password used to protect the provisioned PFX file. Required when - -certificate-format&#x3D;pfx (relevant only for certificate provisioning)
+        /// PFX file password; required when certificate-format is pfx (relevant only for certificate provisioning)
         /// </summary>
-        /// <value>Password used to protect the provisioned PFX file. Required when - -certificate-format&#x3D;pfx (relevant only for certificate provisioning)</value>
+        /// <value>PFX file password; required when certificate-format is pfx (relevant only for certificate provisioning)</value>
         [DataMember(Name = "pfx-password", EmitDefaultValue = false)]
         public string PfxPassword { get; set; }
 
@@ -288,6 +364,20 @@ namespace akeyless.Model
         /// <value>Protection level of the key [software/hardware] (relevant for gcp targets)</value>
         [DataMember(Name = "protection-level", EmitDefaultValue = false)]
         public string ProtectionLevel { get; set; }
+
+        /// <summary>
+        /// Comma-separated UTC weekdays (sun,mon,tue,wed,thu,fri,sat) on which the certificate is provisioned after a renewal, together with provisioning-schedule-time. Provisioning is not run when the association is created. Without a schedule, provisioning runs right away (relevant only for certificate provisioning)
+        /// </summary>
+        /// <value>Comma-separated UTC weekdays (sun,mon,tue,wed,thu,fri,sat) on which the certificate is provisioned after a renewal, together with provisioning-schedule-time. Provisioning is not run when the association is created. Without a schedule, provisioning runs right away (relevant only for certificate provisioning)</value>
+        [DataMember(Name = "provisioning-schedule-days", EmitDefaultValue = false)]
+        public string ProvisioningScheduleDays { get; set; }
+
+        /// <summary>
+        /// The UTC time of day, as HH:MM, at which the certificate is provisioned on the scheduled days. A renewed certificate waits for the first such time (relevant only for certificate provisioning)
+        /// </summary>
+        /// <value>The UTC time of day, as HH:MM, at which the certificate is provisioned on the scheduled days. A renewed certificate waits for the first such time (relevant only for certificate provisioning)</value>
+        [DataMember(Name = "provisioning-schedule-time", EmitDefaultValue = false)]
+        public string ProvisioningScheduleTime { get; set; }
 
         /// <summary>
         /// Purpose of the key in GCP KMS (required for gcp targets)
@@ -363,7 +453,15 @@ namespace akeyless.Model
             sb.Append("  ExternalKeyName: ").Append(ExternalKeyName).Append("\n");
             sb.Append("  F5SaveConfig: ").Append(F5SaveConfig).Append("\n");
             sb.Append("  F5SyncDeviceGroup: ").Append(F5SyncDeviceGroup).Append("\n");
+            sb.Append("  IisBindingHostname: ").Append(IisBindingHostname).Append("\n");
+            sb.Append("  IisBindingIpAddress: ").Append(IisBindingIpAddress).Append("\n");
+            sb.Append("  IisBindingPort: ").Append(IisBindingPort).Append("\n");
+            sb.Append("  IisCreateBinding: ").Append(IisCreateBinding).Append("\n");
+            sb.Append("  IisRestartWebsite: ").Append(IisRestartWebsite).Append("\n");
+            sb.Append("  IisWebsiteName: ").Append(IisWebsiteName).Append("\n");
+            sb.Append("  JksPassword: ").Append(JksPassword).Append("\n");
             sb.Append("  Json: ").Append(Json).Append("\n");
+            sb.Append("  KeyAlias: ").Append(KeyAlias).Append("\n");
             sb.Append("  KeyOperations: ").Append(KeyOperations).Append("\n");
             sb.Append("  KeyVault: ").Append(KeyVault).Append("\n");
             sb.Append("  KeyringName: ").Append(KeyringName).Append("\n");
@@ -377,6 +475,8 @@ namespace akeyless.Model
             sb.Append("  PrivateKeyPath: ").Append(PrivateKeyPath).Append("\n");
             sb.Append("  ProjectId: ").Append(ProjectId).Append("\n");
             sb.Append("  ProtectionLevel: ").Append(ProtectionLevel).Append("\n");
+            sb.Append("  ProvisioningScheduleDays: ").Append(ProvisioningScheduleDays).Append("\n");
+            sb.Append("  ProvisioningScheduleTime: ").Append(ProvisioningScheduleTime).Append("\n");
             sb.Append("  Purpose: ").Append(Purpose).Append("\n");
             sb.Append("  Regions: ").Append(Regions).Append("\n");
             sb.Append("  SraAssociation: ").Append(SraAssociation).Append("\n");

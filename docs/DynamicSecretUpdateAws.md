@@ -6,7 +6,6 @@ dynamicSecretUpdateAws is a command that Updates aws dynamic secret
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessMode** | **string** |  | [optional] 
-**AdminRotationIntervalDays** | **long** | Admin credentials rotation interval (days) | [optional] [default to 0]
 **AraEnabled** | **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **AwsAccessKeyId** | **string** | Access Key ID | [optional] 
 **AwsAccessSecretKey** | **string** | Secret Access Key | [optional] 
@@ -19,7 +18,6 @@ Name | Type | Description | Notes
 **CustomUsernameTemplate** | **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | **string** | Description of the object | [optional] 
-**EnableAdminRotation** | **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **EnableAgenticRuntimeAuthority** | **bool** | EnableAra is the documented spelling of AraEnabled; - -ara-enabled shipped first and stays as an undocumented alias. | [optional] 
 **EnableAiQuorum** | **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | **List&lt;string&gt;** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
